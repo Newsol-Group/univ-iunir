@@ -1,0 +1,7 @@
+.form-horizontal .control-label {
+    width: 114px;
+}
+
+.control-label.label-obligatorio {
+    font-weight: bold;
+}

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000324" descripcion="toba_datos_tabla">
+	<tabla nombre="apex_objeto">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000324"/>
+			<columna nombre="clase_proyecto" valor="toba"/>
+			<columna nombre="clase" valor="toba_datos_tabla"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+			<columna nombre="nombre" valor="DT - nsg_datos_anticipos"/>
+			<columna nombre="fuente_datos_proyecto" valor="guarani"/>
+			<columna nombre="fuente_datos" valor="guarani"/>
+			<columna nombre="creacion" valor="2025-09-09 18:02:24"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_db_registros">
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000324"/>
+			<columna nombre="punto_montaje" valor="1"/>
+			<columna nombre="ap" valor="1"/>
+			<columna nombre="tabla" valor="nsg_datos_anticipos"/>
+			<columna nombre="modificar_claves" valor="0"/>
+			<columna nombre="fuente_datos_proyecto" valor="guarani"/>
+			<columna nombre="fuente_datos" valor="guarani"/>
+			<columna nombre="permite_actualizacion_automatica" valor="1"/>
+			<columna nombre="esquema" valor="negocio_nsg"/>
+			<columna nombre="esquema_ext" valor="negocio"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_db_registros_col">
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000324"/>
+			<columna nombre="col_id" valor="770000301"/>
+			<columna nombre="columna" valor="dato_anticipo"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="1"/>
+			<columna nombre="secuencia" valor="nsg_datos_anticipos_seq"/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_anticipos"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000324"/>
+			<columna nombre="col_id" valor="770000302"/>
+			<columna nombre="columna" valor="alumno"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_anticipos"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000324"/>
+			<columna nombre="col_id" valor="770000303"/>
+			<columna nombre="columna" valor="fecha_vencimiento"/>
+			<columna nombre="tipo" valor="F"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_anticipos"/>
+		</registro>
+	</tabla>
+</componente>

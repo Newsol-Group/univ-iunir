@@ -1,0 +1,87 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	<h2 class="resaltar divisor clearfix"><span class="pull-left">Fuente de financiamiento de estudios</span>
+        <button id="guardar" type="button" name="guardar" class="btn btn-info pull-right" disabled="disabled">Guardado</button>
+    </h2>
+    <form id="financiamiento" action="{{this.data.form.getAction}}" method="post">
+		{% import "kernel/macro_csrf.twig" as input_csrf %}
+
+		{{ input_csrf.mostrar(this.generar_csrf) }}
+
+		{{this.data.form.form_id.renderViewHelper|raw}}
+
+		<h3>¿Como costea sus estudios?</h3>
+
+		<div class="clearfix bloque">
+			{{this.data.form.AUX2_ALU_COS_EST_AP_FA.renderViewHelper|raw}}
+			{{this.data.form.AUX2_ALU_COS_EST_AP_FA.renderLabel|raw}}
+
+			{{this.data.form.AUX2_ALU_COS_EST_PLSOC.renderViewHelper|raw}}
+			{{this.data.form.AUX2_ALU_COS_EST_PLSOC.renderLabel|raw}}
+
+			{{this.data.form.AUX2_ALU_COS_EST_TRAB.renderViewHelper|raw}}
+			{{this.data.form.AUX2_ALU_COS_EST_TRAB.renderLabel|raw}}
+
+			{{this.data.form.AUX2_ALU_COS_EST_BECA.renderViewHelper|raw}}
+			{{this.data.form.AUX2_ALU_COS_EST_BECA.renderLabel|raw}}
+		</div>
+
+		<h3>Fuente de la beca</h3>
+
+		<div id="fuente_beca" class="clearfix bloque">
+			{{this.data.form.AUX1_TIENE_BECA_UNIV.renderViewHelper|raw}}
+			{{this.data.form.AUX1_TIENE_BECA_UNIV.renderLabel|raw}}
+
+			{{this.data.form.AUX1_TIENE_BECA_INTER.renderViewHelper|raw}}
+			{{this.data.form.AUX1_TIENE_BECA_INTER.renderLabel|raw}}
+
+			{{this.data.form.AUX1_TIENE_BECA_NACIO.renderViewHelper|raw}}
+			{{this.data.form.AUX1_TIENE_BECA_NACIO.renderLabel|raw}}
+
+			{{this.data.form.AUX2_ALU_BECA_PROV.renderViewHelper|raw}}
+			{{this.data.form.AUX2_ALU_BECA_PROV.renderLabel|raw}}
+
+			{{this.data.form.AUX2_ALU_BECA_MUNI.renderViewHelper|raw}}
+			{{this.data.form.AUX2_ALU_BECA_MUNI.renderLabel|raw}}
+
+			{{this.data.form.AUX2_ALU_BECA_OTRA.renderViewHelper|raw}}
+			{{this.data.form.AUX2_ALU_BECA_OTRA.renderLabel|raw}}
+		</div>
+
+		<h3>Tipo de beca</h3>
+
+		<div id="tipo_beca" class="clearfix bloque">
+			{{this.data.form.AUX2_ALU_BECA_TIPO_SER.renderViewHelper|raw}}
+			{{this.data.form.AUX2_ALU_BECA_TIPO_SER.renderLabel|raw}}
+
+			{{this.data.form.AUX2_ALU_BECA_TIPO_INV.renderViewHelper|raw}}
+			{{this.data.form.AUX2_ALU_BECA_TIPO_INV.renderLabel|raw}}
+
+			{{this.data.form.AUX2_ALU_BECA_TIPO_ECO.renderViewHelper|raw}}
+			{{this.data.form.AUX2_ALU_BECA_TIPO_ECO.renderLabel|raw}}
+		</div>
+
+		<h3>Tipo de ayuda económica</h3>
+
+		<div id="tipo_ayuda"  class="clearfix">
+			{{this.data.form.AUX2_ALU_BECA_ECO_TRAN.renderViewHelper|raw}}
+			{{this.data.form.AUX2_ALU_BECA_ECO_TRAN.renderLabel|raw}}		
+
+			{{this.data.form.AUX2_ALU_BECA_ECO_EFEC.renderViewHelper|raw}}
+			{{this.data.form.AUX2_ALU_BECA_ECO_EFEC.renderLabel|raw}}		
+
+			{{this.data.form.AUX2_ALU_BECA_ECO_FOTO.renderViewHelper|raw}}
+			{{this.data.form.AUX2_ALU_BECA_ECO_FOTO.renderLabel|raw}}		
+
+			{{this.data.form.AUX2_ALU_BECA_ECO_HABI.renderViewHelper|raw}}
+			{{this.data.form.AUX2_ALU_BECA_ECO_HABI.renderLabel|raw}}
+
+			{{this.data.form.AUX2_ALU_BECA_ECO_COME.renderViewHelper|raw}}
+			{{this.data.form.AUX2_ALU_BECA_ECO_COME.renderLabel|raw}}
+		</div>
+
+		{{this.data.form.AUX2_ALU_COS_EST_ESPEC.renderLabel|raw}}
+		{{this.data.form.AUX2_ALU_COS_EST_ESPEC.renderViewHelper|raw}}
+	
+    </form>
+{% endblock %}

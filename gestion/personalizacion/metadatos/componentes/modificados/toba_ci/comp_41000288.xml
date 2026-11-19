@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="41000288" descripcion="toba_ci">
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:41000288">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+			<columna nombre="subclase" valor="ci_nav_carga_notas_nsg" valor_original="ci_nav_carga_notas"/>
+			<columna nombre="subclase_archivo" valor="operaciones/cursadas/comisiones/carga_notas/ci_nav_carga_notas_nsg.php" valor_original="operaciones/cursadas/comisiones/carga_notas/ci_nav_carga_notas.php"/>
+		</registro>
+	</tabla>
+</componente>

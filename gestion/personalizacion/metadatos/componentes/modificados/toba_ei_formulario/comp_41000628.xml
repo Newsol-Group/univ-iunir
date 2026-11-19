@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="41000628" descripcion="toba_ei_formulario">
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:41000628">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+			<columna nombre="subclase" valor="form_opciones_regularidades_nsg" valor_original="form_opciones_regularidades"/>
+			<columna nombre="subclase_archivo" valor="operaciones/matriculas/alumnos/ficha_alumno/form_opciones_regularidades_nsg.php" valor_original="operaciones/matriculas/alumnos/ficha_alumno/form_opciones_regularidades.php"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ei_formulario_ef">
+		<registro estado="1">
+			<columna nombre="objeto_ei_formulario_fila" valor="770000058"/>
+			<columna nombre="objeto_ei_formulario" valor="41000628"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="planes"/>
+			<columna nombre="elemento_formulario" valor="ef_combo"/>
+			<columna nombre="columnas" valor="planes"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="4"/>
+			<columna nombre="etiqueta" valor="Planes:"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="carga_metodo" valor="get_opciones_planes"/>
+			<columna nombre="carga_fuente" valor="guarani"/>
+			<columna nombre="carga_col_clave" valor="valor"/>
+			<columna nombre="carga_col_desc" valor="descr"/>
+			<columna nombre="carga_cascada_relaj" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="carga_no_seteado_ocultar" valor="0"/>
+			<columna nombre="punto_montaje" valor="1"/>
+		</registro>
+	</tabla>
+</componente>

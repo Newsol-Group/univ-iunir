@@ -1,0 +1,108 @@
+{% extends "kernel/pagelet.twig" %}
+{% import 'kernel/macro_helpers.twig' as helper %}
+{% import _self as current_file_macros %}
+
+{% block contenido %}
+	<div id='layout_dos_columnas' class="row-fluid">
+		<div id='columna_1' class="span9">
+
+			<form class='form-derechos' action='{{ this.data.url_guardar }}' method='post'>
+
+				{%  set accion =  "<input type='submit' value='"~ "guardar"|trans|capitalize ~ "' class='btn btn-info btn-small' />" %}
+				{{ helper.titulo_operacion(
+											"derechos_comision_titulo"|trans|capitalize,
+											this.data.url_back,
+											accion
+				) }}
+
+				<h3 class="encabezado-comision clearfix">
+					<div class="pull-left">({{ this.data.encabezado.actividad_codigo }}) {{ this.data.encabezado.actividad_nombre }}
+						<span class='desc-comision'>{{ this.data.encabezado.comision_nombre }} -  {{this.data.encabezado.horario }}</span>
+					</div>
+				</h3>
+
+
+
+				<table class="tabla-renglones table table-bordered table-condensed">
+					<colgroup>
+						<col span="1"  class="col-todo-nada">
+						{% for col in this.data.colgroup %}
+							<col span="{{ col.span }}"  class="{{ col.clase }}">
+						{% endfor %}
+					</colgroup>
+
+					<thead>
+					<th>{{ 'docentes'|trans|capitalize }}</th>
+					<th class='th-todo-nada'></th>
+					{% for columna in this.data.columnas %}
+						<th class='col-derecho centrar' title='{{ columna.nombre }}'><i class="{{ columna.icono }} centrar"></i></th>
+					{% endfor %}
+					</thead>
+					<tbody>
+					{% for docente in this.data.filas %}
+						{{ current_file_macros.fila_docente(_context.this, docente) }}
+					{% endfor %}
+					</tbody>
+				</table>
+
+			</form>
+		</div>
+
+
+		<div id='columna_2' class="span3">	{{ current_file_macros.cuadro_iconos(_context.this) }}</div>
+	</div>
+{% endblock %}
+
+
+{% macro fila_docente(context, docente) %}
+
+    <tr >
+        <td>
+            <div class="pull-left">
+                    <span class="nombre">{{docente.datos.apellido ~ ' ' ~ docente.datos.nombre}}</span>
+                &nbsp;<span class="responsabilidad">({{ docente.datos.responsabilidad }})</span>
+           </div>
+        </td>
+		<td class='centrar alinear'>
+			<input type="checkbox" class='check-todo-nada' data-docente='{{docente.datos.id}}'  title='{{ 'admin_derechos_comision.todo_nada_desc'|trans|capitalize }}'>
+		</td>
+        {% for derecho, habilitado in docente.derechos %}
+            {% set selected = (habilitado == 1) ? 'checked' : '' %}
+            {% set disabled = (derecho not in docente.derechos_comision_rol) ? 'disabled' : '' %}
+            {#% set id= docente.datos.id ~'_'~derecho %#}
+
+            <td class='centrar alinear'>
+                <input class='doc-{{docente.datos.id}}' type="checkbox" name='{{docente.datos.id}}[]' value={{ derecho }} {{ selected }} {{ disabled }}>
+            </td>
+        {% endfor %}
+   </tr>
+
+{% endmacro %}
+
+
+
+{% macro cuadro_iconos(this) %}
+	<div class="cuadro_derechos">
+		<h5 class='cuadro-derechos-tit' id="js-colapsar-cuadro-derechos">
+			{{ 'admin_derechos_comision.definicion_iconos' |trans|capitalize }}</h5>
+
+		<div class="js-cuadro-derechos" style="display:block">
+
+			{% set recorrido = 0 %}
+			{% for col in this.data.colgroup|slice(1, this.data.colgroup|length) %}
+				<div class="{{ col.clase }} desc-icono-grupo">
+					<h6 class='desc-icono-grupo-tit'>{{ ('admin_derechos_comision.'~ col.clase)|trans|capitalize }}</h6>
+
+					{% for derecho in this.data.columnas|slice(recorrido, col.span) %}
+						<span class= 'desc-icono'> <i class="{{ derecho.icono }} centrar alinear_con_texto"></i> {{ derecho.nombre}} </span>
+					{% endfor %}
+				</div>
+				{% set recorrido = recorrido + col.span %}
+			{% endfor %}
+		</div>
+
+	</div>
+{% endmacro %}
+
+
+

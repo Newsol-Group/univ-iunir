@@ -1,0 +1,102 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}    
+
+    <div class="titulo_operacion">
+        <h2 class="clearfix">
+            <span class="pull-left">{{ "convocatorias_becas.titulo" | trans }}</span>
+        </h2>
+    </div>
+
+    <div id="preaplicar-wrapper">
+        
+        <div class="alert alert-block alert-info leyenda"><i class="fa fa-exclamation-circle fa-lg"></i> {{ "convocatorias_becas.leyenda_revisar_ha" | trans | raw }}</div>
+
+        {# Si se definió fecha_evaluacion_ha_desde #}
+        {% if this.data.convocatoria.fecha_evaluacion_ha_desde_display is not empty %}
+            <div class="alert alert-info evaluacion_academica">
+                {{ "convocatorias_becas.evaluacion_academica_desde_hasta" | trans({
+                    '%fecha_desde%': this.data.convocatoria.fecha_evaluacion_ha_desde_display,
+                    '%fecha_hasta%': this.data.convocatoria.fecha_evaluacion_ha_hasta_display
+                }) | raw }}
+            </div>
+        {% else %}
+            <div class="alert alert-info evaluacion_academica">
+                {{ "convocatorias_becas.evaluacion_academica_hasta" | trans({
+                    '%fecha_hasta%': this.data.convocatoria.fecha_evaluacion_ha_hasta_display
+                }) | raw }}
+            </div>
+        {% endif %}
+        
+        {# Si hay datos académicos #}
+        {% if this.data.datos_academicos is not empty %}
+        <div id="datos_academicos" class="clearfix">
+
+            {# Inicio tabla scrolleable #}
+            <div class="table-wrapper">
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th>{{ "convocatorias_becas.propuesta" | trans }}</th>
+                  <th>{{ "convocatorias_becas.promedio_con_aplazos" | trans }}</th>
+                  <th>{{ "convocatorias_becas.promedio_sin_aplazos" | trans }}</th>
+                  <th>{{ "convocatorias_becas.cant_materias_aprobadas" | trans }}</th>
+                </tr>
+              </thead>
+
+              <tbody>
+              {% for dato_academico in this.data.datos_academicos %}
+                  <tr>
+                      <td>{{ dato_academico.propuestas_nombre }}</td>
+                      <td><span class="badge badge-info">{{ dato_academico.promedio_con_aplazos }}</span></td>
+                      <td><span class="badge badge-info">{{ dato_academico.promedio_sin_aplazos }}</span></td>
+                      <td><span class="badge badge-info">{{ dato_academico.cantidad_actividades_aprobadas }}</span></td>
+                  </tr>
+              {% endfor %}
+              </tbody>
+
+            </table>
+            </div>
+            {# Fin tabla scrolleable #}
+              
+        </div>
+        {% endif %}
+        
+        {# Si hay documentación #}
+        {% if this.data.requisitos is not empty %}
+        <div id="documentacion" class="clearfix">
+
+            <h1>{{ "convocatorias_becas.leyenda_revisar_documentacion" | trans }}</h1>
+            
+            {# Inicio tabla scrolleable #}
+            <div class="table-wrapper">
+            <table class="table table-striped table-bordered">
+              <thead>
+                <tr>
+                  <th>{{ "convocatorias_becas.documento_nombre" | trans }}</th>
+                  <th>{{ "convocatorias_becas.documento_obligatorio" | trans }}</th>
+                </tr>
+              </thead>
+
+              <tbody>
+              {% for requisito in this.data.requisitos %}
+                  {% set obligatorio_texto = (requisito.obligatorio == this.data.si)? this.data.si_desc : this.data.no_desc %}
+                  {% set obligatorio_clase = (requisito.obligatorio == this.data.si)? 'badge-success' : 'badge-important' %}
+                  <tr>
+                      <td>{{ requisito.nombre }}</td>
+                      <td><span class="badge {{ obligatorio_clase }}">{{ obligatorio_texto }}</span></td>
+                  </tr>
+              {% endfor %}
+              </tbody>
+
+            </table>
+            </div>
+            {# Fin tabla scrolleable #}
+              
+        </div>
+        {% endif %}
+    
+        <a href="{{ this.data.url_aplicar }}" class="btn btn-large btn-primary pull-right no-ajax"><i class="icon-hand-right icon-white"></i> {{ "convocatorias_becas.btn_aceptar" | trans }}</a>
+        <a href="{{ this.data.url_volver }}" class="btn btn-large pull-right"><i class="icon-backward"></i> {{ "convocatorias_becas.btn_volver" | trans }}</a>
+    </div>
+
+{% endblock %}

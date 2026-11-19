@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000025" descripcion="toba_cn">
+	<tabla nombre="apex_objeto">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000025"/>
+			<columna nombre="identificador" valor="formapago"/>
+			<columna nombre="clase_proyecto" valor="toba"/>
+			<columna nombre="clase" valor="toba_cn"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+			<columna nombre="subclase" valor="cn_ent_formas_pago_nsg"/>
+			<columna nombre="subclase_archivo" valor="nucleo/facturacion/cn_ent_formas_pago_nsg.php"/>
+			<columna nombre="nombre" valor="Formas de Pago"/>
+			<columna nombre="colapsable" valor="0"/>
+			<columna nombre="fuente_datos_proyecto" valor="guarani"/>
+			<columna nombre="fuente_datos" valor="guarani"/>
+			<columna nombre="creacion" valor="2009-06-11 12:53:17"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_dependencias">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="dep_id" valor="770000020"/>
+			<columna nombre="objeto_consumidor" valor="770000025"/>
+			<columna nombre="objeto_proveedor" valor="770000024"/>
+			<columna nombre="identificador" valor="datos"/>
+		</registro>
+	</tabla>
+</componente>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<tabla id="apex_fuente_datos_schemas">
+	<registro estado="1">
+		<columna nombre="proyecto" valor="guarani"/>
+		<columna nombre="fuente_datos" valor="guarani"/>
+		<columna nombre="nombre" valor="negocio_nsg"/>
+		<columna nombre="principal" valor="0"/>
+	</registro>
+</tabla>

@@ -1,0 +1,41 @@
+#mesas th{
+    background-color: #999;
+}
+
+#mesas .alert {
+	margin-bottom: 0px;
+}
+
+#mesas .js-detalle-materia {
+	padding-bottom: 10px;
+}
+
+#mesas h3 span {
+	color: #333;
+}
+
+#mesas .btn-container {
+	vertical-align: middle;
+	margin: auto;
+	text-align: center;
+}
+
+
+.ficha-docente .nombre{
+	display: block;
+	text-transform:uppercase;
+}
+
+.ficha-docente .identificacion{
+	display: block;
+	color: #777777;
+}
+
+.ficha-docente {
+	width: 300px;
+	padding: 10px;
+}
+
+.ficha-docente .responsabilidad{
+	font-weight: bold;
+}

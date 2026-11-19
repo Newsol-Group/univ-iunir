@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="14000147" descripcion="toba_ci">
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:14000147">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+			<columna nombre="subclase" valor="ci_rep_constancias_nsg" valor_original="ci_rep_constancias"/>
+			<columna nombre="subclase_archivo" valor="operaciones/matriculas/alumnos/ficha_alumno/ci_rep_constancias_nsg.php" valor_original="operaciones/matriculas/alumnos/ficha_alumno/ci_rep_constancias.php"/>
+			<columna nombre="titulo" valor="Trámites" valor_original="Constancias"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ci_pantalla">
+		<registro estado="2" clave="objeto_ci_proyecto:guarani;objeto_ci:14000147;pantalla:14000118">
+			<columna nombre="orden" valor="1" valor_original="###$$$NULL$$$###"/>
+			<columna nombre="imagen_recurso_origen" valor="apex" valor_original="###$$$NULL$$$###"/>
+		</registro>
+	</tabla>
+</componente>

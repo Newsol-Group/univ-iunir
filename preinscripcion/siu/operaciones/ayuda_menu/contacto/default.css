@@ -1,0 +1,48 @@
+#contacto .inline-help {
+	font-size: 75%;
+	line-height: 10px;
+	margin-bottom: 5px;
+}
+
+#contacto input {
+    width: 300px;
+}
+
+#contacto textarea {
+    width: 300px;
+}
+
+#contacto .alert {
+	text-align: center;
+}
+
+#contacto h3 {
+	margin-top: 0px;
+    border-bottom: 1px solid #ccc;
+}
+
+#contacto .botonera-inferior {
+	width: 100%;
+	padding-top: 5px;
+    border-top: 1px solid #ccc;
+}
+
+#contacto #js-error-nombre{
+    display: none;
+    color: #b94a48;
+}
+
+#contacto #js-error-nro_documento{
+    display: none;
+    color: #b94a48;
+}
+
+#contacto #js-error-email{
+    display: none;
+    color: #b94a48;
+}
+
+#contacto #js-error-mensaje{
+    display: none;
+    color: #b94a48;
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="41000603" descripcion="toba_ei_cuadro">
+	<tabla nombre="apex_objeto_ei_cuadro_columna">
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="41000603"/>
+			<columna nombre="objeto_cuadro_col" valor="770001017"/>
+			<columna nombre="clave" valor="pago"/>
+			<columna nombre="orden" valor="11"/>
+			<columna nombre="titulo" valor="Está pago?"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="7"/>
+			<columna nombre="formateo" valor="13"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+	</tabla>
+</componente>

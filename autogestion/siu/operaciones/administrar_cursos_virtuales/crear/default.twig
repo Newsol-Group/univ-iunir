@@ -1,0 +1,164 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}    
+
+    <div class="titulo_operacion">
+        <h2 class="clearfix">
+            <span class="pull-left">{{ "moodle.crear.titulo" | trans }}</span>
+        </h2>
+    </div>
+
+    {# Si se trata de una subcomisión #}
+    {% if this.data.es_subcomision  %}
+    <div class="alert alert-block" style="text-align: left !important;">
+        <p>{{ "moodle.leyenda_subcomisiones" | trans | raw }}</p>
+    </div>
+    {% endif %}
+    
+    {% import "mensajes.twig" as mensajes %}
+     
+    <form class="form-horizontal" method="post" action="{{ this.data.url_crear }}">
+
+        {{ mensajes.mostrar_mensajes(this.data.mensajes) }}
+        
+        {% set nombre_val = (this.data.valores.nombre is defined) ? this.data.valores.nombre : this.data.nombre_default %}
+        {% set nombre_error = (this.data.errores.nombre is defined) ? 'error' : '' %}
+        {% set nombre_msg = (this.data.errores.nombre is defined) ? this.data.errores.nombre : '' %}
+        <div id="js-cg-nombre" class="control-group {{ nombre_error }}">
+            <label class="control-label" for="js-nombre">{{ "moodle.crear.nombre" | trans }} (*)</label>
+            <div class="controls">
+                <input type="text" id="js-nombre" name="nombre" value="{{ nombre_val }}" maxlength="{{ this.data.props.nombre.maxlength }}">
+                <span id="js-help-nombre" class="help-block">{{ nombre_msg }}</span>
+            </div>
+        </div>
+
+        {% set nombre_abrev_val = (this.data.valores.nombre_abrev is defined) ? this.data.valores.nombre_abrev : this.data.nombre_abrev_default %}
+        {% set nombre_abrev_error = (this.data.errores.nombre_abrev is defined) ? 'error' : '' %}
+        {% set nombre_abrev_msg = (this.data.errores.nombre_abrev is defined) ? this.data.errores.nombre_abrev : '' %}
+        <div id="js-cg-nombre-abrev" class="control-group {{ nombre_abrev_error }}">
+            <label class="control-label" for="js-nombre-abrev">{{ "moodle.crear.nombre_abrev" | trans }} (*)</label>
+            <div class="controls">
+                <input type="text" id="js-nombre-abrev" name="nombre_abrev" value="{{ nombre_abrev_val }}" maxlength="{{ this.data.props.nombre_abrev.maxlength }}">
+                <span id="js-help-nombre-abrev" class="help-block">{{ nombre_abrev_msg }}</span>
+            </div>
+        </div>
+
+        {% set categoria_val = (this.data.valores.categoria is defined) ? this.data.valores.categoria : this.data.categoria_default %}
+        {% set categoria_error = (this.data.errores.categoria is defined) ? 'error' : '' %}
+        {% set categoria_msg = (this.data.errores.categoria is defined) ? this.data.errores.categoria : '' %}
+        <div id="js-cg-categoria" class="control-group {{ categoria_error }}">
+            <label class="control-label" for="js-categoria">{{ "moodle.crear.categoria" | trans }} (*)</label>
+            <div class="controls">
+                <select id="js-categoria" name="categoria">
+                    {% for categoria in this.data.categorias %}
+                        
+                        {% set selected = '' %}
+                        {% if categoria.id == categoria_val %}
+                            {% set selected = 'selected' %}
+                        {% endif %}
+
+                        <option value="{{ categoria.id }}" {{ selected }}>{{ categoria.name }}</option>
+                    {% endfor %}
+                </select>
+                <span id="js-help-categoria" class="help-block">{{ categoria_msg }}</span>
+            </div>
+        </div>
+
+        {% set descripcion_val = (this.data.valores.descripcion is defined) ? this.data.valores.descripcion : '' %}
+        {% set descripcion_error = (this.data.errores.descripcion is defined) ? 'error' : '' %}
+        {% set descripcion_msg = (this.data.errores.descripcion is defined) ? this.data.errores.descripcion : '' %}
+        <div id="js-cg-descripcion" class="control-group {{ descripcion_error }}">
+            <label class="control-label" for="js-descripcion">{{ "moodle.crear.descripcion" | trans }} (*)</label>
+            <div class="controls">
+                <textarea id="js-descripcion" name="descripcion" maxlength="500">{{ descripcion_val }}</textarea>
+                <span id="js-help-descripcion" class="help-block">{{ descripcion_msg }}</span>
+            </div>
+        </div>
+
+        {% set visible_val = (this.data.valores.visible is defined) ? this.data.valores.visible : 1 %}
+        {% set visible_error = (this.data.errores.visible is defined) ? 'error' : '' %}
+        {% set visible_msg = (this.data.errores.visible is defined) ? this.data.errores.visible : '' %}
+        <div id="js-cg-visible" class="control-group {{ visible_error }}">
+            <label class="control-label" for="js-visible">{{ "moodle.crear.visible" | trans }} (*)</label>
+            <div class="controls">
+                <select id="js-visible" name="visible">
+                    <option value="1" {% if visible_val == 1 %}selected{% endif %}>{{ "moodle.crear.visible.si" | trans }}</option>
+                    <option value="0" {% if visible_val == 0 %}selected{% endif %}>{{ "moodle.crear.visible.no" | trans }}</option>
+                </select>
+                <span id="js-help-visible" class="help-block">{{ visible_msg }}</span>
+            </div>
+        </div>
+
+        {% set fecha_inicio_val = (this.data.valores.fecha_inicio is defined) ? this.data.valores.fecha_inicio : this.data.fecha_inicio_default %}
+        {% set fecha_inicio_error = (this.data.errores.fecha_inicio is defined) ? 'error' : '' %}
+        {% set fecha_inicio_msg = (this.data.errores.fecha_inicio is defined) ? this.data.errores.fecha_inicio : '' %}
+        <div id="js-cg-fecha-inicio" class="control-group {{ fecha_inicio_error }}">
+            <label class="control-label" for="js-fecha-inicio">{{ "moodle.crear.fecha_inicio" | trans }}</label>
+            <div class="controls">
+                <input type="text" id="js-fecha-inicio" class="fechas" name="fecha_inicio" value="{{ fecha_inicio_val }}">
+                <span id="js-help-fecha-inicio" class="help-block">{{ fecha_inicio_msg }}</span>
+            </div>
+        </div>
+
+        {% set fecha_fin_val = (this.data.valores.fecha_fin is defined) ? this.data.valores.fecha_fin : this.data.fecha_fin_default %}
+        {% set fecha_fin_error = (this.data.errores.fecha_fin is defined) ? 'error' : '' %}
+        {% set fecha_fin_msg = (this.data.errores.fecha_fin is defined) ? this.data.errores.fecha_fin : '' %}
+        <div id="js-cg-fecha-fin" class="control-group {{ fecha_fin_error }}">
+            <label class="control-label" for="js-fecha-fin">{{ "moodle.crear.fecha_fin" | trans }}</label>
+            <div class="controls">
+                <input type="text" id="js-fecha-fin" class="fechas" name="fecha_fin" value="{{ fecha_fin_val }}">
+                <span id="js-help-fecha-fin" class="help-block">{{ fecha_fin_msg }}</span>
+            </div>
+        </div>
+
+        {% set importar_val = (this.data.valores.importar is defined) ? this.data.valores.importar : 0 %}
+        {% set importar_error = (this.data.errores.importar is defined) ? 'error' : '' %}
+        {% set importar_msg = (this.data.errores.importar is defined) ? this.data.errores.importar : '' %}
+        <div id="js-cg-importar" class="control-group {{ importar_error }}">
+            <label class="checkbox inline" for="js-importar">
+                <input type="checkbox" id="js-importar" {% if importar_val == 1 %}checked{% endif %}> {{ "moodle.crear.importar_contenido" | trans }}
+                <input type="hidden" id="js-importar-input" name="importar" value="{{ importar_val }}">
+            </label>
+            <span id="js-help-importar" class="help-block">{{ importar_msg }}</span>
+        </div>
+
+        {% set copiar_de_val = (this.data.valores.copiar_de is defined) ? this.data.valores.copiar_de : -1 %}
+        {% set copiar_de_error = (this.data.errores.copiar_de is defined) ? 'error' : '' %}
+        {% set copiar_de_msg = (this.data.errores.copiar_de is defined) ? this.data.errores.copiar_de : '' %}
+        <div id="js-cg-copiar-de" class="control-group {{ copiar_de_error }}">
+            <label class="control-label" for="js-copiar-de">{{ "moodle.crear.copiar_de" | trans }} (*)</label>
+            <div class="controls">
+                <select id="js-copiar-de" name="copiar_de">
+                    {% for curso in this.data.cursos %}
+                        
+                        {% set selected = '' %}
+                        {% if curso.id == copiar_de_val %}
+                            {% set selected = 'selected' %}
+                        {% endif %}
+                        
+                        <option value="{{ curso.id }}" {{ selected }} title="{{ curso.fullname }}" alt="{{ curso.fullname }}">{{ curso.fullname }}</option>
+                        
+                    {% endfor %}
+                </select>
+                <span id="js-help-copiar-de" class="help-block">{{ copiar_de_msg }}</span>
+            </div>
+        </div>
+                
+        {% set matricular_alumnos_val = (this.data.valores.matricular_alumnos is defined) ? this.data.valores.matricular_alumnos : 0 %}
+        {% set matricular_alumnos_error = (this.data.errores.matricular_alumnos is defined) ? 'error' : '' %}
+        {% set matricular_alumnos_msg = (this.data.errores.matricular_alumnos is defined) ? this.data.errores.matricular_alumnos : '' %}
+        <div id="js-cg-matricular-alumnos" class="control-group {{ matricular_alumnos_error }}">
+            <label class="checkbox inline" for="js-matricular-alumnos">
+                <input type="checkbox" id="js-matricular-alumnos" {% if matricular_alumnos_val == 1 %}checked{% endif %}> {{ "moodle.crear.matricular_alumnos" | trans }}
+                <input type="hidden" id="js-matricular-alumnos-input" name="matricular_alumnos" value="{{ matricular_alumnos_val }}">
+            </label>
+            <span id="js-help-matricular-alumnos" class="help-block">{{ matricular_alumnos_msg }}</span>
+        </div>
+                
+        <div class="text-right">
+            <button class="btn btn-primary" type="submit">{{ "moodle.crear" | trans }}</button>
+            <button id="js-btn-volver" class="btn" type="button">{{ "moodle.volver" | trans }}</button>
+        </div>
+                
+    </form>
+
+{% endblock %}

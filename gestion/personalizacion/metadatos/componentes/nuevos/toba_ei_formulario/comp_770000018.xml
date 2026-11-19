@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000018" descripcion="toba_ei_formulario">
+	<tabla nombre="apex_objeto">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000018"/>
+			<columna nombre="clase_proyecto" valor="toba"/>
+			<columna nombre="clase" valor="toba_ei_formulario"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+			<columna nombre="nombre" valor="Alumnos Morosos- editor - morosos"/>
+			<columna nombre="colapsable" valor="0"/>
+			<columna nombre="fuente_datos_proyecto" valor="guarani"/>
+			<columna nombre="fuente_datos" valor="guarani"/>
+			<columna nombre="creacion" valor="2009-06-11 12:45:27"/>
+			<columna nombre="posicion_botonera" valor="abajo"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_eventos">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="evento_id" valor="770000013"/>
+			<columna nombre="objeto" valor="770000018"/>
+			<columna nombre="identificador" valor="modificacion"/>
+			<columna nombre="etiqueta" valor="&amp;Modificar"/>
+			<columna nombre="maneja_datos" valor="1"/>
+			<columna nombre="imagen_recurso_origen" valor="apex"/>
+			<columna nombre="en_botonera" valor="0"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="implicito" valor="1"/>
+			<columna nombre="defecto" valor="0"/>
+			<columna nombre="es_seleccion_multiple" valor="0"/>
+			<columna nombre="es_autovinculo" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ut_formulario">
+		<registro>
+			<columna nombre="objeto_ut_formulario_proyecto" valor="guarani"/>
+			<columna nombre="objeto_ut_formulario" valor="770000018"/>
+			<columna nombre="ancho" valor="100%"/>
+			<columna nombre="ancho_etiqueta" valor="100px"/>
+			<columna nombre="expandir_descripcion" valor="0"/>
+			<columna nombre="filas_agregar_online" valor="1"/>
+			<columna nombre="filas_agregar_abajo" valor="0"/>
+			<columna nombre="filas_borrar_en_linea" valor="0"/>
+			<columna nombre="filas_ordenar_en_linea" valor="0"/>
+			<columna nombre="no_imprimir_efs_sin_estado" valor="0"/>
+			<columna nombre="resaltar_efs_con_estado" valor="0"/>
+			<columna nombre="template" valor=""/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ei_formulario_ef">
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000003"/>
+			<columna nombre="objeto_ei_formulario" valor="770000018"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="apellido"/>
+			<columna nombre="elemento_formulario" valor="ef_fijo"/>
+			<columna nombre="columnas" valor="apellido"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="etiqueta" valor="Apellido"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="carga_metodo" valor="get_alumno_moroso_apellido"/>
+			<columna nombre="carga_consulta_php" valor="770000001"/>
+			<columna nombre="carga_fuente" valor="guarani"/>
+			<columna nombre="carga_col_clave" valor="valor"/>
+			<columna nombre="carga_col_desc" valor="descr"/>
+			<columna nombre="carga_maestros" valor="id_moroso"/>
+			<columna nombre="carga_cascada_relaj" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="carga_no_seteado_ocultar" valor="0"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000004"/>
+			<columna nombre="objeto_ei_formulario" valor="770000018"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="propuesta_descr"/>
+			<columna nombre="elemento_formulario" valor="ef_fijo"/>
+			<columna nombre="columnas" valor="propuesta_descr"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="4"/>
+			<columna nombre="etiqueta" valor="Propuesta"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="carga_metodo" valor="get_alumno_moroso_propuesta"/>
+			<columna nombre="carga_consulta_php" valor="770000001"/>
+			<columna nombre="carga_fuente" valor="guarani"/>
+			<columna nombre="carga_col_clave" valor="valor"/>
+			<columna nombre="carga_col_desc" valor="descr"/>
+			<columna nombre="carga_maestros" valor="id_moroso"/>
+			<columna nombre="carga_cascada_relaj" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="carga_no_seteado_ocultar" valor="0"/>
+			<columna nombre="edit_tamano" valor="100"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000005"/>
+			<columna nombre="objeto_ei_formulario" valor="770000018"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="deuda"/>
+			<columna nombre="elemento_formulario" valor="ef_fijo"/>
+			<columna nombre="columnas" valor="deuda"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="5"/>
+			<columna nombre="etiqueta" valor="Deuda"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000006"/>
+			<columna nombre="objeto_ei_formulario" valor="770000018"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="nombres"/>
+			<columna nombre="elemento_formulario" valor="ef_fijo"/>
+			<columna nombre="columnas" valor="nombres"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="2"/>
+			<columna nombre="etiqueta" valor="Nombre"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="carga_metodo" valor="get_alumno_moroso_nombres"/>
+			<columna nombre="carga_consulta_php" valor="770000001"/>
+			<columna nombre="carga_fuente" valor="guarani"/>
+			<columna nombre="carga_maestros" valor="id_moroso"/>
+			<columna nombre="carga_cascada_relaj" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000007"/>
+			<columna nombre="objeto_ei_formulario" valor="770000018"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="persona_nro_documento"/>
+			<columna nombre="elemento_formulario" valor="ef_fijo"/>
+			<columna nombre="columnas" valor="persona_nro_documento"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="3"/>
+			<columna nombre="etiqueta" valor="Nro. Documento"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="carga_metodo" valor="get_alumno_moroso_nro_documento"/>
+			<columna nombre="carga_consulta_php" valor="770000001"/>
+			<columna nombre="carga_fuente" valor="guarani"/>
+			<columna nombre="carga_maestros" valor="id_moroso"/>
+			<columna nombre="carga_cascada_relaj" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000008"/>
+			<columna nombre="objeto_ei_formulario" valor="770000018"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="id_moroso"/>
+			<columna nombre="elemento_formulario" valor="ef_oculto"/>
+			<columna nombre="columnas" valor="id_moroso"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="1"/>
+			<columna nombre="orden" valor="6"/>
+			<columna nombre="etiqueta" valor="Moroso"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+	</tabla>
+</componente>

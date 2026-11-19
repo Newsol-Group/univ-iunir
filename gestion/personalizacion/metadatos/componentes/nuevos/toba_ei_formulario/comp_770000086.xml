@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000086" descripcion="toba_ei_formulario">
+	<tabla nombre="apex_objeto">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000086"/>
+			<columna nombre="clase_proyecto" valor="toba"/>
+			<columna nombre="clase" valor="toba_ei_formulario"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+			<columna nombre="subclase" valor="form_datos_bonif_nsg"/>
+			<columna nombre="subclase_archivo" valor="operaciones/facturacion/datos_bonif/form_datos_bonif_nsg.php"/>
+			<columna nombre="nombre" valor="Cargar Bonificaciones Alumno - form_bonif"/>
+			<columna nombre="titulo" valor="Cargar Bonificaciones Alumno"/>
+			<columna nombre="colapsable" valor="0"/>
+			<columna nombre="fuente_datos_proyecto" valor="guarani"/>
+			<columna nombre="fuente_datos" valor="guarani"/>
+			<columna nombre="creacion" valor="2009-08-20 12:55:30"/>
+			<columna nombre="posicion_botonera" valor="abajo"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_eventos">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="evento_id" valor="770000083"/>
+			<columna nombre="objeto" valor="770000086"/>
+			<columna nombre="identificador" valor="modificacion"/>
+			<columna nombre="etiqueta" valor="&amp;Modificar"/>
+			<columna nombre="maneja_datos" valor="1"/>
+			<columna nombre="imagen_recurso_origen" valor="apex"/>
+			<columna nombre="en_botonera" valor="0"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="implicito" valor="1"/>
+			<columna nombre="defecto" valor="0"/>
+			<columna nombre="es_seleccion_multiple" valor="0"/>
+			<columna nombre="es_autovinculo" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ut_formulario">
+		<registro>
+			<columna nombre="objeto_ut_formulario_proyecto" valor="guarani"/>
+			<columna nombre="objeto_ut_formulario" valor="770000086"/>
+			<columna nombre="ancho" valor="100%"/>
+			<columna nombre="ancho_etiqueta" valor="100px"/>
+			<columna nombre="expandir_descripcion" valor="0"/>
+			<columna nombre="filas_agregar_online" valor="1"/>
+			<columna nombre="filas_agregar_abajo" valor="0"/>
+			<columna nombre="filas_borrar_en_linea" valor="0"/>
+			<columna nombre="filas_ordenar_en_linea" valor="0"/>
+			<columna nombre="no_imprimir_efs_sin_estado" valor="0"/>
+			<columna nombre="resaltar_efs_con_estado" valor="0"/>
+			<columna nombre="template" valor=""/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ei_formulario_ef">
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000030"/>
+			<columna nombre="objeto_ei_formulario" valor="770000086"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="tipo_beneficio"/>
+			<columna nombre="elemento_formulario" valor="ef_combo"/>
+			<columna nombre="columnas" valor="tipo_beneficio"/>
+			<columna nombre="obligatorio" valor="1"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="etiqueta" valor="Tipo Bonificación"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="carga_metodo" valor="get_tipos_bonif_alumno"/>
+			<columna nombre="carga_consulta_php" valor="770000001"/>
+			<columna nombre="carga_fuente" valor="guarani"/>
+			<columna nombre="carga_col_clave" valor="valor"/>
+			<columna nombre="carga_col_desc" valor="descr"/>
+			<columna nombre="carga_cascada_relaj" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="1"/>
+			<columna nombre="carga_no_seteado" valor="-- Selección --"/>
+			<columna nombre="carga_no_seteado_ocultar" valor="0"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000031"/>
+			<columna nombre="objeto_ei_formulario" valor="770000086"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="bonificacion_matricula"/>
+			<columna nombre="elemento_formulario" valor="ef_oculto"/>
+			<columna nombre="columnas" valor="bonificacion_matricula"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="3"/>
+			<columna nombre="etiqueta" valor="Bonificación Matrícula"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000032"/>
+			<columna nombre="objeto_ei_formulario" valor="770000086"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="bonificacion_cuota"/>
+			<columna nombre="elemento_formulario" valor="ef_oculto"/>
+			<columna nombre="columnas" valor="bonificacion_cuota"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="2"/>
+			<columna nombre="etiqueta" valor="Bonificación Cuota"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000033"/>
+			<columna nombre="objeto_ei_formulario" valor="770000086"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="alumno"/>
+			<columna nombre="elemento_formulario" valor="ef_oculto"/>
+			<columna nombre="columnas" valor="alumno"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="4"/>
+			<columna nombre="etiqueta" valor="Alumno"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000034"/>
+			<columna nombre="objeto_ei_formulario" valor="770000086"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="institucion"/>
+			<columna nombre="elemento_formulario" valor="ef_combo"/>
+			<columna nombre="columnas" valor="institucion"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="5"/>
+			<columna nombre="etiqueta" valor="Institución"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="carga_metodo" valor="get_instituciones"/>
+			<columna nombre="carga_consulta_php" valor="1000008"/>
+			<columna nombre="carga_fuente" valor="guarani"/>
+			<columna nombre="carga_col_clave" valor="valor"/>
+			<columna nombre="carga_col_desc" valor="descr"/>
+			<columna nombre="carga_cascada_relaj" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="1"/>
+			<columna nombre="carga_no_seteado" valor="-- Seleccione --"/>
+			<columna nombre="carga_no_seteado_ocultar" valor="0"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+	</tabla>
+</componente>

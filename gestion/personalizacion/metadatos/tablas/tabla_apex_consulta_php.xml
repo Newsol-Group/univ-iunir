@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<tabla id="apex_consulta_php">
+	<registro estado="2" clave="consulta_php:1000003">
+		<columna nombre="archivo_clase" valor="co_certificados_nsg" valor_original="co_certificados"/>
+		<columna nombre="archivo" valor="nucleo/propuestas/certificados/co_certificados_nsg.php" valor_original="nucleo/propuestas/certificados/co_certificados.php"/>
+		<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+	</registro>
+	<registro estado="2" clave="consulta_php:1000008">
+		<columna nombre="archivo_clase" valor="co_instituciones_nsg" valor_original="co_instituciones"/>
+		<columna nombre="archivo" valor="nucleo/ug/instituciones/co_instituciones_nsg.php" valor_original="nucleo/ug/instituciones/co_instituciones.php"/>
+		<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+	</registro>
+	<registro estado="2" clave="consulta_php:5000002">
+		<columna nombre="archivo_clase" valor="co_inscripciones_examenes_nsg" valor_original="co_inscripciones_examenes"/>
+		<columna nombre="archivo" valor="nucleo/examenes/inscripciones/co_inscripciones_examenes_nsg.php" valor_original="nucleo/examenes/inscripciones/co_inscripciones_examenes.php"/>
+		<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+	</registro>
+	<registro estado="2" clave="consulta_php:9000006">
+		<columna nombre="archivo_clase" valor="co_inscripciones_nsg" valor_original="co_inscripciones"/>
+		<columna nombre="archivo" valor="nucleo/matriculas/inscripciones/co_inscripciones_nsg.php" valor_original="nucleo/matriculas/inscripciones/co_inscripciones.php"/>
+		<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+	</registro>
+	<registro estado="2" clave="consulta_php:32000001">
+		<columna nombre="archivo_clase" valor="co_mug_nsg" valor_original="co_mug"/>
+		<columna nombre="archivo" valor="nucleo/_lib/co_mug_nsg.php" valor_original="nucleo/_lib/co_mug.php"/>
+		<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+	</registro>
+	<registro estado="2" clave="consulta_php:37000006">
+		<columna nombre="archivo_clase" valor="co_personas_nsg" valor_original="co_personas"/>
+		<columna nombre="archivo" valor="nucleo/matriculas/personas/co_personas_nsg.php" valor_original="nucleo/matriculas/personas/co_personas.php"/>
+		<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+	</registro>
+	<registro estado="2" clave="consulta_php:37000007">
+		<columna nombre="archivo_clase" valor="co_datos_censales_nsg" valor_original="co_datos_censales"/>
+		<columna nombre="archivo" valor="nucleo/matriculas/datos_censales/co_datos_censales_nsg.php" valor_original="nucleo/matriculas/datos_censales/co_datos_censales.php"/>
+		<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+	</registro>
+	<registro estado="2" clave="consulta_php:37000013">
+		<columna nombre="archivo_clase" valor="co_alumnos_nsg" valor_original="co_alumnos"/>
+		<columna nombre="archivo" valor="nucleo/matriculas/alumnos/co_alumnos_nsg.php" valor_original="nucleo/matriculas/alumnos/co_alumnos.php"/>
+		<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+	</registro>
+	<registro estado="2" clave="consulta_php:32000008">
+		<columna nombre="archivo_clase" valor="co_araucano_nsg" valor_original="co_araucano"/>
+		<columna nombre="archivo" valor="nucleo/administracion/araucano/co_araucano_nsg.php" valor_original="nucleo/administracion/araucano/co_araucano.php"/>
+		<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+	</registro>
+	<registro estado="2" clave="consulta_php:38000006">
+		<columna nombre="archivo_clase" valor="co_docentes_nsg" valor_original="co_docentes"/>
+		<columna nombre="archivo" valor="nucleo/docentes/actualizaciones/docentes/co_docentes_nsg.php" valor_original="nucleo/docentes/actualizaciones/docentes/co_docentes.php"/>
+		<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+	</registro>
+	<registro estado="2" clave="consulta_php:38000019">
+		<columna nombre="archivo_clase" valor="co_mesas_de_examen_nsg" valor_original="co_mesas_de_examen"/>
+		<columna nombre="archivo" valor="nucleo/examenes/mesas_de_examen/co_mesas_de_examen_nsg.php" valor_original="nucleo/examenes/mesas_de_examen/co_mesas_de_examen.php"/>
+		<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+	</registro>
+	<registro estado="2" clave="consulta_php:41000006">
+		<columna nombre="archivo_clase" valor="co_inscripciones_cursadas_nsg" valor_original="co_inscripciones_cursadas"/>
+		<columna nombre="archivo" valor="nucleo/cursadas/inscripciones/co_inscripciones_cursadas_nsg.php" valor_original="nucleo/cursadas/inscripciones/co_inscripciones_cursadas.php"/>
+		<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+	</registro>
+	<registro estado="2" clave="consulta_php:37000018">
+		<columna nombre="archivo_clase" valor="co_asistencias_nsg" valor_original="co_asistencias"/>
+		<columna nombre="archivo" valor="nucleo/asistencia/co_asistencias_nsg.php" valor_original="nucleo/asistencia/co_asistencias.php"/>
+		<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+	</registro>
+	<registro estado="2" clave="consulta_php:41000018">
+		<columna nombre="archivo_clase" valor="co_tramites_certificacion_nsg" valor_original="co_tramites_certificacion"/>
+		<columna nombre="archivo" valor="nucleo/egresados/actualizaciones/solicitar_certificaciones/co_tramites_certificacion_nsg.php" valor_original="nucleo/egresados/actualizaciones/solicitar_certificaciones/co_tramites_certificacion.php"/>
+		<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+	</registro>
+	<registro estado="2" clave="consulta_php:37000019">
+		<columna nombre="archivo_clase" valor="co_cobros_nsg" valor_original="co_cobros"/>
+		<columna nombre="archivo" valor="nucleo/cobro/co_cobros_nsg.php" valor_original="nucleo/cobro/co_cobros.php"/>
+		<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+	</registro>
+	<registro estado="2" clave="consulta_php:41000019">
+		<columna nombre="archivo_clase" valor="co_constancias_nsg" valor_original="co_constancias"/>
+		<columna nombre="archivo" valor="nucleo/constancias/co_constancias_nsg.php" valor_original="nucleo/constancias/co_constancias.php"/>
+		<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+	</registro>
+	<registro estado="2" clave="consulta_php:9000009">
+		<columna nombre="archivo_clase" valor="co_comisiones_nsg" valor_original="co_comisiones"/>
+		<columna nombre="archivo" valor="nucleo/cursadas/comisiones/co_comisiones_nsg.php" valor_original="nucleo/cursadas/comisiones/co_comisiones.php"/>
+		<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+	</registro>
+	<registro estado="2" clave="consulta_php:41000013">
+		<columna nombre="archivo_clase" valor="co_actas_nsg" valor_original="co_actas"/>
+		<columna nombre="archivo" valor="nucleo/actas/co_actas_nsg.php" valor_original="nucleo/actas/co_actas.php"/>
+		<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+	</registro>
+	<registro estado="2" clave="consulta_php:41000028">
+		<columna nombre="archivo_clase" valor="co_mensajes_nsg" valor_original="co_mensajes"/>
+		<columna nombre="archivo" valor="nucleo/comunicacion/enviar_mensajes/co_mensajes_nsg.php" valor_original="nucleo/comunicacion/enviar_mensajes/co_mensajes.php"/>
+		<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+	</registro>
+	<registro estado="1">
+		<columna nombre="proyecto" valor="guarani"/>
+		<columna nombre="consulta_php" valor="770000001"/>
+		<columna nombre="clase" valor="co_facturacion"/>
+		<columna nombre="archivo_clase" valor="co_facturacion_nsg"/>
+		<columna nombre="archivo" valor="nucleo/facturacion/co_facturacion_nsg.php"/>
+		<columna nombre="punto_montaje" valor="34000001"/>
+	</registro>
+</tabla>

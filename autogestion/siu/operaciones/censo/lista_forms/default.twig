@@ -1,0 +1,20 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+    <div class="well">
+		<ul id="dcensales_menu" class="nav nav-list">
+		{% for item in this.data.menu %}
+			{% if item.url %}
+			<li class="{% if item.adicionales %}adicionales{% endif %}{% if item.actualizado %} linkok{% endif %}">
+			<a href="{{item.url}}" form="{{item.form}}" 
+			class="{% if this.data.form_actual == item.form%} active{% endif %}
+					{% if this.data.modo_reinscripcion %}{% if item.visitado %} visitado{% endif %}{% endif %}">
+			{{item.nombre}}
+			</a>
+			</li>
+			{% else %}
+			<li class="nav-header">{{item.nombre}}</li>
+			{% endif %}        
+		{% endfor %}	
+		</ul>
+    </div>
+{% endblock %}

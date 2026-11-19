@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<tabla id="apex_fuente_datos">
+	<registro estado="2" clave="fuente_datos:personalizacion">
+		<columna nombre="descripcion_corta" valor="###$$$NULL$$$###" valor_original="personalizacion"/>
+	</registro>
+	<registro estado="2" clave="fuente_datos:toba">
+		<columna nombre="descripcion_corta" valor="###$$$NULL$$$###" valor_original="toba"/>
+	</registro>
+</tabla>

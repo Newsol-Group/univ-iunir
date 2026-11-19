@@ -1,0 +1,39 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}    
+
+    <div class="titulo_operacion">
+        <h2 class="clearfix">
+            <span class="pull-left">{{ "convocatorias_becas.titulo" | trans }}</span>
+        </h2>
+    </div>
+
+    {% if this.data.error %}
+    <div id="error">
+        <div class="alert alert-error">{{ 'convocatorias_becas.ha_ocurrido_error' | trans }}</div>
+    </div>
+    {% endif %}
+        
+    <div id="convocatorias-vigentes" class="convocatorias">
+        <h3>{{ "convocatorias_becas.convocatorias_vigentes" | trans }}</h3>
+        {% include 'convocatorias.twig' with {
+            'convocatorias': this.data.convocatorias_vigentes, 
+            'url_preaplicar': this.data.url_preaplicar,
+            'cuil': this.data.cuil,
+            'vigentes': true
+            } only %}
+    </div>
+    
+    <div id="convocatorias-no-vigentes" class="convocatorias">
+        <h3>{{ "convocatorias_becas.convocatorias_aplicaste" | trans }}</h3>
+        {% include 'convocatorias.twig' with {
+            'convocatorias': this.data.convocatorias_no_vigentes, 
+            'url_imprimir_solicitud': this.data.url_imprimir_solicitud, 
+            'vigentes': false,
+            'mensaje': this.data.mensaje,
+            'mensaje_tipo': this.data.mensaje_tipo,
+            'url_modificar_datos': this.data.url_modificar_datos
+            } only %}
+    </div>
+    
+{% endblock %}
+

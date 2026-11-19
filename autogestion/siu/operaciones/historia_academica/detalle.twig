@@ -1,0 +1,100 @@
+{% import _self as current_file_macros %}
+
+{% if tipo == 'detalle_promocion'%}
+	{{"periodo_lectivo" | trans | capitalize}}: {{encabezado.per_lec}}
+	{% if encabezado.catedra %}
+		{{"catedra" | trans | capitalize}}: {{encabezado.catedra}}
+	{% endif %}
+
+	{{ current_file_macros.cuadro_evaluaciones(evaluaciones) }}
+{% endif %}
+
+{% if tipo == 'detalle_cursada'%}
+	{{"periodo_lectivo" | trans | capitalize}}: {{encabezado.per_lec}}
+	{% if encabezado.catedra %}
+		{{"catedra" | trans | capitalize}}: {{encabezado.catedra}}
+	{% endif %}
+
+	{{ current_file_macros.cuadro_evaluaciones(evaluaciones) }}
+{% endif %}
+
+{% if tipo == 'detalle_encurso'%}
+	{{ current_file_macros.cuadro_evaluaciones(evaluaciones) }}
+{% endif %}
+
+{% if tipo == 'detalle_examen'%}
+	<p>{{"info_materia.turno" | trans | capitalize}}: {{turno_examen}}</br>
+	{{"info_materia.mesa" | trans | capitalize}}: {{mesa_examen}}</br>
+	{{"info_materia.tipo_inscripcion" | trans | capitalize}}: {{tipo_inscripcion}}</br>
+	{{"anio_academico" | trans | capitalize}}: {{anio_academico}}</p>
+{% endif %}
+
+{% if tipo == 'detalle_equivalencia'%}
+	<p><!--{{"Vencimiento" | trans | capitalize}}: {% if fecha_vencimiento %}{{fecha_vencimiento}}{%else%}{{'sin_definir' | trans | capitalize}}{% endif %}</br>-->
+	{{"Nro. resolución" | trans | capitalize}}: {% if nro_resolucion %}{{nro_resolucion}}{%else%}{{'sin_definir' | trans | capitalize}}{% endif %}</br>	
+	{{"Temas a rendir" | trans | capitalize}}: {% if temas_a_rendir %}{{temas_a_rendir| nl2br}}{%else%}{{'sin_definir' | trans | capitalize}}{% endif %}
+	</p>
+{% endif %}
+	
+{% if tipo == 'detalle_creditos'%}
+
+	{% if documentos %}
+		<div style="float: left;">{{"historia_academica.documentacion_presentada" | trans }}:&nbsp;</div>
+		<div style="float: left;">
+			{% for documento in documentos %}
+				{{ documento.tipo_documentacion }} - {{ documento.nombre_documentacion }}</br>
+			{% endfor %}
+		</div>
+		<div style="clear: both;"></div>
+	{% endif %}
+
+{% endif %}
+
+{# MACRO #}
+{% macro cuadro_evaluaciones(evaluaciones) %}
+    {% if evaluaciones %}
+	<h5>{{"resumen_de_parciales" | trans | capitalize}}:</h5>
+	<table class='table table-condensed table-bordered table-optativas'>
+		<tr>
+			<th>{{"fecha" | trans | capitalize}}</th>
+			<th>{{"descripcion" | trans | capitalize}}</th>
+			<th>{{"tipo" | trans | capitalize}}</th>
+			<th>{{"nota" | trans | capitalize}}</th>
+			<th>{{"resultado" | trans | capitalize}}</th>
+			<th>{{"Corregido por" | trans | capitalize}}</th>
+		</tr>
+		<tr>
+			{% for evaluacion in evaluaciones %}
+			<tr>
+				<td>{{evaluacion.sfecha}}</td>
+				<td>{{evaluacion.evaluacion_desc}}</td>
+				<td>{{evaluacion.tipo_evaluacion}}</td>
+				<td>
+					{% if evaluacion.nota_descripcion%}
+						{{evaluacion.nota}} ({{evaluacion.nota_descripcion}})
+					{% else %}
+						&nbsp;
+					{% endif %}
+				</td>
+				<td>
+					{% if evaluacion.resultado_desc %}
+						{{evaluacion.resultado_desc}}
+					{% else %}
+						&nbsp;
+					{% endif %}
+				</td>
+                                <td>
+					{% if evaluacion.corregido_por %}
+						{{evaluacion.corregido_por}}
+					{% else %}
+						&nbsp;
+					{% endif %}
+				</td>
+			</tr>
+			{% endfor %}
+		</tr>
+	</table>
+	{% else %}
+		<p>{{ "no_hay_evaluaciones" | trans | capitalize }}</p>
+	{% endif %}	
+{% endmacro %}

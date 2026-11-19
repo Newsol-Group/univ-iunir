@@ -1,0 +1,64 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}    
+	
+    <div class="titulo_operacion">
+        <h2 class="clearfix">
+            <span class="pull-left">{{ "cronograma_evaluaciones.titulo" | trans }}</span>
+        </h2>
+    </div>
+        
+    {% if this.data.listado is empty %}
+        
+        <div class="alert alert-block">
+            <h4>{{ "cronograma_evaluaciones.listado.vacio" | trans }}</h4>
+        </div>
+        
+    {% else %}
+        
+        {% for propuesta in this.data.listado %}
+            
+            <h1>{{ propuesta.propuesta_nombre }}</h1>
+            
+            {% for actividad_comision in propuesta.actividades_comisiones %}
+
+                <h2>{{ actividad_comision.actividad_nombre }} ({{ actividad_comision.actividad_codigo }}) - {{ "cronograma_evaluaciones.comision" | trans }}: {{ actividad_comision.comision_nombre }}</h2>
+
+                <table class="table table-striped table-bordered">
+
+                    <thead>
+                        <tr>
+                            <th>{{ "cronograma_evaluaciones.fecha" | trans }}</th>
+                            <th>{{ "cronograma_evaluaciones.evaluacion" | trans }}</th>
+                            <th>{{ "cronograma_evaluaciones.tipo" | trans }}</th>
+                            <th>{{ "cronograma_evaluaciones.hora_inicio" | trans }}</th>
+                            <th>{{ "cronograma_evaluaciones.hora_fin" | trans }}</th>
+                            <th>{{ "cronograma_evaluaciones.observaciones" | trans }}</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                    {% for evaluacion in actividad_comision.evaluaciones %}
+                        <tr>
+                            <td>{{ evaluacion.fecha_evaluacion }}</td>
+                            <td>{{ evaluacion.evaluacion_nombre }}</td>
+                            <td>{{ evaluacion.tipo_evaluacion_desc }}</td>
+                            <td>{{ evaluacion.hora_inicio }}</td>
+                            <td>{{ evaluacion.hora_fin }}</td>
+                            <td>{{ evaluacion.evaluacion_desc }}</td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+
+                </table>
+
+            {% endfor %}
+        
+            <hr/>
+            
+        {% endfor %}
+        
+    {% endif %}
+
+{% endblock %}

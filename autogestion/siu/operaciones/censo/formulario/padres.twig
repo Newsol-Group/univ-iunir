@@ -1,0 +1,66 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	<form id="padres" action="{{this.data.form.getAction}}" method="post">
+		{% import "kernel/macro_csrf.twig" as input_csrf %}
+		{{ input_csrf.mostrar(this.generar_csrf) }}
+		<h2 id="form-title" class="resaltar divisor clearfix"><span class="pull-left">Situación del padre</span>
+			<button id="guardar" type="button" name="guardar" class="btn btn-info pull-right" disabled="disabled">Guardado</button>
+		</h2>
+
+		{{this.data.form.form_id.renderViewHelper|raw}}
+
+		<div id="trabajo_padre">
+
+			{{this.data.form.AUX1_PADRE_VIVE.renderLabel|raw}}
+			{{this.data.form.AUX1_PADRE_VIVE.renderViewHelper|raw}}
+
+			{{this.data.form.CENS_ULT_EST_CUR_PADRE.renderLabel|raw}}
+			{{this.data.form.CENS_ULT_EST_CUR_PADRE.renderViewHelper|raw}}
+
+			{{this.data.form.CENS_SIT_LABORAL_PADRE.renderLabel|raw}}
+			{{this.data.form.CENS_SIT_LABORAL_PADRE.renderViewHelper|raw}}
+
+			<div class="datos_trabajo_padre">
+				{{this.data.form.AUX2_PADRE_TRAB_HACE.renderLabel|raw}}
+				{{this.data.form.AUX2_PADRE_TRAB_HACE.renderViewHelper|raw}}
+					
+				{{this.data.form.AUX2_PADRE_TRAB_OCUP.renderLabel|raw}}
+				{{this.data.form.AUX2_PADRE_TRAB_OCUP.renderViewHelper|raw}}
+					
+				{{this.data.form.AUX2_PADRE_TRAB_TAREA.renderLabel|raw}}
+				{{this.data.form.AUX2_PADRE_TRAB_TAREA.renderViewHelper|raw}}
+			</div>
+			
+			{{this.data.form.AUX2_PADRE_TRAB_OTRO.renderLabel|raw}}
+			{{this.data.form.AUX2_PADRE_TRAB_OTRO.renderViewHelper|raw}}
+		
+		</div>
+
+		<h2 class="resaltar divisor">Situación de la madre</h2>
+
+		<div id="trabajo_madre">
+			{{this.data.form.AUX1_MADRE_VIVE.renderLabel|raw}}
+			{{this.data.form.AUX1_MADRE_VIVE.renderViewHelper|raw}}
+
+			{{this.data.form.CENS_ULT_EST_CUR_MADRE.renderLabel|raw}}
+			{{this.data.form.CENS_ULT_EST_CUR_MADRE.renderViewHelper|raw}}
+
+			{{this.data.form.CENS_SIT_LABORAL_MADRE.renderLabel|raw}}
+			{{this.data.form.CENS_SIT_LABORAL_MADRE.renderViewHelper|raw}}
+
+			<div class="datos_trabajo_madre">
+				{{this.data.form.AUX2_MADRE_TRAB_HACE.renderLabel|raw}}
+				{{this.data.form.AUX2_MADRE_TRAB_HACE.renderViewHelper|raw}}
+				
+				{{this.data.form.AUX2_MADRE_TRAB_OCUP.renderLabel|raw}}
+				{{this.data.form.AUX2_MADRE_TRAB_OCUP.renderViewHelper|raw}}
+
+				{{this.data.form.AUX2_MADRE_TRAB_TAREA.renderLabel|raw}}
+				{{this.data.form.AUX2_MADRE_TRAB_TAREA.renderViewHelper|raw}}
+			</div>
+
+			{{this.data.form.AUX2_MADRE_TRAB_OTRO.renderLabel|raw}}
+			{{this.data.form.AUX2_MADRE_TRAB_OTRO.renderViewHelper|raw}}
+		</div>
+	</form>
+{% endblock %}

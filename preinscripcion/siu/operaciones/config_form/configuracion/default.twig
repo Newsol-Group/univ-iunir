@@ -1,0 +1,48 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	{% set form = this.get_form() %}
+	{% set form_tipos_propuesta = this.get_form_tipos_propuesta() %}
+	{% autoescape false %}
+
+		{{ form_tipos_propuesta.encabezado }}
+			<span class='pull-left selector label-obligatorio'>
+				{{ 'tipo_de_propuesta'|trans }} (*)
+			</span>
+			<span class='pull-left selector'>
+				{{ form_tipos_propuesta.elemento('tipo_de_propuesta') }} 
+			</span>
+		</form>
+
+		{% if this.hay_tipo_propuesta_seleccionado() %}
+		{{ form.encabezado }}
+			<div class='controls controls-row form-head clearfix'>
+				<div class='borde-inferior'>
+					<div class='pull-right'>
+						{{ form.submit_button('guardar', 'guardar')}}
+					</div>
+					<div class='clearfix'></div>
+				</div>
+			</div>
+
+			{{form.generar_salida_html()}}
+
+			<div class="navbar navbar-fixed-bottom">
+				<div class="navbar-inner">
+					<div class="container clearfix">
+						<div class='controls controls-row form-head clearfix'>
+							<div class='borde-superior'>
+								<div class='pull-left span10'>
+									{{ form.generar_links_secciones() }}
+								</div>
+								<div class='pull-right span2'>
+									{{ form.submit_button('guardar', 'guardar')}}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+		{% endif %}
+	{% endautoescape %}
+{% endblock %}

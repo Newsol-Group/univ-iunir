@@ -1,0 +1,94 @@
+{% if convocatorias %}
+   
+    <table class="table table-striped table-bordered">
+    
+        <thead>
+            <tr>
+                <th>{{ "convocatorias_becas.convocatoria" | trans }}</th>
+                <th>{{ "convocatorias_becas.descripcion" | trans }}</th>
+                <th>{{ ((vigentes) ? "convocatorias_becas.fecha_inicio" : "convocatorias_becas.fecha_cierre") | trans }}</th>
+                <th>{{ ((vigentes) ? "convocatorias_becas.fecha_finalizacion" : "convocatorias_becas.fecha_postulacion") | trans }}</th>
+                {% if not vigentes %}<th>{{ "convocatorias_becas.estado" | trans }}</th>{% endif %}
+                <th></th>
+            </tr>
+        </thead>
+        
+        <tbody>
+            
+        {% for key, convocatoria in convocatorias %}
+         
+            <tr>
+                <td>{{ convocatoria.tehuelche_nombre }}
+                {% if vigentes %}
+                        - {{ convocatoria.tehuelche_becas }}
+                {% endif %}
+                </td>
+                <td>{{ convocatoria.descripcion }}</td>
+                <td>{{ (vigentes) ? convocatoria.fecha_desde_display : convocatoria.fecha_hasta_display }}</td>
+                <td>{{ (vigentes) ? convocatoria.fecha_hasta_display : convocatoria.fecha_respuesta_display }}</td>
+                
+                {# Si es una convocatoria a la que aplicó #}
+                {% if not vigentes %}
+                <td style="text-align: center !important;">
+                    
+                    {# Si hay repertura vigente no permito consultar estado #}
+                    {% if convocatoria.reapertura_vigente %}
+                        <div class="alert">{{ "convocatorias_becas.estado_reapertura" | trans }}</div>
+                    {# Si no hay repertura vigente permito consultar estado #}
+                    {% else %}
+                        <button href="#" data-hash-habilitacion="{{ key }}" class="btn js-btn-consultar-estado">
+                            <i class="icon-search"></i> {{ "convocatorias_becas.consultar_estado" | trans }}
+                        </button>
+
+                        <div class="js-estado"></div>
+                    {% endif %}
+                </td>
+                {% endif %}
+                
+                <td style="text-align: center !important;">
+                    
+                    {# Convocatorias a las que se puede aplicar #}
+                    {% if vigentes %}
+                        {# Si no tiene CUIL entonces deshabilito "Aplicar" #}
+                        {% set btn_aplicar_disabled =  cuil is empty%}
+                        {% set btn_aplicar_href = (btn_aplicar_disabled ? '#' : url_preaplicar ~ "/" ~ key) %}
+                        <a 
+                            href="{{ btn_aplicar_href }}"
+                            class="btn btn-primary {% if btn_aplicar_disabled %}disabled{% endif %}"
+                            data-toggle="tooltip"
+                            data-html="true"
+                            title="{{ (btn_aplicar_disabled ? 'convocatorias_becas.cuit_inexistente' | trans : '') }}"
+                        >
+                            <i class="icon-hand-right icon-white"></i> {{ "convocatorias_becas.aplicar" | trans }}
+                        </a>
+                    {# Convocatorias a las que se aplicó #}
+                    {% else %}
+                        
+                        {# Si hay una reapertura vigente #}
+                        {% if convocatoria.reapertura_vigente %}
+                            <a href="{{ url_modificar_datos }}/{{ key }}" class="btn btn-success no-ajax"><i class="icon-edit icon-white"></i> {{ "convocatorias_becas.modificar_datos" | trans }}</a>
+                            <span class="label reapertura-fecha-limite">{{ "convocatorias_becas.reapertura_fecha_cierre" | trans({'%fecha%': convocatoria.fecha_hasta_reapertura_display}) }}</span>
+                        {# Si no hay una reapertura vigente #}
+                        {% else %}
+                            <a href="{{ url_imprimir_solicitud }}/{{ key }}" class="btn no-ajax"><i class="icon-print"></i> {{ "convocatorias_becas.imprimir_solicitud" | trans }}</a>
+                        {% endif %}
+                        
+                        
+                    {% endif %}
+                        
+                </td>
+            </tr>
+
+        {% endfor %}
+    
+        </tbody>
+        
+    </table>
+        
+{% else %}
+    
+    <div class="alert">
+        {{ "convocatorias_becas.sin_convocatorias" | trans }}
+    </div>
+    
+{% endif %}

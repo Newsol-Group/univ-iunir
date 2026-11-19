@@ -1,0 +1,39 @@
+<div id="selectorColegio" style="width: 700px">
+	{% autoescape false %}
+		<h3>{{'seleccion_colegio'|trans|capitalize}}</h3>
+		<div class="well clearfix">
+			<h4 class="borde-inferior">{{'filtro'|trans|capitalize}}</h4>
+			<div id="help_inline-filtro_colegio" class="help-selector-colegios">
+				{{ 'descr_filtro_colegio' | trans }}
+			</div>
+			<form id="filtro_colegio" method="post" action="">
+				<div class="clearfix" style="margin-bottom: 5px;">
+
+					<div id="cg-filtro_colegio-localidad" class="control-group ">
+						<dt id="filtro_colegio-localidad-label">
+							<label class="label-obligatorio" for="filtro_colegio-localidad">{{'localidad'|trans|capitalize}} (*)</label>
+						</dt>
+						<input id="filtro_colegio-localidad_id" class="hidden" type="hidden" value="" name=filtro_colegio-localidad_id">
+						<input id="filtro_colegio-localidad" class="input-xxlarge" type="text" value="" name=filtro_colegio-localidad">
+						<input id="btnLimpiarLocalidad" class="btn btn-inverse pull-right hide" type="button" value="{{'limpiar'|trans|capitalize}}" name="btnLimpiarLocalidad">
+						<div id="msg-filtro_colegio-localidad" style="color: #b94a48;"></div>
+					</div>
+
+					<div id="cg-filtro_colegio-nombre" class="control-group ">
+						<dt id="filtro_colegio-nombre-label">
+							<label class="opcional" for="filtro_colegio-nombre">{{'colegio_nombre'|trans|capitalize}}</label>
+						</dt>
+						<input id="filtro_colegio-nombre" class="input-xxlarge" type="text" maxlength="50" value="" name=filtro_colegio-nombre">
+					</div>
+
+				</div>
+				<div class="pull-left">
+					<input id="btnFiltrar" class="btn btn-info" type="button" value="{{'buscar'|trans|capitalize}}" name="btnFiltrar">
+				</div>			
+			</form>
+		</div>
+		<div id="lista_resultados">
+
+		</div>
+	{% endautoescape %}
+</div>

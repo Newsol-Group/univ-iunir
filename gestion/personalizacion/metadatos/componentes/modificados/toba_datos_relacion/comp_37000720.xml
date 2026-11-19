@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="37000720" descripcion="toba_datos_relacion">
+	<tabla nombre="apex_objeto_rel_columnas_asoc">
+		<registro estado="3" clave="asoc_id:37000052;objeto:37000720;proyecto:guarani;padre_objeto:37000348;hijo_objeto:37000344;padre_clave:37000590;hijo_clave:37000552"/>
+		<registro estado="3" clave="asoc_id:37000053;objeto:37000720;proyecto:guarani;padre_objeto:37000344;hijo_objeto:37000345;padre_clave:37000552;hijo_clave:37000559"/>
+		<registro estado="3" clave="asoc_id:37000054;objeto:37000720;proyecto:guarani;padre_objeto:37000344;hijo_objeto:37000347;padre_clave:37000552;hijo_clave:37000564"/>
+	</tabla>
+</componente>

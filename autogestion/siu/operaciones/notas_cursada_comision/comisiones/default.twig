@@ -1,0 +1,13 @@
+{% extends "kernel/pagelet.twig" %}
+{% import 'kernel/macro_helpers.twig' as helper %}
+
+{% block contenido %}
+	{{ helper.titulo_operacion('carga_notas_cursada_titulo'|trans|capitalize,'', acciones	)}}
+	{% import "comisiones_macro.twig" as macro_comisiones %}
+	<div id="js-comisiones" data-per_lec="{{this.data.periodo_lectivo}}">
+		{{ macro_comisiones.render_comisiones(this.data.renglones, this) }}
+	</div>
+	{% if renglones %}
+		<button type="button" class="btn btn-success" id="js-ver_mas">{{'ver_mas' | trans | capitalize}}</button>
+	{% endif %}
+{% endblock %}

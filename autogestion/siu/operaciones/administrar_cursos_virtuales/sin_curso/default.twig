@@ -1,0 +1,30 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}    
+	
+    <div class="titulo_operacion">
+        <h2 class="clearfix">
+            <span class="pull-left">{{ "moodle.sin_curso.titulo" | trans }}</span>
+        </h2>
+    </div>
+
+    {% import "mensajes.twig" as mensajes %}
+    {{ mensajes.mostrar_mensajes(this.data.mensajes) }}
+    
+    {# Si se trata de una subcomisión #}
+    {% if this.data.es_subcomision  %}
+    <div class="alert alert-block" style="text-align: left !important;">
+        <p>{{ "moodle.leyenda_subcomisiones" | trans | raw }}</p>
+    </div>
+    {% endif %}
+        
+    <div class="alert alert-block alert-info" style="text-align: left !important;">
+        <p>{{ "moodle.sin_curso.mensaje" | trans | raw }}</p>
+    </div>
+    
+    <div class="text-center">
+        <a href="{{ this.data.url_crear }}" class="btn btn-large btn-primary">{{ 'moodle.crear' | trans }}</a>
+        &nbsp;&nbsp;&nbsp;
+        <a href="{{ this.data.url_vincular }}" class="btn btn-large">{{ 'moodle.vincular' | trans }}</a>
+    </div>
+
+{% endblock %}

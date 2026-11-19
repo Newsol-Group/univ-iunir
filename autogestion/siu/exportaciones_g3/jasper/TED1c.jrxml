@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guarani" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="525" leftMargin="28" rightMargin="42" topMargin="113" bottomMargin="85" uuid="9302fa4b-f11e-46c0-906b-c044b2381dc2">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="193"/>
+	<style name="Title" fontName="Times New Roman" fontSize="16" isBold="true" isUnderline="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" fontName="Times New Roman" fontSize="12" isBold="true" isUnderline="false" pdfFontName="Times-Bold"/>
+	<style name="Comun" fontName="Arial" fontSize="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica"/>
+	<style name="Resalt" fontName="Arial" fontSize="10" isBold="true" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+	<parameter name="nro_solicitud" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT	
+						COALESCE(sga_certificados_otorg.nro_expediente, ' - ') AS nro_expediente,
+						f_responsables_academicas_propuesta(sga_propuestas.propuesta) as nombre_ra,
+						sga_instituciones.nombre as nombre_institucion,
+						CASE vw_personas.sexo
+        					WHEN 'F' THEN sga_certificados.nombre_femenino
+							WHEN 'X' THEN sga_certificados.nombre_no_binario
+        					ELSE sga_certificados.nombre 
+   				 		END AS certificado_nombre,
+						to_char(sga_certificados_otorg.fecha_egreso, 'DD/MM/YYYY') AS fecha_egreso_alumno,
+						COALESCE(sga_certificados_otorg.resolucion_rectorado, '') AS resolucion_rectorado,
+						COALESCE(sga_certificados_otorg.nro_registro_diploma_uni, '') AS registro_diploma_universidad,
+						COALESCE(sga_alumnos.legajo, '') AS alumno_legajo,
+						vw_personas.apellido as alumno_apellido,
+						vw_personas.nombres as alumno_nombre,
+						vw_personas.desc_tipo_documento || ' ' || vw_personas.nro_documento as documento_principal,
+						to_char(mdp_personas.fecha_nacimiento,'DD/MM/YYYY') as alumno_fecha_nacimiento,
+						mdp_personas_sexo.descripcion as alumno_sexo,
+						mdp_datos_personales.estado_civil,
+						COALESCE(mdp_estados_civiles.descripcion, '') AS estado_civil_descr,
+						COALESCE(mdp_datos_personales.periodo_lectivo_calle, '') || COALESCE(mdp_datos_personales.periodo_lectivo_numero, '') || COALESCE(mdp_datos_personales.periodo_lectivo_piso, '') || COALESCE(mdp_datos_personales.periodo_lectivo_departamento, '') AS direccion_alumno_residencia,
+						mdp_datos_personales.periodo_lectivo_localidad,
+						COALESCE(mdp_datos_personales.procedencia_calle, '') || COALESCE(mdp_datos_personales.procedencia_numero, '') || COALESCE(mdp_datos_personales.procedencia_piso, '') || COALESCE(mdp_datos_personales.procedencia_departamento) AS direccion_alumno_procedencia,
+						mdp_datos_personales.procedencia_localidad,
+						COALESCE(localidad_periodo.nombre, '')	AS localidad_periodo_nombre,
+						COALESCE(provincia_periodo.nombre, '')	AS provincia_periodo_nombre,
+						COALESCE(pais_periodo.nombre, '')	AS pais_periodo_nombre,
+						COALESCE(localidad_procedencia.nombre, '')	AS localidad_procedencia_nombre,
+						COALESCE(provincia_procedencia.nombre, '')	AS provincia_procedencia_nombre,
+						COALESCE(pais_procedencia.nombre, '')		AS pais_procedencia_nombre,
+						COALESCE(mdp_personas_allegados.apellido, '') || ' ' || COALESCE(mdp_personas_allegados.nombres, '') as conyugue_nombre,
+						COALESCE((SELECT '(' || telefono_codigo_area || ') ' || telefono_numero
+                      			    FROM mdp_personas_contactos
+						           WHERE persona = mdp_personas.persona
+                      			     AND contacto_tipo IN ('C','T','L','F')
+                      			ORDER BY  contacto_tipo = 'C' DESC, contacto_tipo = 'T' DESC, contacto_tipo = 'L' DESC, contacto_tipo = 'F' DESC  LIMIT 1),' ') AS telefono
+					FROM sga_certificados_otorg
+					JOIN sga_planes_versiones ON sga_certificados_otorg.plan_version = sga_planes_versiones.plan_version
+					JOIN sga_planes ON sga_planes_versiones.plan = sga_planes.plan
+					JOIN sga_propuestas ON sga_planes.propuesta = sga_propuestas.propuesta
+					JOIN sga_responsables_academicas ON TRUE
+					JOIN sga_instituciones ON sga_instituciones.institucion = sga_responsables_academicas.institucion
+					JOIN sga_certificados ON sga_certificados_otorg.certificado = sga_certificados.certificado
+					JOIN sga_alumnos ON sga_certificados_otorg.alumno = sga_alumnos.alumno
+					JOIN vw_personas ON sga_alumnos.persona = vw_personas.persona
+					JOIN mdp_personas ON mdp_personas.persona = vw_personas.persona
+                    JOIN mdp_personas_sexo ON mdp_personas_sexo.sexo = mdp_personas.sexo
+					LEFT JOIN mdp_datos_personales ON mdp_datos_personales.dato_censal = get_ultimo_dato_censal(mdp_personas.persona)
+					LEFT JOIN mdp_datos_censales ON mdp_datos_censales.dato_censal = get_ultimo_dato_censal(mdp_personas.persona)
+					LEFT JOIN mdp_personas_allegados ON mdp_personas_allegados.dato_censal = mdp_datos_censales.dato_censal AND mdp_personas_allegados.tipo_allegado = 'C'
+					LEFT JOIN mug_localidades as localidad_periodo ON localidad_periodo.localidad = mdp_datos_personales.periodo_lectivo_localidad
+					LEFT JOIN mug_dptos_partidos as partido_periodo ON localidad_periodo.dpto_partido = partido_periodo.dpto_partido
+					LEFT JOIN mug_provincias provincia_periodo ON partido_periodo.provincia = provincia_periodo.provincia
+					LEFT JOIN mug_paises pais_periodo ON provincia_periodo.pais = pais_periodo.pais
+					LEFT JOIN mug_localidades as localidad_procedencia ON localidad_procedencia.localidad = mdp_datos_personales.procedencia_localidad
+					LEFT JOIN mug_dptos_partidos as partido_procedencia ON localidad_procedencia.dpto_partido = partido_procedencia.dpto_partido
+					LEFT JOIN mug_provincias provincia_procedencia ON partido_procedencia.provincia = provincia_procedencia.provincia
+					LEFT JOIN mug_paises pais_procedencia ON provincia_procedencia.pais = pais_procedencia.pais
+					LEFT JOIN mdp_estados_civiles ON mdp_datos_personales.estado_civil = mdp_estados_civiles.estado_civil
+					
+					WHERE sga_certificados_otorg.nro_solicitud = $P{nro_solicitud}
+					  AND sga_responsables_academicas.responsable_academica = get_ra_inst_araucano_propuesta(sga_planes.propuesta, 'RA')]]>
+	</queryString>
+	<field name="nro_expediente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre_ra" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre_institucion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="certificado_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_egreso_alumno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="resolucion_rectorado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="registro_diploma_universidad" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alumno_legajo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alumno_apellido" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alumno_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="documento_principal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alumno_fecha_nacimiento" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alumno_sexo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estado_civil" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="estado_civil_descr" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="direccion_alumno_residencia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="periodo_lectivo_localidad" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="direccion_alumno_procedencia" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="procedencia_localidad" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="localidad_periodo_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="provincia_periodo_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pais_periodo_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="localidad_procedencia_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="provincia_procedencia_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pais_procedencia_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="conyugue_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="telefono" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="567" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="525" height="567" uuid="2ab84550-7365-414c-82ae-618fb33f3fb5"/>
+			</rectangle>
+			<textField>
+				<reportElement style="Title" x="0" y="13" width="525" height="20" uuid="9c1e868d-22a6-45bd-a71b-e7043477ffed"/>
+				<textElement textAlignment="Center">
+					<font isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_institucion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Title" x="0" y="33" width="525" height="20" uuid="7ee7934d-d94a-4fa2-94e3-f55dbb7279f7"/>
+				<textElement textAlignment="Center">
+					<font isUnderline="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_ra}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Title" x="98" y="73" width="322" height="20" uuid="ca7f15b5-13a6-4122-a201-94a1eba00413"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Formulario T.E.D. 1.c.-]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="12" y="136" width="501" height="22" uuid="b6436a5a-cbdf-492e-a9d2-501ac043d31a"/>
+			</rectangle>
+			<textField>
+				<reportElement x="437" y="107" width="56" height="16" uuid="3c021c43-b702-48ff-935c-4ae947e37bfd"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nro_expediente}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="SubTitle" x="180" y="140" width="220" height="18" uuid="b5f97658-fb71-45f4-8d56-3cc7e873c407"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[REGISTRO DE GRADUADOS]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="12" y="158" width="501" height="24" uuid="37240371-84a7-4410-98a5-61e0de8846e8"/>
+			</rectangle>
+			<textField>
+				<reportElement style="Comun" x="16" y="163" width="273" height="18" uuid="e1303662-40fb-4028-8f71-56a530a43a14"/>
+				<textFieldExpression><![CDATA["Registro Diploma Universidad: " + $F{registro_diploma_universidad}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Comun" x="314" y="163" width="179" height="18" uuid="dead3150-14e9-42b8-bed7-d683f34270ad"/>
+				<textFieldExpression><![CDATA["Nro. Matrícula: " + $F{alumno_legajo}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="12" y="182" width="501" height="135" uuid="1fa3aafd-bf43-45db-9d6f-d9e6069251c4"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="12" y="317" width="501" height="100" uuid="45b5193b-e58a-4833-923f-04a89e90747e"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="12" y="485" width="127" height="68" uuid="d0e69b8e-c52d-42a4-aa09-c26f4229b3a0"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="139" y="485" width="120" height="68" uuid="ff78991c-f7d6-407e-9cd2-e9bbe3d2df20"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="259" y="485" width="120" height="68" uuid="41a5d0e3-b26e-42a0-8d40-bd43428ad2e1"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="378" y="485" width="134" height="68" uuid="4ddb286f-57cc-43ba-9614-96c1befcf73f"/>
+			</rectangle>
+			<textField>
+				<reportElement style="Comun" x="16" y="188" width="273" height="18" uuid="d8bb6d0e-5f58-4903-9cdb-56df196b930d"/>
+				<textFieldExpression><![CDATA["Apellido: " + $F{alumno_apellido}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Comun" x="16" y="206" width="273" height="18" uuid="c00a04f1-025e-49cd-bdaa-171a51adf8eb"/>
+				<textFieldExpression><![CDATA["Nombres: " + $F{alumno_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Comun" x="16" y="224" width="273" height="18" uuid="fdaeb7e9-83d0-43c3-bcbf-cdcc5a187676"/>
+				<textFieldExpression><![CDATA["Domicilio: " + $F{direccion_alumno_residencia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Comun" x="16" y="242" width="273" height="18" uuid="030cfd79-beea-4a96-a5d2-42b8dc308f73"/>
+				<textFieldExpression><![CDATA["Teléfono: " + $F{telefono}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Comun" x="16" y="260" width="273" height="18" uuid="680e0346-3da2-4589-b31a-ceb0de57ee70"/>
+				<textFieldExpression><![CDATA["Localidad: " + $F{localidad_periodo_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Comun" x="16" y="278" width="273" height="18" uuid="9d599cee-29d6-479a-8f25-236d1990b976"/>
+				<textFieldExpression><![CDATA["Provincia: " + $F{provincia_periodo_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Comun" x="16" y="298" width="273" height="18" uuid="1221ff8e-1caf-46f6-8087-b39b68a3b3d5"/>
+				<textFieldExpression><![CDATA["País: " + $F{pais_periodo_nombre}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="366" y="201" width="100" height="95" uuid="86a08a65-e896-44ad-be02-7dcd1746e2b9"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="400" y="239" width="30" height="18" uuid="58ffd708-b366-482c-a4a5-03e9c99e8826"/>
+				<text><![CDATA[FOTO]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Comun" x="16" y="323" width="216" height="18" uuid="84ce30bc-0a69-4ed1-9866-5aac21b820a4"/>
+				<textFieldExpression><![CDATA["Fecha de nacimiento: " + $F{alumno_fecha_nacimiento}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Comun" x="16" y="341" width="216" height="18" uuid="448c0583-7724-45dd-94d3-79d250feeb37"/>
+				<textFieldExpression><![CDATA["Localidad: " + $F{localidad_procedencia_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Comun" x="16" y="359" width="216" height="18" uuid="80207a5d-8ba1-4cf8-89c9-1492403f526d"/>
+				<textFieldExpression><![CDATA["Provincia: " + $F{provincia_procedencia_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Comun" x="16" y="377" width="216" height="18" uuid="ad7077e3-848c-4f9e-85fb-4ad08f17dcfc"/>
+				<textFieldExpression><![CDATA["Identificación: " + $F{documento_principal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Comun" x="16" y="395" width="450" height="18" uuid="488d42e2-3023-4120-be75-0d8c372d9350"/>
+				<textFieldExpression><![CDATA["Apellido y Nombre del Cónyugue: " + $F{conyugue_nombre}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="12" y="417" width="501" height="68" uuid="8076480e-b0fc-40ef-9a15-004a5f7be03c"/>
+			</rectangle>
+			<textField>
+				<reportElement style="Comun" x="16" y="427" width="273" height="18" uuid="cea51338-3a66-4000-a365-e4fc7f6284ab"/>
+				<textFieldExpression><![CDATA["Certificado otorgado: " + $F{certificado_nombre}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Comun" x="16" y="445" width="273" height="18" uuid="234889ba-c0c5-499e-aa42-45c7f716f2da"/>
+				<textFieldExpression><![CDATA["Fecha de Egreso: " + $F{fecha_egreso_alumno}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Comun" x="16" y="463" width="273" height="18" uuid="05b37b2e-3b00-4775-90bb-962573baaa75"/>
+				<textFieldExpression><![CDATA["Resolución Rectorado: " + $F{resolucion_rectorado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Comun" x="333" y="341" width="177" height="18" uuid="d2f4aeb2-fdd1-45a1-b1a5-4abee78fbd9e"/>
+				<textFieldExpression><![CDATA["País: " + $F{pais_procedencia_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Comun" x="333" y="359" width="177" height="18" uuid="93c4e3bf-0c98-401e-a198-f94c9b2f27ae"/>
+				<textFieldExpression><![CDATA["Sexo: " + $F{alumno_sexo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Comun" x="333" y="377" width="177" height="18" uuid="3c8cdc6b-e770-4ef1-abbd-2ddc34b64cea"/>
+				<textFieldExpression><![CDATA["Estado Civil: " + $F{estado_civil_descr}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Comun" x="314" y="463" width="185" height="18" uuid="be244665-e373-4408-9c37-7387be2b33ec"/>
+				<text><![CDATA[Resolución CD: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Resalt" x="14" y="535" width="123" height="18" uuid="a85088c6-7bfd-470e-80da-c925101ec355"/>
+				<text><![CDATA[Firma Área de Enseñanza]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Resalt" x="177" y="535" width="44" height="18" uuid="986aaa5a-af2f-4495-a050-d5e86f56dd10"/>
+				<text><![CDATA[C.C.P.D.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Resalt" x="275" y="535" width="89" height="18" uuid="2b041067-e1e0-4ba5-a677-e2a02eb0d7af"/>
+				<text><![CDATA[Firma Área Títulos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Resalt" x="404" y="535" width="84" height="18" uuid="40ea479c-6211-4c1d-b9be-036fcfbb1b9d"/>
+				<text><![CDATA[Firma Conforme]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="379" y="107" width="54" height="16" uuid="41681a06-c847-4cac-8ff1-04eb1ecbb033"/>
+				<textElement>
+					<font size="12" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[T.E.D. Nº:]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,149 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	{% if this.estado == 'inicial' %}
+            
+            {% import "kernel/macro_recaptcha.twig" as recaptcha %} 
+            {{ recaptcha.script() }} 
+            <h2>{{"selecciona_metodo_recuperacion"|trans|capitalize}}</h2>    
+            
+            <label class="radio inline" for="radio_email">
+				<input type="radio" name="email" value="email" id="radio_email">
+					{{"E-mail"|trans|capitalize}}
+            </label>
+            <br>
+            <label class="radio inline" for="radio_documento">
+				<input type="radio" name="documento" value="documento" id="radio_documento">
+					{{"documento"|trans|capitalize}}
+            </label>
+            <div id='formulario_email' >
+            <p>{{"descripcion_recuperar_clave"|trans}}</p>
+            <form method="post" action="{{ this.data.action_recuperar }}" id="guarani_form_recuperar_pass">
+                    <div class="control-group">
+                            <label class="control-label" for="e_mail">{{ "email"|trans|capitalize }}</label>
+                            <div class="controls">
+                                    <input id="e_mail" name="e_mail" type="text" value="{{this.data.nombre_usuario}}" maxlength="127" />
+                            </div>
+                    </div>
+
+                    <div class="control-group">
+                        {{ recaptcha.widget() }} 
+                    </div>
+
+                    {% if this.data.mensajes %}
+                        {% import "kernel/macro_notificaciones.twig" as notificaciones %}
+                        {{ notificaciones.render_notif(this.data.mensajes) }}
+                    {% endif %}
+                    
+                    <div class="control-group">
+                            <div class="controls">
+                                    <input id="continuar" name="continuar" type="submit" value="{{'continuar'|trans|capitalize}}" class="btn btn-info" />
+                                    <a class="btn btn-info volver" href="{{this.data.url_volver}}">{{'volver'|trans|capitalize}}</a>
+                            </div>
+                    </div>
+            </form>
+	</div>
+        <div id='formulario_documento'>
+            <form method="post" action="{{ this.data.action_recuperar }}" id="guarani_form_recuperar_pass">
+            <div class="control-group">
+                <label class="control-label" for="pais">{{ "pais"|trans|capitalize }}</label>
+                <div class="controls">
+                    <select id='pais' name='pais'>
+                        {% for key, pais in this.data.paises %}
+                            <option value='{{ key }}' {{(key == 54) ? 'selected' : '' }}>{{ pais }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <label class="control-label" for="tipo_doc">{{ "tipo_documento"|trans|capitalize }}</label>
+                <div class="controls">
+                    <select id='tipo_documento' name='tipo_documento'>
+                        {% for tipo in this.data.tipos_doc %}
+                            <option value='{{ tipo.id }}'>({{ tipo.abrev }}) {{ tipo.nombre }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <label class="control-label" for="documento">{{ "nro_documento"|trans|capitalize }} ({{ 'sin_puntos_ni_guiones'|trans }})</label>
+                <div class="controls">
+                    <input id="documento" name="documento" type="text" value="{{this.data.documento}}" />
+                </div>
+                <label class="control-label" for="fecha_nacimiento">{{ "fecha_nacimiento"|trans|capitalize }}</label>
+                <div class="controls">
+                    <input class="date" id="fecha_nacimiento" name="fecha_nacimiento" type="text" value="{{this.data.fecha_nacimiento}}" />
+                </div>
+                <div class="control-group">
+                    {{ recaptcha.widget() }} 
+                </div>
+               
+                <div class="control-group">
+                    <div class="controls">
+                        <input id="continuar" name="continuar" type="submit" value="{{'continuar'|trans|capitalize}}" class="btn btn-info" />          
+                        <a class="btn btn-info volver" href="{{this.data.url_volver}}">{{'volver'|trans|capitalize}}</a>
+                    </div>
+                </div>
+            </div>
+        </form>
+       
+        </div>
+	{% elseif this.estado == constant('siu\\operaciones\\acceso\\pagelet_recuperar_pass::MAIL_ENVIADO') %}
+            <h2>{{"se_envio_email_a"|trans({'%1%': this.data.email})|capitalize}}</h2>
+            <br/>
+            <p>{{ "descripcion_mail_recuperar_clave"|trans({'%1%': this.data.email}) }}</p>
+            <p>{{ "no_puedo_arcceder_email"|trans({'%link%': this.data.url_cambiar_email}) |raw }}</p>
+            <br/>
+            <a class="btn btn-info volver" href="{{this.data.url_volver}}">{{'volver'|trans|capitalize}}</a>
+	
+	{% elseif this.estado == constant('siu\\operaciones\\acceso\\pagelet_recuperar_pass::TOKEN_CORRECTO') %}
+            
+            {% import "kernel/macro_recaptcha.twig" as recaptcha %} 
+            {{ recaptcha.script() }} 
+            
+            <h2>{{"recuperar_clave"|trans|capitalize}}</h2>
+            <p>{{ "descripcion_nueva_clave"|trans }}</p>
+            
+            <form method="post" action="{{ this.data.action_reset_pass }}" id="guarani_form_reset_pass">
+                    <div class="control-group">
+                            <label class="control-label" for="password">{{ "nueva_clave"|trans|capitalize }}</label>
+                            <div class="controls">
+                                    <input id="password" name="password" type="password" value="" />
+                            </div>
+                            <label class="control-label" for="rpassword">{{ "repetir_nueva_clave"|trans|capitalize }}</label>
+                            <div class="controls">
+                                    <input id="rpassword" name="rpassword" type="password" value="" />
+                            </div>
+                            <input id="token" name="token" type="hidden" value="{{ this.data.token }}" />
+                    </div>
+
+                    <div class="control-group">
+                        {{ recaptcha.widget() }} 
+                    </div>
+
+                    {% if this.data.mensajes %}
+                        {% import "kernel/macro_notificaciones.twig" as notificaciones %}
+                        {{ notificaciones.render_notif(this.data.mensajes) }}
+                    {% endif %}
+            
+                    <div class="control-group">
+                            <div class="controls">
+                                    <input id="continuar" name="acceder" type="submit" value="{{'acceder'|trans|capitalize}}" class="btn btn-info" />
+                            </div>
+                    </div>
+            </form>
+	
+	{% elseif this.estado == constant('siu\\operaciones\\acceso\\pagelet_recuperar_pass::TOKEN_INCORRECTO') %}
+            <h2>{{"no_se_puede_recuperar_clave"|trans|capitalize}}</h2>
+            <p>{{"desc_no_se_puede_recuperar_clave"|trans|capitalize}}</p>
+            <br/>
+            <a class="btn btn-info volver" href="{{this.data.url_volver}}">{{'volver'|trans|capitalize}}</a>
+	{% elseif this.estado == constant('siu\\operaciones\\acceso\\pagelet_recuperar_pass::TOKEN_EXPIRADO') %}
+            <h2>{{"acceso.token_expirado" |trans }}</h2>
+            <p>{{"acceso.desc_token_expirado" | trans }}</p>
+            <br/>
+            <a class="btn btn-info volver" href="{{this.data.url_volver}}">{{'volver'|trans|capitalize}}</a>
+	{% else %}
+            <h2>{{"no_se_envio_email_recuperar_clave"|trans|capitalize}}</h2>
+            <br/>
+            <p>{{ "descripcion_mail_no_existente_recuperar_clave"|trans }}</p>
+            <br/>
+            <a class="btn btn-info volver" href="{{this.data.url_volver}}">{{'volver'|trans|capitalize}}</a>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,24 @@
+#reporte .text-center{
+    text-align: center;
+} 
+
+td.text-center {
+    vertical-align: middle; /* Centrado vertical */
+    text-align: center;     /* Centrado horizontal */
+    /*height: 60px;           /* Ajustá según tu diseño */
+}
+
+td.text-center a.btn {
+    display: inline-block;
+   /* vertical-align: middle;*/
+}
+
+.pago_ok {
+    color: #1a8132; /* Verde claro */
+    font-weight: bold;
+}
+
+.pago_err {
+    color: #851d26; /* Rojo claro */
+    font-weight: bold;
+}

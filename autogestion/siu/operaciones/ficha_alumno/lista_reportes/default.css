@@ -1,0 +1,13 @@
+#lista_forms .well { 
+	padding: 8px; 
+}
+
+#lista_reportes .mensaje {
+	padding-top: 8px;
+}
+
+#lista_reportes li a.active {
+    background-color: #0088CC !important;
+    text-shadow: none;
+    color:#fff;
+}

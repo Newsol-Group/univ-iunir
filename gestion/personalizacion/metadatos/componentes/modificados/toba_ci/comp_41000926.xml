@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="41000926" descripcion="toba_ci">
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:41000926">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+			<columna nombre="subclase" valor="ci_edi_enviar_mensajes_nsg" valor_original="ci_edi_enviar_mensajes"/>
+			<columna nombre="subclase_archivo" valor="operaciones/comunicacion/enviar_mensajes/ci_edi_enviar_mensajes_nsg.php" valor_original="operaciones/comunicacion/enviar_mensajes/ci_edi_enviar_mensajes.php"/>
+		</registro>
+	</tabla>
+</componente>

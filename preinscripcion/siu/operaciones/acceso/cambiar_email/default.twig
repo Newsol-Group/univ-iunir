@@ -1,0 +1,131 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}            
+        {% if this.estado == 'inicial' %}
+            {% import "kernel/macro_recaptcha.twig" as recaptcha %} 
+            {{ recaptcha.script() }} 
+            <h2>{{"no_puedo_acceder_a_mi_mail"|trans|capitalize}}</h2>    
+              {% if this.data.mensajes %}
+                        {% import "kernel/macro_notificaciones.twig" as notificaciones %}
+                        {{ notificaciones.render_notif(this.data.mensajes) }}
+                    {% endif %}
+            <label class="radio inline" for="radio_codigo">
+				<input type="radio" name="codigo" value="codigo" id="radio_codigo">
+					{{"codigo"|trans|capitalize}}
+            </label>
+            <br>
+            <label class="radio inline" for="radio_pregunta_secreta">
+				<input type="radio" name="pregunta_secreta" value="pregunta_secreta" id="radio_pregunta_secreta">
+					{{"pregunta_secreta"|trans|capitalize}}
+            </label>
+            <div id='formulario_codigo' >
+            <p>{{"descripcion_recuperar_codigo"|trans}}</p>
+            <form method="post" action="{{ this.data.action_validar }}" id="guarani_form_cambiar_email">
+                    <div class="control-group">
+                            <label class="control-label" for="codigo">{{ "codigo"|trans|capitalize }}</label>
+                            <div class="controls">
+                                    <input id="codigo" name="codigo" type="text" value="{{this.data.codigo}}" maxlength="127" />
+                            </div>
+                    </div>
+
+                    <div class="control-group">
+                        {{ recaptcha.widget() }} 
+                    </div>
+
+                  
+                    
+                    <div class="control-group">
+                            <div class="controls">
+                                    <input id="continuar" name="continuar" type="submit" value="{{'validar'|trans|capitalize}}" class="btn btn-info" />
+                                    <a class="btn btn-info volver" href="{{this.data.url_volver}}">{{'volver'|trans|capitalize}}</a>
+                            </div>
+                    </div>
+            </form>
+	</div>
+        <div id='formulario_pregunta_secreta'>
+            <form method="post" action="{{ this.data.action_validar }}" id="guarani_form_cambiar_email">
+            <div class="control-group">
+                <label class="control-label" for="pregunta_secreta">{{ "pregunta_secreta"|trans|capitalize }}</label>
+                <div class="controls">
+                   
+                <label class="control-label" for="pregunta_secreta">
+                <b>{{ this.data.pregunta_secreta|trans|raw }}</b>
+                </label>
+                   
+                </div>
+
+                <label class="control-label" for="respuesta_secreta">{{ "respuesta_secreta"|trans|capitalize }}</label>
+                <div class="controls">
+                    <input id="respuesta_secreta" name="respuesta_secreta" type="text" value="{{this.data.respuesta_secreta}}" />
+                
+                </div>
+                <label class="control-label" for="fecha_nacimiento">{{ "fecha_nacimiento"|trans|capitalize }}</label>
+                <div class="controls">
+                    <input class="date" id="fecha_nacimiento" name="fecha_nacimiento" type="text" value="{{this.data.fecha_nacimiento}}" />
+                </div>
+                 <label class="control-label" for="combo_propuestas">{{ "propuestas_preinscriptas"|trans|capitalize }}</label>
+                     <div class="controls">
+                    <select id='combo_propuestas' name='combo_propuestas'>
+                       {% for key, val in this.data.combo_propuestas %}
+                            <option value='{{ key}}'>{{ val }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="control-group">
+                    {{ recaptcha.widget() }} 
+                </div>
+                
+                <div class="control-group">
+                    <div class="controls">
+                        <input id="continuar" name="continuar" type="submit" value="{{'validar'|trans|capitalize}}" class="btn btn-info" />
+                    </div>
+                </div>
+            </div>
+        </form>
+        </div>
+        {% elseif this.estado == constant('siu\\operaciones\\acceso\\pagelet_cambiar_email::ERROR') %}
+            <h2>{{"Error" |trans }}</h2>
+ 
+              {% if this.data.mensajes %}
+                        {% import "kernel/macro_notificaciones.twig" as notificaciones %}
+                        {{ notificaciones.render_notif(this.data.mensajes) }}
+                    {% endif %}
+            <p>{{"para_recuperar_tu_acceso_contacta" | trans }}</p>
+             <br/>
+            <p>{{"datos_de_contacto" | trans({'%1%': this.data.datos_ayuda.datos_ayuda_telefono,'%2%':this.data.datos_ayuda.datos_ayuda_email} )|raw}}</p>
+            <br/>
+           <a class="btn btn-info volver" href="{{this.data.url_volver}}">{{'volver'|trans|capitalize}}</a>
+                     
+        {% elseif this.estado == constant('siu\\operaciones\\acceso\\pagelet_cambiar_email::EXITO') %}
+             
+              {% if this.data.mensajes %}
+                        {% import "kernel/macro_notificaciones.twig" as notificaciones %}
+                        {{ notificaciones.render_notif(this.data.mensajes) }}
+                    {% endif %}
+            <p>{{"Se modifico correctamente el e-mail" | trans }}</p>
+            
+           <a class="btn btn-info volver" href="{{this.data.url_volver}}">{{'volver'|trans|capitalize}}</a>
+                            
+	{% elseif this.estado == constant('siu\\operaciones\\acceso\\pagelet_cambiar_email::CAMBIAR_EMAIL') %}
+            <h2>{{"ingresa_nuevo_email"|trans|capitalize}}</h2>
+ 
+              {% if this.data.mensajes %}
+                        {% import "kernel/macro_notificaciones.twig" as notificaciones %}
+                        {{ notificaciones.render_notif(this.data.mensajes) }}
+                    {% endif %}
+            <br/>
+            <p>{{ "descripcion_ingresa_nuevo_email"|trans }}</p>
+            <form method="post" action="{{ this.data.action_nuevo_email }}" id="guarani_form_cambiar_nuevo_email">
+            <label class="control-label" for="nuevo_email">{{ "nuevo_email"|trans|capitalize }}</label>
+                <div class="controls">
+                    <input id="nuevo_email" name="nuevo_email" type="text" value="{{this.data.nuevo_email}}" />
+                
+                </div>
+                <div class="control-group">
+                            <div class="controls">
+                                    <input id="continuar" name="continuar" type="submit" value="{{'enviar_mail'|trans|capitalize}}" class="btn btn-info" />
+                                    <a class="btn btn-info volver" href="{{this.data.url_volver}}">{{'volver'|trans|capitalize}}</a>
+                            </div>
+                    </div>
+            </form>
+            {% endif %}
+{% endblock %}

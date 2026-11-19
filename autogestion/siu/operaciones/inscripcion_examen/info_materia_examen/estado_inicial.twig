@@ -1,0 +1,38 @@
+{#
+	Entrada:  inscripciones, mensajes, csrf
+#}
+
+<div>
+	<h3>{{ 'comenzar_inscripcion'|trans|capitalize }}</h3>
+	<p><i class="icon-arrow-left"></i> {{ 'texto_inscripcion_examen'|trans|capitalize }}</p>
+	{% if mensajes %}
+		{% import "kernel/macro_notificaciones.twig" as notificaciones %}
+		{{ notificaciones.render_notif(mensajes) }}
+	{% endif %}
+	{% if inscripciones %}
+		<h4>{{ 'inscripciones_activas'|trans|capitalize }}</h4>
+		<span class='js-csrf hide' data-csrf='{{csrf}}'/>
+		<table class="table table-condensed">
+			{% for inscripcion in inscripciones %}
+			<tr class='js-mis-inscripciones'>
+				<td>
+                    {{inscripcion.actividad_nombre}} - {{inscripcion.llamado_nombre}} - {{inscripcion.mesa_examen_nombre}}
+                </td>
+			</tr>
+            {% if inscripcion.puede_desinscribirse == 1 %}
+			<tr class='js-boton-baja'>
+				<td>
+					<button
+					class="js-baja-inicial btn btn-mini pull-right" type="button"
+					data-inscripcion="{{inscripcion.__ID__}}"
+					data-actividad="{{inscripcion.url_actividad}}"
+				    >
+					{{'dar_baja'|trans|capitalize}}
+					</button>
+				</td>
+			</tr>
+            {% endif %}
+			{% endfor %}
+		</table>
+	{% endif %}
+</div>

@@ -1,0 +1,14 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}    
+
+    <div class="titulo_operacion">
+        <h2 class="clearfix">
+            <span class="pull-left">{{ "solicitudes_sidcer.titulo" | trans }}</span>
+        </h2>
+    </div>
+    
+    <div class="alert alert-block {{ this.data.tipo_mensaje }}">
+        <h4>{{ this.data.error ? ("solicitudes_sidcer.error.mensaje" | trans) : this.data.mensaje }}</h4>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="32000056" descripcion="toba_datos_tabla">
+	<tabla nombre="apex_objeto_db_registros_col">
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000103"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000104"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000105"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000106"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000107"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000108"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000109"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000110"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000111"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000112"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000114"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000115"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000116"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000117"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000118"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000119"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000120"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000121"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000122"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000123"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000124"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000125"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000126"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000127"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000128"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000129"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000130"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000131"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000132"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000133"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000134"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:32000464"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:45000018"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:45000048"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:32000056;col_id:89000113"/>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000262"/>
+			<columna nombre="columna" valor="nro_solicitud"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="1"/>
+			<columna nombre="secuencia" valor="sga_certificados_otorg_seq"/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000263"/>
+			<columna nombre="columna" valor="persona"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000264"/>
+			<columna nombre="columna" valor="certificado"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000265"/>
+			<columna nombre="columna" valor="alumno"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000266"/>
+			<columna nombre="columna" valor="plan_version"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000267"/>
+			<columna nombre="columna" valor="circuito"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000268"/>
+			<columna nombre="columna" valor="fecha_alta"/>
+			<columna nombre="tipo" valor="F"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000269"/>
+			<columna nombre="columna" valor="fecha_inicio_tramite"/>
+			<columna nombre="tipo" valor="F"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000270"/>
+			<columna nombre="columna" valor="nro_expediente"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="40"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000271"/>
+			<columna nombre="columna" valor="nro_expediente_descr"/>
+			<columna nombre="tipo" valor="X"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000272"/>
+			<columna nombre="columna" valor="nro_expediente_externo"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="40"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000273"/>
+			<columna nombre="columna" valor="duracion_real_en_meses"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000274"/>
+			<columna nombre="columna" valor="fecha_egreso"/>
+			<columna nombre="tipo" valor="F"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000275"/>
+			<columna nombre="columna" valor="promedio"/>
+			<columna nombre="tipo" valor="N"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000276"/>
+			<columna nombre="columna" valor="promedio_sin_aplazos"/>
+			<columna nombre="tipo" valor="N"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000277"/>
+			<columna nombre="columna" valor="juramento"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000278"/>
+			<columna nombre="columna" valor="colacion"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000279"/>
+			<columna nombre="columna" valor="fecha_cambio_estado"/>
+			<columna nombre="tipo" valor="F"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000280"/>
+			<columna nombre="columna" valor="estado"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000281"/>
+			<columna nombre="columna" valor="estado_requisitos"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="1"/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000282"/>
+			<columna nombre="columna" valor="fecha_disposicion_decano"/>
+			<columna nombre="tipo" valor="F"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000283"/>
+			<columna nombre="columna" valor="fecha_aprobacion_conacad"/>
+			<columna nombre="tipo" valor="F"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000284"/>
+			<columna nombre="columna" valor="fecha_aprobacion_consup"/>
+			<columna nombre="tipo" valor="F"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000285"/>
+			<columna nombre="columna" valor="fecha_elevacion_consup"/>
+			<columna nombre="tipo" valor="F"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000286"/>
+			<columna nombre="columna" valor="fecha_firma_autoridad"/>
+			<columna nombre="tipo" valor="F"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000287"/>
+			<columna nombre="columna" valor="fecha_ingreso_conacad"/>
+			<columna nombre="tipo" valor="F"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000288"/>
+			<columna nombre="columna" valor="nro_disposicion_decano"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="30"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000289"/>
+			<columna nombre="columna" valor="nro_registro_diploma_fac"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="30"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000290"/>
+			<columna nombre="columna" valor="nro_registro_diploma_uni"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="30"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000291"/>
+			<columna nombre="columna" valor="resolucion_rectorado"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="30"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000292"/>
+			<columna nombre="columna" valor="folio_registro_diploma_fac"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000293"/>
+			<columna nombre="columna" valor="orden_registro_diploma_fac"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000294"/>
+			<columna nombre="columna" valor="libro_registro_diploma_fac"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="30"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000295"/>
+			<columna nombre="columna" valor="observaciones"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="255"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000296"/>
+			<columna nombre="columna" valor="anulado"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000297"/>
+			<columna nombre="columna" valor="fecha_anulacion"/>
+			<columna nombre="tipo" valor="F"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000298"/>
+			<columna nombre="columna" valor="interfaz"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000299"/>
+			<columna nombre="columna" valor="id_solicitud"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="1"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg_ext"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="col_id" valor="770000300"/>
+			<columna nombre="columna" valor="pago"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="1"/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg_ext"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:32000056">
+			<columna nombre="nombre" valor="DT - sga_certificados_otorg" valor_original="sga_certificados_otorg"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_db_registros">
+		<registro estado="2" clave="objeto_proyecto:guarani;objeto:32000056">
+			<columna nombre="ap" valor="4" valor_original="1"/>
+			<columna nombre="tabla_ext" valor="sga_certificados_otorg_ext" valor_original="###$$$NULL$$$###"/>
+			<columna nombre="esquema_ext" valor="negocio_nsg" valor_original="negocio"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_db_columna_fks">
+		<registro estado="1">
+			<columna nombre="id" valor="770000010"/>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000056"/>
+			<columna nombre="tabla" valor="sga_certificados_otorg"/>
+			<columna nombre="columna" valor="nro_solicitud"/>
+			<columna nombre="tabla_ext" valor="sga_certificados_otorg_ext"/>
+			<columna nombre="columna_ext" valor="id_solicitud"/>
+		</registro>
+	</tabla>
+</componente>

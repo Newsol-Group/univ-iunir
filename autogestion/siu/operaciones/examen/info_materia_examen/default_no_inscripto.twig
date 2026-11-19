@@ -1,0 +1,84 @@
+{#
+	Entrada:  mesa, materia, url_alta, param_insc_examen_seleccion_auto_tipo_insc, csrf
+#}
+
+<p class="fecha"><strong>{{ mesa.fecha_visual }} {{ mesa.hora_inicio }}</strong></p>
+
+<div class="clearfix">
+	<ul class="llamado_mesa_info_no_inscripto unstyled">
+		<li><span>{{ 'turno'|trans|capitalize }}:</span><span class="resaltado"> {{ mesa.turno_examen_nombre}}</span></li>
+		<li><span>{{ 'mesa'|trans|capitalize }}:</span><span class="resaltado"> {{ mesa.mesa_examen_nombre }}</span></li>
+		<li><span>{{ 'llamado'|capitalize }}:</span><span class="resaltado"> {{ mesa.llamado_nombre }}</span></li>
+		<li><span>{{ 'tipo_inscripcion'|trans|capitalize }}:</span><span class="resaltado"> 
+		{% set INSTANCIAS = '' %}
+			{% for instancia in mesa.instancias %}
+					{% set INSTANCIAS =  INSTANCIAS ~ instancia.instancia_nombre ~ ' - '%}
+			{% endfor %}
+			{{INSTANCIAS|truncate(INSTANCIAS|length-2,false,'')}}
+		</span>
+		</li>
+		<li><span>{{ 'ubicacion'|trans|capitalize }}:</span><span class="resaltado"> {{ mesa.ubicacion_nombre }}</span></li>
+		{% if (mesa.cupo) %}
+			<li><span>{{ 'cupo'|trans|capitalize }}:</span><span class="resaltado"> {{ mesa.cupo }}</span></li>
+		{% endif %}
+		<li><span>{{ 'lugar'|trans|capitalize	}}:</span> {{ mesa.espacio_nombre ? mesa.espacio_nombre | raw : '-' }}</li>
+		<li class="catedra"><span>{{ 'catedra'|trans|capitalize }}:</span> {{ mesa.catedra_nombre ? mesa.catedra_nombre | raw : '-' }}</li>
+		<li class="docente"><span>{{ 'docentes'|trans|capitalize	}}:</span> {{ mesa.docentes ? mesa.docentes | raw : '-' }}</li>
+	</ul>
+
+	<div class="acciones">
+		<form class="form_inscribir" 
+			id_item="{{ mesa.mesa_examen }}" 
+			name="{{ mesa.mesa_examen }}" 
+			data-mesa="{{ mesa.__ID__ }}" {# se agrega para encontrarlo más fácil con jquery #}
+			action='{{ url_alta }}' 
+			method='POST'>
+			<input type="hidden" name="mesa" value="{{ mesa.__ID__ }}" />
+			<input type="hidden" name="materia" value="{{ materia }}" />
+			{% import "kernel/macro_csrf.twig" as input_csrf %}
+			{{ input_csrf.mostrar(csrf) }}
+			<div class='row'>
+				<div class='span5' style="margin-top:8px">
+					<div class='span12 offset2'>
+                                            {% if (mesa.cupo != 0   ) %}
+						<div class="span10 progress-barr blue stripess" id="mess" mess="{{mesa.porcentaje_ocupacion}}">
+							<span id="cupo" cupo="{{mesa.porcentaje_ocupacion}}" style="width:{{mesa.porcentaje_ocupacion}}%;"></span>
+							<b class="text-progress">{{mesa.porcentaje_ocupacion}}% {{'inscriptos_examenes_ocupado'|trans|capitalize}}</b>
+						</div>
+                                        {% endif %}
+					</div>
+				</div>
+				<div class='span7'>
+				<div id="form">
+					{% set disabled= ''%}
+						{% if mesa.instancias|length > 1 and param_insc_examen_seleccion_auto_tipo_insc == 'N' %}
+							{% set disabled = 'disabled'%}
+							<select id="{{mesa.llamado_mesa}}" class="instancias">
+									<option value=''>{{ "Seleccione el tipo" }}</option>
+									{% for instancia in mesa.instancias %}
+									<option value='{{ instancia.instancia }}'>{{ instancia.instancia_nombre }}</option>
+									{% endfor %}
+							</select>
+							<input type="hidden" name="tipo_insc" value="" />
+						{% elseif param_insc_examen_seleccion_auto_tipo_insc == 'N' %} 
+										
+											{% if mesa.instancias is empty %}
+												{% set tipo_insc = '' %}
+											{% else %}
+												{% set tipo_insc = (mesa.instancias|first).instancia %}
+											{% endif %}
+							<input type="hidden" name="tipo_insc" value="{{ tipo_insc }}" />
+											
+						{% endif %}
+
+                                                {% if (mesa.porcentaje_ocupacion != 100 ) %}
+                                                    <input type='submit' id="btn_{{mesa.llamado_mesa}}" value='{{ 'inscribirse'|trans|capitalize }}' class="js-inscribir btn btn-small" {{ disabled }} />
+				
+                                                {% endif %}
+
+				</div>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

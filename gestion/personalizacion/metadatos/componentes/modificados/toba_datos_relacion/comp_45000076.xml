@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="45000076" descripcion="toba_datos_relacion">
+	<tabla nombre="apex_objeto_rel_columnas_asoc">
+		<registro estado="3" clave="asoc_id:45000009;objeto:45000076;proyecto:guarani;padre_objeto:32000056;hijo_objeto:45000077;padre_clave:32000103;hijo_clave:45000035"/>
+	</tabla>
+</componente>

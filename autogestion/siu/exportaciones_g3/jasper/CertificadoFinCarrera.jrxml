@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guarani" language="groovy" pageWidth="595" pageHeight="842" columnWidth="497" leftMargin="28" rightMargin="70" topMargin="99" bottomMargin="198">
+	<style name="Title" isDefault="false" fontName="Times New Roman" fontSize="14" isBold="true" isUnderline="true" pdfFontName="Times-Bold"/>
+	<style name="Comun" isDefault="false" fontName="Arial" fontSize="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica"/>
+	<parameter name="nro_solicitud" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="apellido_y_nombre" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT    
+					$P!{apellido_y_nombre} as apellido_y_nombre,
+					vw_personas.desc_tipo_documento || ' ' || vw_personas.nro_documento as documento_principal,
+					to_char(mdp_personas.fecha_nacimiento,'DD/MM/YYYY') as fecha_nacimiento_alumno,
+					vw_planes.plan_nombre as plan_nombre,
+					vw_planes.plan_codigo as plan_codigo,
+					vw_planes.propuesta_nombre as propuesta_nombre,
+					'(' || vw_planes.propuesta_codigo || ') ' || vw_planes.propuesta_nombre as propuesta_nombre_completo,
+					vw_planes.propuesta_nombre_abreviado as propuesta_nombre_abreviado,
+					CASE vw_personas.sexo
+						WHEN 'F' THEN sga_certificados.nombre_femenino
+						WHEN 'X' THEN sga_certificados.nombre_no_binario
+						ELSE sga_certificados.nombre
+					END AS certificado_nombre,
+					to_char(sga_certificados_otorg.fecha_egreso, 'DD/MM/YYYY') as fecha_egreso_alumno,
+					mug_localidades.nombre as localidad_nombre,
+					mug_provincias.nombre as provincia_nombre,
+					mug_paises.nombre as pais_nombre,
+					f_responsables_academicas_propuesta(sga_alumnos.propuesta) as nombre_ra,
+					sga_instituciones.nombre as nombre_institucion
+FROM sga_certificados_otorg
+JOIN sga_alumnos ON sga_alumnos.alumno = sga_certificados_otorg.alumno    
+JOIN vw_personas ON vw_personas.persona = sga_alumnos.persona
+JOIN mdp_personas ON vw_personas.persona = mdp_personas.persona
+JOIN sga_certificados ON sga_certificados_otorg.certificado = sga_certificados.certificado
+JOIN vw_planes ON vw_planes.plan_version = sga_certificados_otorg.plan_version
+JOIN sga_ubicaciones ON sga_ubicaciones.ubicacion = sga_alumnos.ubicacion
+JOIN mug_localidades ON mug_localidades.localidad = sga_ubicaciones.localidad
+JOIN mug_dptos_partidos ON mug_localidades.dpto_partido = mug_dptos_partidos.dpto_partido 
+JOIN mug_provincias ON mug_dptos_partidos.provincia = mug_provincias.provincia 
+JOIN mug_paises ON mug_provincias.pais = mug_paises.pais
+JOIN sga_instituciones ON sga_instituciones.institucion = get_ra_inst_araucano_propuesta(sga_alumnos.propuesta, 'IG')
+WHERE sga_certificados_otorg.nro_solicitud = $P{nro_solicitud}]]>
+	</queryString>
+	<field name="apellido_y_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="documento_principal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_nacimiento_alumno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="plan_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="plan_codigo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="propuesta_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="propuesta_nombre_completo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="propuesta_nombre_abreviado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="certificado_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_egreso_alumno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="localidad_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="provincia_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="pais_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre_ra" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre_institucion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<variable name="fecha_narrada" class="java.lang.String">
+		<variableExpression><![CDATA[(new java.text.SimpleDateFormat("dd 'días del mes de' MMMM 'de' yyyy", new java.util.Locale("es")).format(new java.util.Date())).toUpperCase()]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="334" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="497" height="60"/>
+			</rectangle>
+			<textField>
+				<reportElement style="Comun" x="144" y="12" width="197" height="16"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombre_institucion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Comun" x="133" y="28" width="223" height="16"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombre_ra}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="0" y="60" width="497" height="274"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="Title" x="83" y="73" width="334" height="20"/>
+				<textElement>
+					<font isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[CERTIFICADO DE FINALIZACIÓN DE CARRERA]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Comun" x="7" y="118" width="472" height="72"/>
+				<textFieldExpression><![CDATA["CERTIFICO QUE " + $F{apellido_y_nombre} + "\n" +
+"DOCUMENTO DE IDENTIDAD: " + $F{documento_principal} + ", CON FECHA DE NACIMIENTO EL " + $F{fecha_nacimiento_alumno} + "\n" +
+"HA FINALIZADO LA CARRERA " + $F{propuesta_nombre} + "\n" +
+"CON EL PLAN DE ESTUDIOS " + $F{plan_codigo} + " EL DÍA " + $F{fecha_egreso_alumno} + "\n" +
+"Y OBTENIDO EL TÍTULO DE " + $F{certificado_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Comun" x="7" y="197" width="472" height="52"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["PARA SER PRESENTADO ANTE QUIEN CORRESPONDA, SE EXPIDE EL PRESENTE EN LA CIUDAD DE " + $F{localidad_nombre} + ", PCIA. DE " + $F{provincia_nombre} + ", " + $F{pais_nombre} + ", A LOS " + $V{fecha_narrada} + "."]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -1,0 +1,21 @@
+{% extends "kernel/pagelet.twig" %}
+{% import 'kernel/macro_helpers.twig' as helper %}
+
+{% block contenido %}
+
+    {% set vf = this.get_form_vista() %}
+
+	{{ vf.render_encabezado() | raw }}
+
+	{{ helper.titulo_operacion_con_history_back(
+		'admin_actas_examen_fc.titulo'|trans|capitalize ~ ' - ' ~  'admin_actas_examen_fc.seleccion_de_alumnos'|trans|capitalize,
+		vf.render_acciones()
+	)}}
+
+	{{ vf.render_cuerpo() | raw }}
+
+	{{ vf.render_cierre() | raw }}
+
+{% endblock %}
+
+

@@ -1,0 +1,69 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	{% set form = this.get_form() %}
+	{% autoescape false %}
+	{{ form.encabezado }}
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-inferior'>
+				<div class='pull-left'>
+					<h2>{{this.get_nombre()|trans}}</h2>
+				</div>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'guardar_datos_personales')}}
+				</div>
+				<div class='clearfix'></div>
+			</div>
+		</div>
+
+		{%if form.hay_visibles_agrupado('datos_laborales_sit') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('datos_laborales_sit')">{{'datos_laborales_sit'|trans}}</h3>
+			<div id='datos_laborales_sit' class='toggle-div'>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('existe_trab_alum') }}
+				</div>
+				<div id='div_datos_trabajo'>
+					<div class='clearfix cg-margen'>
+						{{ form.control_group('alu_trab_hace') }}
+					</div>
+					<div class='clearfix cg-margen'>
+						{{ form.control_group('alu_trab_ocup') }}
+					</div>
+					<div class='clearfix cg-margen'>
+						{{ form.control_group('hora_sem_trab_alum', 'span6') }}
+						{{ form.control_group('rel_trab_propuesta', 'span6') }}
+					</div>
+					<div class='clearfix cg-margen'>
+						{{ form.control_group('alu_trab_tarea') }}
+					</div>
+						
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		{%if form.hay_visibles_agrupado('datos_laborales_adic') %}
+		<div id='div_datos_adicionales' class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('datos_laborales_adic')">{{'datos_laborales_adic'|trans}}</h3>
+			<div id='datos_laborales_adic' class='toggle-div'>
+				<div class='clearfix cg-margen'>
+					{{ form.checkbox('alu_trab_desjub') }}
+					{{ form.checkbox('alu_trab_fami') }}
+					{{ form.checkbox('remuneracion') }}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-superior'>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'guardar_datos_personales')}}
+				</div>
+			</div>
+		</div>
+
+	</form>
+	{% endautoescape %}
+
+{% endblock %}

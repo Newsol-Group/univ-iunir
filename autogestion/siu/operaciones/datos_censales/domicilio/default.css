@@ -1,0 +1,64 @@
+.well { 
+	padding-top: 0px; 
+	padding-bottom: 0px; 
+	padding-left: 10px; 
+	padding-right: 10px; 
+}
+
+h2 { 
+	border-bottom: 0px;
+	margin: 0px;
+}
+
+#domicilio select {
+	width: 310px;
+}
+
+h3 { 
+	border-bottom: 1px solid #CCCCCC;
+}
+
+#domicilio .mensaje {
+	margin-bottom:5px;
+	margin-right:5px;
+	padding: 10px;
+}
+
+.control-group {
+    margin-bottom: 0px;
+}
+
+.cg-margen {
+	margin-bottom: 5px;
+}
+
+#domicilio .inline-help {
+	font-size: 75%;
+	line-height: 10px;
+}
+
+#domicilio .input-localidad {
+	width: 435px;
+}
+
+#domicilio .pais-localidad {
+	margin-right: 10px;
+	width: 200px;
+}
+
+#domicilio .btn-cp {
+	margin-left: 10px;
+	margin-top: 26px;
+}
+
+.nota-selector {
+	width: 300px;
+}
+
+#domicilio .input-calle {
+	width: 265px;
+}
+
+#domicilio .input-medio {
+	width: 297px;
+}

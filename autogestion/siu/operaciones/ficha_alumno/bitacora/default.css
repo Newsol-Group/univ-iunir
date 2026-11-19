@@ -1,0 +1,46 @@
+#bitacora .well { 
+	padding-top: 0px; 
+	padding-bottom: 0px; 
+	padding-left: 10px; 
+	padding-right: 10px; 
+}
+
+#bitacora select {
+	width: 310px;
+}
+
+#bitacora .js-input {
+	width: 550px;
+}
+
+#bitacora .eventos {
+	padding-right: 0px;
+	margin-right: 0px;
+	width: 85px;
+}
+
+#bitacora .control-group {
+    margin-bottom: 0px;
+}
+
+#bitacora .cg-margen {
+	margin-bottom: 5px;
+}
+
+#bitacora .mensaje {
+	margin-top: 10px;
+	text-align: center;
+	font-weight: bold;
+}
+
+#bitacora .combo_small {
+	/*width: 205px;*/
+}
+
+#bitacora .titulo {
+	width: 675px;
+}
+
+#bitacora .observaciones {
+	width: 675px;
+}

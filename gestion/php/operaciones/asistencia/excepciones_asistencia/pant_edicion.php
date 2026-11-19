@@ -1,0 +1,12 @@
+<?php
+class pant_edicion extends guarani_pers_ei_pantalla
+{
+	function generar_layout()
+	{
+		$this->controlador()->ev_info_alumno()->generar_html();
+		$this->controlador()->ev_info_comision()->generar_html();
+		echo '<hr />';
+		parent::generar_layout();
+	}
+}
+?>

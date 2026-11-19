@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="38000823" descripcion="toba_ei_filtro">
+	<tabla nombre="apex_objeto_ei_filtro_col">
+		<registro estado="1">
+			<columna nombre="objeto_ei_filtro_col" valor="770000185"/>
+			<columna nombre="objeto_ei_filtro" valor="38000823"/>
+			<columna nombre="objeto_ei_filtro_proyecto" valor="guarani"/>
+			<columna nombre="tipo" valor="opciones"/>
+			<columna nombre="nombre" valor="responsabilidad"/>
+			<columna nombre="expresion" valor="sga_docentes_responsabilidades.responsabilidad"/>
+			<columna nombre="etiqueta" valor="Responsabilidad"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="inicial" valor="0"/>
+			<columna nombre="orden" valor="5"/>
+			<columna nombre="opciones_es_multiple" valor="0"/>
+			<columna nombre="opciones_ef" valor="ef_combo"/>
+			<columna nombre="carga_metodo" valor="get_responsabilidades"/>
+			<columna nombre="carga_consulta_php" valor="39000004"/>
+			<columna nombre="carga_fuente" valor="guarani"/>
+			<columna nombre="carga_col_clave" valor="valor"/>
+			<columna nombre="carga_col_desc" valor="descr"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="carga_no_seteado_ocultar" valor="0"/>
+			<columna nombre="punto_montaje" valor="1"/>
+		</registro>
+	</tabla>
+</componente>

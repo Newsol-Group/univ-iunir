@@ -1,0 +1,41 @@
+{% if js_vars %}
+	<script type='text/javascript'>
+	{% for name, value in js_vars %}
+		var {{name}} = '{{value}}';
+	{% endfor %}
+	</script>
+{% endif %}
+	
+<div class="titulo_operacion row-fluid">
+	<div class="span12">
+		<h2 class="clearfix">
+			<a href="{{ this.get_accion_volver_ficha() }}" class="btn btn-primary btn-small pull-left" style="margin-top: 5px;">
+				<i class="icon-chevron-left icon-white"></i>
+			</a>
+			<span class="pull-left">{{ 'ficha_alumno'|trans|capitalize }}</span>
+			{% if acciones %}
+				<div class="pull-right">{{ acciones|raw }}</div>
+			{% endif %}
+		</h2>
+	</div>
+</div>
+
+<div id='info-ficha-persona' class='row-fluid'>
+    <div class="span12 well clearfix" style="margin-bottom: 5px;">
+		{#-- Encabezado --#}
+		{% set alumno = this.get_datos_alumno() %}
+		<div class='foto pull-left'><img src='{{ alumno.url_imagen_mediana }}' alt="Imagen ficha" width="70px"/></div>
+		<div class='info-ficha-persona pull-left'>
+			<div>{{ alumno.apellido_nombre_edad }}</div>
+			<div>{{ alumno.documento_principal }}</div>
+		</div>
+    </div>
+</div>
+<div id='layout_dos_columnas' class="row-fluid">
+    <div id='columna_1' class="span3">
+		{{ lista_reportes.render }}
+	</div>
+    <div id='columna_2' class="span9">
+		{{ reporte.render }}
+	</div>
+</div>

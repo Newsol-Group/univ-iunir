@@ -1,0 +1,17 @@
+{% extends "kernel/una_columna_sin_titulo.twig" %}
+{% block columna_1 %}
+<div class="titulo_operacion row-fluid">
+	<div class="span12">
+		<h2 class="clearfix">
+			<a href="{{ this.get_accion_volver_ficha() }}" class="btn btn-primary btn-small pull-left" style="margin-top: 5px;">
+				<i class="icon-chevron-left icon-white"></i>
+			</a>
+			<span class="pull-left">{{ 'ficha_alumno'|trans|capitalize }}</span>
+			{% if acciones %}
+				<div class="pull-right">{{ acciones|raw }}</div>
+			{% endif %}
+		</h2>
+	</div>
+</div>
+{{ alumnos.render }}
+{% endblock %}

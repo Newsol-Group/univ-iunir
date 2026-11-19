@@ -1,0 +1,14 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}    
+
+    <div class="titulo_operacion">
+        <h2 class="clearfix">
+            <span class="pull-left">{{ "convocatorias_becas.titulo" | trans }}</span>
+        </h2>
+    </div>
+
+    <div id="mensaje">
+        <div class="alert {{ this.data.mensaje_tipo }}">{{ this.data.mensaje | trans | raw }}</div>
+    </div>
+    
+{% endblock %}

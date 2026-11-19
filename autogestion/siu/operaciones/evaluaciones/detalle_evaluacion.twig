@@ -1,0 +1,28 @@
+<table class="table table-condensed detalle-detalle detalle-tabla">
+	<tr>
+		<td><strong>{{ 'evaluacion'|trans|capitalize }}:</strong></td>
+		<td colspan='3'>{{ this.data.cabecera.evaluacion_nombre }} - {{ this.data.cabecera.descripcion }}</td>
+	</tr>
+	<tr>
+		<td><strong>{{ 'fecha'|trans|capitalize }}:</strong></td>
+		<td>{{ this.data.cabecera.evaluacion_fecha }} </td>
+		<td><strong>{{ 'estado'|trans|capitalize }}:</strong></td>
+		<td>{{ this.data.cabecera.estado_nombre }}</td>
+	</tr>
+	<tr>
+		<td><strong>{{ 'hora_inicio'|trans|capitalize }}:</strong></td>
+		<td>{{ this.data.cabecera.evaluacion_hora_inicio }}</td>
+		<td><strong>{{ 'hora_fin'|trans|capitalize }}:</strong></td>
+		<td>{{ this.data.cabecera.evaluacion_hora_fin }}</td>
+	</tr>
+	<tr>
+		<td><strong>{{ 'tipo'|trans|capitalize }}:</strong></td>
+		<td>{{ this.data.cabecera.evaluacion_tipo_nombre }}</td>
+
+		<td><strong>{{ 'escala_notas'|trans|capitalize }}:</strong></td>
+		<td>
+			<a href=# id="ver_escala"><i class="icon-eye-open"></i>
+				{{ this.data.cabecera.escala_nota_nombre }}    </a>
+		</td>
+	</tr>
+</table>

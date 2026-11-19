@@ -1,0 +1,24 @@
+{% if this.data.actas %}
+<table class="table table-bordered table-condensed comisiones">
+	<tr class="titulo">
+		<th>{{'reporte_actas.acta'|trans|capitalize}}</th>
+		<th>{{'reporte_actas.actividad'|trans|capitalize}}</th>
+		<th>{{'reporte_actas.comision'|trans|capitalize}}</th>
+		<th>{{'reporte_actas.sede'|trans|capitalize}}</th>
+		<th style="width: 140px;">{{'reporte_actas.estado'|trans|capitalize}}</th>
+	</tr>
+	{% for acta in this.data.actas %}
+	<tr{% if (acta.url_acta) %} class="promocion" data-acta="{{acta.nro_acta}}" data-link="{{acta.url_acta}}"{% endif %}>
+		<td>{{acta.nro_acta}}</td>
+		<td>{{acta.actividad_nombre}} ({{acta.actividad_codigo}})</td>
+		<td>{{acta.comision_nombre}}</td>
+		<td>{{acta.ubicacion_nombre}}</td>
+		<td>{{acta.estado_acta}}</td>
+	</tr>
+	{% endfor %}
+</table>
+{% else %}
+<div class="alert alert-warning">
+	{{'reporte_actas.promociones.vacio'|trans|capitalize}}
+</div>
+{% endif %}

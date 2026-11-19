@@ -1,0 +1,105 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+
+    <div class="titulo_operacion">
+        <h2 class="clearfix">
+            <div class="pull-left">{{ "solicitar_certificacion.solicitud_titulo" | trans }}</div>
+            <div class="pull-right">
+                <a href="{{ this.data.url_volver }}" class="btn" title="{{ 'volver' | trans }}"><i class="icon-backward"></i> {{ 'volver' | trans }}</a>
+            </div>
+        </h2>
+    </div>
+
+    {# Si hay mensaje lo muestro #}
+    {% if this.data.mensaje is not empty %}
+    <div class="alert {{ this.data.tipo_mensaje }}">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ this.data.mensaje | raw }}
+    </div>
+    {% endif %}
+        
+    <div id="encabezado">
+        <div class="encabezado-item">
+            <span class="encabezado-etiqueta">{{ "solicitar_certificacion.encabezado.apellido_nombre" | trans }}: </span>
+            <span class="encabezado-valor">{{ this.data.encabezado.apellido_nombre }}</span>
+        </div>
+        <div class="encabezado-item">
+            <span class="encabezado-etiqueta">{{ "solicitar_certificacion.encabezado.fecha_nacimiento" | trans }}: </span>
+            <span class="encabezado-valor">{{ this.data.encabezado.fecha_nacimiento }}</span>
+        </div>
+            <div class="encabezado-item">
+            <span class="encabezado-etiqueta">{{ "solicitar_certificacion.encabezado.tipo_nro_documento" | trans }}: </span>
+            <span class="encabezado-valor">{{ this.data.encabezado.tipo_nro_documento }}</span>
+        </div>
+        <div class="encabezado-item">
+            <span class="encabezado-etiqueta">{{ "solicitar_certificacion.encabezado.certificado_nombre" | trans }}: </span>
+            <span class="encabezado-valor">{{ this.data.encabezado.certificado_nombre }}</span>
+        </div>
+    </div>
+
+    <div id="documentacion">
+        <h2 class="clearfix"><span class="pull-left">{{ "solicitar_certificacion.documentacion.titulo" | trans }}</span></h2>
+        
+        <table class="table table-condensed table-hover table-striped">
+              <thead>
+                <tr>
+                  <th>{{ 'solicitar_certificacion.documentacion.requisito' | trans }}</th>
+                  <th>{{ 'solicitar_certificacion.documentacion.estado_presentacion_digital' | trans }}</th>
+                  <th>{{ 'solicitar_certificacion.documentacion.observaciones' | trans }}</th>
+                  {# Si usa RDI #}
+                  {% if this.data.usa_rdi %}<th></th>{% endif %}
+                </tr>
+              </thead>
+              <tbody>
+                {# Recorro los documentos #}
+                {% for documento in this.data.documentos %}
+                <tr>
+                  <td>{{ documento.requisito_nombre }}</td>
+                  
+                  {% if documento.estado_req_digital == this.data.estado_no_presentado %}
+                    {% set label_estado_req_digital = '' %}
+                  {% elseif documento.estado_req_digital == this.data.estado_pendiente_validacion %}
+                    {% set label_estado_req_digital = 'label-warning' %}
+                  {% elseif documento.estado_req_digital == this.data.estado_presentado %}
+                    {% set label_estado_req_digital = 'label-success' %}
+                  {% elseif documento.estado_req_digital == this.data.estado_vencido %}
+                    {% set label_estado_req_digital = 'label-important' %}
+                  {% endif %}
+                  <td><span class="label {{ label_estado_req_digital }}">{{ ('requisitos.' ~  documento.estado_req_digital) | trans }}</span></td>
+                  
+                  <td>{{ documento.observaciones }}</td>
+                  {# Si usa RDI #}
+                  {% if this.data.usa_rdi %}
+                  <td>
+                      <a class="btn btn-primary no-ajax" href="{{ this.data.url_requisito }}/{{ documento.requisito }}" title="{{ 'requisitos.doc_digital' | trans }}">
+                          <i class="icon-edit icon-white"></i> {{ 'requisitos.doc_digital' | trans }}
+                      </a>
+                  </td>
+                  {% endif %}
+                </tr>
+                {% endfor %}
+              </tbody>
+        </table>
+    </div>
+              
+    {# Si usa RDI #}
+    {% if this.data.usa_rdi %}
+    <div id="finalizar" class="alert alert-block">
+        <h3>
+          {{ 'solicitar_certificacion.documentacion.leyenda_finalizar' | trans }}
+        </h3>
+        
+        {# Si no cargó todos los requisitos entonces deshabilito el botón "Finalizar Solicitud" #}
+        {% set btn_finalizar_disabled = (this.data.cant_requistos_cargados < this.data.certificado_tramitado.cant_requistos_requeridos) %}
+        <div id="finalizar-btn-wrapper">
+            <form action="{{ this.data.url_finalizar_solicitud }}" method="post">
+                <input type="hidden" name="nro_solicitud" value="{{ this.data.certificado_tramitado.nro_solicitud }}">
+                <button type="button" class="btn btn-large btn-success js-btn-finalizar" {% if btn_finalizar_disabled %}disabled{% endif %} title="{{ 'solicitar_certificacion.documentacion.btn_finalizar' | trans }}">
+                    <i class="icon-ok-sign icon-white"></i> {{ 'solicitar_certificacion.documentacion.btn_finalizar' | trans }}
+                </button>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+    
+{% endblock %}

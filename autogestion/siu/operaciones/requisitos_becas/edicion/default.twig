@@ -1,0 +1,137 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+    
+    <div class="titulo_operacion">
+        <h2 class="clearfix">
+            <div class="pull-left">{{ "header.menu.requisitos_becas" |trans }}</div>
+            <div class="pull-right">
+                <a href="{{ this.data.url_listado }}" class="btn" title="{{ 'volver' | trans }}"><i class="icon-backward"></i> {{ 'volver' | trans }}</a>
+            </div>
+        </h2>
+    </div>
+            
+    <ul class="breadcrumb">
+        <li class="active">{{ 'header.menu.tramites' | trans }} <span class="divider">/</span></li>
+        <li class="active">{{ 'header.menu.convocatorias_becas' | trans }} <span class="divider">/</span></li>
+        <li class="active">{{ this.data.info_habilitacion.convocatoria.nombre ?? this.data.info_habilitacion.titulo }}</li>
+    </ul>
+    
+    {# Si hay mensaje lo muestro #}
+    {% if this.data.mensaje is not empty %}
+    <div class="alert {{ this.data.tipo_mensaje }}">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ this.data.mensaje | raw }}
+    </div>
+    {% endif %}
+
+    <div class="alert alert-info">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ 'requisitos_becas.leyenda_herramientas_online' | trans | raw }}
+    </div>
+    
+    <p class="descr_requisito">{{ 'requisitos.msj_extensiones' | trans }} <strong>{{ this.data.extensiones }}</strong></p>
+    <p class="descr_requisito">{{ 'requisitos.msj_tamanio_max' | trans }} <strong>{{ this.data.tamanio_maximo }}</strong></p>
+    
+    <div class="well clearfix">
+    <h3 class="requisito-header">{{ this.data.requisito.nombre }}</h3>
+    {% if this.data.requisito.descripcion %}
+        <p class="descr_requisito">{{ this.data.requisito.descripcion }}</p>
+    {% endif %}
+    <div class="row-fluid">
+        
+    {# Si tiene documento en el RDI y no se trata de una modificación #}
+    {% if (this.data.requisito.presentado == this.data.si) and not this.data.es_mofificacion %}
+        
+        <div class="span6">
+            {# Si hubo error en el RDI #}
+            {% if this.data.error_recuperar_documento %}
+                <div class="alert alert-error">{{ 'requisitos.msj_error_rdi' | trans | raw }}</div>
+            {# Si se pudo recuperar el documento del RDI #}
+            {% else %}
+                {% set class_vista_previa = this.data.es_imagen ? 'img-rounded' : 'no-disponible' %}
+                <img src="{{ this.data.url_img_vista_previa_documento }}" class="{{ class_vista_previa }}" alt="{{ this.data.requisito.nombre }}">
+            {% endif %}
+        </div>
+
+        <div class="span6">
+            <div class="botonera pull-right">
+                
+                <a 
+                  class="btn btn-info no-ajax {% if this.data.error_recuperar_documento %}disabled{% endif %}"
+                  title="{{ 'requisitos.descargar' | trans }}"
+                  href="{{ this.data.error_recuperar_documento ? '#' : this.data.url_descargar ~ "/" ~ this.data.requisito.habilitacion ~ "/" ~ this.data.requisito.requisito }}" 
+                >
+                  <i class="icon-download icon-white"></i> {{ 'requisitos.descargar' | trans }}
+                </a>
+
+                {# Si es reapertura y no esta rechazado entonces deshabilito los botones "Modificar" y "Eliminar" #}
+                {% set btn_modificar_eliminar_disabled = (this.data.es_reapertura and (this.data.requisito.rechazado == this.data.no)) %}
+                {% if not btn_modificar_eliminar_disabled %}
+                <a 
+                  class="btn btn-warning no-ajax {% if this.data.error_recuperar_documento %}disabled{% endif %}"
+                  title="{{ 'requisitos.modificar' | trans }}"
+                  href="{{ this.data.error_recuperar_documento ? '#' : this.data.url_modificar ~ "/" ~ this.data.requisito.habilitacion ~ "/" ~ this.data.requisito.requisito }}" 
+                >
+                  <i class="icon-pencil icon-white"></i> {{ 'requisitos.modificar' | trans }}
+                </a>
+
+                <form class="form-inline js-form-eliminar" method="POST" action="{{ this.data.url_eliminar }}">
+                    <input type="hidden" name="habilitacion" value="{{ this.data.requisito.habilitacion }}">
+                    <input type="hidden" name="requisito" value="{{ this.data.requisito.requisito }}">
+                    <button 
+                      type="button"
+                      class="btn btn-danger js-btn-eliminar"
+                      title="{{ 'requisitos.eliminar' | trans }}"
+                      {% if this.data.error_recuperar_documento %}disabled{% endif %}
+                    >
+                      <i class="icon-remove icon-white"></i> {{ 'requisitos.eliminar' | trans }}
+                    </button>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+
+    {# Si no tiene documento en el RDI o se trata de una modificación #}
+    {% else %}
+        
+        <div class="span12">
+            <form class="form-inline" enctype="multipart/form-data" method="post" action="{{ this.data.url_subir }}" autocomplete="off">
+                <div class="row-fluid">
+                    
+                    <div class="span6">
+                        <input type="hidden" name="MAX_FILE_SIZE" value="{{ this.data.tamanio_maximo_numero }}" />
+                        <input type="hidden" name="habilitacion" value="{{ this.data.requisito.habilitacion }}">
+                        <input type="hidden" name="requisito" value="{{ this.data.requisito.requisito }}">
+
+                        {# https://dev.to/ibn_abubakre/styling-file-inputs-like-a-boss-mhm #}
+                        <div class="file-input">
+                          <input type="file" id="file" class="file" name="archivo" />
+                          <label for="file">
+                              {{ 'requisitos.btn_examinar' | trans }}
+                              <p class="file-name">{{ 'requisitos.no_selecciono_archivo' | trans }}</p>
+                          </label>
+                        </div>
+                    </div>
+
+                    <div class="span6 text-right">
+                        <button
+                            type="submit" 
+                            class="btn btn-success"
+                            title="{{ 'requisitos.subir' | trans }}"
+                        >
+                            <i class="icon-upload icon-white"></i> {{ 'requisitos.subir' | trans }}
+                        </button>
+                    </div>
+                        
+                </div>
+            </form>
+        </div>
+                        
+    {% endif %}
+           
+        <!-- Cierro row-fluid --> 
+        </div>
+    <!-- well --> 
+    </div>
+            
+{% endblock %}

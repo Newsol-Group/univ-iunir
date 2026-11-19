@@ -1,0 +1,11 @@
+#idiomas .well {
+	background-color: wheat;
+}
+
+#idiomas select {
+	width: 540px;
+}
+
+#idiomas .margen-idiomas {
+	padding-left: 70px;
+}

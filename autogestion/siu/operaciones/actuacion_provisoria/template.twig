@@ -1,0 +1,14 @@
+{% extends "kernel/una_columna_sin_titulo.twig" %}
+{% block columna_1 %}
+    
+    <div class="titulo_operacion">
+        <h2 class="clearfix">
+            <span class="pull-left">{{ "tit_actuacion_provisoria" | trans }}</span>
+        </h2>
+    </div>
+    
+    {{ cursa.render }}
+    {{ promo.render }}
+    {{ exa.render }}
+    
+{% endblock %}

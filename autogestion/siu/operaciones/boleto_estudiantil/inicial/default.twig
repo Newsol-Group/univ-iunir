@@ -1,0 +1,116 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+
+    <div class="alert alert-info">{{ 'boleto_estudiantil.alerta_verificar_datos' | trans | raw }}</div>
+
+    <table class="table table-bordered table-hover">
+        <tbody>
+        <tr>
+            <td><strong>{{ 'boleto_estudiantil.apellido_nombre' | trans }}</strong></td>
+            <td>{{ this.data.datos_basicos_persona.apellido }}, {{ this.data.datos_basicos_persona.nombres }}</td>
+        </tr>
+
+        <tr>
+            <td><strong>{{ 'boleto_estudiantil.tipo_documento' | trans }}</strong></td>
+            <td>{{ this.data.datos_basicos_persona.tipo_documento_desc }} ({{ this.data.datos_basicos_persona.tipo_documento_desc_abrev }})</td>
+        </tr>
+
+        <tr>
+            <td><strong>{{ 'boleto_estudiantil.numero_documento' | trans }}</strong></td>
+            <td>{{ this.data.datos_basicos_persona.nro_documento }}</td>
+        </tr>
+
+        <tr>
+            <td><strong>{{ 'boleto_estudiantil.correo_electronico' | trans }}</strong></td>
+            <td>
+            <span class="pull-left">
+                {% if this.data.datos_basicos_persona.email %}
+                    {{ this.data.datos_basicos_persona.email }}
+                {% else %}
+                    <span class="label label-important">{{ 'boleto_estudiantil.email_sin_definir' | trans }}</span>
+                {% endif %}
+            </span>
+                <a class="pull-right" href="{{ this.data.url_editar_email }}">{{ 'boleto_estudiantil.editar' | trans }}</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    {# Lo dejo iniciar el tramite si los datos basicos de la persona son correctos #}
+    {% if this.data.datos_basicos_persona_correctos %}
+
+        <div class="well">
+            <h3>{{ 'boleto_estudiantil.inicia_tramite' | trans }}</h3>
+            <p>{{ 'boleto_estudiantil.inicia_tramite_leyenda' | trans }}</p>
+
+            <ol id="puntos_tramite">
+                <li>{{ 'boleto_estudiantil.inicia_tramite_punto_1' | trans | raw }}</li>
+            </ol>
+
+            <div class="well">
+                <div class="row-fluid">
+                    <form id="js_form_tramite" method="post" action="{{ this.data.url_nueva_solicitud }}">
+
+                        <label id="acepta_condiciones" class="checkbox">
+                            <input type="checkbox" id="acepto" value="" {% if(this.data.solicitud_deshabilitada) %} disabled="disabled" {% endif %}>
+                            {{ 'boleto_estudiantil.inicia_tramite_terminos' | trans }}
+                        </label>
+                        <div class="form-container">
+                            <button type="submit" class="btn btn-info btn-block js-btn-solicitar btn-large" name="" id="btn_solicitar_boleto" disabled="disabled">{{ 'boleto_estudiantil.inicia_tramite_btn' | trans }}</button>
+                        </div>
+
+                        {% import "kernel/macro_csrf.twig" as input_csrf %}
+                        {{ input_csrf.mostrar(this.data.csrf) }}
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    {% endif %}
+
+    {# Muestro el historial de solicitudes #}
+    {% if this.data.listado_solicitudes %}
+
+        <div class="accordion" id="accordion_historial_solicitudes">
+            <div class="accordion-group">
+
+                <div id="js_accordion_heading_hs" class="accordion-heading">
+                    <a class="accordion-toggle no-ajax" data-toggle="collapse" data-parent="#accordion_historial_solicitudes" href="#collapse_historial_solicitudes">
+                        {{ 'boleto_estudiantil.historial_solicitudes' | trans }} <i class="pull-right icon-refresh"></i>
+                    </a>
+                </div>
+
+                <div id="collapse_historial_solicitudes" class="accordion-body collapse">
+                    <div class="accordion-inner">
+
+                        <table class="table">
+                            <thead>
+                                <th>{{ 'boleto_estudiantil.historial_solicitudes_operacion' | trans }}</th>
+                                <th style="width: 120px;">{{ 'boleto_estudiantil.historial_solicitudes_fecha_solicitud' | trans }}</th>
+                                <th>{{ 'boleto_estudiantil.historial_solicitudes_respuesta' | trans }}</th>
+                                <th>{{ 'boleto_estudiantil.historial_solicitudes_estado' | trans }}</th>
+                            </thead>
+
+                            <tbody>
+
+                            {% for solicitud in this.data.listado_solicitudes %}
+                                <tr>
+                                    <td>{{ solicitud.operacion_str }}</td>
+                                    <td>{{ solicitud.fecha_solicitud_str }}</td>
+                                    <td><strong>{{ solicitud.respuesta_str }}:</strong> {{ solicitud.respuesta_desc_str }}</td>
+                                    <td>{{ solicitud.procesado_str }}</td>
+                                </tr>
+                            {% endfor %}
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    {% endif %}
+{% endblock %}

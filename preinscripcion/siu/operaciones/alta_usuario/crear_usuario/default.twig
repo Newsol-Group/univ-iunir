@@ -1,0 +1,151 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}    
+	{% set form = this.get_form() %}
+	{% autoescape false %}
+
+	<div class="alert alert-warning strong">
+		{{ 'msj_advertencia_alta' | trans | raw }}
+	</div>
+
+        {% if this.estado in [this.data.inicial, this.data.form_error_validacion, this.data.error_recaptcha, this.data.form_error_csrf] %}
+		
+                {% if this.data.usar_captcha %}
+                    <script src="https://www.google.com/recaptcha/api.js?hl=es-419" async defer></script>
+                {% endif %}
+
+		{{ form.encabezado }}
+			{% if this.data.mensajes %}
+			<div class='strong'>
+				{% import "kernel/macro_notificaciones.twig" as notificaciones %}
+				{{ notificaciones.render_notif(this.data.mensajes) }}
+			</div>
+			{% endif %}
+
+			{% if this.data.msg_alta_se %}
+			<div class="alert alert-info strong">
+				<button type="button" class="close" data-dismiss="alert">&times;</button>
+				{{ this.data.msg_alta_se }}
+			</div>
+			{% endif %}
+
+                        {% import "kernel/macro_csrf.twig" as input_csrf %}
+                        {{ input_csrf.mostrar(this.data.csrf) }}
+            
+			<div class='well clearfix'>
+				<h3>{{'datos_personales'|trans}}</h3>
+                                <div class='clearfix cg-margen'>
+					{{ form.control_group('sexo', 'span6') }}
+                                        {{ form.control_group('fecha_nacimiento', 'span6') }}
+				</div>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('nacionalidad', 'span6') }}
+					{{ form.control_group('pais_documento', 'span6') }}
+				</div>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('tipo_documento', 'span6') }}
+                                </div>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('nro_documento', 'span6') }}
+                                        {{ form.control_group('nro_documento_rep', 'span6') }}
+				</div>
+				<div id="js_nro_documento" class="alert alert-info"><!-- Se completa con JS --></div>
+				
+				<div class='clearfix cg-margen' id="js_renaper">
+				{% if this.data.mat_validacion_renaper == 'S' %}
+					<div id="js_ayuda_numero_tramite" class="alert alert-info"><!-- Se completa con JS --></div>
+					<p>
+						{{'ayuda_numero_tramite'|trans|raw}}						
+						<a href="#" id="ayuda_numero_tramite" class='control-group' data-toggle="popover" data-placement="left" data-img="{{ this.data.url_img_nro_tramite_dni }}">
+							<i class='icon-question-sign'></i>
+						</a>
+						<br><br>												                                                         
+					</p>
+					{{ form.control_group('nro_tramite_dni', 'span6 divNroTramite') }}
+					<input type="button" id="validar" name="validar" value="{{'ws_renaper.validar'|trans|capitalize}}" class="btn btn-info" onclick="validar_nro_tramite_dni()"/>
+					<div id="js_nro_tramite_dni" class="alert alert-info"><!-- Se completa con JS --></div>                                    
+					
+					<!-- Aca coloco los inputs que estaran ocultos -->
+					<div class='clearfix cg-margen'>
+							{{ form.control_group('fecha_nacimiento', 'span6') }}
+							{{ form.control_group('calle_proc', 'span6') }}
+							{{ form.control_group('numero_proc', 'span6') }}
+							{{ form.control_group('piso_proc', 'span6') }}
+							{{ form.control_group('dpto_proc', 'span6') }}
+							{{ form.control_group('cp_proc', 'span6') }}
+							{{ form.control_group('barrio_proc', 'span6') }}
+							{{ form.control_group('numero_cuil', 'span6') }}
+							{{ form.control_group('validado_con_renaper', 'span6') }}
+					</div>
+					{% endif %}
+				</div>  
+				<div class='clearfix cg-margen' id="apellido_nombre">
+					{{ form.control_group('apellido', 'span6 div_apellido') }}
+					{{ form.control_group('nombres', 'span6 div_nombre') }}
+				</div>
+                                <div class='clearfix cg-margen' id="apellido_nombre_elegido">
+					{{ form.control_group('nombres_elegido', 'span6 div_nombre_elegido') }}
+                                   
+				</div><div class='clearfix cg-margen' >
+					{{'nombres_elegido_leyenda'|trans}}
+				</div>
+			</div>
+
+			<div class='well clearfix'>
+				<h3>{{'datos_usuario'|trans}}</h3>
+                               <div class="alert alert-warning strong">
+					{{ 'leyenda_ayuda_datos_usuario'|trans }}
+				</div>     
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('telefono', 'span6') }}
+				</div>
+                                <div class='clearfix cg-margen'>
+					{{ form.control_group('pregunta_secreta', 'span6') }}
+					{{ form.control_group('respuesta_secreta', 'span6') }}
+				</div>
+                                <div class='clearfix cg-margen'>
+					{{ form.control_group('e_mail', 'span6') }}
+					{{ form.control_group('e_mail_rep', 'span6') }}
+				</div>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('password', 'span6') }}
+					{{ form.control_group('rpassword', 'span6') }}
+                  </div>
+			
+				{% if this.data.aclaracion_clave %}
+					<div class='clearfix inline-help strong'>
+						{{ this.data.aclaracion_clave }}
+					</div>
+				{% endif %}
+			</div>
+
+			{% if this.data.usar_captcha %}
+			<div class='pull-right'>
+				<div class="control-group div-captcha">
+					<div class="g-recaptcha" data-sitekey="{{ this.data.captcha_site_key }}"></div> 
+				</div>
+			</div>
+			<div class='clearfix'></div>
+			{% endif %}
+
+			<div class='pull-right'>
+				{{ form.submit_button('continuar', 'generar_usuario')}}
+				<input type="button" name="volver" value="{{'volver'|trans|capitalize}}" class="btn btn-info" onclick="window.location.href='{{this.data.url_volver}}'" />
+			</div>
+
+		</div>
+	</form>
+
+	{% elseif this.estado == 'mail_enviado' %}
+	<h2>{{"se_envio_email_a"|trans({'%1%': this.data.email})|capitalize}}</h2>
+	<p>{{ "descripcion_mail_crear_usuario"|trans({'%1%': this.data.email}) }}</p>
+	
+	{% else %}
+		{% import "kernel/macro_notificaciones.twig" as notificaciones %}
+		{{ notificaciones.render_notif(this.data.mensajes) }}
+		<div class='pull-right'>
+			<input type="button" name="volver" value="{{'volver'|trans|capitalize}}" class="btn btn-info" onclick="window.location.href='{{this.data.url_volver}}'" />
+		</div>
+	{% endif %}
+	
+	{% endautoescape %}
+{% endblock %}

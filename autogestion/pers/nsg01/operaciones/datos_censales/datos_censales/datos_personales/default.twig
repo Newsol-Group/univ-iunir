@@ -1,0 +1,113 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	
+        {# Si no viene de Convocatorias a Becas #}
+        {% if not this.viene_de_convocatorias_becas() %}
+            {% import "macro_mensajes.twig" as mensajes %}
+            <div id="mensajes">
+                    {{ mensajes.render_mensajes(this.datos_confirmados(), this.datos_error_control(), this.datos_vigentes()) }}
+            </div>
+	{% endif %}
+	
+	{% set form = this.get_form() %}
+	{% autoescape false %}
+	{{ form.encabezado }}
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-inferior clearfix'>
+				<div class='pull-left'>
+					<h2>{{this.get_nombre_seccion()|trans}}</h2>
+				</div>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'datos_censales.guardar')  }}
+				</div>
+			</div>
+		</div>
+
+		<div class="clearfix">
+			<img id="imagen_perfil" class="pull-left img-rounded" src='{{ this.data.url_imagen }}' alt="Imagen ficha"/>
+		</div>
+                <div class='well clearfix'>
+                <div id='datos_personales' class='toggle-div'>
+                    <div class='clearfix cg-margen'  >
+						{{ form.control_group('apellido', 'span6') }}
+						{{ form.control_group('nombres', 'span6')  }}
+                    </div>
+                    <div class='clearfix cg-margen'  >
+                        {{ form.control_group('tipo_documento_desc', 'span6') }}
+                        {{ form.control_group('numero_documento', 'span6')  }}
+                    </div>
+                    <div class='clearfix cg-margen'>
+                    </div>
+                    <div class='clearfix cg-margen'>
+                        {{ form.control_group('cuil', 'span6') }}                        
+                        {{  form.control_group('sexo', 'span6') }}
+                    </div>
+                    {#<div class='clearfix cg-margen'  >
+                        {{  form.control_group('sexo', 'span6') }}
+                    </div>#}
+                    <div class='clearfix cg-margen' data-toggle="tooltip" data-placement="top" data-original-title="{{'datos_censales.mensaje_identidad_genero'|trans}}">
+                    {{ form.control_group('identidad_genero', 'span6') }}
+                    {{ form.control_group('identidad_genero_otro', 'span4')  }}
+                    </div> 
+                    <p id="ayuda_genero" class='control-group span6'><i class='icon-question-sign'></i> {{'datos_censales.ayuda_identidad_genero'|trans({'%link%': this.data.url_identidad_genero})|raw}}</p>			
+                            
+		{%if form.hay_visibles_agrupado('situacion_familiar') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('situacion_familiar')">{{'datos_censales.situacion_familiar'|trans}}</h3>
+			<div id='situacion_familiar' class='toggle-div'>
+                                <div class='clearfix cg-margen'>
+					{{ form.control_group('estado_civil', 'span6') }}
+					{{ form.control_group('unido_hecho', 'span6') }}
+				</div>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('cantidad_hijos', 'span6') }}
+					{{ form.control_group('cantidad_familia', 'span6') }}
+				</div>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('situacion_padre', 'span6') }}
+					{{ form.control_group('situacion_madre', 'span6') }}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		{%if form.hay_visibles_agrupado('turno_preferido') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('turno_preferido')">{{'datos_censales.turno_preferido'|trans}}</h3>
+			<div id='turno_preferido' class='toggle-div'>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('turno_preferido') }}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+		
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('pueblos_originarios')">{{'datos_censales.pueblos_originarios'|trans}}</h3>
+			<div id='datos_principales_nacim' class='toggle-div'>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('pertenece_pueblo_originario') }}
+					<div id="div_pueblo_originario">
+					{{ form.control_group('pueblo_originario', 'span6') }}
+					<div id="div_otro_pueblo_originario" class="span6">
+					{{ form.control_group('pueblo_originario_otro') }}
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-superior'>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'datos_censales.guardar')  }}
+				</div>
+			</div>
+		</div>
+	</form>
+	{% endautoescape %}
+        
+        {% import "macro_confirmacion.twig" as confirmacion %}
+        {{ confirmacion.mostrar(this.viene_de_convocatorias_becas(), this.hay_datos_faltantes_convocatoria(), this.get_url_siguiente_paso()) }}
+        
+{% endblock %}

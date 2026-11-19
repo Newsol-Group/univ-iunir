@@ -1,0 +1,44 @@
+{% if js_vars %}
+	<script type='text/javascript'>
+	{% for name, value in js_vars %}
+		var {{name}} = '{{value}}';
+	{% endfor %}
+	</script>
+{% endif %}
+
+{% if this.hay_error() %}
+<div class="alert alert-error strong">
+	 <button type="button" class="close" data-dismiss="alert">&times;</button>
+	{{ this.get_error()|trans|raw }}
+</div>
+{% endif %}
+	
+{% if this.hay_mensaje_alta_iniciada() %}
+<div class="alert alert-info strong">
+	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	{{ this.get_mensaje_alta_iniciada() | raw }}
+</div>
+{% endif %}
+	
+{% if this.hay_mensaje_clave_reset() %}
+<div class="alert alert-info strong">
+	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	{{ this.get_mensaje_clave_reset()|trans|raw }}
+</div>
+{% endif %}
+	
+{% if this.hay_cuenta_vinculada() %}
+<div class="alert alert-info strong">
+	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	{{ this.get_cuenta_vinculada()|raw }}
+</div>
+{% endif %}
+	
+<div id='layout_dos_columnas' class="row-fluid">
+    <div id='columna_1' class="span5">
+		{{ form.render }}
+	</div>
+    <div id='columna_2' class="span7">
+		{{ contenido_login.render }}
+	</div>
+</div>

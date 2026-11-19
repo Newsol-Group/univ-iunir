@@ -1,0 +1,76 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+    {% set form = this.get_form() %}
+    {% autoescape false %}
+
+        {% if this.data.mensaje_primer_acceso %}
+            <div class="mensaje alert alert-info">
+                {{ this.data.mensaje_primer_acceso|trans }}
+            </div>
+        {% else %}
+            {% if this.data.cant_inscripciones == 0 %}
+                <div class='alert alert-info mensaje strong'>
+                    {{'sin_inscripciones'|trans|raw}}
+                </div>
+            {% else %}
+                <div>
+                    <h2 class="borde-inferior">{{'propuestas_elegidas'|trans}}</h2>
+                    <table class="table table-stripped table-hover">
+                        <thead>
+                            <tr>
+                                <th>{{'responsable_academica'|trans}}</th>
+                                <th>{{'propuesta'|trans}}</th>
+                                <th>{{'tipo_de_propuesta'|trans}}</th>
+                                <th>{{'ubicacion'|trans}}</th>
+                                <th>{{'modalidad'|trans}}</th>
+                                <th>{{'fecha_fin_vigencia'|trans}}</th>
+                                <th>{{'observaciones'|trans}}</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in this.get_datos_inscripciones() %}
+                                <tr>
+                                    <td>{{item.ra_nombre}}</td>
+                                    <td>{{item.propuesta_nombre}}</td>
+                                    <td>{{item.tipo_propuesta_descr}}</td>
+                                    <td>{{item.ubicacion_nombre}}</td>
+                                    <td>{{item.modalidad_nombre}}</td>
+                                    <td>{{item.fecha_fin_vigencia_visual}}</td>
+                                    <td>
+                                        {% if item.observaciones %}
+                                            <i class="icon-exclamation-sign js-observaciones-icon" data-id="{{item.__preinsc_ID__}}"></i>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if item.estado != 'I' %}
+                                            <button class="btn btn-info btn-small btnEliminar" value="{{'eliminar'|trans}}"
+                                                    data-id="{{item.__preinsc_ID__}}"
+                                                    data-tipo_de_propuesta="{{item.propuesta_tipo}}" 
+                                                    data-propuesta_nombre="{{item.propuesta_nombre}}">
+                                                {{'eliminar'|trans}}
+                                            </button>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr class="js-observaciones" id="{{item.__preinsc_ID__}}">
+                                    <td colspan="8">
+                                        {{'pre_prop_observaciones'|trans}} {{item.observaciones}}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% endif %}
+        {% endif %}
+
+        {% if this.data.permitir_inscripciones %}
+            <div class="pull-left fix-boton">
+                <input id="btnSelectorCarrera" name="btnSelectorCarrera" value="{{'elegir_propuesta'|trans}}" type="button" class="btn btn-inverse" />
+            </div>
+        {% endif %}
+
+    {% endautoescape %}
+
+{% endblock %}

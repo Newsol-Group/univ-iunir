@@ -1,0 +1,33 @@
+{% if actividades is empty %}
+
+    <div class="alert alert-warning text-center">{{ 'inscripcion_cursos.no_hay_cursos_disponibles' | trans }}</div>
+
+{% else %}
+    <div id='filtro_cursos' class="input-append">
+        <input type="text" name="filtro" value="" />
+    </div>
+
+    <div class="js-filtro">
+        <div class="filtro-curso">
+            <span>{{ 'inscripcion_cursos.ver'|trans|capitalize }}</span>
+            <div class="btn-group" data-toggle="buttons-radio">
+                <button type="button" class="btn btn-mini active js-mostrar-todas-materias">{{ 'inscripcion_cursos.todos'|trans|capitalize }}</button>
+                <button type="button" class="btn btn-mini js-mostrar-materias-solo-inscriptas">{{ 'inscripcion_cursos.solo_inscriptos'|trans|capitalize }}</button>
+            </div>
+        </div>
+    </div>
+
+    {% spaceless %}
+        <div id='js-listado-cursos'>
+
+            <ul class="nav nav-list">
+                {% for actividad in actividades %}
+                    <li class='{% if actividad.E_INSCRIPCION %}insc{% endif %} {% if actividad.seleccionada %}active{% endif %}'>
+                        <a href="{{ url_elegir_actividad_curso }}/{{ propuesta_curso_hash }}/{{ attribute(actividad, catalogo_id) }}" title='{{ actividad.nombre }} - ({{actividad.codigo}})'><span class='js-filter-content'>{{ actividad.nombre }}</span></a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endspaceless %}
+
+{% endif %}

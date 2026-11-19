@@ -1,0 +1,20 @@
+{% extends "kernel/pagelet_polite.twig" %}
+{% block contenido %}
+{% if this.data.mensaje %}
+	<div class='alert alert-success'>{{this.data.mensaje}}</div>
+{% endif %}
+<div class="row-fluid">
+	<div class="span12">
+		{% if this.data.alcances %}
+		<form method='post' action='{{this.data.url_boton}}'>
+			<select name="alcance" class="input-xxlarge">
+				{% for alcance in this.data.alcances %}
+					<option value="{{alcance.1}}">{{alcance.0}}</option>
+				{% endfor %}
+			</select>
+			<input type='submit' value='{{ 'generar'|trans|capitalize }}' class="btn btn-info" />
+		</form>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}

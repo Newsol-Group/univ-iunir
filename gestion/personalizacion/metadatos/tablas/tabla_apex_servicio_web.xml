@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<tabla id="apex_servicio_web">
+	<registro estado="3" clave="servicio_web:arai_usuarios">
+		<columna nombre="proyecto" valor="guarani"/>
+		<columna nombre="servicio_web" valor="arai_usuarios"/>
+		<columna nombre="descripcion" valor="Servio Web para acceder a Arai-Usuarios"/>
+		<columna nombre="tipo" valor="rest"/>
+		<columna nombre="param_wsa" valor="0"/>
+	</registro>
+	<registro estado="3" clave="servicio_web:kolla">
+		<columna nombre="proyecto" valor="guarani"/>
+		<columna nombre="servicio_web" valor="kolla"/>
+		<columna nombre="descripcion" valor="Servio Web para acceder a SIU-Kolla"/>
+		<columna nombre="tipo" valor="rest"/>
+		<columna nombre="param_wsa" valor="0"/>
+	</registro>
+	<registro estado="3" clave="servicio_web:sanaviron">
+		<columna nombre="proyecto" valor="guarani"/>
+		<columna nombre="servicio_web" valor="sanaviron"/>
+		<columna nombre="descripcion" valor="Servio Web para acceder a SIU-Sanavirón-Quilmes"/>
+		<columna nombre="tipo" valor="rest"/>
+		<columna nombre="param_wsa" valor="0"/>
+	</registro>
+	<registro estado="3" clave="servicio_web:sidcer">
+		<columna nombre="proyecto" valor="guarani"/>
+		<columna nombre="servicio_web" valor="sidcer"/>
+		<columna nombre="descripcion" valor="Servio Web para acceder a SICer"/>
+		<columna nombre="tipo" valor="rest"/>
+		<columna nombre="param_wsa" valor="0"/>
+	</registro>
+	<registro estado="3" clave="servicio_web:tehuelche">
+		<columna nombre="proyecto" valor="guarani"/>
+		<columna nombre="servicio_web" valor="tehuelche"/>
+		<columna nombre="descripcion" valor="Servio Web para acceder a SIU-Tehuelche"/>
+		<columna nombre="tipo" valor="rest"/>
+		<columna nombre="param_wsa" valor="0"/>
+	</registro>
+	<registro estado="1">
+		<columna nombre="proyecto" valor="guarani"/>
+		<columna nombre="servicio_web" valor="habilitaciones"/>
+		<columna nombre="descripcion" valor="Servicio web de Kolla para consultas relacionadas con las encuestas"/>
+		<columna nombre="tipo" valor="soap"/>
+		<columna nombre="param_wsa" valor="1"/>
+	</registro>
+</tabla>

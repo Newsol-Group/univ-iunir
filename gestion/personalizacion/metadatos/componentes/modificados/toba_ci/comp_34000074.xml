@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="34000074" descripcion="toba_ci">
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:34000074">
+			<columna nombre="nombre" valor="Inscripción a Propuestas" valor_original="Inscripcion a Propuestas"/>
+		</registro>
+	</tabla>
+</componente>

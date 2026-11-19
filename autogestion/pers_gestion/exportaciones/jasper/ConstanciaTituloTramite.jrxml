@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guarani" language="groovy" pageWidth="595" pageHeight="842" columnWidth="497" leftMargin="28" rightMargin="70" topMargin="99" bottomMargin="198" uuid="dbb0f700-2e32-4f0d-ba40-5eb087d3fb29">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="14" isBold="true" isUnderline="true" pdfFontName="Times-Bold"/>
+	<style name="Comun" fontName="Arial" fontSize="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica"/>
+	<parameter name="nro_solicitud" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="apellido_y_nombre" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+	vw_personas.apellido_nombres as apellido_y_nombre,
+	vw_personas.desc_tipo_documento || ' ' || vw_personas.nro_documento as documento_principal,
+	to_char(mdp_personas.fecha_nacimiento,'DD/MM/YYYY') as fecha_nacimiento_alumno,
+	vw_personas.sexo,
+	CASE vw_personas.sexo
+		WHEN 'F' THEN COALESCE(sga_certificados.nombre_femenino, sga_certificados.nombre)
+		WHEN 'X' THEN COALESCE(sga_certificados.nombre_no_binario, sga_certificados.nombre)
+		ELSE sga_certificados.nombre
+	END AS certificado_nombre,
+	COALESCE(sga_certificados_otorg.nro_expediente, ' - ') AS nro_expediente,
+	to_char(sga_certificados_otorg.fecha_egreso, 'DD/MM/YYYY') as fecha_egreso_alumno,
+	initcap(mug_localidades.nombre) as localidad_nombre,
+	mug_provincias.nombre as provincia_nombre,
+		coalesce(mug_paises.nombre, (SELECT vw_localidades.pais_nombre FROM vw_localidades WHERE vw_localidades.localidad = mdp_personas.localidad_nacimiento)) as pais_nombre,
+	sga_instituciones.nombre as nombre_institucion,
+	f_responsables_academicas_propuesta(sga_alumnos.propuesta) as nombre_ra,
+	(select nombre from sga_propuestas where propuesta = sga_alumnos.propuesta) as nombre_propuesta,
+	to_char((select fecha_inscripcion from sga_propuestas_aspira where persona = sga_alumnos.persona and propuesta = sga_alumnos.propuesta), 'DD/MM/YYYY') as fecha_ingreso,
+	lower(negocio_nsg.f_fecha_a_texto(CURRENT_DATE, 2)) AS fecha_actual_narrada,
+	COALESCE(sga_alumnos.legajo, ' -- ') AS legajo,
+	initcap(vw_localidades.localidad_nombre) as ciudad,
+					vw_localidades.provincia_nombre as provincia,
+					vw_localidades.pais_nombre as pais
+
+FROM
+	sga_certificados_otorg
+        JOIN sga_certificados ON sga_certificados_otorg.certificado = sga_certificados.certificado
+        JOIN sga_alumnos ON sga_certificados_otorg.alumno = sga_alumnos.alumno
+        JOIN vw_personas ON sga_alumnos.persona = vw_personas.persona
+        JOIN mdp_personas ON vw_personas.persona = mdp_personas.persona
+        JOIN mug_localidades ON mdp_personas.localidad_nacimiento = mug_localidades.localidad
+        JOIN mug_dptos_partidos ON mug_localidades.dpto_partido = mug_dptos_partidos.dpto_partido
+        JOIN mug_provincias ON mug_dptos_partidos.provincia = mug_provincias.provincia
+        JOIN mug_paises ON mug_provincias.pais = mug_paises.pais
+		JOIN sga_responsables_academicas ON true
+		JOIN sga_instituciones ON sga_instituciones.institucion = sga_responsables_academicas.institucion
+		JOIN vw_localidades ON sga_instituciones.localidad = vw_localidades.localidad
+WHERE sga_certificados_otorg.nro_solicitud = $P{nro_solicitud}
+AND	sga_responsables_academicas.responsable_academica = get_ra_inst_araucano_propuesta(sga_alumnos.propuesta, 'RA')]]>
+	</queryString>
+	<field name="apellido_y_nombre" class="java.lang.String"/>
+	<field name="documento_principal" class="java.lang.String"/>
+	<field name="fecha_nacimiento_alumno" class="java.lang.String"/>
+	<field name="sexo" class="java.lang.String"/>
+	<field name="certificado_nombre" class="java.lang.String"/>
+	<field name="nro_expediente" class="java.lang.String"/>
+	<field name="fecha_egreso_alumno" class="java.lang.String"/>
+	<field name="localidad_nombre" class="java.lang.String"/>
+	<field name="provincia_nombre" class="java.lang.String"/>
+	<field name="pais_nombre" class="java.lang.String"/>
+	<field name="nombre_institucion" class="java.lang.String"/>
+	<field name="nombre_ra" class="java.lang.String"/>
+	<field name="nombre_propuesta" class="java.lang.String"/>
+	<field name="fecha_ingreso" class="java.lang.String"/>
+	<field name="fecha_actual_narrada" class="java.lang.String"/>
+	<field name="legajo" class="java.lang.String"/>
+	<field name="ciudad" class="java.lang.String"/>
+	<field name="provincia" class="java.lang.String"/>
+	<field name="pais" class="java.lang.String"/>
+	<variable name="fecha_narrada" class="java.lang.String">
+		<variableExpression><![CDATA[new java.text.SimpleDateFormat("dd 'días del mes de' MMMM 'de' yyyy", new java.util.Locale("es")).format(new java.util.Date())]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="491" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="7" y="66" width="472" height="20" uuid="21c2641e-8ec1-4112-8311-e6c3d5e56b16"/>
+				<textElement textAlignment="Center">
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[CERTIFICADO DE TÍTULO EN TRÁMITE]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Comun" positionType="Float" mode="Transparent" x="7" y="123" width="490" height="368" uuid="f6f1701b-1dec-4ebf-8118-fa23bac5fb59"/>
+				<textElement textAlignment="Justified" verticalAlignment="Middle">
+					<font size="12" isBold="false"/>
+					<paragraph lineSpacing="Double"/>
+				</textElement>
+				<textFieldExpression><![CDATA["CERTIFICO que " + ($F{sexo}.equals("F") ? "la" : "el" ) + " alumn" + ($F{sexo}.equals("F") ? "a " : "o " ) + $F{apellido_y_nombre} + ", nacid" + ($F{sexo}.equals("F") ? "a " : "o " )+ "en " + $F{pais_nombre} + ", con " + $F{documento_principal} + "; Legajo Nro. " + $F{legajo} + ", ha ingresado el " + $F{fecha_ingreso} + ", y egresado el " + $F{fecha_egreso_alumno} + ", de la carrera de " + $F{nombre_propuesta} + ", obteniendo el título de " + $F{certificado_nombre} + " otorgado por el " + $F{nombre_institucion} + ". Habiendo aprobado la totalidad de las asignaturas y exigencias académicas de dicha carrera, como así también completado todos los requerimientos administrativos. El trámite ha sido elevado a la Dirección Nacional de Gestión Universitaria, Subsecretaría de Políticas Universitarias - Secretaria de Educación. \nA solicitud " + ($F{sexo}.equals("F") ? "de la" : "del" ) + " interesad" + ($F{sexo}.equals("F") ? "a" : "o" ) + ", se extiende la presente constancia a los efectos de ser presentada ante las autoridades que correspondan, en la ciudad de " + $F{ciudad} + ", " +$F{provincia} + ", " + $F{pais} + "" +  $F{fecha_actual_narrada} + "."]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

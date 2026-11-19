@@ -1,0 +1,7 @@
+{% extends "kernel/una_columna.twig" %}
+{% block titulo_operacion %}
+<h1 class="borde-inferior">{{'tit_import_config'|trans}}</h1>
+{% endblock %}
+{% block columna_1 %}
+	{{ form.render }}
+{% endblock %}

@@ -1,0 +1,92 @@
+#controles .control-group {
+    margin-bottom: 5px;
+}
+
+#controles .control-group h3 {
+    color: #555555;
+}
+
+#controles input[type="checkbox"] {
+    float: left;
+    margin-right: 5px;
+}
+
+#controles .error_val {
+    background-color: #EED3D7;
+    color: #B94A48;
+}
+
+#controles h3.titulo {
+	border-bottom: 1px solid #EEEEEE;
+	line-height: 32px;
+}
+
+#controles p.alert-error {
+	background: none;
+    border: 0;
+    color: #B94A48;
+    font-size: 11px;
+    line-height: 15px;
+    margin: 2px 0;
+}
+
+#controles #password_actualerror, #controles #passworderror, #controles #password1error {
+	display: none;
+}
+
+#controles #js-form-pass .controls {
+	min-height: 45px;
+}
+
+#controles .g3w-icono-fail {
+	position: relative;
+	cursor: none;
+}
+
+
+#controles a.btn-info {
+	font-weight: normal;
+}
+
+.login-icon {
+	width: 30px;
+	height: 30px;
+}
+
+.login-srv-wrapper {
+	color: #58B1D1;
+	cursor: pointer;
+	padding: 4px;
+}
+
+
+.login-srv-wrapper:hover {
+	color: white;
+	background-color: #08c;
+}
+
+.login-ops {
+	float: right;
+}
+
+#mensaje-admin-login {
+	display: none;
+}
+
+.login-srv-wrapper span.estado-spn {
+	display: inline !important;
+	width: auto !important;
+	float: none !important;
+}
+
+ul li.error {
+	color: red;
+}
+
+ul li.warning {
+	color: orange;
+}
+
+ul li.info {
+	color: green;
+}

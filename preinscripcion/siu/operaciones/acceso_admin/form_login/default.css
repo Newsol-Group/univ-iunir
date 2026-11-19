@@ -1,0 +1,7 @@
+.centrado{
+    position: absolute;
+    left: 45%;
+    margin-top: 20px;
+    margin-left: -100px;	
+	width: 300px;
+}

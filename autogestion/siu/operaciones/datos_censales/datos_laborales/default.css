@@ -1,0 +1,35 @@
+.well { 
+	padding-top: 0px; 
+	padding-bottom: 0px; 
+	padding-left: 10px; 
+	padding-right: 10px; 
+}
+
+h2 { 
+	border-bottom: 0px;
+	margin: 0px;
+}
+
+h3 { 
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.control-group {
+    margin-bottom: 0px;
+}
+
+.cg-margen {
+	margin-bottom: 5px;
+}
+
+#datos_laborales select {
+	width: 310px;
+}
+
+#datos_laborales .select-largo {
+	width: 655px;
+}
+
+#datos_laborales .input-largo {
+	width: 643px;
+}

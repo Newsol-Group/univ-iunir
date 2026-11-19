@@ -1,0 +1,75 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+
+
+    <div class="titulo_operacion row-fluid">
+        <div class="span12">
+            <h2>{{"reasignar_optativa.reasignacion_de_optativas" | trans}}</h2>
+        </div>
+    </div>
+
+    {% if this.data.optativas_en_mas_de_una_generica is empty %}
+        <div class="alert">{{ 'reasignar_optativa.no_existen_optativas_compartidas_entre_genericas' | trans }}</div>
+    {% else %}
+        
+        {% if this.data.mostrar_mensaje %}
+            <div class="alert {{ this.data.tipo_mensaje }}">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ this.data.mensaje }}
+            </div>
+        {% endif %}
+        
+        <h3>{{ 'reasignar_optativa.optativas_compartidas' | trans }}</h3>
+        
+        <form action="{{ this.data.url_guardar }}" method="post">
+        
+            <table class="table table-striped table-bordered">
+
+                <thead>
+                    <tr>
+                        <th>{{ 'reasignar_optativa.optativa' | trans }}</th>
+                        <th>{{ 'reasignar_optativa.estado' | trans }}</th>
+                        <th>{{ 'reasignar_optativa.asignada_a_generica' | trans }}</th>
+                        <th>{{ 'reasignar_optativa.reasignar_a' | trans }}</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    {% for optativa in this.data.optativas_en_mas_de_una_generica %}
+
+                        <tr>
+
+                            <td>{{ optativa.nombre }}</td>
+                            <td><span class="label label-info">{{ optativa.estado }}</span></td>
+                            <td>{{ optativa.generica_asignada }}</td>
+                            <td>
+                                {% if  optativa.certificado=='N' %}
+                                <select name="optativas[{{ optativa.elemento }}][generica]">
+                                    <option value="">{{ 'reasignar_optativa.seleccione' | trans }}</option>
+                                    {% for generica in optativa.genericas %}
+
+                                        {% if not generica.asignada and  generica.certificado=='N' %}
+                                            
+                                            <option value="{{ generica.elemento }}">{{ generica.nombre }}</option>
+                                        {% endif %}
+
+                                    {% endfor %}   
+                                </select> 
+                                 {% endif %}
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+              
+            <button class="btn btn-large btn-primary pull-right" type="submit">{{ 'reasignar_optativa.confirmar' | trans }}</button>
+            
+        </form>
+                
+    {% endif %}
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends "kernel/barra_lateral_dos_columnas.twig" %}
+
+{% block titulo_operacion %}
+    <h2>{{ "tit_inscripcion_cursos" | trans }}</h2>
+    {% if hay_mensajes %}
+        <div class="alert">
+            {{mensajes}}
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block columna_1 %}
+    {{ cursos.render }}
+{% endblock %}
+
+{% block columna_2 %}
+    {{ info_curso.render }}
+{% endblock %}
+
+{% block columna_3 %}
+    {{ notificaciones.render }}
+{% endblock %}

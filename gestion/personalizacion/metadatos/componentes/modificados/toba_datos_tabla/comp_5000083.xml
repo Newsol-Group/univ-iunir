@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="5000083" descripcion="toba_datos_tabla">
+	<tabla nombre="apex_objeto_db_registros_col">
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:5000083;col_id:37000324"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:5000083;col_id:37000325"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:5000083;col_id:37000326"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:5000083;col_id:37000327"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:5000083;col_id:37000328"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:5000083;col_id:37000329"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:5000083;col_id:37000330"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:5000083;col_id:37000331"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:5000083;col_id:37000332"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:5000083;col_id:37000333"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:5000083;col_id:37000334"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:5000083;col_id:38000473"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:5000083;col_id:38000474"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:5000083;col_id:38000475"/>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="5000083"/>
+			<columna nombre="col_id" valor="770000074"/>
+			<columna nombre="columna" valor="institucion"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="1"/>
+			<columna nombre="secuencia" valor="sga_instituciones_seq"/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_instituciones"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="5000083"/>
+			<columna nombre="col_id" valor="770000075"/>
+			<columna nombre="columna" valor="nombre"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="255"/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_instituciones"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="5000083"/>
+			<columna nombre="col_id" valor="770000076"/>
+			<columna nombre="columna" valor="nombre_abreviado"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="50"/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_instituciones"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="5000083"/>
+			<columna nombre="col_id" valor="770000077"/>
+			<columna nombre="columna" valor="codigo"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="10"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_instituciones"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="5000083"/>
+			<columna nombre="col_id" valor="770000078"/>
+			<columna nombre="columna" valor="tipo_institucion"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_instituciones"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="5000083"/>
+			<columna nombre="col_id" valor="770000079"/>
+			<columna nombre="columna" valor="localidad"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_instituciones"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="5000083"/>
+			<columna nombre="col_id" valor="770000080"/>
+			<columna nombre="columna" valor="calle"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="100"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_instituciones"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="5000083"/>
+			<columna nombre="col_id" valor="770000081"/>
+			<columna nombre="columna" valor="numero"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="20"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_instituciones"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="5000083"/>
+			<columna nombre="col_id" valor="770000082"/>
+			<columna nombre="columna" valor="codigo_postal"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="15"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_instituciones"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="5000083"/>
+			<columna nombre="col_id" valor="770000083"/>
+			<columna nombre="columna" valor="telefono"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="50"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_instituciones"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="5000083"/>
+			<columna nombre="col_id" valor="770000084"/>
+			<columna nombre="columna" valor="fax"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="50"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_instituciones"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="5000083"/>
+			<columna nombre="col_id" valor="770000085"/>
+			<columna nombre="columna" valor="email"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="100"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_instituciones"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="5000083"/>
+			<columna nombre="col_id" valor="770000086"/>
+			<columna nombre="columna" valor="institucion_araucano"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_instituciones"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="5000083"/>
+			<columna nombre="col_id" valor="770000087"/>
+			<columna nombre="columna" valor="entidad"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_instituciones"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="5000083"/>
+			<columna nombre="col_id" valor="770000088"/>
+			<columna nombre="columna" valor="id_institucion"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="1"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_instituciones_ext"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="5000083"/>
+			<columna nombre="col_id" valor="770000089"/>
+			<columna nombre="columna" valor="tipo_convenio_fact"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_instituciones_ext"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="5000083"/>
+			<columna nombre="col_id" valor="770000090"/>
+			<columna nombre="columna" valor="agrupa_alumnos"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="1"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_instituciones_ext"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:5000083">
+			<columna nombre="nombre" valor="DT - sga_instituciones" valor_original="sga_instituciones"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_db_registros">
+		<registro estado="2" clave="objeto_proyecto:guarani;objeto:5000083">
+			<columna nombre="ap" valor="4" valor_original="1"/>
+			<columna nombre="tabla_ext" valor="sga_instituciones_ext" valor_original="###$$$NULL$$$###"/>
+			<columna nombre="modificar_claves" valor="0" valor_original="1"/>
+			<columna nombre="esquema" valor="negocio" valor_original="###$$$NULL$$$###"/>
+			<columna nombre="esquema_ext" valor="negocio_nsg" valor_original="###$$$NULL$$$###"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_db_columna_fks">
+		<registro estado="1">
+			<columna nombre="id" valor="770000007"/>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="5000083"/>
+			<columna nombre="tabla" valor="sga_instituciones"/>
+			<columna nombre="columna" valor="institucion"/>
+			<columna nombre="tabla_ext" valor="sga_instituciones_ext"/>
+			<columna nombre="columna_ext" valor="id_institucion"/>
+		</registro>
+	</tabla>
+</componente>

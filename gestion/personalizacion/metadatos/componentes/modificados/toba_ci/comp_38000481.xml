@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="38000481" descripcion="toba_ci">
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:38000481">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+			<columna nombre="subclase" valor="ci_edi_imprimir_acta_examen_nsg" valor_original="ci_edi_imprimir_acta_examen"/>
+			<columna nombre="subclase_archivo" valor="operaciones/examenes/actas/imprimir_acta/ci_edi_imprimir_acta_examen_nsg.php" valor_original="operaciones/examenes/actas/imprimir_acta/ci_edi_imprimir_acta_examen.php"/>
+		</registro>
+	</tabla>
+</componente>

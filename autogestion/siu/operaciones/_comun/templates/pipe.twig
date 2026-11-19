@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+	{%if url_recursos %}
+	    {%set url_recursos = url_recursos ~ '/' %}
+	{% else %}
+		{%set url_recursos = alias ~ '/' %}
+	{%endif%}
+
+	{% include 'res.twig' %}
+    </head>
+    
+    <body>
+        {% include template_header %}
+
+        <div id='loading'></div>
+		<div id='loading_top' style='display:none;'>{{'cargando'|trans}}...</div>
+		<div id='_msg_placeholder' style='display:none;' class="msg_placeholder alert-success"></div>
+		<div id='kernel_contenido' class="{{ es_browser ? 'container' : 'container-fluid' }}">
+			{% if vista.get_tipo == 'VistaPagelets' %}
+			{{ vista.render_skeleton }}
+			{{ vista.render_pipe }}
+			{% else %} {# si no es vista pagelets se renderiza directamente #}
+			{{ vista.render }}
+			{% endif %}
+		</div>
+        
+        {% include template_footer %}
+
+		<a id="back-to-top" href="#" class="btn btn-inverse btn-large" role="button" title="{{ 'ir_arriba' | trans }}">
+			<i class="fa fa-chevron-up" aria-hidden="true"></i>
+		</a>
+
+    </body>
+</html>

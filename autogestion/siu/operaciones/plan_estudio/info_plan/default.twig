@@ -1,0 +1,67 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+    
+    {% import "macro_plan_estudio.twig" as macro_plan_estudio %}
+    
+    <div class="titulo_operacion">
+        <h2 class="clearfix"><span class="pull-left">{{"plan_de_estudio"|trans|capitalize}}</span>
+            <div class="pull-right" >
+                <a tabindex="0" id="pdf_btn" class="btn" target="_blank" title="{{ 'descargar_pdf'|trans|capitalize }}"><span class="g3w-icono-pdf"></span></a>
+                <a tabindex="0" id="xls_btn" class="btn" target="_blank"  title="{{ 'descargar_xls'|trans|capitalize }}"><span class="g3w-icono-xls"></span></a>
+            </div>
+        </h2>
+    </div>
+
+    <table class="table table-condensed encabezado" summary="Encabezado">
+        <tbody>
+            <tr>
+                <td><b>{{ 'plan_estudio.propuesta' | trans }}:</b> ({{ this.data.encabezado.propuesta_codigo }}) {{ this.data.encabezado.propuesta_nombre }}</td>
+                <td><b>{{ 'plan_estudio.plan' | trans }}:</b> ({{ this.data.encabezado.plan_codigo }}) {{ this.data.encabezado.plan_nombre }}</td>
+                <td><b>{{ 'plan_estudio.version' | trans }}:</b> {{ this.data.encabezado.plan_version }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    {% if this.data.plan.modulos_genericas or this.data.plan.materias %}
+
+        {% if this.data.plan.modulos_genericas %}
+
+            <div>
+                <div id="grupo_expandir_contraer" class="btn-group">
+                    <button id="expandir" type="button" class="btn btn-primary">{{ 'plan_estudio.expandir' | trans }}</button>
+                    <button id="contraer" type="button" class="btn">{{ 'plan_estudio.contraer' | trans }}</button>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+
+            {% for modulo_generica in this.data.plan.modulos_genericas %}
+
+                {{ macro_plan_estudio.modulo_generica_collapse(modulo_generica, this.data) }}
+
+            {% endfor %}
+
+        {% endif %}
+
+        {% if this.data.plan.materias %}
+            
+            {{ macro_plan_estudio.tabla_materias(this.data.plan.materias, '', '', this.data) }}
+
+        {% endif %}
+
+    {% else %}
+        <div class="alert">
+            <button type="button" class="close" data-dismiss="alert">×</button>
+            {{ 'plan_estudio.no_existen_elementos_para_plan' | trans }}
+        </div>
+    {% endif %}
+
+    {% for certificado in this.data.certificados_obtenidos %}
+        <strong>{{ 'plan_estudio.titulo' | trans }}:</strong> {{certificado.nombre}}
+        <ul>
+            <li><strong>{{ 'plan_estudio.promedio_con_aplazos' | trans }}:</strong> {{ certificado.promedio_con_aplazos | number_format(2, '.', ',') }}</li>
+            <li><strong>{{ 'plan_estudio.promedio_sin_aplazos' | trans }}:</strong> {{ certificado.promedio_sin_aplazos | number_format(2, '.', ',') }}</li>
+            <li><strong>{{ 'plan_estudio.estado_tramite' | trans }}:</strong> {{ certificado.estado_actual_tramite }}</li>
+        </ul>
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	<div id="listado">
+	{% if this.data.inasistencias %}
+		{% for actividad, datos_inasistencias in this.data.inasistencias %}
+			<div class="actividad">
+				<h3 class="titulo-corte">{{actividad}}</h3>
+				<table class="table table-bordered table-condensed comisiones">
+					<tr class="titulo">
+						<th width="10%">{{"ri.fecha" | trans | capitalize }}</th>
+						<th width="11%">{{"ri.tipo_clase" | trans | capitalize }}</th>
+						<th>{{"ri.tema" | trans | capitalize }}</th>
+						<th width="15%">{{"ri.cant_inasistencias" | trans | capitalize }}</th>
+						<th width="10%">{{"ri.justificada" | trans | capitalize }}</th>
+					</tr>
+					{% for inasistencia in datos_inasistencias %}
+					<tr>			
+						<td>{{inasistencia.clase_fecha_visual}}</td>
+						<td>{{inasistencia.clase_tipo_nombre}}</td>
+						<td>{{inasistencia.tema_dictado}}</td>
+						<td>{{inasistencia.cant_inasistencias}}</td>
+						<td>{{inasistencia.justificado}}</td>
+					</tr>
+					{% endfor %}
+				</table>
+			</div>
+		
+		{% endfor %}
+	{% else %}
+		<div class="alert cuadro_mensaje_vacio">
+			{{"ri.sin_inasistencias" | trans | capitalize}}
+		</div>
+	{% endif %}
+	</div>
+{% endblock %}

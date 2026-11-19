@@ -1,0 +1,44 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	<h3 class="titulo-navbar clearfix">
+		<div class="pull-left">
+
+		</div>
+
+	</h3>
+
+	<div class="hero-unit">
+
+		<h2 class='actividad-titulo'>{{ this.data.actividad_nombre }} ({{ this.data.actividad_codigo }})</h2>
+		<fieldset>
+			<legend class='subtitulo'></legend>
+
+			<p><strong>{{ 'carga_notas_mesa_examen.enc_anio'|trans|capitalize }}:</strong>
+				{{ this.data.anio_academico }}</p>
+
+			<p><strong>{{ 'carga_notas_mesa_examen.enc_turno'|trans|capitalize }}:</strong>
+				{{ this.data.turno_examen_nombre }}</p>
+
+            <p>
+                <strong>{{ 'carga_notas_mesa_examen.enc_llamado'|trans|capitalize }}:</strong>
+                {{ this.data.llamado_nombre }}
+            </p>
+
+			<p><strong>{{ 'carga_notas_mesa_examen.enc_mesa'|trans|capitalize }}:</strong>
+				{{ this.data.mesa_examen_nombre }}</p>
+
+			<p></p>
+
+			<p><strong>{{ 'carga_notas_mesa_examen.enc_fecha'|trans|capitalize }}:</strong>
+				{{ this.data.fecha_formato_visual_sin_segundos }}</p>
+
+			<p><strong>{{ 'carga_notas_mesa_examen.enc_ubicacion'|trans|capitalize }}:</strong>
+				{{ this.data.ubicacion_nombre }}</p>
+                        <p><strong>{{ 'lugar'|trans|capitalize }}:</strong>
+				{{  this.data.espacio_nombre ?  this.data.espacio_nombre | raw : '-' }}</p>
+		</fieldset>
+
+	</div>
+
+
+{% endblock %}

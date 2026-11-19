@@ -1,0 +1,32 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+
+	<h3 class="titulo-navbar clearfix">
+		<div class="pull-left">
+
+		</div>
+
+	</h3>
+
+	<div class="hero-unit">
+
+		<h2 class='actividad-titulo'>({{ this.data.actividad_codigo }}) {{ this.data.actividad_nombre }}</h2>
+
+
+		<fieldset>
+
+
+			<legend class='comision-titulo'>
+				<strong>{{ 'comision'|trans|capitalize }}:</strong> {{ this.data.comision_nombre }}
+			</legend>
+
+			<p><strong>{{ 'anio_academico'|trans|capitalize }}:</strong>
+				{{ this.data.anio_academico }}</p>
+
+			<p><strong>{{ 'periodo_lectivo'|trans|capitalize }}:</strong>
+				{{ this.data.periodo_lectivo_nombre }}</p>
+		</fieldset>
+
+	</div>
+
+{% endblock %}

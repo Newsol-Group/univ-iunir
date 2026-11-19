@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000284" descripcion="toba_ci">
+	<tabla nombre="apex_objeto">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000284"/>
+			<columna nombre="clase_proyecto" valor="toba"/>
+			<columna nombre="clase" valor="toba_ci"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+			<columna nombre="subclase" valor="ci_edi_motivos_baja_insc_propuesta_nsg"/>
+			<columna nombre="subclase_archivo" valor="operaciones/matriculas/motivos_baja_insc_propuesta/ci_edi_motivos_baja_insc_propuesta_nsg.php"/>
+			<columna nombre="nombre" valor="Motivos de Baja de Propuesta - editor"/>
+			<columna nombre="colapsable" valor="0"/>
+			<columna nombre="creacion" valor="2009-06-11 12:45:27"/>
+			<columna nombre="posicion_botonera" valor="abajo"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_mt_me">
+		<registro>
+			<columna nombre="objeto_mt_me_proyecto" valor="guarani"/>
+			<columna nombre="objeto_mt_me" valor="770000284"/>
+			<columna nombre="ancho" valor="100%"/>
+			<columna nombre="botonera_barra_item" valor="0"/>
+			<columna nombre="con_toc" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_dependencias">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="dep_id" valor="770000218"/>
+			<columna nombre="objeto_consumidor" valor="770000284"/>
+			<columna nombre="objeto_proveedor" valor="770000283"/>
+			<columna nombre="identificador" valor="formulario"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ci_pantalla">
+		<registro>
+			<columna nombre="objeto_ci_proyecto" valor="guarani"/>
+			<columna nombre="objeto_ci" valor="770000284"/>
+			<columna nombre="pantalla" valor="770000098"/>
+			<columna nombre="identificador" valor="pant_inicial"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="etiqueta" valor="Pantalla Inicial"/>
+			<columna nombre="imagen_recurso_origen" valor="apex"/>
+			<columna nombre="punto_montaje" valor="1"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objetos_pantalla">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="pantalla" valor="770000098"/>
+			<columna nombre="objeto_ci" valor="770000284"/>
+			<columna nombre="orden" valor="0"/>
+			<columna nombre="dep_id" valor="770000218"/>
+		</registro>
+	</tabla>
+</componente>

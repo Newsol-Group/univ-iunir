@@ -1,0 +1,144 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	
+        {# Si no viene de Convocatorias a Becas #}
+        {% if not this.viene_de_convocatorias_becas() %}
+            {% import "macro_mensajes.twig" as mensajes %}
+            <div id="mensajes">
+                    {{ mensajes.render_mensajes(this.datos_confirmados(), this.datos_error_control(), this.datos_vigentes()) }}
+            </div>
+	{% endif %}
+	
+	{% autoescape false %}
+
+	<div class='controls controls-row form-head clearfix'>
+		<div class='borde-inferior'>
+			<div class='pull-left'>
+				<h2>{{this.get_nombre_seccion()|trans}}</h2>
+			</div>
+			<div class='clearfix'></div>
+		</div>
+	</div>
+
+	{% if this.data.modo == 'listado' %}
+		{#---- Pantalla listado ----#}
+		{% if this.data.cant_allegados == 0 %}
+			<div class='alert mensaje'>
+				{{'datos_censales.all.sin_allegados'|trans|raw}}
+			</div>
+		{% else %}
+			<div>
+				<table class="table table-stripped table-hover">
+					<thead>
+						<tr>
+							<th>{{'datos_censales.all.apellido_y_nombres'|trans}}</th>
+							<th>{{'datos_censales.all.tipo_allegado_descr'|trans}}</th>
+							<th class='eventos'>&nbsp;</th>
+						</tr>
+					</thead>
+					<tbody>
+					{% for item in this.get_datos_allegados() %}
+						<tr>
+							<td>{{item.apellido_y_nombres}}</td>
+							<td>{{item.tipo_allegado_descr}}</td>
+							<td class='eventos'>
+								<a href="{{ item.LINK_EDITAR }}" class="btn btn-info btn-small" title="{{'editar'|trans|capitalize}}"><i class="icon-white icon-pencil"></i></a>
+								<a href="{{ item.LINK_ELIMINAR }}" class="btn btn-info btn-small js-btnEliminar" title="{{'eliminar'|trans|capitalize}}"><i class="icon-white icon-remove"></i></a>
+							</td>
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		{% endif %}
+
+		<div class="pull-left fix-boton">
+			<a href="{{ this.get_accion_edicion() }}" class="btn btn-inverse">
+				 {{'datos_censales.all.agregar_allegado'|trans}} 
+			</a>
+		</div>
+                <div class="clearfix"></div>
+	{% else %}
+		{#---- Pantalla alta / edición ----#}
+		{% set form = this.get_form() %}
+		{{ form.encabezado }}
+			<div class='well clearfix'>
+				<h3 class='toggle-header' onclick="toggle('datos_allegado')">{{'datos_censales.all.datos_allegado'|trans}}</h3>
+				<div id='datos_allegado' class='toggle-div'>
+					{{ form.control_group('__ID__') }}
+					<div class='clearfix cg-margen'>
+						{{ form.control_group('tipo_allegado') }}
+					</div>
+					<div class='clearfix cg-margen'>
+						{{ form.control_group('apellido', 'span6') }}
+						{{ form.control_group('nombres', 'span6') }}
+					</div>
+					<div class='clearfix cg-margen'>
+						{{ form.control_group('telefono', 'span6') }}
+						{{ form.control_group('estudio_alcanzado', 'span6') }}
+					</div>
+					<div class='clearfix cg-margen'>
+						{{ form.control_group('trabajo_existe') }}
+					</div>
+					<div id='div_datos_trabajo'>
+						<div class='clearfix cg-margen'>
+							{{ form.control_group('trabajo_ocupacion') }}
+						</div>
+						<div class='clearfix cg-margen'>
+							{{ form.control_group('trabajo_hace') }}
+						</div>
+						<div class='clearfix cg-margen'>
+							{{ form.control_group('trabajo_tarea') }}
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class='well clearfix'>
+				<h3 class='toggle-header' onclick="toggle('domicilio')">{{'datos_censales.all.domicilio'|trans}}</h3>
+				<div id='domicilio' class='toggle-div'>
+					<div class='clearfix cg-margen'>
+						{{ form.control_group('calle') }}
+					</div>
+					<div class='clearfix cg-margen'>
+						{{ form.control_group('numero', 'span3') }}
+						{{ form.control_group('piso', 'span3') }}
+						{{ form.control_group('departamento', 'span3') }}
+						{{ form.control_group('unidad', 'span3') }}
+					</div>
+					<div class='clearfix cg-margen'>
+						{{ form.control_group_localidad('localidad', 'localidad_descr', 'pais') }}
+						<div id='localidad_help' class='clearfix inline-help italic cg-margen'>
+							{{'datos_censales.ayuda_lista_localidades'|trans}}
+						</div>
+						<input id="btnLimpiarLoc" value="{{'datos_censales.limpiar'|trans}}" type="button" class="btn btn-inverse" />
+						<input id="btnSelectorLoc" name="btnSelectorLocalidad" value="{{'datos_censales.busqueda_avanzada'|trans}}" type="button" class="btn btn-inverse" />
+					</div>
+					<div class='clearfix cg-margen'>
+						<div class='span6'>
+							{{ form.control_group('codigo_postal', 'span4') }}
+							<input id="btnSelectorCP" name="btnSelectorCP" value="{{'datos_censales.busqueda_cp'|trans}}" type="button" class="btn btn-inverse btn-cp" />
+						</div>
+						{{ form.control_group('barrio', 'span6') }}
+					</div>
+				</div>
+			</div>
+
+			<div class='controls controls-row form-head clearfix'>
+			<div class='borde-superior'>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar_edicion', 'datos_censales.guardar')  }}
+					<a href="{{ this.get_accion_volver_edicion() }}" class="btn btn-info">
+						{{ 'volver'|trans|capitalize }} 
+					</a>
+				</div>
+			</div>
+		</div>
+		</form>
+	{% endif %}
+	{% endautoescape %}
+        
+        {% import "macro_confirmacion.twig" as confirmacion %}
+        {{ confirmacion.mostrar(this.viene_de_convocatorias_becas(), this.hay_datos_faltantes_convocatoria(), this.get_url_siguiente_paso()) }}
+        
+{% endblock %}

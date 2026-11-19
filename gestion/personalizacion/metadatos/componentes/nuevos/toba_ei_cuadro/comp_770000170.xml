@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000170" descripcion="toba_ei_cuadro">
+	<tabla nombre="apex_objeto">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000170"/>
+			<columna nombre="clase_proyecto" valor="toba"/>
+			<columna nombre="clase" valor="toba_ei_cuadro"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+			<columna nombre="subclase" valor="guarani_pers_ei_cuadro"/>
+			<columna nombre="subclase_archivo" valor="extension_toba/componentes/guarani_pers_ei_cuadro.php"/>
+			<columna nombre="nombre" valor="Reporte de Docentes Asignados a Comisión - cuadro"/>
+			<columna nombre="colapsable" valor="0"/>
+			<columna nombre="creacion" valor="2012-10-18 16:04:06"/>
+			<columna nombre="posicion_botonera" valor="abajo"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_cuadro">
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000170"/>
+			<columna nombre="clave_dbr" valor="0"/>
+			<columna nombre="ancho" valor="100%"/>
+			<columna nombre="ordenar" valor="1"/>
+			<columna nombre="paginar" valor="1"/>
+			<columna nombre="tamano_pagina" valor="20"/>
+			<columna nombre="tipo_paginado" valor="P"/>
+			<columna nombre="mostrar_total_registros" valor="0"/>
+			<columna nombre="eof_invisible" valor="0"/>
+			<columna nombre="siempre_con_titulo" valor="0"/>
+			<columna nombre="exportar_paginado" valor="0"/>
+			<columna nombre="exportar" valor="1"/>
+			<columna nombre="exportar_rtf" valor="0"/>
+			<columna nombre="scroll" valor="1"/>
+			<columna nombre="scroll_alto" valor="300px"/>
+			<columna nombre="cc_modo" valor="t"/>
+			<columna nombre="cc_modo_anidado_colap" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_cuadro_cc">
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000170"/>
+			<columna nombre="objeto_cuadro_cc" valor="770000019"/>
+			<columna nombre="identificador" valor="propuesta_nombre"/>
+			<columna nombre="descripcion" valor="Propuesta"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="columnas_id" valor="propuesta"/>
+			<columna nombre="columnas_descripcion" valor="propuesta_nombre"/>
+			<columna nombre="pie_contar_filas" valor="0"/>
+			<columna nombre="pie_mostrar_titular" valor="0"/>
+			<columna nombre="pie_mostrar_titulos" valor="0"/>
+			<columna nombre="modo_inicio_colapsado" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000170"/>
+			<columna nombre="objeto_cuadro_cc" valor="770000032"/>
+			<columna nombre="identificador" valor="comision_nombre"/>
+			<columna nombre="descripcion" valor="Comisión"/>
+			<columna nombre="orden" valor="2"/>
+			<columna nombre="columnas_id" valor="comision"/>
+			<columna nombre="columnas_descripcion" valor="comision_nombre"/>
+			<columna nombre="pie_contar_filas" valor="0"/>
+			<columna nombre="pie_mostrar_titular" valor="0"/>
+			<columna nombre="pie_mostrar_titulos" valor="0"/>
+			<columna nombre="modo_inicio_colapsado" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ei_cuadro_columna">
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000170"/>
+			<columna nombre="objeto_cuadro_col" valor="770000293"/>
+			<columna nombre="clave" valor="nombre_apellido_persona"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="titulo" valor="Apellido y Nombres"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000170"/>
+			<columna nombre="objeto_cuadro_col" valor="770000295"/>
+			<columna nombre="clave" valor="tipo_nro_documento"/>
+			<columna nombre="orden" valor="2"/>
+			<columna nombre="titulo" valor="Identificación"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-cen-s1"/>
+			<columna nombre="ancho" valor="15%"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="1"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000170"/>
+			<columna nombre="objeto_cuadro_col" valor="770000296"/>
+			<columna nombre="clave" valor="estado_docente"/>
+			<columna nombre="orden" valor="3"/>
+			<columna nombre="titulo" valor="Estado"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-cen-s1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000170"/>
+			<columna nombre="objeto_cuadro_col" valor="770000298"/>
+			<columna nombre="clave" valor="materia_nombre"/>
+			<columna nombre="orden" valor="4"/>
+			<columna nombre="titulo" valor="Actividad"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000170"/>
+			<columna nombre="objeto_cuadro_col" valor="770000299"/>
+			<columna nombre="clave" valor="comision_nombre"/>
+			<columna nombre="orden" valor="5"/>
+			<columna nombre="titulo" valor="Comisión"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000170"/>
+			<columna nombre="objeto_cuadro_col" valor="770000300"/>
+			<columna nombre="clave" valor="periodo_nombre"/>
+			<columna nombre="orden" valor="6"/>
+			<columna nombre="titulo" valor="Período"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+	</tabla>
+</componente>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="32000448" descripcion="toba_ei_filtro">
+	<tabla nombre="apex_objeto_ei_filtro_col">
+		<registro estado="1">
+			<columna nombre="objeto_ei_filtro_col" valor="770000225"/>
+			<columna nombre="objeto_ei_filtro" valor="32000448"/>
+			<columna nombre="objeto_ei_filtro_proyecto" valor="guarani"/>
+			<columna nombre="tipo" valor="fecha"/>
+			<columna nombre="nombre" valor="fecha_inicio_tramite"/>
+			<columna nombre="expresion" valor="sga_certificados_otorg.fecha_inicio_tramite"/>
+			<columna nombre="etiqueta" valor="Fecha"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="inicial" valor="0"/>
+			<columna nombre="orden" valor="8"/>
+			<columna nombre="opciones_es_multiple" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+		</registro>
+	</tabla>
+</componente>

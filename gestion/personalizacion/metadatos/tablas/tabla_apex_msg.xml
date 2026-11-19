@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<tabla id="apex_msg">
+	<registro estado="2" clave="msg:58000006">
+		<columna nombre="mensaje_customizable" valor="Este mail fue enviado para iniciar el proceso de recuperación de la cuenta asociada con la dirección de mail %1% cuyo usuario es %2%.&lt;br/&gt;Para reestablecer tu contraseña por favor seguí este link %3%.&lt;br/&gt;Si al clickear el link no funciona intentá copiarlo y pegarlo en la barra de direcciones. Si no solicitaste este mail simplemente ignoralo.&lt;br/&gt;Muchas gracias." valor_original="###$$$NULL$$$###"/>
+	</registro>
+	<registro estado="1">
+		<columna nombre="msg" valor="770000246"/>
+		<columna nombre="indice" valor="800nsg_error_no_hay_libro"/>
+		<columna nombre="proyecto" valor="guarani"/>
+		<columna nombre="msg_tipo" valor="error"/>
+		<columna nombre="descripcion_corta" valor="No hay libro de actas"/>
+		<columna nombre="mensaje_a" valor="No hay definido un libro para las actas, por favor, agregue el libro antes de generas las actas."/>
+	</registro>
+	<registro estado="1">
+		<columna nombre="msg" valor="770000247"/>
+		<columna nombre="indice" valor="800nsg_error_no_esta_vacia_tabla"/>
+		<columna nombre="proyecto" valor="guarani"/>
+		<columna nombre="msg_tipo" valor="error"/>
+		<columna nombre="descripcion_corta" valor="Tabla no vacía"/>
+		<columna nombre="mensaje_a" valor="La tabla de transacciones de Softland no está vacía, quedan registros pendientes de verificar/corregir"/>
+	</registro>
+</tabla>

@@ -1,0 +1,164 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+
+    <!-- Controles -->
+    <div class="titulo_operacion">
+        <h2 class="clearfix"><span class="pull-left">{{"actas_de_promocion"|trans|capitalize}}</span>
+            <div class="pull-right">
+                <a class="btn no-ajax" target="_blank" href="{{this.data.url.generar_pdf}}"><i class="g3w-icono-pdf"></i></a>
+                <a class="btn no-ajax" target="_blank" href="{{this.data.url.generar_excel}}"><i class="g3w-icono-xls"></i></a>
+            </div>
+        </h2>
+    </div>
+
+	<div id="filtros" class="well">
+	    <form action="{{this.data.url_form_filtro}}" method="get" id="filtro_form">
+		<table>
+		    <tr>
+			<td>
+				{% set filtros = this.get_filtros %}
+				{% set anio_def = this.get_anio_acad_def %}
+			    <label for="filtro_anio">Año académico: </label>
+			    <select id="filtro_anio" name="filtro_anio">
+				<option value="">Todos</option>
+				{% for i in anio_def.final..anio_def.inicial %}
+				    <option value="{{ i }}" {% if filtros['anio_academico'] and filtros['anio_academico'] == i %}selected="selected"{% endif %}>{{ i }}</option>
+				{% endfor %}
+			    </select>
+			</td>
+			<td>
+			    <label for="filtro_per_lectivo">Período lectivo: </label>
+			    <select id="filtro_per_lectivo" name="filtro_per_lectivo">
+			    <option value="">Todos</option>
+			    <option value="1° cuatrimestre" {% if filtros['periodo_lectivo'] and filtros['periodo_lectivo'] == '1° cuatrimestre' %}selected="selected"{% endif %}>1° cuatrimestre </option>
+			    <option value="2° cuatrimestre"{% if filtros['periodo_lectivo'] and filtros['periodo_lectivo'] == '2° cuatrimestre' %}selected="selected"{% endif %}>2° cuatrimestre </option>
+			    <option value="1° anual" {% if filtros['periodo_lectivo'] and filtros['periodo_lectivo'] == '1° anual' %}selected="selected"{% endif %}>1° anual </option>
+			    </select>
+			</td>
+			<td>
+			    <label for="filtro_nombre_materia">Nombre de la materia: </label>
+			    <input type="text" id="filtro_nombre_materia" name="filtro_nombre_materia" value="{% if filtros['nombre'] %}{{ filtros['nombre'] }}{% endif %}" />
+			</td>
+			<td style="padding-top: 19px;">
+			    <input type="submit" id="filtro_boton" name="filtro_boton" value="Ver actas" class="btn" />
+			</td>
+		    </tr>
+		</table>
+	    </form>
+	</div>
+
+	{% if this.data.datos or this.data.datos_corte %}
+		{% import "kernel/macro_pager.twig" as pager %}
+		<div class="pagination pagination-centered">
+			{{ pager.render_paginator(this.get_paginas, this.get_pagina) }}
+		</div>
+	{% endif %}
+
+	{% if this.data.datos or this.data.datos_corte %}
+		<table class="table table-striped table-bordered table-condensed">
+			{% if this.get_corte %}
+				{% for dato in this.data.datos_corte %}
+					{% if dato.titulo_corte %}
+					<tr>
+						<td class="cc-titulo-nivel-0" colspan="{{this.data.cantidad_columnas}}">
+							{{dato.titulo_corte}}
+						</td>
+					</tr>
+					{% endif %}
+					{% if dato.titulos %}
+						<tr>
+						{% for titulo in dato.titulos %}
+							<th>{{titulo}}</th>
+						{% endfor %}
+						</tr>
+					{% endif %}
+					{% if dato.datos %}
+						{% for clave, item in dato.datos %}
+						<tr{% if (item.URL_LINEA) %} class="link-in-data" data-link="{{item.URL_LINEA}}"{% endif %}>
+						{% for keyline, linea in item %}
+							{% if (keyline != "URL_LINEA") %}
+							<td>
+								{{linea}}
+							</td>
+							{% endif %}
+						{% endfor %}
+						</tr>
+						{% endfor %}
+
+						{% if dato.funciones_pie_corte %}
+						{% for funcion in dato.funciones_pie_corte %}
+						<tr>
+							{% for col_fn, titulo in dato.datos[0] %}
+								{% if col_fn != this.data.corte.campo %}
+								<td><strong>{{funcion[col_fn]}}</strong></td>
+								{% endif %}
+							{% endfor %}
+						</tr>
+						{% endfor %}
+						{% endif %}
+
+						{% if dato.mensaje_pie_corte %}								
+						{% for funcion in dato.mensaje_pie_corte %}
+						<tr>
+							<td colspan="{{this.data.cantidad_columnas}}"><strong>{{funcion}}</strong></td>
+						</tr>
+						{% endfor %}
+						{% endif %}
+					{% endif %}
+				{% endfor %}
+			{% else %}
+				<!-- Titulos -->
+				<thead>
+				<tr>
+					{% if this.data.titulos %}
+						{% for titulo in this.data.titulos %}
+							<th>{{titulo}}</th>
+						{% endfor %}					
+					{% endif %}
+				</tr>
+				</thead>
+
+				<!-- Datos -->
+				{% for columnas in this.data.datos %}
+				<tr{% if (columnas.URL_LINEA) %} class="link-in-data" data-link="{{columnas.URL_LINEA}}"{% endif %}>
+					{% for keyline, columna in columnas %}
+						{% if (keyline != "URL_LINEA") %}
+							<td>
+								{{columna}}
+							</td>
+							{% endif %}					
+					{% endfor %}
+				</tr>
+				{% endfor %}       
+			{% endif %}
+
+			<!-- Pie de reporte -->
+			<tr>
+				<td colspan="{{this.data.cantidad_columnas}}"><br><br></td>
+			</tr>
+			{% if this.data.datos_corte.funciones_pie_reporte %}			
+			{% for funcion in this.data.datos_corte.funciones_pie_reporte %}			
+			<tr>
+				{% for col_fn, nombre in this.data.datos_corte[0].datos[0] %}
+				{% if col_fn != this.data.corte.campo %}
+				<td><strong>{{funcion[col_fn]}}</strong></td>
+				{% endif %}
+				{% endfor %}
+			</tr>
+			{% endfor %}
+			{% endif %}
+
+			{% if this.data.datos_corte.mensaje_pie_reporte %}								
+			{% for funcion in this.data.datos_corte.mensaje_pie_reporte %}
+			<tr>
+				<td colspan="{{this.data.cantidad_columnas}}"><strong>{{funcion}}</strong></td>
+			</tr>
+			{% endfor %}
+			{% endif %}
+		</table>
+	{% else %}
+		<div class="alert">
+			{{"reporte.no_hay_datos.acta_promocion"|trans|capitalize}}
+		</div>
+	{% endif %}
+{% endblock %}

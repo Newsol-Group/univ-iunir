@@ -1,0 +1,82 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	{% autoescape false %}
+
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-inferior'>
+				<div class='pull-left'>
+					<h2>{{this.get_nombre()|trans}}</h2>
+				</div>
+				<div class='clearfix'></div>
+			</div>
+
+            {# Si hay requisitos #}
+            {% if this.data.requisitos is not empty %}
+                
+			{% if not this.data.error_cnx_rdi%}
+				<p class="descr_requisito {% if this.data.error_extension %} alert alert-error mensaje strong {% endif %}">
+					{{ 'doc.msj_extensiones' | trans }} <strong>{{ this.data.extensiones }}</strong>
+				</p>
+				<p class="descr_requisito {% if this.data.error_tamanio %} alert alert-error mensaje strong {% endif %}">
+					{{ 'doc.msj_tamanio_max' | trans }} <strong>{{ this.data.tamanio_maximo }} MB</strong>
+				</p>
+			{% else %}
+				<div class='alert alert-error mensaje_error'>
+					{{ 'doc.msj_error_rdi' | trans | raw }}
+				</div>
+			{% endif %}
+		</div>
+
+		{% if not this.data.error_cnx_rdi%}
+
+			{% if this.data.error %}
+				<div class='alert alert-error'>
+					{{ this.data.error }}
+				</div>
+			{% endif %}
+
+			{% for REQUISITO in this.data.requisitos %}
+				<div class='well clearfix{{ REQUISITO.obligatorio_faltante}}'>
+					<h3 >{{ REQUISITO.header|trans|capitalize }} {{ REQUISITO.obligatorio }}</h3>
+					{% if REQUISITO.descripcion %}
+						<p class="descr_requisito">{{ REQUISITO.descripcion }}</p>
+					{% endif %}
+					{% if REQUISITO.imagen %}
+						<div class="clearfix">
+							<div class="pull-left">
+								<img src="{{ REQUISITO.imagen }}" alt="Recurso cargado" class="imagen">
+							</div>
+							<div class="pull-right botonera">
+								<div class="botones">
+									<a href="{{ REQUISITO.url_descargar }}" class="btn btn-info no-ajax" title="{{'doc.descargar'|trans|capitalize}}"><i class="icon-white icon-download"></i>&nbsp;{{'doc.descargar'|trans|capitalize}}</a>
+									<a href="{{ REQUISITO.url_modificar }}" class="btn btn-info" title="{{'doc.modificar'|trans|capitalize}}"><i class="icon-white icon-pencil"></i>&nbsp;{{'doc.modificar'|trans|capitalize}}</a>
+									<a href="{{ REQUISITO.url_eliminar }}" class="btn btn-info js-btnEliminar" title="{{'doc.eliminar'|trans|capitalize}}"><i class="icon-white icon-remove"></i>&nbsp;{{'doc.eliminar'|trans|capitalize}}</a> &nbsp;
+								</div>
+							</div>
+						</div>
+					{% else %}
+						<form id="{{ REQUISITO.id_form }}" enctype="multipart/form-data" method="post" action="{{REQUISITO.url_subir}}">
+							<div class="clearfix">
+								<div class="pull-left">
+									<input type="hidden" name="MAX_FILE_SIZE" value="{{ this.data.tamanio_maximo * 1024 * 1024 }}" />
+									<label class="btn btn-info no-ajax">
+<input id="archivo" type="file" name="archivo" class="js-upload-input" />     Seleccionar archivo
+</label>
+								</div>
+							</div>
+						</form>
+					{% endif %}
+				</div>
+			{% endfor %}
+
+		{% endif %}
+                
+            {# Si no hay requisitos #}
+            {% else %}
+                
+                <div class="alert msj_no_hay_requisitos_ingreso">{{ 'doc.msj_no_hay_requisitos_ingreso' | trans | raw }}</div>
+                
+            {% endif %}
+                
+	{% endautoescape %}
+{% endblock %}

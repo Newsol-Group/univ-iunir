@@ -1,0 +1,24 @@
+.botonera {
+	/*height: 100px;*/
+	margin-left: 10px;
+}
+
+.botones {
+	margin-top: 35px;
+}
+
+.imagen {
+	height: 100px !important;
+	font-weight: bold;
+}
+
+h2, h3 {
+	margin-top: 0px;
+    border-bottom: 1px solid #ccc;
+}
+
+.botonera-inferior {
+	width: 100%;
+	padding-top: 5px;
+    border-top: 1px solid #ccc;
+}

@@ -1,0 +1,51 @@
+{% extends "detalle_contenido.twig" %}
+
+{% block titulo 'listado_notas_parciales'|trans|capitalize %}
+
+    {% block acciones_titulo %}
+        {% if(this.data.derecho_cerrar_evaluacion and  this.data.cabecera.estado=='A'  ) %}
+            <a  href="{{ this.data.url_cerrar_evaluacion }}" id="cerrar_evaluacion"><i class="btn btn-small">Cerrar Evaluación</i></a>
+
+        {% elseif (this.data.derecho_reabrir_evaluacion and  this.data.cabecera.estado=='C'  ) %}
+            <a  href="{{ this.data.url_reabrir_evaluacion }}" id="reabrir_evaluacion"><i class="btn btn-small">Reabrir Evaluación</i></a>
+        {% else %}
+            {% if  this.data.cabecera.estado=='A'   %}
+                <span class="link-no-acceso disabled btn btn-mini" data-placement="top" data-toggle="tooltip" data-original-title="{{'no_tenes_derechos'| trans}}"><i class="btn-small">Cerrar Evaluación</i></span>
+                
+            {% else %}
+                <span class="link-no-acceso disabled btn btn-mini" data-placement="top" data-toggle="tooltip" data-original-title="{{'no_tenes_derechos'| trans}}"><i class="btn-small">Reabrir Evaluación</i></span>
+            {% endif %}
+        {% endif %}
+        {% if(this.tiene_acceso_link(this.data.url_generar_pdf)) %}
+            <a class="btn no-ajax" href="{{ this.data.url_generar_pdf }}" target="_blank" id="generar_pdf"><i class="g3w-icono-pdf"></i></a>
+            <a class="btn no-ajax" href="{{ this.data.url_generar_xls }}" target="_blank" id="generar_xls"><i class="g3w-icono-xls"></i></a>
+            {% else %}
+            <span class="btn disabled  no-ajax"><i class="g3w-icono-pdf"></i></span>
+            <span class="btn disabled  no-ajax"><i class="g3w-icono-xls"></i></span>
+            {% endif %}
+
+
+    {% endblock %}
+
+
+    {% block herramientas_cabecera_titulo %}
+        {{ 'detalles_evaluacion'|trans|capitalize }}
+    {% endblock %}
+
+    {% block contenido_principal %}
+        <div id="lista_alumnos">
+            {% include 'lista_alumnos.twig' with {
+		'alumnos': this.data.alumnos,
+		'editar': false
+		} %}
+        </div>
+    {% endblock %}
+
+
+    {% block herramientas_contenido %}
+        <div id='js-detalles'>
+            {% include 'detalle_evaluacion.twig' with {'this.data.cabecera': this.data.cabecera} %}
+        </div>
+    {% endblock %}
+
+

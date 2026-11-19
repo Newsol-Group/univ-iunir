@@ -1,0 +1,98 @@
+/* Columnas */
+
+#derechos .centrar { text-align: center; }
+#derechos .alinear { vertical-align: middle; }
+#derechos .alinear_con_texto { vertical-align: text-bottom; }
+
+
+#derechos .form-renglones {
+    clear: both
+}
+
+/* the input field */
+#derechos .encabezado-comision {
+	background-color: #EAEAEA;
+	color: #555;
+	border: 1px solid #dddddd;
+	padding: 10px 10px 5px 10px;
+	margin: 0px 0px 5px 0px;
+
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+/* the input field */
+#derechos .desc-comision {
+	font-size: 12px;
+	display: block;
+}
+
+
+#derechos input[type=checkbox] {
+    margin-bottom: 0;
+    text-align: center;
+    padding: 0;
+}
+
+#derechos .table-condensed th, #renglones .table-condensed td {
+    padding: 2px 5px;
+}
+#derechos .col-derecho {
+    width: 30px;
+}
+#derechos .col-asistencia{
+    background-color: #ddfffc;
+}
+
+#derechos .col-comision{
+    background-color: #cfffc8;
+}
+
+#derechos .col-evaluacion{
+    background-color: #ffe8eb;
+}
+
+#derechos .cuadro_derechos{
+	border: 1px solid #dddddd;
+	margin: 0px;
+	padding: 0px;
+	background-color: #F5F5F5;
+	color: #555;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+#derechos .desc-icono{
+    padding: 0px 1px 0 2px;
+    display: block;
+	font-size: 10px;
+}
+
+#derechos .desc-icono-grupo{
+    padding: 3px;
+	border-top: 1px solid #dddddd;
+
+}
+
+#derechos .desc-icono-grupo-tit{
+    padding: 0px 3px 2px 0px;
+	margin: 0px 0px -5px;
+}
+
+
+#derechos .cuadro-derechos-tit {
+	padding: 10px;
+	margin: 0px;
+}
+
+#derechos .th-todo-nada {
+	border-left-width: 0px;
+}
+
+
+
+#js-colapsar-cuadro-derechos{
+    cursor: pointer;
+}
+

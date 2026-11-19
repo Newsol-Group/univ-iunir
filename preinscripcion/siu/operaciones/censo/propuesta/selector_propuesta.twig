@@ -1,0 +1,29 @@
+<div id="selectorCarrera">
+	{% autoescape false %}
+		{{ form.encabezado }}
+
+		<div class='well clearfix'>
+			<h3>{{'seleccion_propuesta'|trans}}</h3>
+			<div class='clearfix' style="margin-bottom: 5px;">
+				{{ form.control_group('responsable_academica') }}
+			</div>
+			<div class='clearfix' style="margin-bottom: 5px;">
+				{{ form.control_group('propuesta') }}
+			</div>
+			<div class='clearfix' style="margin-bottom: 5px;">
+				{{ form.control_group('ubicacion') }}
+			</div>
+			<div class='clearfix' style="margin-bottom: 5px;">
+				{{ form.control_group('modalidad') }}
+			</div>
+		</div>
+
+		<div class='pull-right'>
+			{{ form.submit_button('guardar_propuesta', 'inscribir_propuesta')}}
+			<input id="btnCerrar" type="button" value="{{'cerrar' | trans | capitalize }}" class="btn btn-info" onclick="cerrar_popup();" />
+		</div>
+
+	</form>
+{% endautoescape %}
+
+</div>

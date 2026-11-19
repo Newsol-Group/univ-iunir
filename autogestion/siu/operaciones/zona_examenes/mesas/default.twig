@@ -1,0 +1,40 @@
+{% extends "kernel/pagelet.twig" %}
+{% import 'kernel/macro_helpers.twig' as helper %}
+
+{% block contenido %}
+
+    {% set form = this.get_vista_form() %}
+    {% set acciones %}
+        {% if this.data.link_admin_actas_examen_fc!=''%}
+            <a href="{{ this.data.link_admin_actas_examen_fc }}"
+               class="btn btn-small">{{ 'carga_notas_mesa_examen.btn_admin_actas_examen_fc'|trans|capitalize }}
+            </a>
+        {% endif %}
+    {% endset %}
+
+
+    {{ form.render_encabezado() | raw }}
+    {{ helper.titulo_operacion('zona_examenes'|trans|capitalize,'', acciones) }}
+    <div class='row'>
+        <div class='span10 offset1'>
+            {{ form.render_cuerpo() | raw }}
+            <div class="pull-right">
+                <button id="btn_filtro" type="submit" class="btn btn-small btn-primary"><i class="icon-filter icon-white"></i> {{ 'carga_notas_mesa_examen.filtrar'|trans }}</button>
+                <a href="{{ this.data.url_limpiar_filtro }}" class="btn btn-small"><i class="icon-trash"></i> {{ 'carga_notas_mesa_examen.limpiar'|trans }}</a>
+            </div>
+        </div>
+    </div>
+    {{ form.render_cierre() | raw }}
+
+    <div class='row'>
+        <div class='span6 offset3'>
+            <div id="error-filtros" class="alert alert-error"></div>
+        </div>
+    </div>
+
+    {% import "examenes_macro.twig" as macro_examenes %}
+    <div id="comisiones">
+        {{ macro_examenes.render_examenes(this.data.mesas, this) }}
+    </div>
+
+{% endblock %}

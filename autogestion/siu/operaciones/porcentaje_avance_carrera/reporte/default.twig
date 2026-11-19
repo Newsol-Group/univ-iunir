@@ -1,0 +1,63 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}    
+	
+    <div class="titulo_operacion">
+        <h2 class="clearfix">
+            <span class="pull-left">{{ "porcentaje_avance_carrera.titulo" | trans }}</span>
+        </h2>
+    </div>
+        
+    {# Si vienen los promedios en la propuesta los muestro #}
+    {% if this.data.promedios_general_propuesta.promedio_general is not empty and this.data.promedios_general_propuesta.promedio_sin_aplazos is not empty %}
+        <div class="alert alert-info">
+            {{ "porcentaje_avance_carrera.promedios_generales_propuesta" | trans({'%promedio_general%': this.data.promedios_general_propuesta.promedio_general, '%promedio_sin_aplazos%': this.data.promedios_general_propuesta.promedio_sin_aplazos}) | raw }}
+        </div>
+    {% endif %}
+        
+    {% if this.data.certificados is empty %}
+        
+        <div class="alert alert-block">
+            <h4>{{ "porcentaje_avance_carrera.listado.vacio" | trans }}</h4>
+        </div>
+        
+    {% else %}
+        
+        
+        <table class="table table-striped table-bordered">
+
+            <thead>
+                <tr>
+                    <th>{{ "porcentaje_avance_carrera.certificado" | trans }}</th>
+                    <th>{{ "porcentaje_avance_carrera.orientacion" | trans }}</th>
+                    <th class="text-center">{{ "porcentaje_avance_carrera.orientacion_elegida" | trans }}</th>
+                    <th class="text-center">{{ "porcentaje_avance_carrera.porcentaje_avance" | trans }}</th>
+                    <th class="text-center">{{ "porcentaje_avance_carrera.aprobadas" | trans }}</th>
+                    <th class="text-center">{{ "porcentaje_avance_carrera.promedio_con_aplazos" | trans }}</th>
+                    <th class="text-center">{{ "porcentaje_avance_carrera.promedio_sin_aplazos" | trans }}</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for certificado in this.data.certificados %}
+                    
+                    <tr>
+                        <td>{{ certificado.certificado_nombre }}</td>
+                        <td>{{ certificado.orientacion_nombre }}</td>
+                        <td class="text-center">{{ certificado.orientacion_elegida_descr }}</td>
+                        <td class="text-center">{{ certificado.porcentaje_avance_descr }}</td>
+                        <td class="text-center">{{ certificado.cant_aprobadas }}</td>
+                        <td class="text-center">{{ certificado.promedio_general }}</td>
+                        <td class="text-center">{{ certificado.promedio_sin_aplazos }}</td>
+                    </tr>
+                    
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+        
+    {% endif %}
+
+{% endblock %}
+

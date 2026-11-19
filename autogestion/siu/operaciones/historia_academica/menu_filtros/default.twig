@@ -1,0 +1,73 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+    <div id="filtros" class="well visible-desktop">
+		<form id="form_filtros">
+			<ul class="nav nav-list">
+			<li><h3>{{'historia_academica.titulo_menu_filtros' |trans|capitalize}}</h3></li>
+			<li class="divider"></li>
+			<li>
+				<div>
+					<a  href="#" filtro="todo" class="todo">{{"todos" | trans | capitalize}}</a>
+					<span class="divisor"> / </span>
+					<a  href="#" filtro="ninguno" class="todo">{{"ninguno" | trans | capitalize}}</a>
+				</div>
+			</li>
+			<li class="divider"></li>
+			<li>
+				<a href="#" filtro="cursada" estado="{{this.data.estados.cursadas ? this.data.estados.cursadas : "A"}}">{{"cursadas" | trans | capitalize}}</a>
+				<div class="resultados cursadas">
+					<label for="cursadasPromocionadas" class="checkbox">
+						<input type="checkbox" name="cursadasPromocionadas" id="cursadasPromocionadas" class="cursada" value="PromocionA" />{{"cursada_promocionada" | trans | capitalize}}
+					</label>
+					<label for="cursadasAprobadas" class="checkbox">
+						<input type="checkbox" name="cursadasAprobadas" id="cursadasAprobadas" class="cursada" value="RegularidadA" />{{"cursada_aprobada" | trans | capitalize}}
+					</label>
+					<label for="cursadasDesaprobadas" class="checkbox segundo_orden">
+						<input type="checkbox" name="cursadasDesaprobadas" id="cursadasDesaprobadas" class="cursada" value="RegularidadR" />{{"cursada_desaprobada" | trans | capitalize}}
+					</label>
+					<label for="cursadasAusentes" class="checkbox segundo_orden">
+						<input type="checkbox" name="cursadasAusentes" id="cursadasAusentes" class="cursada" value="RegularidadU" />{{"cursada_ausente" | trans }}
+					</label>
+					<label for="enCurso" class="checkbox">
+						<input type="checkbox" name="enCurso" id="enCurso" class="cursada" value="EnCurso" />{{"en_curso" | trans | capitalize}}
+					</label>
+				</div>
+			</li>
+			<li class="divider"></li>
+			<li>
+				<a href="#" filtro="examen" estado="{{this.data.estados.examenes ? this.data.estados.examenes : "A"}}">{{"examenes" | trans | capitalize}}</a>
+				<div class="resultados examenes">
+					<label for="examenesAprobados" class="checkbox">
+						<input type="checkbox" name="examenesAprobados" id="examenesAprobados" class="examen" value="ExamenA" />{{"examen_aprobado" | trans | capitalize}}
+					</label>
+					<label for="examenesDesaprobados" class="checkbox segundo_orden">
+						<input type="checkbox" name="examenesDesaprobados" id="examenesDesaprobados" class="examen" value="ExamenR" />{{"examen_desaprobado" | trans | capitalize}}
+					</label>
+                                        
+					<label for="examenesAusentes" class="checkbox segundo_orden">
+						<input type="checkbox" name="examenesAusentes" id="examenesAusentes" class="examen" value="ExamenU" />{{"examen_ausente" | trans | capitalize}}
+					</label>
+				</div>
+			</li>
+			<li class="divider"></li>
+			<li>
+				<a href="#" filtro="reconocimientos" estado="{{this.data.estados.reconocimientos ? this.data.estados.reconocimientos : "A"}}">{{"historia_academica.reconocimientos" | trans | capitalize}}</a>
+				<div class="resultados equivalencias">
+					<label for="equivalenciasAprobadas" class="checkbox">
+						<input type="checkbox" name="equivalenciasAprobadas" id="equivalenciasAprobadas" class="reconocimientos" value="EquivalenciaA" />{{"historia_academica.equivalencias_aprobadas" | trans | capitalize}}
+					</label>
+					<label for="equivalenciasReprobadas" class="checkbox segundo_orden">
+						<input type="checkbox" name="equivalenciasReprobadas" id="equivalenciasReprobadas" class="reconocimientos" value="EquivalenciaR" />{{"historia_academica.equivalencias_desaprobadas" | trans | capitalize}}
+					</label>
+					<label for="resolucionesAprobadas" class="checkbox">
+						<input type="checkbox" name="resolucionesAprobadas" id="resolucionesAprobadas" class="reconocimientos" value="AprobResA" />{{"aprobaciones_por_resolucion" | trans | capitalize}}
+					</label>
+					<label for="creditos" class="checkbox">
+						<input type="checkbox" name="creditos" id="creditos" class="reconocimientos" value="CreditosA" />{{"historia_academica.creditos" | trans | capitalize}}
+					</label>
+				</div>
+			</li>			
+        </ul>
+		</form>
+    </div>
+{% endblock %}

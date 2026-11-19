@@ -1,0 +1,55 @@
+{% extends "kernel/pagelet.twig" %}
+{% import 'kernel/macro_helpers.twig' as helper %}
+{% block contenido %}
+	{% set form = this.get_vista_form() %}
+	{{ form.render_encabezado() | raw }}
+	{% set acciones = form.render_acciones() %}
+	{{ helper.titulo_operacion('inscriptos_examenes'|trans|capitalize,'', acciones)}}
+	<div class='row'>
+		<div class='span10 offset1'>
+			{{ form.render_cuerpo() | raw }}
+		</div>
+	</div>
+	{{ form.render_cierre() | raw }}
+
+<div id="listado">
+	{% if this.data.datos %}
+	{% for llamado, aux in this.data.datos %}
+	<div>
+		<h3 style="color: #555;">{{llamado}} ({{aux.turno_examen_nombre}})</h3>
+		{% for actividad, examenes in aux.actividades %}
+		<div>
+			<h4 style="background-color: #0088cc; color: white;">{{actividad}}</h4>
+			<table class="table table-striped table-bordered table-condensed">
+				<thead style="background-color: #999;">
+					<tr>
+						<th style="text-align: center; width: 10%;">{{'fecha'|trans|capitalize}}</th>
+						<th style="text-align: center;">{{'mesa'|trans|capitalize}}</th>
+						<th style="text-align: center; width: 15%">{{'ubicacion'|trans|capitalize}}</th>
+						<th style="text-align: center; width: 15%;">{{'rol'|trans|capitalize}}</th>
+						<th style="text-align: center; width: 20%;">{{'cantidad_de_inscriptos'|trans|capitalize}}</th>
+					</tr>
+				</thead>
+				<tbody>
+				{% for examen in examenes %}
+					<tr class="inscripcion link-in-data" {{ this.data_link(examen.LINK) | raw }}>
+						<td>{{examen.fecha_display}}</td>
+						<td>{{examen.mesa_examen_nombre}} ({{examen.turno_examen_nombre}})</td>
+						<td>{{examen.ubicacion_nombre}}</td>
+						<td>{{examen.rol_docente}}</td>
+						<td style="text-align: center;">{{examen.cant_inscriptos}}</td>
+					</tr>
+				{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		{% endfor %}
+	</div>
+	{% endfor %}
+	{% else %}
+	<div class="alert alert-warning">
+		{{'inscriptos_examenes.vacio'|trans|capitalize}}
+	</div>
+	{% endif %}
+</div>
+{% endblock %}

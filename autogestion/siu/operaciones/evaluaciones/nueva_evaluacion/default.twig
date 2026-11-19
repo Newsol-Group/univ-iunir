@@ -1,0 +1,19 @@
+{% extends "kernel/pagelet.twig" %}
+{% import 'kernel/macro_helpers.twig' as helper %}
+
+{% block contenido %}
+
+	{% set form = this.get_vista_form() %}
+
+	{{ form.render_encabezado() | raw }}
+	{% set acciones = form.render_acciones() %}
+	{{ helper.titulo_operacion('crear_parcial'|trans|capitalize, this.data.url_cancelar, acciones    ) }}
+
+	<div class='row'>
+		<div class='span6 offset3'>
+			{{ form.render_cuerpo() | raw }}
+		</div>
+	</div>
+	{{ form.render_cierre() | raw }}
+
+{% endblock %}

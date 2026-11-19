@@ -1,0 +1,46 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	{% set form = this.get_form() %}
+	{% autoescape false %}
+	{{ form.encabezado }}
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-inferior'>
+				<div class='pull-left'>
+					<h2>{{this.get_nombre()|trans}}</h2>
+				</div>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'guardar_datos_personales')}}
+				</div>
+				<div class='clearfix'></div>
+			</div>
+		</div>
+
+		{%if form.hay_visibles_agrupado('conoc_idiomas') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('conoc_idiomas')">{{'conoc_idiomas'|trans}}</h3>
+			<div class='margen-idiomas'>
+				<div id='conoc_idiomas' class='toggle-div'>
+					<div class='clearfix cg-margen'>
+						{{ form.control_group('alu_idioma_ingl') }}
+						{{ form.control_group('alu_idioma_alem') }}
+						{{ form.control_group('alu_idioma_fran') }}
+						{{ form.control_group('alu_idioma_ital') }}
+						{{ form.control_group('alu_idioma_port') }}
+						{{ form.control_group('alu_idioma_otro') }}
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-superior'>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'guardar_datos_personales')}}
+				</div>
+			</div>
+		</div>
+	</form>
+	{% endautoescape %}
+
+{% endblock %}

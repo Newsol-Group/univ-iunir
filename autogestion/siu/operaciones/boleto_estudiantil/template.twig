@@ -1,0 +1,14 @@
+{% extends "kernel/una_columna.twig" %}
+
+{% block titulo_operacion %}
+    <h2>{{ "boleto_estudiantil.titulo" | trans }}</h2>
+    {% if hay_mensajes %}
+        <div class="alert">
+            {{mensajes}}
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block columna_1 %}
+    {{ inicial.render }}
+{% endblock %}

@@ -1,0 +1,122 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+    {% set form = this.get_form() %}
+    {% autoescape false %}
+
+        {% if this.data.cant_inscripciones > 0 %}
+            
+            {{ form.encabezado }}
+            
+                <div class='controls controls-row form-head clearfix'>
+                    <div class='borde-inferior'>
+                        <div class='pull-left'>
+                            <h2>{{this.get_nombre()|trans}}</h2>
+                        </div>
+                        <div class='pull-right'>
+                            {{ form.submit_button('guardar', 'guardar_datos_personales')}}
+                        </div>
+                        <div class='clearfix'></div>
+                    </div>
+                </div>
+
+                {% if form.hay_visibles_agrupado('turno_preferido') %}
+                    <div class='well clearfix'>
+                        <h3 class='toggle-header' onclick="toggle('turno_preferido')">{{'turno_preferido'|trans}}</h3>
+                        <div id='turno_preferido' class='toggle-div'>
+                            <div class='clearfix cg-margen'>
+                                {{ form.control_group('turno_preferido') }}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if form.hay_visibles_agrupado('como_conocio_institucion') %}	
+                    <div class='well clearfix'>
+                        <h3 class='toggle-header' onclick="toggle('como_conocio_institucion')">{{'como_conocio_institucion'|trans}}</h3>
+                        <div id='como_conocio_institucion' class='toggle-div'>
+                            <div class='clearfix cg-margen'>
+                                {{ form.control_group('como_conocio_institucion') }}
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if form.hay_visibles_agrupado('otras_inscripciones') %}	
+                    <div class='well clearfix'>
+                        <h3 class='toggle-header' onclick="toggle('otras_inscripciones')">{{'otras_inscripciones'|trans}}</h3>
+                        <div id='otras_inscripciones' class='toggle-div'>
+                            <div class='clearfix cg-margen'>
+                                <div>	
+                                    {{ form.checkbox('insc_otra_inst') }}
+                                </div>
+                                <div id="div_insc_otra_inst_descr">
+                                    {{ form.control_group('insc_otra_inst_descr') }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if form.hay_visibles_agrupado('motivo_eleccion_inst') %}	
+                    <div class='well clearfix'>
+                        <h3 class='toggle-header' onclick="toggle('motivo_eleccion_inst')">{{'motivo_eleccion_inst'|trans}}</h3>
+                        <div id='motivo_eleccion_inst' class='toggle-div'>
+                            <div class='clearfix cg-margen'>
+                                <div class="span6">	{{ form.checkbox('mot_inst_econom') }} </div>
+                                <div class="span6">	{{ form.checkbox('mot_inst_prestigio') }} </div>
+                            </div>
+                            <div class='clearfix cg-margen'>
+                                <div class="span6">	{{ form.checkbox('mot_inst_difusion') }} </div>
+                                <div class="span6">	{{ form.checkbox('mot_inst_rec_estud') }} </div>
+                            </div>
+                            <div class='clearfix cg-margen'>
+                                <div class="span6">	{{ form.checkbox('mot_inst_rec_amigos') }} </div>
+                                <div class="span6">	{{ form.checkbox('mot_inst_sist_ing') }} </div>
+                            </div>
+                            <div class='clearfix cg-margen'>
+                                <div class="span6">	{{ form.checkbox('mot_inst_ubicacion') }} </div>
+                                <div class="span6">	{{ form.checkbox('mot_inst_otros') }} </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                {% if form.hay_visibles_agrupado('motivo_eleccion_prop') %}	
+                    <div class='well clearfix'>
+                        <h3 class='toggle-header' onclick="toggle('motivo_eleccion_prop')">{{'motivo_eleccion_prop'|trans}}</h3>
+                        <div id='motivo_eleccion_prop' class='toggle-div'>
+                            <div class='clearfix cg-margen'>
+                                <div class="span6">	{{ form.checkbox('mot_prop_vocacion') }}	</div>
+                                <div class="span6">	{{ form.checkbox('mot_prop_sug_fam') }}	</div>
+                            </div>
+                            <div class='clearfix cg-margen'>
+                                <div class="span6">	{{ form.checkbox('mot_prop_rec_social') }}	</div>
+                                <div class="span6">	{{ form.checkbox('mot_prop_ins_lab') }}	</div>
+                            </div>
+                            <div class='clearfix cg-margen'>
+                                <div class="span6">	{{ form.checkbox('mot_prop_perf_prof') }}	</div>
+                                <div class="span6">	{{ form.checkbox('mot_prop_mejora_ec') }}	</div>
+                            </div>
+                            <div class='clearfix cg-margen'>
+                                <div class="span6">	{{ form.checkbox('mot_prop_util_soc') }}	</div>
+                                <div class="span6">	{{ form.checkbox('mot_prop_otros') }}	</div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+
+                <div class='controls controls-row form-head clearfix'>
+                    <div class='borde-superior'>
+                        <div class='pull-right'>
+                            {{ form.submit_button('guardar', 'guardar_datos_personales')}}
+                        </div>
+                    </div>
+                </div>
+                        
+        </form>
+        
+    {% endif %}
+
+{% endautoescape %}
+
+{% endblock %}

@@ -1,0 +1,112 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	{% set form = this.get_form() %}
+	{% autoescape false %}
+	{{ form.encabezado }}
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-inferior'>
+				<div class='pull-left'>
+					<h2>{{this.get_nombre()|trans}}</h2>
+				</div>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'guardar_datos_personales')}}
+				</div>
+				<div class='clearfix'></div>
+			</div>
+		</div>
+
+		{%if form.hay_visibles_agrupado('situacion_familiar') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('situacion_familiar')">{{'situacion_familiar'|trans}}</h3>
+			<div id='situacion_familiar' class='toggle-div'>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('estado_civil') }}
+				</div>
+				<div class='clearfix cg-margen'>	
+					{{ form.checkbox('alu_est_civil_uh') }}
+				</div>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('cant_hijos_alum', 'span6') }}
+					{{ form.control_group('cant_fami_cargo', 'span6') }}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		{%if form.hay_visibles_agrupado('datos_padre') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('datos_padre')">{{'datos_padre'|trans}}</h3>
+			<div id='datos_padre' class='toggle-div'>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('apellido_padre', 'span6') }}
+					{{ form.control_group('nombres_padre', 'span6') }}
+				</div>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('padre_vive', 'span6') }}
+					{{ form.control_group('ult_est_cur_padre', 'span6') }}
+				</div>
+
+				<div id='div_sit_laboral_padre' class='clearfix' style="margin-bottom: 5px;">
+					{{ form.control_group('sit_laboral_padre') }}
+				</div>
+
+				<div id='div_trabajo_padre'>
+					<div class='clearfix cg-margen'>
+						{{ form.control_group('padre_trab_hace', 'span6') }}
+						{{ form.control_group('padre_trab_ocup', 'span6') }}
+					</div>
+					<div class='clearfix cg-margen'>
+						{{ form.control_group('padre_trab_tarea') }}
+					</div>
+				</div>
+				<div id='div_padre_no_trabaja'>
+					{{ form.control_group('padre_trab_otro') }}
+				</div>
+
+			</div>
+		</div>
+		{% endif %}
+
+		{%if form.hay_visibles_agrupado('datos_madre') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('datos_madre')">{{'datos_madre'|trans}}</h3>
+			<div id='datos_madre' class='toggle-div'>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('apellido_madre', 'span6') }}
+					{{ form.control_group('nombres_madre', 'span6') }}
+				</div>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('madre_vive', 'span6') }}
+					{{ form.control_group('ult_est_cur_madre', 'span6') }}
+				</div>
+				<div id='div_sit_laboral_madre' class='clearfix' style="margin-bottom: 5px;">
+					{{ form.control_group('sit_laboral_madre') }}
+				</div>
+				<div id='div_trabajo_madre'>
+					<div class='clearfix cg-margen'>
+						{{ form.control_group('madre_trab_hace', 'span6') }}
+						{{ form.control_group('madre_trab_ocup', 'span6') }}
+					</div>
+					<div class='clearfix cg-margen'>
+						{{ form.control_group('madre_trab_tarea') }}
+					</div>
+				</div>
+				<div id='div_madre_no_trabaja'>
+					{{ form.control_group('madre_trab_otro') }}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-superior'>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'guardar_datos_personales')}}
+				</div>
+			</div>
+		</div>
+
+	</form>
+	{% endautoescape %}
+
+{% endblock %}

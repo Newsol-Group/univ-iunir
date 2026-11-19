@@ -1,0 +1,16 @@
+<html>
+	<body class="body">
+		<table class="detalle">
+			<tr class="detalle_contenido">
+				<td>
+					{{  'cuerpo_mail_recuperar_pass'|trans({
+					'%mail%': mail,
+					'%link%': link,
+                    '%usuario%' : usuario,
+				})|raw
+					}}
+				</td>
+			</tr>
+		</table>
+	</body>
+</html>

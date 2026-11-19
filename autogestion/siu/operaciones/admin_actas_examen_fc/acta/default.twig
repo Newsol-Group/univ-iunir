@@ -1,0 +1,24 @@
+{% extends "kernel/pagelet.twig" %}
+{% import 'kernel/macro_helpers.twig' as helper %}
+
+{% block contenido %}
+
+	{% set vform = this.get_vista_form() %}
+	{% set modo_acta = this.get_modo_acta() %}
+	{{ modo_acta }}
+
+	{{ vform.render_encabezado() | raw }}
+
+	{{ helper.titulo_operacion("admin_actas_examen_fc.titulo"|trans|capitalize,
+								this.data.url_editar_volver,
+								vform.render_acciones() )
+	}}
+
+	<div class='row'>
+		<div class='span10 offset1'>
+			{{ vform.render_cuerpo() | raw }}
+		</div>
+	</div>
+	{{ vform.render_cierre() | raw }}
+
+{% endblock %}

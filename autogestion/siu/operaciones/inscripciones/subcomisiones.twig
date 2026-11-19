@@ -1,0 +1,21 @@
+<table class="table table-bordered subcomisiones">
+	<tr>
+		<th colspan="4" class="titulo">
+			{{"nombre_subcomisiones" | trans | capitalize }}
+		</th>							
+	</tr>
+	<tr>
+		<th>{{"subcomision.tipo" | trans | capitalize }}</th>
+		<th>{{"subcomision.nombre" | trans | capitalize }}</th>
+		<th>{{"subcomision.horario" | trans | capitalize }}</th>
+		<th>{{"subcomision.docentes" | trans | capitalize }}</th>
+	</tr>
+	{% for subcomision in subcomisiones %}
+	<tr>
+		<td>{{subcomision.tipo_clase}}</td>
+		<td>{{subcomision.subcomision_nombre}}</td>
+		<td>{{subcomision.horario_subcomision}}</td>
+		<td>{{subcomision.docentes_subcomision}}</td>
+	</tr>
+	{% endfor %}
+</table>

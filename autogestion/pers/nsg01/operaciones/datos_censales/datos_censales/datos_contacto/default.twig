@@ -1,0 +1,106 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	
+        {# Si no viene de Convocatorias a Becas #}
+        {% if not this.viene_de_convocatorias_becas() %}
+            {% import "macro_mensajes.twig" as mensajes %}
+            <div id="mensajes">
+                    {{ mensajes.render_mensajes(this.datos_confirmados(), this.datos_error_control(), this.datos_vigentes()) }}
+            </div>
+	{% endif %}
+	
+	{% autoescape false %}
+
+	<div class='controls controls-row form-head clearfix'>
+		<div class='borde-inferior'>
+			<div class='pull-left'>
+				<h2>{{this.get_nombre_seccion()|trans}}</h2>
+			</div>
+			<div class='clearfix'></div>
+		</div>
+	</div>
+
+	{% if this.data.modo == 'listado' %}
+		{#---- Pantalla listado ----#}
+		{% if this.data.cant_contactos == 0 %}
+			<div class='alert mensaje'>
+				{{'datos_censales.dc.sin_contactos'|trans|raw}}
+			</div>
+		{% else %}
+			<div>
+				<table class="table table-stripped table-hover">
+					<thead>
+						<tr>
+							<th>{{'datos_censales.dc.contacto_tipo_descr'|trans}}</th>
+							<th>{{'datos_censales.dc.contacto_descripcion'|trans}}</th>
+							<th class='eventos'>&nbsp;</th>
+						</tr>
+					</thead>
+					<tbody>
+					{% for item in this.get_datos_contacto() %}
+						<tr>
+							<td>{{item.contacto_tipo_descr}}</td>
+							<td>{{item.contacto_descripcion}}</td>
+							<td class='eventos'>
+							{% if item.contacto_tipo == this.data.tipo_mail_principal %}
+								{% if this.permite_editar_mail_principal() %}
+									<a href="{{ item.link_editar_mp }}">{{item.editar_mp_descr}}</a>
+								{% endif %}
+							{% else %}
+								<a href="{{ item.LINK_EDITAR }}" class="btn btn-info btn-small" title="{{'editar'|trans|capitalize}}"><i class="icon-white icon-pencil"></i></a>
+								<a href="{{ item.LINK_ELIMINAR }}" class="btn btn-info btn-small js-btnEliminar" title="{{'eliminar'|trans|capitalize}}"><i class="icon-white icon-remove"></i></a>
+							{% endif %}
+							</td>
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		{% endif %}
+
+		<div class="pull-left fix-boton">
+			<a href="{{ this.get_accion_edicion() }}" class="btn btn-inverse">
+				 {{'datos_censales.dc.agregar_contacto'|trans}} 
+			</a>
+		</div>
+                <div class="clearfix"></div>
+	{% else %}
+		{#---- Pantalla alta / edici�n ----#}
+		{% set form = this.get_form() %}
+		{{ form.encabezado }}
+			<div class='well clearfix'>
+				<h3>{{'datos_censales.dc.contacto'|trans}}</h3>
+				{{ form.control_group('__ID__') }}
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('contacto_tipo') }}
+				</div>
+				<div id='otros_contactos' class='clearfix cg-margen'>
+					{{ form.control_group('otros_contactos') }}
+				</div>
+				<div id='email' class='clearfix cg-margen'>
+					{{ form.control_group('email') }}
+				</div>
+				<div id='telefono' class='clearfix cg-margen'>
+					{{ form.control_group('telefono_codigo_area', 'span2') }}
+					{{ form.control_group('telefono_numero', 'span6') }}
+				</div>
+			</div>
+
+			<div class='controls controls-row form-head clearfix'>
+			<div class='borde-superior'>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar_edicion', 'datos_censales.guardar')  }}
+					<a href="{{ this.get_accion_volver_edicion() }}" class="btn btn-info">
+						{{ 'volver'|trans|capitalize }} 
+					</a>
+				</div>
+			</div>
+		</div>
+		</form>
+	{% endif %}
+	{% endautoescape %}
+        
+        {% import "macro_confirmacion.twig" as confirmacion %}
+        {{ confirmacion.mostrar(this.viene_de_convocatorias_becas(), this.hay_datos_faltantes_convocatoria(), this.get_url_siguiente_paso()) }}
+        
+{% endblock %}

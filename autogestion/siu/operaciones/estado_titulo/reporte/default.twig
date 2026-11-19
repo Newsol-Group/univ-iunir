@@ -1,0 +1,73 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+
+    <div class="titulo_operacion">
+        <h2 class="clearfix">
+            <span class="pull-left">
+                {{"header.menu.estado_titulo" | trans }}
+            </span>
+        </h2>
+    </div>
+
+    {% if this.data.titulos_solicitados is empty %}
+
+        <div id="alert-no-hay-preguntas" class="alert">{{ 'estado_titulo.filtro_seleccione_sin_resultado' | trans }}</div>
+
+    {% else %}
+
+            {% for  titulo  in this.data.titulos_solicitados %}
+
+                <div class="accordion-group">
+                    <div class="encabezado-form clearfix  accordion-heading">
+                        <div class="accordion-toggle titulo" data-toggle="collapse" data-target="#collapse{{ titulo.nro_solicitud}}" >
+
+                            <div class="nombre_certificado">{{"estado_titulo.certificacion"|trans|capitalize }}{{  titulo.certificado_nombre }}</div>
+                            <div class="estado_actual">{{"estado_titulo.estado_actual"|trans|capitalize }}{{  titulo.datos_solicitud.estado_actual }}</div>
+                            <div class="js-minimizar" ><i class="icon-chevron-down icon-white" ></i></div>
+                            <div style="clear: both;"></div>
+                        </div>
+                    </div>
+
+                    <div id="collapse{{ titulo.nro_solicitud}}" class="accordion-body collapse">
+                        <div class="accordion-inner">
+
+                            {% if titulo.movimientos is empty %}
+
+                                <div id="alert-no-hay-preguntas" class="alert">{{ 'estado_titulo.titulo_sin_movimientos' | trans }}</div>
+
+                            {% else %}
+
+                                    <table class="table table-bordered table-condensed">
+                                        <thead>
+                                        <tr>
+                                            <th> {{ 'estado_titulo.fecha' | trans }}</th>
+                                            <th> {{ 'estado_titulo.accion' | trans }}</th>
+                                            <th> {{ 'estado_titulo.estado' | trans }}</th>
+                                        </tr>
+                                        </thead>
+
+                                        <tbody>
+                                        {% for movimiento in  titulo.movimientos %}
+
+                                            <tr>
+                                                <td>{{ movimiento.fecha }}</td>
+                                                <td>{{ movimiento.accion_nombre }}</td>
+                                                <td>{{ movimiento.estado_nuevo_desc }}</td>
+                                            </tr>
+
+                                        {% endfor %}
+                                        </tbody>
+
+                                    </table>
+
+                            {% endif %}
+
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+
+    {% endif %}
+
+{% endblock %}

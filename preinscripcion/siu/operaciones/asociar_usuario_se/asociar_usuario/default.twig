@@ -1,0 +1,22 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}    
+	{% set form = this.get_form() %}
+	{% autoescape false %}
+		{% if this.data.mensajes %}
+			{% import "kernel/macro_notificaciones.twig" as notificaciones %}
+			{{ notificaciones.render_notif(this.data.mensajes) }}
+		{% endif %}
+
+		<h3>{{'datos_usuario'|trans}}</h3>
+		{{ this.data.datos_usuario }}
+		{{ form.encabezado }}
+			<div class='clearfix cg-margen'>
+				{{ form.control_group('password') }}
+			</div>
+			<div class='pull-right'>
+				{{ form.submit_button('confirmar', 'confirmar')}}
+				<input type="button" name="volver" value="{{'volver'|trans|capitalize}}" class="btn btn-info" onclick="window.location.href='{{this.data.url_volver}}'" />
+			</div>
+		</form>
+	{% endautoescape %}
+{% endblock %}

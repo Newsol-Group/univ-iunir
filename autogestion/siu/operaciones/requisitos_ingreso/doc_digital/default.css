@@ -1,0 +1,39 @@
+.requisito-header {
+	border-bottom: 1px solid;
+	margin-bottom: 15px;
+}
+
+.borde-superior {
+	border-top: 1px solid #DDD;
+}
+
+.botonera {
+	height: 100px;
+	margin-left: 10px;
+}
+
+.botones {
+	margin-top: 35px;
+}
+
+.descr_requisito {
+	font-style: italic;
+}
+
+input {
+    width: 400px;
+}
+
+.mensaje_error {
+	text-align: center;
+	font-weight: bold;
+}
+
+#items img.no-disponible {
+    height: 100%;
+    width: 400px;
+}
+
+#items .js-form-eliminar {
+    display: inline-block;
+}

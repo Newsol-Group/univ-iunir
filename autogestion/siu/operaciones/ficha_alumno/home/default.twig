@@ -1,0 +1,45 @@
+{% extends "kernel/pagelet.twig" %}
+{% import 'kernel/macro_helpers.twig' as helper %}
+
+{% block contenido %}
+{#---- Filtro ------------------------------------------------------------------#}
+    {% set form = this.get_vista_form() %}
+    {% set acciones %}
+        {{ form.render_acciones() | raw }}
+    {% endset %}
+    {{ form.render_encabezado() | raw }}
+
+    {{ helper.titulo_operacion('ficha_alumno'|trans|capitalize,'', acciones) }}
+    <div class='row'>
+		
+        <div class='span10 offset1'>
+            {{ form.render_cuerpo() | raw }}
+        </div>
+    </div>
+    {{ form.render_cierre() | raw }}
+
+	<div id='comisiones'>
+		<h2>{{'comisiones'|trans}}</h2>
+		{% import "comisiones_macro.twig" as macro_comisiones %}
+		<div id="comisiones" class="box-grupo">
+			{{ macro_comisiones.render_comisiones(this.data.renglones_comisiones, this) }}
+		</div>
+	</div>
+
+	<div id='mesas'>
+		<h2>{{'mesas'|trans}}</h2>
+		{% import "examenes_macro.twig" as macro_examenes %}
+		<div id="mesas" class="box-grupo">
+			{{ macro_examenes.render_examenes(this.data.renglones_examenes, this) }}
+		</div>
+	</div>
+	
+	<div id='actas_fc'>
+		<h2>{{'actas_fc'|trans}}</h2>
+		{% import "actas_fc_macro.twig" as macro_actas_fc %}
+		<div id="mesas" class="box-grupo">
+			{{ macro_actas_fc.render_actas_fc(this.data.renglones_actas_fc, this) }}
+		</div>
+	</div>
+	
+{% endblock %}

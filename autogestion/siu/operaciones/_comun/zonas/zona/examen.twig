@@ -1,0 +1,59 @@
+{% extends "zona/default.twig" %}
+
+{% block detalle_encabezado_descripcion this.data.detalle.actividad_nombre ~ ' - ('~ this.data.detalle.actividad_codigo~')' %}
+	{% block detalle_encabezado_icono "<i class='icon-th-list'></i> Detalles" %}
+
+		{% block descripcion_entidad %}
+			{% set mesa = this.data.detalle %}
+			<table class="table table-condensed detalle-detalle detalle-tabla">
+				<tr>
+					<td class='zona-detalle-label'>
+						{{ 'docentes'|trans|capitalize }}:
+					</td>
+					<td colspan='3'> {{ mesa.docentes }} </td>
+				</tr>
+				<tr>
+					<td class='zona-detalle-label' colspan="1">
+						{{ 'fecha'|trans|capitalize }}:
+					</td>
+					<td>{{ mesa.fecha_examen }}</td>
+
+					<td class='zona-detalle-label' colspan="1">
+						{{ 'horario'|trans|capitalize }}:
+					</td>
+					<td>{{ mesa.hora_inicio_finalizacion }}
+					</td>
+				</tr>
+				<tr>
+					<td class='zona-detalle-label'>
+						{{ 'mesa'|trans|capitalize }}:
+					</td>
+					<td> {{ mesa.mesa_examen_nombre }} </td>
+					<td class='zona-detalle-label'>
+						{{ 'anio_academico'|trans|capitalize }}:
+					</td>
+					<td> {{ mesa.anio_academico }} </td>
+				</tr>
+				{% if ( mesa.turno_examen_nobre or mesa.llamado_nombre ) %}
+				<tr>
+					<td class='zona-detalle-label'>
+						{{ 'turno'|trans|capitalize }}:
+					</td>
+					<td>{{ mesa.turno_examen_nombre }}</td>
+
+					<td>{{ 'llamado'|trans|capitalize }}:</td>
+					<td>{{ mesa.llamado_nombre }}</td>
+				</tr>
+				{% endif %}
+
+				<tr>
+					<td class='zona-detalle-label'>
+						{{ 'ubicacion'|trans|capitalize }}:
+					</td>
+					<td>{{ mesa.ubicacion_nombre }}</td>
+					<td>{{ 'instancias'|trans|capitalize }}:</td>
+					<td>{{ mesa.instancias }}</td>
+				</tr>
+			</table>
+
+		{% endblock %}

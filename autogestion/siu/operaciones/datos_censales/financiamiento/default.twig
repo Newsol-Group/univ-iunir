@@ -1,0 +1,105 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	
+        {# Si no viene de Convocatorias a Becas #}
+        {% if not this.viene_de_convocatorias_becas() %}
+            {% import "macro_mensajes.twig" as mensajes %}
+            <div id="mensajes">
+                    {{ mensajes.render_mensajes(this.datos_confirmados(), this.datos_error_control(), this.datos_vigentes()) }}
+            </div>
+	{% endif %}
+	
+	{% set form = this.get_form() %}
+	{% autoescape false %}
+	{{ form.encabezado }}
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-inferior clearfix'>
+				<div class='pull-left'>
+					<h2>{{this.get_nombre_seccion()|trans}}</h2>
+				</div>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'datos_censales.guardar')  }}
+				</div>
+			</div>
+		</div>
+
+		{%if form.hay_visibles_agrupado('financ_fuente') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('financ_fuente')">{{'datos_censales.financ_fuente'|trans}}</h3>
+			<div id='financ_fuente' class='toggle-div'>
+				<div class='clearfix cg-margen'>
+					{{ form.checkbox('costeo_estudios_familiar') }}
+					{{ form.checkbox('costeo_estudios_plan_social') }}
+					{{ form.checkbox('costeo_estudios_trabajo') }}
+					{{ form.checkbox('costeo_estudios_beca') }}
+					{{ form.checkbox('costeo_estudios_otro') }}
+				</div>
+				<div id='div_form_financiamiento' class='clearfix' style="margin-bottom: 5px;">
+					{{ form.control_group('costeo_estudios_descripcion') }}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		<div id='div_datos_becas'>
+			{{ form.control_group('beca') }}
+			{%if form.hay_visibles_agrupado('financ_beca_fuente') %}
+			<div class='well clearfix'>
+				<h3 class='toggle-header' onclick="toggle('financ_beca_fuente')">{{'datos_censales.financ_beca_fuente'|trans}}</h3>
+				<div id='financ_beca_fuente' class='toggle-div'>
+					<div class='clearfix cg-margen'>
+						{{ form.checkbox('beca_fuente_universidad') }}
+						{{ form.checkbox('beca_fuente_nacional') }}
+						{{ form.checkbox('beca_fuente_provincial') }}
+						{{ form.checkbox('beca_fuente_municipal') }}
+						{{ form.checkbox('beca_fuente_internacional') }}
+						{{ form.checkbox('beca_fuente_otra') }}
+					</div>
+				</div>
+			</div>
+			{% endif %}
+				
+			{%if form.hay_visibles_agrupado('financ_beca_tipo') %}
+			<div class='well clearfix'>
+				<h3 class='toggle-header' onclick="toggle('financ_beca_tipo')">{{'datos_censales.financ_beca_tipo'|trans}}</h3>
+				<div id='financ_beca_tipo' class='toggle-div'>
+					<div class='clearfix cg-margen'>
+						{{ form.checkbox('beca_tipo_economica') }}
+						{{ form.checkbox('beca_tipo_servicios') }}
+						{{ form.checkbox('beca_tipo_investigacion') }}
+					</div>
+				</div>
+			</div>
+			{% endif %}
+
+			{%if form.hay_visibles_agrupado('financ_beca_tipo_econom') %}
+			<div id='div_beca_tipo_econom' class='well clearfix'>
+				<h3 class='toggle-header' onclick="toggle('financ_beca_tipo_econom')">{{'datos_censales.financ_beca_tipo_econom'|trans}}</h3>
+				<div id='financ_beca_tipo_econom' class='toggle-div'>
+					<div class='clearfix cg-margen'>
+						{{ form.checkbox('beca_economica_transporte') }}
+						{{ form.checkbox('beca_economica_efectivo') }}
+						{{ form.checkbox('beca_economica_fotocopias') }}
+						{{ form.checkbox('beca_economica_habitacional') }}
+						{{ form.checkbox('beca_economica_comedor') }}
+					</div>
+				</div>
+			</div>
+			{% endif %}
+
+		</div>
+
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-superior'>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'datos_censales.guardar')  }}
+				</div>
+			</div>
+		</div>
+	</form>
+	{% endautoescape %}
+        
+        {% import "macro_confirmacion.twig" as confirmacion %}
+        {{ confirmacion.mostrar(this.viene_de_convocatorias_becas(), this.hay_datos_faltantes_convocatoria(), this.get_url_siguiente_paso()) }}
+        
+{% endblock %}

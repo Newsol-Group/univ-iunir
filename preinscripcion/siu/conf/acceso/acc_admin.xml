@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<perfil id="admin">
+	
+<parametros>
+	<parametro id="index" valor="config_form" />
+</parametros>
+
+<menu>
+	<opcion nombre="formulario_preinscripcion">
+		<opcion destino="config_form"/>
+		<opcion destino="copiar_config_form"/>	
+		<opcion destino="importar_config_form"/>	
+	</opcion>
+	<opcion destino="limpiar_cache"/>
+	<opcion destino="perfil_datos"/>
+	<opcion nombre="tests">
+		<opcion destino="test_mail"/>
+	</opcion>
+</menu>
+
+<operaciones>
+	<operacion id="config_form" url="config_form" activa="1" />
+	<operacion id="copiar_config_form" url="copiar_config_form" activa="1" />
+	<operacion id="importar_config_form" url="importar_config_form" activa="1" />
+	<operacion id="acceso" url="acceso_admin" activa="1" />
+	<operacion id="limpiar_cache" url="limpiar_cache" activa="1" />
+	<operacion id="perfil_datos" url="perfil_datos" activa="1" />
+	<operacion id="test_mail" url="test_mail" activa="1" />
+</operaciones>
+
+</perfil>

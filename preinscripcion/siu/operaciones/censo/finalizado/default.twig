@@ -1,0 +1,38 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+    <div>
+        <h2 class="borde-inferior">{{'propuestas_elegidas'|trans}}</h2>
+        <table class="table table-stripped table-hover">
+            <thead>
+                <tr>
+                    <th>{{'responsable_academica'|trans}}</th>
+                    <th>{{'propuesta'|trans}}</th>
+                    <th>{{'tipo_de_propuesta'|trans}}</th>
+                    <th>{{'ubicacion'|trans}}</th>
+                    <th>{{'modalidad'|trans}}</th>
+                    <th>{{'fecha_fin_vigencia'|trans}}</th>
+                    <th>&nbsp;</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in this.get_datos_inscripciones() %}
+                    <tr>
+                        <td>{{item.ra_nombre}}</td>
+                        <td>{{item.propuesta_nombre}}</td>
+                        <td>{{item.tipo_propuesta_descr}}</td>
+                        <td>{{item.ubicacion_nombre}}</td>
+                        <td>{{item.modalidad_nombre}}</td>
+                        <td>{{item.fecha_fin_vigencia_visual}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <div>
+            {{ 'prop_finalizada.msj'|trans }}
+            <a class="btn btn-success no-ajax pull-right" href="{{this.get_action_reabrir()}}">
+                <i class="icon-white icon-repeat"></i>&nbsp;{{'prop_finalizada.reabrir'|trans}}
+            </a>
+        </div>
+    </div>
+
+{% endblock %}

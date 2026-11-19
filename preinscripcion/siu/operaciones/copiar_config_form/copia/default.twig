@@ -1,0 +1,22 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+{% set form = this.get_form() %}
+{% autoescape false %}
+
+{% if this.data.mensaje_ok %}
+<div class="mensaje alert alert-info span5">
+	{{ this.data.mensaje_ok|trans }}
+</div>
+{% elseif this.data.mensaje_error %} 
+<div class="mensaje alert alert-error span5">
+	{{ this.data.mensaje_error|trans }}
+</div>
+{% endif %}
+<div class="clearfix"></div>
+{{ form.encabezado }}
+	{{ form.control_group('tipo_propuesta_origen') }}
+	{{ form.control_group('tipo_propuesta_destino') }}
+	{{ form.submit_button('copiar', 'copiar')}}
+</form>
+{% endautoescape %}
+{% endblock %}

@@ -1,0 +1,8 @@
+.selector {
+	padding-right: 10px;
+}
+.label-obligatorio {
+	font-weight:bold;
+	font-style:italic;
+	padding-top: 2px;
+}

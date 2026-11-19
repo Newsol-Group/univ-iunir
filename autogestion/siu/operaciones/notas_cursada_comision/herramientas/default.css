@@ -1,0 +1,32 @@
+#herramientas .js-barra-autocompletar, #herramientas .js-barra-calcular-notas { 
+    padding-bottom: 10px;
+}
+
+#herramientas label, #herramientas input, #herramientas select { 
+    margin-right: 5px;
+    width: auto;
+}
+
+/* Ancho del campo Fecha del Autocompletar*/
+#herramientas #js-valor-fecha { 
+    width: 70px;
+}
+
+/* Ancho del campo Observaciones del Autocompletar*/
+#herramientas #js-valor-observaciones { 
+    width: 200px;
+}
+
+/* Ancho de los campos Nota de Regularidad y Nota de Promoción (cuando son inputs) del Autocompletar*/
+#herramientas input#js-valor-nota_promocion, #herramientas input#js-valor-nota_cursada { 
+    width: 50px;
+}
+
+#herramientas .well { padding: 8px; margin-bottom: 0;}
+#herramientas .form-inline { margin-bottom: 0; }
+#herramientas input#notas_cursada_query, #herramientas label.notas_cursada_query { margin-right: 10px; }
+#herramientas .advertencia { font-style: italic; font-size: 75%; }
+
+#herramientas .preset_valor { 
+    display: none;
+}

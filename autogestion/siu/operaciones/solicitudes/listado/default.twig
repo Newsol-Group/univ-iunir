@@ -1,0 +1,86 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+    {% import "kernel/macro_notificaciones.twig" as notificaciones %}
+    
+<div class="titulo_operacion row-fluid">
+	<div class="span12">
+		<h2 class="resaltar divisor clearfix">
+			<span class="pull-left">{{'listado_solicitudes'|trans|capitalize}}</span>
+			<div class="" style="margin-bottom: 10px;">
+				<a id="btn-nueva-solicitud" href="{{ this.data.url_nueva_solicitud}}" class='btn btn-info pull-right no-ajax' target="{{this.data.target_nva_solicitud}}">{{'nueva_solicitud'|trans}}</a>
+			</div>
+		</h2>
+	</div>
+</div>
+                
+{% if this.data.resultado.mensajes %}
+        {{ notificaciones.render_notif(this.data.resultado.mensajes, true) }}
+{% endif %}
+
+{% if this.data.msg_saved %}
+	
+	<div class='alert alert-success alert-dismissible' role='alert'>
+		<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+		<strong> 		
+			{{ this.data.msg_saved | trans }}
+		</strong>
+	</div>
+{% endif %}
+
+{# Si la solicitud se creo bien muestro el mensaje #}
+{% if this.data.nueva_solicitud_ok %}
+    <div class="alert alert-success">
+      <button type="button" class="close" data-dismiss="alert">&times;</button>
+      {{ this.data.nueva_solicitud_ok }}
+    </div>
+{% endif %}
+
+<label for="solicitudes_historicas">
+	<input type="checkbox" name="solicitudes_historicas" id="solicitudes_historicas" value="1" style="margin: 0px;"{% if this.data.historicas %} checked{% endif %}>
+	{{'solicitudes_historicas'|trans|capitalize}}
+</label>
+<div id="listado">
+{% if this.data.solicitudes %}
+	<table class="table table-condensed table-bordered">
+		<thead>
+			<tr>
+				<th>{{'constancias_certificados.constancia' | trans }}</th>
+				<th>{{'constancias_certificados.fecha_solicitud' | trans }}</th>
+				<th>{{'constancias_certificados.presentar_a' | trans }}</th>
+                <th>{{'constancias_certificados.solicitado_en' | trans }}</th>
+				<th>{{'constancias_certificados.copias' | trans }}</th>
+				<th>{{'constancias_certificados.estado' | trans }}</th>
+				<th>{{'constancias_certificados.fecha_vencimiento' | trans }}</th>
+                <th></th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for const in this.data.solicitudes %}
+			<tr>
+				<td>{{const.nombre_constancia}}</td>
+				<td>{{const.fecha_solicitud}}</td>
+				<td>{{const.presentar_a}}</td>
+                <td>{% if const.interfaz == 1 %}{{'constancias_certificados.gestion' | trans }}{% elseif const.interfaz == 2 %}{{'constancias_certificados.autogestion' | trans }}{% endif %}</td>
+				<td>{{const.cant_copias_solicitadas}}</td>
+				<td>{{const.estado}}</td>
+				<td>
+                    {% if const.estado == 'Online' %}
+                        {{ const.fecha_fin_vigencia }}
+                    {% endif %}
+                </td>
+                <td>
+                    {% if const.permite_descargar %}
+                        <a class="btn no-ajax descargar_cert" href="{{ const.url_descarga }}" title="{{ 'constancias_certificados.descargar_certificado' | trans }}"><span class="g3w-icono-pdf"></span></a>
+                    {% endif %}
+                </td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+{% else %}
+	<div class="alert alert-warning">
+        {{'constancias_certificados.no_hay_solicitudes' | trans }}
+	</div>
+{% endif %}
+</div>
+{% endblock %}

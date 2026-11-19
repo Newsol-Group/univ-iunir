@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="32000065" descripcion="toba_ei_formulario">
+	<tabla nombre="apex_objeto_ei_formulario_ef">
+		<registro estado="1">
+			<columna nombre="objeto_ei_formulario_fila" valor="770000068"/>
+			<columna nombre="objeto_ei_formulario" valor="32000065"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="forma_pago"/>
+			<columna nombre="elemento_formulario" valor="ef_combo"/>
+			<columna nombre="columnas" valor="forma_pago"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="23"/>
+			<columna nombre="etiqueta" valor="Forma de Pago"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="carga_metodo" valor="get_formas_pago"/>
+			<columna nombre="carga_consulta_php" valor="770000001"/>
+			<columna nombre="carga_fuente" valor="guarani"/>
+			<columna nombre="carga_col_clave" valor="valor"/>
+			<columna nombre="carga_col_desc" valor="descr"/>
+			<columna nombre="carga_cascada_relaj" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="1"/>
+			<columna nombre="carga_no_seteado" valor="-- Seleccione --"/>
+			<columna nombre="carga_no_seteado_ocultar" valor="0"/>
+			<columna nombre="punto_montaje" valor="1"/>
+		</registro>
+	</tabla>
+</componente>

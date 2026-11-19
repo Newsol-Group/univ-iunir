@@ -1,0 +1,178 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	{% set form = this.get_form() %}
+	{% autoescape false %}
+	{{ form.encabezado }}
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-inferior'>
+				<div class='pull-left'>
+					<h2>{{this.get_nombre()|trans}}</h2>
+				</div>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'guardar_datos_personales')}}
+				</div>
+				<div class='clearfix'></div>
+			</div>
+		</div>
+
+		{%if form.hay_visibles_agrupado('domicilio_per_clases') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('domicilio_per_clases')">{{'domicilio_per_clases'|trans}}</h3>
+			<div id='domicilio_per_clases' class='toggle-div'>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('calle_per_lect') }}
+				</div>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('numero_per_lect', 'span3') }}
+					{{ form.control_group('piso_per_lect', 'span3') }}
+					{{ form.control_group('dpto_per_lect', 'span3') }}
+					{{ form.control_group('unidad_per_lect', 'span3') }}
+				</div>
+					
+				{% if form.def_visible('loc_per_lect') %}
+					<div class='clearfix cg-margen'>
+						{{ form.control_group_localidad('loc_per_lect', 'loc_per_lect_descr', 'pais_per_lect') }}
+						<div id='loc_per_lect_descr_help' class='clearfix inline-help italic cg-margen'>
+							{{'ayuda_lista_localidades'|trans}}
+						</div>
+						<input id="btnLimpiarLocPerLect" value="{{'limpiar'|trans}}" type="button" class="btn btn-inverse" />
+						<input id="btnSelectorLocPerLect" name="btnSelectorLocalidad" value="{{'busqueda_avanzada'|trans}}" type="button" class="btn btn-inverse" />
+					</div>
+				{% endif %}
+					
+				<div class='clearfix cg-margen'>
+					{% if form.def_visible('loc_per_lect') %}
+						<div class='span6'>
+							{{ form.control_group('cp_per_lect', 'span4') }}
+							<input id="btnSelectorCP_PerLect" name="btnSelectorCP_PerLect" value="{{'busqueda_cp'|trans}}" type="button" class="btn btn-inverse btn-cp" />
+						</div>
+						{{ form.control_group('barrio_per_lec', 'span6') }}
+					{% endif %}
+				</div>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('te_per_lect', 'span6') }}
+					{{ form.control_group('tipo_res_per_lect', 'span6') }}
+				</div>
+				<div class='clearfix cg-margen'>	
+					{{ form.control_group('vive_actual_con') }}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		{%if form.hay_visibles_agrupado('domicilio_procedencia') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('domicilio_procedencia')">{{'domicilio_procedencia'|trans}}</h3>
+			
+			<div id='domicilio_procedencia' class='toggle-div'>
+				<div class='clearfix' style="margin-bottom: 15px;">
+					<div id="btn_copiar_domicilio__proc__per_lect" class="btn btn-info btn-copia">
+						<i class="icon-white icon-chevron-down"></i> {{'copiar_domicilio'|trans}}
+					</div>
+				</div>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('calle_proc') }}
+				</div>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('numero_proc', 'span3') }}
+					{{ form.control_group('piso_proc', 'span3') }}
+					{{ form.control_group('dpto_proc', 'span3') }}
+					{{ form.control_group('unidad_proc', 'span3') }}
+				</div>
+					
+				{% if form.def_visible('loc_proc') %}
+					<div class='clearfix cg-margen'>
+						{{ form.control_group_localidad('loc_proc', 'loc_proc_descr', 'pais_proc') }}
+						<div id='loc_proc_descr_help' class='clearfix inline-help italic cg-margen'>
+							{{'ayuda_lista_localidades'|trans}}
+						</div>
+						<input id="btnLimpiarLocProc" value="{{'limpiar'|trans}}" type="button" class="btn btn-inverse" />
+						<input id="btnSelectorLocProc" name="btnSelectorLocalidad" value="{{'busqueda_avanzada'|trans}}" type="button" class="btn btn-inverse" />
+					</div>
+				{% endif %}
+					
+				<div class='clearfix cg-margen'>
+					{% if form.def_visible('loc_proc') %}
+						<div class='span6'>
+							{{ form.control_group('cp_proc', 'span4') }}
+							<input id="btnSelectorCP_Proc" name="btnSelectorCP_PerLect" value="{{'busqueda_cp'|trans}}" type="button" class="btn btn-inverse btn-cp" />
+						</div>
+						{{ form.control_group('barrio_proc', 'span6') }}
+					{% endif %}
+				</div>
+				
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('te_proc', 'span6') }}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+
+		{%if form.hay_visibles_agrupado('persona_allegada') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('persona_allegada')">{{'persona_allegada'|trans}}</h3>
+			<div id='persona_allegada' class='toggle-div'>
+				<div class='clearfix' style="margin-bottom: 15px;">
+					<div id="btn_copiar_domicilio__pers_alleg__per_lect" class="btn btn-info btn-copia">
+						<i class="icon-white icon-chevron-down"></i> {{'copiar_domicilio'|trans}}
+					</div>
+					<div id="btn_copiar_domicilio__pers_alleg__proc" class="btn btn-info btn-copia">
+						<i class="icon-white icon-chevron-down"></i> {{'copiar_domicilio_proc'|trans}}
+					</div>
+				</div>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('apellido_pers_alleg', 'span6') }}
+					{{ form.control_group('nombre_pers_alleg', 'span6') }}
+				</div>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('tipo_allegado', 'span6') }}
+					{{ form.control_group('calle_pers_alleg', 'span6') }}
+				</div>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('nro_pers_alleg', 'span3') }}
+					{{ form.control_group('piso_pers_alleg', 'span3') }}
+					{{ form.control_group('dpto_pers_alleg', 'span3') }}
+					{{ form.control_group('unidad_pers_alleg', 'span3') }}
+				</div>
+					
+				{% if form.def_visible('loc_pers_alleg') %}
+					<div class='clearfix cg-margen'>
+						{{ form.control_group_localidad('loc_pers_alleg', 'loc_pers_alleg_descr', 'pais_pers_alleg') }}
+						<div id='loc_pers_alleg_descr_help' class='clearfix inline-help italic cg-margen'>
+							{{'ayuda_lista_localidades'|trans}}
+						</div>
+						<input id="btnLimpiarLocPersAlleg" value="{{'limpiar'|trans}}" type="button" class="btn btn-inverse" />
+						<input id="btnSelectorLocPersAlleg" name="btnSelectorLocalidad" value="{{'busqueda_avanzada'|trans}}" type="button" class="btn btn-inverse" />
+					</div>
+				{% endif %}
+					
+				<div class='clearfix cg-margen'>
+					{% if form.def_visible('loc_pers_alleg') %}
+						<div class='span6'>
+							{{ form.control_group('cp_pers_alleg', 'span4') }}
+							<input id="btnSelectorCP_PersAlleg" name="btnSelectorCP_PerLect" value="{{'busqueda_cp'|trans}}" type="button" class="btn btn-inverse btn-cp" />
+						</div>
+						{{ form.control_group('barrio_alleg', 'span6') }}
+					{% endif %}
+				</div>
+				
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('te_pers_alleg', 'span6') }}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-superior'>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'guardar_datos_personales')}}
+				</div>
+			</div>
+		</div>
+
+	</form>
+	{% endautoescape %}
+
+{% endblock %}

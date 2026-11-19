@@ -1,0 +1,25 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+    {% autoescape false %}
+
+        {% if not this.data.hay_periodo_preinsc_vigente %}
+            <div class="row-fluid">
+                <div class="span12 alert alert-warning">
+                    <p>
+                        <strong>{{ 'preinscripcion.msj_sin_periodos' | trans | raw }}</strong>
+                    </p>
+                    {% if this.data.prox_periodo_preinsc %}
+                        <p>
+                            {{ this.data.prox_periodo_preinsc }}
+                        </p>
+                    {% endif %}
+                </div>
+            </div>
+        {% else %}
+            <div class="well">
+                {{ 'preinscripcion.mensaje' | trans | raw }}
+            </div>
+        {% endif %}
+
+    {% endautoescape %}
+{% endblock %}

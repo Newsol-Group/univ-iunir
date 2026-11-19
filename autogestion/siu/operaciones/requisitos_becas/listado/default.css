@@ -1,0 +1,12 @@
+#pagelet .js-btn-guardar {
+    margin-left: 5px;
+    margin-top: 5px;
+}
+
+#pagelet .js-form-guardar {
+    display: inline-block;
+}
+
+#pagelet a.disabled, #pagelet button:disabled {
+  cursor: not-allowed;
+}

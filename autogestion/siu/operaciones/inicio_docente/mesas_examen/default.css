@@ -1,0 +1,91 @@
+#mesas_examen .wrapper-carga {
+    width: 50px;
+    border: 1px solid;
+    border-radius: 2px;
+    height: 7px;
+    margin: 0 2px;
+    display: inline-block;
+}
+
+#mesas_examen .progreso-carga {
+    height: 7px;
+    background-color: green;
+}
+
+#mesas_examen table {
+    border-right: 0;
+    border-left: 0;
+}
+
+#mesas_examen td {
+    border-right: 0;
+    border-left: 0;
+}
+
+#mesas_examen tr.comisiones-ver td{
+    text-align: center;
+}
+
+#mesas_examen #js-link-ver-todo{
+    cursor: pointer;
+}
+
+#mesas_examen span {
+    display: block;
+}
+
+#mesas_examen span.materia {
+
+}
+
+#mesas_examen span.comision {
+    color: #9b9993;
+}
+
+#mesas_examen span.horario {
+    font-size: 10px;
+}
+
+#mesas_examen span.evaluacion {
+    color: #b01316;
+}
+
+#mesas_examen .icono_tipo {
+    width: 20px;
+    text-align: center;
+    vertical-align:middle;
+    font-weight: bold;
+    font-size: 10px;
+}
+
+#mesas_examen .tipo_cp {
+    background-color: #009838;
+    color: #fff;
+}
+
+#mesas_examen .tipo_ct {
+    background-color: #b01216;
+    color: #fff;
+}
+
+#mesas_examen .tipo_ctp {
+    background-color: #093f93;
+    color: #fff;
+}
+
+#mesas_examen .tipo_ep {
+    background-color: #e6d440;
+    color: #b01216;
+}
+
+#mesas_examen .tipo_er {
+    background-color: #e6d440;
+    color: #b01216;
+}
+
+#mesas_examen td.columna-accion {
+    width: 100px;
+}
+#mesas_examen a.btn.btn-mini {
+    display: block;
+}

@@ -1,0 +1,155 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+<div class="titulo_operacion">
+	<h2>
+		<span style="float: left;">{{"tit_mensajes_enviar"|trans|capitalize}}</span>
+		<div class="pull-right">
+		{% if this.data.url_enviados and this.data.es_docente %}
+			<a class="btn btn-info" href="{{this.data.url_enviados}}" title="{{"btn_mensajes_enviados"|trans|capitalize}}">
+				<i class="icon-upload" alt="{{"btn_mensajes_enviados"|trans|capitalize}}"></i>
+				{{"btn_mensajes_enviados"|trans|capitalize}}
+			</a>
+		{% endif %}
+		{% if this.data.url_recibidos %}
+			<a class="btn btn-info" href="{{this.data.url_recibidos}}" title="{{"btn_mensajes_recibidos"|trans|capitalize}}">
+				{# <i class="icon-download" alt="{{"btn_mensajes_recibidos"|trans|capitalize}}"></i> #}
+				<img height="18" width="18" src='../img/icon_download.png'></img> 
+				{{"btn_mensajes_recibidos"|trans|capitalize}}
+			</a>
+		{% endif %}
+		</div>
+	</h2>
+</div>
+<form method="post" action="{{this.data.url_envio}}" id="js-form-enviar" class="form-horizontal" enctype="multipart/form-data">
+	<div class="pull-left formulario">
+	{% if this.data.mensaje_guardado %}
+		<div class="alert alert-success">
+			{{"mensajes_enviar_exito"|trans|capitalize}}
+		</div>
+	{% elseif this.data.mensaje %}
+		<div class="alert alert-error">
+			{{this.data.mensaje}}
+		</div>
+	{% endif %}
+		<div class="control-group">
+		<label class="control-label">{{ "enviar_a"|trans|capitalize }}</label>
+		<div class="controls">
+		{% if this.data.anio_academico or this.data.comisiones or this.data.mesas or this.data.alumnos %}
+			<label class="radio inline" for="radio_comisiones">
+				<input type="radio" name="tipo" value="O" id="radio_comisiones">
+					{{"Comisiones"|trans|capitalize}}
+				</label>
+			<label class="radio inline" for="radio_mesas">
+				<input type="radio" name="tipo" value="M" id="radio_mesas">
+					{{"Mesas"|trans|capitalize}}
+			</label>
+			<label class="radio inline" for="radio_alumno">
+				<input type="radio" name="tipo" value="A" id="radio_alumno">
+					{{"nombre_alumno"|trans|capitalize}}
+			</label>
+		{% else %}
+			<p>{{"tit_mensajes_no_destinatarios"|trans|capitalize}}</p>
+		{% endif %}
+		</div>
+	</div>
+
+                <div class="control-group" id="js-AniosAcademicos" style="display: none;">
+			<label class="control-label" for="A�oAcademico">{{"A�o Academico"|trans|capitalize}}</label>
+			<div class="controls">
+				<select name="anio_academico" id="js-AnioAcademico" class="js-obligatorio">
+					<option value="">{{"SELECCIONE A�o Academico"|trans|capitalize}}</option>
+					{% for key, anio_academico in this.data.anio_academico %}
+                                            <option value="{{anio_academico.anio_academico}}">{{anio_academico.anio_academico}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+
+		<div class="control-group" id="js-comisiones" style="display: none;">
+			<label class="control-label" for="comision">{{"comision"|trans|capitalize}}</label>
+			<div class="controls">
+				<select name="comision" id="js-comision" class="js-obligatorio">
+					<option value="">{{"SELECCIONE COMISI�N"|trans|capitalize}}</option>
+
+				</select>
+			</div>
+		</div>
+                <div class="control-group" id="js-subcomisiones" style="display: none;">
+                    <label class="control-label" for="subcomision">{{ "subcomision"|trans|capitalize }}</label>
+                    <div class="controls">
+                        <select name="subcomision" id="js-subcomision">
+                            <option value="{{ this.data.TODA_COMISION }}">{{ "todas" | trans }}</option>
+                        </select>
+                    </div>
+                </div>
+                                        
+		<div class="control-group" id="js-mesas" style="display: none;">
+			<label class="control-label" for="mesa">{{"mesa"|trans|capitalize}}</label>
+			<div class="controls">
+				<select name="mesa" id="js-mesa">
+					<option value="">{{"SELECCIONE MESA"|trans|capitalize}}</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="control-group" id="js-alumnos" style="display: none;">
+			<label class="control-label" for="alumno">{{"nombre_alumno"|trans|capitalize}}</label>
+			<div class="controls">
+					<input id="js-alumno" name="alumno" change="bloquear()" type="text" style="float:left;width:263px;margin-right:5px;">
+				<div class="controls clearfix">
+					<button type="button" class="btn btn-info"  style="position:absolute;" id="bclear">Borrar</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="control-group">
+			<label class="control-label" for="titulo">{{"t�tulo"|trans|capitalize}}</label>
+			<div class="controls">
+				<input id="titulo" name="titulo" type="text" class="js-obligatorio" maxlength="100">
+			</div>
+		</div>
+
+		<div id="fechas" class="clearfix">
+			<div class="pull-left" id="grp_fecha_desde">
+				<label class="control-label" for="fecha_desde">{{"fecha_desde_mensaje"|trans|capitalize}}</label>
+				<div class="controls">
+					<input id="fecha_desde" type="text" data-tipo="fecha" name="fecha_desde" {% if this.data.default_fecha_desde %}	value="{{this.data.default_fecha_desde}}" {% endif %} class="fecha nav" {{this.es_mobile ? 'readonly' : ''}}>
+				</div>
+			</div>
+			<div class="pull-right" id="grp_fecha_hasta">
+				<label class="control-label" for="fecha_hasta">{{"fecha_hasta_mensaje"|trans|capitalize}}</label>
+				<div class="controls">
+					<input id="fecha_hasta" type="text" data-tipo="fecha" name="fecha_hasta" {% if this.data.default_fecha_hasta %}	value="{{this.data.default_fecha_hasta}}" {% endif %} class="fecha nav" {{this.es_mobile ? 'readonly' : ''}}>
+				</div>
+			</div>
+		</div>
+
+		<div class="control-group adjuntos">
+			<div class="clearfix js-adjuntos">
+				<a id="js-btn-agregar-archivo" class="btn btn-info pull-right" href="#">Agregar archivo</a>
+				<span class="controls pull-right" style="margin-right: 15px; margin-top: 7px;">(Tama�o m�ximo: {{this.data.max_filesize}})</span>
+			</div>
+		</div>
+
+		<div id="js-control-group-mensaje" class="control-group">
+			<label class="control-label" for="mensaje">{{"mensaje"|trans|capitalize}}</label>
+			<div class="controls">
+				<textarea id="mensaje" name="mensaje" class="js-obligatorio"></textarea>
+			</div>
+		</div>
+
+		<div class="form-actions" style="background-color: #FFF; border-top: 0;">
+			<input type="submit" value="{{"enviar"|trans|capitalize}}" class="btn btn-info" id="FormMensaje">
+		</div>
+	</div>
+
+	<div class="pull-right">
+		<div class="control-group hide" id="js-descripcion">
+			<ul id="js-desc-comision">
+			</ul>
+			<ul id="js-desc-mesa">
+			</ul>
+		</div>
+	</div>
+</form>
+{% endblock %}

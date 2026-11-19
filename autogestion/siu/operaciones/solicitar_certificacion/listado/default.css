@@ -1,0 +1,12 @@
+#pagelet .text-center{
+	text-align: center !important;
+}
+
+#pagelet i{
+    position: relative;
+    top: -1px;
+}
+
+#pagelet a.disabled, #pagelet a[disabled], #pagelet button:disabled {
+  cursor: not-allowed;
+}

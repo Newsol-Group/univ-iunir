@@ -1,0 +1,15 @@
+{% extends "kernel/una_columna_sin_titulo.twig" %}
+{% block columna_1 %}
+	<div class="titulo-operacion clearfix">
+        <h1 class='pull-left no-margin'>
+            {{"titulo_datos_personales"|trans}}
+        </h1>
+        <div class="pull-right">
+            <a id="btnImprimir" target="_blank" class="btn btn-info no-ajax" href="{{this.get_action_imprimir()}}">
+                <i class="icon-white icon-print"></i>&nbsp;{{'prop_finalizada.imprimir'|trans}}
+            </a>
+        </div>
+    </div>
+    {{ finalizado.render }}
+    
+{% endblock %}

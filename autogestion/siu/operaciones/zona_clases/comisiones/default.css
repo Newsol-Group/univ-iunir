@@ -1,0 +1,15 @@
+#comisiones .header-actividad {
+	text-align: center;
+	background-color: #0088cc;
+	color: #FFF;
+}
+
+#comisiones .header-cols {
+	text-align: center;
+	background-color: #888;
+	color: #FFF;
+}
+
+#comisiones .cursor-help {
+	cursor: help;
+}

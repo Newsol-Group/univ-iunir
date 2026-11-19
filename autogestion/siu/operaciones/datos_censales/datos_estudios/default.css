@@ -1,0 +1,60 @@
+.well { 
+	padding-top: 0px; 
+	padding-bottom: 0px; 
+	padding-left: 10px; 
+	padding-right: 10px; 
+}
+
+h2 { 
+	border-bottom: 0px;
+	margin: 0px;
+}
+
+#datos_estudios select {
+	width: 310px;
+}
+
+#datos_estudios .js-input {
+	width: 490px;
+}
+
+#datos_estudios .eventos {
+	padding-right: 0px;
+	margin-right: 0px;
+	width: 15%;
+}
+
+h3 { 
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.control-group {
+    margin-bottom: 0px;
+}
+
+.cg-margen {
+	margin-bottom: 5px;
+}
+
+#datos_estudios .mensaje {
+	margin-top: 10px;
+}
+
+#datos_estudios .js-boton-limpiar {
+	margin-top: 26px;
+}
+
+#datos_estudios .js-campo_descr {
+	
+}
+
+#datos_estudios .inline-help {
+	font-size: 75%;
+	line-height: 10px;
+	font-style: italic;
+	margin-bottom: 10px;
+}
+
+#datos_estudios .combo_small {
+	width: 140px;
+}

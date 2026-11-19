@@ -1,0 +1,88 @@
+{% extends "kernel/pagelet.twig" %}
+{% import 'kernel/macro_helpers.twig' as helper %}
+{% block contenido %}
+
+	{% set acciones %}
+		<a class="btn no-ajax" target="_blank" href="{{ this.data.url_generar_pdf }}"><i class="g3w-icono-pdf"></i></a>
+		<a class="btn no-ajax" target="_blank" href="{{ this.data.url_generar_xls }}"><i class="g3w-icono-xls"></i></a>
+		{% endset %}
+
+	{% if this.data.zona_activa %}
+		{{ helper.titulo_operacion("inscriptos_examenes_singular"|trans|capitalize, '', acciones) }}
+	{% else %}
+		{{ helper.titulo_operacion_con_history_back("inscriptos_examenes"|trans|capitalize,acciones) }}
+		{{ block('detalles_acta') }}
+	{% endif %}
+
+
+	{% if this.data.alumnos %}
+		<table class="table table-striped table-bordered table-condensed">
+			<thead>
+				<tr>
+					<td class="cc-titulo-nivel-0">{{ 'inscriptos_examen.legajo' |trans }}</td>
+					<td class="cc-titulo-nivel-0">{{ 'inscriptos_examen.alumno' | trans }}</td>
+					<td class="cc-titulo-nivel-0">{{ 'inscriptos_examen.instancia' | trans }}</td>
+					<td class="cc-titulo-nivel-0">{{ 'inscriptos_examen.estado' | trans }}</td>
+                                        {# Si el docente puede visualizar los datos de contacto de los alumnos (email y teléfono) #}
+                                        {% if this.data.visualiza_datos_contacto %}
+					<td class="cc-titulo-nivel-0">{{ 'inscriptos_examen.email' | trans }}</td>
+					<td class="cc-titulo-nivel-0">{{ 'inscriptos_examen.telefono' |trans }}</td>
+                                        {% endif %}
+					<td class="cc-titulo-nivel-0"></td>
+				</tr>
+			</thead>
+			<tbody>
+				{% for alumno in this.data.alumnos %}
+					<tr>
+						<td>{{ alumno.legajo }}</td>
+						<td>{{ alumno.nombre_alumno }}</td>
+						<td>{{ alumno.instancia_nombre }}</td>
+						<td>{{ alumno.estado_inscripcion }}</td>
+                                                {# Si el docente puede visualizar los datos de contacto de los alumnos (email y teléfono) #}
+                                                {% if this.data.visualiza_datos_contacto %}
+						<td>{{ alumno.email }}</td>
+						<td>{{alumno.telefono}}</td>
+                                                {% endif %}
+						<td> 
+							<span class="btn btn-mini js-ficha_alumno" data-url-ficha="{{ alumno.URL }}">{{'ver cursada' | trans | capitalize}}</span>
+						</td>					
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	{% else %}
+		<div class="alert">{{ 'inscriptos_examenes.detalle.vacio'|trans|capitalize }}</div>
+	{% endif %}
+{% endblock %}
+
+{% block detalles_acta %}
+	{% set titulos = this.data.encabezado %}
+	<table class="table table-striped table-bordered table-condensed">
+		<tr>
+			<td>{{ 'nombre_actividad'|trans|capitalize }}: {{ titulos.actividad_nombre }}
+				({{ titulos.actividad_codigo }})
+			</td>
+		</tr>
+		<tr>
+			<td>{{ 'fecha'|trans|capitalize }}: {{ titulos.fecha_examen }}</td>
+		</tr>
+		<tr>
+			<td>{{ 'ubicacion'|trans|capitalize }}: {{ titulos.ubicacion_nombre }}</td>
+		</tr>
+		<tr>
+			<td>{{ 'horario'|trans|capitalize }}: {{ titulos.hora_inicio_finalizacion }}</td>
+		</tr>
+		<tr>
+			<td>{{ 'docentes'|trans|capitalize }}: {{ titulos.docentes }}</td>
+		</tr>
+		<tr>
+			<td>{{ 'instancias'|trans|capitalize }}: {{ titulos.instancias }}</td>
+		</tr>
+		<tr>
+			<td>{{ 'turno'|trans|capitalize }}: {{ titulos.turno_examen_nombre }}</td>
+		</tr>
+		<tr>
+			<td>{{ 'llamado'|trans|capitalize }}: {{ titulos.llamado_nombre }}</td>
+		</tr>
+	</table>
+{% endblock %}

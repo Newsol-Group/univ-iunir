@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="32000237" descripcion="toba_ei_formulario">
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:32000237">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ei_formulario_ef">
+		<registro estado="2" clave="objeto_ei_formulario_proyecto:guarani;objeto_ei_formulario:32000237;objeto_ei_formulario_fila:32000342">
+			<columna nombre="orden" valor="4" valor_original="3"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_ei_formulario_fila" valor="770000066"/>
+			<columna nombre="objeto_ei_formulario" valor="32000237"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="fecha_desde"/>
+			<columna nombre="elemento_formulario" valor="ef_editable_fecha"/>
+			<columna nombre="columnas" valor="fecha_desde"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="2"/>
+			<columna nombre="etiqueta" valor="Fecha Desde"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_ei_formulario_fila" valor="770000067"/>
+			<columna nombre="objeto_ei_formulario" valor="32000237"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="fecha_hasta"/>
+			<columna nombre="elemento_formulario" valor="ef_editable_fecha"/>
+			<columna nombre="columnas" valor="fecha_hasta"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="3"/>
+			<columna nombre="etiqueta" valor="Fecha Hasta"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+		</registro>
+	</tabla>
+</componente>

@@ -1,0 +1,9 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}    
+	<div class="well">
+		<div class="mensaje">
+			{{this.data.mensaje|raw}}
+			<a href='{{ this.data.url_recuperar }}' class='no-ajax'>{{'recuperar_clave'|trans}}</a>
+		</div>
+	</div>
+{% endblock %}

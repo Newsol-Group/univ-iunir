@@ -1,0 +1,25 @@
+#pagelet .botonera {
+    margin-top: 5px;
+}
+
+#pagelet img.no-disponible {
+    height: 100%;
+    width: 400px;
+}
+
+#pagelet .js-form-eliminar {
+    display: inline-block;
+}
+
+#pagelet a.disabled, #pagelet button:disabled {
+  cursor: not-allowed;
+}
+
+#pagelet .requisito-header {
+    border-bottom: 1px solid;
+    margin-bottom: 15px;
+}
+
+#pagelet .descr_requisito {
+    font-style: italic;
+}

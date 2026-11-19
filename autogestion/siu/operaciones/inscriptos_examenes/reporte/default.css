@@ -1,0 +1,8 @@
+#items .listado-comisiones tbody tr:hover td {
+	background-color: #eee;
+	cursor: pointer;
+}
+
+#items #mesas_con_inscriptos {
+    margin-top: 20px;
+}

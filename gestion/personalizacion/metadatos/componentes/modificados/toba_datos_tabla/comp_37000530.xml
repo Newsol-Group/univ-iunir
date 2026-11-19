@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="37000530" descripcion="toba_datos_tabla">
+	<tabla nombre="apex_objeto_db_registros_col">
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:37000530;col_id:5000478"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:37000530;col_id:14000001"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:37000530;col_id:14000002"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:37000530;col_id:37000704"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:37000530;col_id:37000705"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:37000530;col_id:37000706"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:37000530;col_id:37000707"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:37000530;col_id:37000708"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:37000530;col_id:37000709"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:37000530;col_id:37000710"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:37000530;col_id:37000711"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:37000530;col_id:43000020"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:37000530;col_id:43000023"/>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000530"/>
+			<columna nombre="col_id" valor="770000160"/>
+			<columna nombre="columna" valor="constancia"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="1"/>
+			<columna nombre="secuencia" valor="sga_constancias_seq"/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_constancias"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000530"/>
+			<columna nombre="col_id" valor="770000161"/>
+			<columna nombre="columna" valor="nombre"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="100"/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_constancias"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000530"/>
+			<columna nombre="col_id" valor="770000162"/>
+			<columna nombre="columna" valor="descripcion"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="255"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_constancias"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000530"/>
+			<columna nombre="col_id" valor="770000163"/>
+			<columna nombre="columna" valor="max_cant_solicitudes"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_constancias"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000530"/>
+			<columna nombre="col_id" valor="770000164"/>
+			<columna nombre="columna" valor="max_cant_copias"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_constancias"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000530"/>
+			<columna nombre="col_id" valor="770000165"/>
+			<columna nombre="columna" valor="objeto"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_constancias"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000530"/>
+			<columna nombre="col_id" valor="770000166"/>
+			<columna nombre="columna" valor="plantilla"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_constancias"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000530"/>
+			<columna nombre="col_id" valor="770000167"/>
+			<columna nombre="columna" valor="activo"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="1"/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_constancias"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000530"/>
+			<columna nombre="col_id" valor="770000168"/>
+			<columna nombre="columna" valor="vigencia"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_constancias"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000530"/>
+			<columna nombre="col_id" valor="770000169"/>
+			<columna nombre="columna" valor="permite_descargar"/>
+			<columna nombre="tipo" valor="L"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_constancias"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000530"/>
+			<columna nombre="col_id" valor="770000170"/>
+			<columna nombre="columna" valor="aplica_a_cursos"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="1"/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_constancias"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000530"/>
+			<columna nombre="col_id" valor="770000171"/>
+			<columna nombre="columna" valor="exige_aprobacion"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="1"/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_constancias"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000530"/>
+			<columna nombre="col_id" valor="770000172"/>
+			<columna nombre="columna" valor="disponible_autogestion"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="1"/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_constancias"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000530"/>
+			<columna nombre="col_id" valor="770000173"/>
+			<columna nombre="columna" valor="cobrable"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="1"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_constancias_ext"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000530"/>
+			<columna nombre="col_id" valor="770000174"/>
+			<columna nombre="columna" valor="concepto"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_constancias_ext"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000530"/>
+			<columna nombre="col_id" valor="770000175"/>
+			<columna nombre="columna" valor="id_constancia"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="1"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_constancias_ext"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000530"/>
+			<columna nombre="col_id" valor="770000305"/>
+			<columna nombre="columna" valor="requiere_documento"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="1"/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_constancias_ext"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000530"/>
+			<columna nombre="col_id" valor="770000306"/>
+			<columna nombre="columna" valor="requiere_documento_desc"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="255"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_constancias_ext"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:37000530">
+			<columna nombre="nombre" valor="DT - sga_constancias" valor_original="sga_constancias"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_db_registros">
+		<registro estado="2" clave="objeto_proyecto:guarani;objeto:37000530">
+			<columna nombre="ap" valor="4" valor_original="1"/>
+			<columna nombre="tabla_ext" valor="sga_constancias_ext" valor_original="###$$$NULL$$$###"/>
+			<columna nombre="esquema" valor="negocio" valor_original="###$$$NULL$$$###"/>
+			<columna nombre="esquema_ext" valor="negocio_nsg" valor_original="negocio"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_db_columna_fks">
+		<registro estado="1">
+			<columna nombre="id" valor="770000005"/>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000530"/>
+			<columna nombre="tabla" valor="sga_constancias"/>
+			<columna nombre="columna" valor="constancia"/>
+			<columna nombre="tabla_ext" valor="sga_constancias_ext"/>
+			<columna nombre="columna_ext" valor="id_constancia"/>
+		</registro>
+	</tabla>
+</componente>

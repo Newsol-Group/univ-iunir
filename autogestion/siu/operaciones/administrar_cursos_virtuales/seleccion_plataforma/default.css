@@ -1,0 +1,19 @@
+#moodle .form-horizontal {
+    margin: 0 auto;
+    width: 950px;
+}
+
+#moodle .control-label {
+    width: 200px;
+    text-align: left;
+    font-weight: bold;
+}
+
+#moodle .controls {
+    margin-left: 220px;
+}
+
+#moodle .controls select {
+    width: 516px;
+}
+

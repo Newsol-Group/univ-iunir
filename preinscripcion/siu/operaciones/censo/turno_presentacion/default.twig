@@ -1,0 +1,96 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	{% autoescape false %}
+
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-inferior'>
+				<div class='pull-left'>
+					<h2>{{this.get_nombre()|trans}}</h2>
+				</div>
+				<div class='clearfix'></div>
+			</div>
+		</div>
+
+		{% if this.data.modo == 'listado' %}
+			{#---- Pantalla listado ----#}
+                        
+                        {#---- Si no hay turnos ----#}
+                        {% if this.data.turnos is empty %}
+                            
+                            <div class="alert centrado">{{ 'turno.sin_turnos' | trans }}</div>
+                                        
+                        {#---- Si hay turnos ----#}       
+                        {% else %}
+				<div class="alert alert-info">
+					<p>
+						{{ 'turno.info' | trans }}
+					</p>
+				</div>
+				<div>
+					<table class="table table-stripped table-hover">
+						<thead>
+							<tr>
+								<th>{{'turno.ra' | trans}}</th>
+								<th>{{'turno.fecha' | trans}}</th>
+								<th>{{'turno.hora' | trans}}</th>
+								<th>{{'turno.operador' | trans}}</th>
+								<th>&nbsp;</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for turno in this.data.turnos %}
+								<tr>
+									<td>{{ turno.responsable_academica_nombre }}</td>
+									<td>{{ turno.fecha }}</td>
+									<td>{{ turno.hora }}</td>
+									<td>{{ turno.operador }}</td>
+									<td class='eventos-fila'>
+										{% if turno.asignado %}
+											<a href="{{ turno.LINK_DEVOLVER }}" class="btn btn-info btn-small js-btnEliminar" 
+											   title="{{'turno.cancelar'|trans|capitalize}}"
+											   data-ra_nombre="{{turno.responsable_academica_nombre}}"><i class="icon-white icon-remove"></i></a>
+										{% else %}
+											<a href="{{ turno.LINK_SELECCIONAR }}" class="btn btn-info btn-small js-btnSeleccionar" title="{{'seleccionar'|trans|capitalize}}"><i class="icon-white icon-calendar"></i></a>
+										{% endif %}
+									</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+                    {% endif %}
+		{% else %}
+			{#---- Pantalla alta / edición ----#}
+			{% set form = this.get_form() %}
+			{{ form.encabezado }}
+				<div class='clearfix msj-descripcion'>
+					<p>
+						{{ 'sel_turno.descripcion'|trans }} 
+					</p>
+				</div>
+
+				<div class='well clearfix'>
+					<h3>{{'turno'|trans}}</h3>
+					<div id='conoc_idiomas' class='toggle-div'>
+						<div class='clearfix cg-margen'>
+							{{ form.control_group('fecha', 'span4') }}
+							{{ form.control_group('franja', 'span4') }}
+						</div>
+					</div>
+				</div>
+
+				<div class='controls controls-row form-head clearfix'>
+					<div class='borde-superior'>
+						<div class='pull-right'>
+							<a href="{{ this.get_accion_volver() }}" class="btn btn-info">
+								{{ 'cancelar'|trans|capitalize }} 
+							</a>
+							{{ form.submit_button('guardar', 'sel_turno.confirmar')}}
+						</div>
+					</div>
+				</div>
+			</form>
+	{% endif %}
+
+{% endautoescape %}
+{% endblock %}

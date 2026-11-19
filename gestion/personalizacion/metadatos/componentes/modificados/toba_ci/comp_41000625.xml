@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="41000625" descripcion="toba_ci">
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:41000625">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+			<columna nombre="subclase" valor="ci_rep_hist_acad_nsg" valor_original="ci_rep_hist_acad"/>
+			<columna nombre="subclase_archivo" valor="operaciones/matriculas/alumnos/ficha_alumno/ci_rep_hist_acad_nsg.php" valor_original="operaciones/matriculas/alumnos/ficha_alumno/ci_rep_hist_acad.php"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_dependencias">
+		<registro estado="1">
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="dep_id" valor="770000185"/>
+			<columna nombre="objeto_consumidor" valor="41000625"/>
+			<columna nombre="objeto_proveedor" valor="770000244"/>
+			<columna nombre="identificador" valor="opciones"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ci_pantalla">
+		<registro estado="2" clave="objeto_ci_proyecto:guarani;objeto_ci:41000625;pantalla:41000224">
+			<columna nombre="subclase" valor="pant_hist_acad_nsg" valor_original="###$$$NULL$$$###"/>
+			<columna nombre="subclase_archivo" valor="operaciones/matriculas/alumnos/ficha_alumno/pant_hist_acad_nsg.php" valor_original="###$$$NULL$$$###"/>
+			<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objetos_pantalla">
+		<registro estado="1">
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="pantalla" valor="41000224"/>
+			<columna nombre="objeto_ci" valor="41000625"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="dep_id" valor="770000185"/>
+		</registro>
+	</tabla>
+</componente>

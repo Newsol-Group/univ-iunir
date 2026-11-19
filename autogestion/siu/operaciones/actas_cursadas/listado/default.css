@@ -1,0 +1,37 @@
+#listado .filtros{
+	width: 100%;
+	background-color: #eee;
+	margin-bottom: 20px;
+	text-align: center;
+	height: auto;
+	overflow: hidden;
+}
+
+#listado .filtro {
+	width: auto;
+	float: left;
+	margin: 10px;
+}
+
+#listado .filtros select{
+	margin-bottom: 0;
+}
+
+#listado .filtros .titulo{	
+	font-weight: bold;
+	width: auto;
+	float: left;
+	margin-left: 80px;
+}
+
+#listado .filtros label{
+	margin: 0;
+}
+
+#listado .filtros input{
+	margin-bottom: 0px;
+}
+
+#listado tr.link-js{
+	cursor: pointer;
+}

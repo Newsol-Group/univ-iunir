@@ -1,0 +1,70 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	
+        {# Si no viene de Convocatorias a Becas #}
+        {% if not this.viene_de_convocatorias_becas() %}
+            {% import "macro_mensajes.twig" as mensajes %}
+            <div id="mensajes">
+                    {{ mensajes.render_mensajes(this.datos_confirmados(), this.datos_error_control(), this.datos_vigentes()) }}
+            </div>
+	{% endif %}
+	
+	{% set form = this.get_form() %}
+	{% autoescape false %}
+	{{ form.encabezado }}
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-inferior clearfix'>
+				<div class='pull-left'>
+					<h2>{{this.get_nombre_seccion()|trans}}</h2>
+				</div>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'datos_censales.guardar')  }}
+				</div>
+			</div>
+		</div>
+
+		{%if form.hay_visibles_agrupado('dispon_pc') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('dispon_pc')">{{'datos_censales.dispon_pc'|trans}}</h3>
+			<div id='dispon_pc' class='toggle-div'>
+				<div class='clearfix cg-margen'>
+					{{ form.checkbox('tecnologia_pc_casa') }}
+					{{ form.checkbox('tecnologia_pc_trabajo') }}
+					{{ form.checkbox('tecnologia_pc_universidad') }}
+					{{ form.checkbox('tecnologia_pc_otro_lugar') }}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		<div id='div_datos_internet'>
+			{%if form.hay_visibles_agrupado('accede_internet_en') %}
+			<div class='well clearfix'>
+				<h3 class='toggle-header' onclick="toggle('accede_internet_en')">{{'datos_censales.accede_internet_en'|trans}}</h3>
+				<div id='accede_internet_en' class='toggle-div'>
+					<div class='clearfix cg-margen'>
+						{{ form.checkbox('tecnologia_int_casa') }}
+						{{ form.checkbox('tecnologia_int_trabajo') }}
+						{{ form.checkbox('tecnologia_int_universidad') }}
+						{{ form.checkbox('tecnologia_int_movil') }}
+						{{ form.checkbox('tecnologia_int_otro_lugar') }}
+					</div>
+				</div>
+			</div>
+			{% endif %}
+		</div>
+
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-superior'>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'datos_censales.guardar')  }}
+				</div>
+			</div>
+		</div>
+	</form>
+	{% endautoescape %}
+        
+        {% import "macro_confirmacion.twig" as confirmacion %}
+        {{ confirmacion.mostrar(this.viene_de_convocatorias_becas(), this.hay_datos_faltantes_convocatoria(), this.get_url_siguiente_paso()) }}
+        
+{% endblock %}

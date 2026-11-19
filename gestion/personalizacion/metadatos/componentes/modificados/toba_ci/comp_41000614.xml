@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="41000614" descripcion="toba_ci">
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:41000614">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+			<columna nombre="subclase" valor="ci_reportes_ficha_alumno_nsg" valor_original="ci_reportes_ficha_alumno"/>
+			<columna nombre="subclase_archivo" valor="operaciones/matriculas/alumnos/ficha_alumno/ci_reportes_ficha_alumno_nsg.php" valor_original="operaciones/matriculas/alumnos/ficha_alumno/ci_reportes_ficha_alumno.php"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_dependencias">
+		<registro estado="1">
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="dep_id" valor="770000199"/>
+			<columna nombre="objeto_consumidor" valor="41000614"/>
+			<columna nombre="objeto_proveedor" valor="770000259"/>
+			<columna nombre="identificador" valor="rep_ctacte"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="dep_id" valor="770000189"/>
+			<columna nombre="objeto_consumidor" valor="41000614"/>
+			<columna nombre="objeto_proveedor" valor="770000240"/>
+			<columna nombre="identificador" valor="rep_datos_becas"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="dep_id" valor="770000188"/>
+			<columna nombre="objeto_consumidor" valor="41000614"/>
+			<columna nombre="objeto_proveedor" valor="770000238"/>
+			<columna nombre="identificador" valor="rep_datos_facturacion"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="dep_id" valor="770000187"/>
+			<columna nombre="objeto_consumidor" valor="41000614"/>
+			<columna nombre="objeto_proveedor" valor="770000242"/>
+			<columna nombre="identificador" valor="rep_deuda"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="dep_id" valor="770000186"/>
+			<columna nombre="objeto_consumidor" valor="41000614"/>
+			<columna nombre="objeto_proveedor" valor="770000234"/>
+			<columna nombre="identificador" valor="rep_log_inscripciones"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ci_pantalla">
+		<registro estado="2" clave="objeto_ci_proyecto:guarani;objeto_ci:41000614;pantalla:14000084">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="###$$$NULL$$$###"/>
+		</registro>
+		<registro estado="2" clave="objeto_ci_proyecto:guarani;objeto_ci:41000614;pantalla:14000094">
+			<columna nombre="orden" valor="30" valor_original="29"/>
+		</registro>
+		<registro estado="2" clave="objeto_ci_proyecto:guarani;objeto_ci:41000614;pantalla:14000115">
+			<columna nombre="orden" valor="23" valor_original="22"/>
+		</registro>
+		<registro estado="2" clave="objeto_ci_proyecto:guarani;objeto_ci:41000614;pantalla:14000117">
+			<columna nombre="orden" valor="26" valor_original="25"/>
+			<columna nombre="etiqueta" valor="Trámites Solicitados" valor_original="Constancias Solicitadas"/>
+		</registro>
+		<registro estado="2" clave="objeto_ci_proyecto:guarani;objeto_ci:41000614;pantalla:14000119">
+			<columna nombre="orden" valor="31" valor_original="30"/>
+		</registro>
+		<registro estado="2" clave="objeto_ci_proyecto:guarani;objeto_ci:41000614;pantalla:14000145">
+			<columna nombre="orden" valor="22" valor_original="21"/>
+		</registro>
+		<registro estado="2" clave="objeto_ci_proyecto:guarani;objeto_ci:41000614;pantalla:41000211">
+			<columna nombre="orden" valor="25" valor_original="24"/>
+		</registro>
+		<registro estado="2" clave="objeto_ci_proyecto:guarani;objeto_ci:41000614;pantalla:41000212">
+			<columna nombre="orden" valor="28" valor_original="27"/>
+		</registro>
+		<registro estado="2" clave="objeto_ci_proyecto:guarani;objeto_ci:41000614;pantalla:41000215">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="###$$$NULL$$$###"/>
+		</registro>
+		<registro estado="2" clave="objeto_ci_proyecto:guarani;objeto_ci:41000614;pantalla:41000223">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="###$$$NULL$$$###"/>
+		</registro>
+		<registro estado="2" clave="objeto_ci_proyecto:guarani;objeto_ci:41000614;pantalla:41000227">
+			<columna nombre="orden" valor="24" valor_original="23"/>
+		</registro>
+		<registro estado="2" clave="objeto_ci_proyecto:guarani;objeto_ci:41000614;pantalla:41000229">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="###$$$NULL$$$###"/>
+		</registro>
+		<registro estado="2" clave="objeto_ci_proyecto:guarani;objeto_ci:41000614;pantalla:41000232">
+			<columna nombre="orden" valor="27" valor_original="26"/>
+		</registro>
+		<registro estado="2" clave="objeto_ci_proyecto:guarani;objeto_ci:41000614;pantalla:43000005">
+			<columna nombre="orden" valor="29" valor_original="28"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_ci_proyecto" valor="guarani"/>
+			<columna nombre="objeto_ci" valor="41000614"/>
+			<columna nombre="pantalla" valor="770000083"/>
+			<columna nombre="identificador" valor="log_inscripciones"/>
+			<columna nombre="orden" valor="21"/>
+			<columna nombre="etiqueta" valor="Log de Inscripciones"/>
+			<columna nombre="imagen_recurso_origen" valor="apex"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_ci_proyecto" valor="guarani"/>
+			<columna nombre="objeto_ci" valor="41000614"/>
+			<columna nombre="pantalla" valor="770000084"/>
+			<columna nombre="identificador" valor="datos_facturacion"/>
+			<columna nombre="orden" valor="32"/>
+			<columna nombre="etiqueta" valor="Datos de Facturación"/>
+			<columna nombre="imagen_recurso_origen" valor="apex"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_ci_proyecto" valor="guarani"/>
+			<columna nombre="objeto_ci" valor="41000614"/>
+			<columna nombre="pantalla" valor="770000085"/>
+			<columna nombre="identificador" valor="datos_becas"/>
+			<columna nombre="orden" valor="33"/>
+			<columna nombre="etiqueta" valor="Datos de Becas"/>
+			<columna nombre="imagen_recurso_origen" valor="apex"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_ci_proyecto" valor="guarani"/>
+			<columna nombre="objeto_ci" valor="41000614"/>
+			<columna nombre="pantalla" valor="770000086"/>
+			<columna nombre="identificador" valor="datos_deuda"/>
+			<columna nombre="orden" valor="34"/>
+			<columna nombre="etiqueta" valor="Deuda"/>
+			<columna nombre="imagen_recurso_origen" valor="apex"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_ci_proyecto" valor="guarani"/>
+			<columna nombre="objeto_ci" valor="41000614"/>
+			<columna nombre="pantalla" valor="770000092"/>
+			<columna nombre="identificador" valor="datos_ctacte"/>
+			<columna nombre="orden" valor="35"/>
+			<columna nombre="etiqueta" valor="Cuenta Corriente"/>
+			<columna nombre="imagen_recurso_origen" valor="apex"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objetos_pantalla">
+		<registro estado="1">
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="pantalla" valor="770000083"/>
+			<columna nombre="objeto_ci" valor="41000614"/>
+			<columna nombre="orden" valor="0"/>
+			<columna nombre="dep_id" valor="770000186"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="pantalla" valor="770000084"/>
+			<columna nombre="objeto_ci" valor="41000614"/>
+			<columna nombre="orden" valor="0"/>
+			<columna nombre="dep_id" valor="770000188"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="pantalla" valor="770000085"/>
+			<columna nombre="objeto_ci" valor="41000614"/>
+			<columna nombre="orden" valor="0"/>
+			<columna nombre="dep_id" valor="770000189"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="pantalla" valor="770000086"/>
+			<columna nombre="objeto_ci" valor="41000614"/>
+			<columna nombre="orden" valor="0"/>
+			<columna nombre="dep_id" valor="770000187"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="pantalla" valor="770000092"/>
+			<columna nombre="objeto_ci" valor="41000614"/>
+			<columna nombre="orden" valor="0"/>
+			<columna nombre="dep_id" valor="770000199"/>
+		</registro>
+	</tabla>
+</componente>

@@ -1,0 +1,126 @@
+{% import _self as current_file_macros %}
+
+<h4><i class="icon-arrow-right"></i> {{ "inscripcion_cursos.curso"|trans|capitalize }}: {{ comision.nombre }} - {{ comision.periodo_lectivo_nombre }}</h4>
+
+
+        <div class='comision_info '>
+
+            <ul class="unstyled lista-comisiones">
+
+                <li>                    
+                    <div class="row-fluid">
+                            <div class='span3'>{{"inscripcion_cursos.cupo"|trans|capitalize}}:</div>
+                            <div class="span9">{% if comision.cupo_definido %} {{ comision.cupo }} {% else %} {{"inscripcion_cursos.cupo_sin_definir"|trans|capitalize}}  {% endif %} | {{"inscripcion_cursos.inscriptos"|trans|capitalize}}: {{ comision.cant_inscriptos }}</div>
+                    </div>
+                    {% if comision.cupo_definido %}
+                        <div class='progress'>
+                            {% set porcentaje = comision.porcentaje_cupo %}
+                            {% if porcentaje >= 90 and porcentaje < 100 %}
+                                {% set barra = 'bar-warning' %}
+                            {% elseif porcentaje >= 100 %}
+                                {% set barra = 'bar-danger' %}
+                            {% else %}
+                                {% set barra = 'bar-success' %}
+                            {% endif%}
+                            <div class='bar {{barra}}' style='width: {{ porcentaje ~ '%' }}'></div>
+                            <div class="info-progress">
+                                {{ porcentaje ~ '%' }}
+                            </div>
+                        </div>
+                    {% endif %}
+                    </span>
+                </li>
+
+                {% if comision.horario_descr %}
+                    <li>
+                        <div class="row-fluid">
+                            <div class='horario span3'>{{"inscripcion_cursos.horario"|trans}}:</div>
+                            <div class="span9">{{ comision.horario_aula_descr|raw }}</div>
+                        </div>
+                    </li>
+                {% endif %}
+
+                {% if comision.docentes_responsabilidad %}
+                    <li>
+                        <div class="row-fluid">
+                            <div class='docentes span3'>{{"inscripcion_cursos.docentes"|trans|capitalize}}:</div>
+                            <div class="span9">{{ comision.docentes_responsabilidad|raw }}</div>
+                        </div>
+                    </li>
+                {% endif %}
+
+                {% if comision.fecha_inicio_dictado_visual %}
+                    <li>
+                        <div class="row-fluid">
+                            <div class='inicio_clases span3'>{{"inscripcion_cursos.inicio_clases"|trans|capitalize}}:</div>
+                            <div class="span9">{{ comision.fecha_inicio_dictado_visual }}</div>
+                        </div>
+                    </li>
+                {% endif %}
+                
+                {% if comision.ubicacion_nombre %}
+                    <li>
+                        <div class="row-fluid">
+                            <div class='span3'>{{"inscripcion_cursos.sede"|trans}}:</div>
+                            <div class="span9">{{ comision.ubicacion_nombre }}</div>
+                        </div>
+                    </li>
+                {% endif %}
+                
+                {% if comision.modalidad %}
+                    <li>
+                        <div class="row-fluid">
+                            <div class='span3'>{{"inscripcion_cursos.modalidad"|trans}}:</div>
+                            <div class="span9">{{ comision.modalidad }}</div>
+                        </div>
+                    </li>
+                {% endif %}
+
+                {% if (comision.cobrable == si) and comision.costo %}
+                    <li>
+                        <div class="row-fluid">
+                            <div class='costo span3'>{{"inscripcion_cursos.costo"|trans|capitalize}}:</div>
+                            <div class="span9"><span class="label {{ comision.label_costo }}">{{ comision.costo }}</span></div>
+                        </div>
+                    </li>
+                {% endif %}
+
+            </ul>
+
+		</div>
+
+        {% if (comision.cobrable == si) and (not comision.permite_inscripcion) %}
+            <div class="alert {{ comision.tipo_msj_costo }}" style="margin-top: 15px;">{{ comision.msj_costo }}</div>
+        {% endif %}
+
+        {% if comision.permite_inscripcion %}
+            {{current_file_macros.form_inscribirse(csrf, comision.url_inscribirse, comision.actividad, comision.id, comision.inscripcion_cerrada, comision.ubicacion_nombre, comision.actividad_comision, comision.actividad_nombre)}}
+        {% endif %}
+
+
+{% macro form_inscribirse(csrf, url, actividad, comision, inscripcion_cerrada, ubicacion_nombre, actividad_comision, actividad_nombre) %}
+    <form class='form_inscribir form-horizontal' action='{{ url }}' method='POST' data-sede-nombre="{{ ubicacion_nombre }}" data-comision-nombre="{{ actividad_comision }}" data-actividad-nombre="{{ actividad_nombre }}">
+        <input type="hidden" name="curso" value="{{ actividad }}" />
+        <input type="hidden" name="comision" value="{{ comision }}" />
+        {% import "kernel/macro_csrf.twig" as input_csrf %}
+        {{ input_csrf.mostrar(csrf) }}
+        <div class="acciones pull-right">
+
+            {% if inscripcion_cerrada %}
+                <div class="control-group pull-left" style="margin-right: 10px;">
+                    <label class="control-label" for="codigo_inscripcion_cerrada">{{ "inscripcion_cursos.codigo_inscripcion" | trans }}</label>
+                    <div class="controls">
+                        <input id="js-cic-input-{{ comision }}" type="password" name="codigo_inscripcion_cerrada" class="codigo_inscripcion_cerrada input-small" placeholder="ABC123" autocomplete="off">
+                        <i data-id-input="js-cic-input-{{ comision }}" class="icon-eye-close js-cic-icon"></i>
+                    </div>
+                </div>
+            {% endif %}
+
+            {# Si la inscripción es cerrada deshabilito el botón #}
+            <input type='submit' value='{{'inscripcion_cursos.inscribirse' |trans }}' class="btn pull-left" {% if inscripcion_cerrada %}disabled="disabled"{% endif %} />
+
+            <div style="clear: both;"></div>
+        </div>
+        <div style="clear: both;"></div>
+    </form>
+{% endmacro %}

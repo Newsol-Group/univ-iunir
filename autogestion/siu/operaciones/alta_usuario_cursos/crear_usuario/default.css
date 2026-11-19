@@ -1,0 +1,86 @@
+.inline-help {
+	font-size: 75%;
+	line-height: 10px;
+	margin-bottom: 5px;
+}
+
+input {
+    width: 300px;
+}
+
+
+select {
+    width: 310px;
+}
+
+.input-localidad {
+	width: 400px;
+}
+
+#form_crear_usuario-pais {
+	margin-right: 10px;
+	width: 200px;
+}
+
+.alert {
+	text-align: center;
+}
+
+h3 {
+	margin-top: 0px;
+    border-bottom: 1px solid #ccc;
+}
+
+#selectorLocalidad {
+	width: 440px;
+}
+
+.botonera-inferior {
+	width: 100%;
+	padding-top: 5px;
+    border-top: 1px solid #ccc;
+}
+
+#form #js_nro_documento {
+    display: none;
+}
+
+#form #validar{
+    margin-left: 2.0744680846382977%;
+    margin-top: 20px;
+}
+
+
+#form .divNroTramite{
+    margin-left: 0;
+}
+
+#form #js_nro_documento {
+    display: none;
+}
+
+#form #js_nro_tramite_dni {
+    display: none;
+}
+
+#form #js_ayuda_numero_tramite {
+    display: none;
+}
+
+#form #js_renaper {
+    display: none;
+}
+.popover-title {
+    padding: 0px 0px;
+    margin: 0;
+    font-size: 14px;   
+    border-radius: 2px 2px 0 0;
+}
+.popover{
+    top: 60% !important;
+    left: 75% !important;
+    display: block !important;
+}
+.popover-content {
+    padding: 2px 4px;
+}

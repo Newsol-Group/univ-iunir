@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="9000040" descripcion="toba_ei_formulario">
+	<tabla nombre="apex_objeto_ei_formulario_ef">
+		<registro estado="2" clave="objeto_ei_formulario_proyecto:guarani;objeto_ei_formulario:9000040;objeto_ei_formulario_fila:9000318">
+			<columna nombre="edit_expreg" valor="/^((\d){1,5})|((\d){1,5}[,\.]{1}\d{1,3})$/" valor_original="###$$$NULL$$$###"/>
+		</registro>
+		<registro estado="2" clave="objeto_ei_formulario_proyecto:guarani;objeto_ei_formulario:9000040;objeto_ei_formulario_fila:9000319">
+			<columna nombre="edit_expreg" valor="/^((\d){1,5})|((\d){1,5}[,\.]{1}\d{1,3})$/" valor_original="###$$$NULL$$$###"/>
+		</registro>
+	</tabla>
+</componente>

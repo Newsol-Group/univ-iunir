@@ -1,0 +1,77 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	
+        {# Si no viene de Convocatorias a Becas #}
+        {% if not this.viene_de_convocatorias_becas() %}
+            {% import "macro_mensajes.twig" as mensajes %}
+            <div id="mensajes">
+                    {{ mensajes.render_mensajes(this.datos_confirmados(), this.datos_error_control(), this.datos_vigentes()) }}
+            </div>
+	{% endif %}
+	
+	{% set form = this.get_form() %}
+	{% autoescape false %}
+	{{ form.encabezado }}
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-inferior clearfix'>
+				<div class='pull-left'>
+					<h2>{{this.get_nombre_seccion()|trans}}</h2>
+				</div>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'datos_censales.guardar')  }}
+				</div>
+			</div>
+		</div>
+
+		{%if form.hay_visibles_agrupado('deportes') %}
+		<div class='well clearfix div-deportes'>
+			<div class='clearfix cg-margen'>
+				{{ form.checkbox('deportes') }}
+			</div>
+		</div>
+		{% endif %}
+
+		<div id='div_detalles_deportes'>
+			{%if form.hay_visibles_agrupado('listado_deportes_lugares') %}
+			<div class='well clearfix'>
+				<h3 class='toggle-header' onclick="toggle('listado_deportes_lugares')">{{'datos_censales.listado_deportes_lugares'|trans}}</h3>
+				<div id='listado_deportes_lugares' class='toggle-div'>
+					{{ form.checkbox('deportes_universidad') }}
+					{{ form.checkbox('deportes_gimnasio') }}
+					{{ form.checkbox('deportes_particular') }}
+					{{ form.checkbox('deportes_otro_lugar') }}
+				</div>
+			</div>
+			{% endif %}
+
+			{%if form.hay_visibles_agrupado('listado_deportes') %}
+			<div class='well clearfix'>
+				<h3 class='toggle-header' onclick="toggle('listado_deportes')">{{'datos_censales.listado_deportes'|trans}}</h3>
+				<div id='listado_deportes' class='toggle-div'>
+					{{ form.checkbox('deportes_futbol') }}
+					{{ form.checkbox('deportes_basquet') }}
+					{{ form.checkbox('deportes_voley') }}
+					{{ form.checkbox('deportes_natacion') }}
+					{{ form.checkbox('deportes_tenis') }}
+					{{ form.checkbox('deportes_gimnasia') }}
+					{{ form.checkbox('deportes_handball') }}
+					{{ form.checkbox('deportes_otros') }}
+				</div>
+			</div>
+			{% endif %}
+		</div>
+
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-superior'>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'datos_censales.guardar')  }}
+				</div>
+			</div>
+		</div>
+	</form>
+	{% endautoescape %}
+        
+        {% import "macro_confirmacion.twig" as confirmacion %}
+        {{ confirmacion.mostrar(this.viene_de_convocatorias_becas(), this.hay_datos_faltantes_convocatoria(), this.get_url_siguiente_paso()) }}
+        
+{% endblock %}

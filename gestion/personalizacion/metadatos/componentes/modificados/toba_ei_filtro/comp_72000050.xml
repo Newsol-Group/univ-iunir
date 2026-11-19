@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="72000050" descripcion="toba_ei_filtro">
+	<tabla nombre="apex_objeto_ei_filtro_col">
+		<registro estado="2" clave="objeto_ei_filtro_proyecto:guarani;objeto_ei_filtro:72000050;objeto_ei_filtro_col:72000072">
+			<columna nombre="edit_expreg" valor="/^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/" valor_original="/^((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/"/>
+		</registro>
+	</tabla>
+</componente>

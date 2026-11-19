@@ -1,0 +1,95 @@
+{% import _self as current_file_macros %}
+
+<div class="brand-nav">
+    <div class="container-fluid">
+		<div class="row-fluid">
+			<div class="span3">
+				<a class="brand" href="{{url_inicio}}"><img src="{{ url_img_logo }}" /></a>
+			</div>
+
+			<div class="span9">
+				{% if persona.logueada %}
+					<div class="row-fluid">
+						<div class="span12">
+							<div class="navbar user-navbar clearfix">
+								<ul class="nav pull-right">
+									<li class="dropdown">
+										<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i> {{ persona.email }} <b class="caret"></b></a>
+										<ul class="dropdown-menu">
+											<li><a href='{{ persona.url_logout }}'><i class="icon-off"></i> {{ 'header.cerrar_sesion'|trans }}</a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+							<div class="pull-right container-version">
+								{{ version }}
+							</div>
+						</div>
+					</div>
+				{% else %}
+					<div class="pull-right container-version container-version_no_logueado">
+						{{ version }}
+					</div>
+				{% endif %}
+			</div>
+		</div>
+    </div>
+</div>
+
+{% if menu %}
+    <div class="navbar main-nav">
+		<div class="navbar-inner">
+			<div class="container">	
+				<div role="navigation">
+					<ul id='js-nav' class='nav'>
+						{% for item in menu %}
+							{% if item.submenu is defined %}
+								<li class='dropdown js-menuitem-root {{ item.seleccionado ? 'menu-item-seleccionado' : '' }}'>
+									{{ current_file_macros.recursiveSubmenu(item, true) }}
+								</li>
+							{% else %}
+								<li id='menu_{{ item.id }}' class='js-menuitem-root {{ item.seleccionado ? 'menu-item-seleccionado' : '' }}'>
+									<a href='{{ item.url }}'>{{ item.nombre|trans }}</a>
+								</li>
+							{% endif %}
+						{% endfor %}
+					</ul>
+				</div><!--/.nav-collapse -->
+			</div> <!-- container-fluid -->
+		</div><!-- navbar-inner -->
+    </div><!-- navbar -->
+{% endif %}
+
+<!-- https://gist.github.com/tentacode/3892186 -->
+{% macro recursiveSubmenu(item, primer_nivel) %}
+    
+    {% import _self as current_file_macros %}
+    
+    {% if primer_nivel %}
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ item.nombre|trans }} <b class="caret"></b></a>
+		{% else %}
+        <li class="dropdown-submenu">
+			<a href="#">{{ item.nombre|trans }}</a>
+		{% endif %}
+
+		<ul class='dropdown-menu'>
+
+			{% for subitem in item.submenu %}
+
+				<li id='{{ subitem.id }}'><a href='{{ subitem.url }}'>{{ subitem.nombre|trans }}</a></li>
+
+			{% endfor %}
+
+			{% for submenu in item.submenues %}
+
+				{{ current_file_macros.recursiveSubmenu(item[submenu], false) }}
+
+			{% endfor %}
+
+		</ul>
+
+		{% if not primer_nivel %}
+        </li>
+    {% endif %}
+
+{% endmacro %}

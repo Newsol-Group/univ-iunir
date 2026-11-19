@@ -1,0 +1,100 @@
+<div class='inscripcion'>
+    <p>{{'periodo'|trans|capitalize}}: {{ comision.periodo_lectivo_nombre }}</p>
+
+    <div class="wrapper-detalle">
+        <div class='info_inscripcion'>
+            <div class="comision">
+                <div style="margin-bottom: 5px;">{{'info_materia.inscripto_comision'|trans({'%1%': comision.comision_nombre})}}</div>
+
+                {% if comision.docente %}
+                    <div class="row-fluid">
+                            <div class='docente span3'>{{"info_materia.docentes"|trans}}:</div>
+                            <div class="span9">{{ comision.docente|raw }}</div>
+                    </div>
+                {% endif %}
+                
+                {% if comision.ubicacion_nombre %}
+                    <div class="row-fluid">
+                            <div class='span3'>{{"inscripcion_cursos.sede"|trans}}:</div>
+                            <div class="span9">{{ comision.ubicacion_nombre }}</div>
+                    </div>
+                {% endif %}
+                
+                {% if comision.modalidad %}
+                    <div class="row-fluid">
+                            <div class='span3'>{{"inscripcion_cursos.modalidad"|trans}}:</div>
+                            <div class="span9">{{ comision.modalidad }}</div>
+                    </div>
+                {% endif %}
+
+                {% if (comision.cobrable == si) and comision.costo %}
+                    <div class="costo" style="margin-bottom: 5px;">{{"inscripcion_cursos.costo"|trans|capitalize}}: <span class="label {{ comision.label_costo }}">{{ comision.costo }}</span></div>
+                {% endif %}
+
+                <div class="iconos-pago-container">
+
+                    {% if (comision.cobrable == si) and (comision.estado_inscripcion == inscripcion_aceptada) %}
+                        <div class="icono icono-pago-efectuado">
+                            <i class="fa fa-check-circle" aria-hidden="true" title="{{ 'inscripcion_cursos.inscripcion_pago_efectuado'|trans }}"></i>
+                        </div>
+                    {% endif %}
+
+                    {% if (comision.cobrable == si) and (comision.estado_inscripcion == inscripcion_pendiente) %}
+                        <div class="icono icono-pago-pendiente">
+                            <i class="fa fa-exclamation-circle" aria-hidden="true" title="{{ 'inscripcion_cursos.inscripcion_pendiente_pago'|trans }}"></i>
+                        </div>
+                    {% endif %}
+                    
+                    {% if comision.horario_descr %}
+                        <div class="row-fluid">
+                            <div class='horario span3'>{{"inscripcion_cursos.horario"|trans}}:</div>
+                            <div class="span9">{{ comision.horario_descr|raw }}</div>
+                        </div>
+                    {% endif %}
+
+                    <div style="clear: both;"></div>
+                </div>
+
+                {% if comision.error_btn_pagar %}
+                    <div class="alert alert-error" style="margin-top: 15px;">{{ "inscripcion_cursos.error_inscripcion_pendiente_pago"|trans }}</div>
+                {% endif %}
+
+            </div>
+
+            <div class='comprobante-cursada' data-img='{{comision.url_comp}}' data-msg-toggle='<i class="comprobante"></i> {{"esconder_comprobante"|trans|capitalize}} <i class="descolapsado"></i>' data-error='false' data-transaccion='{{comision.nro_transaccion}}'>
+                <a href='#'><i class="comprobante"></i> {{"mostrar_comprobante"|trans|capitalize}} <i class="colapsado"></i></a>
+                <div class='img-placeholder hide'>
+                    <div class="comprobante-actions">
+                        <a class='btn btn-small js-print-comprobante' data-img='{{ comision.url_imp_comp }}'><i class="icon-print"></i>{{'imprimir'|trans|capitalize}}</a>
+                        <a class='btn btn-small js-mail-comprobante' href='{{comision.url_mail_comp}}'><i class="icon-envelope"></i>{{'enviar_por_mail'|trans|capitalize}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class='acciones'>
+            <form class='form_baja' action='{{ comision.url_baja }}' method='POST'>
+                {% import "kernel/macro_csrf.twig" as input_csrf %}
+                {{ input_csrf.mostrar(csrf) }}
+                <input type="hidden" name="curso" value="{{ comision.actividad }}" />
+                <input type="hidden" name="comision" value="{{ comision.id }}" />
+                <input type="hidden" name="inscripcion" value="{{ attribute(comision, catalogo_id) }}" />
+                <button class="btn btn-small" type='submit'
+                {% if not comision.baja_habilitada %}
+                    disabled
+                    data-toggle="tooltip"
+                    data-placement="top"
+                    title=""
+                    data-original-title="{{ 'inscripcion_cursos.tooltip_boton_baja'|trans }}"
+                {% endif %}>
+                <i class="icon-remove"></i> {{'dar_baja'|trans|capitalize }}
+                </button>
+
+                {% if comision.pago_pendiente %}
+                    <button data-token-sq="{{ comision.sq_token }}" data-curso="{{comision.actividad}}" data-inscripcion="{{ attribute(comision, catalogo_id) }}" class="btn btn-small btn-primary js-pagar" title="{{ 'inscripcion_cursos.tooltip_boton_pagar'|trans }}"><i class="fa fa-usd" aria-hidden="true"></i> {{'pagar'|trans|capitalize }}</button>
+                {% endif %}
+
+            </form>
+        </div>
+    </div>
+</div>

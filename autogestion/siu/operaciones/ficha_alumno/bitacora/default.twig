@@ -1,0 +1,95 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	{% autoescape false %}
+
+	<div class='controls controls-row form-head clearfix'>
+		<div class='borde-inferior'>
+			<div class='pull-left'>
+				<h2>{{'ficha_alumno.menu.bitacora'|trans}}</h2>
+			</div>
+			<div class='clearfix'></div>
+		</div>
+	</div>
+
+	{% if this.data.modo == 'listado' %}
+		{#---- Pantalla listado ----#}
+		{% if this.data.cant_registros == 0 %}
+			<div class='alert mensaje'>
+				{{'ficha_alumno.bitacora.mensaje_sin_reg'|trans|raw}}
+			</div>
+		{% else %}
+			<div>
+				<table class="table table-stripped table-hover">
+					<thead>
+						<tr>
+							<th>{{'ficha_alumno.bitacora.fecha'|trans}}</th>
+							<th>{{'ficha_alumno.bitacora.seguimiento'|trans}}</th>
+							<th>{{'ficha_alumno.bitacora.referente'|trans}}</th>
+							<th>{{'ficha_alumno.bitacora.cargado_por'|trans}}</th>
+							<th>{{'ficha_alumno.bitacora.titulo'|trans}}</th>
+							<th class='eventos'>&nbsp;</th>
+						</tr>
+					</thead>
+					<tbody>
+					{% for registro in this.data.registros %}
+						<tr>
+							<td>{{registro.fecha_formato_visual}}</td>
+							<td>{{registro.seguimiento_nombre}}</td>
+							<td>{{registro.docente_nombre}}</td>
+							<td>{{registro.persona_nombre}}</td>
+							<td>{{registro.titulo}}</td>
+							<td class='eventos'>
+								<a href="{{ registro.LINK_EDITAR }}" class="btn btn-info btn-small" title="{{ registro.tooltip_editar }}"><i class="icon-white {{ registro.icono_editar }}"></i></a>
+								{% if registro.LINK_ELIMINAR %}
+								<a href="{{ registro.LINK_ELIMINAR }}" class="btn btn-info btn-small js-btnEliminar" title="{{'eliminar'|trans|capitalize}}"><i class="icon-white icon-remove"></i></a>
+								{% endif %}
+							</td>
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		{% endif %}
+
+		<div class="pull-right fix-boton">
+			<a href="{{ this.get_accion_alta_bitacora() }}" class="btn btn-inverse">
+				 {{'ficha_alumno.bitacora.agregar'|trans}} 
+			</a>
+		</div>
+	{% else %}
+		{#---- Pantalla alta / edición ----#}
+		{% set form = this.get_form() %}
+		{{ form.encabezado }}
+			<div class='clearfix cg-margen'>
+				{{ form.control_group('__ID__') }}
+			</div>
+			<div class='clearfix cg-margen'>
+				{{ form.control_group('fecha') }}
+			</div>
+			<div class='clearfix cg-margen'>
+				{{ form.control_group('id_seguimiento', 'span6') }}
+				{{ form.control_group('visibilidad', 'span6') }}
+			</div>
+			<div class='clearfix cg-margen'>
+				{{ form.control_group('titulo') }}
+			</div>
+			<div class='clearfix cg-margen'>
+				{{ form.control_group('observaciones') }}
+			</div>
+
+			<div class='controls controls-row form-head clearfix'>
+			<div class='borde-superior'>
+				<div class='pull-right'>
+					<a href="{{ this.get_accion_volver_edicion() }}" class="btn btn-info">
+						{{ 'volver'|trans|capitalize }} 
+					</a>
+					{% if this.puede_editar_bitacora() %}
+						{{ form.submit_button('guardar_edicion', 'ficha_alumno.bitacora.guardar')  }}
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		</form>
+	{% endif %}
+	{% endautoescape %}
+{% endblock %}

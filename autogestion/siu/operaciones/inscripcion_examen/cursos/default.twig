@@ -1,0 +1,28 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+
+    {% if this.data.propuestas_cursos is empty %}
+
+        <div class="alert alert-warning text-center">{{ 'inscripcion_cursos.no_hay_propuestas_cursos_disponibles' | trans }}</div>
+
+    {% else %}
+
+        <div id="select_cursos_container">
+            <select id="combo_propuestas_cursos" name="cursos">
+                {% for propuesta_curso in this.data.propuestas_cursos %}
+                    <option value="{{ attribute(propuesta_curso, this.data.catalogo_id) }}"{% if propuesta_curso.seleccionada %} selected="selected"{% endif %}>{{ propuesta_curso.descr }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    <div id="actividades_curso_container">
+            {% include 'cursos/actividades.twig' with {
+                                                'actividades': this.data.actividades_curso,
+                                                'url_elegir_actividad_curso': this.data.url_elegir_actividad_curso,
+                                                'catalogo_id': this.data.catalogo_id,
+                                                'propuesta_curso_hash': this.data.propuesta_curso_hash,
+                                                } only
+            %}
+        </div>
+    {% endif %}
+
+{% endblock %}

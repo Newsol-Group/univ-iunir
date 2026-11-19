@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<plan>
+	<modificadas>
+		<tarea id="apex_fuente_datos" path="tabla_apex_fuente_datos.xml"/>
+		<tarea id="apex_fuente_datos_schemas" path="tabla_apex_fuente_datos_schemas.xml"/>
+		<tarea id="apex_pagina_tipo" path="tabla_apex_pagina_tipo.xml"/>
+		<tarea id="apex_consulta_php" path="tabla_apex_consulta_php.xml"/>
+		<tarea id="apex_msg" path="tabla_apex_msg.xml"/>
+	</modificadas>
+</plan>

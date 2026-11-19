@@ -1,0 +1,94 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	{% set form = this.get_form() %}
+	{% autoescape false %}
+	{{ form.encabezado }}
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-inferior'>
+				<div class='pull-left'>
+					<h2>{{this.get_nombre()|trans}}</h2>
+				</div>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'guardar_datos_personales')}}
+				</div>
+				<div class='clearfix'></div>
+			</div>
+		</div>
+
+		{%if form.hay_visibles_agrupado('financ_fuente') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('financ_fuente')">{{'financ_fuente'|trans}}</h3>
+			<div id='financ_fuente' class='toggle-div'>
+				<div class='clearfix cg-margen'>
+					{{ form.checkbox('alu_cos_est_ap_fam') }}
+					{{ form.checkbox('alu_cos_est_plsoc') }}
+					{{ form.checkbox('alu_cos_est_trab') }}
+					{{ form.checkbox('alu_cos_est_beca') }}
+					{{ form.checkbox('alu_cos_est_otra') }}
+				</div>
+				<div id='div_form_financiamiento' class='clearfix' style="margin-bottom: 5px;">
+					{{ form.control_group('alu_cos_est_espec') }}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		<div id='div_datos_becas'>
+			{{ form.control_group('tiene_beca') }}
+			{%if form.hay_visibles_agrupado('financ_beca_fuente') %}
+			<div class='well clearfix'>
+				<h3 class='toggle-header' onclick="toggle('financ_beca_fuente')">{{'financ_beca_fuente'|trans}}</h3>
+				<div id='financ_beca_fuente' class='toggle-div'>
+					<div class='clearfix cg-margen'>
+						{{ form.checkbox('tiene_beca_univ') }}
+						{{ form.checkbox('tiene_beca_inter') }}
+						{{ form.checkbox('tiene_beca_nacio') }}
+						{{ form.checkbox('alu_beca_prov') }}
+						{{ form.checkbox('alu_beca_muni') }}
+						{{ form.checkbox('alu_beca_otra') }}
+					</div>
+				</div>
+			</div>
+			{% endif %}
+				
+			{%if form.hay_visibles_agrupado('financ_beca_tipo') %}
+			<div class='well clearfix'>
+				<h3 class='toggle-header' onclick="toggle('financ_beca_tipo')">{{'financ_beca_tipo'|trans}}</h3>
+				<div id='financ_beca_tipo' class='toggle-div'>
+					<div class='clearfix cg-margen'>
+						{{ form.checkbox('alu_beca_tipo_eco') }}
+						{{ form.checkbox('alu_beca_tipo_ser') }}
+						{{ form.checkbox('alu_beca_tipo_inv') }}
+					</div>
+				</div>
+			</div>
+			{% endif %}
+
+			{%if form.hay_visibles_agrupado('financ_beca_tipo_econom') %}
+			<div id='div_beca_tipo_econom' class='well clearfix'>
+				<h3 class='toggle-header' onclick="toggle('financ_beca_tipo_econom')">{{'financ_beca_tipo_econom'|trans}}</h3>
+				<div id='financ_beca_tipo_econom' class='toggle-div'>
+					<div class='clearfix cg-margen'>
+						{{ form.checkbox('alu_beca_eco_tran') }}
+						{{ form.checkbox('alu_beca_eco_efec') }}
+						{{ form.checkbox('alu_beca_eco_foto') }}
+						{{ form.checkbox('alu_beca_eco_habi') }}
+						{{ form.checkbox('alu_beca_eco_come') }}
+					</div>
+				</div>
+			</div>
+			{% endif %}
+
+		</div>
+
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-superior'>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'guardar_datos_personales')}}
+				</div>
+			</div>
+		</div>
+	</form>
+	{% endautoescape %}
+
+{% endblock %}

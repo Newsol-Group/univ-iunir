@@ -1,0 +1,114 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	<h4 style="border-bottom: 1px solid #EEE;">{{"mis_inscripciones.cursadas" | trans | capitalize}}
+		- 
+		<span class="nota_titulo">
+		{% if this.get_alcance == "T" %}
+			{{"mis_inscripciones.cursadas_historicas" | trans | capitalize }}
+		{% else %}
+			{{"mis_inscripciones.cursadas_vigentes" | trans | capitalize }}
+		{% endif %}
+		</span>
+	</h4>
+	
+	<label for="cursadas_historicas">
+		<input type="checkbox" name="cursadas_historicas" id="cursadas_historicas" value="T"{% if this.get_alcance == "T" %} checked="checked"{% endif %} />
+	 {{"mis_inscripciones.cursadas_historicas" | trans | capitalize}}</label>
+	
+	{% if this.data.cursadas %}
+	<table class="table table-bordered table-condensed comisiones">
+		<tr class="titulo">
+			<th>{{"mis_inscripciones.fecha_inscripcion" | trans | capitalize }}</th>
+			<th>{{"mis_inscripciones.anio" | trans | capitalize }}</th>
+			<th>{{"mis_inscripciones.per_lec" | trans | capitalize }}</th>
+			<th>{{"carrera" | trans | capitalize }}</th>
+			<th>{{"nombre_actividad" | trans | capitalize }}</th>
+			<th>{{"mis_inscripciones.comision" | trans | capitalize }}</th>
+			<th>{{"nombre_subcomision" | trans | capitalize }}</th>
+			<th>{{"mis_inscripciones.turno" | trans | capitalize }}</th>
+			<th>{{"mis_inscripciones.catedra" | trans | capitalize }}</th>
+			<th>{{"mis_inscripciones.ubicacion" | trans | capitalize }}</th>
+			<th>{{"mis_inscripciones.estado" | trans | capitalize }}</th>
+			<th>{{"mis_inscripciones.comprobante" | trans | capitalize }}</th>
+			<th>{{"mis_inscripciones.moodle" | trans | capitalize }}</th>
+
+		</tr>
+		{% for key, cursada in this.data.cursadas %}
+		<tr>			
+			<td>{{cursada.fecha_inscripcion_rechazo}}</td>
+			<td>{{cursada.anio_academico}}</td>
+			<td>{{cursada.periodo_lectivo_nombre}}</td>
+			<td>{{cursada.propuesta_nombre_abreviado}}</td>
+			<td>{{cursada.actividad_nombre}} ({{cursada.actividad_codigo}})</td>
+			<td>{{cursada.comision_nombre}}</td>
+			<td class="center">
+				{% if cursada.con_subcomisiones %}
+				<button class="btn btn-small js-ver-subcomisiones" data-link="{{cursada.url_inscripcion}}" contenedor="subs_{{key}}">
+					<span>{{"ver_subcomisiones"|trans|capitalize}}</span>
+				</button>
+				{% else %}
+					{{"no_tiene" | trans | capitalize }}
+				{% endif %}
+			</td>
+			<td>
+				{% if cursada.turno_nombre %}
+					{{("mis_inscripciones.turno_" ~ cursada.turno_nombre) | trans | capitalize }}
+				{% else %}
+					{{"sin_definir" | trans | capitalize }}
+				{% endif %}
+			</td>
+			<td>
+				{% if cursada.catedra_nombre %}
+					{{cursada.catedra_nombre}}
+				{% else %}
+					{{"sin_definir" | trans | capitalize }}
+				{% endif %}
+			</td>
+			<td>{{cursada.ubicacion_nombre}}</td>
+			<td>{% if cursada.motivo %}<a link="cu_{{key}}" class="rechazado">{% endif %}{{cursada.estado_nombre}}{% if cursada.motivo %}</a>{% endif %}</td>
+			<td><a {% if cursada.estado != 'R' %}href="{{cursada.url_comp}}"{% endif %} target="_blank" class="btn no-ajax" title="Generar comprobante de inscripcion"{% if cursada.estado == 'R' %} disabled{% endif %}>Generar</a></td>
+                        <td>
+                            {% if cursada.url_curso_moodle is defined %}
+                                <a href="{{ cursada.url_curso_moodle }}" target="_blank" class="btn no-ajax" title="{{ "mis_inscripciones.ir_leyenda" | trans }}">{{ "mis_inscripciones.ir" | trans }}</a>
+                            {% endif %}
+                        </td>
+		</tr>
+		
+		{% if cursada.motivo %}
+		<tr id="cu_{{key}}" class="motivo">
+			<td colspan="13">
+				<div class="motivos">
+					<div>
+						{% if cursada.motivo.rechazo_masivo_desc %}
+							<strong>{{"mis_inscripciones.motivo" | trans | capitalize }}:</strong> {{cursada.motivo.rechazo_masivo_desc}}
+						{% endif %}
+					</div>	
+					<div>
+						{% if cursada.motivo.requisitos_no_cumplidos %}
+								<strong>{{"mis_inscripciones.requisitos_no_cumplidos" | trans | capitalize }}:</strong>
+								<ul>
+									{% for requisito in cursada.motivo.requisitos_no_cumplidos %}
+										<li> {{requisito}} </li>
+									{% endfor %}
+								</ul>			
+						{% endif %}
+					</div>
+				</div>	
+			</td>		
+		</tr>
+		{% endif %}
+
+		{% if cursada.con_subcomisiones %}
+		<tr>
+			<td colspan="13" id="subs_{{key}}" class="hide">
+				<!-- aca escribe el ajax -->
+			</td>
+		</tr>
+		{% endif %}
+
+		{% endfor %}
+	</table>
+	{% else %}
+		{{"mis_inscripciones.vacio_cursadas" |trans }}
+	{% endif %}
+{% endblock %}

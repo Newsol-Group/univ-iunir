@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000156" descripcion="toba_ei_filtro">
+	<tabla nombre="apex_objeto">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000156"/>
+			<columna nombre="clase_proyecto" valor="toba"/>
+			<columna nombre="clase" valor="toba_ei_filtro"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+			<columna nombre="subclase" valor="guarani_pers_ei_filtro"/>
+			<columna nombre="subclase_archivo" valor="extension_toba/componentes/guarani_pers_ei_filtro.php"/>
+			<columna nombre="nombre" valor="Alumnos con regularidad vencida - filtro"/>
+			<columna nombre="titulo" valor="Filtro"/>
+			<columna nombre="colapsable" valor="1"/>
+			<columna nombre="fuente_datos_proyecto" valor="guarani"/>
+			<columna nombre="fuente_datos" valor="guarani"/>
+			<columna nombre="creacion" valor="2010-07-21 16:05:27"/>
+			<columna nombre="posicion_botonera" valor="abajo"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_eventos">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="evento_id" valor="770000155"/>
+			<columna nombre="objeto" valor="770000156"/>
+			<columna nombre="identificador" valor="filtrar"/>
+			<columna nombre="etiqueta" valor="&amp;Filtrar"/>
+			<columna nombre="maneja_datos" valor="1"/>
+			<columna nombre="estilo" valor="ei-boton-filtrar"/>
+			<columna nombre="imagen_recurso_origen" valor="apex"/>
+			<columna nombre="imagen" valor="filtrar.png"/>
+			<columna nombre="en_botonera" valor="1"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="implicito" valor="0"/>
+			<columna nombre="defecto" valor="0"/>
+			<columna nombre="grupo" valor="cargado,no_cargado"/>
+			<columna nombre="es_seleccion_multiple" valor="0"/>
+			<columna nombre="es_autovinculo" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="evento_id" valor="770000154"/>
+			<columna nombre="objeto" valor="770000156"/>
+			<columna nombre="identificador" valor="cancelar"/>
+			<columna nombre="etiqueta" valor="&amp;Limpiar"/>
+			<columna nombre="maneja_datos" valor="0"/>
+			<columna nombre="estilo" valor="ei-boton-limpiar"/>
+			<columna nombre="imagen_recurso_origen" valor="apex"/>
+			<columna nombre="imagen" valor="limpiar.png"/>
+			<columna nombre="en_botonera" valor="1"/>
+			<columna nombre="orden" valor="2"/>
+			<columna nombre="implicito" valor="0"/>
+			<columna nombre="defecto" valor="0"/>
+			<columna nombre="grupo" valor="cargado"/>
+			<columna nombre="es_seleccion_multiple" valor="0"/>
+			<columna nombre="es_autovinculo" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ei_filtro">
+		<registro>
+			<columna nombre="objeto_ei_filtro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_ei_filtro" valor="770000156"/>
+			<columna nombre="ancho" valor="100%"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ei_filtro_col">
+		<registro>
+			<columna nombre="objeto_ei_filtro_col" valor="770000089"/>
+			<columna nombre="objeto_ei_filtro" valor="770000156"/>
+			<columna nombre="objeto_ei_filtro_proyecto" valor="guarani"/>
+			<columna nombre="tipo" valor="opciones"/>
+			<columna nombre="nombre" valor="ubicacion"/>
+			<columna nombre="expresion" valor="sga_comisiones.ubicacion"/>
+			<columna nombre="etiqueta" valor="Ubicación"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="inicial" valor="0"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="opciones_es_multiple" valor="0"/>
+			<columna nombre="opciones_ef" valor="ef_combo"/>
+			<columna nombre="carga_metodo" valor="get_ubicaciones"/>
+			<columna nombre="carga_consulta_php" valor="37000008"/>
+			<columna nombre="carga_fuente" valor="guarani"/>
+			<columna nombre="carga_col_clave" valor="valor"/>
+			<columna nombre="carga_col_desc" valor="descr"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="carga_no_seteado_ocultar" valor="0"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_filtro_col" valor="770000090"/>
+			<columna nombre="objeto_ei_filtro" valor="770000156"/>
+			<columna nombre="objeto_ei_filtro_proyecto" valor="guarani"/>
+			<columna nombre="tipo" valor="opciones"/>
+			<columna nombre="nombre" valor="modalidad"/>
+			<columna nombre="expresion" valor="sga_comisiones.modalidad"/>
+			<columna nombre="etiqueta" valor="Modalidad de Cursada"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="inicial" valor="0"/>
+			<columna nombre="orden" valor="2"/>
+			<columna nombre="opciones_es_multiple" valor="0"/>
+			<columna nombre="opciones_ef" valor="ef_combo"/>
+			<columna nombre="carga_metodo" valor="get_modalidades_cursadas"/>
+			<columna nombre="carga_consulta_php" valor="9000006"/>
+			<columna nombre="carga_fuente" valor="guarani"/>
+			<columna nombre="carga_col_clave" valor="valor"/>
+			<columna nombre="carga_col_desc" valor="descr"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="carga_no_seteado_ocultar" valor="0"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_filtro_col" valor="770000091"/>
+			<columna nombre="objeto_ei_filtro" valor="770000156"/>
+			<columna nombre="objeto_ei_filtro_proyecto" valor="guarani"/>
+			<columna nombre="tipo" valor="opciones"/>
+			<columna nombre="nombre" valor="elemento"/>
+			<columna nombre="expresion" valor="sga_comisiones.elemento"/>
+			<columna nombre="etiqueta" valor="Actividad"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="inicial" valor="0"/>
+			<columna nombre="orden" valor="3"/>
+			<columna nombre="opciones_es_multiple" valor="0"/>
+			<columna nombre="opciones_ef" valor="ef_combo"/>
+			<columna nombre="carga_metodo" valor="get_lista_actividades"/>
+			<columna nombre="carga_consulta_php" valor="1000004"/>
+			<columna nombre="carga_fuente" valor="guarani"/>
+			<columna nombre="carga_col_clave" valor="elemento"/>
+			<columna nombre="carga_col_desc" valor="codigo_nombre"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="carga_no_seteado_ocultar" valor="0"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+	</tabla>
+</componente>

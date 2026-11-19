@@ -1,0 +1,50 @@
+{% extends "kernel/dos_columnas.twig" %}
+{% block titulo_operacion %}
+
+<div class="titulo-operacion clearfix">
+	<h1 class='pull-left no-margin'>
+		{{"titulo_datos_personales"|trans}}
+	</h1>
+	{% if this.hay_inscripciones() %}
+	<div class="pull-right">
+		<a class="btn btn-info" href="{{this.get_action_finalizar()}}">
+			<i class="icon-ok-sign icon-white"></i>&nbsp;{{'finalizar'|trans|capitalize}}
+		</a>
+	</div>
+	{% endif %}
+</div>
+
+{% if this.hay_cuenta_vinculada() %}
+<div class="alert alert-info strong">
+	<button type="button" class="close" data-dismiss="alert">&times;</button>
+	{{ this.get_cuenta_vinculada()|raw }}
+</div>
+{% endif %}
+
+{% if this.hay_cambios_desde_impresion() %}
+<div id="cambios_desde_impresion" class="alert alert-heading mensaje strong warning-icon" role="alert">
+	<div class='msg_cambios_desde_impresion'>
+		{{ 'cambios_desde_impresion' | trans | raw }}
+	</div>
+</div>
+{% endif %}
+
+{% if this.control_faltantes_activado() %}
+<div class='alert alert-error mensaje strong'>
+	{{ this.get_mensaje_impresion_campos_faltantes() }} <a href="{{this.get_url_ocultar_msg_impr()}}">({{'ocultar'|trans}})</a>
+</div>
+{% endif %}
+
+{% if this.get_mensaje_error_email() %}
+<div class='alert alert-succes mensaje strong'>
+	{{ this.get_mensaje_error_email() }}
+</div>
+{% endif %}
+{% endblock %}
+{% block columna_1 %}
+    {{ lista_forms.render }}
+{% endblock %}
+{% block columna_2 %}
+	{# formulario es un pagelet dinámico que cambia de acuerdo a la url #}
+	{{ formulario.render }}
+{% endblock %}

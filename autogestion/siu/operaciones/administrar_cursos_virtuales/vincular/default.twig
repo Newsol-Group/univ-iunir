@@ -1,0 +1,62 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}    
+
+    <div class="titulo_operacion">
+        <h2 class="clearfix">
+            <span class="pull-left">{{ "moodle.vincular.titulo" | trans }}</span>
+        </h2>
+    </div>
+        
+    {# Si se trata de una subcomisión #}
+    {% if this.data.es_subcomision  %}
+    <div class="alert alert-block" style="text-align: left !important;">
+        <p>{{ "moodle.leyenda_subcomisiones" | trans | raw }}</p>
+    </div>
+    {% endif %}
+    
+    <form class="form-horizontal" method="post" action="{{ this.data.url_vincular }}">
+
+        {% import "mensajes.twig" as mensajes %}
+        {{ mensajes.mostrar_mensajes(this.data.mensajes) }}
+
+        {% set curso_val = (this.data.valores.curso is defined) ? this.data.valores.curso : -1 %}
+        {% set curso_error = (this.data.errores.curso is defined) ? 'error' : '' %}
+        {% set curso_msg = (this.data.errores.curso is defined) ? this.data.errores.curso : '' %}
+        <div id="js-cg-curso" class="control-group {{ curso_error }}">
+            <label class="control-label" for="js-curso">{{ "moodle.vincular.curso" | trans }} (*)</label>
+            <div class="controls">
+                <select id="js-curso" name="curso">
+                    {% for curso in this.data.cursos %}
+                        
+                        {% set selected = '' %}
+                        {% if curso.id == curso_val %}
+                            {% set selected = 'selected' %}
+                        {% endif %}
+                        
+                        <option value="{{ curso.id }}" {{ selected }} title="{{ curso.fullname }}" alt="{{ curso.fullname }}">{{ curso.fullname }}</option>
+                        
+                    {% endfor %}
+                </select>
+                <span id="js-help-curso" class="help-block">{{ curso_msg }}</span>
+            </div>
+        </div>
+                
+        {% set matricular_alumnos_val = (this.data.valores.matricular_alumnos is defined) ? this.data.valores.matricular_alumnos : 0 %}
+        {% set matricular_alumnos_error = (this.data.errores.matricular_alumnos is defined) ? 'error' : '' %}
+        {% set matricular_alumnos_msg = (this.data.errores.matricular_alumnos is defined) ? this.data.errores.matricular_alumnos : '' %}
+        <div id="js-cg-matricular-alumnos" class="control-group {{ matricular_alumnos_error }}">
+            <label class="checkbox inline" for="js-matricular-alumnos">
+                <input type="checkbox" id="js-matricular-alumnos" {% if matricular_alumnos_val == 1 %}checked{% endif %}> {{ "moodle.vincular.matricular_alumnos" | trans }}
+                <input type="hidden" id="js-matricular-alumnos-input" name="matricular_alumnos" value="{{ matricular_alumnos_val }}">
+            </label>
+            <span id="js-help-matricular-alumnos" class="help-block">{{ matricular_alumnos_msg }}</span>
+        </div>
+                
+        <div class="text-right">
+            <button class="btn btn-primary" type="submit">{{ "moodle.vincular" | trans }}</button>
+            <button id="js-btn-volver" class="btn" type="button">{{ "moodle.volver" | trans }}</button>
+        </div>
+                
+    </form>
+
+{% endblock %}

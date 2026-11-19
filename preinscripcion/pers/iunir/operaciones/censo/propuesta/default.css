@@ -1,0 +1,14 @@
+@media screen and (max-width: 1400px) {
+        table {
+          display: block;
+          overflow-x: auto;
+        }
+}
+
+#propuesta .js-observaciones-icon {
+        cursor: pointer;
+}
+
+#propuesta .js-observaciones {
+  display: none;
+}

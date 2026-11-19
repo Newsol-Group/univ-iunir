@@ -1,0 +1,99 @@
+{% extends "kernel/pagelet.twig" %}
+{% import 'kernel/macro_helpers.twig' as helper %}
+{% import _self as current_file_macros %}
+
+{% block contenido %}
+{% spaceless %}
+
+<div class='navegacion visible-desktop'>
+	<ul class="nav pull-left">
+		<a href='{{ this.data.url_back }}' class='btn zona-btn-home'>
+			<i class="icon-home"></i>
+		</a>
+		<select class="form-control span6 js-combo-nav">
+			{% for key, opcion in this.data.combo %}
+				{% if (opcion.url != derechos_link_vacio) %}
+					<option value="{{ key }}" {% if (opcion.selected) %}selected{% endif %} data-link="{{ opcion.url }}">{{ opcion.texto }}</option>
+				{% else %}
+					<option value="{{ key }}" class="link-no-acceso" disabled>{{ opcion.texto }} ({{'no_tenes_derechos'| trans}})</option>
+				{% endif %}
+			{% endfor %}
+		</select>
+	</ul>
+
+
+	<ul class="nav nav-pills pull-right">
+		{% for link in this.data.links %}
+			{% if link.url != derechos_link_vacio %}
+				{{ current_file_macros.link(link.url, link.descripcion, link.activo) }}
+			{% else %}
+				{{ current_file_macros.link_no_acceso(link.descripcion) }}
+			{% endif %}
+		{% endfor %}
+	</ul>
+</div>
+
+<div class='hidden-desktop'>
+            <div class="input-prepend">
+                <a href='{{ this.data.url_back }}' class='btn'><i class="icon-home"></i></a>
+                <select class="form-control js-combo-nav">
+                        {% for key, opcion in this.data.combo %}
+                                {% if (opcion.url != derechos_link_vacio) %}
+                                        <option value="{{ key }}" {% if (opcion.selected) %}selected{% endif %} data-link="{{ opcion.url }}">{{ opcion.texto }}</option>
+                                {% else %}
+                                        <option value="{{ key }}" class="link-no-acceso" disabled>{{ opcion.texto }} ({{'no_tenes_derechos'| trans}})</option>
+                                {% endif %}
+                        {% endfor %}
+                </select>
+            </div>
+
+            <div class="nav nav-pills">
+                    {% for link in this.data.links %}
+                            {% if link.url != derechos_link_vacio %}
+                                    {{ current_file_macros.link(link.url, link.descripcion, link.activo) }}
+                            {% else %}
+                                    {{ current_file_macros.link_no_acceso(link.descripcion) }}
+                            {% endif %}
+                    {% endfor %}
+            </div>
+        
+</div>
+
+{% block detalle %}
+		{% spaceless %}
+<div class='span12 row-fluid detalle-contenedor well well-small'>
+	<div class="clearfix detalle-cabecera" id="js-colapsar-detalles-zona">
+		<h3 class='clearfix'>
+			<span class='pull-left'>{% block detalle_encabezado_descripcion '' %} </span>
+
+			<div class='pull-right'><label>{% block detalle_encabezado_icono '' %}</div>
+		</h3>
+	</div>
+	<div id='zona-detalle' style="	display: none;">
+		{% block descripcion_entidad %}
+			Extender el template e implementar el bloqe descripcion_entidad
+		{% endblock %}
+	</div>
+</div>
+	{% endspaceless %}
+	{% endblock %}
+	{% endspaceless %}
+{% endblock contenido %}
+
+
+{% macro link(url, descripcion, activo) %}
+	{% if activo %}
+		<li class="active">
+	{% else %}
+		<li>
+	{% endif %}
+	<a href="{{ url }}">{{ descripcion }}</a>
+	</li>
+
+{% endmacro %}
+	
+{% macro link_no_acceso(descripcion) %}
+	<li>
+            <a class="link-no-acceso disabled" data-placement="top" data-toggle="tooltip" data-original-title="{{'no_tenes_derechos'| trans}}">{{ descripcion }}</a>
+	</li>
+{% endmacro %}

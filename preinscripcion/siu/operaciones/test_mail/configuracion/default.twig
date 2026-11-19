@@ -1,0 +1,25 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	<h2>{{"config_mail"|trans}}</h2>
+	<br/>
+	{% if this.data.es_default %}
+	<div class="alert alert-error mensaje strong">
+		{{ 'config_mail_default'|trans|raw }}
+	</div>
+	{% else %}
+	<div class="alert alert-info">
+	{{ 'desc_datos_mail'|trans|raw }}
+	</div>
+	{% endif %}
+	<table width=100%>
+            
+            {% for key, val in this.data.smtp if val is not iterable %}
+                <tr>
+                    <td><strong>{{ ('mail_' ~ key) | trans}}</strong></td>
+                    <td>{{ val }}</td>
+		</tr>
+            {% endfor %}
+            
+	</table>
+	
+{% endblock %}

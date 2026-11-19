@@ -1,0 +1,21 @@
+{% extends "kernel/una_columna.twig" %}
+{% import 'kernel/macro_helpers.twig' as helper %}
+{% block titulo_operacion %}
+	{% if impresion %}
+		{% set acciones %}
+		<a class="btn  no-ajax" target="_blank" id="generar_pdf"><i class="g3w-icono-pdf"></i></a>
+		<a class="btn  no-ajax" target="_blank" id="generar_xls"><i class="g3w-icono-xls"></i></a>
+		<button class="btn js-btn-back">Volver</button>
+		{% endset %}
+	{% else %}
+		{% set acciones = '' %}
+	{% endif %}
+
+
+	{{ helper.titulo_operacion(titulo|capitalize, '', acciones    ) }}
+
+
+{% endblock %}
+{% block columna_1 %}
+	{{ pagelet.render }}
+{% endblock %}

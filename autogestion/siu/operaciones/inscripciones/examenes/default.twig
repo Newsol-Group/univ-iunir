@@ -1,0 +1,84 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	<h4 style="border-bottom: 1px solid #EEE;">{{"mis_inscripciones.examenes" | trans | capitalize }}
+		- 
+		<span class="nota_titulo">
+		{% if this.get_alcance == "T" %}
+			{{"mis_inscripciones.examenes_historicos" | trans | capitalize }}
+		{% else %}
+			{{"mis_inscripciones.examenes_vigentes" | trans | capitalize }}
+		{% endif %}
+		</span>
+	</h4>
+	
+	<label for="examenes_historicos">
+		<input type="checkbox" name="examenes_historicos" id="examenes_historicos" value="T"{% if this.get_alcance == "T" %} checked="checked"{% endif %} />
+	{{'mis_inscripciones.examenes_historicos'|trans|capitalize}}</label>
+	{% if this.data.examenes %}
+	<table class="table table-bordered table-condensed">
+		<tr style="background-color: #707070; color: #fff;">
+			<th>{{'mis_inscripciones.fecha_inscripcion'|trans|capitalize}}</th>
+			<th>{{'mis_inscripciones.anio'|trans|capitalize}}</th>
+			<th>{{'mis_inscripciones.turno'|trans|capitalize}}</th>
+			<th>{{'mis_inscripciones.llamado'|trans|capitalize}}</th>
+			<th>{{'mis_inscripciones.propuesta'|trans|capitalize}}</th>
+			<th>{{'mis_inscripciones.actividad'|trans|capitalize}}</th>
+			<th>{{'mis_inscripciones.mesa'|trans|capitalize}}</th>
+			<th>{{'mis_inscripciones.ubicacion'|trans|capitalize}}</th>
+			<th>{{'lugar'|trans|capitalize}}</th>
+			<th>{{'mis_inscripciones.fecha_examen'|trans|capitalize}}</th>
+			<th>{{'mis_inscripciones.estado'|trans|capitalize}}</th>
+			<th>{{'mis_inscripciones.comprobante'|trans|capitalize}}</th>
+                        <th>{{"mis_inscripciones.moodle" | trans | capitalize }}</th>
+		</tr>
+		{% for key, examen in this.data.examenes %}
+		<tr>
+			<td>{{examen.fecha_inscripcion_visual}}</td>
+			<td>{{examen.anio_academico}}</td>
+			<td>{{examen.turno_nombre}}</td>
+			<td>{{examen.llamado_nombre}}</td>
+			<td>{{examen.propuesta_nombre}}</td>
+			<td>{{examen.actividad_nombre}}</td>
+			<td>{{examen.mesa_nombre}}</td>
+			<td>{{examen.ubicacion_nombre}}</td>
+			<td>{{examen.espacio_nombre}}</td>
+			<td>{{examen.fecha_examen_visual}}</td>
+			<td>{% if examen.motivo %}<a link="exa_{{key}}" class="rechazado">{% endif %}{{examen.estado_nombre}}{% if examen.motivo %}</a>{% endif %}</td>
+			<td><a {% if examen.estado != 'R' %}href="{{examen.url_comp}}"{% endif %} target="_blank" class="btn no-ajax" title="Generar comprobante de examen"{% if examen.estado == 'R' %} disabled{% endif %}>Generar</a></td>
+                        <td>
+                            {% if examen.url_curso_moodle is defined %}
+                                <a href="{{ examen.url_curso_moodle }}" target="_blank" class="btn no-ajax" title="{{ "mis_inscripciones.ir_leyenda" | trans }}">{{ "mis_inscripciones.ir" | trans }}</a>
+                            {% endif %}
+                        </td>
+		</tr>
+		
+		{% if examen.motivo %}
+		<tr id="exa_{{key}}" class="motivo">
+			<td colspan="13">
+				<div class="motivos">
+					<div>
+						{% if examen.motivo.rechazo_masivo_desc %}
+							<strong>{{"mis_inscripciones.motivo" | trans | capitalize }}:</strong> {{examen.motivo.rechazo_masivo_desc}}
+						{% endif %}
+					</div>	
+					<div>
+						{% if examen.motivo.requisitos_no_cumplidos %}
+								<strong>{{"mis_inscripciones.requisitos_no_cumplidos" | trans | capitalize }}:</strong>
+								<ul>
+									{% for requisito in examen.motivo.requisitos_no_cumplidos %}
+										<li> {{requisito}} </li>
+									{% endfor %}
+								</ul>			
+						{% endif %}
+					</div>
+				</div>	
+			</td>		
+		</tr>
+		{% endif %}
+		
+		{% endfor %}
+	</table>
+	{% else %}
+		{{'mis_inscripciones.vacio_examenes'|trans}}
+	{% endif %}
+{% endblock %}

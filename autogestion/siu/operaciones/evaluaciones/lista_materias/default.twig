@@ -1,0 +1,72 @@
+{% import 'kernel/macro_helpers.twig' as helper %}
+
+{% extends "kernel/pagelet.twig" %}
+
+{% block titulo_operacion %}
+
+{% endblock %}
+
+{% block contenido %}
+    {% set acciones = this.a(this.data.comision.url_nueva_evaluacion, 'crear_parcial'|trans|capitalize, 'btn btn-small btn-accion') %}
+
+    {{ helper.titulo_operacion('administracion_evaluaciones_parciales'|trans|capitalize,'', acciones) }}
+
+    {% spaceless %}
+        {% if this.data %}
+            {% if this.data.evaluaciones %}
+                <div class="evaluacion row-fluid">
+                    <table class="table table-striped table-bordered table-condensed">
+                        <thead>
+                            <tr>
+                                <th>{{ 'evaluacion'|trans|capitalize }}</th>
+                                <th>{{ 'tipo_evaluacion'|trans|capitalize }}</th>
+                                <th>{{ 'fecha'|trans|capitalize }}</th>
+                                <th>{{ 'estado'|trans|capitalize }}</th>
+                                <th>{{ 'porcentaje_carga'|trans|capitalize }} <i id="porcentaje_carga_tooltip" class="icon-info-sign" data-toggle="tooltip" title="{{ 'evaluaciones.porcentaje_carga_tooltip'|trans }}"></i></th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for eval in this.data.evaluaciones %}
+                                <tr class="evaluacion-fila">
+                                    <td>{{ eval.evaluacion_nombre }}</td>
+                                    <td>{{ eval.evaluacion_tipo_nombre }}</td>
+                                    <td>{{ eval.evaluacion_fecha }}</td>
+                                    <td>{{ eval.estado_nombre }}</td>
+                                    <td class="barra">
+                                        {% if eval.porcentaje_carga %}
+                                            <div class="progress progress-success wrapper-carga">
+                                                <div class="bar" style="width: {{ eval.porcentaje_carga ~ '%' }}"></div>
+                                            </div>
+                                            {{ eval.porcentaje_carga ~ '%' }}
+                                        {% endif %}
+                                    </td>
+                                    <td class='accion'>
+                                        {% if eval.estado != this.data.estado_cerrado %}
+                                            {{ this.a(eval.url_editar_evaluacion, "<i class='icon-edit'></i> " ~ 'editar'|trans|capitalize, 'btn btn-mini') | raw }}
+                                            {% if eval.cant_inscriptos > 0 %}
+                                                {{ this.a(eval.url_listar_notas, "<i class='icon-list'></i> " ~ 'Ver/Cerrar'|trans|capitalize, 'btn btn-mini') | raw }}
+                                                {{ this.a(eval.url_editar_notas, "<i class='icon-pencil'></i> " ~ 'cargar'|trans|capitalize, 'btn btn-mini') | raw }}
+                                            {% endif %}
+                                            {{ this.a(eval.url_borrar_evaluacion, "<i class='icon-remove icon-white'></i> " ~ 'borrar'|trans|capitalize, 'btn btn-mini btn-warning js-borrar') | raw }}
+                                        {% else %}
+                                            <a class="link-no-acceso disabled btn btn-mini" data-original-title="{{ 'evaluacion_cerrada'|trans }}" data-placement="top" data-toggle="tooltip"><i class='icon-edit'></i> {{ 'editar'|trans|capitalize }}</a>
+                                            <a class="btn btn-mini" href="{{ eval.url_listar_notas }}" ><i class='icon-list'></i> {{ 'Ver/Reabrir'|trans|capitalize }}</a>
+                                            <a class="link-no-acceso disabled btn btn-mini" data-original-title="{{ 'evaluacion_cerrada'|trans }}" data-placement="top" data-toggle="tooltip"><i class='icon-pencil'></i> {{ 'cargar'|trans|capitalize }}</a>
+                                            <a class="link-no-acceso disabled btn btn-mini btn-warning" data-original-title="{{ 'evaluacion_cerrada'|trans }}" data-placement="top" data-toggle="tooltip"><i class='icon-remove icon-white'></i> {{ 'borrar'|trans|capitalize }}</a>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+
+                </div>
+            {% else %}
+                <div class="alert">{{ 'no_hay_datos.evaluaciones'|trans|capitalize }}</div>
+            {% endif %}
+        {% endif %}
+
+    {% endspaceless %}
+{% endblock %}

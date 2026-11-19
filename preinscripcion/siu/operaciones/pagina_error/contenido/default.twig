@@ -1,0 +1,12 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}    
+	<div class="well alert-error mensaje strong">
+		{{ this.data.mensaje }}
+	</div>
+
+	<div class="control-group clearfix">
+		<div class="controls pull-right">
+			<input type="button" name="volver" value="{{'volver'|trans|capitalize}}" class="btn btn-info" onclick="window.location.href='{{this.data.url_volver}}'" />
+		</div>
+	</div>
+{% endblock %}

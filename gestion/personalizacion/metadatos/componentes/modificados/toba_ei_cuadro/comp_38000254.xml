@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="38000254" descripcion="toba_ei_cuadro">
+	<tabla nombre="apex_objeto_cuadro_cc">
+		<registro estado="3" clave="objeto_cuadro_proyecto:guarani;objeto_cuadro:38000254;objeto_cuadro_cc:38000012"/>
+		<registro estado="2" clave="objeto_cuadro_proyecto:guarani;objeto_cuadro:38000254;objeto_cuadro_cc:38000013">
+			<columna nombre="orden" valor="1" valor_original="2"/>
+			<columna nombre="columnas_descripcion" valor="propuesta_nombre" valor_original="propuesta_datos"/>
+			<columna nombre="pie_contar_filas" valor="0" valor_original="1"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ei_cuadro_columna">
+		<registro estado="2" clave="objeto_cuadro_proyecto:guarani;objeto_cuadro:38000254;objeto_cuadro_col:38000143">
+			<columna nombre="clave" valor="persona_nombre" valor_original="apellido_nombres"/>
+		</registro>
+		<registro estado="2" clave="objeto_cuadro_proyecto:guarani;objeto_cuadro:38000254;objeto_cuadro_col:38000145">
+			<columna nombre="clave" valor="persona_documento" valor_original="tipo_nro_documento"/>
+		</registro>
+		<registro estado="2" clave="objeto_cuadro_proyecto:guarani;objeto_cuadro:38000254;objeto_cuadro_col:38000146">
+			<columna nombre="clave" valor="propuesta_nombre" valor_original="legajo"/>
+			<columna nombre="titulo" valor="Propuesta" valor_original="Legajo"/>
+			<columna nombre="no_ordenar" valor="0" valor_original="###$$$NULL$$$###"/>
+			<columna nombre="total" valor="0" valor_original="###$$$NULL$$$###"/>
+			<columna nombre="usar_vinculo" valor="0" valor_original="###$$$NULL$$$###"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="38000254"/>
+			<columna nombre="objeto_cuadro_col" valor="770000682"/>
+			<columna nombre="clave" valor="requisito_nombre"/>
+			<columna nombre="orden" valor="4"/>
+			<columna nombre="titulo" valor="Requisito"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-tex-p1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="38000254"/>
+			<columna nombre="objeto_cuadro_col" valor="770000683"/>
+			<columna nombre="clave" valor="fecha_presentacion"/>
+			<columna nombre="orden" valor="5"/>
+			<columna nombre="titulo" valor="Fecha Presentación"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-cen-s1"/>
+			<columna nombre="formateo" valor="8"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="38000254"/>
+			<columna nombre="objeto_cuadro_col" valor="770000684"/>
+			<columna nombre="clave" valor="fecha_vencimiento"/>
+			<columna nombre="orden" valor="6"/>
+			<columna nombre="titulo" valor="Fecha Vencimiento"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-cen-s1"/>
+			<columna nombre="formateo" valor="8"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="38000254"/>
+			<columna nombre="objeto_cuadro_col" valor="770000685"/>
+			<columna nombre="clave" valor="fecha_excepcion"/>
+			<columna nombre="orden" valor="7"/>
+			<columna nombre="titulo" valor="Fecha Excepción"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-cen-s1"/>
+			<columna nombre="formateo" valor="8"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="38000254"/>
+			<columna nombre="objeto_cuadro_col" valor="770000686"/>
+			<columna nombre="clave" valor="fecha_tope_presentacion"/>
+			<columna nombre="orden" valor="8"/>
+			<columna nombre="titulo" valor="Fecha Tope Presentación"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-cen-s1"/>
+			<columna nombre="formateo" valor="8"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+	</tabla>
+</componente>

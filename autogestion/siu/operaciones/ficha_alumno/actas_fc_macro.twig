@@ -1,0 +1,34 @@
+{% macro render_actas_fc(renglones, this) %}
+    {% if renglones %}
+		<div class="js-recuadro_general">
+			<div class="js-recuadro_actividad">
+				<table class="table table-striped table-bordered table-condensed">
+					<thead>
+					<tr>
+						<th class='header-cols'>{{ 'ficha_alumno.afc.actividad' |trans | capitalize }}</th>
+						<th class='header-cols'>{{ 'ficha_alumno.afc.nro_acta' |trans | capitalize }}</th>
+						<th class='header-cols'>{{ 'ficha_alumno.afc.fecha' |trans | capitalize }}</th>
+						<th class='header-cols'>{{ 'ficha_alumno.afc.ubicacion' |trans | capitalize }}</th>
+						<th class='header-cols'>{{ 'ficha_alumno.afc.cant_inscriptos' |trans | capitalize }}</th>
+					</tr>
+					</thead>
+					<tbody>
+					{% for acta in renglones %}
+						<tr {{ this.data_link(acta.link) | raw }}>
+							<td style="width: 218px;">{{ acta.actividad_descr }}</td>
+							<td style="width: 215px;">{{ this.a(acta.link, acta.nro_acta) |raw }}</td>
+							<td style="width: 175px;">{{ acta.fecha }}</td>
+							<td style="width: 149px;">{{ acta.ubicacion_descr }}</td>
+							<td>{{ acta.cant_inscriptos }}</td>
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+    {% else %}
+        <div class="alert">
+            {{ 'ficha_alumno.afc.sin_registros'|trans|capitalize }}
+        </div>
+    {% endif %}
+{% endmacro %}

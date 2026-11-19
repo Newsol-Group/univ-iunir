@@ -1,0 +1,148 @@
+{% extends "kernel/pagelet_polite.twig" %}
+
+{% block contenido %}
+    {% if this.estado == 'inicial' %}
+        {% include 'info_materia/estado_inicial.twig' with {
+                'inscripciones': this.data.inscripciones, 
+                'mensajes': this.data.mensajes,
+                'csrf':		this.data.csrf
+        } only %}
+    {% elseif this.estado == 'error_mat_sel' %}
+        <h3 id='materia-nombre'>{{this.data.materia_nombre}} ({{this.data.materia_codigo}})</h3>        
+        {% import "kernel/macro_notificaciones.twig" as notificaciones %}
+        {{ notificaciones.render_notif(this.data.mensajes) }}
+        <p><i class="icon-arrow-left"></i> {{ 'parrafo.inscripcion.uso'|trans|capitalize }}</p>
+    {% else %}
+        
+        {% if this.data.materia_insc_prioridad and not this.data.existe_inscripcion %}
+            <button class="js-btn-ordenar-prioridades btn btn-small btn-primary disabled pull-right" type="button">{{"continuar_inscripcion_prioridad"|trans}} <i class="icon-chevron-right icon-white"></i></button>
+            <button class="js-btn-inscribir-prioridad hide btn btn-small btn-primary pull-right" type="button">{{"inscribir_prioridad"|trans}}</button>
+            <button class="js-btn-back-to-ordenar-prioridades hide btn btn-small btn-primary pull-left" type="button"><i class="icon-chevron-left icon-white"></i></button>
+        {% endif %}
+        
+        <h3>{{this.data.materia_nombre}} ({{this.data.materia_codigo}})</h3>
+	<h4>{{this.data.responsable_academica}}</h4>
+
+        {% if this.data.materia_insc_prioridad and not this.data.existe_inscripcion %}
+            <p class="js-mensaje-ordenar-prioridad-max alert alert-info">
+                {{"desc_inscripcion_prioridad_max"|trans({'%1%': this.data.prioridad_cantidad_maxima})}}
+            </p>
+            <p class="js-mensaje-ordenar-prioridad hide alert alert-info">{{"desc_inscripcion_prioridad"|trans}}</p>
+        {% endif %}
+        {% if this.data.mensajes %}
+            {% import "kernel/macro_notificaciones.twig" as notificaciones %}
+            {{ notificaciones.render_notif(this.data.mensajes) }}
+        {% endif %}
+        
+                {% if not this.data.comisiones %}
+                    <div class='alert alert-warning'>{{ 'mensaje_no_hay_comisiones'|trans|capitalize }}</div>
+                {% else %}
+                    
+                    <div id="filtros">
+                        
+                        <div id="dias-semana">
+
+                            <div class="filtros-label">{{ 'inscripcion_a_cursadas.dias' | trans }}: </div>
+                            <div class="btn-toolbar opciones">
+                                <div class="btn-group" data-toggle="buttons-checkbox">
+                                    {% for dias in this.data.dias_semana %}
+                                        <button type="button" class="btn btn-mini js-dia" data-dia="{{ dias.valor }}">{{ dias.descr[:3] }}</button>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div style="clear: both;"></div>
+                            
+                        </div>
+                                
+                        <div id="horario">
+                            
+                            <div class="btn-toolbar opciones">
+                                <div class="btn-group" data-toggle="buttons-checkbox">
+                                        <button type="button" class="btn btn-mini js-horario" data-horario=" ">S/H</button>
+                                </div>
+                            </div>
+                            <div style="clear: both;"></div>
+                            
+                        </div>
+                                
+                        <br class="hidden-desktop"/>
+                        
+                        <div id="turnos-cursadas">
+
+                            <div class="filtros-label">{{ 'inscripcion_a_cursadas.turnos' | trans }}: </div>
+                            <div class="btn-toolbar opciones">
+                                <div class="btn-group" data-toggle="buttons-checkbox">
+                                    {% for turno in this.data.turnos_cursadas %}
+                                        <button type="button" class="btn btn-mini js-turno" data-turno="{{ turno.valor }}">{{ turno.descr[:3] }}</button>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                            <div style="clear: both;"></div>
+                            
+                        </div>
+                                
+                        <br class="visible-phone"/>
+                        
+                        <div id="ubicaciones">
+
+                            <div class="filtros-label">{{ 'inscripcion_a_cursadas.ubicacion' | trans }}: </div>
+                            <div class="opciones">
+                                <select class="input-small" id="js-ubicaciones">
+                                    <option value="0">{{ 'inscripcion_a_cursadas.ubicacion.todas' | trans }}</option>
+                                    {% for ubicacion in this.data.ubicaciones %}
+                                        <option value="{{ ubicacion.valor }}">{{ ubicacion.descr }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>
+                            <div style="clear: both;"></div>
+
+                        </div>
+                                
+                    </div>
+                                        
+                        <ul id='comisiones' class="unstyled">
+                                
+				{% for comision in this.data.comisiones %}
+                                        
+                                        {% set filtros_dia_css = '' %}
+                                        {% if comision.dias_semana is not empty %}
+                                            {% set dias_semana = comision.dias_semana|split(',') %}
+                                            {% for dia in dias_semana %}
+                                                {% set filtros_dia_css = filtros_dia_css ~ (' js-dia-' ~ dia) %}
+                                            {% endfor %}
+                                        {% endif %}
+                                        {% set filtros_turno_css = '' %}
+                                        {% if comision.turno is not empty %}
+                                            {% set filtros_turno_css = 'js-turno-' ~ comision.turno %}
+                                        {% endif %}
+                                        {% set filtros_ubicacion_css = 'js-ubicacion-' ~ comision.ubicacion %}
+                                        {% set filtros_horario_css = 'js-horario-' ~ comision.horario %}
+                                        {% set filtros_css = filtros_dia_css ~ ' ' ~ filtros_turno_css ~ ' ' ~ filtros_ubicacion_css ~ ' ' ~ filtros_horario_css %}
+                                                                                
+					{% if comision.INSCRIPTO %}
+						<li class='comision inscripto {{ filtros_css }}' data-periodo='{{ comision.periodo_lectivo }}'>
+							{% include 'info_materia/default_inscripto.twig' with {
+								'es_insc_prioridad': this.data.materia_insc_prioridad,
+								'comision':	comision,
+								'csrf':		this.data.csrf
+							} only %}
+						</li>
+					{% elseif not (this.data.materia_insc_prioridad and this.data.existe_inscripcion) %}
+						{# 	si es inscripción por prioridad y está inscripto a una comisión no 
+							hay que mostrar las comisiones en las q no está inscripto #}
+						<li class='comision no-inscripto {{ filtros_css }}' data-periodo='{{ comision.periodo_lectivo }}' data-orderer-index="{{ this.data.prioridad_cantidad_maxima }}">
+							{% include 'info_materia/default_no_inscripto.twig' with {
+								'es_insc_prioridad': this.data.materia_insc_prioridad,
+								'comision':	comision,
+								'csrf':		this.data.csrf,
+								'params':   this.data.params,
+                                                                'materia_id':  this.data.materia_id,
+                                                                'prueba_stress_habilitada':  this.data.prueba_stress_habilitada
+							} only %}
+						</li>
+					{% endif %}
+				{% endfor %}
+                        </ul>
+		{% endif %}
+	{% endif %}
+{% endblock %}

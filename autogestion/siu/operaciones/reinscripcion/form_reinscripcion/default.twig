@@ -1,0 +1,29 @@
+{% extends "kernel/pagelet_polite.twig" %}
+{% block contenido %}
+{% import "kernel/macro_notificaciones.twig" as notificaciones %}
+
+{% if this.data.advertencia %}
+    {{ notificaciones.render_notif(this.data.advertencia, true) }}
+{% endif %}
+
+{% if this.data.mensajes %}
+    {{ notificaciones.render_notif(this.data.mensajes, true) }}
+{% endif %}
+
+{% if not this.data.mensajes and not this.data.advertencia %}
+    <div class='alert alert-warning clearfix'>
+        {{ 'mensaje_reinscripcion'|trans|capitalize }}
+        <form method='post' action='{{this.data.url_reinscripcion}}'>
+            <input type='submit' value='{{ 'reinscribirse'|trans|capitalize }}' class="btn btn-warning">
+        </form>
+    </div>
+{% endif %}
+
+{% if this.data.reinscripcion_aceptada %}    
+    <div class="cuadro_comprobante">
+        <h3>{{'comprobante_reinscripcion'|trans|capitalize}}</h3>
+        <img src="{{this.data.url_comprobante}}" />        
+        <div style="margin: 10px auto 0 auto;"><a class='btn btn-small js-print-comprobante' data-img='{{this.data.url_comprobante}}'><i class="icon-print"></i>{{'imprimir'|trans|capitalize}}</a></div>
+    </div>
+{% endif %}
+{% endblock %}

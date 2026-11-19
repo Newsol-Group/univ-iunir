@@ -1,0 +1,46 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+    {% autoescape false %}
+
+        {% set form = this.get_form() %}
+        {{ form.encabezado }}
+        <div class='controls controls-row form-head clearfix'>
+            <div class='borde-inferior'>
+                <div class='pull-left'>
+                    <h2>{{this.get_nombre()|trans}}</h2>
+                </div>
+                {%if form.hay_visibles_agrupado('salud') %}
+                    <div class='pull-right'>
+                        {{ form.submit_button('guardar', 'guardar_datos_personales')}}
+                    </div>
+                {% endif %}
+                <div class='clearfix'></div>
+            </div>
+        </div>
+
+        {% if form.hay_visibles_agrupado('salud') %}
+            <div class='well clearfix'>
+                <h3 class='toggle-header' onclick="toggle('salud')">{{'salud'|trans}}</h3>
+                <div id='salud' class='toggle-div'>
+                    <div class='clearfix cg-margen'>
+                        {{ form.control_group('obra_social_alu') }}
+                    </div>
+                    <div class='clearfix cg-margen'>
+                        {{ form.checkbox('es_celiaco') }}
+                    </div>
+                </div>
+            </div>
+
+            <div class='controls controls-row form-head clearfix'>
+                <div class='borde-superior'>
+                    <div class='pull-right'>
+                        {{ form.submit_button('guardar', 'guardar_datos_personales')}}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    </form>
+
+
+{% endautoescape %}
+{% endblock %}

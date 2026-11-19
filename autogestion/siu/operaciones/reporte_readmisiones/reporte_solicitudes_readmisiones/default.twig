@@ -1,0 +1,33 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+    <div id="listado">
+        {% if this.data.reporte_readmisiones %}
+
+            <div class="solicitud">
+                <table class="table table-bordered table-condensed comisiones">
+                    <tr class="titulo">
+                        <th width="10%">{{"reporte_readmisiones.anio" | trans | capitalize }}</th>
+                        <th width="20%">{{"reporte_readmisiones.fecha_solicitud" | trans | capitalize }}</th>
+                        <th width="20%">{{"reporte_readmisiones.estado" | trans | capitalize }}</th>
+                        <th width="50%">{{"reporte_readmisiones.obsevaciones" | trans | capitalize }}</th>
+                    </tr>
+                    {% for  solicitud in this.data.reporte_readmisiones %}
+
+                        <tr>			
+                            <td>{{solicitud.anio_academico}}</td>
+                            <td>{{solicitud.fecha_formato_visual}}</td>
+                            <td>{{solicitud.estado_nombre}}</td>
+                            <td>{{solicitud.observaciones}}</td>
+                        </tr>
+
+                    {% endfor %}
+                </table>
+            </div>
+
+        {% else %}
+            <div class="alert cuadro_mensaje_vacio">
+                {{"reporte_readmisiones.sin_readmisiones" | trans | capitalize}}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

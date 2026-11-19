@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guarani" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="440" leftMargin="85" rightMargin="70" topMargin="113" bottomMargin="85">
+	<style name="Title" isDefault="false" fontName="Times New Roman" fontSize="14" isBold="true" isUnderline="true" pdfFontName="Times-Bold"/>
+	<style name="manuscrito" isDefault="false" fontName="Arial" fontSize="12" isItalic="true" pdfFontName="Helvetica-Oblique"/>
+	<parameter name="nro_solicitud" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="apellido_y_nombre" class="java.lang.String"/>
+        <queryString>
+		<![CDATA[SELECT	
+	COALESCE(sga_alumnos.legajo, ' -- ') AS legajo,
+	$P!{apellido_y_nombre} as apellido_y_nombre,
+	vw_personas.desc_tipo_documento || ' ' || vw_personas.nro_documento as documento_principal,
+	vw_planes.propuesta_nombre as propuesta_nombre,
+	'(' || vw_planes.propuesta_codigo || ') ' || vw_planes.propuesta_nombre as propuesta_nombre_completo,
+	vw_planes.propuesta_nombre_abreviado as propuesta_nombre_abreviado,
+	sga_instituciones.nombre as nombre_institucion,
+	sga_certificados_otorg.nro_solicitud,
+	COALESCE(sga_certificados_otorg.nro_expediente, ' - ') AS nro_expediente,
+	f_responsables_academicas_propuesta(sga_alumnos.propuesta) as nombre_ra
+FROM sga_certificados_otorg
+JOIN sga_alumnos ON sga_alumnos.alumno = sga_certificados_otorg.alumno	
+JOIN vw_personas ON sga_alumnos.persona = vw_personas.persona
+JOIN vw_planes ON vw_planes.plan_version = sga_certificados_otorg.plan_version
+JOIN sga_instituciones ON sga_instituciones.institucion = get_ra_inst_araucano_propuesta(sga_alumnos.propuesta, 'IG')
+JOIN mdp_personas ON vw_personas.persona = mdp_personas.persona
+                
+WHERE sga_certificados_otorg.nro_solicitud = $P{nro_solicitud}]]>
+	</queryString>
+	<field name="legajo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellido_y_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="documento_principal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="propuesta_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="propuesta_nombre_completo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="propuesta_nombre_abreviado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre_institucion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nro_solicitud" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nro_expediente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre_ra" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="177" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="39" y="85" width="361" height="41"/>
+				<textElement textAlignment="Center">
+					<font isUnderline="false"/>
+				</textElement>
+				<text><![CDATA[CONSTANCIA DE INICIO DE TRAMITE DE EXPEDICION DE DIPLOMA]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="0" width="440" height="27"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombre_institucion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="27" width="440" height="27"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombre_ra}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="294" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="440" height="96"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["						Se hace constar que " + $F{apellido_y_nombre}.toUpperCase() + " con " + $F{documento_principal} + ", ha iniciado el trámite de expedición de diploma para la carrera de " + $F{propuesta_nombre}.toUpperCase() + ", con el T.E.D. Nº " + $F{nro_expediente} + ", habiendo cumplimentado con todos sus requisitos."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="manuscrito" x="0" y="119" width="440" height="43"/>
+				<textElement>
+					<font size="12" isItalic="true"/>
+				</textElement>
+				<text><![CDATA[     		La presente constancia carece de valor como documento probatorio de finalización de los estudios.]]></text>
+			</staticText>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="65" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="45" width="130" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Lugar y Fecha]]></text>
+			</staticText>
+			<line>
+				<reportElement x="212" y="39" width="228" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement x="212" y="45" width="228" height="20"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Firma del Responsable del Area de Títulos]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="40" width="130" height="1"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+		</band>
+	</summary>
+</jasperReport>

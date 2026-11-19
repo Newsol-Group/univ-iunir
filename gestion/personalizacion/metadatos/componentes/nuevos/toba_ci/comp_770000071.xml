@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000071" descripcion="toba_ci">
+	<tabla nombre="apex_objeto">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000071"/>
+			<columna nombre="clase_proyecto" valor="toba"/>
+			<columna nombre="clase" valor="toba_ci"/>
+			<columna nombre="punto_montaje" valor="1"/>
+			<columna nombre="subclase" valor="ci_navegacion"/>
+			<columna nombre="subclase_archivo" valor="operaciones/_lib/ci_navegacion.php"/>
+			<columna nombre="nombre" valor="Bonificación por Convenio"/>
+			<columna nombre="titulo" valor="Administrar Bonificaciones por Convenio"/>
+			<columna nombre="colapsable" valor="0"/>
+			<columna nombre="creacion" valor="2009-06-11 12:45:27"/>
+			<columna nombre="posicion_botonera" valor="abajo"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_eventos">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="evento_id" valor="770000064"/>
+			<columna nombre="objeto" valor="770000071"/>
+			<columna nombre="identificador" valor="agregar"/>
+			<columna nombre="etiqueta" valor="&amp;Agregar"/>
+			<columna nombre="maneja_datos" valor="0"/>
+			<columna nombre="imagen_recurso_origen" valor="apex"/>
+			<columna nombre="imagen" valor="nucleo/agregar.gif"/>
+			<columna nombre="en_botonera" valor="1"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="implicito" valor="0"/>
+			<columna nombre="defecto" valor="0"/>
+			<columna nombre="es_seleccion_multiple" valor="0"/>
+			<columna nombre="es_autovinculo" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="evento_id" valor="770000065"/>
+			<columna nombre="objeto" valor="770000071"/>
+			<columna nombre="identificador" valor="cancelar"/>
+			<columna nombre="etiqueta" valor="&amp;Volver"/>
+			<columna nombre="maneja_datos" valor="0"/>
+			<columna nombre="imagen_recurso_origen" valor="apex"/>
+			<columna nombre="imagen" valor="deshacer.png"/>
+			<columna nombre="en_botonera" valor="1"/>
+			<columna nombre="orden" valor="2"/>
+			<columna nombre="implicito" valor="0"/>
+			<columna nombre="defecto" valor="0"/>
+			<columna nombre="es_seleccion_multiple" valor="0"/>
+			<columna nombre="es_autovinculo" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="evento_id" valor="770000066"/>
+			<columna nombre="objeto" valor="770000071"/>
+			<columna nombre="identificador" valor="eliminar"/>
+			<columna nombre="etiqueta" valor="&amp;Eliminar"/>
+			<columna nombre="maneja_datos" valor="0"/>
+			<columna nombre="imagen_recurso_origen" valor="apex"/>
+			<columna nombre="imagen" valor="borrar.png"/>
+			<columna nombre="en_botonera" valor="1"/>
+			<columna nombre="orden" valor="3"/>
+			<columna nombre="implicito" valor="0"/>
+			<columna nombre="defecto" valor="0"/>
+			<columna nombre="es_seleccion_multiple" valor="0"/>
+			<columna nombre="es_autovinculo" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="evento_id" valor="770000067"/>
+			<columna nombre="objeto" valor="770000071"/>
+			<columna nombre="identificador" valor="guardar"/>
+			<columna nombre="etiqueta" valor="&amp;Guardar"/>
+			<columna nombre="maneja_datos" valor="1"/>
+			<columna nombre="imagen_recurso_origen" valor="apex"/>
+			<columna nombre="imagen" valor="guardar.gif"/>
+			<columna nombre="en_botonera" valor="1"/>
+			<columna nombre="orden" valor="4"/>
+			<columna nombre="implicito" valor="0"/>
+			<columna nombre="defecto" valor="1"/>
+			<columna nombre="es_seleccion_multiple" valor="0"/>
+			<columna nombre="es_autovinculo" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_mt_me">
+		<registro>
+			<columna nombre="objeto_mt_me_proyecto" valor="guarani"/>
+			<columna nombre="objeto_mt_me" valor="770000071"/>
+			<columna nombre="ancho" valor="950px"/>
+			<columna nombre="botonera_barra_item" valor="0"/>
+			<columna nombre="con_toc" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_dependencias">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="dep_id" valor="770000058"/>
+			<columna nombre="objeto_consumidor" valor="770000071"/>
+			<columna nombre="objeto_proveedor" valor="770000067"/>
+			<columna nombre="identificador" valor="cuadro"/>
+		</registro>
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="dep_id" valor="770000059"/>
+			<columna nombre="objeto_consumidor" valor="770000071"/>
+			<columna nombre="objeto_proveedor" valor="770000069"/>
+			<columna nombre="identificador" valor="editor"/>
+		</registro>
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="dep_id" valor="770000060"/>
+			<columna nombre="objeto_consumidor" valor="770000071"/>
+			<columna nombre="objeto_proveedor" valor="770000070"/>
+			<columna nombre="identificador" valor="filtro"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ci_pantalla">
+		<registro>
+			<columna nombre="objeto_ci_proyecto" valor="guarani"/>
+			<columna nombre="objeto_ci" valor="770000071"/>
+			<columna nombre="pantalla" valor="770000024"/>
+			<columna nombre="identificador" valor="edicion"/>
+			<columna nombre="orden" valor="2"/>
+			<columna nombre="etiqueta" valor="Edición"/>
+			<columna nombre="imagen_recurso_origen" valor="apex"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ci_proyecto" valor="guarani"/>
+			<columna nombre="objeto_ci" valor="770000071"/>
+			<columna nombre="pantalla" valor="770000025"/>
+			<columna nombre="identificador" valor="seleccion"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="etiqueta" valor="Selección"/>
+			<columna nombre="imagen_recurso_origen" valor="apex"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objetos_pantalla">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="pantalla" valor="770000024"/>
+			<columna nombre="objeto_ci" valor="770000071"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="dep_id" valor="770000059"/>
+		</registro>
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="pantalla" valor="770000025"/>
+			<columna nombre="objeto_ci" valor="770000071"/>
+			<columna nombre="orden" valor="2"/>
+			<columna nombre="dep_id" valor="770000058"/>
+		</registro>
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="pantalla" valor="770000025"/>
+			<columna nombre="objeto_ci" valor="770000071"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="dep_id" valor="770000060"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_eventos_pantalla">
+		<registro>
+			<columna nombre="pantalla" valor="770000024"/>
+			<columna nombre="objeto_ci" valor="770000071"/>
+			<columna nombre="evento_id" valor="770000065"/>
+			<columna nombre="proyecto" valor="guarani"/>
+		</registro>
+		<registro>
+			<columna nombre="pantalla" valor="770000024"/>
+			<columna nombre="objeto_ci" valor="770000071"/>
+			<columna nombre="evento_id" valor="770000066"/>
+			<columna nombre="proyecto" valor="guarani"/>
+		</registro>
+		<registro>
+			<columna nombre="pantalla" valor="770000024"/>
+			<columna nombre="objeto_ci" valor="770000071"/>
+			<columna nombre="evento_id" valor="770000067"/>
+			<columna nombre="proyecto" valor="guarani"/>
+		</registro>
+		<registro>
+			<columna nombre="pantalla" valor="770000025"/>
+			<columna nombre="objeto_ci" valor="770000071"/>
+			<columna nombre="evento_id" valor="770000064"/>
+			<columna nombre="proyecto" valor="guarani"/>
+		</registro>
+	</tabla>
+</componente>

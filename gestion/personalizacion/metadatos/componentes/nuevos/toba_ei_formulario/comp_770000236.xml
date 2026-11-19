@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000236" descripcion="toba_ei_formulario">
+	<tabla nombre="apex_objeto">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000236"/>
+			<columna nombre="clase_proyecto" valor="toba"/>
+			<columna nombre="clase" valor="toba_ei_formulario"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+			<columna nombre="subclase" valor="form_opciones_log_insc_nsg"/>
+			<columna nombre="subclase_archivo" valor="operaciones/matriculas/alumnos/ficha_alumno/form_opciones_log_insc_nsg.php"/>
+			<columna nombre="nombre" valor="Ficha del Alumno - ci_reportes_ficha_alumno - rep_log_inscripciones - opciones"/>
+			<columna nombre="colapsable" valor="0"/>
+			<columna nombre="fuente_datos_proyecto" valor="guarani"/>
+			<columna nombre="fuente_datos" valor="guarani"/>
+			<columna nombre="creacion" valor="2011-07-21 12:12:53"/>
+			<columna nombre="posicion_botonera" valor="abajo"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_eventos">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="evento_id" valor="770000223"/>
+			<columna nombre="objeto" valor="770000236"/>
+			<columna nombre="identificador" valor="modificacion"/>
+			<columna nombre="etiqueta" valor="&amp;Modificar"/>
+			<columna nombre="maneja_datos" valor="1"/>
+			<columna nombre="imagen_recurso_origen" valor="apex"/>
+			<columna nombre="en_botonera" valor="0"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="implicito" valor="1"/>
+			<columna nombre="defecto" valor="0"/>
+			<columna nombre="es_seleccion_multiple" valor="0"/>
+			<columna nombre="es_autovinculo" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ut_formulario">
+		<registro>
+			<columna nombre="objeto_ut_formulario_proyecto" valor="guarani"/>
+			<columna nombre="objeto_ut_formulario" valor="770000236"/>
+			<columna nombre="ancho" valor="100%"/>
+			<columna nombre="ancho_etiqueta" valor="85px"/>
+			<columna nombre="expandir_descripcion" valor="0"/>
+			<columna nombre="filas_agregar_online" valor="1"/>
+			<columna nombre="filas_agregar_abajo" valor="0"/>
+			<columna nombre="filas_borrar_en_linea" valor="0"/>
+			<columna nombre="filas_ordenar_en_linea" valor="0"/>
+			<columna nombre="no_imprimir_efs_sin_estado" valor="0"/>
+			<columna nombre="resaltar_efs_con_estado" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ei_formulario_ef">
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000054"/>
+			<columna nombre="objeto_ei_formulario" valor="770000236"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="inscripciones"/>
+			<columna nombre="elemento_formulario" valor="ef_combo"/>
+			<columna nombre="columnas" valor="inscripciones"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="etiqueta" valor="Inscripciones a:"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="carga_metodo" valor="get_opciones_inscripciones"/>
+			<columna nombre="carga_fuente" valor="guarani"/>
+			<columna nombre="carga_col_clave" valor="valor"/>
+			<columna nombre="carga_col_desc" valor="descr"/>
+			<columna nombre="carga_cascada_relaj" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="carga_no_seteado_ocultar" valor="0"/>
+			<columna nombre="punto_montaje" valor="1"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000055"/>
+			<columna nombre="objeto_ei_formulario" valor="770000236"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="vigencia"/>
+			<columna nombre="elemento_formulario" valor="ef_combo"/>
+			<columna nombre="columnas" valor="vigencia"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="2"/>
+			<columna nombre="etiqueta" valor="Ver:"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="carga_metodo" valor="get_opciones_vigencia"/>
+			<columna nombre="carga_fuente" valor="guarani"/>
+			<columna nombre="carga_col_clave" valor="valor"/>
+			<columna nombre="carga_col_desc" valor="descr"/>
+			<columna nombre="carga_cascada_relaj" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="carga_no_seteado_ocultar" valor="0"/>
+			<columna nombre="punto_montaje" valor="1"/>
+		</registro>
+	</tabla>
+</componente>

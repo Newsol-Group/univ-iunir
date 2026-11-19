@@ -1,0 +1,48 @@
+#comisiones th{
+    background-color: #999;
+}
+
+#comisiones .alert {
+	margin-bottom: 0px;
+}
+
+#comisiones .js-detalle-materia {
+	padding-bottom: 10px;
+}
+
+#comisiones h3 span {
+	color: #333;
+}
+
+#comisiones .btn-container {
+	vertical-align: middle;
+	margin: auto;
+	text-align: center;
+}
+
+
+.ficha-docente .nombre{
+	display: block;
+	text-transform:uppercase;
+}
+
+.ficha-docente .identificacion{
+	display: block;
+	color: #777777;
+}
+
+.ficha-docente {
+	width: 300px;
+	padding: 10px;
+}
+
+.ficha-docente .responsabilidad{
+	font-weight: bold;
+}
+
+
+
+
+
+
+

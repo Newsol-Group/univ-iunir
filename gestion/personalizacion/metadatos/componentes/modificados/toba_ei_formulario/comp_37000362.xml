@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="37000362" descripcion="toba_ei_formulario">
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:37000362">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+			<columna nombre="subclase" valor="form_datos_generales_nsg" valor_original="form_datos_generales"/>
+			<columna nombre="subclase_archivo" valor="operaciones/examenes/mesas_de_examen/form_datos_generales_nsg.php" valor_original="operaciones/examenes/mesas_de_examen/form_datos_generales.php"/>
+			<columna nombre="nombre" valor="Mesas de Examen - editor_mesas - datos_generales" valor_original="Mesas de Examen - editor_mesas - editor_mesa - datos_generales"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ei_formulario_ef">
+		<registro estado="1">
+			<columna nombre="objeto_ei_formulario_fila" valor="770000073"/>
+			<columna nombre="objeto_ei_formulario" valor="37000362"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="cobrable"/>
+			<columna nombre="elemento_formulario" valor="ef_combo"/>
+			<columna nombre="columnas" valor="cobrable"/>
+			<columna nombre="obligatorio" valor="1"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="9"/>
+			<columna nombre="etiqueta" valor="Cobrable"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="carga_metodo" valor="get_si_no"/>
+			<columna nombre="carga_consulta_php" valor="1000002"/>
+			<columna nombre="carga_fuente" valor="guarani"/>
+			<columna nombre="carga_col_clave" valor="valor"/>
+			<columna nombre="carga_col_desc" valor="descr"/>
+			<columna nombre="carga_cascada_relaj" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="carga_no_seteado_ocultar" valor="0"/>
+			<columna nombre="edit_tamano" valor="1"/>
+			<columna nombre="edit_maximo" valor="1"/>
+			<columna nombre="punto_montaje" valor="1"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_ei_formulario_fila" valor="770000074"/>
+			<columna nombre="objeto_ei_formulario" valor="37000362"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="concepto"/>
+			<columna nombre="elemento_formulario" valor="ef_combo"/>
+			<columna nombre="columnas" valor="concepto"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="10"/>
+			<columna nombre="etiqueta" valor="Concepto"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="carga_metodo" valor="get_conceptos_fact"/>
+			<columna nombre="carga_consulta_php" valor="770000001"/>
+			<columna nombre="carga_fuente" valor="guarani"/>
+			<columna nombre="carga_col_clave" valor="valor"/>
+			<columna nombre="carga_col_desc" valor="descr"/>
+			<columna nombre="carga_cascada_relaj" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="carga_no_seteado_ocultar" valor="0"/>
+			<columna nombre="punto_montaje" valor="1"/>
+		</registro>
+	</tabla>
+</componente>

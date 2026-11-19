@@ -1,0 +1,17 @@
+{# Entrada:  notas #}
+<table class="table table-condensed" style="margin-top: 16px;">
+	<thead>
+		<th>Valor</th>
+		<th>Descripción</th>
+		<th>Resultado</th>
+	</thead>
+	<tbody>
+	{% for nota in notas %}
+		<tr>
+			<td>{{nota.nota}}</td>
+			<td>{{nota.descripcion}}</td>
+			<td>{{nota.resultado}}</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>

@@ -1,0 +1,9 @@
+{% extends "kernel/una_columna_sin_titulo.twig" %}
+
+{% block titulo_operacion %}
+    <h2>{{ "header.menu.requisitos_becas" | trans }}</h2>
+{% endblock %}
+
+{% block columna_1 %}
+    {{ pagelet.render }}
+{% endblock %}

@@ -1,0 +1,99 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	<div class="titulo_operacion">
+		<h2 class="clearfix"><span class="pull-left">{{"historia_academica"|trans|capitalize }}</span>
+			{% if this.tiene_datos() %}
+			<div class="pull-right">
+				<a id="pdf_btn" target="_blank" class="btn no-ajax" title="{{ 'descargar_pdf'|trans|capitalize }}"><i class="g3w-icono-pdf"></i></a>
+			</div>
+			<div class="pull-right visible-desktop">
+				<a id="xls_btn" target="_blank" class="btn no-ajax" title="{{ 'descargar_xls'|trans|capitalize }}"><i class="g3w-icono-xls"></i></a>
+			</div>
+			<div class="pull-right hidden-desktop">
+				<a id="flt_btn" target="_blank" class="btn" title="{{ 'consulta_habituales'|trans|capitalize }}"><i class="fa fa-filter fa-lg"></i></a>
+			</div>
+			{% endif %}	
+		</h2>
+	</div>
+                        
+        {% if this.data.error %}
+            <div class="alert alert-error">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ this.data.error | raw }}
+            </div>
+        {% endif %}
+    
+{% if this.tiene_datos() %}
+	<div class="filtros">
+		<span>{{'ver_por' |trans}}</span>
+		<input id="filtro_modo" type="hidden" value="{{ this.data.orden == 'anio' ? 'a': 'm' }}" />
+		<div class="btn-group filtro" data-toggle="buttons-radio">
+			<a href="#" id="orden_anio" data-valor="a" class="btn {{ this.data.orden == 'anio' ? 'active': '' }}">{{'anio' |trans |capitalize}}</a>
+			<a href="#" id="orden_materia" data-valor="m" class="btn {{ this.data.orden == 'materia' ? 'active': '' }}">{{ 'historia_academica.actividad_reconocimiento' | trans }}</a>
+		</div>
+		<div class="filtro">
+			{% if (this.data.orden == 'anio') %}
+				<select id="anos">
+					<option value="">{{'todos_los_anios' |trans}}</option>
+					{% for key, ano in this.data.anos %}
+						<option value="{{ano}}" {{key == this.data.param_modo ? 'selected'}}>{{ano}}</option>
+					{% endfor %}
+				</select>
+			{% else %}
+				<input type="text" value="" id="actividad_reconocimiento" placeholder="{{ 'historia_academica.ingrese_texto_buscar' | trans }}" />
+			{% endif %}
+		</div>
+	</div>
+{% endif %}
+	<div id="listado">
+	{% if this.tiene_datos() %}
+		{% for key1, materias in this.data.historia %}
+			<div class='catedras' {% if (this.data.anos) %}ano{% else %}materia{% endif %}="{{key1}}">
+				{% set titulo = true %}
+				{% for key, materia in materias %}
+					{% if titulo %}
+						<h3 class="titulo-corte">{% if (this.data.anos) %}{{key1}}{% else %}{{ materia.titulo }}{% endif %}</h3>
+						{% set titulo = false %}
+					{% endif %}
+					<div class="catedra" {% if materia.origen_class == "EnCurso" %}
+											{{ materia.origen_class }}="Aprobado"
+										{% else %}
+											{{ materia.origen_class }}="{{materia.resultado_descripcion }}"
+										{% endif %} >
+
+						<div class='catedra_nombre'>
+							{% if (this.data.orden == 'anio') %}
+							<h4 class="{{ materia.origen }}">{{ materia.titulo }}</h4>
+							{% endif %}
+							{{ materia.leyenda | raw }}
+						</div>
+						{{ materia.detalle_ajax | raw }}
+					</div>
+				{% endfor %}
+			</div>
+		{% endfor %}
+
+	{% else %}
+		{% if this.tiene_filtros() %}
+			<div class="alert cuadro_mensaje_vacio">
+				<h4>{{"reporte.no_hay_datos.historia_academica_tine_filtros"|trans|capitalize}}</h4>
+			</div>
+		{% endif %}
+		<div class="alert cuadro_consultas_habituales">
+			<h4>{{"historia_academica.consultas_habituales"|trans|capitalize}}</h4>
+			<ul class="js-consultas_habituales">
+				<li><a href="#" consulta="mats_en_curso">{{"historia_academica.consulta_mats_en_curso"|trans|capitalize}}</a></li>
+				<li><a href="#" consulta="mats_aprobadas">{{"historia_academica.consulta_mats_aprobadas"|trans|capitalize}}</a></li>
+				<li><a href="#" consulta="curs_aprobadas">{{"historia_academica.consulta_curs_aprobadas"|trans|capitalize}}</a></li>
+				<li><a href="#" consulta="todo">{{"historia_academica.consulta_todo"|trans|capitalize}}</a></li>
+			</ul>
+		</div>
+		{% if not this.tiene_filtros() %}
+			<div class="alert cuadro_mensaje_vacio">
+				<h4>{{"reporte.no_hay_datos.historia_academica"|trans|capitalize}}</h4>
+				<a class="hidden-desktop" id="ver_filtros" href="#" consulta="todo">{{"historia_academica.ver_filtros"|trans|capitalize}}</a>
+			</div>
+		{% endif %}
+	{% endif %}
+	</div>
+{% endblock %}

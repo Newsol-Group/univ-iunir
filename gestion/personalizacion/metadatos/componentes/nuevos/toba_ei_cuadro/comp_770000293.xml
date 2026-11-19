@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000293" descripcion="toba_ei_cuadro">
+	<tabla nombre="apex_objeto">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000293"/>
+			<columna nombre="clase_proyecto" valor="toba"/>
+			<columna nombre="clase" valor="toba_ei_cuadro"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+			<columna nombre="subclase" valor="guarani_pers_ei_cuadro"/>
+			<columna nombre="subclase_archivo" valor="extension_toba/componentes/guarani_pers_ei_cuadro.php"/>
+			<columna nombre="nombre" valor="Actualizar Información de Alumnos de Grado- cuadro"/>
+			<columna nombre="colapsable" valor="0"/>
+			<columna nombre="creacion" valor="2009-11-06 12:47:05"/>
+			<columna nombre="posicion_botonera" valor="abajo"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_cuadro">
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000293"/>
+			<columna nombre="clave_dbr" valor="0"/>
+			<columna nombre="ancho" valor="100%"/>
+			<columna nombre="ordenar" valor="1"/>
+			<columna nombre="paginar" valor="0"/>
+			<columna nombre="tipo_paginado" valor="P"/>
+			<columna nombre="mostrar_total_registros" valor="0"/>
+			<columna nombre="eof_invisible" valor="0"/>
+			<columna nombre="siempre_con_titulo" valor="0"/>
+			<columna nombre="exportar_paginado" valor="0"/>
+			<columna nombre="exportar" valor="1"/>
+			<columna nombre="exportar_rtf" valor="0"/>
+			<columna nombre="scroll" valor="1"/>
+			<columna nombre="scroll_alto" valor="500px"/>
+			<columna nombre="cc_modo" valor="t"/>
+			<columna nombre="cc_modo_anidado_colap" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ei_cuadro_columna">
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000293"/>
+			<columna nombre="objeto_cuadro_col" valor="770000931"/>
+			<columna nombre="clave" valor="alumno"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="titulo" valor="Alumno"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-tex-p1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000293"/>
+			<columna nombre="objeto_cuadro_col" valor="770000932"/>
+			<columna nombre="clave" valor="nombreyapellido"/>
+			<columna nombre="orden" valor="2"/>
+			<columna nombre="titulo" valor="Nombre y Apellido"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000293"/>
+			<columna nombre="objeto_cuadro_col" valor="770000933"/>
+			<columna nombre="clave" valor="tipo_documento"/>
+			<columna nombre="orden" valor="3"/>
+			<columna nombre="titulo" valor="Tipo Documento"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000293"/>
+			<columna nombre="objeto_cuadro_col" valor="770000934"/>
+			<columna nombre="clave" valor="nro_documento"/>
+			<columna nombre="orden" valor="4"/>
+			<columna nombre="titulo" valor="Nro. Documento"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000293"/>
+			<columna nombre="objeto_cuadro_col" valor="770000935"/>
+			<columna nombre="clave" valor="pais_domicilio"/>
+			<columna nombre="orden" valor="6"/>
+			<columna nombre="titulo" valor="País"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000293"/>
+			<columna nombre="objeto_cuadro_col" valor="770000937"/>
+			<columna nombre="clave" valor="tel1"/>
+			<columna nombre="orden" valor="11"/>
+			<columna nombre="titulo" valor="Teléfono"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000293"/>
+			<columna nombre="objeto_cuadro_col" valor="770000938"/>
+			<columna nombre="clave" valor="tel2"/>
+			<columna nombre="orden" valor="12"/>
+			<columna nombre="titulo" valor="Teléfono"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000293"/>
+			<columna nombre="objeto_cuadro_col" valor="770000939"/>
+			<columna nombre="clave" valor="domicilio"/>
+			<columna nombre="orden" valor="5"/>
+			<columna nombre="titulo" valor="Domicilio"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000293"/>
+			<columna nombre="objeto_cuadro_col" valor="770000941"/>
+			<columna nombre="clave" valor="fecha_inscripcion"/>
+			<columna nombre="orden" valor="14"/>
+			<columna nombre="titulo" valor="Fecha Inscripción"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000293"/>
+			<columna nombre="objeto_cuadro_col" valor="770000942"/>
+			<columna nombre="clave" valor="propuesta"/>
+			<columna nombre="orden" valor="15"/>
+			<columna nombre="titulo" valor="Propuesta"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="0"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000293"/>
+			<columna nombre="objeto_cuadro_col" valor="770000943"/>
+			<columna nombre="clave" valor="tel3"/>
+			<columna nombre="orden" valor="13"/>
+			<columna nombre="titulo" valor="Teléfono"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000293"/>
+			<columna nombre="objeto_cuadro_col" valor="770000949"/>
+			<columna nombre="clave" valor="localidad"/>
+			<columna nombre="orden" valor="8"/>
+			<columna nombre="titulo" valor="Localidad"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000293"/>
+			<columna nombre="objeto_cuadro_col" valor="770000950"/>
+			<columna nombre="clave" valor="email1"/>
+			<columna nombre="orden" valor="10"/>
+			<columna nombre="titulo" valor="Email"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000293"/>
+			<columna nombre="objeto_cuadro_col" valor="770000959"/>
+			<columna nombre="clave" valor="provincia"/>
+			<columna nombre="orden" valor="9"/>
+			<columna nombre="titulo" valor="Provincia"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-tex-p1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="1"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="vinculo_popup" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000293"/>
+			<columna nombre="objeto_cuadro_col" valor="770000960"/>
+			<columna nombre="clave" valor="cp"/>
+			<columna nombre="orden" valor="7"/>
+			<columna nombre="titulo" valor="Código Postal"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-tex-p1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000293"/>
+			<columna nombre="objeto_cuadro_col" valor="770000961"/>
+			<columna nombre="clave" valor="nombre_propuesta"/>
+			<columna nombre="orden" valor="16"/>
+			<columna nombre="titulo" valor="Nombre Propuesta"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+	</tabla>
+</componente>

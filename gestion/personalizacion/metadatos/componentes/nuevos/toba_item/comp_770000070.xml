@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000070" descripcion="toba_item">
+	<tabla nombre="apex_item">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="item" valor="770000070"/>
+			<columna nombre="padre_proyecto" valor="guarani"/>
+			<columna nombre="padre" valor="38000009"/>
+			<columna nombre="carpeta" valor="0"/>
+			<columna nombre="nivel_acceso" valor="0"/>
+			<columna nombre="solicitud_tipo" valor="web"/>
+			<columna nombre="pagina_tipo_proyecto" valor="guarani"/>
+			<columna nombre="pagina_tipo" valor="guarani_tp_basico"/>
+			<columna nombre="nombre" valor="IUNIR - Modificación de fechas de asignación de responsabilidades docentes"/>
+			<columna nombre="descripcion" valor="doc::documentacion_de_las_operaciones/docentes/responsabilidad_docente"/>
+			<columna nombre="punto_montaje" valor="1"/>
+			<columna nombre="menu" valor="1"/>
+			<columna nombre="orden" valor="2"/>
+			<columna nombre="solicitud_registrar" valor="0"/>
+			<columna nombre="zona_listar" valor="0"/>
+			<columna nombre="imagen_recurso_origen" valor="proyecto"/>
+			<columna nombre="imagen" valor="item.png"/>
+			<columna nombre="parametro_a" valor="800SIUDOC003"/>
+			<columna nombre="publico" valor="0"/>
+			<columna nombre="redirecciona" valor="0"/>
+			<columna nombre="exportable" valor="0"/>
+			<columna nombre="creacion" valor="2009-06-29 17:01:56"/>
+			<columna nombre="retrasar_headers" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_item_objeto">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="item" valor="770000070"/>
+			<columna nombre="objeto" valor="770000304"/>
+			<columna nombre="orden" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="item" valor="770000070"/>
+			<columna nombre="objeto" valor="770000309"/>
+			<columna nombre="orden" valor="1"/>
+		</registro>
+	</tabla>
+</componente>

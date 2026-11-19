@@ -1,0 +1,86 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+    {% autoescape false %}
+            
+        {% if this.data.cant_preinscripciones == 0 %}
+            <div class='alert alert-info mensaje strong'>
+                {{'preinscripcion.sin_preinscripciones'|trans|raw}}
+            </div>
+        {% else %}
+            <div>
+                <h2 class="borde-inferior">{{ 'preinscripcion.propuestas_elegidas' | trans }}
+                    <div class="pull-right" >
+                    </div>
+                </h2>
+                    
+            {% if this.data.error %}
+                <div class='alert alert-error'>
+                    {{ this.data.error }}
+                </div>
+            {% endif %}
+            {% if this.data.mensaje %}
+                <div class='alert '>
+                    {{ this.data.mensaje }}
+                </div>
+            {% endif %}
+                <table class="table table-stripped table-hover">
+                    <thead>
+                        <tr>
+                            <th>{{'preinscripcion.responsable_academica'|trans}}</th>
+                            <th>{{'preinscripcion.propuesta_bis'|trans}}</th>
+                            <th>{{'preinscripcion.ubicacion'|trans}}</th>
+                            <th>{{'preinscripcion.modalidad'|trans}}</th>
+                            <th>{{'preinscripcion.vigente_hasta'|trans}}</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for item in this.data.preinscripciones %}
+                            <tr>
+                                <td>{{item.responsable_academica_nombre}}</td>
+                                <td>{{item.propuesta_nombre_abreviado}}</td>
+                                <td>{{item.ubicacion_nombre}}</td>
+                                <td>{{item.modalidad_nombre}}</td>
+                                <td>{{item.fecha_vencimiento_formato_visual}}</td>
+
+                                <td>  {% if item.estado =='P'  or item.estado =='S' %}
+                                    <button class="btn btn-info btn-small btnReabrir" value="{{'Reabrir'|trans}}"
+                                                data-id="{{item.__ID__}}"
+                                                data-propuesta_nombre="{{item.propuesta_nombre|escape('html')}}">
+                                            {{'Reabrir'|trans}}
+                                        </button>
+                                        <a href={{ this.data.url_pdf }} tabindex="0" id="pdf_btn" class="btn no-ajax" target="_blank" title="{{ 'descargar_pdf'|trans|capitalize }}"><span class="g3w-icono-pdf"></span></a>                    
+                   
+                                    {% endif %}
+                                        {% if  item.estado =='N'  %}
+                                        <button class="btn btn-info btn-small btnFinalizar" value="{{'finalizar'|trans}}"
+                                                data-id="{{item.__ID__}}"
+                                                data-propuesta_nombre="{{item.propuesta_nombre|escape('html')}}">
+                                            {{'Finalizar'|trans}}
+                                        </button>
+                                    {% endif %}
+                                    {% if item.vigente %}
+                                        <button class="btn btn-info btn-small btnEliminar" value="{{'eliminar'|trans}}"
+                                                data-id="{{item.__ID__}}"
+                                                data-propuesta_nombre="{{item.propuesta_nombre|escape('html')}}">
+                                            {{'eliminar'|trans}}
+                                        </button>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% endif %}
+
+        {% if this.data.permitir_inscripciones %}
+            <div class="clearfix">
+                <div class="pull-left fix-boton">
+                    <input id="btnSelectorCarrera" name="btnSelectorCarrera" value="{{ 'preinscripcion.elegir_propuesta' | trans }}" type="button" class="btn btn-inverse" />
+                </div>
+            </div>
+        {% endif %}
+        <hr/>
+    {% endautoescape %}
+{% endblock %}

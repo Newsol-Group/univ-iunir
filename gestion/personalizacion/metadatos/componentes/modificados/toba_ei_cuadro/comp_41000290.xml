@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="41000290" descripcion="toba_ei_cuadro">
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:41000290">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+		</registro>
+	</tabla>
+</componente>

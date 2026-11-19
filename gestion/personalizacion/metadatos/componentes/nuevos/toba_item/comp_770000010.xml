@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000010" descripcion="toba_item">
+	<tabla nombre="apex_item">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="item" valor="770000010"/>
+			<columna nombre="padre_proyecto" valor="guarani"/>
+			<columna nombre="padre" valor="770000014"/>
+			<columna nombre="carpeta" valor="0"/>
+			<columna nombre="nivel_acceso" valor="0"/>
+			<columna nombre="solicitud_tipo" valor="web"/>
+			<columna nombre="pagina_tipo_proyecto" valor="guarani"/>
+			<columna nombre="pagina_tipo" valor="guarani_tp_basico"/>
+			<columna nombre="nombre" valor="IUNIR - Cargar Becas a Alumnos"/>
+			<columna nombre="descripcion" valor="doc::documentacion_de_las_operaciones/facturacion/administrar_becas_y_bonificaciones"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+			<columna nombre="menu" valor="1"/>
+			<columna nombre="orden" valor="90"/>
+			<columna nombre="solicitud_registrar" valor="0"/>
+			<columna nombre="zona_listar" valor="0"/>
+			<columna nombre="imagen_recurso_origen" valor="proyecto"/>
+			<columna nombre="imagen" valor="item.png"/>
+			<columna nombre="parametro_a" valor="800SIUUNG001"/>
+			<columna nombre="publico" valor="0"/>
+			<columna nombre="redirecciona" valor="0"/>
+			<columna nombre="exportable" valor="0"/>
+			<columna nombre="creacion" valor="2009-06-05 21:22:35"/>
+			<columna nombre="retrasar_headers" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_item_objeto">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="item" valor="770000010"/>
+			<columna nombre="objeto" valor="770000074"/>
+			<columna nombre="orden" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="item" valor="770000010"/>
+			<columna nombre="objeto" valor="770000080"/>
+			<columna nombre="orden" valor="1"/>
+		</registro>
+	</tabla>
+</componente>

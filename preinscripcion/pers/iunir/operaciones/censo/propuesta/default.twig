@@ -1,0 +1,163 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+
+    {% set form = this.get_form() %}
+    {% autoescape false %}
+        <div id='js-div_mensaje' class="mensaje alert alert-warning strong">
+            {# {{ 'censo.procesando_pago' | trans }} #}
+        </div>
+        {% if this.data.mensaje_primer_acceso %}
+            <div class="mensaje alert alert-info">
+                {{ this.data.mensaje_primer_acceso|trans }}
+            </div>
+        {% else %}
+            {% if this.data.cant_inscripciones == 0 %}
+                <div class='alert alert-info mensaje strong'>
+                    {{'sin_inscripciones'|trans|raw}}
+                </div>
+            {% else %}
+            {% set f_disabled = not this.puede_finalizar() %}
+            {% if this.data.resultado.mensajes %}
+                {{ notificaciones.render_notif(this.data.resultado.mensajes, true) }}
+                <div style="margin-top: 10px;"></div>
+            {% endif %}
+                <div>
+                    <h2 class="borde-inferior">{{'propuestas_elegidas'|trans}}</h2>
+                    <table class="table table-stripped table-hover">
+                        <thead>
+                            <tr>
+                                <th>{{'responsable_academica'|trans}}</th>
+                                <th>{{'propuesta'|trans}}</th>
+                                <th>{{'tipo_de_propuesta'|trans}}</th>
+                                <th>{{'ubicacion'|trans}}</th>
+                                <th>{{'modalidad'|trans}}</th>
+                                <th>{{'fecha_fin_vigencia'|trans}}</th>
+                                <th>{{'observaciones'|trans}}</th>
+                                <th>{{'censo.estado_pago'|trans}}</th>
+                                <th>{{'censo.fecha_pago'|trans}}</th>
+                                {# <th>{{'censo.link_mp'|trans}}</th> #}
+                                <th>{{'censo.link_mcp'|trans}}</th>
+                                <th>&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in this.data.preinscripciones %}
+                            {% set matricula = this.data.matriculas[item.preinscripcion_propuesta] %}
+                            {% set p_disabled = (matricula.estado_pago == 3) %}
+                                <tr>
+                                    <td>{{item.ra_nombre}}</td>
+                                    <td>{{item.propuesta_nombre}}</td>
+                                    <td>{{item.tipo_propuesta_descr}}</td>
+                                    <td>{{item.ubicacion_nombre}}</td>
+                                    <td>{{item.modalidad_nombre}}</td>
+                                    <td>{{item.fecha_fin_vigencia_visual}}</td>
+
+                                    <td>
+                                        {% if item.observaciones %}
+                                            <i class="icon-exclamation-sign js-observaciones-icon" data-id="{{item.__preinsc_ID__}}"></i>
+                                        {% endif %}
+                                    </td>
+
+                                    <td>
+                                        {{ matricula.estado_pago_desc }}
+                                    </td>
+                                    <td>
+                                        {{ matricula.fecha_pago }}
+                                    </td>
+
+                                    {# <td>
+                                    {% if matricula.link != '' %}  
+                                        <div class="pull-right">
+                                            <button class="btn btn-info btn-small btnPagarMP"
+                                                {% if p_disabled %} disabled {% endif %}
+                                                data-id="{{ item.__preinsc_ID__ }}"
+                                                data-link="{{ matricula.link }}"
+                                                data-preprop="{{ item.preinscripcion_propuesta }}"
+                                                data-propuesta="{{ item.propuesta }}"
+                                                data-propuesta_nombre="{{item.propuesta_nombre}}">
+                                                Pagar
+                                            </button>
+                                        </div>
+                                    {% endif %}
+                                   </td>   #}
+
+                                    <td>
+                                    {% if matricula.link != '' %}  
+                                        <div class="pull-right">
+                                            <form id="payForm_{{ item.preinscripcion_propuesta }}" method="post" action="{{ this.data.mcp_data.endpoint }}" target="_blank" style="margin:0; padding:0; border:0;">
+                                                <input type="hidden" name="CallbackSuccess" value="{{ this.data.mcp_data.callback_success }}" />
+                                                <input type="hidden" name="CallbackCancel" value="{{ this.data.mcp_data.callback_error }}" />
+                                                <input type="hidden" name="Comercio" value="{{ this.data.mcp_data.comercio }}" />
+                                                <input type="hidden" name="SucursalComercio" value="{{ this.data.mcp_data.sucursal }}" />
+                                                <input type="hidden" name="TransaccionComercioId" />
+                                                <input type="hidden" name="Monto" value="{{ matricula.monto }}" />
+                                                <input type="hidden" name="Hash" value="{{ matricula.hash }}" />
+                                                <input type="hidden" name="Producto[0]" value="{{ matricula.codpro }}" />
+                                                <input type="hidden" name="MontoProducto[0]" value="{{ matricula.saldo }}" />
+                                                <input type="hidden" name="Informacion" value="{{ matricula.ref_data }}" />
+                                            </form> 
+                                            <button id="btn-pagar-{{item.preinscripcion_propuesta}}" class="btn btn-info btn-small btnPagarMCP"
+                                                {% if p_disabled %} disabled {% endif %}
+                                                data-id="{{ item.preinscripcion_propuesta }}"
+                                                data-propuesta="{{ item.propuesta }}"
+                                                data-propuesta_nombre="{{item.propuesta_nombre}}"
+                                                data-codfor="{{ matricula.codfor }}"
+                                                data-nrofor="{{ matricula.nrofor }}">
+                                                Pagar
+                                            </button>
+                                        </div>
+                                    {% endif %}
+                                    </td>
+
+                                    <td>
+                                        {% if item.estado != 'I' %}
+                                            <button id="btn-eliminar-{{item.preinscripcion_propuesta}}" class="btn btn-info btn-small btnEliminar" value="{{'eliminar'|trans}}"
+                                                    {% if p_disabled %} disabled {% endif %}
+                                                    data-id="{{item.__preinsc_ID__}}"
+                                                    data-propuesta="{{item.propuesta}}"
+                                                    data-tipo_de_propuesta="{{item.propuesta_tipo}}"
+                                                    data-propuesta_nombre="{{item.propuesta_nombre}}">
+                                                    {# {{ item.id_preinscripcion }} #}
+                                                {{'eliminar'|trans}}
+                                            </button>
+                                        {% endif %}
+                                    </td>
+
+                                </tr>
+                                <tr class="js-observaciones" id="{{item.__preinsc_ID__}}">
+                                    <td colspan="8">
+                                        {{'pre_prop_observaciones'|trans}} {{item.observaciones}}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% endif %}
+        {% endif %}
+
+        {% if this.data.permitir_inscripciones %}
+            <div class="pull-left fix-boton">
+                <input id="btnSelectorCarrera" name="btnSelectorCarrera" value="{{'elegir_propuesta'|trans}}" type="button" class="btn btn-inverse" />
+            </div>
+        {% endif %}
+
+        {% if this.data.hay_inscripciones %}
+                            <span class="spinner" style="display:none;">
+                        <span class="spinner-border spinner-border-sm text-light" role="status" aria-hidden="true"></span>
+                    </span>
+	        <div class="pull-right">
+		        <button class="btn btn-info btnFinalizar"
+                    {% if f_disabled %}disabled{% endif %}
+                    data-propuestas_nombres="{{ this.get_propuestas_nombres()|join(', ') }}">
+			        <i class="icon-ok-sign icon-white"/>
+                    &nbsp;
+                    {{'finalizar'|trans|capitalize}}
+
+		        </button>
+	        </div>
+	    {% endif %}
+
+    {% endautoescape %}
+
+{% endblock %}

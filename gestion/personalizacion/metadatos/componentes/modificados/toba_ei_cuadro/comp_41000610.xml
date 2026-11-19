@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="41000610" descripcion="toba_ei_cuadro">
+	<tabla nombre="apex_objeto_ei_cuadro_columna">
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="41000610"/>
+			<columna nombre="objeto_cuadro_col" valor="770000675"/>
+			<columna nombre="clave" valor="email"/>
+			<columna nombre="orden" valor="10"/>
+			<columna nombre="titulo" valor="Email"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-tex-p1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="41000610"/>
+			<columna nombre="objeto_cuadro_col" valor="770000676"/>
+			<columna nombre="clave" valor="celular"/>
+			<columna nombre="orden" valor="11"/>
+			<columna nombre="titulo" valor="Celular"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-tex-p1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="41000610"/>
+			<columna nombre="objeto_cuadro_col" valor="770000677"/>
+			<columna nombre="clave" valor="telefono_fijo"/>
+			<columna nombre="orden" valor="12"/>
+			<columna nombre="titulo" valor="Teléfono fijo"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-tex-p1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="41000610"/>
+			<columna nombre="objeto_cuadro_col" valor="770001018"/>
+			<columna nombre="clave" valor="pago"/>
+			<columna nombre="orden" valor="13"/>
+			<columna nombre="titulo" valor="Está pago?"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="7"/>
+			<columna nombre="formateo" valor="13"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+	</tabla>
+</componente>

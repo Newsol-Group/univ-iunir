@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="32000140" descripcion="toba_datos_tabla">
+	<tabla nombre="apex_objeto_db_registros">
+		<registro estado="2" clave="objeto_proyecto:guarani;objeto:32000140">
+			<columna nombre="esquema_ext" valor="negocio" valor_original="###$$$NULL$$$###"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_db_registros_col">
+		<registro estado="2" clave="objeto_proyecto:guarani;objeto:32000140;col_id:32000202">
+			<columna nombre="externa" valor="0" valor_original="###$$$NULL$$$###"/>
+		</registro>
+		<registro estado="2" clave="objeto_proyecto:guarani;objeto:32000140;col_id:32000203">
+			<columna nombre="externa" valor="0" valor_original="###$$$NULL$$$###"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000140"/>
+			<columna nombre="col_id" valor="770000252"/>
+			<columna nombre="columna" valor="fecha_desde"/>
+			<columna nombre="tipo" valor="F"/>
+			<columna nombre="pk" valor="1"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_docentes_resp"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="32000140"/>
+			<columna nombre="col_id" valor="770000253"/>
+			<columna nombre="columna" valor="fecha_hasta"/>
+			<columna nombre="tipo" valor="F"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_docentes_resp"/>
+		</registro>
+	</tabla>
+</componente>

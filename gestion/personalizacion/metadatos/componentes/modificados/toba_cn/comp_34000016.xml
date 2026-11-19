@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="34000016" descripcion="toba_cn">
+	<tabla nombre="apex_objeto_dependencias">
+		<registro estado="3" clave="proyecto:guarani;objeto_consumidor:34000016;dep_id:34000013"/>
+	</tabla>
+</componente>

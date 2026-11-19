@@ -1,0 +1,144 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+{% import "kernel/macro_notificaciones.twig" as notificaciones %}
+
+<div class="titulo_operacion row-fluid">
+	<div class="span12">
+		<h2 class="resaltar divisor clearfix">
+			<span style="margin-left: 20px;">{{'solicitar_constancias'|trans|capitalize}}</span>
+		</h2>
+	</div>
+</div>
+
+    {% if this.data.resultado.ok %}
+        <br><div class="alert alert-success notificaciones-centrar">{{ 'nueva_solicitud_ok' | trans }}</div><br>
+    {% endif %}
+
+    {% if this.data.resultado.mensajes %}
+        {{ notificaciones.render_notif(this.data.resultado.mensajes, true) }}
+        <div style="margin-bottom: 15px;"></div>
+    {% endif %}
+
+	<div id="js-div-const_req_doc_alert" class="alert alert-warning">
+		{{ 'constancias_certificados.constancia_requiere_documento' | trans}}
+	</div>
+
+<form id="form" method="post" action="{{this.data.url_nueva_solicitud}}" class="form-horizontal" enctype="multipart/form-data">
+	<div>
+		<div class="control-group span8">
+			<label class="control-label label-obligatorio" for="constancia">{{ 'constancias_certificados.label_constancia' | trans }}</label>
+			<div class="controls">
+				<select id="constancia" name="constancia" style="width: 100%;">
+					<option value="9999">-- Seleccione --</option>
+					{% for constancia in this.data.constancias %}
+					<option data-formulario="{{constancia.formulario}}" value="{{constancia.id}}">{{constancia.nombre}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+
+		<div class="control-group span3">
+			<label class="control-label label-obligatorio" id="label_copias" for="copias">{{ 'constancias_certificados.label_copias' | trans }}</label>
+			<div class="controls">
+				<select id="copias" name="copias" style="width: auto;">
+				</select>
+			</div>
+		</div>
+
+		{# <div class="control-group span4"> #}
+		<div>
+			
+			<label class="control-label label-obligatorio" id = "label_motivo_baja" for="motivo_baja" style="margin-bottom: 20px; margin-left: 5px;">{{ "constancias_certificados.label_motivo_baja" | trans }}</label>
+			<div class="controls">
+				<select id="motivo_baja" name="motivo_baja">
+					<option value="0">-- Seleccione --</option>
+					{% for motivo_baja in this.data.motivos_baja %}
+					<option value="{{motivo_baja.motivo_baja}}">{{motivo_baja.nombre}}</option>
+					{% endfor %}
+				</select>
+			</div>	
+
+			<label class="control-label label-obligatorio" id = "label_tipo_beneficio" for="tipo_beneficio" style="margin-bottom: 20px; margin-left: 5px;">{{ "constancias_certificados.label_tipo_beneficio" | trans }}</label>
+			<div class="controls">
+				<select id="tipo_beneficio" name="tipo_beneficio">
+					<option value="0">-- Seleccione --</option>
+					{% for tipo_beneficio in this.data.tipos_beneficio %}
+					<option value="{{tipo_beneficio.tipo_beneficio}}">{{tipo_beneficio.nombre}}</option>
+					{% endfor %}
+				</select>
+			</div>	
+
+			<label class="control-label label-obligatorio" id = "label_comision_baja" for="comsion" style="width: 150px;">{{ "constancias_certificados.label_comision_baja" | trans }}</label>
+			<div class="controls">
+				<select id="comision" name="comision" style="width: 100%;">
+					<option value="0">-- Seleccione --</option>
+					{% for comision in this.data.comisiones %}
+					<option value="{{comision.comision}}">{{comision.descr}}</option>
+					{% endfor %}
+				</select>
+			</div>
+
+		</div>
+
+		
+	</div>
+
+	<div class="span11" id="filtro"></div>
+	<div class="span11" id="filtro_resultado">
+		<select id="resultado_filtro" name="resultado_filtro" style="width: 100%;"></select>
+	</div>
+
+	<div id="js-div-const_req_doc">	
+
+		<div class="control-group span11">
+			<label class="control-label label-obligatorio">Documento Respaldatorio: (*)</label>
+
+			<div class="controls">
+				<div class='well clearfix'>
+					<p class="descr_const_doc {% if this.data.error_extension %} alert alert-error mensaje strong {% endif %}">
+						{{ 'requisitos.msj_extensiones' | trans }} <strong>{{ this.data.extensiones }}</strong>
+					</p>
+					<p class="descr_const_doc {% if this.data.error_tamanio %} alert alert-error mensaje strong {% endif %}">
+						{{ 'requisitos.msj_tamanio_max' | trans }} <strong>{{ this.data.tamanio_maximo }}</strong>
+					</p>
+	
+					<h3 id="js-h3-req_doc_desc" class="req_const_doc-header"></h3>
+
+					<div class="file-input">
+                    	<input type="file" id="file" class="file" name="archivo" />
+                        <label for="file">
+                        	{{ 'requisitos.btn_examinar' | trans }}
+                        	<p class="file-name">{{ 'requisitos.no_selecciono_archivo' | trans }}</p>
+						</label>
+                    </div>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div>
+		<div class="control-group span11">
+			<label class="control-label label-obligatorio" for="presentar">{{ 'constancias_certificados.label_presentar_a' | trans }}</label>
+			<div class="controls">
+				<input id="presentar" name="presentar" type="text" style="width: 100%;" maxlength="200">
+			</div>
+		</div>
+	</div>
+	<div>
+		<div class="control-group span11">
+			<label class="control-label" for="observaciones">{{ 'constancias_certificados.label_observaciones' | trans }}</label>
+			<div class="controls">
+				<textarea id="observaciones" name="observaciones" class="no-ajax" style="width: 100%; height: 100px;" maxlength="200"></textarea>
+			</div>
+		</div>
+	</div>
+	<div>
+		<div class="control-group span11">
+			<a href="{{this.data.url_volver}}" class="btn btn-info pull-right">{{ 'constancias_certificados.volver' | trans }}</a>
+			<button id="guardar" type="submit" class="btn btn-info pull-right">{{ 'constancias_certificados.guardar' | trans }}</button>
+		</div>
+	</div>
+</form>
+{% endblock %}

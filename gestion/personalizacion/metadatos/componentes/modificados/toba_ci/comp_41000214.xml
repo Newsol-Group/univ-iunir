@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="41000214" descripcion="toba_ci">
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:41000214">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+			<columna nombre="subclase" valor="ci_edi_generacion_acta_promocionales_nsg" valor_original="ci_edi_generacion_acta_promocionales"/>
+			<columna nombre="subclase_archivo" valor="operaciones/cursadas/actas/generacion_promocionales/ci_edi_generacion_acta_promocionales_nsg.php" valor_original="operaciones/cursadas/actas/generacion_promocionales/ci_edi_generacion_acta_promocionales.php"/>
+		</registro>
+	</tabla>
+</componente>

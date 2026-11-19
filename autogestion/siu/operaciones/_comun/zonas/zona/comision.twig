@@ -1,0 +1,120 @@
+{% extends "zona/default.twig" %}
+
+{% block detalle_encabezado_descripcion this.data.detalle.actividad_orden ~ ' - '~ this.data.detalle.comision_nombre %}
+	{% block detalle_encabezado_icono "<i class='icon-th-list'></i> Detalles" %}
+
+		{% block descripcion_entidad %}
+
+			<table class="table table-condensed detalle-detalle detalle-tabla">
+				<tr>
+					<td class='zona-detalle-label' colspan="1">
+						{{ 'comision' |trans|capitalize }}:
+					</td>
+					<td colspan="3">
+						{{ this.data.detalle.comision_nombre }}
+					</td>
+				</tr>
+				<tr>
+					<td class='zona-detalle-label' colspan="1">
+						{{ 'subcomision' |trans|capitalize }}:
+
+					</td>
+
+					{% if this.data.detalle.es_subcomision %}
+					<td colspan="1">
+						{{ this.data.detalle.subcomision_nombre }}
+					<td class='zona-detalle-label' colspan="1">
+						{{ 'nombre_tipo_clase' |trans|capitalize }}:
+					</td>
+					<td colspan="1">
+						{{ this.data.detalle.tipo_clase }}
+					</td>
+					{% else %}
+					<td colspan="3">
+						{{ 'no_tiene'|trans|capitalize }}
+						{% endif %}
+					</td>
+				</tr>
+
+				<tr>
+					<td class='zona-detalle-label' colspan="1">
+						{{ 'ubicacion' |trans|capitalize }}:
+					</td>
+					<td colspan="3">
+						{{ this.data.detalle.ubicacion_nombre }}
+					</td>
+				</tr>
+				<tr>
+					<td class='zona-detalle-label' colspan="1">
+						{{ 'periodo_lectivo' |trans|capitalize }}:
+					</td>
+					<td colspan="1">
+						{{ this.data.detalle.periodo_lectivo_nombre }}
+					</td>
+					<td class='zona-detalle-label' colspan="1">
+						{{ 'anio_academico' |trans|capitalize }}:
+					</td>
+					<td colspan="1">
+						{{ this.data.detalle.anio_academico }}
+					</td>
+
+				</tr>
+
+				{% if ( this.data.detalle.horario_comision  or this.data.detalle.horario_subcomision) %}
+					<tr>
+						<td class='zona-detalle-label' colspan="1">
+							{{ 'nombre_horario' |trans|capitalize }}
+						</td>
+						<td class='' colspan="3">
+							{% if this.data.detalle.es_subcomision %}
+								{{ this.data.detalle.horario_subcomision }}
+							{% else %}
+								{{ this.data.detalle.horario_comision }}
+							{% endif %}
+						</td>
+
+					</tr>
+				{% endif %}
+
+				{% if(this.data.detalle.turno_nombre) %}
+				<tr>
+					<td class='zona-detalle-label' colspan="1">
+						{{ 'turno' |trans|capitalize }}:
+					</td>
+					<td class='' colspan="3">
+						{{ this.data.detalle.turno_nombre }}
+					</td>
+				</tr>
+				<tr>
+					{% endif %}
+					{% if(this.data.detalle.catedra_nombre) %}
+					<td class='zona-detalle-label' colspan="1">
+						{{ 'catedra' |trans|capitalize }}
+					</td>
+					<td class='' colspan="3">
+						{{ this.data.detalle.catedra_nombre }}
+					</td>
+				</tr>
+				{% endif %}
+				{% if(this.data.detalle.cant_inscriptos_comision) %}
+					<tr>
+						<td class='zona-detalle-label' colspan="1">
+							{{ 'inscriptos' |trans|capitalize }}:
+						</td>
+						<td class='' colspan="3">
+							{{ this.data.detalle.cant_inscriptos_comision }}
+						</td>
+					</tr>
+				{% endif %}
+				{% if(this.data.detalle.cant_inscriptos_subcomision) %}
+					<tr>
+						<td class='zona-detalle-label' colspan="1">
+							{{ 'inscriptos' |trans|capitalize }}:
+						</td>
+						<td class='' colspan="3">
+							{{ this.data.detalle.cant_inscriptos_subcomision }}
+						</td>
+					</tr>
+				{% endif %}
+			</table>
+		{% endblock %}

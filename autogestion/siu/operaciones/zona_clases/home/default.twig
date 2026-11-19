@@ -1,0 +1,105 @@
+{% import 'kernel/macro_helpers.twig' as helper %}
+{% extends "kernel/pagelet.twig" %}
+{% import _self as current_file_macros %}
+
+{% block contenido %}
+    {{   helper.titulo_operacion('zona_clases.home' |trans | capitalize, '', acciones ) }}
+    <div class="">
+        <div class="">
+            <h4>{{ 'zona_clases.clases_dictadas' |trans | capitalize }}</h4>
+            {% if this.data.dictadas %}
+                <table class="table table-striped table-bordered table-condensed">
+                    {{ current_file_macros.header_clase('dictadas') }}
+                    <tbody>
+						{% for clase in this.data.dictadas %}
+							{{ current_file_macros.fila_clase(clase, 'dictadas',this.data.comision.LINK_ASISTENCIA, this.data.comision.LINK_TEMAS, this) }}
+						{% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="alert">{{"no_hay_renglones"|trans|capitalize}}</div>
+            {% endif %}
+
+            <h4> {{ 'zona_clases.clases_sin_dictar' |trans | capitalize }}</h4>
+            {% if this.data.sin_dictar %}
+                <table class="table table-striped table-bordered table-condensed">
+                    {{ current_file_macros.header_clase('sin_dictar') }}
+                    <tbody>
+						{% for clase in this.data.sin_dictar %}
+							{{ current_file_macros.fila_clase(clase, 'sin_dictar',this.data.comision.LINK_ASISTENCIA, this.data.comision.LINK_TEMAS, this) }}
+						{% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="alert">{{"no_hay_renglones"|trans|capitalize}}</div>
+            {% endif %}
+
+            <h4>{{ 'zona_clases.clases_anuladas' |trans | capitalize }}</h4>
+            {% if this.data.anuladas %}
+                <table class="table table-striped table-bordered table-condensed">
+                    {{ current_file_macros.header_clase('anuladas') }}
+                    <tbody>
+						{% for clase in this.data.anuladas %}
+							{{ current_file_macros.fila_clase(clase, 'anuladas',this.data.comision.LINK_ASISTENCIA, this.data.comision.LINK_TEMAS, this) }}
+						{% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <div class="alert">{{"no_hay_renglones"|trans|capitalize}}</div>
+            {% endif %}
+        </div>
+
+    </div>
+
+{% endblock %}
+
+{% macro fila_clase(clase, tipo, link_asistencia, link_temas, pagelet) %}
+    <tr data-clase="{{ clase.clase }}">
+        <td > {{ clase.fecha }} </td>
+        <td >{{ clase.dia_semana_nombre }}</td>
+        <td >{{ clase.hora_inicio }} a {{ clase.hora_finalizacion }}</td>
+        <td >{{ clase.tipo_clase_nombre }}</td>
+        <td >{{ clase.espacio_nombre }}</td>
+        {% if tipo == 'anuladas' %}
+            <td >{{ clase.motivo_nombre }}</td>{% endif %}
+			{% if tipo == 'dictadas' %}
+				<td >{{ clase.presentes_ausentes }}</td>{% endif %}
+				<td >{% if clase.tema_planificado %}{{ clase.tema_planificado }}{% else %}{{ 'sin_definir' |trans|capitalize }}{% endif %}</td>
+				<td>
+					{% if tipo == 'dictadas' %}
+						{{ pagelet.a(link_asistencia, 
+									"<i class='icon-pencil'></i> "~('asistencia'|trans|capitalize), 
+									'btn btn-mini js-link-clase no-ajax',
+									{'url-comision-clase': link_asistencia~'/'~ clase.clase}
+									) | raw }}
+                                                                        
+                                                {{ pagelet.a(link_temas, 
+									"<i class='icon-pencil'></i> "~('temas_dictados'|trans|capitalize), 
+									'btn btn-mini js-link-clase no-ajax',
+									{'url-comision-clase': link_temas~'/'~ clase.clase}
+									) | raw }}
+						{% else %}
+							--
+						{% endif %}
+				</td>
+			</tr>
+
+			{% endmacro %}
+
+				{% macro header_clase(tipo) %}
+					<thead>
+						<tr>
+							<th class='header-cols' style="width: 80px;">{{ 'zona_clases.fecha' |trans | capitalize }}</th>
+							<th class='header-cols'  style="width: 60px;">{{ 'zona_clases.dia_semana' |trans | capitalize }}</th>
+							<th class='header-cols'  style="width: 100px;">{{ 'zona_clases.horario' |trans | capitalize }}</th>
+							<th class='header-cols'  style="width: 80px;">{{ 'zona_clases.tipo_clase' |trans | capitalize }}</th>
+							<th class='header-cols'  style="width: 180px;">{{ 'zona_clases.aula' |trans | capitalize }}</th>
+								{% if tipo == 'anuladas' %}
+								<th class='header-cols'  style="width: 150px;">{{ 'zona_clases.motivo_anulacion' |trans | capitalize }}</th>{% endif %}
+									{% if tipo == 'dictadas' %}
+									<th class='header-cols'  style="width: 100px;">{{ 'zona_clases.presentes_ausentes' |trans | capitalize }}</th>{% endif %}
+									<th class='header-cols'  style="width: auto">{{ 'zona_clases.tema_cargado' |trans | capitalize }}</th>
+									<th class='header-cols'  style="width: auto">{{ 'zona_clases.acciones' |trans | capitalize }}</th>
+								</tr>
+							</thead>
+							{% endmacro %}

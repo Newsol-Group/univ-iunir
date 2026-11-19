@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="41000217" descripcion="toba_ci">
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:41000217">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+			<columna nombre="subclase" valor="ci_nav_cierre_regulares_nsg" valor_original="ci_nav_cierre_regulares"/>
+			<columna nombre="subclase_archivo" valor="operaciones/cursadas/actas/cierre_regulares/ci_nav_cierre_regulares_nsg.php" valor_original="operaciones/cursadas/actas/cierre_regulares/ci_nav_cierre_regulares.php"/>
+		</registro>
+	</tabla>
+</componente>

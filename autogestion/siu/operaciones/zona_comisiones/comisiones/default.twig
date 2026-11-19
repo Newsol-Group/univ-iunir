@@ -1,0 +1,23 @@
+{% extends "kernel/pagelet.twig" %}
+{% import 'kernel/macro_helpers.twig' as helper %}
+
+{% block contenido %}
+
+    {% set form = this.get_vista_form() %}
+    {% set acciones %}
+        {{ form.render_acciones() | raw }}
+    {% endset %}
+    {{ form.render_encabezado() | raw }}
+    {{ helper.titulo_operacion('zona_comisiones'|trans|capitalize,'', acciones) }}
+    <div class='row'>
+        <div class='span10 offset1'>
+            {{ form.render_cuerpo() | raw }}
+        </div>
+    </div>
+    {{ form.render_cierre() | raw }}
+
+	{% import "comisiones_macro.twig" as macro_comisiones %}
+	<div id="comisiones">
+		{{ macro_comisiones.render_comisiones(this.data.renglones, this) }}
+	</div>
+{% endblock %}

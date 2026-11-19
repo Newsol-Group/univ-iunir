@@ -1,0 +1,137 @@
+<?php
+class regla_modulo_porc_regularizadas extends regla
+{
+	/**
+	 * Deja los créditos del módulo en la clave de cache 'creditos_obtenidos'.
+	 */
+	function validar()
+	{
+		// Parámetros.
+		$n = $this->get_parametro('porcentaje')/100;
+
+		// Parámetros de contexto.
+		$modulo = $this->get_parametro('elemento');
+		$plan_version = $this->get_parametro('plan_version');
+		$alumno = $this->get_parametro('alumno');
+
+		$this->set_cache('creditos_obtenidos', 0);
+
+		$aprobacion_por_resolucion = false;
+		$reconocimiento = toba::consulta_php('co_aprobacion_por_resolucion')->get_reconocimiento_alumno_modulo($alumno, $modulo);
+		if (!empty($reconocimiento)) {
+			$this->set_cache('creditos_obtenidos', $reconocimiento['creditos']);
+			if ($reconocimiento['reconocimiento_total'] == comunes::si) {
+				$aprobacion_por_resolucion = true;
+			}
+		}
+
+		if (!$aprobacion_por_resolucion) {
+			$origen_creditos_modulo = guarani::elementos()->get_origen_creditos_elemento_plan_version($modulo, $plan_version);
+			$filtro = 'sga_g3entidades_subtipos.entidad_tipo = ' . g3entidad::tipo_actividad;
+			$actividades_modulo = planes::get_componentes_modulo($modulo, $plan_version, $alumno, $filtro);
+			$cant_total = guarani_arreglos::count($actividades_modulo);
+			$porcentaje_cursadas = ($cant_total > 0) ? 0 : 100; // Si el módulo no contiene actividades tiene el 100% cursado.
+			$cant_cursadas = 0;
+			foreach ($actividades_modulo as $actividad) {
+				list($actividad_cursada, $creditos) = toba::consulta_php('co_alumnos')->get_creditos_actividad_regularizada($alumno, $actividad['elemento']);
+				if ($actividad_cursada) {
+					$this->set_cache('creditos_obtenidos', $this->get_cache('creditos_obtenidos') + $creditos);
+					$cant_cursadas++;
+					$porcentaje_cursadas = $cant_cursadas/$cant_total;
+					if ($origen_creditos_modulo != elemento::creditos_componentes && $porcentaje_cursadas >= $n) {
+						break;
+					}
+				}
+			}
+		}
+
+		$resultado = $this->resultado_final($aprobacion_por_resolucion || $porcentaje_cursadas >= $n);
+
+		if (!$resultado) {
+			$this->set_parametros_mensaje_validacion(array($n * 100));
+			$nombre_alumno = guarani::alumno()->get_alumno_nombre($alumno);
+			$datos_basicos_elemento = guarani::elementos()->get_datos_basicos_elemento_en_plan_version($modulo, $plan_version);
+			$this->set_parametros_mensaje_validacion(array($nombre_alumno, $datos_basicos_elemento['nombre']), true);
+		}
+		return $resultado;
+	}
+
+	function validar_caso_test($caso_test)
+	{
+		// Parámetros.
+		$n = $this->get_parametro('porcentaje')/100;
+
+		// Parámetros de contexto.
+		$modulo = $this->get_parametro('elemento');
+		$plan_version = $this->get_parametro('plan_version');
+
+		$origen_creditos_modulo = guarani::elementos()->get_origen_creditos_elemento_plan_version($modulo, $plan_version);
+		$filtro = 'sga_g3entidades_subtipos.entidad_tipo = ' . g3entidad::tipo_actividad;
+		$actividades_modulo = toba::consulta_php('co_planes')->get_componentes_modulo($modulo, $plan_version, $filtro);
+
+		$this->set_cache('creditos_obtenidos', 0);
+		$cant_total = guarani_arreglos::count($actividades_modulo);
+		$porcentaje_cursadas = ($cant_total > 0) ? 0 : 100; // Si el módulo no contiene actividades tiene el 100% cursado.
+		$cant_cursadas = 0;
+		foreach ($actividades_modulo as $actividad) {
+			$actividad_cursada = toba::consulta_php('co_casos_testeo')->actividad_cursada_caso_testeo($actividad['elemento'], $caso_test);
+			if ($actividad_cursada) {
+				$this->set_cache('creditos_obtenidos', $this->get_cache('creditos_obtenidos') + $actividad['creditos']);
+				$cant_cursadas++;
+				$porcentaje_cursadas = $cant_cursadas/$cant_total;
+				if ($origen_creditos_modulo != elemento::creditos_componentes && $porcentaje_cursadas >= $n) {
+					break;
+				}
+			}
+		}
+		return $this->resultado_final($porcentaje_cursadas >= $n);
+	}
+
+	function validar_cache($componentes_modulo, $historia_academica, $regularidades, $aprobaciones_por_resolucion)
+	{
+		// Parámetros.
+		$n = $this->get_parametro('porcentaje')/100;
+
+		// Parámetros de contexto.
+		$modulo = $this->get_parametro('elemento');
+		$plan_version = $this->get_parametro('plan_version');
+
+		$this->set_cache('creditos_obtenidos', 0);
+
+		$aprobacion_por_resolucion = false;
+		if (isset($aprobaciones_por_resolucion[$modulo])) {
+			$this->set_cache('creditos_obtenidos', $aprobaciones_por_resolucion[$modulo]['creditos']);
+			if ($aprobaciones_por_resolucion[$modulo]['reconocimiento_total'] == comunes::si) {
+				$aprobacion_por_resolucion = true;
+			}
+		}
+
+		if (!$aprobacion_por_resolucion) {
+			$origen_creditos_modulo = guarani::elementos()->get_origen_creditos_elemento_plan_version($modulo, $plan_version);
+			$cant_total = 0;
+			foreach ($componentes_modulo as $clave => $valor) {
+				if ($valor['entidad_tipo'] == g3entidad::tipo_actividad) {
+					$cant_total++;
+				} else {
+					unset($componentes_modulo[$clave]);
+				}
+			}
+			$porcentaje_cursadas = ($cant_total > 0) ? 0 : 100; // Si el módulo no contiene actividades tiene el 100% cursado.
+			$cant_cursadas = 0;
+			foreach ($componentes_modulo as $componente) {
+				if (isset($regularidades[$componente['elemento']]) || isset($historia_academica[$componente['elemento']])) {
+					$creditos = isset($historia_academica[$componente['elemento']]) ? $historia_academica[$componente['elemento']]['creditos'] : $regularidades[$componente['elemento']]['creditos'];
+					$this->set_cache('creditos_obtenidos', $this->get_cache('creditos_obtenidos') + $creditos);
+					$cant_cursadas++;
+					$porcentaje_cursadas = $cant_cursadas/$cant_total;
+					if ($origen_creditos_modulo != elemento::creditos_componentes && $porcentaje_cursadas >= $n) {
+						break;
+					}
+				}
+			}
+		}
+
+		return $this->resultado_final($aprobacion_por_resolucion || $porcentaje_cursadas >= $n);
+	}
+}
+?>

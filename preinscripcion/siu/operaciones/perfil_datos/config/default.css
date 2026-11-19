@@ -1,0 +1,16 @@
+.label-obligatorio {
+	font-weight:bold;
+	font-style:italic;
+	padding-top: 2px;
+}
+
+.seleccionar-checkbox-todos-ninguno {
+  background-color: #eee;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  margin-bottom: 15px;
+  padding: 4px 10px;
+}
+
+.seleccionar-checkbox-todos-ninguno label {
+    cursor: pointer;
+}

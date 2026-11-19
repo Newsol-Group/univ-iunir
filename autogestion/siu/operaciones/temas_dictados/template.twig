@@ -1,0 +1,11 @@
+{% extends "kernel/una_columna.twig" %}
+{% block titulo_operacion %}
+	<h2 class="clearfix">
+	<span class="pull-left">{{"carga_temas_clases"|trans|capitalize}}</span>
+	</h2>
+{% endblock %}
+{% block columna_1 %}
+	{{ cabecera.render }}
+        {{ edicion_temas.render }}
+        
+{% endblock %}

@@ -1,0 +1,28 @@
+/**
+ * Se personaliza el color de los títulos (exceptuando h3, que se utiliza como 
+ * título de un agrupado dentro de una sección).
+ */
+h1, h2, h4, h5, h6 {
+	color: #6495ED;
+}
+
+/**
+ * Se personaliza color de fondo de la cabecera.
+ */
+.brand-nav {
+    background-color: #E9E9FA;
+}
+
+/**
+ *  Se personaliza el color de la clase well, que define los agrupados.
+ */
+.well {
+	background-color: #E9E9FA;
+}
+
+/**
+ * Se personaliza el estilo del label obligatorio para que se vea en cursiva.
+ */
+.label-obligatorio {
+	font-style: italic;
+}

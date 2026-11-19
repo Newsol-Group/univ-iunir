@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="14000148" descripcion="toba_ei_cuadro">
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:14000148">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ei_cuadro_columna">
+		<registro estado="2" clave="objeto_cuadro_proyecto:guarani;objeto_cuadro:14000148;objeto_cuadro_col:14000179">
+			<columna nombre="clave" valor="fecha_solicitud" valor_original="cantidad_solicitudes"/>
+			<columna nombre="titulo" valor="Fecha Solicitud" valor_original="Cantidad Solicitudes"/>
+		</registro>
+		<registro estado="2" clave="objeto_cuadro_proyecto:guarani;objeto_cuadro:14000148;objeto_cuadro_col:14000180">
+			<columna nombre="clave" valor="observaciones_alu" valor_original="cantidad_impresiones"/>
+			<columna nombre="titulo" valor="Pedido del Alumno" valor_original="Cantidad Impresiones"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="14000148"/>
+			<columna nombre="objeto_cuadro_col" valor="770000688"/>
+			<columna nombre="clave" valor="observaciones"/>
+			<columna nombre="orden" valor="4"/>
+			<columna nombre="titulo" valor="Respuesta Institucional"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-tex-p1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="14000148"/>
+			<columna nombre="objeto_cuadro_col" valor="770000689"/>
+			<columna nombre="clave" valor="fecha_proceso"/>
+			<columna nombre="orden" valor="5"/>
+			<columna nombre="titulo" valor="Fecha Procesado"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-cen-s1"/>
+			<columna nombre="formateo" valor="8"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="14000148"/>
+			<columna nombre="objeto_cuadro_col" valor="770000690"/>
+			<columna nombre="clave" valor="fecha_entrega"/>
+			<columna nombre="orden" valor="6"/>
+			<columna nombre="titulo" valor="Fecha Entrega"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-cen-s1"/>
+			<columna nombre="formateo" valor="8"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="14000148"/>
+			<columna nombre="objeto_cuadro_col" valor="770000691"/>
+			<columna nombre="clave" valor="cant_copias_solicitadas"/>
+			<columna nombre="orden" valor="7"/>
+			<columna nombre="titulo" valor="Copias"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-tex-p1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="14000148"/>
+			<columna nombre="objeto_cuadro_col" valor="770000692"/>
+			<columna nombre="clave" valor="estado"/>
+			<columna nombre="orden" valor="8"/>
+			<columna nombre="titulo" valor="Estado"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-tex-p1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+	</tabla>
+</componente>

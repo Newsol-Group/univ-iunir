@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000164" descripcion="toba_ei_cuadro">
+	<tabla nombre="apex_objeto">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000164"/>
+			<columna nombre="clase_proyecto" valor="toba"/>
+			<columna nombre="clase" valor="toba_ei_cuadro"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+			<columna nombre="subclase" valor="guarani_pers_ei_cuadro"/>
+			<columna nombre="subclase_archivo" valor="extension_toba/componentes/guarani_pers_ei_cuadro.php"/>
+			<columna nombre="nombre" valor="Reporte Total de Inscriptos a Cursadas en un Período Lectivo - cuadro"/>
+			<columna nombre="colapsable" valor="0"/>
+			<columna nombre="creacion" valor="2010-07-21 09:44:17"/>
+			<columna nombre="posicion_botonera" valor="abajo"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_cuadro">
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000164"/>
+			<columna nombre="clave_dbr" valor="0"/>
+			<columna nombre="ancho" valor="100%"/>
+			<columna nombre="ordenar" valor="0"/>
+			<columna nombre="paginar" valor="0"/>
+			<columna nombre="tamano_pagina" valor="30"/>
+			<columna nombre="tipo_paginado" valor="P"/>
+			<columna nombre="mostrar_total_registros" valor="0"/>
+			<columna nombre="eof_invisible" valor="0"/>
+			<columna nombre="siempre_con_titulo" valor="0"/>
+			<columna nombre="exportar_paginado" valor="0"/>
+			<columna nombre="exportar" valor="1"/>
+			<columna nombre="exportar_rtf" valor="0"/>
+			<columna nombre="scroll" valor="1"/>
+			<columna nombre="scroll_alto" valor="500px"/>
+			<columna nombre="cc_modo" valor="t"/>
+			<columna nombre="cc_modo_anidado_colap" valor="1"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_cuadro_cc">
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000164"/>
+			<columna nombre="objeto_cuadro_cc" valor="770000018"/>
+			<columna nombre="identificador" valor="nombre_propuesta"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="columnas_id" valor="nombre_propuesta"/>
+			<columna nombre="columnas_descripcion" valor="nombre_propuesta"/>
+			<columna nombre="pie_contar_filas" valor="0"/>
+			<columna nombre="pie_mostrar_titular" valor="0"/>
+			<columna nombre="pie_mostrar_titulos" valor="1"/>
+			<columna nombre="modo_inicio_colapsado" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ei_cuadro_columna">
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000164"/>
+			<columna nombre="objeto_cuadro_col" valor="770000276"/>
+			<columna nombre="clave" valor="ing_marzo"/>
+			<columna nombre="orden" valor="2"/>
+			<columna nombre="titulo" valor="Ingresantes al 31/3"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000164"/>
+			<columna nombre="objeto_cuadro_col" valor="770000277"/>
+			<columna nombre="clave" valor="reinsc_marzo"/>
+			<columna nombre="orden" valor="3"/>
+			<columna nombre="titulo" valor="Reinscriptos al 31/3"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000164"/>
+			<columna nombre="objeto_cuadro_col" valor="770000278"/>
+			<columna nombre="clave" valor="ing_julio"/>
+			<columna nombre="orden" valor="4"/>
+			<columna nombre="titulo" valor="Ingresantes al 6/6"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000164"/>
+			<columna nombre="objeto_cuadro_col" valor="770000279"/>
+			<columna nombre="clave" valor="anio"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="titulo" valor="Año"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000164"/>
+			<columna nombre="objeto_cuadro_col" valor="770000280"/>
+			<columna nombre="clave" valor="reinsc_julio"/>
+			<columna nombre="orden" valor="5"/>
+			<columna nombre="titulo" valor="Reinscriptos al 6/6"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000164"/>
+			<columna nombre="objeto_cuadro_col" valor="770000281"/>
+			<columna nombre="clave" valor="ing_agosto"/>
+			<columna nombre="orden" valor="6"/>
+			<columna nombre="titulo" valor="Ingresantes al 31/8"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000164"/>
+			<columna nombre="objeto_cuadro_col" valor="770000282"/>
+			<columna nombre="clave" valor="reinsc_agosto"/>
+			<columna nombre="orden" valor="7"/>
+			<columna nombre="titulo" valor="Reinscriptos al 31/8"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000164"/>
+			<columna nombre="objeto_cuadro_col" valor="770000283"/>
+			<columna nombre="clave" valor="reinsc_diciembre"/>
+			<columna nombre="orden" valor="9"/>
+			<columna nombre="titulo" valor="Reinscriptos al 1/11"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000164"/>
+			<columna nombre="objeto_cuadro_col" valor="770000284"/>
+			<columna nombre="clave" valor="ing_diciembre"/>
+			<columna nombre="orden" valor="8"/>
+			<columna nombre="titulo" valor="Ingresantes al 1/11"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_cuadro_col_cc">
+		<registro>
+			<columna nombre="objeto_cuadro_cc" valor="770000018"/>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000164"/>
+			<columna nombre="objeto_cuadro_col" valor="770000276"/>
+			<columna nombre="total" valor="1"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_cc" valor="770000018"/>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000164"/>
+			<columna nombre="objeto_cuadro_col" valor="770000277"/>
+			<columna nombre="total" valor="1"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_cc" valor="770000018"/>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000164"/>
+			<columna nombre="objeto_cuadro_col" valor="770000278"/>
+			<columna nombre="total" valor="1"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_cc" valor="770000018"/>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000164"/>
+			<columna nombre="objeto_cuadro_col" valor="770000280"/>
+			<columna nombre="total" valor="1"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_cc" valor="770000018"/>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000164"/>
+			<columna nombre="objeto_cuadro_col" valor="770000281"/>
+			<columna nombre="total" valor="1"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_cc" valor="770000018"/>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000164"/>
+			<columna nombre="objeto_cuadro_col" valor="770000282"/>
+			<columna nombre="total" valor="1"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_cc" valor="770000018"/>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000164"/>
+			<columna nombre="objeto_cuadro_col" valor="770000283"/>
+			<columna nombre="total" valor="1"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_cc" valor="770000018"/>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000164"/>
+			<columna nombre="objeto_cuadro_col" valor="770000284"/>
+			<columna nombre="total" valor="1"/>
+		</registro>
+	</tabla>
+</componente>

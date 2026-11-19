@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="14000005" descripcion="toba_cn">
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:14000005">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+			<columna nombre="subclase" valor="cn_pro_emitir_constancia_cursos_nsg" valor_original="cn_pro_emitir_constancia_cursos"/>
+			<columna nombre="subclase_archivo" valor="nucleo/constancias/emitir_constancia_cursos/cn_pro_emitir_constancia_cursos_nsg.php" valor_original="nucleo/constancias/emitir_constancia_cursos/cn_pro_emitir_constancia_cursos.php"/>
+		</registro>
+	</tabla>
+</componente>

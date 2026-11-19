@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000048" descripcion="toba_datos_relacion">
+	<tabla nombre="apex_objeto">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000048"/>
+			<columna nombre="clase_proyecto" valor="toba"/>
+			<columna nombre="clase" valor="toba_datos_relacion"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+			<columna nombre="nombre" valor="Tipo Bonificación para Instituciones"/>
+			<columna nombre="fuente_datos_proyecto" valor="guarani"/>
+			<columna nombre="fuente_datos" valor="guarani"/>
+			<columna nombre="creacion" valor="2009-06-11 12:57:46"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_datos_rel">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000048"/>
+			<columna nombre="debug" valor="0"/>
+			<columna nombre="ap" valor="2"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+			<columna nombre="sinc_susp_constraints" valor="0"/>
+			<columna nombre="sinc_orden_automatico" valor="1"/>
+			<columna nombre="sinc_lock_optimista" valor="1"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_dependencias">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="dep_id" valor="770000171"/>
+			<columna nombre="objeto_consumidor" valor="770000048"/>
+			<columna nombre="objeto_proveedor" valor="770000226"/>
+			<columna nombre="identificador" valor="tipo_bonif"/>
+			<columna nombre="parametros_a" valor="1"/>
+			<columna nombre="parametros_b" valor="1"/>
+			<columna nombre="orden" valor="1"/>
+		</registro>
+	</tabla>
+</componente>

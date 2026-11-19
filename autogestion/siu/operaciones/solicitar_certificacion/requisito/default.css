@@ -1,0 +1,48 @@
+#pagelet .requisito-header {
+    border-bottom: 1px solid;
+    margin-bottom: 15px;
+}
+
+#pagelet .borde-superior {
+    border-top: 1px solid #DDD;
+}
+
+#pagelet .botonera {
+    height: 100px;
+    margin-left: 10px;
+}
+
+#pagelet .botones {
+    margin-top: 35px;
+    text-align: right;
+}
+
+#pagelet .imagen {
+    height: 100px;
+}
+
+#pagelet .descr_requisito {
+    font-style: italic;
+}
+
+#pagelet input {
+    width: 400px;
+}
+
+#pagelet .mensaje_error {
+    text-align: center;
+    font-weight: bold;
+}
+
+#pagelet .js-form-eliminar {
+    display: inline-block;
+}
+
+#pagelet .img-container {
+    text-align: left;
+}
+
+#pagelet img.no-disponible {
+    height: 100%;
+    width: 400px;
+}

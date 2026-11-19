@@ -1,0 +1,38 @@
+#pagelet	.btn-accion {
+	margin-right: 0px;
+	font-weight: normal;
+}
+
+#pagelet .wrapper-carga {
+
+	width: 120px;
+	float: left;
+	margin-right: 10px;
+	margin-top: 4px;
+	border: 1px solid #999;
+	height: 10px;
+}
+
+#pagelet .wrapper-botonera {
+	float: right
+}
+
+#pagelet .wrapper-botonera a {
+	margin-right: 5px
+}
+
+#pagelet td.accion {
+	text-align: right;
+	width: 280px;
+}
+
+#pagelet td.barra {
+	width: 200px;
+}
+#pagelet .btn {
+    margin-right: 2px;
+}
+
+#pagelet #porcentaje_carga_tooltip {
+    cursor: pointer;
+}

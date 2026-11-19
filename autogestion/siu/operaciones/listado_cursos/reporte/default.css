@@ -1,0 +1,20 @@
+#reporte .divider {
+    border-bottom: 1px solid #ccc;
+
+}
+
+#reporte .accordion-toggle.titulo {
+    background-color: #0088cc;
+    color: #FFF;
+}
+
+#reporte .nombre_certificado {
+    float: left;
+    width: 50%;
+
+}
+
+#reporte .estado_actual {
+    float: left;
+    width: 40%;
+}

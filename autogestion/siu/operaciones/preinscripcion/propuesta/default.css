@@ -1,0 +1,15 @@
+.borde {
+    border-bottom: solid 1px #ccc;
+}
+
+#selectorCarrera {
+    width: 570px;
+}
+
+#facebox {
+    width: 607px;
+}
+
+#facebox .popup {
+    max-height: none;
+}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="37000540" descripcion="toba_datos_relacion">
+	<tabla nombre="apex_objeto_rel_columnas_asoc">
+		<registro estado="3" clave="asoc_id:37000046;objeto:37000540;proyecto:guarani;padre_objeto:37000538;hijo_objeto:37000539;padre_clave:37000712;hijo_clave:37000726"/>
+		<registro estado="1">
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000540"/>
+			<columna nombre="asoc_id" valor="37000046"/>
+			<columna nombre="padre_objeto" valor="37000538"/>
+			<columna nombre="padre_clave" valor="770000003"/>
+			<columna nombre="hijo_objeto" valor="37000539"/>
+			<columna nombre="hijo_clave" valor="37000726"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:37000540">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+		</registro>
+	</tabla>
+</componente>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000015" descripcion="toba_item">
+	<tabla nombre="apex_item">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="item" valor="770000015"/>
+			<columna nombre="padre_proyecto" valor="guarani"/>
+			<columna nombre="padre" valor="770000014"/>
+			<columna nombre="carpeta" valor="1"/>
+			<columna nombre="nivel_acceso" valor="0"/>
+			<columna nombre="nombre" valor="Interfaz con Softland"/>
+			<columna nombre="menu" valor="1"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="imagen_recurso_origen" valor="apex"/>
+			<columna nombre="creacion" valor="2023-12-05 13:12:53"/>
+			<columna nombre="retrasar_headers" valor="0"/>
+		</registro>
+	</tabla>
+</componente>

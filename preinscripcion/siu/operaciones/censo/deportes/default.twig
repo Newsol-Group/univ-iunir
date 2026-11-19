@@ -1,0 +1,68 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	{% set form = this.get_form() %}
+	{% autoescape false %}
+	{{ form.encabezado }}
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-inferior'>
+				<div class='pull-left'>
+					<h2>{{this.get_nombre()|trans}}</h2>
+				</div>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'guardar_datos_personales')}}
+				</div>
+				<div class='clearfix'></div>
+			</div>
+		</div>
+
+		{%if form.hay_visibles_agrupado('deportes') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('deportes_bis')">{{'deportes'|trans}}</h3>
+			<div id='deportes_bis' class='toggle-div'>
+				<div class='clearfix cg-margen'>
+					{{ form.checkbox('practica_deportes') }}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		<div id='div_detalles_deportes'>
+			{%if form.hay_visibles_agrupado('listado_deportes_lugares') %}
+			<div class='well clearfix'>
+				<h3 class='toggle-header' onclick="toggle('listado_deportes_lugares')">{{'listado_deportes_lugares'|trans}}</h3>
+				<div id='listado_deportes_lugares' class='toggle-div'>
+					{{ form.checkbox('hace_dep_gim_priv') }}
+					{{ form.checkbox('hace_dep_univ') }}
+					{{ form.checkbox('hace_dep_partic') }}
+					{{ form.checkbox('hace_dep_otros') }}
+				</div>
+			</div>
+			{% endif %}
+
+			{%if form.hay_visibles_agrupado('listado_deportes') %}
+			<div class='well clearfix'>
+				<h3 class='toggle-header' onclick="toggle('listado_deportes')">{{'listado_deportes'|trans}}</h3>
+				<div id='listado_deportes' class='toggle-div'>
+					{{ form.checkbox('prac_dep_futbol') }}
+					{{ form.checkbox('prac_dep_basquet') }}
+					{{ form.checkbox('prac_dep_voley') }}
+					{{ form.checkbox('prac_dep_gimnasia') }}
+					{{ form.checkbox('prac_dep_tenis') }}
+					{{ form.checkbox('prac_dep_natacion') }}
+					{{ form.checkbox('prac_dep_handball') }}
+					{{ form.checkbox('prac_dep_otros') }}
+				</div>
+			</div>
+			{% endif %}
+		</div>
+
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-superior'>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'guardar_datos_personales')}}
+				</div>
+			</div>
+		</div>
+	</form>
+	{% endautoescape %}
+{% endblock %}

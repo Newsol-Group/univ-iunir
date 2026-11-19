@@ -1,0 +1,80 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}    
+	
+    <div class="titulo_operacion">
+        <h2 class="clearfix">
+            <span class="pull-left">{{ "moodle.con_curso.titulo" | trans }}</span>
+        </h2>
+    </div>
+
+    {# Si se trata de una subcomisión #}
+    {% if this.data.es_subcomision  %}
+    <div class="alert alert-block" style="text-align: left !important;">
+        <p>{{ "moodle.leyenda_subcomisiones" | trans | raw }}</p>
+    </div>
+    {% endif %}
+    
+    {% import "mensajes.twig" as mensajes %}
+    {{ mensajes.mostrar_mensajes(this.data.mensajes) }}
+    
+    {% if this.data.info_curso_virtual is empty %}
+        
+        <div class="alert alert-error alert-block">
+            <strong>{{ "moodle.error_comunicacion_moodle" | trans }}</strong>
+        </div>
+        
+    {% else %}
+        
+        <div class="alert alert-info alert-block text-left">
+            
+            <p><strong>{{ this.data.info_curso_virtual.fullname }}</strong></p>
+            
+            {% if this.data.info_curso_virtual.summary is not empty %}
+                <div style="margin-top: 15px;">
+                    {{ this.data.info_curso_virtual.summary | raw }}
+                </div>
+            {% endif %}
+            
+            {% if (this.data.info_curso_virtual.fecha_inicio is not empty) and (this.data.info_curso_virtual.fecha_fin is not empty) %}
+                <p style="margin-top: 15px;">
+                    {{ 'moodle.con_curso.curso_moodle_fecha_inicio_fin' | trans({'%fecha_inicio%': this.data.info_curso_virtual.fecha_inicio, '%fecha_fin%': this.data.info_curso_virtual.fecha_fin }) }}
+                </p>
+            {% elseif this.data.info_curso_virtual.fecha_inicio is not empty %}
+                <p style="margin-top: 15px;">
+                    {{ 'moodle.con_curso.curso_moodle_fecha_inicio' | trans({'%fecha_inicio%': this.data.info_curso_virtual.fecha_inicio }) }}
+                </p>
+            {% endif %}
+            
+        </div>
+        
+        <div class="clearfix">
+            <a href="{{ this.data.url_curso_moodle }}" target="_blank" class="btn btn-primary pull-left no-ajax">{{ "moodle.con_curso.ir_al_curso" | trans }}</a>
+            <a id="js-btn-desvincular" href="#" class="btn btn-danger pull-right">{{ "moodle.con_curso.desvincular" | trans }}</a>
+        </div>
+        
+        <div style="border-top: 2px solid black; margin-top: 15px; padding-top: 15px;">
+            
+            {% if this.data.coinciden_docentes_moodle %}
+                <div class="alert alert-info text-left">{{ "moodle.con_curso.docentes_comision_coinciden_moodle" | trans }}</div>
+            {% else %}
+                <div class="alert text-left">{{ "moodle.con_curso.docentes_comision_no_coinciden_moodle" | trans }}</div>
+                <a id="js-btn-actualizar-docentes" href="#" class="btn btn-warning">{{ "moodle.con_curso.actualizar_docentes" | trans }}</a>
+            {% endif %}
+            
+        </div>
+            
+        <div style="border-top: 2px solid black; margin-top: 15px; padding-top: 15px;">
+            
+            {% if this.data.coinciden_alumnos_moodle %}
+                <div class="alert alert-info text-left">{{ "moodle.con_curso.alumnos_comision_coinciden_moodle" | trans }}</div>
+            {% else %}
+                <div class="alert text-left">{{ "moodle.con_curso.alumnos_comision_no_coinciden_moodle" | trans }}</div>
+                <a id="js-btn-actualizar-alumnos" href="#" class="btn btn-warning">{{ "moodle.con_curso.actualizar_alumnos" | trans }}</a>
+            {% endif %}
+            
+        </div>
+            
+    {% endif %}
+    
+
+{% endblock %}

@@ -1,0 +1,46 @@
+<?php
+require_once ('guarani_instalacion_conf.php');
+
+/**
+	En este lugar cada desarrollador o tester 
+	puede alterar los valores de la configuración de instalación de la base de negocio
+	También puede armar sus propios juegos de datos personalizados a cargarse 
+	Estos juegos de datos personalizados consisten en agrupar los juegos de datos de prueba que quisiera que se carguen
+	
+	Al cargarse los datos de pruebaque figuran en una lista Custom, se obviará 
+	el parametro 'cargar' de los datos de prueba que allí figuren
+
+	Al ejecutar toba proyecto instalar si no existiera un juego de datos personalizado (custom)
+	se cargan los datos de prueba que tengan 'cargar' en true
+	Si hay juegos de datos personalizados se cargar los que tengan 'cargar' en true (normalmente debería haber sólo 1)
+	
+	Si se utiliza el modificador -j xxxx en la línea de comando
+	se cargará el juego de datos personalizados xxxx
+	Si no hubiera juegos de datos personalizados se cargará el juego de datos de prueba xxxx
+	Si no se especifica un código de juego se desplegará la lista de juegos de datos personalizados
+	si no hubiera, se desplegará la lista de juegos de datos de prueba
+	A partir de la lista se podrá seleccionar el o los juegos que se quisiera cargar
+
+*/
+
+class guarani_instalacion_conf_personal extends guarani_instalacion_conf
+{
+	function __construct($manejador)
+	{
+		parent::__construct($manejador);
+
+		$this->objetos['lenguajes']	= array('nombre' => 'Lenguajes'			, 'dir' => 'Lenguajes'			, 'orden' => -5 , 'parsear' => false	, 'cargar' => true	);
+
+		$this->datos_prueba 	= array(
+		
+			'pre-planes' 	=> array('nombre' => 'Datos basicos para la pre-carga de planes.' , 'dir' => 'juegos_de_datos/pre_planes'	, 'orden' => 1	, 'cargar' => false),
+			'plan-1' 	    => array('nombre' => 'Datos del primer plan.'		                  , 'dir' => 'juegos_de_datos/1er_Plan'	  , 'orden' => 2	, 'cargar' => false),
+			'plan-2' 	    => array('nombre' => 'Datos del segundo plan.'	                  , 'dir' => 'juegos_de_datos/2do_Plan'	  , 'orden' => 3	, 'cargar' => false),
+			'pos-planes' 	=> array('nombre' => 'Datos finalización de planes.'	            , 'dir' => 'juegos_de_datos/pos_planes'	, 'orden' => 4	, 'cargar' => false)
+			
+							);
+
+	}
+}
+
+?>										

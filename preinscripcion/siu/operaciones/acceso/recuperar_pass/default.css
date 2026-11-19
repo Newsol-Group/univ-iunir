@@ -1,0 +1,11 @@
+#frameRC {
+	border: 0;
+}
+
+#form .notificaciones {
+    margin-top: 10px;
+}
+
+#form #continuar, #form .volver {
+    margin-top: 10px;
+}

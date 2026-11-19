@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="38000821" descripcion="toba_ci">
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:38000821">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+			<columna nombre="subclase" valor="ci_rep_docentes_nsg" valor_original="ci_rep_docentes"/>
+			<columna nombre="subclase_archivo" valor="operaciones/docentes/ci_rep_docentes_nsg.php" valor_original="operaciones/docentes/ci_rep_docentes.php"/>
+		</registro>
+	</tabla>
+</componente>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="32000447" descripcion="toba_ei_cuadro">
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:32000447">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ei_cuadro_columna">
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="32000447"/>
+			<columna nombre="objeto_cuadro_col" valor="770000998"/>
+			<columna nombre="clave" valor="fecha_inicio_tramite"/>
+			<columna nombre="orden" valor="8"/>
+			<columna nombre="titulo" valor="Fecha Inicio Trámite"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="8"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+	</tabla>
+</componente>

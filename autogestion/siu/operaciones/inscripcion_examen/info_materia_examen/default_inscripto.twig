@@ -1,0 +1,39 @@
+{#
+	Entrada:  mesa, materia, url_baja, csrf
+#}
+
+<div class="info-inscripcion">
+
+	<p class="fecha">{{ mesa.fecha_visual }} {{ mesa.hora_inicio }}</p>
+
+	<ul class="llamado_mesa_info unstyled">
+		<li><span>{{ 'turno'|trans|capitalize }}:</span> <span class="resaltado">{{ mesa.turno_examen_nombre}} </span></li>
+		<li><span>{{ 'tipo_inscripcion'|trans|capitalize }}:</span> <span class="resaltado">{{ mesa.INSCRIPTO_COMO }}</span></li>
+		<li><span>{{ 'ubicacion'|trans|capitalize }}:</span> <span class="resaltado">{{ mesa.ubicacion_nombre }}</span></li>
+		<li><span>{{ 'mesa'|trans|capitalize }}:</span> <span class="resaltado">{{ mesa.mesa_examen_nombre }}</span></li>
+		<li><span>{{ 'llamado'|capitalize }}:</span> <span class="resaltado">{{  mesa.llamado_nombre }}</span></li>
+		<li class="catedra"><span>{{ 'catedra'|trans|capitalize }}:</span> {{ mesa.catedra_nombre ? mesa.catedra_nombre | raw : '-' }}</li>
+		<li class="docente"><span>{{ 'docentes'|trans|capitalize	}}:</span> {{ mesa.docentes ? mesa.docentes | raw : '-' }}</li>
+	</ul>
+
+	<div class='comprobante-examen' data-img='{{mesa.URL_COMP}}' data-msg-toggle='<i class="comprobante"></i> {{"esconder_comprobante"|trans|capitalize}}'>
+		<a href='#'><i class="comprobante"></i> {{"mostrar_comprobante"|trans|capitalize}}</a>
+		<div class='img-placeholder hide'>
+			<div class="comprobante-actions">
+				<a class='btn btn-small js-print-comprobante' data-img='{{ mesa.URL_IMP_COMP }}'><i class="icon-print"></i> {{'imprimir'|trans|capitalize}}</a>
+				<a class='btn btn-small js-mail-comprobante' href='{{ mesa.URL_MAIL_COMP }}'><i class="icon-envelope"></i> {{'enviar_por_mail'|trans|capitalize}}</a>
+			</div>
+		</div>
+	</div>
+</div>
+{% if mesa.puede_desinscribirse == 1 %}
+<div class='acciones'>
+	<form class="form_baja" id_item="{{ mesa.mesa_examen }}" name="{{ mesa.mesa_examen }}" action='{{ url_baja }}' method='POST'>
+		<input type="hidden" name="materia" value="{{ materia }}" />
+		<input type="hidden" name="inscripcion" value="{{ mesa.ID_INSCRIPCION }}" />
+		{% import "kernel/macro_csrf.twig" as input_csrf %}
+		{{ input_csrf.mostrar(csrf) }}
+		<button type='submit' id="btnsubmit_{{ mesa.key }}" class="btn btn-small"><i class="icon-remove"></i> {{ 'dar_baja'|trans|capitalize }}</button>
+	</form>
+</div>
+{% endif %}

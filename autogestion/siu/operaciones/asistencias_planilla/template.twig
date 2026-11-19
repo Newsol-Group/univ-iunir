@@ -1,0 +1,15 @@
+{% extends "kernel/una_columna.twig" %}
+{% block titulo_operacion %}
+	<h2 class="clearfix">
+		<span class="pull-left">{{"tit_asistencias_planilla"|trans|capitalize}}</span>
+	</h2>
+{% endblock %}
+{% block columna_1 %}
+
+    {% if tiene_banda_horaria_asignada %}
+        {{ planilla.render }}
+    {% else %}
+        <div class="alert">{{ 'asistencias.planilla.sin_clases' | trans }}</div>
+    {% endif %}
+
+{% endblock %}

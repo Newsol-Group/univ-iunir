@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000224" descripcion="toba_datos_tabla">
+	<tabla nombre="apex_objeto">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000224"/>
+			<columna nombre="clase_proyecto" valor="toba"/>
+			<columna nombre="clase" valor="toba_datos_tabla"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+			<columna nombre="nombre" valor="DT - nsg_forma_pago_x_propuesta"/>
+			<columna nombre="fuente_datos_proyecto" valor="guarani"/>
+			<columna nombre="fuente_datos" valor="guarani"/>
+			<columna nombre="creacion" valor="2022-03-09 20:52:03"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_db_registros">
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000224"/>
+			<columna nombre="punto_montaje" valor="1"/>
+			<columna nombre="ap" valor="1"/>
+			<columna nombre="tabla" valor="nsg_forma_pago_x_propuesta"/>
+			<columna nombre="modificar_claves" valor="0"/>
+			<columna nombre="fuente_datos_proyecto" valor="guarani"/>
+			<columna nombre="fuente_datos" valor="guarani"/>
+			<columna nombre="permite_actualizacion_automatica" valor="1"/>
+			<columna nombre="esquema" valor="negocio_nsg"/>
+			<columna nombre="esquema_ext" valor="negocio"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_db_registros_col">
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000224"/>
+			<columna nombre="col_id" valor="770000190"/>
+			<columna nombre="columna" valor="forma_pago_x_propuesta"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="1"/>
+			<columna nombre="secuencia" valor="nsg_forma_pago_x_propuesta_seq"/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="nsg_forma_pago_x_propuesta"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000224"/>
+			<columna nombre="col_id" valor="770000191"/>
+			<columna nombre="columna" valor="propuesta"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="nsg_forma_pago_x_propuesta"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000224"/>
+			<columna nombre="col_id" valor="770000192"/>
+			<columna nombre="columna" valor="forma_pago"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="nsg_forma_pago_x_propuesta"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000224"/>
+			<columna nombre="col_id" valor="770000304"/>
+			<columna nombre="columna" valor="corresponde_arancel_inscrp"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="1"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="nsg_forma_pago_x_propuesta"/>
+		</registro>
+	</tabla>
+</componente>

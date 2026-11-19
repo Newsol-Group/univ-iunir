@@ -1,0 +1,15 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+<div class="titulo_operacion">
+	<h2 class="clearfix">
+		<span class="pull-left">{{'header.menu.reporte_actas'|trans|capitalize}}</span>
+		<span class="pull-right" for="js-filtro_origen" style="font-size: 16px;">{{'reporte_actas.origen'|trans}}:
+			<select id="js-filtro_origen" name="filtro_origen" style="color: #000000; height: 23px; padding: 2px 6px;">
+			{% for origen, nombre in this.data.origen %}
+				<option value="{{origen}}"{% if this.data.origen_actual == origen %} selected{% endif %}>{{nombre|capitalize}}</option>
+			{% endfor %}
+			</select>
+		</span>
+	</h2>
+</div>
+{% endblock %}

@@ -1,0 +1,60 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+
+    {% if this.data.encuestas_resultados|length > 0 %}
+
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th class="centrado">{{ 'encuestas_resultados.relevamiento' | trans }}</th>
+                    <th class="centrado">{{ 'encuestas_resultados.titulo' | trans }}</th>
+                    <th class="centrado">{{ 'encuestas_resultados.encuestados' | trans }}</th>
+                    <th class="centrado">{{ 'encuestas_resultados.respondidas' | trans }}</th>
+                    <th class="centrado"></th>
+                </tr>
+            </thead>
+
+            <tbody>
+                
+                {% for encuesta_resultado in this.data.encuestas_resultados %}
+                    
+                    <tr>
+                        <td>{{ encuesta_resultado.habilitacion_titulo }}</td>
+                        <td>{{ encuesta_resultado.encuesta_titulo }}</td>
+                        <td class="centrado">{{ encuesta_resultado.cant_encuestados}}</td>
+                        <td class="centrado">{{ encuesta_resultado.cant_respondidas}}</td>
+                        <td class="centrado">
+                            
+                            {%if encuesta_resultado.cant_encuestados > 0 %}
+                                
+                                <a class="btn btn-small btn-primary" id="btn_ver" data-encuesta="{{ encuesta_resultado.kolla_id_encuesta_hash }}"
+                                   data-formulario="{{ encuesta_resultado.formulario_hash }}" data-habilitacion="{{ encuesta_resultado.kolla_id_habilitacion_hash }}"
+                                   data-unidad_gestion="{{ encuesta_resultado.kolla_unidad_gestion }}" data-comision="{{ encuesta_resultado.comision }}"
+                                   type="button" data-encuesta="{{ encuesta_resultado.encuesta }}">
+                                    {{ 'encuestas_resultados.ver' | trans }}
+                                </a>
+                                
+                            {%endif%}
+                            
+                        </td>
+                    </tr>
+                    
+                {% endfor %}
+                
+            </tbody>
+        </table>
+        <div id="codigo_recuperacion" class="modal hide fade"></div>
+        <div id="encuesta_respondida_kolla" class="modal hide fade"></div>
+
+    {% elseif this.data.encuestas_resultados is defined %}
+
+        <div class="alert">{{ 'encuestas_resultados.sin_resultados' | trans }}</div>
+
+    {% else  %}
+
+        <div class="alert">{{ 'encuesta_resultados_docente.selecione_filtros' | trans }}</div>
+
+    {% endif %}
+
+{% endblock %}
+

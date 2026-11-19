@@ -1,0 +1,128 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}    
+	<div class="row-fluid">
+		<div class="span6">
+			<div class="formulario">    
+				<h3 class="titulo clearfix"><span class="pull-left">{{ "configuracion.titulo.notificaciones_mail"|trans|capitalize }}</span>
+					<a class="btn btn-small btn-info pull-right" id="js-btn-guardar-checks">{{ "guardar"|trans|capitalize }}</a>
+				</h3>
+				<form method="post" action="{{this.data.url_guardar_checks}}" id="js-form-checks" class="form-horizontal">
+					<div class="control-group" id="email-control-group">
+						<label class="control-label" for="mail">{{ "configuracion.label.mail"|trans|capitalize }}</label>
+						<div class="controls">
+							<input id="mail" name="mail" type="text" value="{{this.data.checks.email}}" class="js-obligatorio" pattern="^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$"/>
+						</div>
+					</div>
+					{% if this.data.checks.email_temporal %}
+					<div class="alert alert-warning" id="alert_solicitud_confirmacion_email_enviada">
+						{{  'configuracion.mensaje.mail_temporal'|trans({
+								'%mail%': this.data.checks.email_temporal
+							})|raw
+						}}
+					</div>
+					{% endif %}
+
+					<div class="control-group" id="checks-notificaciones">
+						<div class="controls">
+						    <input id="mail-notificacion" name="mail-notificacion" type="checkbox" class="js-obligatorio"{% if this.data.checks.recibe_mail_mensajes == "1" %} checked="checked"{% endif %} />
+                            <label for="mail-notificacion" class="checkbox" style="cursor: default;">{{ "configuracion.label.notificaciones_anuncios"|trans|capitalize }}</label>
+						</div>
+					</div>
+					<div id="mensaje-checks" class="mensaje-ok"></div>
+
+				</form>
+            </div>
+            </div>
+        <div class="span6">
+
+            <h3 class="titulo clearfix"><span
+                        class="pull-left">{{ "configuracion.titulo.cambiar_password"|trans|capitalize }}</span>
+                <a class="btn btn-small btn-info pull-right"
+                   id="js-btn-guardar-password">{{ "guardar"|trans|capitalize }}</a>
+            </h3>
+
+            <form method="post" action="{{ this.data.url_guardar_pass }}" id="js-form-pass" class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label"
+                           for="password_actual">{{ "configuracion.label.password_actual"|trans|capitalize }}</label>
+
+                    <div class="controls">
+                        <input id="password_actual" name="password_actual" type="password"
+                               class="input-medium js-obligatorio" maxlength="20"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"
+                           for="password">{{ "configuracion.label.password_nuevo"|trans|capitalize }}</label>
+
+                    <div class="controls">
+                        <input id="password" name="password" type="password" class="input-medium js-obligatorio"
+                               maxlength="20"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label"
+                           for="password1">{{ "configuracion.label.password_repetir"|trans|capitalize }}</label>
+
+                    <div class="controls">
+                        <input id="password1" name="password1" type="password" class="input-medium js-obligatorio"
+                               maxlength="20"/>
+                    </div>
+                </div>
+            </form>
+			</div>
+		</div>					
+
+	{% if this.data.perfiles_cant > 1 %}
+			<div class="row-fluid">
+				<div class="span6"> 
+				<h3 class="titulo clearfix"><span
+							class="pull-left">{{ "configuracion.titulo.perfil_default"|trans|capitalize }}</span>
+					<a class="btn btn-small btn-info pull-right"
+					   id="js-btn-guardar-perfil">{{ "guardar"|trans|capitalize }}</a>
+				</h3>
+				<form method="post" action="{{ this.data.url_guardar_perfil_def }}" id="js-form-perfil">
+					<label for="js-select-perfil-def"> {{ "configuracion.label.seleccione_perfil"|trans|capitalize }} </label>	
+						<div class="controls">
+						<div class="input-append">
+							<select id="js-select-perfil-def">
+							{% for perfil in this.data.perfiles %}
+								{% set selected = (this.data.perfil_sugerido == perfil) ? 'selected=selected' : '' %}
+								<option title="{{ perfil|trans|capitalize }}" value="{{ perfil }}" {{ selected }}>{{ perfil}}</option>
+							{% endfor %}
+							</select>
+						</div>    
+						</div>							
+				</form>		
+				</div>
+			</div>
+	{% endif %}
+        
+        {% if this.data.propuestas_cant > 1 %}
+            <div class="row-fluid">
+                <div class="span6"> 
+                    <h3 class="titulo clearfix">
+                        <span class="pull-left">{{ "configuracion.titulo.propuesta_default"|trans|capitalize }}</span>
+                        <a class="btn btn-small btn-info pull-right" id="js-btn-guardar-propuesta">{{ "guardar"|trans|capitalize }}</a>
+                    </h3>
+                    <form method="post" action="{{ this.data.url_guardar_propuesta_inicial }}" id="js-form-propuesta">
+                        <label for="js-select-propuesta-def"> {{ "configuracion.label.seleccione_propuesta"|trans|capitalize }} </label>	
+                        <div class="controls">
+                            <div class="input-append">
+                                <select id="js-select-propuesta-def">
+                                    {% if this.data.propuesta_inicial is empty %}
+                                        <option id="js-propuesta-option-seleccione" title="{{ "configuracion.label.seleccione" | trans }}" value="">{{ "configuracion.label.seleccione" | trans }}</option>
+                                    {% endif %}
+                                    {% for propuesta in this.data.propuestas %}
+                                        {% set selected = (this.data.propuesta_inicial == propuesta.id) ? 'selected=selected' : '' %}
+                                        <option title="{{ propuesta.nombre }}" value="{{ propuesta.id }}" {{ selected }}>{{ propuesta.nombre|truncate(40) }}</option>
+                                    {% endfor %}
+                                </select>
+                            </div>    
+                        </div>							
+                    </form>		
+                </div>
+            </div>
+        {% endif %}
+
+{% endblock %}

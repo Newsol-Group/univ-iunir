@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000325" descripcion="toba_cn">
+	<tabla nombre="apex_objeto">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000325"/>
+			<columna nombre="clase_proyecto" valor="toba"/>
+			<columna nombre="clase" valor="toba_cn"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+			<columna nombre="subclase" valor="cn_man_administracion_solicitud_constancias_nsg"/>
+			<columna nombre="subclase_archivo" valor="nucleo/constancias/administrar_solicitudes/cn_man_administracion_solicitud_constancias_nsg.php"/>
+			<columna nombre="nombre" valor="IUNIR -Manejador de Administración de Solicitud de Constancias"/>
+			<columna nombre="colapsable" valor="0"/>
+			<columna nombre="fuente_datos_proyecto" valor="guarani"/>
+			<columna nombre="fuente_datos" valor="guarani"/>
+			<columna nombre="creacion" valor="2011-10-11 15:11:33"/>
+		</registro>
+	</tabla>
+</componente>

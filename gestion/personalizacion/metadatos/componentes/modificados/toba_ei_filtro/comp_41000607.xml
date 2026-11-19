@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="41000607" descripcion="toba_ei_filtro">
+	<tabla nombre="apex_objeto_ei_filtro_col">
+		<registro estado="2" clave="objeto_ei_filtro_proyecto:guarani;objeto_ei_filtro:41000607;objeto_ei_filtro_col:41000478">
+			<columna nombre="inicial" valor="1" valor_original="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_ei_filtro_col" valor="770000230"/>
+			<columna nombre="objeto_ei_filtro" valor="41000607"/>
+			<columna nombre="objeto_ei_filtro_proyecto" valor="guarani"/>
+			<columna nombre="tipo" valor="opciones"/>
+			<columna nombre="nombre" valor="pago"/>
+			<columna nombre="expresion" valor="pago"/>
+			<columna nombre="etiqueta" valor="Está pago?"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="inicial" valor="0"/>
+			<columna nombre="orden" valor="9"/>
+			<columna nombre="opciones_es_multiple" valor="0"/>
+			<columna nombre="opciones_ef" valor="ef_combo"/>
+			<columna nombre="carga_fuente" valor="guarani"/>
+			<columna nombre="carga_lista" valor="S/Sí, N/No"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="carga_no_seteado_ocultar" valor="0"/>
+			<columna nombre="punto_montaje" valor="1"/>
+		</registro>
+	</tabla>
+</componente>

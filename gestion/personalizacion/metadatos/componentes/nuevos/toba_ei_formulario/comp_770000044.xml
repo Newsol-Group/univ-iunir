@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000044" descripcion="toba_ei_formulario">
+	<tabla nombre="apex_objeto">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000044"/>
+			<columna nombre="clase_proyecto" valor="toba"/>
+			<columna nombre="clase" valor="toba_ei_formulario"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+			<columna nombre="nombre" valor="Tipos de Convenios Facturación- editor - tipo_convenio_fact"/>
+			<columna nombre="colapsable" valor="0"/>
+			<columna nombre="fuente_datos_proyecto" valor="guarani"/>
+			<columna nombre="fuente_datos" valor="guarani"/>
+			<columna nombre="creacion" valor="2009-06-11 12:45:27"/>
+			<columna nombre="posicion_botonera" valor="abajo"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_eventos">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="evento_id" valor="770000037"/>
+			<columna nombre="objeto" valor="770000044"/>
+			<columna nombre="identificador" valor="modificacion"/>
+			<columna nombre="etiqueta" valor="&amp;Modificar"/>
+			<columna nombre="maneja_datos" valor="1"/>
+			<columna nombre="imagen_recurso_origen" valor="apex"/>
+			<columna nombre="en_botonera" valor="0"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="implicito" valor="1"/>
+			<columna nombre="defecto" valor="0"/>
+			<columna nombre="es_seleccion_multiple" valor="0"/>
+			<columna nombre="es_autovinculo" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ut_formulario">
+		<registro>
+			<columna nombre="objeto_ut_formulario_proyecto" valor="guarani"/>
+			<columna nombre="objeto_ut_formulario" valor="770000044"/>
+			<columna nombre="ancho" valor="100%"/>
+			<columna nombre="ancho_etiqueta" valor="100px"/>
+			<columna nombre="expandir_descripcion" valor="0"/>
+			<columna nombre="filas_agregar_online" valor="1"/>
+			<columna nombre="filas_agregar_abajo" valor="0"/>
+			<columna nombre="filas_borrar_en_linea" valor="0"/>
+			<columna nombre="filas_ordenar_en_linea" valor="0"/>
+			<columna nombre="no_imprimir_efs_sin_estado" valor="0"/>
+			<columna nombre="resaltar_efs_con_estado" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ei_formulario_ef">
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000013"/>
+			<columna nombre="objeto_ei_formulario" valor="770000044"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="descripcion"/>
+			<columna nombre="elemento_formulario" valor="ef_editable_textarea"/>
+			<columna nombre="columnas" valor="descripcion"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="etiqueta" valor="Descripción"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="edit_tamano" valor="80"/>
+			<columna nombre="edit_maximo" valor="255"/>
+			<columna nombre="edit_filas" valor="4"/>
+			<columna nombre="edit_columnas" valor="150"/>
+			<columna nombre="edit_resaltar" valor="0"/>
+			<columna nombre="edit_ajustable" valor="0"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+	</tabla>
+</componente>

@@ -1,0 +1,22 @@
+# Instancia genérica. Completar valores verificados al adoptar G3Forge.
+[cliente]
+nombre = "Universidad Rosario"
+codigo = "univ-iunir"
+
+[aplicaciones.gestion]
+presente = false
+version = "desconocida"
+ruta = "gestion"
+
+[aplicaciones.autogestion]
+presente = false
+version = "desconocida"
+ruta = "autogestion"
+
+[aplicaciones.preinscripcion]
+presente = false
+version = "desconocida"
+ruta = "preinscripcion"
+
+# Las apps 'presente=false' no afirman ausencia en servidores: solo indican
+# que aún no se verificó código fuente en la copia local del repositorio.

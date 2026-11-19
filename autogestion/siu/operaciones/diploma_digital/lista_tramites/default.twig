@@ -1,0 +1,47 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+    
+    {% if this.data.error_descarga %}
+        <div class="alert alert-error">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ this.data.error_descarga | raw }}
+        </div>
+    {% endif %}
+        
+    {%  if this.data.tramites %}
+        
+        <table class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>{{ "diploma_digital.certificacion" | trans }}</th>
+                    <th>{{ "diploma_digital.certificado_analitico" | trans }}</th>
+                    <th>{{ "diploma_digital.diploma" | trans }}</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tramite in this.data.tramites %}
+                <tr>
+                    <td>{{ tramite.certificado_nombre }}</td>
+                    <td class="td-descargar">
+                        <a style="visibility: visible !important;" class="btn btn-primary js-descargar no-ajax {% if not tramite.analitico.id_documento_digital %}disabled{% endif %}" href="{{ tramite.analitico.url }}" {% if tramite.analitico.mensaje %}data-placement="top" data-toggle="tooltip" data-original-title="{{ tramite.analitico.mensaje }}"{% endif %}>
+                            <i class="icon-download-alt icon-white"></i> {{ "diploma_digital.descargar" | trans }}
+                        </a>
+                    </td>
+                    <td class="td-descargar">
+                        <a style="visibility: visible !important;" class="btn btn-primary js-descargar no-ajax {% if not tramite.diploma.id_documento_digital %}disabled{% endif %}" href="{{ tramite.diploma.url }}" {% if tramite.diploma.mensaje %}data-placement="top" data-toggle="tooltip" data-original-title="{{ tramite.diploma.mensaje }}"{% endif %}>
+                            <i class="icon-download-alt icon-white"></i> {{ "diploma_digital.descargar" | trans }}
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+            
+    {%  else %}
+        
+        <div class="alert">{{ "diploma_digital.sin_tramites" | trans }}</div>
+        
+    {%  endif %}
+        
+{% endblock %}
+

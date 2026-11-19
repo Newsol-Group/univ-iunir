@@ -1,0 +1,55 @@
+#frameRC {
+	border: 0;
+}
+#otra_persona{
+    border-top: solid #0088CC;
+    padding-top: 20px;
+    margin-top: 20px;
+}
+
+#form #validar{
+    margin-left: 2.0744680846382977%;
+    margin-top: 20px;
+}
+
+
+#form .divNroTramite{
+    margin-left: 0;
+}
+
+#form #js_nro_documento {
+    display: none;
+}
+
+#form #js_nro_tramite_dni {
+    display: none;
+}
+
+#form #js_ayuda_numero_tramite {
+    display: none;
+}
+
+#form #js_renaper {
+    display: none;
+}
+
+#form #info_dni_en_tramite {
+    padding-left: 5px;
+    display: initial;
+}
+
+.popover-title {
+    padding: 0px 0px;
+    margin: 0;
+    font-size: 14px;   
+    border-radius: 2px 2px 0 0;
+}
+select {
+    background-color: white;
+}
+
+#form_crear_usuario-password, 
+#form_crear_usuario-rpassword, 
+#form_crear_usuario-respuesta_secreta{
+    width: 88%;
+}

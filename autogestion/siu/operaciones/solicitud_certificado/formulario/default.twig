@@ -1,0 +1,47 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}	
+	{% if (this.data.id_form) %}
+		<form method="post" action="{{this.data.url_form}}" id="js-form-certificado" class="form-horizontal">
+		{% if (this.data.id_form and this.data.form_argumentos) %}
+		<h3 class="clearfix"><span class="pull-left">
+			{{this.data.form_argumentos.nombre|trans|capitalize}}
+			{{ this.data.form_argumentos.solicitud_pendiente == "S" ? '<i class="icon-ok"></i>' : ''}}</span>
+			<button id="js-btn-solicitar" type="button" name="solicitar" class="btn btn-info pull-right">{{"form.solicitar"|trans|capitalize}}</button>
+		</h3>
+		<div class="form-container">
+			<div id="mensaje" class="alert alert-error hide">				
+			</div>
+			<div class="row">
+				<input type="hidden" value="{{this.data.form_argumentos.id}}" name="nro_certificado" id="nro_certificado" />
+			{% for argumento in this.data.form_argumentos.argumentos %}
+				<div class="control-group">			
+					<div class="control-label">
+						<label>{{argumento.5|trans|capitalize}}: </label>
+					</div>
+					<div class="controls">						
+						<input type="text" maxlength="255" value="{{argumento.3}}" name="args[{{argumento.0}}]" id="{{argumento.1}}" {{ argumento.4 == "N" ? 'readonly="readonly"' : ''}} />
+					</div>
+				</div>
+			{% endfor %}
+				<div class="control-group">
+					<div class="control-label">
+						<label>{{"form.cantidad_copias"|trans|capitalize}}: </label>
+					</div>
+					<div class="controls">
+						<select name="cantidad" id="cantidad">
+							{% for i in 1..this.data.form_argumentos.maximo_copias %}
+								<option value="{{ i }}">{{ i }}</option>
+							{% endfor %}
+						</select>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endif %}		
+		</form>
+	{% else %}
+	<div id="mensaje" class="alert alert-info">
+		<strong>Seleccione un certificado</strong>
+	</div>
+	{% endif %}
+{% endblock %}

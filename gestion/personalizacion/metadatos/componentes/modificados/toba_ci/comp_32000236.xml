@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="32000236" descripcion="toba_ci">
+	<tabla nombre="apex_objeto_ci_pantalla">
+		<registro estado="2" clave="objeto_ci_proyecto:guarani;objeto_ci:32000236;pantalla:32000082">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="###$$$NULL$$$###"/>
+		</registro>
+	</tabla>
+</componente>

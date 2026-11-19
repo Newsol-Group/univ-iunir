@@ -1,0 +1,255 @@
+{#
+	Entrada: es_insc_prioridad, comision, csrf
+#}
+
+{% import _self as current_file_macros %}
+
+{% set materia_id = (prueba_stress_habilitada)? materia_id : '' %}
+{% set comision_id = (prueba_stress_habilitada)? comision.comision : '' %}
+
+<h4><i class="icon-arrow-right"></i> {{"comision"|trans|capitalize}}: {{ comision.comision_nombre }} - {{ comision.periodo_lectivo_nombre }}</h4>
+<div class='comision_info '>
+	{% if comision.catedra %}
+            <div class="row-fluid">
+                <div class='span3'>{{"catedra"|trans|capitalize}}:</div>
+                <div class="span9">{{ comision.catedra_nombre }}</div>
+            </div>
+	{% endif %}
+        
+        <div class="row-fluid">
+            <div class='span3'>{{"instancias"|trans|capitalize}}:</div>
+            <div class="span9">{{comision.instancias}}</div>
+        </div>
+        
+        <div class="row-fluid">
+            <div class='span3'>{{"modalidades"|trans|capitalize}}:</div>
+            <div class="span9">{{comision.modalidades}}</div>
+        </div>
+
+	{% if comision.subcomisiones %}
+	</div> {# comision_info #}
+	<div class='subcomisiones'>
+		{{current_file_macros.subcomisiones(es_insc_prioridad, comision.actividad, comision.ID, comision.subcomisiones, comision.URL_INSCRIBIRSE, csrf, comision.comision_observaciones, materia_id, comision_id, comision.inscripcion_cerrada)}}
+	</div>
+{% else %}
+	<ul class="unstyled lista-comisiones">
+		{% if comision.turno %}
+                        <div class="row-fluid">
+                            <div class='turno {{ comision.turno|lower }} span3'>{{"turno"|trans|capitalize}}:</div>
+                            <div class="span9">{{comision.turno_nombre}}</div>
+                        </div>
+			{% endif %}
+                        
+                {# Si NO usa inscripción por prioridad muestro cupo y barra de progreso #}
+                {% if not es_insc_prioridad %}
+                <li>
+                        <div class="row-fluid">
+                            <div class='span3'>{{"cupo"|trans|capitalize}}:</div>
+                            <div class="span9">{% if comision.cupo_definido %} {{ comision.cupo }} {% else %} {{"cupo_sin_definir"|trans|capitalize}}  {% endif %} | {{"inscriptos"|trans|capitalize}}: {{ comision.cant_inscriptos }}</div>
+                        </div>
+				{% if comision.cupo_definido %}
+					<div class='progress'>
+						{% set porcentaje = comision.porcentaje_cupo %}
+						{% if porcentaje >= 90 and porcentaje < 100 %}
+							{% set barra = 'bar-warning' %}
+						{% elseif porcentaje >= 100 %}
+							{% set barra = 'bar-danger' %}
+						{% else %}
+							{% set barra = 'bar-success' %}
+						{% endif%}
+						<div class='bar {{barra}}' style='width: {{ porcentaje ~ '%' }}'></div>
+						<div class="info-progress">
+							{{ porcentaje ~ '%' }}
+						</div>
+					</div>
+				{% endif %}
+		</li>
+                {% endif %}
+                
+		{% if comision.horario %}
+			<li>
+                            <div class="row-fluid">
+                                <div class='horario span3'>{{"horario"|trans|capitalize}}:</div>
+                                <div class="span9">{{ comision.horario }}</div>
+                            </div>
+                        </li>
+			{% endif %}
+		<li class='docente'>
+                    <div class="row-fluid">
+                        <div class='span3'>{{'info_materia.docentes'|trans}}:</div>
+                        <div class="span9">{{ comision.docente }}</div>
+                    </div>
+                </li>
+			{% if comision.comision_observaciones != '' %}
+                        <div class="row-fluid">
+                            <div class='observaciones span3'>{{'info_materia.observaciones'|trans}}:</div>
+                            <div class="span9">{{ comision.comision_observaciones }}</div>
+                        </div>
+			{% endif %}
+
+	</ul>
+
+</div> {# comision_info #}
+		
+{{current_file_macros.form_inscribirse(es_insc_prioridad, csrf, comision.URL_INSCRIBIRSE, comision.actividad, comision.ID, materia_id, comision_id, comision.inscripcion_cerrada)}}
+
+
+{% endif %}
+
+
+{% macro subcomisiones(es_insc_prioridad, materia, comision, subcomisiones, url, csrf, observaciones, materia_id, comision_cod, inscripcion_cerrada) %}
+
+        {% import _self as current_file_macros %}
+    
+        <form class='form_inscribir form_inscribir_subcomisiones clearfix form-horizontal' action='{{ url }}' method='POST'>
+		{% for tipo, subcom_por_tipo in subcomisiones %}
+			{{ current_file_macros.fieldset_radio(tipo, subcom_por_tipo) }}
+		{% endfor %}
+
+		<input type="hidden" alt="{{ materia_id }}" value="{{ materia }}" name="materia" />
+		<input type="hidden" alt="{{ comision_cod }}" value="{{ comision }}" name="comision" />
+		{% import "kernel/macro_csrf.twig" as input_csrf %}
+		{{ input_csrf.mostrar(csrf) }}
+		{% if observaciones != '' %}
+			<span>{{'info_materia.observaciones'|trans}}: {{observaciones}}</span><br>
+                        
+		{% endif %}
+                
+                {{ current_file_macros.botones_inscripcion(es_insc_prioridad, inscripcion_cerrada, comision) }}
+	</form>
+{% endmacro %}	
+
+{% macro botones_inscripcion(es_insc_prioridad, inscripcion_cerrada = false, comision = '') %}
+    
+    {% import _self as current_file_macros %}
+    
+    <div class="acciones">
+        
+        {% if es_insc_prioridad %}
+            
+            {% set btn_agregar_disabled = false %}
+            
+            {% if inscripcion_cerrada == 'S' %}
+                {% set btn_agregar_disabled = true %}
+                <div class="acciones pull-right">
+                    {{ current_file_macros.codigo_inscripcion_cerrada(comision, true) }}
+            {% endif %}
+            
+            <button 
+                class="btn btn-small js-toggle-activacion-insc-prioridad"
+                data-toggle-estado-activo="false"
+                data-toggle-texto-activado="{{"quitar"|trans}}"
+                data-toggle-texto-desactivado="{{"Agregar a inscripción"|trans}}" 
+                type="button" {% if btn_agregar_disabled %}disabled="disabled"{% endif %}>
+                {{"Agregar a inscripción"|trans}}
+            </button>
+            
+            {% if inscripcion_cerrada == 'S' %}
+                    <div style="clear: both;"></div>
+                </div>
+                <div style="clear: both;"></div>
+            {% endif %}
+                
+            <div class="btn-toolbar hide js-toolbar-ordenar-prioridad">
+                <div class="btn-group">
+                    <button class="btn btn-mini js-subir-prioridad"><i class="icon-arrow-up"></i></button>
+                    <button class="btn btn-mini js-bajar-prioridad"><i class="icon-arrow-down"></i></button>
+                </div>
+            </div>
+            
+        {% elseif inscripcion_cerrada == 'S' %}
+
+            <div class="acciones pull-right">
+
+                {{ current_file_macros.codigo_inscripcion_cerrada(comision) }}
+
+                <input type="submit" value="{{ 'inscribirse'|trans|capitalize }}" class="btn pull-left js-btn-inscribirse" disabled="disabled" />
+
+                <div style="clear: both;"></div>
+            </div>
+            <div style="clear: both;"></div>
+
+        {% else %}
+
+            <input type="submit" value="{{ 'inscribirse'|trans|capitalize }}" class="btn" />
+
+        {% endif %}
+        
+    </div>
+        
+{% endmacro %}
+
+{% macro form_inscribirse(es_insc_prioridad, csrf, url, materia, comision, materia_id, comision_cod, inscripcion_cerrada) %}
+   
+    {% import _self as current_file_macros %}
+    
+    <form class='form_inscribir form-horizontal' action='{{ url }}' method='POST'>
+        <input type="hidden" alt="{{ materia_id }}" value="{{ materia }}" name="materia" />
+        <input type="hidden" alt="{{ comision_cod }}" value="{{ comision }}" name="comision" />
+        {% import "kernel/macro_csrf.twig" as input_csrf %}
+        {{ input_csrf.mostrar(csrf) }}
+        {{ current_file_macros.botones_inscripcion(es_insc_prioridad, inscripcion_cerrada, comision) }}
+    </form>
+{% endmacro %}
+
+{% macro fieldset_radio(tipo, subcomisiones) %}
+	{% set tipo_nombre = subcomisiones.0.tipo_clase_nombre %}
+	<h4>{{tipo_nombre}}</h4>
+	<fieldset>
+
+		<ul class="unstyled lista-subcomisiones">
+			{% for subcomision in subcomisiones %}
+				<li class="clearfix">
+					<div class='subcomision_detalle pull-left'>
+						<label for="subcomision_{{ subcomision.__ID__ }}">
+							<h5>{{ subcomision.subcomision_nombre }}</h5>
+							<div class='horario'>
+								<span>{{"horario"|trans|capitalize}}: {{ subcomision.horario }}</span>
+								<div>
+									{% if subcomision.docente %}
+										{{"docentes"|trans|capitalize}}: {{ subcomision.docente }}
+									{% endif %}
+								</div>
+							</div>
+							<span>{{"cupo"|trans|capitalize}}: {% if subcomision.cupo_definido %} {{ subcomision.cupo }} {% else %} {{"cupo_sin_definir"|trans|capitalize}}  {% endif %} | {{"inscriptos"|trans|capitalize}}: {{ subcomision.cant_inscriptos }}</span>
+							{% if subcomision.cupo_definido %}
+								<div class='progress'>
+									{% set porcentaje = subcomision.porcentaje_cupo %}
+									{% if porcentaje >= 90 and porcentaje < 100 %}
+										{% set barra = 'bar-warning' %}
+									{% elseif porcentaje >= 100 %}
+										{% set barra = 'bar-danger' %}
+									{% else %}
+										{% set barra = 'bar-success' %}
+									{% endif%}
+									<div class='bar {{barra}}' style='width: {{ porcentaje ~ '%' }}'></div>
+									<div class="info-progress">
+										{{ porcentaje ~ '%' }}
+									</div>
+								</div>
+							{% endif %}
+						</label>
+					</div>
+					<div class='pull-right'>
+						<input 
+							id="subcomision_{{subcomision.__ID__}}" 
+							type="radio" 
+							name="subcomisiones[{{tipo}}]" 
+							value="{{subcomision.__ID__}}" 
+							/>
+					</div>
+				</li>
+			{% endfor %}
+		</ul>
+	</fieldset>
+{% endmacro %}
+
+{% macro codigo_inscripcion_cerrada(comision, es_insc_prioridad = false) %}
+    <div class="control-group pull-left" style="margin-right: 10px;">
+        <label class="control-label" for="codigo_inscripcion_cerrada">{{ "inscripcion_cursos.codigo_inscripcion" | trans }}</label>
+        <div class="controls">
+            <input id="js-cic-input-{{ comision }}" type="password" name="codigo_inscripcion_cerrada" class="codigo_inscripcion_cerrada input-small {% if es_insc_prioridad %}insc_prioridad{% endif %}" placeholder="ABC123" autocomplete="off">
+            <i data-id-input="js-cic-input-{{ comision }}" class="icon-eye-close js-cic-icon"></i>
+        </div>
+    </div>
+{% endmacro %}

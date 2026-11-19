@@ -1,0 +1,84 @@
+#formulario #btnLocPersonal {
+	margin-left: 10px;
+}
+
+/* CUADRO BUSQUEDA */
+#formulario #pais, #provincia, #cps {
+	width: 429px;
+}
+
+#localidad {
+	width: 418px;
+}
+
+#formulario #cuadroBuscarLocalidad {
+	width:450px;
+	margin-left: 200px;	
+	margin-top: 40px;
+	position: absolute;
+	display: none;
+	background: none repeat scroll 0 0 #F6F6F6;
+	border: 10px solid #999;
+	color: #514721;
+	z-index: 10;
+}
+
+#formulario #cuadroBuscarLocalidad .container {
+	width: auto;
+}
+
+#formulario #cuadroBuscarLocalidad .container .row {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+#formulario #cuadroBuscarLocalidad h2{
+	margin: 20px 10px 20px 0;
+	font-weight: normal;
+    font-size: 17px;
+	border-bottom: 1px dotted #224552;
+    color: #2093D1;
+    line-height: 21px;
+}
+
+#formulario #cuadroBuscarLocalidad #ajax-loader {
+	float: right; margin: 1px 10px 0 0; width: 20px; display: none;
+}
+
+
+#formulario #cuadroBuscarLocalidad #error_busqueda_provincia, #formulario #cuadroBuscarLocalidad #error_busqueda_localidad, #formulario #cuadroBuscarLocalidad #error_busqueda_cp {
+	display: none;
+	font-size: 11px;
+	line-height: 13px;
+}
+
+#formulario #cuadroBuscarLocalidad input[type="button"]{
+	background-color: #d9d9d9;
+}
+/*
+#formulario #cuadroBuscarLocalidad table {
+	clear: both; 
+	margin: 10px;
+	width: 375px;
+}
+*/
+#formulario .inline .control-group {
+	margin-right: 10px;
+	margin-left: 0;
+	float: left;
+}
+
+#formulario .inline input {
+	width: 100px;
+}
+
+#formulario .inline .control-label, #formulario .inline .controls {
+	margin-right: 10px;
+	margin-left: 0;
+  width: auto;
+	float: left;
+}
+
+#formulario .inline .controls {
+	clear: both;
+}

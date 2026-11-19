@@ -1,0 +1,10 @@
+{% extends "kernel/dos_columnas.twig" %}
+{% block titulo_operacion %}
+	<h2>{{ "alta_uc.tit_crear_usuario_cursos" | trans }}</h2>
+{% endblock %}
+{% block columna_1 %}
+	{{ contenido_alta.render }}
+{% endblock %}
+{% block columna_2 %}
+	{{ form.render }}
+{% endblock %}

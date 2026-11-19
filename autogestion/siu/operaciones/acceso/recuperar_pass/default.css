@@ -1,0 +1,12 @@
+#guarani_form_reset_pass .error_val {
+	background-color: #EED3D7;
+	color: #B94A48;	
+}
+
+#pais, #tipo_doc{
+    width: 300px;
+}
+
+#documento{
+    width: 287px;
+}

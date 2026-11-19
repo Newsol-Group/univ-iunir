@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="37000552" descripcion="toba_ci">
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:37000552">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+			<columna nombre="subclase" valor="ci_nav_administrar_solicitudes_constancias_nsg" valor_original="ci_nav_administrar_solicitudes_constancias"/>
+			<columna nombre="subclase_archivo" valor="operaciones/constancias/administrar_solicitudes/ci_nav_administrar_solicitudes_constancias_nsg.php" valor_original="operaciones/constancias/administrar_solicitudes/ci_nav_administrar_solicitudes_constancias.php"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ci_pantalla">
+		<registro estado="2" clave="objeto_ci_proyecto:guarani;objeto_ci:37000552;pantalla:37000194">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+		</registro>
+	</tabla>
+</componente>

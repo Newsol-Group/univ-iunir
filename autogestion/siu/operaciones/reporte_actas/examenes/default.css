@@ -1,0 +1,13 @@
+tr.examen
+{
+	cursor: pointer;
+}
+tr.examen:hover
+{
+	background-color: #eee;
+}
+.tachado
+{
+	text-decoration: line-through;
+	color: red;
+}

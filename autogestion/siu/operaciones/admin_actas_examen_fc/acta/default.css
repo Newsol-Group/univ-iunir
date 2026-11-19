@@ -1,0 +1,80 @@
+#acta .well {
+	padding-top: 0px;
+	padding-bottom: 0px;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+#acta h3 {
+	border-bottom: 1px solid #CCCCCC;
+}
+
+#acta .control-group {
+	margin-bottom: 0px;
+}
+
+#acta .cg-margen {
+	margin-bottom: 5px;
+}
+
+#acta #js-btn-agregar-docente {
+	/*margin-top: 24px; */
+}
+
+#acta .btn-detalle-escala {
+}
+
+#acta .form-ml td {
+	padding: 4px 8px;
+	border-top: none;
+	vertical-align: middle;
+}
+
+#acta .form-ml select {
+	margin-bottom: 0;
+}
+
+#acta select.select-hora {
+	width: 55px;
+}
+
+#acta .error {
+	color: #953B39;
+	border-color: #953B39;
+}
+
+#acta .form-ml-data-error select {
+	border-color: #953B39;
+}
+
+#acta .nota {
+    border-color: #3390D5;
+}
+
+#acta .popover-content {
+    color: #3390D5;
+    font-weight: bold;
+}
+
+#acta .popover.bottom .arrow:after {
+    border-bottom-color: #D6E6F5;
+}
+
+#acta .popover.bottom .arrow {
+    border-bottom-color: #3390D5;
+}
+
+#acta .popover {
+    background-color: #D6E6F5;
+    border: 1px solid #3390D5;
+}
+
+#js-popoverFecha {
+    color: #005580;
+    cursor: pointer;
+}
+
+/* Campos obligatorios en negrita */
+#acta .label-obligatorio label{
+    font-weight: bold;
+}

@@ -1,0 +1,100 @@
+{% extends "kernel/pagelet.twig" %}
+{% import 'kernel/macro_helpers.twig' as helper %}
+
+{% block contenido %}
+
+	{% set acciones %}
+		<button class="btn btn-small" 
+				id="js-colapsar-info-mesa">
+				<i class="icon-th-list"></i> 
+				{{ 'escalas'|trans|capitalize }}
+		</button>
+		<button class="btn btn-small" 
+				id="js-colapsar-herramientas">
+				<i class="icon-wrench"></i> 
+				{{ 'autocompletar'|trans|capitalize }}
+		</button>
+		<button class="btn btn-small" 
+				id="js-colapsar-actas">
+				<i class="icon-wrench"></i> 
+				{{ 'carga_notas_mesa_examen.ver_actas'|trans|capitalize }}
+		</button>
+	{% endset %}
+	{{ helper.titulo_operacion("tit_notas_mesas_examen"|trans|capitalize,'', acciones ) }}
+	<div class="pull-right">
+
+	</div>
+	<div class="js-detalle-materia detalle-detalle" style="display:none">
+		<h4 class="sublineado">Escalas de notas:</h4>
+		<table class="table table-condensed">
+			<thead>
+			<th>{{ 'carga_notas_mesa_examen.instancia'|trans|capitalize }}</th>
+			<th>{{ 'carga_notas_mesa_examen.escala_notas'|trans|capitalize }}</th>
+			<th></th>
+			</thead>
+			{% for instancia in this.data.instancias %}
+				<tr>
+					<td>{{ instancia.instancia_nombre }}</td>
+					<td>{{ instancia.escala_nota_nombre }}</td>
+					<td>
+						<a id="ver_escala_{{instancia.instancia}}" class="btn btn-small" href="#">
+							<i class="icon-eye-open"></i> {{ 'carga_notas_mesa_examen.ver_detalle_escala'|trans|capitalize }}
+						</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
+	</div>
+{% endblock %}
+
+{# //@TO-DO ver el layout que se quiere para las 3 operaciones de carga de notas ver este commit en template_vista_folio
+
+{% extends "herramientas.twig" %}
+
+{% block herramientas_cabecera_acciones %}
+	<a class="btn btn-small" id="js-colapsar-info-mesa">
+		<i class="icon-th-list"></i>
+		<span>{{ 'escalas'|trans|capitalize }}</span>
+	</a>
+	<a class="btn btn-small" id="js-colapsar-herramientas">
+		<i class="icon-wrench"></i>
+		<span>{{ 'autocompletar'|trans|capitalize }}</span>
+	</a>
+	{% if this.data.actas %}
+	<a class="btn btn-small" id="js-colapsar-actas">
+		<i class="icon-wrench"></i>
+		<span>{{ 'carga_notas_mesa_examen.ver_actas'|trans|capitalize }}</span>
+	</a>
+	{% endif %}
+{% endblock %}
+
+{% block herramientas_cabecera_titulo %}
+	({{ this.data.actividad_codigo }}) {{ this.data.actividad_nombre }}
+{% endblock %}
+
+
+{% block herramientas_contenido %}
+	<div class="js-detalle-materia detalle-detalle" style="display:none">
+
+		<h4 class="sublineado">Escalas de notas:</h4>
+		<table class="table table-condensed">
+			<thead>
+			<th>{{ 'carga_notas_mesa_examen.instancia'|trans|capitalize }}</th>
+			<th>{{ 'carga_notas_mesa_examen.escala_notas'|trans|capitalize }}</th>
+			<th></th>
+			</thead>
+			{% for instancia in this.data.instancias %}
+				<tr>
+					<td>{{ instancia.instancia_nombre }}</td>
+					<td>{{ instancia.escala_nota_nombre }}</td>
+					<td>
+						<a id="ver_escala_{{instancia.instancia}}" class="btn btn-small" href="#">
+							<i class="icon-eye-open"></i> {{ 'carga_notas_mesa_examen.ver_detalle_escala'|trans|capitalize }}
+						</a>
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
+	</div>
+{% endblock %}
+#}

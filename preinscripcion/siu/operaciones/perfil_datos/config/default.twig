@@ -1,0 +1,99 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	{% autoescape false %}
+		
+		{% set form = this.get_form() %}
+		{{ form.encabezado }}
+		<div class="clearfix">
+			<div class='alert alert-info span12'>
+				{{ 'perfil_datos.info' | trans }}
+			</div>
+		</div>
+		<div class="clearfix">
+			<div class='clearfix span6'>
+				<div class='well clearfix js-grupo-checkboxes'>
+					<h3>{{'perfil_datos.ras'|trans}}</h3>
+					<div class='clearfix cg-margen'>
+                                            
+                                            <div class="seleccionar-checkbox-todos-ninguno">
+                                                <label>
+                                                    <input type="checkbox" class="js-seleccionar-checkbox-todos-ninguno" />&nbsp;
+                                                    <span>{{ 'perfil_datos.todos' | trans }}</span>
+                                                </label>
+                                            </div>
+                                            
+                                            <div class="js-contenedor-checkboxes">
+						{% for ra in this.data.ras %}
+							{{ form.checkbox( ra ) }}
+						{% endfor %}
+                                            </div>
+					</div>
+				</div>
+				<div class='well clearfix js-grupo-checkboxes'>
+					<h3>{{'perfil_datos.tipos_propuesta'|trans}}</h3>
+					<div class='clearfix cg-margen'>
+
+                                            <div class="seleccionar-checkbox-todos-ninguno">
+                                                <label>
+                                                    <input type="checkbox" class="js-seleccionar-checkbox-todos-ninguno" />&nbsp;
+                                                    <span>{{ 'perfil_datos.todos' | trans }}</span>
+                                                </label>
+                                            </div>
+                                                
+                                            <div class="js-contenedor-checkboxes">
+						{% for tipo_propuesta in this.data.tipos_propuesta %}
+							{{ form.checkbox( tipo_propuesta ) }}
+						{% endfor %}
+                                            </div>
+					</div>
+				</div>
+			</div>
+			<div class='clearfix span6'>
+				<div class='well clearfix js-grupo-checkboxes'>
+					<h3>{{'perfil_datos.propuestas'|trans}}</h3>
+                                        
+                                        <div class="seleccionar-checkbox-todos-ninguno">
+                                            <label>
+                                                <input type="checkbox" class="js-seleccionar-checkbox-todos-ninguno" />&nbsp;
+                                                <span>{{ 'perfil_datos.todos' | trans }}</span>
+                                            </label>
+                                        </div>
+                                            
+					<div class='clearfix cg-margen js-contenedor-checkboxes'>
+						{% for propuesta in this.data.propuestas %}
+							{{ form.checkbox( propuesta ) }}
+						{% endfor %}
+					</div>
+				</div>
+				<div class='well clearfix js-grupo-checkboxes'>
+					<h3>{{'perfil_datos.tipos_ubicaciones'|trans}}</h3>
+                                        
+                                        <div class="seleccionar-checkbox-todos-ninguno">
+                                            <label>
+                                                <input type="checkbox" class="js-seleccionar-checkbox-todos-ninguno" />&nbsp;
+                                                <span>{{ 'perfil_datos.todos' | trans }}</span>
+                                            </label>
+                                        </div>
+                                            
+					<div class='clearfix cg-margen js-contenedor-checkboxes'>
+						{% for ubicacion in this.data.ubicaciones %}
+							{{ form.checkbox( ubicacion ) }}
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class='controls controls-row form-head clearfix span12'>
+			<div class='borde-superior'>
+				<div class='pull-right'>
+					<a href="{{ this.data.volver }}" class="btn btn-info" title="{{'volver'|trans|capitalize}}">{{'volver'|trans|capitalize}}</a>
+					{{ form.submit_button('guardar', 'guardar')}}
+				</div>
+			</div>
+		</div>	
+
+	</form>
+
+{% endautoescape %}
+{% endblock %}

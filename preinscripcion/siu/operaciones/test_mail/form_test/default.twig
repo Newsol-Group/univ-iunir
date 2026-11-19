@@ -1,0 +1,32 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+{% autoescape false %}	
+{% if this.data.usuario_default != 'true' %}
+<h2>{{"mail_de_prueba"|trans|capitalize}}</h2>
+<br/>
+{% if this.estado == 'mail_enviado' %}
+	<div class="alert alert-info mensaje strong">
+		{{ this.data.mensaje }}
+	</div>
+{% elseif this.estado == 'error_envio_mail' %}
+	<div class="alert alert-error mensaje strong">
+		{{ this.data.mensaje }}
+	</div>
+{% else %}
+	{% set form = this.get_form() %}
+	{{ form.encabezado }}
+		<div class='clearfix cg-margen'>
+			{{ form.control_group('e_mail', 'span10') }}
+		</div>
+		<div class='controls controls-row form-head clearfix'>
+			<div class='pull-left'>
+				{{ form.submit_button('enviar_mail', 'enviar_mail')}}
+			</div>
+		</div>
+	</form>
+{% endif %}
+{% endif %}
+
+{% endautoescape %}	
+
+{% endblock %}

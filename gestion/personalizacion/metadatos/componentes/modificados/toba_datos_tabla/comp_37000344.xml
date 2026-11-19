@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="37000344" descripcion="toba_datos_tabla">
+	<tabla nombre="apex_objeto_db_registros_col">
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:37000344;col_id:37000552"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:37000344;col_id:37000553"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:37000344;col_id:37000554"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:37000344;col_id:37000555"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:37000344;col_id:37000556"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:37000344;col_id:37000557"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:37000344;col_id:37000558"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:37000344;col_id:37000789"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:37000344;col_id:37000790"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:37000344;col_id:38000516"/>
+		<registro estado="3" clave="objeto_proyecto:guarani;objeto:37000344;col_id:43000016"/>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000344"/>
+			<columna nombre="col_id" valor="770000092"/>
+			<columna nombre="columna" valor="mesa_examen"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="1"/>
+			<columna nombre="secuencia" valor="sga_mesas_examen_seq"/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_mesas_examen"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000344"/>
+			<columna nombre="col_id" valor="770000093"/>
+			<columna nombre="columna" valor="nombre"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="50"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_mesas_examen"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000344"/>
+			<columna nombre="col_id" valor="770000094"/>
+			<columna nombre="columna" valor="elemento"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_mesas_examen"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000344"/>
+			<columna nombre="col_id" valor="770000095"/>
+			<columna nombre="columna" valor="entidad"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_mesas_examen"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000344"/>
+			<columna nombre="col_id" valor="770000096"/>
+			<columna nombre="columna" valor="catedra"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_mesas_examen"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000344"/>
+			<columna nombre="col_id" valor="770000097"/>
+			<columna nombre="columna" valor="ubicacion"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_mesas_examen"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000344"/>
+			<columna nombre="col_id" valor="770000098"/>
+			<columna nombre="columna" valor="observaciones"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="255"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_mesas_examen"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000344"/>
+			<columna nombre="col_id" valor="770000099"/>
+			<columna nombre="columna" valor="mesa_en_turno_examen"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="1"/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_mesas_examen"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000344"/>
+			<columna nombre="col_id" valor="770000100"/>
+			<columna nombre="columna" valor="anio_academico"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_mesas_examen"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000344"/>
+			<columna nombre="col_id" valor="770000101"/>
+			<columna nombre="columna" valor="division"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_mesas_examen"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000344"/>
+			<columna nombre="col_id" valor="770000102"/>
+			<columna nombre="columna" valor="acepta_planes_personalizados"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="1"/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_mesas_examen"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000344"/>
+			<columna nombre="col_id" valor="770000103"/>
+			<columna nombre="columna" valor="id_mesa_examen"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="1"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_mesas_examen_ext"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000344"/>
+			<columna nombre="col_id" valor="770000104"/>
+			<columna nombre="columna" valor="cobrable"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="1"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_mesas_examen_ext"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000344"/>
+			<columna nombre="col_id" valor="770000105"/>
+			<columna nombre="columna" valor="concepto"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="sga_mesas_examen_ext"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:37000344">
+			<columna nombre="nombre" valor="DT - sga_mesas_examen" valor_original="sga_mesas_examen"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_db_registros">
+		<registro estado="2" clave="objeto_proyecto:guarani;objeto:37000344">
+			<columna nombre="ap" valor="4" valor_original="1"/>
+			<columna nombre="tabla_ext" valor="sga_mesas_examen_ext" valor_original="###$$$NULL$$$###"/>
+			<columna nombre="esquema" valor="negocio" valor_original="###$$$NULL$$$###"/>
+			<columna nombre="esquema_ext" valor="negocio_nsg" valor_original="public"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_db_columna_fks">
+		<registro estado="1">
+			<columna nombre="id" valor="770000008"/>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000344"/>
+			<columna nombre="tabla" valor="sga_mesas_examen"/>
+			<columna nombre="columna" valor="mesa_examen"/>
+			<columna nombre="tabla_ext" valor="sga_mesas_examen_ext"/>
+			<columna nombre="columna_ext" valor="id_mesa_examen"/>
+		</registro>
+	</tabla>
+</componente>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="37000529" descripcion="toba_datos_relacion">
+	<tabla nombre="apex_objeto_rel_columnas_asoc">
+		<registro estado="3" clave="asoc_id:32000033;objeto:37000529;proyecto:guarani;padre_objeto:37000530;hijo_objeto:32000289;padre_clave:37000704;hijo_clave:32000344"/>
+		<registro estado="3" clave="asoc_id:37000047;objeto:37000529;proyecto:guarani;padre_objeto:37000530;hijo_objeto:37000583;padre_clave:37000704;hijo_clave:37000740"/>
+		<registro estado="1">
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000529"/>
+			<columna nombre="asoc_id" valor="32000033"/>
+			<columna nombre="padre_objeto" valor="37000530"/>
+			<columna nombre="padre_clave" valor="770000160"/>
+			<columna nombre="hijo_objeto" valor="37000583"/>
+			<columna nombre="hijo_clave" valor="37000740"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000529"/>
+			<columna nombre="asoc_id" valor="37000047"/>
+			<columna nombre="padre_objeto" valor="37000530"/>
+			<columna nombre="padre_clave" valor="770000160"/>
+			<columna nombre="hijo_objeto" valor="32000289"/>
+			<columna nombre="hijo_clave" valor="32000344"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:37000529">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_datos_rel_asoc">
+		<registro estado="2" clave="proyecto:guarani;objeto:37000529;asoc_id:32000033">
+			<columna nombre="hijo_objeto" valor="37000583" valor_original="32000289"/>
+			<columna nombre="hijo_id" valor="autoridades" valor_original="responsables_academicas"/>
+		</registro>
+		<registro estado="2" clave="proyecto:guarani;objeto:37000529;asoc_id:37000047">
+			<columna nombre="hijo_objeto" valor="32000289" valor_original="37000583"/>
+			<columna nombre="hijo_id" valor="responsables_academicas" valor_original="autoridades"/>
+		</registro>
+	</tabla>
+</componente>

@@ -1,0 +1,64 @@
+{% extends "kernel/pagelet.twig" %}
+{% import 'kernel/macro_helpers.twig' as helper %}
+{% block contenido %}
+	{% set form = this.get_vista_form() %}
+	{{ form.render_encabezado() | raw }}
+	{% set acciones = form.render_acciones() %}
+	{{ helper.titulo_operacion('inscripcion_a_cursadas'|trans|capitalize,'', acciones    ) }}
+	<div class='row'>
+		<div class='span10 offset1'>
+			{{ form.render_cuerpo() | raw }}
+		</div>
+	</div>
+	{{ form.render_cierre() | raw }}
+
+	<div id="comisiones">
+		{% if this.data.datos %}
+			{% for periodo, actividades in this.data.datos %}
+				<div class="js-recuadro_periodo recuadro">
+					<h3 style="color: #555;">{{ periodo }}</h3>
+
+					<div class="js-recuadro_actividad">
+						{% for actividad, comisiones in actividades %}
+							<h4 style="background-color: #0088cc; color: white;">{{ actividad }}</h4>
+							<table class="table table-striped table-bordered table-condensed table-striped listado-comisiones">
+								<thead style="background-color: #999;">
+									<tr>
+										<th style="text-align: center;">Comisión</th>
+										<th style="text-align: center;">Subcomisión</th>
+										<th style="text-align: center;">Ubicación</th>
+										<th style="text-align: center;">Responsabilidad</th>
+										<th style="text-align: center;">Turno</th>
+										<th style="text-align: center;">Inscripciones</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for comision in comisiones %}
+										<tr
+											{# % if comision.es_subcomision %}subcomision="{{comision.hash}}"{% else %}comision="{{comision.hash}}"{% endif % #}
+
+											{% if comision.es_subcomision %}
+												{{ this.data_link(this.data.url_info_subcomision ~ '/' ~ comision.hash ~ '&z=0') | raw }}
+											{% else %}
+												{{ this.data_link(this.data.url_info_comision ~ '/' ~ comision.hash ~ '&z=0') | raw }}
+
+											{% endif %}>
+											<td style="width: auto;">{{ comision.comision_nombre }}</td>
+											<td style="width: 200px;">{% if comision.subcomision_nombre %}{{ comision.subcomision_nombre }} ({{ comision.tipo_clase }}){% else %}{{ 'no_tiene' |trans|capitalize }}{% endif %}</td>
+											<td style="width: 150px;">{{ comision.ubicacion_nombre }}</td>
+											<td style="width: 80px;">{% if comision.resp_docente %}{{ comision.resp_docente }}{% else %}{{ 'no_asignado' |trans|capitalize }}{% endif %}</td>
+											<td style="width: 70px;">{% if comision.turno_nombre %}{{ comision.turno_nombre }}{% else %}{{ 'sin_definir' |trans|capitalize }}{% endif %}</td>
+											<td style="width: 100px;text-align: center;">{{ comision.cant_inscriptos }}</td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						{% endfor %}
+					</div>
+				</div>
+			{% endfor %}
+		{% else %}
+			{{ helper.alert( "reporte.no_hay_datos.inscripciones"|trans|capitalize ) }}
+		{% endif %}
+	</div>
+{% endblock %}

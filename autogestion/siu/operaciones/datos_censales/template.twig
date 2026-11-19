@@ -1,0 +1,36 @@
+{% extends "kernel/dos_columnas.twig" %}
+
+{% block titulo_operacion %}
+    <div class="encabezado-datos-censales borde-inferior clearfix">
+        <div class="span6">
+            <h2 class='pull-left titulo-datos-censales'>{{"datos_censales.titulo"|trans}}</h2>
+        </div>
+        
+        {# Si no viene de Convocatorias a Becas #}
+        {% if not this.viene_de_convocatorias_becas() %}
+        <div class="span6">
+            <div class="pull-right">
+                <form id="form_confirmar" action="{{this.get_action_confirmar()}}" method="post">
+                    <button id="btnConfirmar" class="btn btn-info">
+                        <i class="icon-white icon-ok"></i>&nbsp;{{'datos_censales.confirmar'|trans|capitalize}}
+                    </button>
+                </form>
+            </div>
+        </div>
+        {% endif %}
+        
+    </div>
+{% endblock %}
+
+{% block columna_1 %}
+    
+    {{ lista_forms.render }}
+    
+{% endblock %}
+
+{% block columna_2 %}
+    
+    {# formulario es un pagelet dinámico que cambia de acuerdo a la url #}
+    {{ formulario.render }}
+        
+{% endblock %}

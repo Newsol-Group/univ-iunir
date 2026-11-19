@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="38000255" descripcion="toba_ei_filtro">
+	<tabla nombre="apex_objeto_ei_filtro_col">
+		<registro estado="3" clave="objeto_ei_filtro_proyecto:guarani;objeto_ei_filtro:38000255;objeto_ei_filtro_col:38000054"/>
+		<registro estado="3" clave="objeto_ei_filtro_proyecto:guarani;objeto_ei_filtro:38000255;objeto_ei_filtro_col:38000056"/>
+		<registro estado="1">
+			<columna nombre="objeto_ei_filtro_col" valor="770000186"/>
+			<columna nombre="objeto_ei_filtro" valor="38000255"/>
+			<columna nombre="objeto_ei_filtro_proyecto" valor="guarani"/>
+			<columna nombre="tipo" valor="opciones"/>
+			<columna nombre="nombre" valor="requisito_nombre"/>
+			<columna nombre="expresion" valor="sga_requisitos.requisito"/>
+			<columna nombre="etiqueta" valor="Requisito"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="inicial" valor="0"/>
+			<columna nombre="orden" valor="3"/>
+			<columna nombre="opciones_es_multiple" valor="0"/>
+			<columna nombre="opciones_ef" valor="ef_combo"/>
+			<columna nombre="carga_metodo" valor="get_requisitos_ingreso"/>
+			<columna nombre="carga_consulta_php" valor="9000008"/>
+			<columna nombre="carga_fuente" valor="guarani"/>
+			<columna nombre="carga_col_clave" valor="valor"/>
+			<columna nombre="carga_col_desc" valor="descr"/>
+			<columna nombre="carga_permite_no_seteado" valor="1"/>
+			<columna nombre="carga_no_seteado" valor="-- Selecciones --"/>
+			<columna nombre="carga_no_seteado_ocultar" valor="0"/>
+			<columna nombre="punto_montaje" valor="1"/>
+		</registro>
+	</tabla>
+</componente>

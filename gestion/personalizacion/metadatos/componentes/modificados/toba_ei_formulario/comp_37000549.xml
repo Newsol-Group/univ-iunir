@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="37000549" descripcion="toba_ei_formulario">
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:37000549">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+			<columna nombre="subclase" valor="form_solicitud_nsg" valor_original="form_solicitud"/>
+			<columna nombre="subclase_archivo" valor="operaciones/constancias/solicitar_constancias/form_solicitud_nsg.php" valor_original="operaciones/constancias/solicitar_constancias/form_solicitud.php"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ei_formulario_ef">
+		<registro estado="1">
+			<columna nombre="objeto_ei_formulario_fila" valor="770000059"/>
+			<columna nombre="objeto_ei_formulario" valor="37000549"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="cobrable"/>
+			<columna nombre="elemento_formulario" valor="ef_checkbox"/>
+			<columna nombre="columnas" valor="cobrable"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="5"/>
+			<columna nombre="etiqueta" valor="Cobrable"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="check_valor_si" valor="S"/>
+			<columna nombre="check_valor_no" valor="N"/>
+			<columna nombre="check_desc_si" valor="Sí"/>
+			<columna nombre="check_desc_no" valor="No"/>
+			<columna nombre="check_ml_toggle" valor="0"/>
+		</registro>
+	</tabla>
+</componente>

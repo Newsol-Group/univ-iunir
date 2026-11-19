@@ -1,0 +1,72 @@
+{% extends "kernel/pagelet.twig" %}
+{% import 'kernel/macro_helpers.twig' as helper %}
+
+{% block contenido %}
+	{% set form = this.get_vista_form() %}
+	{{ form.render_encabezado() | raw }}
+	{% set acciones = form.render_acciones() %}
+	{{ helper.titulo_operacion('tit_inscriptos_rechazados'|trans|capitalize,this.data.url_back, acciones    ) }}
+	<div class='row'>
+		<div class='span10 offset1'>
+			{{ form.render_cuerpo() | raw }}
+		</div>
+	</div>
+	{{ form.render_cierre() | raw }}
+
+<div class="reporte">
+{% if this.data.rechazados %}
+{% for key_perlec, perlec in this.data.rechazados %}
+	<div class="js-recuadro_periodo recuadro" periodo="{{key_perlec}}">
+		<h3>{{"oferta_comisiones.periodo"|trans|capitalize}}: {{ perlec.anio_academico }} - {{ perlec.periodo_lectivo_nombre }}</h3>
+		{% if perlec.actividades %}
+		{% for key_act, actividad in perlec.actividades %}
+		<div class="js-recuadro_actividad" actividad="{{actividad.nombre}}">
+			<h4 style="background-color:#0088cc; color:white;">{{"oferta_comisiones.actividad"|trans|capitalize}}: {{ actividad.nombre }}</h4>
+			{% if actividad.comisiones %}
+			<table class="table table-striped table-bordered table-condensed table-striped listado-comisiones">
+				<tr>
+					<th>{{'inscriptos_rechazados.comision' |trans|capitalize}}</th>
+					<th>{{'inscriptos_rechazados.ubicacion' |trans|capitalize}}</th>
+					<th>{{'inscriptos_rechazados.responsabilidad' |trans|capitalize}}</th>
+					<th>{{'inscriptos_rechazados.turno' |trans|capitalize}}</th>
+					<th>{{'inscriptos_rechazados.rechazados' |trans|capitalize}}</th>
+				</tr>
+				{% for key_comision, comision in actividad.comisiones %}
+				<tr class="link-in-data" data-link="{{comision.LINK}}">
+					<td>
+						{{comision.comision_nombre}}
+					</td>
+					<td>
+						{{comision.ubicacion_nombre}}
+					</td>
+					<td>
+						{{comision.responsabilidad_nombre}}
+					</td>
+					<td>
+						{% if dato.turno_nombre %}
+							{{comision.turno_nombre}}
+						{% else %}
+							{{'sin_definir'|trans|capitalize}}
+						{% endif %}
+					</td>
+					<td>
+						{% if comision.cantidad_rechazados %}
+							{{comision.cantidad_rechazados}}
+						{% else %}
+							0
+						{% endif %}
+					</td>
+				</tr>
+				{% endfor %}
+			</table>
+			{% endif %}
+		</div>
+		{% endfor %}
+		{% endif %}
+	</div>
+{% endfor %}
+{% else %}
+	{{ helper.alert( "reporte.no_hay_datos.rechazados"|trans|capitalize ) }}
+{% endif %}
+</div>
+{% endblock %}

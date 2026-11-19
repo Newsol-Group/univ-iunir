@@ -1,0 +1,36 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+
+	<div class="centrado">
+		{% set form = this.data.form_admin %}
+		<form method="post" action="{{ form.accion }}" id="form_login_admin">
+			<div class="control-group">
+				<label class="control-label" for="usuario">{{ "usuario"|trans|capitalize }}</label>
+				<div class="controls">
+					<input id="usuario" name="{{ form.campos.usuario.name }}" type="{{ form.campos.usuario.type }}" value="{{ form.campos.usuario.value }}" maxlength="127"/>
+				</div>
+			</div>
+
+			<div class="control-group">
+				<label class="control-label" for="password">{{ "clave"|trans|capitalize }}</label>
+				<div class="controls">
+					<input id="password" name="{{ form.campos.password.name }}" type="{{ form.campos.password.type }}" value="{{ form.campos.password.value }}" maxlength="32"/>
+				</div>
+			</div>
+
+			<div class="borde-superior control-group">
+				<div class="controls pull-right">
+					<input id="login"  name="{{ form.campos.submit.name }}" type="{{ form.campos.submit.type }}" value="{{ form.campos.submit.value }}" class="btn btn-info"/>
+				</div>
+			</div>
+		</form>
+
+		{% if form.error %}
+			<br/>
+			<div class='alert alert-error mensaje strong'>
+				{{ form.error|trans|raw }}
+			</div>
+		{% endif %}
+	</div>
+
+{% endblock %}

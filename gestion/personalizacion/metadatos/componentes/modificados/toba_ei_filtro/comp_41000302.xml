@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="41000302" descripcion="toba_ei_filtro">
+	<tabla nombre="apex_objeto_ei_filtro_col">
+		<registro estado="1">
+			<columna nombre="objeto_ei_filtro_col" valor="770000181"/>
+			<columna nombre="objeto_ei_filtro" valor="41000302"/>
+			<columna nombre="objeto_ei_filtro_proyecto" valor="guarani"/>
+			<columna nombre="tipo" valor="opciones"/>
+			<columna nombre="nombre" valor="propuesta"/>
+			<columna nombre="expresion" valor="sga_planes.propuesta"/>
+			<columna nombre="etiqueta" valor="Propuesta"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="inicial" valor="0"/>
+			<columna nombre="orden" valor="9"/>
+			<columna nombre="opciones_es_multiple" valor="0"/>
+			<columna nombre="opciones_ef" valor="ef_combo_editable"/>
+			<columna nombre="carga_metodo" valor="get_listado_propuestas_descr"/>
+			<columna nombre="carga_consulta_php" valor="5"/>
+			<columna nombre="carga_fuente" valor="guarani"/>
+			<columna nombre="carga_col_clave" valor="valor"/>
+			<columna nombre="carga_col_desc" valor="descr"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="carga_no_seteado_ocultar" valor="0"/>
+			<columna nombre="edit_tamano" valor="300"/>
+			<columna nombre="popup_carga_desc_metodo" valor="get_descripcion_propuesta"/>
+			<columna nombre="popup_carga_desc_clase" valor="co_propuestas"/>
+			<columna nombre="popup_carga_desc_include" valor="nucleo/propuestas/propuestas/co_propuestas.php"/>
+			<columna nombre="punto_montaje" valor="1"/>
+		</registro>
+	</tabla>
+</componente>

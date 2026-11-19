@@ -1,0 +1,72 @@
+{% extends "kernel/pagelet.twig" %}
+{% import 'kernel/macro_helpers.twig' as helper %}
+{% import _self as current_file_macros %}
+
+{% block contenido %}
+
+
+	{% if this.data.filtro_ok %}
+		{{ helper.alert_info('admin_derechos_comision.descr_comisiones_listadas'|trans) }}
+
+		{% for actividad in this.data.actividades %}
+			<h4 class='actividad-tit'>{{ actividad.nombre }}</h4>
+			<table class="table table-striped table-bordered table-condensed">
+				<thead>
+				<th>{{ 'admin_derechos_comision.comision'|trans|capitalize }}</th>
+				<th>{{ 'admin_derechos_comision.turno'|trans|capitalize }}</th>
+				<th>{{ 'admin_derechos_comision.modalidad'|trans|capitalize }}</th>
+				<th>{{ 'admin_derechos_comision.horario'|trans|capitalize }}</th>
+				<th>{{ 'admin_derechos_comision.docentes'|trans|capitalize }}</th>
+				</thead>
+				<tbody>
+
+				{% for comision in actividad.comisiones %}
+					<tr {{ this.data_link(comision.LINK) | raw }}>
+						<td>{{ this.a(comision.LINK, comision.comision_nombre) | raw }}
+						<td>{{ comision.turno }}</td>
+						<td>{{ comision.modalidad }}</td>
+						<td>{{ comision.horario }}</td>
+						<td class='btn-container'>
+							{% if(this.tiene_acceso_link(comision.LINK_DOC)) %}
+								<button class="btn btn-small js-info-docentes" data-url="{{ comision.LINK_DOC }}">
+									{{ 'admin_derechos_comision.ver_docentes'|trans|capitalize }}
+								</button>
+							{% else %}
+								<button class="btn btn-small disabled">{{ 'admin_derechos_comision.ver_docentes'|trans|capitalize }}</button>
+							{% endif %}
+
+						</td>
+					</tr>
+
+				{% endfor %}
+				</tbody>
+			</table>
+
+			{{ current_file_macros.template_docentes() }}
+	{% else %}
+		<div class="alert">{{ 'no_hay_comisiones'|trans|capitalize }}</div>
+	{% endfor %}
+
+	{% else %}
+		<div class="alert">{{ 'eof_cuadro_sinfiltro'|trans|capitalize }}</div>
+
+
+	{% endif %}
+{% endblock %}
+
+{# Se usa para crear las filas del popup de docentes#}
+{% macro template_docentes() %}
+	<div id='template_docente' style="display: none; background-color: #aaa; padding: 20px;">
+		<div class="ficha-docente clearfix">
+			<img style="margin-right: 5px" src='' width='35' height="35" title='' class="pull-left"/>
+
+			<div class="pull-left">
+				<span class="nombre"></span>
+				<span class="identificacion"></span>
+			</div>
+			<div class="pull-right">
+				<span class="responsabilidad"></span>
+			</div>
+		</div>
+	</div>
+{% endmacro %}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000271" descripcion="toba_cn">
+	<tabla nombre="apex_objeto">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000271"/>
+			<columna nombre="clase_proyecto" valor="toba"/>
+			<columna nombre="clase" valor="toba_cn"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+			<columna nombre="subclase" valor="cn_man_conceptos_fact_nsg"/>
+			<columna nombre="subclase_archivo" valor="nucleo/facturacion/cn_man_conceptos_fact_nsg.php"/>
+			<columna nombre="nombre" valor="Conceptos de Facturación"/>
+			<columna nombre="colapsable" valor="0"/>
+			<columna nombre="fuente_datos_proyecto" valor="guarani"/>
+			<columna nombre="fuente_datos" valor="guarani"/>
+			<columna nombre="creacion" valor="2009-06-11 12:42:25"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_dependencias">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="dep_id" valor="770000208"/>
+			<columna nombre="objeto_consumidor" valor="770000271"/>
+			<columna nombre="objeto_proveedor" valor="770000270"/>
+			<columna nombre="identificador" valor="entidad"/>
+		</registro>
+	</tabla>
+</componente>

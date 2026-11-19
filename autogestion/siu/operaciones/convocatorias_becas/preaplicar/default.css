@@ -1,0 +1,39 @@
+#preaplicar-wrapper .leyenda {
+  font-size: 24px;
+  line-height: 30px;
+}
+
+#preaplicar-wrapper #documentacion {
+  margin-top: 20px;
+}
+
+#preaplicar-wrapper i {
+  position: relative;
+  top: -3px;
+}
+
+#preaplicar-wrapper .evaluacion_academica {
+    text-align: left;
+    font-size: 18px;
+    background-color: #f9f9f9;
+    border-color: #dddddd;
+    display: inline-block;
+}
+
+#preaplicar-wrapper table th {
+  font-size: 18px;
+  vertical-align: middle;
+}
+
+#preaplicar-wrapper table th, #preaplicar-wrapper table td {
+  text-align: center;
+}
+
+#preaplicar-wrapper table tbody tr td:first-child {
+  text-align: justify;
+}
+
+#preaplicar-wrapper .table-wrapper {
+    overflow: auto;
+    max-height: 300px;
+}

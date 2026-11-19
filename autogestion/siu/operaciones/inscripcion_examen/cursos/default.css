@@ -1,0 +1,89 @@
+#cursos #actividades_curso_container{
+    margin-top: 10px;
+}
+
+#cursos #filtro_cursos input {
+    color: #bbb;
+    width: 168px;
+}
+
+#cursos .highlight {
+    background-color: #ffe45c;
+}
+
+#cursos .filtro-curso {
+    margin-bottom: 5px;
+}
+
+#cursos .filtro-curso span {
+    margin-right: 12px;
+}
+
+#cursos ul {
+    padding: 0;
+}
+
+#cursos li a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    padding-left: 37px;
+    width: 82%;
+    outline: white none;
+}
+
+#cursos li:hover {
+    background-color: #eee;
+}
+
+#cursos li a:hover {
+    text-decoration: none;
+    overflow: visible;
+    background: none;
+}
+
+#cursos li a:hover > span {
+    background-color: #eee;
+    padding: 5px 5px 5px 0;
+    position: relative;
+}
+
+#cursos li.insc a:hover,
+#cursos li.active a:hover {
+    overflow: hidden;
+}
+
+#cursos li.insc a:hover span,
+#cursos li.active a:hover span {
+    background: none;
+}
+
+#cursos li.insc {
+    background-image: url('../../../img/sprite.png');
+    background-position: 2px -3px;
+    background-repeat: no-repeat;
+}
+
+#cursos li.active {
+    border: 1px solid #8ad8fd;
+    background-color: #e8f5fe;
+    background-image: url('../../../img/sprite.png');
+    background-position: 201px -183px;
+    background-repeat: no-repeat;
+}
+
+#cursos li.active a {
+    color: #000;
+    background: none;
+    text-shadow: none;
+}
+
+#cursos li.insc.active {
+    background-image: url('../../../img/sprite.png'), url('../../../img/sprite.png');
+    background-position: 201px -184px, 2px -3px;
+    background-repeat: no-repeat, no-repeat;
+}
+
+#cursos .alert-warning {
+    color: #B39C75 !important;
+}

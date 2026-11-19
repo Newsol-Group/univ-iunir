@@ -1,0 +1,20 @@
+#turno_presentacion .td-etiqueta {
+	width: 80px;
+}
+
+#turno_presentacion .msj-descripcion {
+	padding: 5px;
+}
+
+#turno_presentacion .cursor-pointer {
+	cursor: pointer;
+	background-color: white;
+}
+
+#turno_presentacion .mensaje {
+	padding: 8px;
+}
+
+#turno_presentacion #form_turno-franja {
+	width: 150px;
+}

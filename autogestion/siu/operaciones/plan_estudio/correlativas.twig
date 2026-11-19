@@ -1,0 +1,131 @@
+<td colspan="9" class="td-table-correlativas">
+
+    {% import _self as current_file_macros %}
+    
+    {% if correlativas %}
+
+        {% if correlativas.cursar %}
+
+            <div>
+                <div style="float: left;"><h3>{{'para_cursar'|trans}}</h3></div>
+                <div style="float: right;"><button type="button" id="btn_verificar_correlativas_cursar_padre{{ elemento_padre }}_materia{{ elemento }}_js" class="btn btn-inverse verificar correlativas_cursar" data-padre="{{ elemento_padre }}" data-materia="{{ elemento }}" data-completo="false">{{'plan_estudio.verificar'|trans}}</button></div>
+                <div style="clear: both;"></div>
+            </div>
+
+            <div id="alert_correlativas_cursar_padre{{ elemento_padre }}_materia{{ elemento }}_js" class="alert alert-block alert_verificar_correlativas">
+                <h4 class="alert-heading"></h4>
+                <p>
+                    <a class="btn ocultar" href="#">{{'plan_estudio.ocultar'|trans}}</a>
+                </p>
+            </div>
+
+            {% set count = 1 %}
+            {% set opcion = correlativas.cursar.0.grupo_condicion %}
+            <h4>{{'plan_estudio.opcion' | trans}} {{count}}</h4>
+
+            <table class="table table-bordered table-condensed table-correlativas" summary="Opci&oacute;n para cursar">
+
+                <tr>
+                    <th scope="col" class="td-mat-req">{{ "plan_estudio.requisito" | trans }}</th>
+                    <th scope="col" class="td-mat-cond">{{ "plan_estudio.condicion" | trans }}</th>
+                </tr>
+                {% for dato in correlativas.cursar %}
+
+                    {% if dato.grupo_condicion == opcion %}
+
+                        {{ current_file_macros.agregar_fila(dato, subtipos_entidades) }}
+
+                    {% else %}
+                    </table>
+                    {% set count = count + 1 %}
+                    {% set opcion = dato.grupo_condicion %}
+                    <h4>{{'plan_estudio.opcion' | trans}} {{count}}</h4>
+                    <table class="table table-bordered table-condensed table-correlativas" summary="Opci&oacute;n para cursar">
+
+                        <tr>
+                            <th scope="col" class="td-mat-req">{{ "plan_estudio.requisito" | trans }}</th>
+                            <th scope="col" class="td-mat-cond">{{ "plan_estudio.condicion" | trans }}</th>
+                        </tr>
+
+                        {{ current_file_macros.agregar_fila(dato, subtipos_entidades) }}
+
+                    {% endif %}
+
+
+                {% endfor %}
+
+            </table>
+        {% endif %}
+
+        {% if correlativas.aprobar %}
+
+            <div>
+                <div style="float: left;"><h3>{{'para_aprobar'|trans}}</h3></div>
+                <div style="float: right;"><button type="button" id="btn_verificar_correlativas_aprobar_padre{{ elemento_padre }}_materia{{ elemento }}_js" class="btn btn-inverse verificar correlativas_aprobar" data-padre="{{ elemento_padre }}" data-materia="{{ elemento }}" data-completo="false">{{'plan_estudio.verificar'|trans}}</button></div>
+                <div style="clear: both;"></div>
+            </div>
+
+            <div id="alert_correlativas_aprobar_padre{{ elemento_padre }}_materia{{ elemento }}_js" class="alert alert-block alert_verificar_correlativas">
+                <h4 class="alert-heading"></h4>
+                <p>
+                    <a class="btn ocultar" href="#">{{'plan_estudio.ocultar'|trans}}</a>
+                </p>
+            </div>
+
+            {% set count = 1 %}
+            {% set opcion = correlativas.aprobar.0.grupo_condicion %}
+            <h4>{{'plan_estudio.opcion' | trans}} {{count}}</h4>
+
+            <table class="table table-bordered table-condensed table-correlativas" summary="Opci&oacute;n para aprobar">
+
+                <tr>
+                    <th scope="col" class="td-mat-req">{{ "plan_estudio.requisito" | trans }}</th>
+                    <th scope="col" class="td-mat-cond">{{ "plan_estudio.condicion" | trans }}</th>
+                </tr>
+
+                {% for dato in correlativas.aprobar %}
+
+                    {% if dato.grupo_condicion == opcion %}
+
+                        {{ current_file_macros.agregar_fila(dato, subtipos_entidades) }}
+
+                    {% else %}
+                    </table>
+                    {% set count = count + 1 %}
+                    {% set opcion = dato.grupo_condicion %}
+                    <h4>{{'plan_estudio.opcion' | trans}} {{count}}</h4>
+                    <table class="table table-bordered table-condensed table-correlativas" summary="Opci&oacute;n para aprobar">
+
+                        <tr>
+                            <th scope="col" class="td-mat-req">{{ "plan_estudio.requisito" | trans }}</th>
+                            <th scope="col" class="td-mat-cond">{{ "plan_estudio.condicion" | trans }}</th>
+                        </tr>
+
+                        {{ current_file_macros.agregar_fila(dato, subtipos_entidades) }}
+
+                    {% endif %}
+
+                {% endfor %}
+
+            </table>
+        {% endif %}
+    {% else %}
+        <div class="alert">
+            {{ 'plan_estudio.sin_correlativas_definidas' | trans }}
+        </div>
+    {% endif %}
+</td>
+
+
+{% macro agregar_fila(fila, subtipos_entidades) %}
+
+    <tr scope="row">
+        {% if fila.tipo == "E" %}
+            <td>{% if fila.entidad_subtipo == subtipos_entidades.agrupador_modulos %}<b>{{ "plan_estudio.modulo" | trans }}:</b> {% endif %}{{fila.requisito_nombre}}{% if fila.requisito_codigo %} ({{fila.requisito_codigo}}){% endif %}</td>
+            <td class="centrado">{% if fila.operador_not %}{{ "plan_estudio.negar" | trans }} {% endif %}<b>{{fila.condicion}}</b></td>
+        {% elseif fila.tipo == "R" %}
+            <td colspan="2" class="centrado">{% if fila.operador_not %}{{ "plan_estudio.negar" | trans }} {% endif %}<b>{{fila.condicion}}</b></td>
+        {% endif %}
+    </tr>
+
+{% endmacro %}

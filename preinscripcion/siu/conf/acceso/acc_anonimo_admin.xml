@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<perfil id="anonimo_admin">
+
+<parametros>
+	<parametro id="index" valor="acceso_admin" />
+	<parametro id="login" valor="acceso_admin" />
+</parametros>
+
+<operaciones>
+	<operacion id="acceso_admin" url="acceso" activa="1" />	
+	<operacion id="pagina_error" url="pagina_error" activa="1" />	
+</operaciones>
+</perfil>

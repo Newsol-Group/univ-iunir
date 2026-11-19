@@ -1,0 +1,97 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	<div class="js-barra-autocompletar" style="display: none;">
+		<form id="preset_form" class="form-inline" method="POST" action="{{ this.data.url_autocompletar }}">
+                    
+			<label for="preset_campo">{{ "notas_cursada_comision.label_preset_campo" | trans }}</label>
+			<select id="preset_campo" name="campo">
+                            {% for campo in this.data.autocompletar_campos %}
+                                <option value="{{ campo.valor }}">{{ campo.descr }}</option>
+                            {% endfor %}
+			</select>
+                        
+                        <label id="js-label-preset-valor" for="js-valor-{{ this.data.autocompletar_campo_nota_cursada }}">{{ "notas_cursada_comision.label_preset_valor" | trans }}</label>
+                        
+                        {# Si la escala de notas de regularidad es discreta muestro un select en lugar de un input #}
+                        {% if this.data.escala_nota_regularidad %}
+                            <select id="js-valor-{{ this.data.autocompletar_campo_nota_cursada }}" name="valor" class="preset_valor js-valor-{{ this.data.autocompletar_campo_nota_cursada }} input-small" disabled >
+                                <option value="">-</option>
+                                {% for nota_regularidad in this.data.escala_nota_regularidad %}
+                                    <option value="{{ nota_regularidad.nota }}">{{ nota_regularidad.nota }}</option>
+                                {% endfor %}
+                            </select>
+                        {% else %}
+                            <input id="js-valor-{{ this.data.autocompletar_campo_nota_cursada }}" name="valor" class="preset_valor js-valor-{{ this.data.autocompletar_campo_nota_cursada }} input-small" type="text" value="" disabled />
+                        {% endif %}
+                        
+                        {# Si la escala de notas de promoción es discreta muestro un select en lugar de un input #}
+                        {% if this.data.escala_nota_promocion %}
+                            <select id="js-valor-{{ this.data.autocompletar_campo_nota_promocion }}" name="valor" class="preset_valor js-valor-{{ this.data.autocompletar_campo_nota_promocion }} input-small" disabled>
+                                <option value="">-</option>
+                                {% for nota_promocion in this.data.escala_nota_promocion %}
+                                    <option value="{{ nota_promocion.nota }}">{{ nota_promocion.nota }}</option>
+                                {% endfor %}
+                            </select>
+                        {% else %}
+                            <input id="js-valor-{{ this.data.autocompletar_campo_nota_promocion }}" name="valor" class="preset_valor js-valor-{{ this.data.autocompletar_campo_nota_promocion }} input-small" type="text" value="" disabled />
+                        {% endif %}
+                        
+                        <select id="js-valor-{{ this.data.autocompletar_campo_resultado_cursada }}" name="valor" class="preset_valor js-valor-{{ this.data.autocompletar_campo_resultado_cursada }} resultado input-small" disabled >
+                            <option value="">-</option>
+                            {% for resultado_regularidad in this.data.resultados_regularidad %}
+                                <option value="{{ resultado_regularidad.valor }}">{{ resultado_regularidad.descr }}</option>
+                            {% endfor %}
+                        </select>
+                        
+                        <select id="js-valor-{{ this.data.autocompletar_campo_resultado_promocion }}" name="valor" class="preset_valor js-valor-{{ this.data.autocompletar_campo_resultado_promocion }} resultado input-small" disabled >
+                            <option value="">-</option>
+                            {% for resultado_promocion in this.data.resultados_promocion %}
+                                <option value="{{ resultado_promocion.valor }}">{{ resultado_promocion.descr }}</option>
+                            {% endfor %}
+                        </select>
+                        
+                        <input id="js-valor-{{ this.data.autocompletar_campo_fecha }}" name="valor" class="preset_valor js-valor-{{ this.data.autocompletar_campo_fecha }} input-small" type="text" value="" readonly disabled />
+                        
+                        <input id="js-valor-{{ this.data.autocompletar_campo_observaciones }}" name="valor" class="preset_valor js-valor-{{ this.data.autocompletar_campo_observaciones }} input-small" type="text" value="" maxlength="100" disabled /> 
+                        
+                        <label for="autocompletar_para">{{ "notas_cursada_comision.label_autocompletar_para" | trans }}</label>
+			<select id="autocompletar_para" name="para">
+                            {% for para in this.data.autocompletar_para %}
+                                <option value="{{ para.valor }}">{{ para.descr }}</option>
+                            {% endfor %}
+                        </select>
+                        
+			<button id="btnCompletar" type="submit" class="btn btn-small" disabled="disabled"><i class="icon-edit"></i> {{ "completar"|trans|capitalize }}</button>
+			<button id='btn_undo_autocompletar' class="btn btn-small" disabled="disabled"><i class="icon-arrow-left"></i> {{ "deshacer"|trans|capitalize }}</button>
+		</form>
+	</div>
+	
+	<div class="js-barra-calcular-notas" style="display: none;">
+		<form id="calcular-notas" class="form-inline" method="POST" action="{{ this.data.url_calcular_notas }}">
+                    
+                        <label for="instancia">{{ "notas_cursada_comision.label_instancia" | trans }}</label>
+			<select id="instancia" name="instancia">
+                            {% for instancia_comision in this.data.instancias_comisiones %}
+                                <option value="{{ instancia_comision.instancia }}">{{ instancia_comision.instancia_nombre }}</option>
+                            {% endfor %}
+			</select>
+                        
+                        <label for="aplicar_a">{{ "notas_cursada_comision.label_aplicar_a" | trans }}</label>
+			<select id="aplicar_a" name="aplicar_a">
+                            {% for opcion_combo_para in this.data.opciones_combo_para %}
+                                <option value="{{ opcion_combo_para.valor }}">{{ opcion_combo_para.descr }}</option>
+                            {% endfor %}
+                        </select>
+			
+			<label for="regla_calculo" class="checkbox">{{ "notas_cursadas_comision.regla_calculo" | trans }}</label>
+			<select id="regla_calculo" name="regla_calculo" id="regla_calculo" style="width:auto;">
+                            {% for regla_calculo in this.data.reglas_calculo %}
+                                <option value="{{ regla_calculo.regla_calculo }}" title="{{ regla_calculo.descripcion }}">{{ regla_calculo.nombre }}</option>
+                            {% endfor %}
+			</select>
+			
+			<button id='btn_completar_nota' class="btn btn-small"><i class="icon-edit"></i> {{ "completar"|trans|capitalize }}</button>
+			<button id='btn_undo_nota' class="btn btn-small" disabled="disabled"><i class="icon-arrow-left"></i> {{ "deshacer"|trans|capitalize }}</button>
+		</form>
+	</div>
+{% endblock %}

@@ -1,0 +1,159 @@
+.detalle-contenedor {
+	margin-top: 3px;
+	margin-bottom: 10px;
+}
+
+#pagelet .btn-small {
+	font-weight: normal;
+}
+
+#pagelet .dropdown-menu {
+	left: -120px;
+}
+
+#pagelet .error_nota {
+    background-color: #eed3d7;
+    color: #b94a48;
+}
+
+#evaluacion-detalle {
+	background-color: white;
+}
+
+#js-autocompletar {
+	padding-bottom: 5px;
+}
+
+#lista_alumnos .js-barra-herramientas {
+	padding-bottom: 5px;
+}
+
+#autocompletar {
+	margin-left: 50px;
+}
+
+#lista_alumnos #preset_campo {
+	width: 140px;
+}
+
+#lista_alumnos label, input, select {
+	margin-right: 5px;
+}
+
+#lista_alumnos .well {
+	padding: 8px;
+	margin-bottom: 0;
+}
+
+#lista_alumnos .form-inline {
+	margin-bottom: 0;
+}
+
+#lista_alumnos #js_preset_error {
+	margin-top: 10px;
+}
+
+#lista_alumnos .col-nota {
+	width: 30px;
+}
+
+#lista_alumnos .centrar {
+	text-align: center;
+}
+
+#lista_alumnos .alinear {
+	vertical-align: middle;
+}
+
+/* For the details, see: http://flowplayer.org/tools/dateinput/index.html#skinning */
+#lista_alumnos .form-alumnos {
+	clear: both;
+}
+
+#lista_alumnos .form-alumnos .table {
+	margin-bottom: 5px;
+}
+
+#lista_alumnos .table-condensed th, #lista_alumnos .table-condensed td {
+	padding: 2px 5px;
+}
+
+#lista_alumnos .form-actions {
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-bottom: 5px;
+	margin-top: 0;
+}
+
+/* the input field */
+#lista_alumnos input[type=text] {
+	width: 100%;
+}
+
+#lista_alumnos input[type=text],
+#lista_alumnos textarea {
+	text-align: center;
+	margin-bottom: 0;
+	padding: 0;
+}
+
+/* Se le pone un alto fijo para que no se chigue cuando se agranda el textarea */
+#lista_alumnos td.observaciones_wrapper {
+	height: 21px;
+}
+
+#lista_alumnos textarea {
+	width: 100px;
+	height: 20px;
+	margin: 0;
+}
+
+#lista_alumnos .error {
+	background-color: #ff0000;
+}
+
+#lista_alumnos .guardado > td {
+	background-color: #dff0d8 !important;
+}
+
+#lista_alumnos .nav {
+	margin: 0;
+}
+
+#lista_alumnos .error-renglon td {
+	background-color: #eed3d7 !important;
+}
+
+#lista_alumnos .resultado-busqueda td {
+	background-color: #ffe45c;
+}
+
+#lista_alumnos .ficha-alumno img {
+	margin-right: 5px;
+}
+
+#lista_alumnos span.nombre,
+#lista_alumnos span.legajo {
+	display: block;
+}
+
+#lista_alumnos span.legajo {
+	color: #666;
+}
+
+#lista_alumnos select.nota, #lista_alumnos select.js-resultado-select {
+	padding-left: 2px;
+	padding-right: 2px;
+	width: auto;
+	margin-bottom: 0;
+	height: auto;
+}
+
+#lista_alumnos input.nota_input, input.autocompletar_nota {
+	text-align: right;
+    width: 75px;
+}
+
+#lista_alumnos .observaciones, .corregido_por {
+    text-align: left !important;
+}

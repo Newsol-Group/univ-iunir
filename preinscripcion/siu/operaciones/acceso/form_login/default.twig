@@ -1,0 +1,236 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+    
+    {% import "kernel/macro_recaptcha.twig" as recaptcha %}
+    {{ recaptcha.script() }}
+                            
+    <h2>{{"ingresa_tus_datos"|trans|capitalize}}</h2>
+
+    <!-- Abro el colapsable del login -->
+    <div class="accordion" id="accordion-login">
+             
+    {% if this.data.proveedores.form %}
+        {% set form = this.data.proveedores.form %}
+            
+        <!-- Abro la sección de login por email -->
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle no-ajax" data-toggle="collapse" data-parent="#accordion-login" href="#collapseEmail">
+                    {{ "login.con_email" | trans }}
+                </a>
+            </div>
+            <div id="collapseEmail" class="accordion-body collapse {% if this.data.auth == 'form' %}in{% endif %}">
+                <div class="accordion-inner">
+
+                    <form method="post" action="{{ form.accion }}" id="form_login">
+                        <div class="control-group">
+                                <label class="control-label label-obligatorio" for="usuario">{{ "email" | trans }} (*)</label>
+                                <div class="controls">
+                                        <input id="usuario" name="usuario" type="text" value="{{ form.usuario }}" maxlength="100" />
+                                </div>
+                        </div>
+                        <div class="control-group">
+                                <label class="control-label label-obligatorio" for="password">{{ "clave" | trans }} (*)</label>
+                                <div class="controls">
+                                        <input id="password" name="password" type="password" value="" maxlength="32" />
+                                </div>
+                        </div>
+                                
+                        {% if form.usar_captcha %}
+                            <div class="control-group div-captcha">
+                                {{ recaptcha.widget() }}
+                            </div>
+                        {% endif %}
+                                        
+                        <div class="control-group">
+                            <div class="controls">
+                                <button id="login" name="login" type="submit" class="btn btn-info">{{ 'ingresar' | trans }}</button>
+                            </div>
+                        </div>
+                            
+                    </form>
+
+                    {% if form.error %}
+                        <div class='alert alert-error'>
+                            {{ form.error|trans({
+                                '%1%': this.data.url_reenviar_mail,
+                                '%url_olvide_pass%': this.data.url_recuperar,
+                                '%campo%': 'E-mail'
+                                })|raw
+                            }}
+                        </div>
+                    {% endif %}
+                        
+                </div>
+            </div>
+        </div>
+        <!-- Cierro la sección de login por email -->
+                
+    {% endif %}
+	
+    {% if this.data.proveedores.form_documento %}
+        {% set form_documento = this.data.proveedores.form_documento %}
+        
+        <!-- Abro la sección de login por documento -->
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle no-ajax" data-toggle="collapse" data-parent="#accordion-login" href="#collapseDocumento">
+                    {{ "login.con_documento" | trans }}
+                </a>
+            </div>
+            <div id="collapseDocumento" class="accordion-body collapse {% if this.data.auth == 'form_documento' %}in{% endif %}">
+                <div class="accordion-inner">
+                    
+                    <form method="post" action="{{ form_documento.accion }}" id="form_login_documento">
+                        
+                        <div class="control-group">
+                            <label class="control-label label-obligatorio" for="pais_documento">{{ "pais_documento" | trans }} (*)</label>
+                            <div class="controls">
+                                <select name="pais_documento" id="pais_documento">
+                                {% for value, descr in form_documento.paises %}
+                                    <option value="{{ value }}" {% if value == form_documento.pais %}selected{% endif %}>{{ descr }}</option>
+                                {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                                    
+                        <div class="control-group">
+                            <label class="control-label label-obligatorio" for="tipo_documento">{{ "tipo_documento" | trans }} (*)</label>
+                            <div class="controls">
+                                <select name="tipo_documento" id="tipo_documento">
+                                {% for value, descr in form_documento.tipos_documentos %}
+                                    <option value="{{ value }}" {% if value == form_documento.tipo_documento %}selected{% endif %}>{{ descr }}</option>
+                                {% endfor %}
+                                </select>
+                            </div>
+                        </div>
+                            
+                        <div class="control-group">
+                            <label class="control-label label-obligatorio" for="nro_documento">{{ "nro_documento" | trans }} (*)</label>
+                            <div class="controls">
+                                <input type="text" name="nro_documento" id="nro_documento" value="{{ form_documento.nro_documento }}" maxlength="20">
+                            </div>
+                        </div>
+                        
+                        <div class="control-group">
+                            <label class="control-label label-obligatorio" for="fecha_nacimiento">{{ "fecha_nacimiento" | trans }} (*)</label>
+                            <div class="controls">
+                                <input type="text" name="fecha_nacimiento" id="fecha_nacimiento" value="{{ form_documento.fecha_nacimiento }}">
+                            </div>
+                        </div>
+                            
+                        <div class="control-group">
+                            <label class="control-label label-obligatorio" for="password">{{ "clave" | trans }} (*)</label>
+                            <div class="controls">
+                                <input id="password" name="password" type="password" value="" maxlength="32" />
+                            </div>
+                        </div>
+                                
+                        {% if form_documento.usar_captcha %}
+                            <div class="control-group div-captcha">
+                                {{ recaptcha.widget() }}
+                            </div>
+                        {% endif %}
+                                        
+                        <div class="control-group">
+                            <div class="controls">
+                                <button id="login_documento" name="login_documento" type="submit" class="btn btn-info">{{ 'ingresar' | trans }}</button>
+                            </div>
+                        </div>
+                            
+                    </form>
+                                
+                    {% if form_documento.error %}
+                        <div class='alert alert-error'>
+                            {{ form_documento.error|trans({
+                                '%1%': this.data.url_reenviar_mail,
+                                '%url_olvide_pass%': this.data.url_recuperar,
+                                '%campo%': 'Número de documento'
+                                })|raw
+                            }}
+                        </div>
+                    {% endif %}
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Cierro la sección de login por documento -->
+        
+    {% endif %}
+    
+    {% if this.data.proveedores.cuentas_ext and this.data.hay_servicios_externos %}
+
+        {% set cuentas_ext = this.data.proveedores.cuentas_ext %}
+        
+        <!-- Abro la sección de login por cuentas externas -->
+        <div class="accordion-group">
+            <div class="accordion-heading">
+                <a class="accordion-toggle no-ajax" data-toggle="collapse" data-parent="#accordion-login" href="#collapseCuentasExternas">
+                    {{ "login.con_cuentas_ext" | trans }}
+                </a>
+            </div>
+            <div id="collapseCuentasExternas" class="accordion-body collapse {% if this.data.auth == 'cuentas_ext' %}in{% endif %}">
+                <div class="accordion-inner">
+                    
+                    <div class="services">
+                        {% for serv, d in cuentas_ext.proveedores %}
+                            <a class="no-ajax login-link" href="{{ d.url }}">
+                                {% if d.icono %}
+                                    <img alt="{{ "login.with"|trans({'%servicio%': d.id|capitalize})|raw }}" class="login-icon" src="{{ d.icono }}"/>
+                                {% endif %}
+                                {{ d.id|trans|capitalize }}</a>
+                        {% endfor %}
+
+                        {% if cuentas_ext.error %}
+                            <div class='alert alert-error'>
+                                                    {{ cuentas_ext.error
+                                                            |trans({
+                                                            '%1%': this.data.url_reenviar_mail,
+                                                            '%url_olvide_pass%': this.data.url_recuperar
+                                                            })|raw
+                                                    }}
+                            </div>
+                        {% endif %}
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        <!-- Cierro la sección de login por cuentas externas -->
+		
+    {% endif %}
+
+    </div>
+    <!-- Cierro el colapsable del login -->
+    
+	<hr/>
+	
+	<a href='{{ this.data.url_recuperar }}' class='no-ajax btn btn-info'>{{'recuperar_clave'|trans|capitalize}}</a>
+        
+        <hr/>
+
+	<h4>{{'usuario_nuevo'|trans}}</h4>
+	<a href='{{ this.data.url_crear }}' class='no-ajax btn btn-info'>{{'crear_nuevo_usuario'|trans|capitalize}}</a>
+	
+	<hr/>
+	
+        <h4>{{'ayuda_menu.titulo'|trans}}</h4>
+	<a href='{{ this.data.url_ayuda_menu }}' class='no-ajax btn btn-info'>{{'header.menu.ayuda_menu'|trans|capitalize}}</a>
+        
+        <hr/>
+	
+	{#---- Login con servicios externos --------------------------------------#}
+	{% if this.data.servicios is defined and this.data.servicios %}
+		<div class="services">
+		<div class="mensaje-login-externo">{{ "login.sep_msg"|trans|capitalize }}</div>
+		{% for serv, d in this.data.servicios %}
+			<a class="no-ajax login-link" href="{{ d.url }}" alt="{{ "login.with"|trans({'%servicio%': serv|capitalize})|raw }}">
+			{% if d.icon %}
+			<img class="login-icon" src="{{ d.icon }}"/>
+			{% endif %}
+			{{ serv|capitalize }}</a>
+		{% endfor %}
+		</div>
+	{% endif %}
+	
+{% endblock %}

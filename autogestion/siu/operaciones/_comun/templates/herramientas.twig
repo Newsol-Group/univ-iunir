@@ -1,0 +1,34 @@
+{% import 'kernel/macro_helpers.twig' as helper %}
+{% extends "kernel/pagelet.twig" %}
+
+
+{% block contenido %}
+
+	{% block herramientas %}
+		<div class='detalle-contenedor  well well-small'>
+			<div class="clearfix detalle-cabecera">
+				{% block herramientas_cabecera %}
+				<div class='pull-left herramientas-titulo'>
+					{% block herramientas_cabecera_titulo 'Herramientas' %}
+				</div>
+				<div class='pull-right herramientas-acciones'>
+					<div class='pull-right'>
+						<div class="btn-group">
+							{% block herramientas_cabecera_acciones '' %}
+						</div>
+					</div>
+				</div>
+				{% endblock %}
+			</div>
+
+			{% block herramientas_contenido '' %}
+			{# Este bloque se puede pisar cuando se  usan varios pagelets para crear las herramientas #}
+			{% block herramientas_cierre '</div>' %}
+
+	{% endblock %}
+
+{% endblock %}
+
+
+
+

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="37000965" descripcion="toba_ei_cuadro">
+	<tabla nombre="apex_objeto_ei_cuadro_columna">
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="37000965"/>
+			<columna nombre="objeto_cuadro_col" valor="770000687"/>
+			<columna nombre="clave" valor="fecha_aprob_tesis"/>
+			<columna nombre="orden" valor="10"/>
+			<columna nombre="titulo" valor="Fecha Aprobación Tesis"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-cen-s1"/>
+			<columna nombre="formateo" valor="8"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+	</tabla>
+</componente>

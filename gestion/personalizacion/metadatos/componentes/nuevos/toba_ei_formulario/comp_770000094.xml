@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000094" descripcion="toba_ei_formulario">
+	<tabla nombre="apex_objeto">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000094"/>
+			<columna nombre="clase_proyecto" valor="toba"/>
+			<columna nombre="clase" valor="toba_ei_formulario"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+			<columna nombre="subclase" valor="form_datos_facturacion_nsg"/>
+			<columna nombre="subclase_archivo" valor="operaciones/facturacion/datos_facturacion/form_datos_facturacion_nsg.php"/>
+			<columna nombre="nombre" valor="Datos Facturación - formulario"/>
+			<columna nombre="colapsable" valor="0"/>
+			<columna nombre="fuente_datos_proyecto" valor="guarani"/>
+			<columna nombre="fuente_datos" valor="guarani"/>
+			<columna nombre="creacion" valor="2009-06-11 12:45:27"/>
+			<columna nombre="posicion_botonera" valor="abajo"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_eventos">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="evento_id" valor="770000093"/>
+			<columna nombre="objeto" valor="770000094"/>
+			<columna nombre="identificador" valor="modificacion"/>
+			<columna nombre="etiqueta" valor="&amp;Modificar"/>
+			<columna nombre="maneja_datos" valor="1"/>
+			<columna nombre="imagen_recurso_origen" valor="apex"/>
+			<columna nombre="en_botonera" valor="0"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="implicito" valor="1"/>
+			<columna nombre="defecto" valor="0"/>
+			<columna nombre="es_seleccion_multiple" valor="0"/>
+			<columna nombre="es_autovinculo" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ut_formulario">
+		<registro>
+			<columna nombre="objeto_ut_formulario_proyecto" valor="guarani"/>
+			<columna nombre="objeto_ut_formulario" valor="770000094"/>
+			<columna nombre="ancho" valor="100%"/>
+			<columna nombre="ancho_etiqueta" valor="100px"/>
+			<columna nombre="expandir_descripcion" valor="1"/>
+			<columna nombre="filas_agregar_online" valor="1"/>
+			<columna nombre="filas_agregar_abajo" valor="0"/>
+			<columna nombre="filas_borrar_en_linea" valor="0"/>
+			<columna nombre="filas_ordenar_en_linea" valor="0"/>
+			<columna nombre="no_imprimir_efs_sin_estado" valor="0"/>
+			<columna nombre="resaltar_efs_con_estado" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ei_formulario_ef">
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000035"/>
+			<columna nombre="objeto_ei_formulario" valor="770000094"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="porcentaje_facturacion_alumno"/>
+			<columna nombre="elemento_formulario" valor="ef_editable_numero_porcentaje"/>
+			<columna nombre="columnas" valor="porcentaje_facturacion_alumno"/>
+			<columna nombre="obligatorio" valor="1"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="etiqueta" valor="% Facturación"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="estado_defecto" valor="100"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000036"/>
+			<columna nombre="objeto_ei_formulario" valor="770000094"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="observaciones"/>
+			<columna nombre="elemento_formulario" valor="ef_editable"/>
+			<columna nombre="columnas" valor="observaciones"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="17"/>
+			<columna nombre="etiqueta" valor="Si no encuentra la empresa, indique CUIT y/o Razón Social"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="edit_tamano" valor="80"/>
+			<columna nombre="edit_maximo" valor="255"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000037"/>
+			<columna nombre="objeto_ei_formulario" valor="770000094"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="cbu_empresa_mat"/>
+			<columna nombre="elemento_formulario" valor="ef_editable"/>
+			<columna nombre="columnas" valor="cbu_empresa_mat"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="11"/>
+			<columna nombre="etiqueta" valor="CBU Matrícula"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="edit_tamano" valor="22"/>
+			<columna nombre="edit_maximo" valor="22"/>
+			<columna nombre="edit_expreg" valor="/^[0-9]{22}$/"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000038"/>
+			<columna nombre="objeto_ei_formulario" valor="770000094"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="cbu_empresa_cuota"/>
+			<columna nombre="elemento_formulario" valor="ef_editable"/>
+			<columna nombre="columnas" valor="cbu_empresa_cuota"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="14"/>
+			<columna nombre="etiqueta" valor="CBU Cuota"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="edit_tamano" valor="22"/>
+			<columna nombre="edit_maximo" valor="22"/>
+			<columna nombre="edit_expreg" valor="/^[0-9]{22}$/"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000039"/>
+			<columna nombre="objeto_ei_formulario" valor="770000094"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="porcentaje_facturacion_empresa"/>
+			<columna nombre="elemento_formulario" valor="ef_editable_numero_porcentaje"/>
+			<columna nombre="columnas" valor="porcentaje_facturacion_empresa"/>
+			<columna nombre="obligatorio" valor="1"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="8"/>
+			<columna nombre="etiqueta" valor="% Facturación"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="estado_defecto" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000040"/>
+			<columna nombre="objeto_ei_formulario" valor="770000094"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="medio_pago_empresa_cuota"/>
+			<columna nombre="elemento_formulario" valor="ef_combo"/>
+			<columna nombre="columnas" valor="medio_pago_empresa_cuota"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="12"/>
+			<columna nombre="etiqueta" valor="Medio de Pago Cuota"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="carga_metodo" valor="get_medios_pago"/>
+			<columna nombre="carga_consulta_php" valor="770000001"/>
+			<columna nombre="carga_fuente" valor="guarani"/>
+			<columna nombre="carga_col_clave" valor="valor"/>
+			<columna nombre="carga_col_desc" valor="descr"/>
+			<columna nombre="carga_cascada_relaj" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="1"/>
+			<columna nombre="carga_no_seteado" valor="-- Selección --"/>
+			<columna nombre="carga_no_seteado_ocultar" valor="0"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000041"/>
+			<columna nombre="objeto_ei_formulario" valor="770000094"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="medio_pago_alumno_mat"/>
+			<columna nombre="elemento_formulario" valor="ef_combo"/>
+			<columna nombre="columnas" valor="medio_pago_alumno_mat"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="2"/>
+			<columna nombre="etiqueta" valor="Medio de Pago Matrícula"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="estado_defecto" valor="2"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="carga_metodo" valor="get_medios_pago"/>
+			<columna nombre="carga_consulta_php" valor="770000001"/>
+			<columna nombre="carga_fuente" valor="guarani"/>
+			<columna nombre="carga_col_clave" valor="valor"/>
+			<columna nombre="carga_col_desc" valor="descr"/>
+			<columna nombre="carga_cascada_relaj" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="1"/>
+			<columna nombre="carga_no_seteado" valor="-- Selección --"/>
+			<columna nombre="carga_no_seteado_ocultar" valor="0"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000042"/>
+			<columna nombre="objeto_ei_formulario" valor="770000094"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="nro_tarjeta_empresa_mat"/>
+			<columna nombre="elemento_formulario" valor="ef_editable"/>
+			<columna nombre="columnas" valor="nro_tarjeta_empresa_mat"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="10"/>
+			<columna nombre="etiqueta" valor="Nro tarjeta Matrícula"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="edit_tamano" valor="20"/>
+			<columna nombre="edit_maximo" valor="20"/>
+			<columna nombre="edit_mascara" valor="#### #### #### ####"/>
+			<columna nombre="edit_expreg" valor="/^[0-9]{16}$/"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000043"/>
+			<columna nombre="objeto_ei_formulario" valor="770000094"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="nro_tarjeta_empresa_cuota"/>
+			<columna nombre="elemento_formulario" valor="ef_editable"/>
+			<columna nombre="columnas" valor="nro_tarjeta_empresa_cuota"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="13"/>
+			<columna nombre="etiqueta" valor="Nro tarjeta Cuota"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="edit_tamano" valor="20"/>
+			<columna nombre="edit_maximo" valor="20"/>
+			<columna nombre="edit_mascara" valor="#### #### #### ####"/>
+			<columna nombre="edit_expreg" valor="/^[0-9]{16}$/"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000044"/>
+			<columna nombre="objeto_ei_formulario" valor="770000094"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="email_empresa"/>
+			<columna nombre="elemento_formulario" valor="ef_editable"/>
+			<columna nombre="columnas" valor="email_empresa"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="16"/>
+			<columna nombre="etiqueta" valor="Email Empresa"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="edit_tamano" valor="80"/>
+			<columna nombre="edit_maximo" valor="100"/>
+			<columna nombre="edit_expreg" valor="/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000045"/>
+			<columna nombre="objeto_ei_formulario" valor="770000094"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="medio_pago_alumno_cuota"/>
+			<columna nombre="elemento_formulario" valor="ef_combo"/>
+			<columna nombre="columnas" valor="medio_pago_alumno_cuota"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="5"/>
+			<columna nombre="etiqueta" valor="Medio de Pago Cuota"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="estado_defecto" valor="2"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="carga_metodo" valor="get_medios_pago"/>
+			<columna nombre="carga_consulta_php" valor="770000001"/>
+			<columna nombre="carga_fuente" valor="guarani"/>
+			<columna nombre="carga_col_clave" valor="valor"/>
+			<columna nombre="carga_col_desc" valor="descr"/>
+			<columna nombre="carga_cascada_relaj" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="1"/>
+			<columna nombre="carga_no_seteado" valor="-- Selección --"/>
+			<columna nombre="carga_no_seteado_ocultar" valor="0"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000046"/>
+			<columna nombre="objeto_ei_formulario" valor="770000094"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="medio_pago_empresa_mat"/>
+			<columna nombre="elemento_formulario" valor="ef_combo"/>
+			<columna nombre="columnas" valor="medio_pago_empresa_mat"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="9"/>
+			<columna nombre="etiqueta" valor="Medio de Pago Matrícula"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="carga_metodo" valor="get_medios_pago"/>
+			<columna nombre="carga_consulta_php" valor="770000001"/>
+			<columna nombre="carga_fuente" valor="guarani"/>
+			<columna nombre="carga_col_clave" valor="valor"/>
+			<columna nombre="carga_col_desc" valor="descr"/>
+			<columna nombre="carga_cascada_relaj" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="1"/>
+			<columna nombre="carga_no_seteado" valor="-- Selección --"/>
+			<columna nombre="carga_no_seteado_ocultar" valor="0"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000047"/>
+			<columna nombre="objeto_ei_formulario" valor="770000094"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="nro_tarjeta_alumno_mat"/>
+			<columna nombre="elemento_formulario" valor="ef_editable"/>
+			<columna nombre="columnas" valor="nro_tarjeta_alumno_mat"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="3"/>
+			<columna nombre="etiqueta" valor="Nro Tarjeta Matrícula"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="edit_tamano" valor="20"/>
+			<columna nombre="edit_maximo" valor="20"/>
+			<columna nombre="edit_mascara" valor="#### #### #### ####"/>
+			<columna nombre="edit_expreg" valor="/^[0-9]{16}$/"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000048"/>
+			<columna nombre="objeto_ei_formulario" valor="770000094"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="empresa"/>
+			<columna nombre="elemento_formulario" valor="ef_combo"/>
+			<columna nombre="columnas" valor="empresa"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="15"/>
+			<columna nombre="etiqueta" valor="Empresa"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="carga_metodo" valor="get_instituciones"/>
+			<columna nombre="carga_consulta_php" valor="1000008"/>
+			<columna nombre="carga_fuente" valor="guarani"/>
+			<columna nombre="carga_col_clave" valor="valor"/>
+			<columna nombre="carga_col_desc" valor="descr"/>
+			<columna nombre="carga_cascada_relaj" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="1"/>
+			<columna nombre="carga_no_seteado" valor="-- Seleccione --"/>
+			<columna nombre="carga_no_seteado_ocultar" valor="0"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000049"/>
+			<columna nombre="objeto_ei_formulario" valor="770000094"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="nro_tarjeta_alumno_cuota"/>
+			<columna nombre="elemento_formulario" valor="ef_editable"/>
+			<columna nombre="columnas" valor="nro_tarjeta_alumno_cuota"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="6"/>
+			<columna nombre="etiqueta" valor="Nro Tarjeta Cuota"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="edit_tamano" valor="20"/>
+			<columna nombre="edit_maximo" valor="20"/>
+			<columna nombre="edit_mascara" valor="#### #### #### ####"/>
+			<columna nombre="edit_expreg" valor="/^[0-9]{16}$/"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000050"/>
+			<columna nombre="objeto_ei_formulario" valor="770000094"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="cbu_alumno_mat"/>
+			<columna nombre="elemento_formulario" valor="ef_editable"/>
+			<columna nombre="columnas" valor="cbu_alumno_mat"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="4"/>
+			<columna nombre="etiqueta" valor="CBU Matrícula"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="edit_tamano" valor="22"/>
+			<columna nombre="edit_maximo" valor="22"/>
+			<columna nombre="edit_expreg" valor="/^[0-9]{22}$/"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000051"/>
+			<columna nombre="objeto_ei_formulario" valor="770000094"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="cbu_alumno_cuota"/>
+			<columna nombre="elemento_formulario" valor="ef_editable"/>
+			<columna nombre="columnas" valor="cbu_alumno_cuota"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="7"/>
+			<columna nombre="etiqueta" valor="CBU Cuota"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="edit_tamano" valor="22"/>
+			<columna nombre="edit_maximo" valor="22"/>
+			<columna nombre="edit_expreg" valor="/^[0-9]{22}$/"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000052"/>
+			<columna nombre="objeto_ei_formulario" valor="770000094"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="forma_pago"/>
+			<columna nombre="elemento_formulario" valor="ef_combo"/>
+			<columna nombre="columnas" valor="forma_pago"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="18"/>
+			<columna nombre="etiqueta" valor="Forma de Pago"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="carga_metodo" valor="get_formas_pago_alumno"/>
+			<columna nombre="carga_fuente" valor="guarani"/>
+			<columna nombre="carga_col_clave" valor="valor"/>
+			<columna nombre="carga_col_desc" valor="descr"/>
+			<columna nombre="carga_cascada_relaj" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="1"/>
+			<columna nombre="carga_no_seteado" valor="-- Seleccione --"/>
+			<columna nombre="carga_no_seteado_ocultar" valor="1"/>
+			<columna nombre="fijo_sin_estado" valor="0"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_formulario_fila" valor="770000053"/>
+			<columna nombre="objeto_ei_formulario" valor="770000094"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="pago_a_cargo_empresa"/>
+			<columna nombre="elemento_formulario" valor="ef_checkbox"/>
+			<columna nombre="columnas" valor="pago_a_cargo_empresa"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="19"/>
+			<columna nombre="etiqueta" valor="Paga una parte la Empresa?"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+	</tabla>
+</componente>

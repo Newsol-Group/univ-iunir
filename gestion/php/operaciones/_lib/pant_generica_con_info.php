@@ -1,0 +1,13 @@
+<?php
+class pant_generica_con_info extends guarani_pers_ei_pantalla
+{
+	function generar_layout()
+	{
+		if ($this->controlador()->ev_info()->tiene_datos()) {
+			$this->controlador()->ev_info()->generar_html();
+			echo '<hr />';
+		}
+		parent::generar_layout();
+	}
+}
+?>

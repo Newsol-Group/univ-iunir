@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000322" descripcion="toba_ei_filtro">
+	<tabla nombre="apex_objeto">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000322"/>
+			<columna nombre="clase_proyecto" valor="toba"/>
+			<columna nombre="clase" valor="toba_ei_filtro"/>
+			<columna nombre="punto_montaje" valor="1"/>
+			<columna nombre="subclase" valor="guarani_pers_ei_filtro"/>
+			<columna nombre="subclase_archivo" valor="extension_toba/componentes/guarani_pers_ei_filtro.php"/>
+			<columna nombre="nombre" valor="cargaranticiBecas y Bonificaciones - filtro"/>
+			<columna nombre="titulo" valor="Filtro"/>
+			<columna nombre="colapsable" valor="1"/>
+			<columna nombre="fuente_datos_proyecto" valor="guarani"/>
+			<columna nombre="fuente_datos" valor="guarani"/>
+			<columna nombre="creacion" valor="2009-05-05 12:36:51"/>
+			<columna nombre="posicion_botonera" valor="abajo"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_eventos">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="evento_id" valor="770000313"/>
+			<columna nombre="objeto" valor="770000322"/>
+			<columna nombre="identificador" valor="filtrar"/>
+			<columna nombre="etiqueta" valor="&amp;Filtrar"/>
+			<columna nombre="maneja_datos" valor="1"/>
+			<columna nombre="estilo" valor="ei-boton-filtrar"/>
+			<columna nombre="imagen_recurso_origen" valor="apex"/>
+			<columna nombre="imagen" valor="filtrar.png"/>
+			<columna nombre="en_botonera" valor="1"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="implicito" valor="0"/>
+			<columna nombre="defecto" valor="1"/>
+			<columna nombre="grupo" valor="cargado,no_cargado"/>
+			<columna nombre="es_seleccion_multiple" valor="0"/>
+			<columna nombre="es_autovinculo" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="evento_id" valor="770000312"/>
+			<columna nombre="objeto" valor="770000322"/>
+			<columna nombre="identificador" valor="cancelar"/>
+			<columna nombre="etiqueta" valor="&amp;Limpiar"/>
+			<columna nombre="maneja_datos" valor="0"/>
+			<columna nombre="estilo" valor="ei-boton-limpiar"/>
+			<columna nombre="imagen_recurso_origen" valor="apex"/>
+			<columna nombre="imagen" valor="limpiar.png"/>
+			<columna nombre="en_botonera" valor="1"/>
+			<columna nombre="orden" valor="2"/>
+			<columna nombre="implicito" valor="0"/>
+			<columna nombre="defecto" valor="0"/>
+			<columna nombre="grupo" valor="cargado"/>
+			<columna nombre="es_seleccion_multiple" valor="0"/>
+			<columna nombre="es_autovinculo" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ei_filtro">
+		<registro>
+			<columna nombre="objeto_ei_filtro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_ei_filtro" valor="770000322"/>
+			<columna nombre="ancho" valor="100%"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ei_filtro_col">
+		<registro>
+			<columna nombre="objeto_ei_filtro_col" valor="770000237"/>
+			<columna nombre="objeto_ei_filtro" valor="770000322"/>
+			<columna nombre="objeto_ei_filtro_proyecto" valor="guarani"/>
+			<columna nombre="tipo" valor="cadena"/>
+			<columna nombre="nombre" valor="legajo"/>
+			<columna nombre="expresion" valor="sga_alumnos.legajo"/>
+			<columna nombre="etiqueta" valor="Legajo"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="inicial" valor="0"/>
+			<columna nombre="orden" valor="4"/>
+			<columna nombre="opciones_es_multiple" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="punto_montaje" valor="1"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_filtro_col" valor="770000238"/>
+			<columna nombre="objeto_ei_filtro" valor="770000322"/>
+			<columna nombre="objeto_ei_filtro_proyecto" valor="guarani"/>
+			<columna nombre="tipo" valor="opciones"/>
+			<columna nombre="nombre" valor="propuesta"/>
+			<columna nombre="expresion" valor="vw_perfil_de_datos_propuestas.propuesta"/>
+			<columna nombre="etiqueta" valor="Propuesta"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="inicial" valor="0"/>
+			<columna nombre="orden" valor="5"/>
+			<columna nombre="opciones_es_multiple" valor="0"/>
+			<columna nombre="opciones_ef" valor="ef_combo_editable"/>
+			<columna nombre="carga_metodo" valor="get_listado_propuestas_descr"/>
+			<columna nombre="carga_consulta_php" valor="5"/>
+			<columna nombre="carga_fuente" valor="guarani"/>
+			<columna nombre="carga_col_clave" valor="valor"/>
+			<columna nombre="carga_col_desc" valor="descr"/>
+			<columna nombre="carga_permite_no_seteado" valor="1"/>
+			<columna nombre="carga_no_seteado" valor="-- seleccionar --"/>
+			<columna nombre="carga_no_seteado_ocultar" valor="0"/>
+			<columna nombre="edit_tamano" valor="200"/>
+			<columna nombre="popup_carga_desc_metodo" valor="get_descripcion_propuesta"/>
+			<columna nombre="popup_carga_desc_clase" valor="co_propuestas"/>
+			<columna nombre="popup_carga_desc_include" valor="nucleo/propuestas/propuestas/co_propuestas.php"/>
+			<columna nombre="punto_montaje" valor="1"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_filtro_col" valor="770000239"/>
+			<columna nombre="objeto_ei_filtro" valor="770000322"/>
+			<columna nombre="objeto_ei_filtro_proyecto" valor="guarani"/>
+			<columna nombre="tipo" valor="cadena"/>
+			<columna nombre="nombre" valor="apellido"/>
+			<columna nombre="expresion" valor="vw_personas.apellido"/>
+			<columna nombre="etiqueta" valor="Apellidos"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="inicial" valor="1"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="opciones_es_multiple" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="punto_montaje" valor="1"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_filtro_col" valor="770000240"/>
+			<columna nombre="objeto_ei_filtro" valor="770000322"/>
+			<columna nombre="objeto_ei_filtro_proyecto" valor="guarani"/>
+			<columna nombre="tipo" valor="cadena"/>
+			<columna nombre="nombre" valor="nombres"/>
+			<columna nombre="expresion" valor="vw_personas.nombres"/>
+			<columna nombre="etiqueta" valor="Nombres"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="inicial" valor="0"/>
+			<columna nombre="orden" valor="2"/>
+			<columna nombre="opciones_es_multiple" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="punto_montaje" valor="1"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_filtro_col" valor="770000241"/>
+			<columna nombre="objeto_ei_filtro" valor="770000322"/>
+			<columna nombre="objeto_ei_filtro_proyecto" valor="guarani"/>
+			<columna nombre="tipo" valor="cadena"/>
+			<columna nombre="nombre" valor="identificacion"/>
+			<columna nombre="expresion" valor="vw_personas.nro_documento"/>
+			<columna nombre="etiqueta" valor="Identificación"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="inicial" valor="0"/>
+			<columna nombre="orden" valor="3"/>
+			<columna nombre="opciones_es_multiple" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="punto_montaje" valor="1"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_ei_filtro_col" valor="770000242"/>
+			<columna nombre="objeto_ei_filtro" valor="770000322"/>
+			<columna nombre="objeto_ei_filtro_proyecto" valor="guarani"/>
+			<columna nombre="tipo" valor="opciones"/>
+			<columna nombre="nombre" valor="ubicacion"/>
+			<columna nombre="expresion" valor="sga_ubicaciones.ubicacion"/>
+			<columna nombre="etiqueta" valor="Ubicación"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="inicial" valor="0"/>
+			<columna nombre="orden" valor="6"/>
+			<columna nombre="opciones_es_multiple" valor="0"/>
+			<columna nombre="opciones_ef" valor="ef_combo"/>
+			<columna nombre="carga_metodo" valor="get_ubicaciones"/>
+			<columna nombre="carga_consulta_php" valor="37000008"/>
+			<columna nombre="carga_fuente" valor="guarani"/>
+			<columna nombre="carga_col_clave" valor="valor"/>
+			<columna nombre="carga_col_desc" valor="descr"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="carga_no_seteado_ocultar" valor="0"/>
+			<columna nombre="punto_montaje" valor="1"/>
+		</registro>
+	</tabla>
+</componente>

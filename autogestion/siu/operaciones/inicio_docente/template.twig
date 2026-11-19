@@ -1,0 +1,32 @@
+{% extends "kernel/una_columna.twig" %}
+{% block titulo_operacion %}<h2>{{ 'bienvenido'|trans|capitalize }} {{ persona }} </h2>{% endblock %}
+{% block columna_1 %}
+{{ 'inicio_alumno_docente.oferta_campus_virtual_universitario_nacional' | trans | raw }} 
+    {% if documentos_digitales_pendientes %}
+        <div class="alert">
+            {{ msg_documentos_digitales_pendientes | raw }}
+        </div>
+    {% endif %}
+    
+    {% if msg_error %}
+        <div class="alert alert-error" style="font-weight: bold;">
+            {{ msg_error|raw }}
+        </div>
+    {% endif %}
+    
+    <div class='row-fluid'>
+        <div class='span6'>
+            {{ clases_ultimas.render }}
+        </div>
+        <div class='span6'>
+            {{mesas_examen.render }}
+        </div>
+        <div class='span6'>
+            {{ lista_encuestas_pendientes.render }}
+        </div>
+        <div class='span6'>
+            {#{ reporte.render }#}
+        </div>
+    </div>
+
+{% endblock %}

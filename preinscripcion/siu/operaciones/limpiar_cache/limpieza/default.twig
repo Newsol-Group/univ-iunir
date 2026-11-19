@@ -1,0 +1,23 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+{% autoescape false %}
+
+{% if this.data.mensaje_ok %}
+<div class="mensaje alert alert-success span6">
+	{{ this.data.mensaje_ok|trans }}
+</div>
+{% elseif this.data.mensaje_error %} 
+<div class="mensaje alert alert-error span6">
+	{{ this.data.mensaje_error|trans }}
+</div>
+{% else %}
+<div class="mensaje alert alert-info span6">
+	{{ 'msj_limpieza_cache'|trans }}
+</div>
+<div class="clearfix"></div>
+<form id="form_limpieza_cache" method="post" action="{{this.get_accion()}}">
+	<input id="btnSubmit" name="btnSubmit" type="submit" value="{{'limpiar_cache'|trans}}" class="btn btn-info" />
+</form>
+{% endif %}
+{% endautoescape %}
+{% endblock %}

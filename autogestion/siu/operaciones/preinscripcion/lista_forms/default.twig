@@ -1,0 +1,16 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+
+    <div class="well">
+        <ul id="dcensales_menu" class="nav nav-list">
+            {% for item in this.get_menu() %}
+                <li>	
+                    <a	href="{{item.url}}" form="{{item.url}}" 
+                       class="{{(item.con_faltantes) ? 'dc-faltante-' : ''}}{{ (item.activo) ? 'active' : '' }} ">
+                        {{item.nombre|trans}}
+                    </a>
+                </li>
+            {% endfor %}	
+        </ul>
+    </div>
+{% endblock %}

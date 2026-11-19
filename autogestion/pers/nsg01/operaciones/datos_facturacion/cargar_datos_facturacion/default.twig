@@ -1,0 +1,107 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+{% import "kernel/macro_notificaciones.twig" as notificaciones %}
+
+    <div class="titulo_operacion">
+        <h2 class="clearfix"><span class="pull-left">{{ "datos_facturacion.datos_facturacion" | trans }}</span>
+            <div class="pull-right" >
+                <button id="js-btn-confirmar" class="btn btn-info" type="button"><i class="icon-ok icon-white"></i> {{ "datos_facturacion.confirmar" | trans }}</button>
+				<a class="btn btn-inverse" href="{{ this.data.url_cancel }}"> {{ "datos_facturacion.cancelar" | trans }}</a>
+			</div>
+        </h2>
+    </div>
+
+{% if this.data.resultado.mensajes %}
+    {{ notificaciones.render_notif(this.data.resultado.mensajes, true) }}
+{% endif %} 
+
+	<div id="form-cargar_datos-facturacion-container">
+		<form id="js-form-cargar-datos-facturacion" class="form-horizontal" method="post" action="{{ this.data.url_form }}">
+			<h2>{{ "datos_facturacion.datos_personales" | trans }}</h2>
+			<div class="row-fluid seccion">	
+				<div class="span12">				
+					<div class="dato-personal">
+						<span class="etiqueta">{{ "datos_facturacion.apellido_nombres" | trans }}:</span> {{ this.data.persona.apellido }} {{ this.data.persona.nombres }}
+					</div>
+					<div class="row-fluid">		
+						<div class="span6">
+							<div class="dato-personal">
+								<span class="etiqueta">{{ "datos_facturacion.tipo_nro_documento" | trans }}:</span> {{ this.data.persona.tipo_documento_desc_abreviada }} {{ this.data.persona.nro_documento }}
+							</div>
+						</div>					
+					</div>	
+				</div>	
+
+			<h2>{{ "datos_facturacion.datos_alumno" | trans }}</h2>
+			<div class="row-fluid seccion">
+				<div class="span12">
+					<label class="control-label etiqueta" for="forma_pago" style="width: 200px;">{{ "datos_facturacion.forma_pago" | trans }} (*):</label>
+					<div class="controls">
+						<select id="forma_pago" name="forma_pago" class="input-xxlarge">
+							{{ this.armar_combo(this.data.forma_pago, 'valor', 'descr', false, this.data.forma_pago, true) | raw }}
+						</select>
+						<span class="help-inline">{% if this.data.forma_pago_vacia %}{{ "datos_facturacion.obligatorio" | trans }}{% endif %}</span>
+					</div>		
+					<h3 style="color:hsla(0,100%,50%,1);">{{ "datos_facturacion.datos_alumno_matricula" | trans }}</h3>
+					<div class="row-fluid seccion">
+
+						{# Medio Pago Matricula #}
+						<label class="control-label etiqueta" for="medio_pago_alumno_mat" style="width: 200px;">{{ "datos_facturacion.medio_pago_alumno_mat" | trans }}:</label>
+						<div class="controls">
+							<select id="js-medio_pago_alumno_mat" name="medio_pago_alumno_mat" class="input-xxlarge">
+								{{ this.armar_combo(this.data.medios_pago, 'valor', 'descr', true, this.data.medio_pago_alumno_mat, true) | raw }}
+							</select>
+							<span class="help-inline">{% if this.data.medio_pago_vacio %}{{ "datos_facturacion.obligatorio" | trans }}{% endif %}</span>
+						</div>
+
+						{# Tarjeta Matricula #}
+						<label id="js-label_tarjeta_mat" class="control-label etiqueta" for="nro_tarjeta_alumno_mat" style="width: 200px;">{{ "datos_facturacion.nro_tarjeta_alumno_mat" | trans }}:</label>					
+						<div id="js-div_tarjeta_mat" class="controls">
+							<input type="text" maxlength="16" id="js-nro_tarjeta_alumno_mat" name="nro_tarjeta_alumno_mat" value="{{ this.data.nro_tarjeta_alumno_mat? this.data.nro_tarjeta_alumno_mat : ''}}">
+							<span class="help-inline">{% if this.data.nro_tarjeta_invalido %}{{ "datos_facturacion.invalido" | trans }}{% endif %}</span>
+						</div>
+
+						{# CBU Matricula #}
+						<label id="js-label_cbu_mat" class="control-label etiqueta" for="cbu_alumno_mat" style="width: 200px;">{{ "datos_facturacion.cbu_alumno_mat" | trans }}:</label>	
+						<div id="js-div_dbu_mat" class="controls">
+							<input type="text" maxlength="22" id="js-cbu_alumno_mat" name="cbu_alumno_mat" value="{{ this.data.cbu_alumno_mat? this.data.cbu_alumno_mat : ''}}">
+							<span class="help-inline">{% if this.data.cbu_invalido %}{{ "datos_facturacion.invalido" | trans }}{% endif %}</span>
+						</div>	
+
+					</div>	
+
+					<h3 style="color:hsla(0,100%,50%,1);">{{ "datos_facturacion.datos_alumno_cuota"| trans }}</h3>
+					<div class="row-fluid seccion">
+						
+						{# Medio Pago Cuota #}
+						<label class="control-label etiqueta" for="medio_pago_alumno_cuota" style="width: 200px;">{{ "datos_facturacion.medio_pago_alumno_cuota" | trans }}:</label>
+						<div class="controls">
+							<select id="js-medio_pago_alumno_cuota" name="medio_pago_alumno_cuota" class="input-xxlarge">
+								{{ this.armar_combo(this.data.medios_pago, 'valor', 'descr', true, this.data.medio_pago_alumno_cuota, true) | raw }}
+							</select>
+							<span class="help-inline">{% if this.data.medio_pago_vacio %}{{ "datos_facturacion.obligatorio" | trans }}{% endif %}</span>
+						</div>	
+
+						{# Tarjeta Cuota #}
+						<label id="js-label_tarjeta_cuota" class="control-label etiqueta" for="nro_tarjeta_alumno_cuota" style="width: 200px;">{{ "datos_facturacion.nro_tarjeta_alumno_cuota" | trans }}:</label>					
+						<div id="js-div_tarjeta_cuota" class="controls">
+							<input type="text" maxlength="16" size="16" id="js-nro_tarjeta_alumno_cuota" name="nro_tarjeta_alumno_cuota" value="{{ this.data.nro_tarjeta_alumno_cuota? this.data.nro_tarjeta_alumno_cuota : ''}}">
+							<span class="help-inline">{% if this.data.nro_tarjeta_invalido %}{{ "datos_facturacion.invalido" | trans }}{% endif %}</span>
+						</div>
+
+						{# CBU Cuota #}
+						<label id="js-label_cbu_cuota" class="control-label etiqueta" for="cbu_alumno_cuota" style="width: 200px;">{{ "datos_facturacion.cbu_alumno_cuota" | trans }}:</label>	
+						<div id="js-div_cbu_cuota" class="controls">
+							<input type="text" size="22" maxlength="22" id="js-cbu_alumno_cuota" name="cbu_alumno_cuota" value="{{ this.data.cbu_alumno_cuota? this.data.cbu_alumno_cuota : ''}}">
+							<span class="help-inline">{% if this.data.cbu_invalido %}{{ "datos_facturacion.invalido" | trans }}{% endif %}</span>
+						</div>	
+					</div>	
+				</div>
+							
+			</div>
+
+		</form>
+		
+	</div>
+				
+{% endblock %}

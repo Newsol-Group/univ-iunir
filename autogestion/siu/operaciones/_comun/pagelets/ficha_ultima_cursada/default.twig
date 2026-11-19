@@ -1,0 +1,65 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+<div class="container-fluid" style="padding: 0;">
+	<div class="row-fluid">
+		<div class="span4">
+			<img src='{{this.data.url_imagen}}' />
+		</div>
+		<div class="span8">
+			<h3>{{this.data.ficha.alumno.nombre_alumno}}</h3>
+		</div>
+	</div>
+
+	<div class="js-detalle-materia">
+	{% if this.data.ficha.ficha %}
+		<table class="table table-condensed">
+			<tr>
+				<td><strong>{{'origen'|trans|capitalize}}:</strong></td>
+				<td>{{ this.data.ficha.ficha.tipo }}</td>
+			</tr>
+			{% if this.data.ficha.ficha.origen == 'C' %}
+			{# Origen: equivalencia #}
+			<tr>
+				<td><strong>{{'nro_resolucion'|trans|capitalize}}:</strong></td>
+				<td>{{ this.data.ficha.ficha.nro_resolucion_descripcion }}</td>
+			</tr>
+			{% else %}
+			{# Origen: acta de cursada o promoción #}
+			<tr>
+				<td><strong>{{'anio_academico'|trans|capitalize}}:</strong></td>
+				<td>{{ this.data.ficha.ficha.anio_academico }}</td>
+			</tr>
+			<tr>
+				<td><strong>{{'periodo_lectivo'|trans|capitalize}}:</strong></td>
+				<td>{{ this.data.ficha.ficha.periodo_lectivo_nombre }}</td>
+			</tr>
+			{% endif %}
+			<tr>
+				<td><strong>{{'fecha'|trans|capitalize}}:</strong></td>
+				<td>{{ this.data.ficha.ficha.sfecha_regularidad }}</td>
+			</tr>
+			<tr>
+				<td><strong>{{'fecha_vencimiento'|trans|capitalize}}:</strong></td>
+				<td>{{ this.data.ficha.ficha.sfecha_fin_vigencia }}</td>
+			</tr>
+			{% if this.data.ficha.ficha.origen != 'C' %}
+			<tr>
+				<td><strong>{{'catedra'|trans|capitalize}}:</strong></td>
+				<td>{{ this.data.ficha.ficha.catedra_nombre }}</td>
+			</tr>
+			{% endif %}
+			<tr>
+				<td><strong>{{'nota'|trans|capitalize}}:</strong></td>
+				<td>{{ this.data.ficha.ficha.nota }} ({{ this.data.ficha.ficha.nota_descripcion }})</td>
+			</tr>
+			<tr>
+				<td><strong>{{'resultado'|trans|capitalize}}:</strong></td>
+				<td>{{ this.data.ficha.ficha.resultado_descripcion }}</td>
+			</tr>
+		</table>
+	{% else %}
+		<div class="alert">{{"no_hay_datos_cursada_alumno"|trans|capitalize}}</div>
+	{% endif %}
+	</div>
+</div>
+{% endblock %}

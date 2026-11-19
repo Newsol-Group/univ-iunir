@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="34000018" descripcion="toba_datos_relacion">
+	<tabla nombre="apex_objeto_dependencias">
+		<registro estado="3" clave="proyecto:guarani;objeto_consumidor:34000018;dep_id:34000012"/>
+	</tabla>
+	<tabla nombre="apex_objeto_datos_rel">
+		<registro estado="3" clave="proyecto:guarani;objeto:34000018"/>
+	</tabla>
+	<tabla nombre="apex_objeto">
+		<registro estado="3" clave="proyecto:guarani;objeto:34000018"/>
+	</tabla>
+</componente>

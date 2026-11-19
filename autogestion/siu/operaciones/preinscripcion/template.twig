@@ -1,0 +1,15 @@
+{% extends "kernel/dos_columnas.twig" %}
+{% block titulo_operacion %}
+    <h2>
+        {{ "preinscripcion.titulo" | trans }}
+    </h2>
+{% endblock %}
+{% block columna_1 %}
+    {{ lista_forms.render }}
+    {{ info.render }}
+{% endblock %}
+{% block columna_2 %}
+    {# formulario es un pagelet dinámico que cambia de acuerdo a la url #}
+    {{ formulario.render }}
+    {{ items.render }}
+{% endblock %}

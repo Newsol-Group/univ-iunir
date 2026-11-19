@@ -1,0 +1,58 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	{% set form = this.get_form() %}
+	{% autoescape false %}
+	{{ form.encabezado }}
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-inferior'>
+				<div class='pull-left'>
+					<h2>{{this.get_nombre()|trans}}</h2>
+				</div>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'guardar_datos_personales')}}
+				</div>
+				<div class='clearfix'></div>
+			</div>
+		</div>
+
+		{%if form.hay_visibles_agrupado('dispon_pc') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('dispon_pc')">{{'dispon_pc'|trans}}</h3>
+			<div id='dispon_pc' class='toggle-div'>
+				<div class='clearfix cg-margen'>
+					{{ form.checkbox('alu_tec_pc_casa') }}
+					{{ form.checkbox('alu_tec_pc_trab') }}
+					{{ form.checkbox('alu_tec_pc_univ') }}
+					{{ form.checkbox('alu_tec_pc_otro') }}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		<div id='div_datos_internet'>
+			{%if form.hay_visibles_agrupado('accede_internet_en') %}
+			<div class='well clearfix'>
+				<h3 class='toggle-header' onclick="toggle('accede_internet_en')">{{'accede_internet_en'|trans}}</h3>
+				<div id='accede_internet_en' class='toggle-div'>
+					<div class='clearfix cg-margen'>
+						{{ form.checkbox('alu_tec_int_movil') }}
+						{{ form.checkbox('alu_tec_int_casa') }}
+						{{ form.checkbox('alu_tec_int_trab') }}
+						{{ form.checkbox('alu_tec_int_univ') }}
+						{{ form.checkbox('alu_tec_int_otro') }}
+					</div>
+				</div>
+			</div>
+			{% endif %}
+		</div>
+
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-superior'>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'guardar_datos_personales')}}
+				</div>
+			</div>
+		</div>
+	</form>
+	{% endautoescape %}
+{% endblock %}

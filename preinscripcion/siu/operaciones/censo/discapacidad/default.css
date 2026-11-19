@@ -1,0 +1,24 @@
+#discapacidad #div_tiene_cud {
+    display: none;
+    margin: 10px 10px 10px 30px;
+}
+
+#discapacidad .subrayado_gris { 
+    border-bottom: 1px solid #CCCCCC;
+}
+
+#discapacidad textarea {
+    width: 98%;
+}
+
+#discapacidad input[type=radio] {
+   margin-right: 5px;
+}
+
+#discapacidad #div_condicion_discapacidad label.checkbox {
+   padding-left: 0px;
+}
+
+#div_listado_discapacidad_tipos, #div_auditiva, #div_visual, #div_motora, #div_psicosocial, #div_otras, #div_importante {
+    display: none;
+}

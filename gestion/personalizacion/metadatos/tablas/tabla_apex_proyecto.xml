@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<tabla id="apex_proyecto">
+	<registro estado="2" clave="proyecto:guarani">
+		<columna nombre="version_toba" valor="3.0.0" valor_original="3.3.0"/>
+		<columna nombre="contexto_ejecucion_subclase" valor="contexto_ejecucion_pers" valor_original="contexto_ejecucion_guarani_pers"/>
+		<columna nombre="contexto_ejecucion_subclase_archivo" valor="extension_toba/contexto_ejecucion_pers.php" valor_original="extension_toba/contexto_ejecucion_guarani_pers.php"/>
+	</registro>
+</tabla>

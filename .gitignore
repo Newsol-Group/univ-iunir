@@ -1,0 +1,7 @@
+# G3Forge: exclusiones locales
+.pases-locales/
+.g3forge/pending/
+.g3forge/reports/
+.g3forge/ejecuciones/
+__pycache__/
+*.py[cod]

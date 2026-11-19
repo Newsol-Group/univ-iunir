@@ -1,0 +1,100 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	{% autoescape false %}
+
+	<div class='controls controls-row form-head clearfix'>
+		<div class='borde-inferior'>
+			<div class='pull-left'>
+				<h2>{{this.get_nombre()|trans}}</h2>
+			</div>
+			<div class='clearfix'></div>
+		</div>
+	</div>
+
+	{% if this.data.modo == 'listado' %}
+		{#---- Pantalla listado ----#}
+		{% if this.data.cant_antecedentes == 0 %}
+			<div class='alert alert-info mensaje strong'>
+				{{'sin_antecedentes_acad'|trans|raw}}
+			</div>
+		{% else %}
+			<div>
+				<table class="table table-stripped table-hover">
+					<thead>
+						<tr>
+							<th>{{'antec_fa_titulo_sup_prein'|trans}}</th>
+							<th>{{'antec_fa_institucion_prein'|trans}}</th>
+							<th>{{'antec_fa_fecha_ingreso'|trans}}</th>
+							<th>{{'antec_fa_fecha_egreso'|trans}}</th>
+							<th>{{'antec_fa_nivel_estudio'|trans}}</th>
+							<th>{{'antec_fa_estado'|trans}}</th>
+							<th>&nbsp;</th>
+						</tr>
+					</thead>
+					<tbody>
+					{% for item in this.get_datos_formacion_acad() %}
+						<tr>
+							<td>{{item.titulo_sup_prein}}</td>
+							<td>{{item.institucion_prein}}</td>
+							<td>{{item.fecha_ingreso}}</td>
+							<td>{{item.fecha_egreso}}</td>
+							<td>{{item.nivel_estudio_descr}}</td>
+							<td>{{item.estado_descr}}</td>
+							<td class='eventos-fila'>
+								<a href="{{ item.LINK_EDITAR }}" class="btn btn-info btn-small" title="{{'editar'|trans|capitalize}}"><i class="icon-white icon-pencil"></i></a>
+								<a href="{{ item.LINK_ELIMINAR }}" class="btn btn-info btn-small js-btnEliminar" title="{{'eliminar'|trans|capitalize}}"><i class="icon-white icon-remove"></i></a>
+							</td>
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		{% endif %}
+
+		<div class="pull-left fix-boton">
+			<a href="{{ this.get_accion_edicion() }}" class="btn btn-inverse">
+				 {{'agregar_antecedente'|trans}} 
+			</a>
+		</div>
+	{% else %}
+		{#---- Pantalla alta / edición ----#}
+		<div class='alert alert-warning mensaje strong'>
+			{{ 'edicion_interna.alerta' | trans | raw}}
+		</div>
+		{% set form = this.get_form() %}
+		{{ form.encabezado }}
+			<div class='well clearfix'>
+				<h3>{{'carga_antecedente_acad'|trans}}</h3>
+				{{ form.control_group('__preinsc_ID__') }}
+				<div class='clearfix' class="cg-margen">
+					{{ form.control_group('titulo_sup_prein', 'span6') }}
+					{{ form.control_group('institucion_prein', 'span6') }}
+				</div>
+				<div class='clearfix' class="cg-margen">
+					{{ form.control_group('fecha_ingreso', 'span3') }}
+					{{ form.control_group('fecha_egreso', 'span3') }}
+				</div>
+				<div class='clearfix' class="cg-margen">
+					{{ form.control_group('titulo_tesis', 'span6') }}
+					{{ form.control_group('director_tesis', 'span6') }}
+				</div>
+				<div class='clearfix' class="cg-margen">
+					{{ form.control_group('categoria_coneau', 'span6') }}
+					{{ form.control_group('duracion_teorica', 'span6') }}
+				</div>
+				<div class='clearfix' class="cg-margen">
+					{{ form.control_group('nivel_estudio', 'span6') }}
+					{{ form.control_group('estado', 'span6') }}
+				</div>
+			</div>
+
+			<div class='pull-right'>
+				{{ form.submit_button('guardar_antecedente', 'guardar_antecedente')}}
+				<a href="{{ this.get_accion_volver_edicion() }}" class="btn btn-info">
+					{{ 'volver'|trans|capitalize }} 
+				</a>
+			</div>
+		</form>
+	{% endif %}
+	{% endautoescape %}
+{% endblock %}

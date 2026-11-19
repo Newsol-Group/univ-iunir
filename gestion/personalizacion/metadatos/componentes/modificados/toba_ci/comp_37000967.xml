@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="37000967" descripcion="toba_ci">
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:37000967">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+			<columna nombre="subclase" valor="ci_rep_alumnos_por_actividad_academica_nsg" valor_original="ci_rep_alumnos_por_actividad_academica"/>
+			<columna nombre="subclase_archivo" valor="operaciones/matriculas/alumnos/ci_rep_alumnos_por_actividad_academica_nsg.php" valor_original="operaciones/matriculas/alumnos/ci_rep_alumnos_por_actividad_academica.php"/>
+		</registro>
+	</tabla>
+</componente>

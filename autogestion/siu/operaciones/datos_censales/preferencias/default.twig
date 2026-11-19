@@ -1,0 +1,100 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	
+        {# Si no viene de Convocatorias a Becas #}
+        {% if not this.viene_de_convocatorias_becas() %}
+            {% import "macro_mensajes.twig" as mensajes %}
+            <div id="mensajes">
+                    {{ mensajes.render_mensajes(this.datos_confirmados(), this.datos_error_control(), this.datos_vigentes()) }}
+            </div>
+	{% endif %}
+	
+	{% set form = this.get_form() %}
+	{% autoescape false %}
+	{{ form.encabezado }}
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-inferior clearfix'>
+				<div class='pull-left'>
+					<h2>{{this.get_nombre_seccion()|trans}}</h2>
+				</div>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'datos_censales.guardar')  }}
+				</div>
+			</div>
+		</div>
+
+		{%if form.hay_visibles_agrupado('conocim_institucion') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('conocim_institucion')">{{'datos_censales.preferencias.conocim_institucion'|trans}}</h3>
+			<div id='institucion' class='toggle-div'>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('como_conocio_institucion') }}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		{%if form.hay_visibles_agrupado('otras_insc') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('otras_insc')">{{'datos_censales.preferencias.otras_insc'|trans}}</h3>
+			<div id='institucion' class='toggle-div'>
+				<div class='clearfix cg-margen'>
+					{{ form.checkbox('insc_otra_institucion') }}
+					<div id='div_insc_otra_inst_descr'>
+					{{ form.control_group('insc_otra_institucion_desc') }}
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+				
+		{%if form.hay_visibles_agrupado('institucion') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('institucion')">{{'datos_censales.preferencias.institucion'|trans}}</h3>
+			<div id='institucion' class='toggle-div'>
+				<div class='clearfix cg-margen'>
+					{{ form.checkbox('mot_economico') }}
+					{{ form.checkbox('mot_prestigio') }}
+					{{ form.checkbox('mot_difusion') }}
+					{{ form.checkbox('mot_recomendacion_estudiantes') }}
+					{{ form.checkbox('mot_recomendacion_amigos') }}
+					{{ form.checkbox('mot_sistema_ingreso') }}
+					{{ form.checkbox('mot_ubicacion') }}
+					{{ form.checkbox('mot_otros_i') }}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		{%if form.hay_visibles_agrupado('propuesta') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('propuesta')">{{'datos_censales.preferencias.propuesta'|trans}}</h3>
+			<div id='institucion' class='toggle-div'>
+				<div class='clearfix cg-margen'>
+					{{ form.checkbox('mot_vocacion') }}
+					{{ form.checkbox('mot_sugerencia_familiar') }}
+					{{ form.checkbox('mot_reconocimiento_social') }}
+					{{ form.checkbox('mot_insercion_laboral') }}
+					{{ form.checkbox('mot_perfil_profesional') }}
+					{{ form.checkbox('mot_mejora_economica') }}
+					{{ form.checkbox('mot_util_sociedad') }}
+					{{ form.checkbox('mot_otros_p') }}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-superior'>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'datos_censales.guardar')  }}
+				</div>
+			</div>
+		</div>
+	</form>
+	{% endautoescape %}
+        
+        {% import "macro_confirmacion.twig" as confirmacion %}
+        {{ confirmacion.mostrar(this.viene_de_convocatorias_becas(), this.hay_datos_faltantes_convocatoria(), this.get_url_siguiente_paso()) }}
+        
+{% endblock %}

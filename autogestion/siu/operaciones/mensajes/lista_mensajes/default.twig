@@ -1,0 +1,179 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+    <div class="titulo_operacion">
+            {% if this.data.puede_enviar %}
+                {% if this.data.url_enviados %}
+                     <h2 class="clearfix"><span class="pull-left">{{"tit_mensajes_recibidos"|trans|capitalize}}</span>
+                        {% if this.data.url_enviados and this.data.es_docente%}
+                        <div class="span3 pull-right">
+                            <div class="row-fluid">
+                                <div class="span5">
+                                    <a class="btn btn-info span12" href="{{this.data.url_enviar}}" title="{{"btn_mensajes_enviar"|trans|capitalize}}"><i class="icon-file" alt="{{"btn_mensajes_enviar"|trans|capitalize}}"></i> {{"btn_mensajes_enviar"|trans|capitalize}}</a>
+                                </div>
+                                <div class="span7">
+                                    
+                                    {% if this.data.url_recibidos %}
+                                        <a class="btn btn-info span12" href="{{this.data.url_recibidos}}" title="{{"btn_mensajes_recibidos"|trans|capitalize}}"><i class="icon-upload" alt="{{"btn_mensajes_recibidos"|trans|capitalize}}"></i> {{"btn_mensajes_recibidos"|trans|capitalize}}</a>
+                                    {% endif %}
+                                    {% if this.data.url_enviados %}
+                                        <a class="btn btn-info span12" href="{{this.data.url_enviados}}" title="{{"btn_mensajes_enviados"|trans|capitalize}}">
+                                        {# <i class="icon-download" alt="{{"btn_mensajes_enviados"|trans|capitalize}}"></i>  #}
+                                        <img height="18" width="18" src='../img/icon_download.png'></img> 
+                                        {{"btn_mensajes_enviados"|trans|capitalize}}</a>
+                                    {% endif %} 
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                     </h2>
+                {% endif %}
+                {% if this.data.url_recibidos and this.data.es_docente%}
+                    <h2 class="clearfix"><span class="pull-left">{{"tit_mensajes_enviados"|trans|capitalize}}</span>  
+                        <div class="span3 pull-right">
+                            <div class="row-fluid">
+                                <div class="span5">
+
+                                    <a class="btn btn-info span12" href="{{this.data.url_enviar}}" title="{{"btn_mensajes_enviar"|trans|capitalize}}"><i class="icon-file" alt="{{"btn_mensajes_enviar"|trans|capitalize}}"></i> {{"btn_mensajes_enviar"|trans|capitalize}}</a>
+                                </div>
+                                <div class="span7">
+                                    
+                                    {% if this.data.url_recibidos %}
+                                        <a class="btn btn-info span12" href="{{this.data.url_recibidos}}" title="{{"btn_mensajes_recibidos"|trans|capitalize}}"><i class="icon-upload" alt="{{"btn_mensajes_recibidos"|trans|capitalize}}"></i> {{"btn_mensajes_recibidos"|trans|capitalize}}</a>
+                                    {% endif %}
+                                    {% if this.data.url_enviados %}
+                                        <a class="btn btn-info span12" href="{{this.data.url_enviados}}" title="{{"btn_mensajes_enviados"|trans|capitalize}}">
+                                        {# <i class="icon-download" alt="{{"btn_mensajes_enviados"|trans|capitalize}}"></i>  #}
+                                        <img height="18" width="18" src='../img/icon_download.png'></img> 
+                                        {{"btn_mensajes_enviados"|trans|capitalize}}</a>
+                                    {% endif %} 
+                                </div>
+                            </div>
+                        </div>
+                    
+                     </h2>              
+                {% endif %}
+
+                    {% if this.data.es_docente %}
+                        {% if this.data.url_recibidos %} {# ---------------- #}
+                            <div class='row'>
+                                <div class='span10 offset1'>
+                                    <div class='accordion-group'>
+                                        <div class='encabezado-form clearfix accordion-heading' data-toggle="collapse" data-target="#ac_">
+                                            {{ "Filtro" |trans|title }}
+                                            <span class="js-minimizar"> <i class="icon-white icon-chevron-down"></i></span>
+                                        </div>
+                                        <div id="ac_" class="accordion-cuerpo in collapse" style="height: auto;background-color:#f2f2f2">
+                                            <div id="" class="g3-form-form accordion-interno form-filter-date" >
+                                                <div class="clearfix row-fluid form_filtro_fecha">
+                                                    <div class="row-fluid">
+                                                        <div class="span12">
+                                                            <form class="form-inline" action="{{this.data.url_enviados}}" method="post">
+                                                                <div class="span4">
+                                                                        <label class="span3 label-group-input">{{"Desde:"|trans|title}}</label> 
+                                                                        <input name="fecha_desde" class="span7" id="fecha_desde" type="text">
+                                                                </div> 
+                                                                <div class="span4">
+                                                                        <label class="span3 label-group-input">{{"fecha_hasta_mensaje"|trans|title}} </label>  
+                                                                        <input name="fecha_hasta" class="span7" id="fecha_hasta" type="text">
+                                                                        <div id="datepicker"></div>
+                                                                </div>   
+                                                                <div class="span4">
+                                                                        <label class="span3 label-group-input">{{"tit_mensajes_ultimos"|trans|title}} </label> 
+                                                                        <input name="ultimos" class="span5" id="ultimos" type="number" min="1" max="100" id="select_id" value="10" placeholder=" 10"></div>
+                                                                    <div class="span4 pull-right button-footer">
+                                                                    <button type="submit" id="btn_filtrar" class="btn btn-primary"> 
+                                                                        <i class="icon-filter icon-white" alt="{{"form_filtro_btn_filtrar"|trans|capitalize}}"></i>  
+                                                                        {{"form_filtro_btn_filtrar"|trans|capitalize}}
+                                                                    </button>
+                                                                    <button type="button" id="recargar" class="btn btn-default">
+                                                                        <i class="icon-trash"></i>  
+                                                                        {{"Borrar"|trans|title}}
+                                                                    </button>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>      
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> 
+                        {% endif %}  
+                    {% endif %}
+            {% else %}
+                <h2><span class="pull-left">{{"tit_mensajes_recibidos"|trans|capitalize}}</span></h2>
+            {% endif %}
+
+    </div>
+    {% if this.data.error %}
+        <div class="alert alert-error">
+            {{this.data.error}}
+        </div>
+    {% endif %}
+    {% if this.data.mensajes %}
+        <table class="table">
+            {% for key, mensaje in this.data.mensajes %}
+                <tr id="tr{{mensaje.mensaje}}" {% if not mensaje.leido %} class="leido"{% endif %}>
+                    <td class="detalle" id="{{mensaje.mensaje}}" title="{{mensaje.titulo}}" data-url-leer="{{ mensaje.URL_LEER }}"> 
+                        <h4 class="msg-title"><i class="icon-chevron-down flecha"></i><span class="remitente">{{mensaje.DOCENTE}}</span><strong>{{mensaje.titulo}}</strong>
+
+                            {# Si el perfil activo es docente #}
+                            {% if this.data.es_perfil_activo_docente %}
+
+                                {% if mensaje.alcance == this.data.alcance_comisiones %}
+
+                                    {{ 'enviado_a_alumnos_comision'|trans({
+                                '%materia%': mensaje.comisiones.activ_nombre, 
+                                '%comision%': mensaje.comisiones.nombre
+                            }) }}
+
+                                {% elseif mensaje.alcance == this.data.alcance_grupo_alumnos %}
+
+                                    {% if mensaje.nombre_alumno %}
+                                        {{ 'enviado_a_alumnos'|trans({'%nombre_alumno(id)%': mensaje.nombre_alumno}) }}
+                                    {% endif %}
+
+                                {% elseif mensaje.alcance == this.data.alcance_mesa %}
+
+                                    {{ 'enviado_a_alumnos_mesa_examen'|trans({
+                                '%mesa%': mensaje.mesa.mesa_examen_nombre,
+                                '%materia%':mensaje.mesa.nombre
+                            }) }}
+
+                                {% endif %}
+
+                                {# Si el perfil activo es distinto a docente #}
+                            {% else %}
+
+                                {% if mensaje.persona_envia %}
+                                    {{ 'mensajes_remitente'|trans({'%remitente%': mensaje.persona_envia}) }}
+                                {% endif %}
+
+                            {% endif %}
+
+                            <div class="pull-right fecha">
+                                <span>{{"Enviado el "|trans|capitalize}} {{mensaje.fecha_alta_visual}}</span>
+                                {% if mensaje.ADJUNTOS %}
+                                    {% for adjunto in mensaje.ADJUNTOS %}
+                                        <a class='adjunto no-ajax' href='{{ adjunto.URL_DESCARGA }}' title='{{ adjunto.NOMBRE_ORIGINAL }}'>
+                                        <img height="18" width="18" src='../img/icon_download.png'></img> 
+                                        </a>
+                                        {% endfor %}
+                                    {% endif %}
+                                    {% if mensaje.leido %}
+                                    <i id="imgestado{{mensaje.mensaje}}" class="icon-ok"></i>
+                                {% else %}
+                                    <i id="imgestado{{mensaje.mensaje}}" class="icon-envelope"></i>
+                                {% endif %}
+                            </div>
+                        </h4>
+                        <div id="mensaje{{mensaje.mensaje}}" class="mensaje"></div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <div class="alert">{{ "no_existen_mensajes_para_visualizar"|trans|capitalize }}</div>
+    {% endif %}
+{% endblock %}

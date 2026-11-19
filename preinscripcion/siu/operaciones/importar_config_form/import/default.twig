@@ -1,0 +1,28 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+{% set form = this.get_form() %}
+{% autoescape false %}
+
+{% if this.data.mensaje_ok %}
+<div class="alert alert-info mensaje strong span6 ">
+	{{ this.data.mensaje_ok|trans }}
+</div>
+{% elseif this.data.mensaje_error %} 
+<div class="alert alert-error mensaje strong span6">
+	{{ this.data.mensaje_error|trans }}
+</div>
+{% else %} 
+<p class="span6">{{ this.data.mensaje_importar }}</p>
+{% endif %}
+<br/>
+<div class="clearfix"></div>
+{{ form.encabezado }}
+	{{ form.control_group('dbname') }}
+	{{ form.control_group('host') }}
+	{{ form.control_group('port') }}
+	{{ form.control_group('pdo_user') }}
+	{{ form.control_group('pdo_passwd') }}
+	{{ form.submit_button('importar', 'importar')}}
+</form>
+{% endautoescape %}
+{% endblock %}

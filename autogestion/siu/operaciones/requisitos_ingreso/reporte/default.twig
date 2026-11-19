@@ -1,0 +1,77 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	<div class="titulo_operacion">
+		<h2 class="clearfix"><span class="pull-left">{{"header.menu.requisitos_ingreso"|trans|capitalize}}</span></h2>
+	</div>
+        
+        {# Si hay mensaje lo muestro #}
+        {% if this.data.mensaje is not empty %}
+        <div class="alert {{ this.data.tipo_mensaje }}">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ this.data.mensaje | raw }}
+        </div>
+        {% endif %}
+        
+	{% if this.data.datos.requisitos  %}
+		<table class="table table-condensed table-bordered">
+			<tr>
+				<th>{{"carrera"|trans|capitalize}}</th>
+				<td>{{ '('~ this.data.datos.propuesta ~') '~ this.data.datos.propuesta_nombre }}</td>
+			</tr>
+		</table>
+			
+		{% if this.data.usa_repositorio_digital  %}	
+		{%	set ancho = '25%' %}
+		{% else %}
+		{%	set ancho = '50%' %}
+		{% endif %}
+			
+		<table class='table table-condensed table-hover table-striped'>
+			<thead>
+				<tr>
+					<th width="{{ ancho }}">{{'requisitos.requisito' | trans | capitalize}}</th>
+					<th width="{{ ancho }}">{{'requisitos.fecha_limite_presentacion' | trans | capitalize}}</th>
+					{% if this.data.usa_repositorio_digital  %}
+					<th width="{{ ancho }}">{{'requisitos.estado_rd' | trans | capitalize}}</th>
+                                        <th width="{{ ancho }}">{{'requisitos.observaciones' | trans | capitalize}}</th>
+					<th width="{{ ancho }}">&nbsp;</th>
+					{% endif %}
+				</tr>
+			</thead>
+			<tbody>
+				{% for requisito in this.data.datos.requisitos %}
+					<tr>
+						<td>{{ requisito.requisito_nombre }}</td>
+						<td>{{ requisito.f_tope_presentacion }}</td>
+						{% if this.data.usa_repositorio_digital  %}
+                                                    
+                                                {% if requisito.estado_req_digital == this.data.estado_no_presentado %}
+                                                    {% set label_estado_req_digital = '' %}
+                                                {% elseif requisito.estado_req_digital == this.data.estado_pendiente_validacion %}
+                                                    {% set label_estado_req_digital = 'label-warning' %}
+                                                {% elseif requisito.estado_req_digital == this.data.estado_presentado %}
+                                                    {% set label_estado_req_digital = 'label-success' %}
+                                                {% elseif requisito.estado_req_digital == this.data.estado_vencido %}
+                                                    {% set label_estado_req_digital = 'label-important' %}
+                                                {% endif %}
+                                                
+						<td><span class="label {{ label_estado_req_digital }}">{{ ('requisitos.' ~  requisito.estado_req_digital) | trans }}</span></td>
+                                                <td>{{ requisito.observaciones }}</td>
+						<td>
+                                                <div class="pull-right">
+                                                    <a class="btn btn-primary no-ajax" href="{{ requisito.url_doc_digital }}" title="{{ 'requisitos.doc_digital' | trans }}">
+                                                        <i class="icon-edit icon-white"></i> {{ 'requisitos.doc_digital' | trans }}
+                                                    </a>
+                                                </div>
+						</td>
+						{% endif %}
+					</tr>			
+				{% endfor %}
+			</tbody>
+		</table>
+	{% else %}
+		<div class="alert">
+			{{"reporte.no_hay_datos.requisitos_pendientes"|trans|capitalize}}
+		</div>
+	{% endif %}
+{% endblock %}

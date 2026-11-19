@@ -1,0 +1,44 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+<div class="container-fluid" style="padding: 0;">
+	<div class="row-fluid">
+		<div class="span4">
+			<img src='{{this.data.url_imagen}}' />
+		</div>
+		<div class="span8">
+            <h3> {{this.data.ficha.nombre_apellido_elegido}}</h3>
+		</div>
+	</div>
+	{% if this.data.ficha.parciales %}
+		<div class="row-fluid">
+			<div class="span12">
+				<table class="table table-condensed table-bordered table-striped">
+					<thead>
+						<tr>
+							<th>{{'evaluacion'|trans|capitalize}}</th>
+							<th>{{'fecha'|trans|capitalize}}</th>
+							<th>{{'nota'|trans|capitalize}}</th>
+							<th>{{'resultado'|trans|capitalize}}</th>
+						</tr>
+					</thead>
+					<tbody>
+					{% for parcial in this.data.ficha.parciales %}
+						<tr>
+							<td>{{parcial.evaluacion_nombre}}</td>
+							<td>{{parcial.fecha_display}}</td>
+							<td>{{parcial.nota_descr}}</td>
+							<td>{{parcial.resultado_descr}}</td>
+						</tr>
+					{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	{% else %}
+		<div class="alert">{{"no_hay_evaluaciones"|trans|capitalize}}</div>
+	{% endif %}
+	<div class="row-fluid">
+		<div class="span12"></div>
+	</div>
+</div>
+{% endblock %}

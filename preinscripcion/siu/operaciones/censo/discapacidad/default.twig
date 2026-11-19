@@ -1,0 +1,173 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	
+	{% set form = this.get_form() %}
+	{% autoescape false %}
+	{{ form.encabezado }}
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-inferior clearfix'>
+				<div class='pull-left'>
+					<h2>{{this.get_nombre()|trans}}</h2>
+				</div>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'guardar_datos_personales')  }}
+				</div>
+			</div>
+		</div>
+
+		{%if form.hay_visibles_agrupado('cond_discapacidad') %}
+		<div class='well clearfix'>
+                        <h3 class="subrayado_gris">{{'cond_discapacidad'|trans}}</h3>
+			<div class='clearfix cg-margen'>
+                            
+                            <div id="div_condicion_discapacidad">
+                            {{ form.checkbox('condicion_discapacidad') }}
+                            </div>
+                             
+                            <div id="div_tiene_cud">
+                                {{ form.checkbox('tiene_cud') }}
+                            </div>
+                            
+			</div>
+		</div>
+		{% endif %}
+
+                <div id='div_listado_discapacidad_tipos'>
+                    
+			{% if form.hay_visibles_agrupado('listado_discapacidad_tipos') %}
+			<div class='well clearfix'>
+				<h3 class="subrayado_gris">{{'listado_discapacidad_tipos'|trans}}</h3>
+                                <h4 >{{'seleccione_una_opcion'|trans}}</h4>
+				<div id="listado_discapacidad_tipos">
+					{{ form.checkbox('disc_auditiva') }}
+					{{ form.checkbox('disc_visual') }}
+					{{ form.checkbox('disc_motora') }}
+					{{ form.checkbox('disc_cond_psicosocial') }}
+					{{ form.checkbox('disc_otra') }}
+				</div>
+			</div>
+			{% endif %}
+
+		</div>
+                        
+                <div id='div_auditiva'>
+                    
+			{% if form.hay_visibles_agrupado('auditiva') %}
+			<div class='well clearfix'>
+				<h3 class="subrayado_gris">{{'auditiva'|trans}}</h3>
+				<div id="auditiva">
+					{{ form.control_group('aud_tipo') }}
+					
+                                        <h4 id="js_auditiva_forma_habitual_comunicacion" class="subrayado_gris">{{'forma_habitual_comunicacion'|trans}}</h4>
+                                        {{ form.checkbox('aud_lenguaje_senias') }}
+                                        {{ form.checkbox('aud_lenguaje_labial') }}
+                                        {{ form.control_group('aud_comunicacion_otra') }}
+                                        
+                                        <h4 id="js_auditiva_apoyos_requeridos" class="subrayado_gris">{{'apoyos_requeridos'|trans}}</h4>
+                                        {{ form.control_group('aud_apoyo_vida_diaria') }}
+                                        {{ form.checkbox('aud_req_interprete_lengua_senias') }}
+                                        {{ form.checkbox('aud_req_aro_magnetico') }}
+                                        {{ form.checkbox('aud_req_otros_apoyos') }}
+                                        {{ form.control_group('aud_otros_apoyos') }}
+				</div>
+			</div>
+			{% endif %}
+
+		</div>
+                        
+                <div id='div_visual'>
+                    
+			{% if form.hay_visibles_agrupado('visual') %}
+			<div class='well clearfix'>
+				<h3 class="subrayado_gris">{{'visual'|trans}}</h3>
+				<div id="visual">
+					{{ form.control_group('vis_dificultad_para_ver') }}
+                                        
+                                        <h4 id="js_visual_apoyos_requeridos" class="subrayado_gris">{{'apoyos_requeridos'|trans}}</h4>
+                                        {{ form.control_group('vis_apoyo_vida_diaria') }}
+                                        {{ form.checkbox('vis_req_archivo_audio') }}
+                                        {{ form.checkbox('vis_req_texto_digital') }}
+                                        {{ form.checkbox('vis_req_texto_braile') }}
+                                        {{ form.checkbox('vis_req_otros_apoyos') }}
+                                        {{ form.control_group('vis_otros_apoyos') }}
+				</div>
+			</div>
+			{% endif %}
+
+		</div>
+                        
+                <div id='div_motora'>
+                    
+			{% if form.hay_visibles_agrupado('motora') %}
+			<div class='well clearfix'>
+				<h3 class="subrayado_gris">{{'motora'|trans}}</h3>
+				<div id="motora">
+                                        <h4 id="js_motora_apoyos_requeridos" class="subrayado_gris">{{'apoyos_requeridos'|trans}}</h4>
+                                        {{ form.control_group('mot_apoyo_vida_diaria') }}
+                                        {{ form.checkbox('mot_req_apoyo_aula') }}
+                                        {{ form.control_group('mot_apoyo_aula') }}
+                                        {{ form.checkbox('mot_req_otros_apoyos') }}
+                                        {{ form.control_group('mot_otros_apoyos') }}
+				</div>
+			</div>
+			{% endif %}
+
+		</div>
+                        
+                <div id='div_psicosocial'>
+                    
+			{% if form.hay_visibles_agrupado('psicosocial') %}
+			<div class='well clearfix'>
+				<h3 class="subrayado_gris">{{'psicosocial'|trans}}</h3>
+				<div id="psicosocial">
+					{{ form.control_group('psi_descripcion') }}
+                                        
+                                        <h4 id="js_psicosocial_apoyos_requeridos" class="subrayado_gris">{{'apoyos_requeridos'|trans}}</h4>
+                                        {{ form.control_group('psi_apoyo_vida_diaria') }}
+                                        {{ form.checkbox('psi_req_otros_apoyos') }}
+                                        {{ form.control_group('psi_otros_apoyos') }}
+				</div>
+			</div>
+			{% endif %}
+
+		</div>
+                        
+                <div id='div_otras'>
+                    
+			{% if form.hay_visibles_agrupado('otras') %}
+			<div class='well clearfix'>
+				<h3 class="subrayado_gris">{{'otras'|trans}}</h3>
+				<div id="otras">
+                                        {{ form.control_group('otra_descripcion') }}
+                                        {{ form.checkbox('otra_req_apoyo_vida_diaria') }}
+                                        {{ form.control_group('otra_apoyo_vida_diaria') }}
+				</div>
+			</div>
+			{% endif %}
+
+		</div>
+                        
+                <div id='div_importante'>
+                    
+			{% if form.hay_visibles_agrupado('importante') %}
+			<div class='well clearfix'>
+				<h3 class="subrayado_gris">{{'importante'|trans}}</h3>
+				<div id="importante">
+                                        {{ form.control_group('informacion_importante') }}
+				</div>
+			</div>
+			{% endif %}
+
+		</div>
+                
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-superior'>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'guardar_datos_personales')  }}
+				</div>
+			</div>
+		</div>
+	</form>
+	{% endautoescape %}
+        
+{% endblock %}

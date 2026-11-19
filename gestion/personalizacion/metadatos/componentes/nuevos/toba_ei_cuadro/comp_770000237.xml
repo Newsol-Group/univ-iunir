@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000237" descripcion="toba_ei_cuadro">
+	<tabla nombre="apex_objeto">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000237"/>
+			<columna nombre="clase_proyecto" valor="toba"/>
+			<columna nombre="clase" valor="toba_ei_cuadro"/>
+			<columna nombre="punto_montaje" valor="1"/>
+			<columna nombre="subclase" valor="cuadro_salida_fop"/>
+			<columna nombre="subclase_archivo" valor="operaciones/_lib/cuadro_salida_fop.php"/>
+			<columna nombre="nombre" valor="Ficha del Alumno - ci_reportes_ficha_alumno - rep_datos_facturacion - cuadro"/>
+			<columna nombre="colapsable" valor="0"/>
+			<columna nombre="creacion" valor="2011-07-14 16:33:47"/>
+			<columna nombre="posicion_botonera" valor="abajo"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_eventos">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="evento_id" valor="770000224"/>
+			<columna nombre="objeto" valor="770000237"/>
+			<columna nombre="identificador" valor="seleccion"/>
+			<columna nombre="etiqueta" valor=""/>
+			<columna nombre="maneja_datos" valor="1"/>
+			<columna nombre="sobre_fila" valor="0"/>
+			<columna nombre="imagen_recurso_origen" valor="apex"/>
+			<columna nombre="imagen" valor="doc.gif"/>
+			<columna nombre="en_botonera" valor="0"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="accion" valor="V"/>
+			<columna nombre="accion_vinculo_carpeta" valor="38000098"/>
+			<columna nombre="accion_vinculo_item" valor="14000022"/>
+			<columna nombre="accion_vinculo_popup" valor="1"/>
+			<columna nombre="accion_vinculo_celda" valor="popup"/>
+			<columna nombre="es_seleccion_multiple" valor="0"/>
+			<columna nombre="es_autovinculo" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_cuadro">
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000237"/>
+			<columna nombre="columnas_clave" valor="propuesta"/>
+			<columna nombre="clave_dbr" valor="0"/>
+			<columna nombre="ancho" valor="100%"/>
+			<columna nombre="ordenar" valor="0"/>
+			<columna nombre="paginar" valor="0"/>
+			<columna nombre="tipo_paginado" valor="P"/>
+			<columna nombre="mostrar_total_registros" valor="0"/>
+			<columna nombre="eof_invisible" valor="0"/>
+			<columna nombre="siempre_con_titulo" valor="0"/>
+			<columna nombre="exportar_paginado" valor="0"/>
+			<columna nombre="exportar" valor="0"/>
+			<columna nombre="exportar_rtf" valor="0"/>
+			<columna nombre="scroll" valor="1"/>
+			<columna nombre="scroll_alto" valor="350px"/>
+			<columna nombre="cc_modo" valor="t"/>
+			<columna nombre="cc_modo_anidado_colap" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_cuadro_cc">
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000237"/>
+			<columna nombre="objeto_cuadro_cc" valor="770000023"/>
+			<columna nombre="identificador" valor="propuesta"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="columnas_id" valor="propuesta"/>
+			<columna nombre="columnas_descripcion" valor="propuesta_nombre"/>
+			<columna nombre="pie_contar_filas" valor="0"/>
+			<columna nombre="pie_mostrar_titular" valor="0"/>
+			<columna nombre="pie_mostrar_titulos" valor="0"/>
+			<columna nombre="modo_inicio_colapsado" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ei_cuadro_columna">
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000237"/>
+			<columna nombre="objeto_cuadro_col" valor="770000630"/>
+			<columna nombre="clave" valor="medio_pago_empresa_cuota"/>
+			<columna nombre="orden" valor="13"/>
+			<columna nombre="titulo" valor="Medio Pago Cuota Emp"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="0"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000237"/>
+			<columna nombre="objeto_cuadro_col" valor="770000631"/>
+			<columna nombre="clave" valor="nro_tarjeta_empresa_mat"/>
+			<columna nombre="orden" valor="11"/>
+			<columna nombre="titulo" valor="Nro tarjeta Cuota Emp"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000237"/>
+			<columna nombre="objeto_cuadro_col" valor="770000632"/>
+			<columna nombre="clave" valor="cbu_empresa_mat"/>
+			<columna nombre="orden" valor="12"/>
+			<columna nombre="titulo" valor="CBU Cuota Emp"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000237"/>
+			<columna nombre="objeto_cuadro_col" valor="770000633"/>
+			<columna nombre="clave" valor="nombre_empresa"/>
+			<columna nombre="orden" valor="16"/>
+			<columna nombre="titulo" valor="Empresa"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="0"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000237"/>
+			<columna nombre="objeto_cuadro_col" valor="770000634"/>
+			<columna nombre="clave" valor="cbu_empresa_cuota"/>
+			<columna nombre="orden" valor="15"/>
+			<columna nombre="titulo" valor="CBU Cuota Emp"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000237"/>
+			<columna nombre="objeto_cuadro_col" valor="770000635"/>
+			<columna nombre="clave" valor="porcentaje_facturacion_alumno"/>
+			<columna nombre="orden" valor="2"/>
+			<columna nombre="titulo" valor="% Facturación Alumno"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="0"/>
+			<columna nombre="formateo" valor="11"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000237"/>
+			<columna nombre="objeto_cuadro_col" valor="770000636"/>
+			<columna nombre="clave" valor="porcentaje_facturacion_empresa"/>
+			<columna nombre="orden" valor="9"/>
+			<columna nombre="titulo" valor="% Facturación Empresa"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="0"/>
+			<columna nombre="formateo" valor="11"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000237"/>
+			<columna nombre="objeto_cuadro_col" valor="770000637"/>
+			<columna nombre="clave" valor="nro_tarjeta_alumno_mat"/>
+			<columna nombre="orden" valor="4"/>
+			<columna nombre="titulo" valor="Nro tarjeta Mat. Alu"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000237"/>
+			<columna nombre="objeto_cuadro_col" valor="770000638"/>
+			<columna nombre="clave" valor="cbu_alumno_mat"/>
+			<columna nombre="orden" valor="5"/>
+			<columna nombre="titulo" valor="CBU Mat. Alu"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000237"/>
+			<columna nombre="objeto_cuadro_col" valor="770000639"/>
+			<columna nombre="clave" valor="nro_tarjeta_alumno_cuota"/>
+			<columna nombre="orden" valor="7"/>
+			<columna nombre="titulo" valor="Nro tarjeta Cuota Alu"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000237"/>
+			<columna nombre="objeto_cuadro_col" valor="770000640"/>
+			<columna nombre="clave" valor="cbu_alumno_cuota"/>
+			<columna nombre="orden" valor="8"/>
+			<columna nombre="titulo" valor="CBU Cuota Alu"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000237"/>
+			<columna nombre="objeto_cuadro_col" valor="770000641"/>
+			<columna nombre="clave" valor="nro_tarjeta_empresa_cuota"/>
+			<columna nombre="orden" valor="14"/>
+			<columna nombre="titulo" valor="Nro tarjeta Cuota Emp"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000237"/>
+			<columna nombre="objeto_cuadro_col" valor="770000642"/>
+			<columna nombre="clave" valor="email_empresa"/>
+			<columna nombre="orden" valor="17"/>
+			<columna nombre="titulo" valor="Email empresa"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000237"/>
+			<columna nombre="objeto_cuadro_col" valor="770000643"/>
+			<columna nombre="clave" valor="observaciones"/>
+			<columna nombre="orden" valor="18"/>
+			<columna nombre="titulo" valor="Observaciones"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000237"/>
+			<columna nombre="objeto_cuadro_col" valor="770000644"/>
+			<columna nombre="clave" valor="forma_pago"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="titulo" valor="Forma Pago"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000237"/>
+			<columna nombre="objeto_cuadro_col" valor="770000645"/>
+			<columna nombre="clave" valor="medio_pago_alumno_mat"/>
+			<columna nombre="orden" valor="3"/>
+			<columna nombre="titulo" valor="Medio Pago Mat. Alu"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="0"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000237"/>
+			<columna nombre="objeto_cuadro_col" valor="770000646"/>
+			<columna nombre="clave" valor="medio_pago_alumno_cuota"/>
+			<columna nombre="orden" valor="6"/>
+			<columna nombre="titulo" valor="Medio Pago Cuota Alu"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="0"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000237"/>
+			<columna nombre="objeto_cuadro_col" valor="770000647"/>
+			<columna nombre="clave" valor="medio_pago_empresa_mat"/>
+			<columna nombre="orden" valor="10"/>
+			<columna nombre="titulo" valor="Medio Pago Cuota Emp"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="0"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+	</tabla>
+</componente>

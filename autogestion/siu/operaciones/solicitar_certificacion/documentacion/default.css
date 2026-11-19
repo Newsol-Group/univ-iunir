@@ -1,0 +1,27 @@
+#pagelet #encabezado{
+    font-size: 16px;
+    line-height: 1.5em;
+}
+
+#pagelet #encabezado .encabezado-etiqueta{
+    font-weight: bold;
+}
+
+#pagelet #documentacion h2 {
+    color: #0088cc;
+    border-bottom: 1px solid #eeeeee;
+    padding-bottom: 2px;
+}
+
+#pagelet #finalizar #finalizar-btn-wrapper {
+    margin-top: 20px;
+}
+
+#pagelet #finalizar #finalizar-btn-wrapper i {
+    position: relative;
+    top: -3px;
+}
+
+#pagelet a.disabled, #pagelet button:disabled {
+  cursor: not-allowed;
+}

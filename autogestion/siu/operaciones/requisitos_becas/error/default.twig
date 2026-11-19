@@ -1,0 +1,15 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+    
+    <div class="titulo_operacion">
+        <h2 class="clearfix">
+            <div class="pull-left">{{ "header.menu.requisitos_becas" |trans }}</div>
+            <div class="pull-right">
+                <a href="{{ this.data.url_listado }}" class="btn" title="{{ 'volver' | trans }}"><i class="icon-backward"></i> {{ 'volver' | trans }}</a>
+            </div>
+        </h2>
+    </div>
+            
+    <div class="alert alert-error">{{ this.data.mensaje | raw }}</div>
+    
+{% endblock %}

@@ -1,0 +1,81 @@
+.form-horizontal .control-label {
+    width: 114px;
+}
+
+.control-label.label-obligatorio {
+    font-weight: bold;
+}
+
+/* Mantener el comportamiento de las labels en este bloque */
+#js-div-const_req_doc .control-label {
+    width: 114px;            /* igual que el resto */
+}
+
+/* Centrar verticalmente el texto de la descripción */
+#js-div-const_req_doc .controls {
+    display: flex;
+    align-items: center;     /* centra verticalmente */
+    min-height: 30px;        /* altura similar a un input */
+}
+
+#js-span-req_doc_desc {
+    display: inline-block;   /* por si el core lo trata como inline puro */
+}
+
+.req_const_doc-header {
+	border-bottom: 1px solid;
+	margin-bottom: 15px;
+}
+
+.descr_const_doc {
+	font-style: italic;
+}
+
+/* Contenedor */
+.file-input {
+    position: relative;
+    display: inline-block;
+}
+
+/* Ocultar el inputfile real */
+.file-input input[type="file"] {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+/* Botón visible */
+.file-input label {
+    background-color: #2d8fd5; /* Azul tipo SIU */
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid #1a6fa8;
+    transition: background .2s ease;
+    z-index: 1;
+    margin: 0;
+}
+
+/* Hover del botón */
+.file-input label:hover {
+    background-color: #1a6fa8;
+}
+
+/* Texto del nombre del archivo */
+.file-input .file-name {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+    opacity: 0.8;
+}

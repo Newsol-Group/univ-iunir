@@ -1,0 +1,75 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}   
+    
+    {% import "kernel/macro_recaptcha.twig" as recaptcha %} 
+    {{ recaptcha.script() }} 
+
+    {% set form = this.get_form() %}
+    {% autoescape false %}
+
+        {% if this.estado in [this.data.inicial, this.data.form_error_validacion, this.data.error_recaptcha, this.data.form_error_csrf] %}
+
+            {{ form.encabezado }}
+            {% if this.data.mensajes %}
+                <div class='strong'>
+                    {% import "kernel/macro_notificaciones.twig" as notificaciones %}
+                    {{ notificaciones.render_notif(this.data.mensajes) }}
+                </div>
+            {% endif %}
+
+            
+            {% import "kernel/macro_csrf.twig" as input_csrf %}
+            {{ input_csrf.mostrar(this.data.csrf) }}
+            
+    <div class="titulo_operacion">
+        <h2 class="clearfix">
+            <span class="pull-left">
+                {{"ayuda_menu.titulo"|trans}}
+            </span>
+        </h2>
+        <p class="clearfix">
+            <span class="pull-left">
+                {{"ayuda_menu.sub_titulo"|trans}}
+            </span>
+        </p>
+    </div>
+    <div class='clearfix'>
+        <div class='clearfix cg-margen'>
+            {{ form.control_group('nombres', 'span12') }}            
+        </div>
+        <div class='clearfix cg-margen'>
+            {{ form.control_group('nro_documento', 'span12') }}
+        </div>
+        <div class='clearfix cg-margen'>
+            {{ form.control_group('email', 'span12') }}
+        </div>
+        <div class='clearfix cg-margen'>
+            {{ form.control_group('mensaje', 'span12') }}
+        </div>
+    </div>
+
+    {% if this.data.usar_captcha %}
+        <div class='pull-left'>
+            <div class="control-group">
+                {{ recaptcha.widget() }} 
+            </div>
+        </div>
+        <div class='clearfix'></div>
+    {% endif %}
+
+    <div class='botonera-inferior'>
+        <div class='pull-left'>
+{#            <input type="button" name="volver" value="{{'volver'|trans|capitalize}}" class="btn btn-info" onclick="window.location.href = '{{this.data.url_volver}}'" />#}
+            {{ form.submit_button('continuar', 'ayuda_menu.enviar')}}					
+        </div>
+    </div>
+{% else %}
+    {% import "kernel/macro_notificaciones.twig" as notificaciones %}
+    {{ notificaciones.render_notif(this.data.mensajes) }}
+    <div class='pull-left'>
+        <input type="button" name="volver" value="{{'volver'|trans|capitalize}}" class="btn btn-info" onclick="window.location.href = '{{this.data.url_volver}}'" />
+    </div>
+{% endif %}
+
+{% endautoescape %}
+{% endblock %}

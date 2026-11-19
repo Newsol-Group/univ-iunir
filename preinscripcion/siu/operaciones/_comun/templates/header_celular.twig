@@ -1,0 +1,143 @@
+{% import _self as current_file_macros %}
+
+{% if menu %}
+    <div class="navbar main-nav">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+
+				<a class="brand logo-celular" href="{{url_inicio}}"><img src="{{ url_img_logo_celular }}" /></a>
+
+				<div class="btn-group pull-right">
+					<a href="{{ url_mensajes }}" class="btn {{ cantidad_mensajes > 0 ? 'btn-warning' : '' }}"><i class="icon-envelope"></i> {{ cantidad_mensajes }}</a>
+				</div>
+
+				<div class="btn-group pull-right">
+					<a href="#" class="btn dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i> <span class="visible-desktop">{{ persona.nombre }}</span> <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<div id="select_carreras">
+							{% if persona.carreras.cantidad > 1 %}
+								{% for carrera in persona.carreras.lista %}
+									{% if persona.carrera_activa.id == carrera.id %}
+										<li data-carrera-id="{{ carrera.id }}" data-carrera-nombre="{{ carrera.nombre|trans|capitalize }}" class='js-seleccion-carrera'><a href="#"><i class="icon-ok"></i> {{ carrera.nombre|trans|capitalize }}</a></li>
+										{% else %}
+										<li data-carrera-id="{{ carrera.id }}"><a href="#">{{ carrera.nombre|trans|capitalize }}</a></li>
+										{% endif %}
+									{% endfor %}
+							</div>
+						{% else %}
+							<li><a href="#"><i class="icon-ok"></i> {{ persona.carrera_activa.nombre }}</a></li>
+							{% endif %}
+						<li class="divider"></li>
+						<li><a href='{{ persona.url_configuracion }}'><i class="icon-cog"></i> {{ 'configuracion'|trans | capitalize }}</a></li>
+						<li><a href='{{ persona.url_logout }}'><i class="icon-off"></i> {{ 'header.cerrar_sesion'|trans }}</a></li>
+					</ul>
+				</div>
+
+				<div class="nav-collapse" role="navigation">
+					<ul class='nav'>
+						{% for item in menu %}
+							{% if item.submenu is defined %}
+								<li class='dropdown'>
+									{{ current_file_macros.recursiveSubmenu(item, true) }}
+								</li>
+							{% else %}
+								<li id='{{ item.id }}'><a href='{{ item.url }}'>{{ item.nombre|trans|capitalize }}</a></li>
+								{% endif %}
+							{% endfor %}
+					</ul>
+
+					{% if perfiles %}
+						<ul id='js-selector-perfiles' class="nav pull-right perfiles">
+							<li class="dropdown">
+								<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class='js-texto-perfil'></span><b class="caret"></b></a>
+								<ul class="dropdown-menu" id="select_perfil">
+									{% for perfil in perfiles %}
+										{% if perfil_activo == perfil %}
+											<li data-perfil="{{ perfil }}" data-perfilnombre="{{ perfil|trans|capitalize }}" class='js-seleccion-perfil'>
+												<a href="#"><i class="icon-ok"></i> {{ perfil|trans|capitalize }}</a>
+											</li>
+										{% else %}
+											<li data-perfil="{{ perfil }}"><a href="#">{{ perfil|trans|capitalize }}</a></li>
+											{% endif %}
+										{% endfor %}
+								</ul>
+							</li>
+						</ul>
+					{% endif %}
+				</div><!--/.nav-collapse -->
+			</div><!-- container-fluid -->
+		</div><!-- navbar-inner -->
+    </div><!-- navbar -->
+
+{% else %}
+    <div class="navbar main-nav">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="brand logo-celular " href="{{url_inicio}}"><img src="{{ url_img_logo_celular }}" onError="this.onerror=null;this.src='{{ url_img_logo_celular }}';" /></a>
+				<!-- toggle cerrar sesion -->
+				{% if persona.logueada %}
+				<div class="btn-group pull-right">
+					<a href="#" class="btn dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i> <span class="visible-desktop">{{ persona.nombre }}</span> <span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<div id="select_carreras">
+							{% if persona.carreras.cantidad > 1 %}
+								{% for carrera in persona.carreras.lista %}
+									{% if persona.carrera_activa.id == carrera.id %}
+										<li data-carrera-id="{{ carrera.id }}" data-carrera-nombre="{{ carrera.nombre|trans|capitalize }}" class='js-seleccion-carrera'><a href="#"><i class="icon-ok"></i> {{ carrera.nombre|trans|capitalize }}</a></li>
+										{% else %}
+										<li data-carrera-id="{{ carrera.id }}"><a href="#">{{ carrera.nombre|trans|capitalize }}</a></li>
+										{% endif %}
+									{% endfor %}
+							</div>
+						{% else %}
+							<li><a href="#"><i class="icon-ok"></i>  {{ persona.email }} </a></li>
+							{% endif %}
+						<li class="divider"></li>
+						{# <li><a href='{{ persona.url_configuracion }}'><i class="icon-cog"></i> {{ 'configuracion'|trans | capitalize }}</a></li> #}
+						<li><a href='{{ persona.url_logout }}'><i class="icon-off"></i> {{ 'header.cerrar_sesion'|trans }}</a></li>
+					</ul>
+				</div>
+				{% endif %}
+				<!-- toggle cerrar sesion -->
+			</div>	
+		</div>
+    </div>
+{% endif %}
+
+<!-- https://gist.github.com/tentacode/3892186 -->
+{% macro recursiveSubmenu(item, primer_nivel) %}
+    
+        {% import _self as current_file_macros %}
+        
+	{% if primer_nivel %}
+		<a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ item.nombre|trans }} <b class="caret"></b></a>
+		<ul class='dropdown-menu'>
+        {% else %}
+            <li class="nav-header mobile">{{ item.nombre|trans }}</li>
+            <div class="submenu-mobile">
+			{% endif %}
+
+            {% for subitem in item.submenu %}
+
+                <li id='{{ subitem.id }}'><a href='{{ subitem.url }}'>{{ subitem.nombre|trans }}</a></li>
+
+            {% endfor %}
+
+            {% for submenu in item.submenues %}
+
+				{{ current_file_macros.recursiveSubmenu(item[submenu], false) }}
+
+            {% endfor %}
+
+			{% if primer_nivel %}
+		</ul>
+	{% else %}
+	</div>
+{% endif %}
+
+{% endmacro %}

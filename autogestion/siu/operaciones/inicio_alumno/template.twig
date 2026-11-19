@@ -1,0 +1,193 @@
+{% extends notificaciones ? "kernel/contenido_barra_lateral.twig" : "kernel/una_columna.twig" %}
+
+{% block titulo_operacion %}<h2>{{ 'bienvenido'|trans|capitalize }} {{ persona }} </h2>{% endblock %}
+
+{% block columna_1 %}
+{{ 'inicio_alumno_docente.oferta_campus_virtual_universitario_nacional' | trans | raw }}
+{% if (requisitos_ingreso is not empty) or (requisitos_pendientes is not empty) %}
+        
+        <div class='alert alert-warning clearfix'>
+            
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            
+            <h3>{{ 'inicio_alumno.requisitos_ingreso_adeudados' | trans }}</h3>
+            {% if url_requisito_pendiente is not empty %}
+                <a href="{{ url_requisito_pendiente }}" class="btn btn-warning">{{ 'inicio_alumno.cargar_requisitos' | trans }}</a>
+            {% endif  %}
+            {% if (requisitos_pendientes is not empty) %}
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>{{ 'inicio_alumno.requisito' | trans }}</th>
+                        <th>{{ 'inicio_alumno.fecha' | trans }}</th>
+                        <th>{{ 'inicio_alumno.estado_rd' | trans }}</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {% for requisito in requisitos_pendientes %}
+                    <tr>
+                        <td>{{ requisito.requisito_nombre }}</td>
+                        <td>{{ requisito.f_tope_presentacion }}</td>
+                        
+                        {% if requisito.estado_req_digital == estado_no_presentado %}
+                            {% set label_estado_req_digital = '' %}
+                        {% elseif requisito.estado_req_digital == estado_pendiente_validacion %}
+                            {% set label_estado_req_digital = 'label-warning' %}
+                        {% elseif requisito.estado_req_digital == estado_presentado %}
+                            {% set label_estado_req_digital = 'label-success' %}
+                        {% elseif requisito.estado_req_digital == estado_vencido %}
+                            {% set label_estado_req_digital = 'label-important' %}
+                        {% endif %}
+                                                
+                        <td><span class="label {{ label_estado_req_digital }}">{{ ('requisitos.' ~  requisito.estado_req_digital) | trans }}</span></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+            
+            {% if (requisitos_ingreso is not empty) %}
+            <h3>{{ 'inicio_alumno.requisitos_ingreso_adeudados_pendientes' | trans }}</h3> 
+            <p>{{ 'inicio_alumno.requisitos_ingreso_vencidos' | trans }}</p>
+            <table class="table table-condensed">
+                <thead>
+                    <tr>
+                        <th>{{ 'inicio_alumno.requisito' | trans }}</th>
+                        <th>{{ 'inicio_alumno.fecha' | trans }}</th>
+                        <th>{{ 'inicio_alumno.estado_rd' | trans }}</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    {% for requisito in requisitos_ingreso %}
+                    <tr>
+                        <td>{{ requisito.requisito_nombre }}</td>
+                        <td>{{ requisito.f_tope_presentacion }}</td>
+                        
+                        {% if requisito.estado_req_digital == estado_no_presentado %}
+                            {% set label_estado_req_digital = '' %}
+                        {% elseif requisito.estado_req_digital == estado_pendiente_validacion %}
+                            {% set label_estado_req_digital = 'label-warning' %}
+                        {% elseif requisito.estado_req_digital == estado_presentado %}
+                            {% set label_estado_req_digital = 'label-success' %}
+                        {% elseif requisito.estado_req_digital == estado_vencido %}
+                            {% set label_estado_req_digital = 'label-important' %}
+                        {% endif %}
+                        
+                        <td><span class="label {{ label_estado_req_digital }}">{{ ('requisitos.' ~  requisito.estado_req_digital) | trans }}</span></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>            
+            {% endif  %}    
+        </div>
+        
+    {% endif %}
+        
+    {% if operacion_readmision_activa %}
+
+        {% if mensaje_readmision2 %}
+            <div class='alert alert-warning clearfix'>
+                
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                
+                {% set etiqueta_msg2 = mensaje_readmision2 %}
+
+                <h3>{{ etiqueta_msg2  | trans }}</h3>
+            </div>
+
+        {% endif %}
+
+        {% if debe_readmitirse %}
+
+            <div class='alert alert-warning clearfix'>
+                
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+               
+                {% set etiqueta_msg2 = mensaje_readmision2 %}
+
+                <h3>{{ etiqueta_msg2  | trans }}</h3>
+
+                {% if alumno_activo %}
+
+                    {% set etiqueta_msg = 'mensaje_readmision' %}
+                    {% set btn_disabled = false %}
+
+                {% else %}
+
+                    {% set etiqueta_msg = '800MAT_readmision_carrera_inactivo' %}
+                    {% set btn_disabled = true %}
+
+                {% endif %}
+
+                <h3>{{ etiqueta_msg | trans }}</h3>
+                <form method='post' action='{{ url_readmision }}'>
+                    <input type='submit' value='{{ 'readmision' | trans | capitalize }}' class="btn btn-warning {% if btn_disabled %}disabled{% endif %}" {% if btn_disabled %}disabled="disabled"{% endif %}>
+                </form>
+
+            </div>
+
+        {% endif %}
+    {% endif %}
+    
+    {% if debe_reinscribirse %}
+
+        <div class='alert alert-warning clearfix'>
+
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            
+            {% if alumno_activo %}
+
+                {% set etiqueta_msg = 'mensaje_reinscripcion' %}
+                {% set btn_disabled = false %}
+
+            {% else %}
+
+                {% set etiqueta_msg = '800MAT_reinscripcion_carrera_inactivo' %}
+                {% set btn_disabled = true %}
+
+            {% endif %}
+
+            <h3>{{ etiqueta_msg | trans }}</h3>
+            <form method='post' action='{{ url_reinscripcion }}'>
+                <input type='submit' value='{{ 'reinscribirse' | trans | capitalize }}' class="btn btn-warning {% if btn_disabled %}disabled{% endif %}" {% if btn_disabled %}disabled="disabled"{% endif %}>
+            </form>
+
+        </div>
+
+    {% endif %}
+
+    <div class='row-fluid'>
+
+        {% if tiene_noticias %}
+
+            <div class='span5'>
+                {{ lista_encuestas_pendientes.render }}
+                {{ lista_carreras.render }}
+            </div>
+            <div class='span7'>
+                {{ lista_noticias.render }}
+            </div>
+
+        {% else %}
+
+            <div class='span5'>
+                {{ lista_carreras.render }}
+            </div>
+            <div class='span7'>
+                {{ lista_encuestas_pendientes.render }}
+            </div>
+
+        {% endif %}
+
+    </div>
+{% endblock %}
+
+{% block columna_2 %}
+    {% if notificaciones.render %}
+        <div id='wrapper-derecha-home'>
+            {{ notificaciones.render }}
+        </div>
+    {% endif %}
+{% endblock %}

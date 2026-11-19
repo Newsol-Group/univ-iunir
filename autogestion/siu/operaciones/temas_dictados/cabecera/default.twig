@@ -1,0 +1,33 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	{% if this.data.clases_no_anuladas %}
+		<div class="titulo-navbar clearfix">
+			<div class="subnav-combo">
+				<ul class="pull-left clearfix">
+					<select class="form-control span12 js-combo-clase">
+						{% for clase in this.data.clases_no_anuladas %}
+							<option value="{{ clase.clase }}" {% if (clase.selected) %}    selected {% endif %}
+									data-link= {{ clase.url }}>{{ clase.desc }} </option>
+						{% endfor %}
+					</select>
+				</ul>
+			</div>
+			<div class="pull-right subnav-btn">
+				<button class="btn btn-small" id="js-colapsar-info-clase"><i class="icon-th-list"></i> <span>Detalles</span></button>
+			</div>
+		</div>
+
+		<div class="js-detalle-clase" style="display: none;">
+			<table class="table table-condensed">
+				<tr>
+					<td><strong>{{'tipo_clase'|trans|capitalize}}:</strong></td>
+					<td>{{ this.data.tipo_clase }}</td>
+					<td><strong>{{'horario'|trans|capitalize}}:</strong></td>
+					<td>{{ this.data.dia_semana_desc }} de {{ this.data.hora_inicio_formateada }} a {{ this.data.hora_finalizacion_formateada }} </td>
+					<td><strong>{{'cantidad_horas'|trans|capitalize}}:</strong></td>
+					<td>{{ this.data.cantidad_horas_dictadas }}</td>
+				</tr>
+			</table>
+		</div>
+	{% endif %}
+{% endblock %}

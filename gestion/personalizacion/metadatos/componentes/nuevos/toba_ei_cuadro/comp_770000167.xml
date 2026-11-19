@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000167" descripcion="toba_ei_cuadro">
+	<tabla nombre="apex_objeto">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000167"/>
+			<columna nombre="clase_proyecto" valor="toba"/>
+			<columna nombre="clase" valor="toba_ei_cuadro"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+			<columna nombre="subclase" valor="guarani_pers_ei_cuadro"/>
+			<columna nombre="subclase_archivo" valor="extension_toba/componentes/guarani_pers_ei_cuadro.php"/>
+			<columna nombre="nombre" valor="Reporte de Egresados - cuadro"/>
+			<columna nombre="colapsable" valor="0"/>
+			<columna nombre="creacion" valor="2011-07-06 11:16:30"/>
+			<columna nombre="posicion_botonera" valor="abajo"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_cuadro">
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000167"/>
+			<columna nombre="clave_dbr" valor="0"/>
+			<columna nombre="ancho" valor="100%"/>
+			<columna nombre="ordenar" valor="1"/>
+			<columna nombre="paginar" valor="1"/>
+			<columna nombre="tamano_pagina" valor="30"/>
+			<columna nombre="tipo_paginado" valor="P"/>
+			<columna nombre="mostrar_total_registros" valor="0"/>
+			<columna nombre="eof_invisible" valor="0"/>
+			<columna nombre="siempre_con_titulo" valor="0"/>
+			<columna nombre="exportar_paginado" valor="0"/>
+			<columna nombre="exportar" valor="1"/>
+			<columna nombre="exportar_rtf" valor="0"/>
+			<columna nombre="scroll" valor="1"/>
+			<columna nombre="scroll_alto" valor="330px"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ei_cuadro_columna">
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000167"/>
+			<columna nombre="objeto_cuadro_col" valor="770000285"/>
+			<columna nombre="clave" valor="documento_principal"/>
+			<columna nombre="orden" valor="2"/>
+			<columna nombre="titulo" valor="Identificación"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-tex-p1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000167"/>
+			<columna nombre="objeto_cuadro_col" valor="770000286"/>
+			<columna nombre="clave" valor="apellido_y_nombres"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="titulo" valor="Apellido y Nombre"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-tex-p1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000167"/>
+			<columna nombre="objeto_cuadro_col" valor="770000287"/>
+			<columna nombre="clave" valor="certificado_nombre"/>
+			<columna nombre="orden" valor="3"/>
+			<columna nombre="titulo" valor="Certificado"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-tex-p1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000167"/>
+			<columna nombre="objeto_cuadro_col" valor="770000288"/>
+			<columna nombre="clave" valor="juramento_descripcion"/>
+			<columna nombre="orden" valor="4"/>
+			<columna nombre="titulo" valor="Juramento"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-tex-p1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000167"/>
+			<columna nombre="objeto_cuadro_col" valor="770000289"/>
+			<columna nombre="clave" valor="fecha_egreso"/>
+			<columna nombre="orden" valor="5"/>
+			<columna nombre="titulo" valor="Fecha de Egreso"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="7"/>
+			<columna nombre="formateo" valor="8"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000167"/>
+			<columna nombre="objeto_cuadro_col" valor="770000290"/>
+			<columna nombre="clave" valor="fecha_ingreso"/>
+			<columna nombre="orden" valor="6"/>
+			<columna nombre="titulo" valor="Fecha de Ingreso"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="7"/>
+			<columna nombre="formateo" valor="8"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000167"/>
+			<columna nombre="objeto_cuadro_col" valor="770000291"/>
+			<columna nombre="clave" valor="periodo_ingreso"/>
+			<columna nombre="orden" valor="7"/>
+			<columna nombre="titulo" valor="Período Ingreso"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000167"/>
+			<columna nombre="objeto_cuadro_col" valor="770000292"/>
+			<columna nombre="clave" valor="cant_cuatrimestres"/>
+			<columna nombre="orden" valor="8"/>
+			<columna nombre="titulo" valor="Cant. Cuatrimestres"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+	</tabla>
+</componente>

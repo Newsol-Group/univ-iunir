@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guarani" language="groovy" pageWidth="595" pageHeight="842" columnWidth="483" leftMargin="56" rightMargin="56" topMargin="85" bottomMargin="56" uuid="b7e6e432-e2ea-48e5-9bd6-a99558843e7b">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="14" isBold="true" isUnderline="true" pdfFontName="Times-Bold"/>
+	<style name="Comun" fontName="Arial" fontSize="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica"/>
+	<style name="Resalt" fontName="Arial" fontSize="12" isBold="true" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+	<parameter name="nro_solicitud" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="apellido_y_nombre" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+	$P!{apellido_y_nombre}   AS apellido_y_nombre,
+	vw_personas.desc_tipo_documento || ' ' || vw_personas.nro_documento AS documento_principal,
+	mdp_nacionalidades.descripcion AS nacionalidad_descr,
+	COALESCE(sga_alumnos.legajo, ' ') as legajo,
+	CASE vw_personas.sexo
+		WHEN 'F' THEN sga_certificados.nombre_femenino
+		WHEN 'X' THEN sga_certificados.nombre_no_binario
+		ELSE sga_certificados.nombre 
+	END AS certificado_nombre,
+        COALESCE(sga_certificados_otorg.nro_expediente, ' - ') AS nro_expediente,
+	to_char(sga_certificados_otorg.fecha_egreso, 'DD/MM/YYYY') AS fecha_egreso_alumno,
+	to_char(CURRENT_DATE, 'DD/MM/YYYY') AS fecha_actual,
+	sga_instituciones.nombre AS nombre_institucion,
+	f_responsables_academicas_propuesta(sga_propuestas.propuesta) AS ra_nombre
+FROM
+	sga_certificados_otorg
+JOIN	sga_certificados ON sga_certificados_otorg.certificado = sga_certificados.certificado
+JOIN	sga_alumnos ON sga_alumnos.alumno = sga_certificados_otorg.alumno
+JOIN	vw_personas ON sga_alumnos.persona = vw_personas.persona
+JOIN	mdp_nacionalidades ON vw_personas.nacionalidad = mdp_nacionalidades.nacionalidad
+JOIN	sga_planes_versiones ON sga_certificados_otorg.plan_version = sga_planes_versiones.plan_version
+JOIN	sga_planes ON sga_planes_versiones.plan = sga_planes.plan
+JOIN	sga_propuestas ON sga_planes.propuesta = sga_propuestas.propuesta
+JOIN	sga_responsables_academicas ON sga_responsables_academicas.responsable_academica = get_ra_inst_araucano_propuesta(sga_planes.propuesta, 'RA')
+JOIN	sga_instituciones ON sga_responsables_academicas.institucion = sga_instituciones.institucion
+JOIN   mdp_personas ON sga_alumnos.persona = mdp_personas.persona
+WHERE
+	sga_certificados_otorg.nro_solicitud = $P{nro_solicitud}
+	]]>
+	</queryString>
+	<field name="apellido_y_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="documento_principal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nacionalidad_descr" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="legajo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="certificado_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nro_expediente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_egreso_alumno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_actual" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre_institucion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ra_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="640" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="483" height="521" uuid="17461b21-428a-4683-958e-a7593e38c8fa"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="Title" x="0" y="46" width="483" height="20" uuid="fca87f6a-9bb6-41c9-a9e5-22be7d4aa0be"/>
+				<textElement textAlignment="Center">
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[FORMULARIO T.E.D. 1.b.-]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Comun" x="12" y="194" width="460" height="72" uuid="be09ae60-7bc1-4dcb-abf7-c0b3bee63434"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["       Quien suscribe " + $F{apellido_y_nombre}.toUpperCase() + ", " + $F{documento_principal} + " de nacionalidad " + $F{nacionalidad_descr} + " solicita la expedición del diploma de " + $F{certificado_nombre}.toUpperCase() + " por haber finalizado sus estudios el día " + $F{fecha_egreso_alumno} + ". \n \n" +
+"       Atentamente.-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Resalt" x="305" y="86" width="170" height="17" uuid="426e0113-ce8d-4c1f-9ccf-bd9b36523c24"/>
+				<textFieldExpression><![CDATA["T.E.D N°: " + $F{nro_expediente}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Comun" x="12" y="168" width="179" height="15" uuid="8487b7e7-5f85-43a2-b06e-fbcc2d52a7bb"/>
+				<text><![CDATA[A la autoridad que corresponda:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Comun" x="268" y="366" width="204" height="74" uuid="32c3fc94-9f83-499e-a9ce-4b0d7e49dd5e"/>
+				<textFieldExpression><![CDATA["Firma :       .......................................\n\n" +
+"Legajo N° : " + $F{legajo} + "\n\n" +
+"Fecha :       " + $F{fecha_actual}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="57" splitType="Stretch">
+			<textField>
+				<reportElement style="Comun" x="30" y="3" width="430" height="16" uuid="31bcefed-49f7-42b4-8cd6-5c74a4fe2964"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nombre_institucion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Comun" x="30" y="20" width="430" height="36" uuid="39afd854-c59e-49f0-a24a-fe751ef66a9a"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ra_nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

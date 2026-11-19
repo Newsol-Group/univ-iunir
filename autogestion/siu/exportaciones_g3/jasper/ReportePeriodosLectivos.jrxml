@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guarani" language="groovy" pageWidth="595" pageHeight="842" columnWidth="575" leftMargin="10" rightMargin="10" topMargin="20" bottomMargin="20">
+	<style name="Title" isDefault="false" fontName="Times New Roman" fontSize="14" isBold="true" isUnderline="true" pdfFontName="Times-Bold"/>
+	<style name="Resalt" isDefault="false" fontSize="10" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+	<style name="Comun" isDefault="false" fontSize="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica"/>
+	<style name="Column header" isDefault="false" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Row" isDefault="false" mode="Transparent"/>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="subtipo_entidad_nombre" class="java.lang.String">
+		<defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+	</parameter>
+	<queryString language="xPath">
+		<![CDATA[/tabla/datos/fila]]>
+	</queryString>
+	<field name="periodo_anio_academico" class="java.lang.Integer">
+		<fieldDescription><![CDATA[dato[@clave="periodo_anio_academico"]/@val]]></fieldDescription>
+	</field>
+	<field name="periodo_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[dato[@clave="periodo_nombre"]/@val]]></fieldDescription>
+	</field>
+	<field name="cant_comisiones" class="java.lang.Integer">
+		<fieldDescription><![CDATA[dato[@clave="cant_comisiones"]/@val]]></fieldDescription>
+	</field>
+	<field name="periodo_fecha_inicio_visual" class="java.lang.String">
+		<fieldDescription><![CDATA[dato[@clave="periodo_fecha_inicio_viisual"]/@val]]></fieldDescription>
+	</field>
+	<field name="periodo_fecha_fin_visual" class="java.lang.String">
+		<fieldDescription><![CDATA[dato[@clave="periodo_fecha_fin_visual"]/@val]]></fieldDescription>
+	</field>
+	<field name="fecha_inicio_dictado_visual" class="java.lang.String">
+		<fieldDescription><![CDATA[dato[@clave="fecha_inicio_dictado_visual"]/@val]]></fieldDescription>
+	</field>
+	<field name="fecha_fin_dictado_visual" class="java.lang.String">
+		<fieldDescription><![CDATA[dato[@clave="fecha_fin_dictado_visual"]/@val]]></fieldDescription>
+	</field>
+	<field name="nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[dato[@clave="nombre"]/@val]]></fieldDescription>
+	</field>
+	<field name="fecha_inicio_visual" class="java.lang.String">
+		<fieldDescription><![CDATA[dato[@clave="fecha_inicio_visual"]/@val]]></fieldDescription>
+	</field>
+	<field name="fecha_fin_visual" class="java.lang.String">
+		<fieldDescription><![CDATA[dato[@clave="fecha_fin_visual"]/@val]]></fieldDescription>
+	</field>
+	<field name="fecha_tope_bajas_visual" class="java.lang.String">
+		<fieldDescription><![CDATA[dato[@clave="fecha_tope_bajas_visual"]/@val]]></fieldDescription>
+	</field>
+	<field name="lista_modalidades" class="java.lang.String">
+		<fieldDescription><![CDATA[dato[@clave="lista_modalidades"]/@val]]></fieldDescription>
+	</field>
+	<field name="lista_ubicaciones" class="java.lang.String">
+		<fieldDescription><![CDATA[dato[@clave="lista_ubicaciones"]/@val]]></fieldDescription>
+	</field>
+	<field name="nivel_aplicacion" class="java.lang.String">
+		<fieldDescription><![CDATA[dato[@clave="nivel_aplicacion"]/@val]]></fieldDescription>
+	</field>
+	<field name="lista_subtipos_entidades" class="java.lang.String">
+		<fieldDescription><![CDATA[dato[@clave="lista_subtipos_entidades"]/@val]]></fieldDescription>
+	</field>
+	<background>
+		<band height="802" splitType="Stretch">
+			<rectangle>
+				<reportElement positionType="Float" x="0" y="0" width="575" height="772"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</rectangle>
+		</band>
+	</background>
+	<title>
+		<band height="49" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="213" y="12" width="165" height="23"/>
+				<textElement>
+					<font pdfFontName="Times-Bold"/>
+				</textElement>
+				<text><![CDATA[Detalle Período Lectivo]]></text>
+			</staticText>
+			<image>
+				<reportElement x="42" y="5" width="92" height="40"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="94" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="101" y="41" width="143" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{periodo_fecha_inicio_visual}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="316" y="41" width="134" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{periodo_fecha_fin_visual}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="316" y="27" width="95" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{periodo_nombre}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="491" y="27" width="84" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{cant_comisiones}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="101" y="27" width="143" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{periodo_anio_academico}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="10" y="18" width="555" height="1"/>
+			</line>
+			<line>
+				<reportElement x="10" y="79" width="555" height="1"/>
+			</line>
+			<staticText>
+				<reportElement style="Resalt" x="10" y="27" width="91" height="14"/>
+				<textElement/>
+				<text><![CDATA[Año Académico:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Resalt" x="244" y="27" width="72" height="14"/>
+				<textElement/>
+				<text><![CDATA[P. Lectivo:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Resalt" x="421" y="27" width="70" height="14"/>
+				<textElement/>
+				<text><![CDATA[Comisiones:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Resalt" x="10" y="41" width="91" height="14"/>
+				<textElement/>
+				<text><![CDATA[Inicio:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Resalt" x="244" y="41" width="72" height="14"/>
+				<textElement/>
+				<text><![CDATA[Fin:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Resalt" x="10" y="55" width="91" height="14"/>
+				<textElement/>
+				<text><![CDATA[Inicio Dictado:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="101" y="55" width="143" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fecha_inicio_dictado_visual}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Resalt" x="244" y="55" width="72" height="14"/>
+				<textElement/>
+				<text><![CDATA[Fin Dictado:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="316" y="55" width="134" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fecha_fin_dictado_visual}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="168" splitType="Stretch">
+			<staticText>
+				<reportElement style="Resalt" x="10" y="28" width="124" height="14"/>
+				<textElement/>
+				<text><![CDATA[Nombre:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="134" y="28" width="431" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Title" x="10" y="0" width="124" height="23"/>
+				<textElement>
+					<font pdfFontName="Times-Bold"/>
+				</textElement>
+				<text><![CDATA[Período Inscripción:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Resalt" x="10" y="42" width="124" height="14"/>
+				<textElement/>
+				<text><![CDATA[Fecha inicio:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Resalt" x="10" y="56" width="124" height="14"/>
+				<textElement/>
+				<text><![CDATA[Fecha Fin:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Resalt" x="10" y="70" width="124" height="14"/>
+				<textElement/>
+				<text><![CDATA[Fecha Tope de Bajas:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Resalt" x="10" y="84" width="124" height="14"/>
+				<textElement/>
+				<text><![CDATA[Modalidad:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Resalt" x="10" y="98" width="124" height="14"/>
+				<textElement/>
+				<text><![CDATA[Ubicación:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Resalt" x="10" y="112" width="124" height="14"/>
+				<textElement/>
+				<text><![CDATA[Nivel de Aplicación:]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="134" y="42" width="431" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fecha_inicio_visual}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="134" y="56" width="431" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fecha_fin_visual}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="134" y="70" width="431" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{fecha_tope_bajas_visual}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="134" y="84" width="431" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{lista_modalidades}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="134" y="98" width="431" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{lista_ubicaciones}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="134" y="112" width="431" height="14"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{nivel_aplicacion}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="134" y="126" width="431" height="16"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{lista_subtipos_entidades}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="Resalt" x="10" y="126" width="124" height="16"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[(($P{subtipo_entidad_nombre}.trim()).isEmpty()) ? "" : ($P{subtipo_entidad_nombre} + ":")]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>

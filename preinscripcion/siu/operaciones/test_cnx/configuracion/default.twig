@@ -1,0 +1,38 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	<div class="alert alert-info">
+		{{ 'test_cnx.desc_datos_cnx'|trans|raw }}
+	</div>
+
+	<table width=100%>
+		<tr>
+			<td><strong>{{ 'test_cnx.vendor'|trans}}:</strong></td>
+			<td>{{ this.data.datos_cnx.vendor }}</td>
+		</tr>
+		<tr>
+			<td><strong>{{ 'test_cnx.dbname'|trans}}:</strong></td>
+			<td>{{ this.data.datos_cnx.dbname }}</td>
+		</tr>
+		<tr>
+			<td><strong>{{ 'test_cnx.schema'|trans}}:</strong></td>
+			<td>{{ this.data.datos_cnx.schema }}</td>
+		</tr>
+		<tr>
+			<td><strong>{{ 'test_cnx.host'|trans}}:</strong></td>
+			<td>{{ this.data.datos_cnx.host }}</td>
+		</tr>
+		<tr>
+			<td><strong>{{ 'test_cnx.port'|trans}}:</strong></td>
+			<td>{{ this.data.datos_cnx.port }}</td>
+		</tr>
+		<tr>
+			<td><strong>{{ 'test_cnx.pdo_user'|trans}}:</strong></td>
+			<td>{{ this.data.datos_cnx.pdo_user }}</td>
+		</tr>
+		<tr>
+			<td><strong>{{ 'test_cnx.pdo_pass'|trans}}:</strong></td>
+			<td>***********</td>
+		</tr>
+	</table>
+
+{% endblock %}

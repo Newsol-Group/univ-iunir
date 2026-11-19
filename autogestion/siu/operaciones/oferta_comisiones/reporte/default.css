@@ -1,0 +1,113 @@
+#oferta_com h4{
+	text-align: left;
+}
+
+#oferta_com th{
+	text-align: center;
+}
+
+#oferta_com .table{
+	margin-bottom: 20px;
+	background-color: #eee;
+}
+
+#oferta_com td p{
+	margin: 10px;
+}
+
+#oferta_com .recuadro{
+	padding: 5px;
+}
+
+#oferta_com .filtros{
+	width: 100%;
+}
+
+#oferta_com .filtros th{
+	padding: 15px 8px;
+}
+
+#oferta_com .filtros select{
+	margin-bottom: 0;
+}
+
+#oferta_com .filtros .titulo{	
+	font-weight: bold;
+	width: auto;
+	float: left;
+	margin-left: 98px;
+}
+
+#oferta_com .filtros label{
+	margin: 0;
+}
+
+#oferta_com .filtros table{
+	width: 940px;
+}
+
+#oferta_com .comision{
+	background-color: #707070;
+	color: #fff;
+}
+
+#oferta_com .comision span {
+	display: block;
+}
+
+#oferta_com .comision .detalle_comision{
+	vertical-align: middle;
+}
+
+#oferta_com .comision .observaciones{
+	padding-left: 10px;
+	font-size: 13px;
+}
+
+#oferta_com .horarios{
+	color: #777;
+	background-color: #eee;
+}
+
+#oferta_com .tipo_curso{
+	width: 100px;
+}
+
+#oferta_com .dia{
+	width: 80px;
+}
+
+#oferta_com .horario{
+	width: 100px;
+}
+
+#oferta_com .cupo{
+	width: 100px;
+}
+
+#oferta_com .aula{
+}
+
+#oferta_com .subcomision h5{
+	margin: 0;
+}
+
+#oferta_com h3{
+	color: #555;
+}
+
+#oferta_com h4{
+	color: #707070;
+}
+
+#oferta_com .subcomision{
+	background-color: #999;
+}
+
+#oferta_com .btn.active{
+	background-color: #ccc;
+}
+
+#oferta_com table tr.js-dia.oscuro{
+	background: #e0e0e0;
+}

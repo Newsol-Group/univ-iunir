@@ -1,0 +1,218 @@
+{
+  "apps": {
+    "autogestion": "autogestion",
+    "gestion": "gestion",
+    "preinscripcion": "preinscripcion"
+  },
+  "attributes_sha256": "decff72aca78f53736c3592d5bcc85cbcd2f50f63752f5fff8d0aad65f5cf3e0",
+  "cliente": {
+    "codigo": "univ-iunir",
+    "nombre": "Universidad Rosario"
+  },
+  "framework": "G3Forge",
+  "installed_version": "2.2.2-alpha.2",
+  "last_target_version": "2.2.2-alpha.2",
+  "managed": {
+    ".agents/skills/diagnostico-g3w3/SKILL.md": {
+      "kind": "file",
+      "sha256": "f127cfa4e5f31e76750ec348c1d207e3bd9a65ce6bc39885a82c9a46699189e1",
+      "source": ".agents/skills/diagnostico-g3w3/SKILL.md",
+      "version": "2.2.2-alpha.2"
+    },
+    ".agents/skills/gestion-toba/SKILL.md": {
+      "kind": "file",
+      "sha256": "3fa414ccf4e556caede6ecb6d00e166ef44797bbdd49247ea2c0e2354bb509fb",
+      "source": ".agents/skills/gestion-toba/SKILL.md",
+      "version": "2.2.2-alpha.2"
+    },
+    ".agents/skills/relevar-personalizaciones/SKILL.md": {
+      "kind": "file",
+      "sha256": "bd6ef921f30afe64abccb58d4466ee600f8e3bbdff8740004c1d15e8b1b6efea",
+      "source": ".agents/skills/relevar-personalizaciones/SKILL.md",
+      "version": "2.2.2-alpha.2"
+    },
+    ".agents/skills/validar-personalizacion/SKILL.md": {
+      "kind": "file",
+      "sha256": "5571bf7c2467baffedea68708458215cf91336bfe550e2823d04694b3ce1207f",
+      "source": ".agents/skills/validar-personalizacion/SKILL.md",
+      "version": "2.2.2-alpha.2"
+    },
+    ".codex/agents/documentador.toml": {
+      "kind": "file",
+      "sha256": "79e847661e5e1319b17302a3b96b9fd5cb9e0e06a953fc7ff9b7b9c18ec18c51",
+      "source": ".codex/agents/documentador.toml",
+      "version": "2.2.2-alpha.2"
+    },
+    ".codex/agents/especialista_toba.toml": {
+      "kind": "file",
+      "sha256": "e14018e8a231c288e67588b6446210bc5c16bea1893321d172821de44d95050d",
+      "source": ".codex/agents/especialista_toba.toml",
+      "version": "2.2.2-alpha.2"
+    },
+    ".codex/agents/explorador.toml": {
+      "kind": "file",
+      "sha256": "b21aad0119089bf41163eb64a67bb1c4983428296bc6640bb00a4a16aef334c9",
+      "source": ".codex/agents/explorador.toml",
+      "version": "2.2.2-alpha.2"
+    },
+    ".codex/agents/implementador.toml": {
+      "kind": "file",
+      "sha256": "9ecb5b94697bd11267bf1dddece803a2eb620fb93e8b4288ba2e9ad39562cc07",
+      "source": ".codex/agents/implementador.toml",
+      "version": "2.2.2-alpha.2"
+    },
+    ".codex/agents/verificador.toml": {
+      "kind": "file",
+      "sha256": "d1e5e091a78d32f13d3f495adff6c247797a4fd0da6b20ecba8f3a74fa3a64c4",
+      "source": ".codex/agents/verificador.toml",
+      "version": "2.2.2-alpha.2"
+    },
+    ".codex/config.toml": {
+      "kind": "file",
+      "sha256": "95607fe5291edd3157a29fdbf2fa180321d14fb2e4a31d2015f3dd6f32fdb2f4",
+      "source": ".codex/config.toml",
+      "version": "2.2.2-alpha.2"
+    },
+    "AGENTS.md": {
+      "kind": "agent_block",
+      "sha256": "8f1e99fa6b80e40eaf60cf15f723bcb4bdd27a0037eb6338ad1dad2e9d7335cf",
+      "source": "AGENTS.md",
+      "version": "2.2.2-alpha.2"
+    },
+    "autogestion/AGENTS.md": {
+      "kind": "agent_block",
+      "sha256": "f78f12362ed2cfb892a599dbe4996bd9d1c70f9a034194334b91f4e6e947ad91",
+      "source": "autogestion/AGENTS.md",
+      "version": "2.2.2-alpha.2"
+    },
+    "config/README.md": {
+      "kind": "file",
+      "sha256": "40d53b8b0db1953211d06e6ff45486a4e7f06c5c551610940056092158cb49f7",
+      "source": "config/README.md",
+      "version": "2.2.2-alpha.2"
+    },
+    "docs/arquitectura/ADOPCION.md": {
+      "kind": "file",
+      "sha256": "6e0470a8e4fdeace90617b419682930a86fad1a41f6a83a8c086188b4de86942",
+      "source": "docs/arquitectura/ADOPCION.md",
+      "version": "2.2.2-alpha.2"
+    },
+    "docs/arquitectura/CLI_INTERACTIVA.md": {
+      "kind": "file",
+      "sha256": "d92116771b7c3d1574574d466b9ceaeed4aca4cae3d91b04e3b38667a9703cea",
+      "source": "docs/arquitectura/CLI_INTERACTIVA.md",
+      "version": "2.2.2-alpha.2"
+    },
+    "docs/arquitectura/HANDOFF.md": {
+      "kind": "file",
+      "sha256": "0b4e6a6c0a5634689b87f2725f41ddd46cc4a574bea87c92a5b59b71ae4f8c1f",
+      "source": "docs/arquitectura/HANDOFF.md",
+      "version": "2.2.2-alpha.2"
+    },
+    "docs/arquitectura/ORQUESTACION.md": {
+      "kind": "file",
+      "sha256": "cc23556c132cbd034b0d6bd23de50e6bda559d34c5ed455ccf84d6e28fcbda54",
+      "source": "docs/arquitectura/ORQUESTACION.md",
+      "version": "2.2.2-alpha.2"
+    },
+    "docs/arquitectura/SEGURIDAD.md": {
+      "kind": "file",
+      "sha256": "c6206a204f66a95a026852f03519b528320215c3ddec198af35ba1c0eb56654e",
+      "source": "docs/arquitectura/SEGURIDAD.md",
+      "version": "2.2.2-alpha.2"
+    },
+    "docs/arquitectura/TRAZABILIDAD.md": {
+      "kind": "file",
+      "sha256": "d5a9b6f528c65cc3059383219fdf77c83526006b12460fa99139157599077d0c",
+      "source": "docs/arquitectura/TRAZABILIDAD.md",
+      "version": "2.2.2-alpha.2"
+    },
+    "docs/evaluacion/CASOS.md": {
+      "kind": "file",
+      "sha256": "613c3db3afb344ea7b5c0d0af4f88126eb5333c69397be03ce1c9b467f7774f0",
+      "source": "docs/evaluacion/CASOS.md",
+      "version": "2.2.2-alpha.2"
+    },
+    "docs/instalacion/GUIA.md": {
+      "kind": "file",
+      "sha256": "5678d56c65f896fc1ef7ca41a371ceca7512049dbbeb918aae160bd0a544e321",
+      "source": "docs/instalacion/GUIA.md",
+      "version": "2.2.2-alpha.2"
+    },
+    "gestion/AGENTS.md": {
+      "kind": "agent_block",
+      "sha256": "e5ea983f3d1081ecc01378162daa86a08176a27e3bcb8ee5283872513e402598",
+      "source": "gestion/AGENTS.md",
+      "version": "2.2.2-alpha.2"
+    },
+    "inicializado.md": {
+      "kind": "file",
+      "sha256": "36e736701ec1ebc86676136f3a7c8fdad071db0b7a194d488c4ac6cf9c2c9832",
+      "source": "inicializado.md",
+      "version": "2.2.2-alpha.2"
+    },
+    "preinscripcion/AGENTS.md": {
+      "kind": "agent_block",
+      "sha256": "a96a046821adb5ff40770e424345295df105334890a1e069ef3c50095f73a59e",
+      "source": "preinscripcion/AGENTS.md",
+      "version": "2.2.2-alpha.2"
+    },
+    "scripts/G3Forge.ps1": {
+      "kind": "file",
+      "sha256": "c8064d7e4c50bc5ebdd3c1d8bbcf76e5cde0805bed3e3a2903811f160ffad369",
+      "source": "scripts/G3Forge.ps1",
+      "version": "2.2.2-alpha.2"
+    },
+    "scripts/auditar_cambios.py": {
+      "kind": "file",
+      "sha256": "704c1b1b907e0b19fe1175e0f4250a1a10e17e395965d01a4c75753c8851c176",
+      "source": "scripts/auditar_cambios.py",
+      "version": "2.2.2-alpha.2"
+    },
+    "scripts/consola.py": {
+      "kind": "file",
+      "sha256": "b99c43c33ec56077d75e8a34d6911467759b4c2cdbded838e136da6123df4b6a",
+      "source": "scripts/consola.py",
+      "version": "2.2.2-alpha.2"
+    },
+    "scripts/diagnostico_multiagente.py": {
+      "kind": "file",
+      "sha256": "8b439e5eb9f030ada78de7ff75883097c9f06aa2615d688970d15d5595cacdca",
+      "source": "scripts/diagnostico_multiagente.py",
+      "version": "2.2.2-alpha.2"
+    },
+    "scripts/g3forge.py": {
+      "kind": "file",
+      "sha256": "72024290cdb7cb7e14072cd9c95e9235b34e03896f3b609ae1a94bdf9cccdd54",
+      "source": "tools/g3forge.py",
+      "version": "2.2.2-alpha.2"
+    },
+    "scripts/terminal.py": {
+      "kind": "file",
+      "sha256": "670e6b92c7f0b6037367cfb8e9b83d1909b6865398606d15d6912716624e2e91",
+      "source": "scripts/terminal.py",
+      "version": "2.2.2-alpha.2"
+    },
+    "scripts/trazabilidad.py": {
+      "kind": "file",
+      "sha256": "2c53156885e52fe621d4d0c85eab59318129c40019e30c8d4ba28a50b79677fe",
+      "source": "scripts/trazabilidad.py",
+      "version": "2.2.2-alpha.2"
+    },
+    "scripts/validar_framework.py": {
+      "kind": "file",
+      "sha256": "af771cd23b077c1d2e7f6b419e993a408e903b90b88432af7997e15ed3cdb351",
+      "source": "scripts/validar_framework.py",
+      "version": "2.2.2-alpha.2"
+    },
+    "scripts/workspace.py": {
+      "kind": "file",
+      "sha256": "ca32d14d0c42cc12bb4064aa426cbe10108281f84dedd26cdaa4c1ae5d439c4d",
+      "source": "scripts/workspace.py",
+      "version": "2.2.2-alpha.2"
+    }
+  },
+  "pending": {},
+  "schema": 1,
+  "updated_utc": "2026-11-19T17:31:39+00:00"
+}

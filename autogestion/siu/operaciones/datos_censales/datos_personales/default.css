@@ -1,0 +1,33 @@
+.well { 
+	padding-top: 0px; 
+	padding-bottom: 0px; 
+	padding-left: 10px; 
+	padding-right: 10px; 
+}
+
+h2 { 
+	border-bottom: 0px;
+	margin: 0px;
+}
+
+h3 { 
+	border-bottom: 1px solid #CCCCCC;
+}
+
+#datos_personales select {
+	width: 310px;
+}
+
+.control-group {
+    margin-bottom: 0px;
+}
+
+.cg-margen {
+	margin-bottom: 5px;
+}
+#datos_personales #imagen_perfil {
+	margin-bottom: 5px;
+	border: solid 5px #ccc;
+	width: auto;
+	height: 110px;
+}

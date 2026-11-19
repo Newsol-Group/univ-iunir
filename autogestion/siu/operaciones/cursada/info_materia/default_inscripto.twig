@@ -1,0 +1,39 @@
+{#
+	Entrada: es_insc_prioridad, comision, csrf
+#}
+<div class='inscripcion'>
+	<p>{{'periodo'|trans|capitalize}}: {{ comision.periodo_lectivo_nombre }}</p>
+
+	<div class="wrapper-detalle">
+		<div class='info_inscripcion'>
+			<div class="comision">
+				<span>{{'info_materia.inscripto_comision'|trans({'%1%': comision.comision_nombre})}}</span>
+                                <div class="row-fluid">
+                                    <div class='span3'>{{'info_materia.docentes'|trans}}:</div>
+                                    <div class="span9">{{comision.docente}}</div>
+                                </div>
+				{#<span class="docente">{{'info_materia.docentes'|trans({'%1%': comision.docente})}}</span>#}
+			</div>
+
+			<div class='comprobante-cursada' data-img='{{comision.URL_COMP}}' data-msg-toggle='<i class="comprobante"></i> {{"esconder_comprobante"|trans|capitalize}} <i class="descolapsado"></i>'>
+				<a href='#'><i class="comprobante"></i> {{"mostrar_comprobante"|trans|capitalize}} <i class="colapsado"></i></a>
+				<div class='img-placeholder hide'>
+					<div class="comprobante-actions">
+						<a class='btn btn-small js-print-comprobante' data-img='{{ comision.URL_IMP_COMP }}'><i class="icon-print"></i>{{'imprimir'|trans|capitalize}}</a>
+						<a class='btn btn-small js-mail-comprobante' href='{{comision.URL_MAIL_COMP}}'><i class="icon-envelope"></i>{{'enviar_por_mail'|trans|capitalize}}</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class='acciones'>
+			<form class='form_baja' action='{{ comision.URL_BAJA }}' method='POST'>
+				{% import "kernel/macro_csrf.twig" as input_csrf %}
+				{{ input_csrf.mostrar(csrf) }}
+				<input type="hidden" name="materia" value="{{ comision.actividad }}" />
+				<input type="hidden" name="inscripcion" value="{{ comision.__ID__ }}" />
+				<button class="btn btn-small" type='submit'{% if not comision.baja_habilitada %} disabled{% endif %}><i class="icon-remove"></i> {{'dar_baja'|trans|capitalize }}</button>
+			</form>
+		</div>
+	</div>
+</div>

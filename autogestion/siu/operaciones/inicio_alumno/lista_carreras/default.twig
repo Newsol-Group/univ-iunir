@@ -1,0 +1,91 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+
+	<ul class='unstyled'>
+		<h3>{{ 'periodos_lectivos'|trans|capitalize }}</h3>
+		{% for periodo in this.data.periodos_lectivos %}
+			<li>
+				<h4>{{ periodo.periodo_lectivo_nombre }}</h4>
+
+				<div class="box-materia">
+					<ul>
+						<li>
+							<strong>{{"tipo"|trans|capitalize}}: </strong> 
+							<span>{{ periodo.periodos_lectivo_tipo }}</span>
+						</li>
+						<li>
+							<strong>{{"fechas_periodo"|trans|capitalize}}: </strong> 
+						</li>
+						<ul>
+							<li>
+								<strong>{{"inicio"|trans|capitalize}}: </strong> 
+								<span>{{ periodo.f_inicio_dictado }}</span>
+							</li>
+							<li>
+								<strong>{{"finalizacion"|trans|capitalize}}: </strong> 
+								<span>{{ periodo.f_fin_dictado }}</span>
+							</li>
+						</ul>
+
+						{% for key,periodo_fechas in periodo.periodos_insc %}
+							<li>
+								<strong>{{"fechas_inscripcion"|trans|capitalize}} #{{key+1}}: </strong> 
+							</li>
+							<ul>
+								<li>
+									<strong>{{"inicio"|trans|capitalize}}: </strong> 
+									<span>{{ periodo_fechas.fecha_inicio_insc }}</span>
+								</li>
+								<li>
+									<strong>{{"finalizacion"|trans|capitalize}}: </strong> 
+									<span>{{ periodo_fechas.fecha_fin_insc }}</span>
+								</li>
+							</ul>
+							<button data-target="js-qr-per_lec{{ periodo.__ID__ }}{{key}}" class="btn js-btn-qr-per_lec"><span class="glyphicon icon-qrcode"></span> {{"Agendalo!"|trans}}</button> 
+							<img id="js-qr-per_lec{{ periodo.__ID__ }}{{key}}" src="{{this.data.url_qr_periodo}}/{{ periodo.__ID__ }}${{key}}" class="hide" />
+						{% endfor %}
+
+					</ul>
+				</div>
+			</li>
+		{% endfor %}
+	</ul>
+
+	<ul class='unstyled'>
+		<h3>{{ 'turnos_examen'|trans|capitalize }}</h3>
+		{% for turno in this.data.turnos_examen %}
+			<li>
+				<h4>{{ turno.turno_examen_nombre }}</h4>
+				<div class="box-materia">
+					<ul>
+						<li>
+							<strong>{{"fecha_inicio_turno"|trans|capitalize}}: </strong> 
+							<span>{{ turno.f_inicio_turno }}</span>
+						</li>
+						<li>
+							<strong>{{"fecha_fin_turno"|trans|capitalize}}: </strong> 
+							<span>{{ turno.f_fin_turno }}</span>
+						</li>
+					</ul>
+				</div>
+			</li>
+		{% endfor %}
+	</ul>
+        
+        {# Si hubo error al controlar período de inscripción vigente para Inscripción a Materias cargo el modal/popup #}
+        {% if this.data.error_controlar_periodo_inscripcion_vigente %}
+            <div id="js-modal-no-hay-periodo-inscripcion-vigente" class="modal hide fade">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3 class="modalTitle">{{ "inicio_alumno.modal_titulo" | trans }}</h3>
+                </div>
+                <div class="modal-body"> 
+                    {{ this.data.error_controlar_periodo_inscripcion_vigente | raw }}
+                </div>
+                <div class="modal-footer">
+                    <button href="#" class="btn btn-primary" data-dismiss="modal">{{ "inicio_alumno.modal_cerrar" | trans }}</button>
+                </div>
+            </div>
+        {% endif %}
+                
+{% endblock %}

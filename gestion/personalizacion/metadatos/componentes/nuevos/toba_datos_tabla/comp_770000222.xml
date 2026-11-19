@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000222" descripcion="toba_datos_tabla">
+	<tabla nombre="apex_objeto">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000222"/>
+			<columna nombre="clase_proyecto" valor="toba"/>
+			<columna nombre="clase" valor="toba_datos_tabla"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+			<columna nombre="subclase" valor="guarani_pers_datos_tabla"/>
+			<columna nombre="subclase_archivo" valor="extension_toba/componentes/guarani_pers_datos_tabla.php"/>
+			<columna nombre="nombre" valor="DT - int_sq_morosos"/>
+			<columna nombre="fuente_datos_proyecto" valor="guarani"/>
+			<columna nombre="fuente_datos" valor="guarani"/>
+			<columna nombre="creacion" valor="2022-03-21 14:34:50"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_db_registros">
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000222"/>
+			<columna nombre="punto_montaje" valor="1"/>
+			<columna nombre="ap" valor="4"/>
+			<columna nombre="tabla" valor="int_sq_morosos"/>
+			<columna nombre="tabla_ext" valor="int_sq_morosos_ext"/>
+			<columna nombre="modificar_claves" valor="0"/>
+			<columna nombre="fuente_datos_proyecto" valor="guarani"/>
+			<columna nombre="fuente_datos" valor="guarani"/>
+			<columna nombre="permite_actualizacion_automatica" valor="1"/>
+			<columna nombre="esquema" valor="negocio"/>
+			<columna nombre="esquema_ext" valor="negocio_nsg"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_db_registros_col">
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000222"/>
+			<columna nombre="col_id" valor="1255"/>
+			<columna nombre="columna" valor="id_moroso"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="1"/>
+			<columna nombre="secuencia" valor="int_sq_morosos_seq"/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="int_sq_morosos"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000222"/>
+			<columna nombre="col_id" valor="1256"/>
+			<columna nombre="columna" valor="alumno"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="int_sq_morosos"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000222"/>
+			<columna nombre="col_id" valor="1257"/>
+			<columna nombre="columna" valor="nro_transaccion"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="int_sq_morosos"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000222"/>
+			<columna nombre="col_id" valor="1258"/>
+			<columna nombre="columna" valor="fecha"/>
+			<columna nombre="tipo" valor="F"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="int_sq_morosos"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000222"/>
+			<columna nombre="col_id" valor="1259"/>
+			<columna nombre="columna" valor="id_moroso_ext"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="1"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="int_sq_morosos_ext"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000222"/>
+			<columna nombre="col_id" valor="1260"/>
+			<columna nombre="columna" valor="deuda"/>
+			<columna nombre="tipo" valor="N"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="int_sq_morosos_ext"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_db_registros_ext">
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000222"/>
+			<columna nombre="externa_id" valor="10"/>
+			<columna nombre="tipo" valor="dao"/>
+			<columna nombre="sincro_continua" valor="1"/>
+			<columna nombre="metodo" valor="get_alumno_propuesta_nombre"/>
+			<columna nombre="punto_montaje" valor="1"/>
+			<columna nombre="dato_estricto" valor="0"/>
+			<columna nombre="carga_consulta_php" valor="37000013"/>
+			<columna nombre="permite_carga_masiva" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_db_registros_ext_col">
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000222"/>
+			<columna nombre="externa_id" valor="10"/>
+			<columna nombre="col_id" valor="1256"/>
+			<columna nombre="es_resultado" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_db_columna_fks">
+		<registro>
+			<columna nombre="id" valor="770000001"/>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000222"/>
+			<columna nombre="tabla" valor="int_sq_morosos"/>
+			<columna nombre="columna" valor="id_moroso"/>
+			<columna nombre="tabla_ext" valor="int_sq_morosos_ext"/>
+			<columna nombre="columna_ext" valor="id_moroso_ext"/>
+		</registro>
+	</tabla>
+</componente>

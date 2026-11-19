@@ -1,0 +1,126 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+
+{% set hay_datos_facturacion = this.data.dato_facturacion %}
+
+    <div class="titulo_operacion">
+        <h2 class="clearfix"><span class="pull-left">{{ "datos_facturacion.listado_datos_facturacion" | trans }}</span>
+            <div class="pull-right" >
+                <a href="{{ this.data.url_cargar_datos_facturacion }}" 
+				   class="btn btn-info"
+				   {% if not this.data.habilitar_cargar_datos_facturacion %}
+					   disabled="disabled"
+					   title=""
+					   data-placement="top"
+					   data-toggle="tooltip"
+					   data-original-title="{{ "datos_facturacion.no_existen_datos_facturacion" | trans }}"
+				   {% endif %}
+				>
+					{{ hay_datos_facturacion ? 
+						"datos_facturacion.modificar_datos_facturacion" | trans :
+						"datos_facturacion.cargar_datos_facturacion" | trans }}
+				</a>
+            </div>
+        </h2>
+    </div>
+
+	{% set medio_pago_mat = this.data.id_medio_pago_alumno_mat %} 
+	{% set medio_pago_cuo = this.data.id_medio_pago_alumno_cuota %} 
+
+	{% if hay_datos_facturacion %}
+		<h2>{{ "datos_facturacion.datos_alumno" | trans }}</h2>
+
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>{{ "datos_facturacion.forma_pago" | trans }}</th>
+					<th>{{ "datos_facturacion.porcentaje_facturacion_alumno" | trans }}</th>
+					<th>{{ "datos_facturacion.medio_pago_alumno_mat" | trans }}</th>
+					
+					{% if medio_pago_mat == 1 %}
+						<th>{{ "datos_facturacion.nro_tarjeta_alumno_mat" | trans }}</th>
+					{% endif %}
+					
+					{% if medio_pago_mat == 2 %}
+						<th>{{ "datos_facturacion.cbu_alumno_mat" | trans }}</th>
+					{% endif %}
+					
+					<th>{{ "datos_facturacion.medio_pago_alumno_cuota" | trans }}</th>
+					
+					{% if medio_pago_cuo == 1 %}
+						<th>{{ "datos_facturacion.nro_tarjeta_alumno_cuota" | trans }}</th>
+					{% endif %}
+					
+					{% if medio_pago_cuo == 2 %}
+						<th>{{ "datos_facturacion.cbu_alumno_cuota" | trans }}</th>
+					{% endif %}
+				</tr>
+			</thead>		
+			<tbody>
+				<tr>
+					<td>{{ this.data.forma_pago }}</td>
+					<td>{{ this.data.porcentaje_facturacion_alumno }}</td>
+					<td>{{ this.data.medio_pago_alumno_mat }}</td>
+
+					{% if medio_pago_mat == 1 %}
+						<td>{{ this.data.nro_tarjeta_alumno_mat }}</td>
+					{% endif %}
+
+					{% if medio_pago_mat == 2 %}
+						<td>{{ this.data.cbu_alumno_mat }}</td>
+					{% endif %}
+					
+					<td>{{ this.data.medio_pago_alumno_cuota }}</td>
+					
+					{% if medio_pago_cuo == 1 %}
+						<td>{{ this.data.nro_tarjeta_alumno_cuota }}</td>
+					{% endif %}
+					
+					{% if medio_pago_cuo == 2 %}
+						<td>{{ this.data.cbu_alumno_cuota }}</td>
+					{% endif %}
+				</tr>		
+			</tbody>
+		</table>
+
+		{% if this.data.fact_empresa_enabled %}
+		<h2>{{ "datos_facturacion.datos_empresa" | trans }}</h2>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>{{ "datos_facturacion.porcentaje_facturacion_empresa" | trans }}</th>
+					<th>{{ "datos_facturacion.medio_pago_empresa_mat" | trans }}</th>
+					<th>{{ "datos_facturacion.nro_tarjeta_empresa_mat" | trans }}</th>
+					<th>{{ "datos_facturacion.cbu_empresa_mat" | trans }}</th>
+					<th>{{ "datos_facturacion.medio_pago_empresa_cuota" | trans }}</th>
+					<th>{{ "datos_facturacion.nro_tarjeta_empresa_cuota" | trans }}</th>
+					<th>{{ "datos_facturacion.cbu_empresa_cuota" | trans }}</th>
+					<th>{{ "datos_facturacion.empresa" | trans }}</th>
+					<th>{{ "datos_facturacion.email_empresa" | trans }}</th>
+					<th>{{ "Observaciones" | trans }}</th>
+				</tr>
+			</thead>		
+			<tbody>
+				<tr>
+					<td>{{ this.data.porcentaje_facturacion_empresa }}</td>
+					<td>{{ this.data.medio_pago_empresa_mat }}</td>
+					<td>{{ this.data.nro_tarjeta_empresa_mat }}</td>
+					<td>{{ this.data.cbu_empresa_mat }}</td>
+					<td>{{ this.data.medio_pago_empresa_cuota }}</td>
+					<td>{{ this.data.nro_tarjeta_empresa_cuota }}</td>
+					<td>{{ this.data.cbu_empresa_cuota }}</td>
+					<td>{{ this.data.empresa }}</td>
+					<td>{{ this.data.email_empresa }}</td>
+					<td>{{ this.data.observaciones }}</td>
+				</tr>		
+			</tbody>
+		</table>
+		{% endif %}
+
+	{% else %}
+	
+		<div class="alert">{{ "datos_facturacion.no_hay_datos" | trans }}</div>
+		
+	{% endif %}
+		
+{% endblock %}

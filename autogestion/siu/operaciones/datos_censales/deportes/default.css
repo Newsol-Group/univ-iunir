@@ -1,0 +1,33 @@
+.well { 
+	padding-top: 0px; 
+	padding-bottom: 0px; 
+	padding-left: 10px; 
+	padding-right: 10px; 
+}
+
+h2 { 
+	border-bottom: 0px;
+	margin: 0px;
+}
+
+h3 { 
+	border-bottom: 1px solid #CCCCCC;
+}
+
+#deportes .mensaje {
+	margin-bottom:5px;
+	margin-right:5px;
+	padding: 10px;
+}
+
+.control-group {
+    margin-bottom: 0px;
+}
+
+.cg-margen {
+	margin-bottom: 5px;
+}
+
+#deportes .div-deportes {
+	padding-top: 10px; 
+}

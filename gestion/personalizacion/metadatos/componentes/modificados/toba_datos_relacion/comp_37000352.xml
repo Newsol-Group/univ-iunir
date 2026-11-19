@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="37000352" descripcion="toba_datos_relacion">
+	<tabla nombre="apex_objeto_rel_columnas_asoc">
+		<registro estado="3" clave="asoc_id:37000030;objeto:37000352;proyecto:guarani;padre_objeto:37000344;hijo_objeto:37000347;padre_clave:37000552;hijo_clave:37000564"/>
+		<registro estado="3" clave="asoc_id:37000031;objeto:37000352;proyecto:guarani;padre_objeto:37000344;hijo_objeto:37000346;padre_clave:37000552;hijo_clave:37000562"/>
+		<registro estado="3" clave="asoc_id:37000032;objeto:37000352;proyecto:guarani;padre_objeto:37000344;hijo_objeto:37000345;padre_clave:37000552;hijo_clave:37000559"/>
+		<registro estado="3" clave="asoc_id:37000033;objeto:37000352;proyecto:guarani;padre_objeto:37000344;hijo_objeto:37000348;padre_clave:37000552;hijo_clave:37000590"/>
+		<registro estado="1">
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000352"/>
+			<columna nombre="asoc_id" valor="37000030"/>
+			<columna nombre="padre_objeto" valor="37000344"/>
+			<columna nombre="padre_clave" valor="770000092"/>
+			<columna nombre="hijo_objeto" valor="37000347"/>
+			<columna nombre="hijo_clave" valor="37000564"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000352"/>
+			<columna nombre="asoc_id" valor="37000031"/>
+			<columna nombre="padre_objeto" valor="37000344"/>
+			<columna nombre="padre_clave" valor="770000092"/>
+			<columna nombre="hijo_objeto" valor="37000346"/>
+			<columna nombre="hijo_clave" valor="37000562"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000352"/>
+			<columna nombre="asoc_id" valor="37000032"/>
+			<columna nombre="padre_objeto" valor="37000344"/>
+			<columna nombre="padre_clave" valor="770000092"/>
+			<columna nombre="hijo_objeto" valor="37000345"/>
+			<columna nombre="hijo_clave" valor="37000559"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="37000352"/>
+			<columna nombre="asoc_id" valor="37000033"/>
+			<columna nombre="padre_objeto" valor="37000344"/>
+			<columna nombre="padre_clave" valor="770000092"/>
+			<columna nombre="hijo_objeto" valor="37000348"/>
+			<columna nombre="hijo_clave" valor="37000590"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:37000352">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+		</registro>
+	</tabla>
+</componente>

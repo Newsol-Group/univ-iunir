@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="45000014" descripcion="toba_ei_filtro">
+	<tabla nombre="apex_objeto_ei_filtro_col">
+		<registro estado="2" clave="objeto_ei_filtro_proyecto:guarani;objeto_ei_filtro:45000014;objeto_ei_filtro_col:45000001">
+			<columna nombre="obligatorio" valor="0" valor_original="1"/>
+		</registro>
+	</tabla>
+</componente>

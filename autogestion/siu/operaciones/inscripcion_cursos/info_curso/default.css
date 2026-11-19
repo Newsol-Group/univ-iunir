@@ -1,0 +1,173 @@
+#info_curso {
+    margin-bottom: 15px;
+    padding: 0 0 10px 10px;
+    border-left: 1px solid #E5E5E5;
+    border-bottom: 1px solid #E5E5E5;
+    -webkit-border-bottom-left-radius: 4px;
+    -moz-border-radius-bottomleft: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+#info_curso .js-mis-inscripciones td:first-child {
+    width: 52%;
+}
+
+#info_curso .js-boton-baja {
+    background-color: #DFF0D8;
+    margin-left: 5px;
+}
+#info_curso tr.js-boton-baja td {
+    border: 0;
+    padding: 5px;
+}
+
+#info_curso .js-mis-inscripciones td {
+    padding-top: 5px;
+    margin-left: 5px;
+}
+
+#info_curso .js-baja-inicial {
+    margin-right: 10px;
+}
+
+#info_curso .table-condensed td {
+    padding: 11px 5px;
+}
+
+#info_curso .progress {
+    min-height: 0;
+}
+
+/* -- COMISIONES -- */
+
+#info_curso #comisiones .comision {
+    padding-bottom: 10px;
+    margin-bottom: 5px;
+    border-bottom: 1px dashed #eeeeee;
+}
+
+#info_curso .acciones {
+    text-align: right;
+}
+
+#info_curso form {
+    margin-bottom: 0;
+}
+
+#info_curso label {
+    font-size: 13px;
+}
+
+#info_curso #comisiones h4 {
+    margin-bottom: 2px;
+    color: #000000;
+}
+
+#info_curso .turno {
+    color: #000000;
+}
+
+#info_curso h3 {
+    margin-bottom: 0;
+    color: #212121;
+}
+
+#info_curso .inscripcion {
+    padding-left: 15px;
+}
+
+#info_curso .inscripcion > p {
+    color: #6D6E71;
+    font-weight: bold;
+}
+
+#info_curso .wrapper-detalle {
+    border-left: 2px solid #BACFB1;
+    border-bottom: 2px solid #BACFB1;
+}
+
+#info_curso .info_inscripcion {
+    padding-left: 10px;
+}
+
+#info_curso .comprobante-cursada {
+    display: inline-block;
+}
+
+#info_curso .comprobante-cursada .comprobante {
+    background: url('../../../img/sprite.png') 0 -80px no-repeat;
+    height: 17px;
+    width: 17px;
+    display: inline-block;
+    position: relative;
+    top: 4px;
+}
+
+#info_curso .comprobante-cursada .colapsado {
+    background: url('../../../img/sprite.png') 0 -239px no-repeat;
+}
+
+#info_curso .comprobante-cursada .colapsado, #info_curso .comprobante-cursada .descolapsado {
+    height: 7px;
+    width: 7px;
+    display: inline-block;
+}
+
+#info_curso .comprobante-actions {
+    margin: 10px 0;
+}
+
+#info_curso .comprobante-cursada img {
+    margin-bottom: 10px;
+}
+
+#info_curso .inscripcion .acciones {
+    text-align: right;
+    margin-top: 6px;
+    background-color: #DFF0D8;
+    padding: 5px;
+}
+
+#info_curso form {
+    margin-bottom: 0;
+}
+
+#info_curso .iconos-pago-container{
+
+}
+
+#info_curso .iconos-pago-container2{
+
+}
+
+#info_curso .iconos-pago-container .icono{
+    float: right;
+    margin-right: 20px;
+}
+
+#info_curso .iconos-pago-container i{
+    font-size: 35px;
+    cursor: pointer;
+}
+
+#info_curso .iconos-pago-container2 .icono{
+    float: right;
+    margin-right: 10px;
+}
+
+#info_curso .iconos-pago-container2 i{
+    font-size: 30px;
+    cursor: pointer;
+}
+
+#info_curso .icono-pago-efectuado i{
+    color: #58d68d ;
+}
+
+#info_curso .icono-pago-pendiente i{
+    color:  #f4d03f ;
+}
+
+#info_curso .js-cic-icon {
+    cursor: pointer;
+}

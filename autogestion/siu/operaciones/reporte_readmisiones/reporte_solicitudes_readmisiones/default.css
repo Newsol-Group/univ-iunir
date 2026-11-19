@@ -1,0 +1,35 @@
+#reporte_solicitudes_readmisiones .solicitud {
+    margin-bottom: 25px;
+}
+
+#reporte_solicitudes_readmisiones h3.titulo-corte {
+    background-color: #3A87AD;
+    color: #FFFFFF;
+    margin-bottom: 0px;
+    padding: 5px 10px;
+}
+
+#reporte_solicitudes_readmisiones .table-bordered thead:first-child tr:first-child > th:first-child, .table-bordered tbody:first-child tr:first-child > td:first-child, .table-bordered tbody:first-child tr:first-child > th:first-child {
+    border-top-left-radius: 0;
+}
+
+#reporte_solicitudes_readmisiones .table {
+    margin-bottom: 0;
+    background-color: #eee;
+    border-radius: 0;
+    border-top-left-radius: 0;
+}
+
+#reporte_solicitudes_readmisiones table.subcomisiones td {
+    background-color: #fff;
+}
+
+#reporte_solicitudes_readmisiones table.subcomisiones th.titulo {
+    background-color: #999;
+    color: #fff;
+}
+
+#reporte_solicitudes_readmisiones table.comisiones tr.titulo {
+    background-color: #707070;
+    color: #fff;
+}

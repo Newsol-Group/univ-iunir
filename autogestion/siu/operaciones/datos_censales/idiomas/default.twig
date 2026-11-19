@@ -1,0 +1,65 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	
+        {# Si no viene de Convocatorias a Becas #}
+        {% if not this.viene_de_convocatorias_becas() %}
+            {% import "macro_mensajes.twig" as mensajes %}
+            <div id="mensajes">
+                    {{ mensajes.render_mensajes(this.datos_confirmados(), this.datos_error_control(), this.datos_vigentes()) }}
+            </div>
+	{% endif %}
+	
+	{% set form = this.get_form() %}
+	{% autoescape false %}
+	{{ form.encabezado }}
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-inferior clearfix'>
+				<div class='pull-left'>
+					<h2>{{this.get_nombre_seccion()|trans}}</h2>
+				</div>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'datos_censales.guardar')  }}
+				</div>
+			</div>
+		</div>
+
+		{%if form.hay_visibles_agrupado('conoc_idiomas') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('conoc_idiomas')">{{'datos_censales.conoc_idiomas'|trans}}</h3>
+			<div id='conoc_idiomas' class='toggle-div'>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('nivel_idioma_ingles', 'span6') }}
+					{{ form.control_group('nivel_idioma_aleman', 'span6') }}
+				</div>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('nivel_idioma_frances', 'span6') }}
+					{{ form.control_group('nivel_idioma_italiano', 'span6') }}
+				</div>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('nivel_idioma_portugues', 'span6') }}
+					{{ form.control_group('nivel_idioma_chino', 'span6') }}
+				</div>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('idioma_otro', 'span6') }}
+					<div id='js-nivel_idioma_otro' class='span6'>
+						{{ form.control_group('nivel_idioma_otro') }}
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-superior'>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'datos_censales.guardar')  }}
+				</div>
+			</div>
+		</div>
+	</form>
+	{% endautoescape %}
+        
+        {% import "macro_confirmacion.twig" as confirmacion %}
+        {{ confirmacion.mostrar(this.viene_de_convocatorias_becas(), this.hay_datos_faltantes_convocatoria(), this.get_url_siguiente_paso()) }}
+        
+{% endblock %}

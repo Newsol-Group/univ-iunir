@@ -1,0 +1,23 @@
+<?php
+/**
+ *
+ *
+ * @package Unidades de Gestion
+ * @subpackage Ubicaciones
+ */
+
+
+class cn_man_ubicaciones extends cn_manejador_entidad
+{
+	function get_indice_instancia()
+	{
+		return 'ubicacion';
+	}
+
+	function get_listado($filtro)
+	{
+		return toba::consulta_php('co_ubicaciones')->get_ubicaciones_perfil_de_datos($filtro);
+	}	
+}
+
+?>

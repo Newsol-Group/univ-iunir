@@ -1,0 +1,79 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	
+        {# Si no viene de Convocatorias a Becas #}
+        {% if not this.viene_de_convocatorias_becas() %}
+            {% import "macro_mensajes.twig" as mensajes %}
+            <div id="mensajes">
+                    {{ mensajes.render_mensajes(this.datos_confirmados(), this.datos_error_control(), this.datos_vigentes()) }}
+            </div>
+	{% endif %}
+	
+	{% set form = this.get_form() %}
+	{% autoescape false %}
+	{{ form.encabezado }}
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-inferior clearfix'>
+				<div class='pull-left'>
+					<h2>{{this.get_nombre_seccion()|trans}}</h2>
+				</div>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'datos_censales.guardar')  }}
+				</div>
+			</div>
+		</div>
+
+		{%if form.hay_visibles_agrupado('datos_laborales_sit') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('datos_laborales_sit')">{{'datos_censales.datos_laborales_sit'|trans}}</h3>
+			<div id='datos_laborales_sit' class='toggle-div'>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('trabajo_existe') }}
+				</div>
+				<div id='div_datos_trabajo'>
+					<div class='clearfix cg-margen'>
+						{{ form.control_group('trabajo_hace') }}
+					</div>
+					<div class='clearfix cg-margen'>
+						{{ form.control_group('trabajo_ocupacion') }}
+					</div>
+					<div class='clearfix cg-margen'>
+						{{ form.control_group('trabajo_hora_sem', 'span6') }}
+						{{ form.control_group('trabajo_carrera', 'span6') }}
+					</div>
+					<div class='clearfix cg-margen'>
+						{{ form.control_group('trabajo_tarea_descripcion') }}
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		{%if form.hay_visibles_agrupado('datos_laborales_adic') %}
+		<div id='div_datos_adicionales' class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('datos_laborales_adic')">{{'datos_censales.datos_laborales_adic'|trans}}</h3>
+			<div id='datos_laborales_adic' class='toggle-div'>
+				<div class='clearfix cg-margen'>
+					{{ form.checkbox('trabajo_familiar') }}
+					{{ form.checkbox('trabajo_con_descuentos_jubilatorios') }}
+					{{ form.checkbox('trabajo_recibe_pago') }}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-superior'>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'datos_censales.guardar')  }}
+				</div>
+			</div>
+		</div>
+	</form>
+	</form>
+	{% endautoescape %}
+        
+        {% import "macro_confirmacion.twig" as confirmacion %}
+        {{ confirmacion.mostrar(this.viene_de_convocatorias_becas(), this.hay_datos_faltantes_convocatoria(), this.get_url_siguiente_paso()) }}
+        
+{% endblock %}

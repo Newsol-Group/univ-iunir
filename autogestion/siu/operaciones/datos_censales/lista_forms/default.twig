@@ -1,0 +1,26 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	
+	<div class="well">
+		<ul id="dcensales_menu" class="nav nav-list">
+		{% for item in this.get_menu() %}
+			<li>	
+				<a	href="{{item.url}}" form="{{item.url}}" 
+					class="{{(item.con_faltantes) ? 'dc-faltante-' : ''}}{{ (item.activo) ? 'active' : '' }} ">
+				{{item.nombre|trans}}
+				</a>
+			</li>
+		{% endfor %}	
+		</ul>
+	</div>
+	
+	<div class="well">
+		<p class="mensaje">
+			<strong>{{ 'datos_censales.ultima_actualizacion'|trans }}: {{ this.data.fecha_ult_actualizacion }}</strong>
+		</p>
+		<hr/>
+		<p class="mensaje">
+			{{this.data.mensaje_lateral|trans|raw}}
+		</p>
+	</div>
+{% endblock %}

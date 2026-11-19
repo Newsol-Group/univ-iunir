@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="38000698" descripcion="toba_ei_formulario">
+	<tabla nombre="apex_objeto_ei_formulario_ef">
+		<registro estado="1">
+			<columna nombre="objeto_ei_formulario_fila" valor="770000091"/>
+			<columna nombre="objeto_ei_formulario" valor="38000698"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="dedicacion"/>
+			<columna nombre="elemento_formulario" valor="ef_combo"/>
+			<columna nombre="columnas" valor="dedicacion"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="5"/>
+			<columna nombre="etiqueta" valor="Dedicación"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="carga_fuente" valor="guarani"/>
+			<columna nombre="carga_lista" valor="1/Exclusiva, 2/Semi exclusiva, 3/Simple"/>
+			<columna nombre="carga_cascada_relaj" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="1"/>
+			<columna nombre="carga_no_seteado" valor="-- Seleccione --"/>
+			<columna nombre="carga_no_seteado_ocultar" valor="0"/>
+			<columna nombre="punto_montaje" valor="1"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_ei_formulario_fila" valor="770000092"/>
+			<columna nombre="objeto_ei_formulario" valor="38000698"/>
+			<columna nombre="objeto_ei_formulario_proyecto" valor="guarani"/>
+			<columna nombre="identificador" valor="documento"/>
+			<columna nombre="elemento_formulario" valor="ef_popup"/>
+			<columna nombre="columnas" valor="documento"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="oculto_relaja_obligatorio" valor="0"/>
+			<columna nombre="orden" valor="6"/>
+			<columna nombre="etiqueta" valor="Documento"/>
+			<columna nombre="colapsado" valor="0"/>
+			<columna nombre="desactivado" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+			<columna nombre="deshabilitar_rest_func" valor="0"/>
+			<columna nombre="solo_lectura" valor="0"/>
+			<columna nombre="solo_lectura_modificacion" valor="0"/>
+			<columna nombre="cascada_mantiene_estado" valor="0"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="edit_tamano" valor="30"/>
+			<columna nombre="popup_item" valor="38000025"/>
+			<columna nombre="popup_proyecto" valor="guarani"/>
+			<columna nombre="popup_editable" valor="0"/>
+			<columna nombre="popup_ventana" valor="width:550;height:600"/>
+			<columna nombre="popup_carga_desc_metodo" valor="get_documento"/>
+			<columna nombre="popup_carga_desc_clase" valor="co_documentos"/>
+			<columna nombre="popup_carga_desc_include" valor="nucleo/ug/documentos/co_documentos.php"/>
+			<columna nombre="popup_puede_borrar_estado" valor="1"/>
+			<columna nombre="punto_montaje" valor="1"/>
+		</registro>
+	</tabla>
+</componente>

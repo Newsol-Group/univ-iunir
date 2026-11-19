@@ -1,0 +1,15 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	<div class="well">
+		<ul class="nav nav-list">
+		{% for id, cert in this.opciones() %}
+			<li>
+				<a href="{{ cert.url }}" id="nrocert{{ cert.nrcert }}" class="{{ this.data.id_form == id ? 'active' : ''}}" title='{{ cert.nombre }}'>
+				{{ cert.solicitud_pendiente == "S" ? '<i class="icon-ok"></i>' : '' }} {{ cert.nombre }}
+				</a>
+			</li>
+		{% endfor %}
+		</ul>
+	</div>
+	<p class="referencia"><i class="icon-ok"></i> {{"certificados_pedidos" | trans }}</p>
+{% endblock %}

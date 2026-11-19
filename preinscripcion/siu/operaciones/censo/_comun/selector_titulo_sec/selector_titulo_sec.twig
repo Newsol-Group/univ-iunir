@@ -1,0 +1,27 @@
+<div id="selectorTituloSec" style="width: 700px">
+	{% autoescape false %}
+		<h3>{{'seleccion_titulo_sec'|trans|capitalize}}</h3>
+		<div class="well clearfix">
+			<h4 class="borde-inferior">{{'filtro'|trans|capitalize}}</h4>
+			<form id="filtro_titulo_sec" method="post" action="">
+				<div class="clearfix" style="margin-bottom: 5px;">
+					<div id="cg-filtro_titulo_sec-nombre" class="control-group ">
+						<dt id="filtro_titulo_sec-nombre-label">
+							<label class="label-obligatorio" for="filtro_titulo_sec-nombre">{{'titulo_secundario'|trans|capitalize}} (*)</label>
+						</dt>
+						<input id="filtro_titulo_sec-nombre" class="input-xlarge" type="text" maxlength="50" value="" name=filtro_titulo_sec-nombre">
+						<span id="help_inline-filtro_titulo_sec-nombre" class="inline-help">
+							{{'ayuda_filtro_titulo_sec'|trans|capitalize}}
+						</span>
+						<div id="msg-filtro_titulo_sec-nombre" style="color: #b94a48;"></div>
+					</div>
+				</div>
+				<div class="pull-left">
+					<input id="btnFiltrarTitulos" class="btn btn-info" type="button" value="{{'buscar'|trans|capitalize}}" name="btnFiltrarTitulos">
+				</div>			
+			</form>
+		</div>
+		<div id="lista_resultado_titulos">
+		</div>
+	{% endautoescape %}
+</div>

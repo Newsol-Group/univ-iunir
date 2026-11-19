@@ -1,0 +1,121 @@
+{% extends "kernel/pagelet.twig" %}
+{% import _self as current_file_macros %}
+
+{% block contenido %}
+
+{% if this.hay_renglones %}
+	<div class="alert alert-info">
+		<button type="button" class="close" data-dismiss="alert">&times;</button>
+		{{ 'carga_notas_mesa_examen.descr_alumnos_listados'|trans }}
+	</div>
+    <form class='form-renglones' action='{{ this.data.url_guardar }}' method='post'>
+	{{ current_file_macros.barra_acciones(this, 'arriba') }}
+	<table class="tabla-renglones table table-bordered table-condensed">
+	    <thead>
+			<th>{{ 'nombre_alumno'|trans|capitalize }}</th>
+			<th>{{ 'carga_notas_mesa_examen.instancia'|trans|capitalize }}</th>
+			<th>{{ 'acta'|trans|capitalize }}</th>
+			<th>{{ 'fecha'|trans|capitalize }}</th>
+			<th>{{ 'nota'|trans|capitalize }}</th>
+			<th>{{ 'resultado'|trans|capitalize }}</th>
+	    </thead>
+
+	    <tbody>
+		{% for alumno in this.data.renglones %}
+		    <tr id='renglon_{{ alumno.renglon }}' 
+		    	title='{{ (alumno.error) ? alumno.error : ''}}'
+			    class='{{current_file_macros.clase_error_fila(alumno)}}'
+		    >
+			<!-- Nombre del alumno -------------------------------------------->
+			<td>
+				<div class="ficha-alumno clearfix pull-left" data-url-ficha="{{ alumno.URL_FICHA }}" title="{{"ficha_alumno.cursada"|trans}}">
+					<img src='{{ alumno.url_imagen }}' width='35' height="35" class="pull-left img-alumno" />
+					<div class="pull-left">
+						<span class="nombre">{{ alumno.apellido_y_nombre }}</span>
+						<span class="identificacion">{{ alumno.documento_principal }}</span>
+					</div>
+					<!-- Instancia de inscripción ----------------------------->
+					 <input type='hidden' class='instancia' data-tipo='instancia' name='renglones[{{ alumno.renglon }}][instancia]' value='{{ alumno.instancia }}' />
+					<!-- Escala de notas de la instancia ---------------------->
+					 <input type='hidden' class='escala_nota' data-tipo='escala_nota' name='renglones[{{ alumno.renglon }}][escala_nota]' value='{{ alumno.escala_nota }}' />
+				</div>
+			</td>
+			<!-- Instancia ---------------------------------------------------->
+			<td class="alinear">
+			    {{ alumno.instancia_nombre }}
+			</td>
+			<!-- Nro de acta -------------------------------------------------->
+			<td class="alinear">
+			    {{ alumno.nro_acta }}
+			</td>
+			<!-- Fecha -------------------------------------------------------->
+			<td class="centrar alinear col-fecha">
+			    <input type='text' data-tipo='fecha' {{ (this.es_mobile) ? 'readonly' : ''}}
+					name='renglones[{{ alumno.renglon }}][fecha]' 
+					value='{{ alumno.fecha }}' 
+					class='fecha nav {{(error_fecha) ? 'js-error-campo' : ''}}' />
+			</td>
+			<!-- Nota --------------------------------------------------------->
+			<td class="centrar alinear col-nota">
+				{% if this.data.cabeceras_escalas[alumno.instancia].tipo == 'DISCRETA' %}
+					<select class='nota js-nota_instancia_{{alumno.instancia}}' data-tipo='nota' name='renglones[{{ alumno.renglon }}][nota]'>
+						<option value='' data-resultado='vacio'>{{ '-' }}</option>
+						{% for nota in this.data.escalas[alumno.instancia] %}
+							{% set selected = (alumno.nota == nota.nota) ? 'SELECTED' : '' %}
+							<option {{ selected }} value='{{nota.nota}}'>{{nota.nota}}</option>
+						{% endfor %}
+					</select>
+				{% else %}
+					<input type='text' data-tipo='nota'
+						data-valor-anterior='renglones[{{ alumno.renglon }}][nota]'
+						name='renglones[{{ alumno.renglon }}][nota]'
+						value='{{ alumno.nota }}'
+						class='nota js-nota_instancia_{{alumno.instancia}}'
+					/>
+				{% endif %}
+			</td>
+			<!-- Resultado ---------------------------------------------------->
+			<td class="centrar alinear col-resultado">
+				<select class='resultado' data-tipo='resultado' name='renglones[{{ alumno.renglon }}][resultado]'>
+					<option value='' data-resultado='vacio'>{{ '-' }}</option>
+					{% for resultado in this.data.resultados[alumno.instancia] %}
+						{% set selected = (alumno.resultado == resultado.valor) ? 'SELECTED' : '' %}
+						<option {{ selected }} value='{{resultado.valor}}'>{{resultado.descr}}</option>
+					{% endfor %}
+				</select>
+			</td>
+		    </tr>
+		{% endfor %}
+	    </tbody>
+	</table>
+    </form>
+{% else %}
+    <div class="alert">{{"carga_notas_examen.no_hay_renglones"|trans|capitalize}}</div>
+{% endif %}
+{% endblock %}
+	
+{% macro barra_acciones(pagelet, posicion) %}
+    {% import "kernel/macro_pager.twig" as pager %}
+	<div class="form-actions clearfix">
+		<div class="pagination pagination-small pull-left">
+			{{ pager.render_paginator(pagelet.get_paginas, pagelet.get_pagina_actual) }}
+		</div>
+			
+		{% if posicion == 'arriba' %}
+			<div class="form-inline pull-left form-busqueda">
+				<label class="control-label notas_cursada_query" for='notas_cursada_query' >{{"label_busqueda_alumnos"|trans|capitalize}}&nbsp;&nbsp;</label>
+				<input type='text' id='notas_cursada_query' name='query' value='' class="input"  />
+			</div>
+		{% endif %}
+		
+	    <input type='submit' value='{{"guardar"|trans|capitalize}}' class="btn btn-info btn-small pull-right" />
+    </div>
+{% endmacro %}
+
+{% macro clase_error_fila(alumno) %}
+	{% if alumno.error_concurrencia %}
+		error-renglon error-renglon-concurrencia
+	{% elseif alumno.error %}
+		error-renglon
+	{% endif %}
+{% endmacro %}

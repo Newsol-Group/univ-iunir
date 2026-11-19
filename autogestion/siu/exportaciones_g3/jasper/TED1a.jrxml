@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guarani" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="483" leftMargin="56" rightMargin="56" topMargin="70" bottomMargin="34" uuid="513997da-2ad1-4ca7-a6c9-cd919bc3377d">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="14" isBold="true" isUnderline="true" pdfFontName="Times-Bold"/>
+	<style name="SubTitle" fontName="Times New Roman" fontSize="12" isBold="true" isUnderline="false" pdfFontName="Times-Bold"/>
+	<style name="Resalt" fontSize="10" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+	<style name="Comun" fontSize="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica"/>
+	<style name="Rectangle" fontSize="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica"/>
+	<style name="ResaltRectangle" fontSize="9" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica"/>
+	<style name="Rectangle2" fontName="Arial" fontSize="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica"/>
+	<style name="Rectangle3" fontName="Arial" fontSize="8" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica"/>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="nro_solicitud" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="apellido_y_nombre" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT	
+	COALESCE(sga_alumnos.legajo, ' -- ') AS legajo,
+	'$P!{apellido_y_nombre} ' as apellido_y_nombre,
+	vw_personas.desc_tipo_documento || ' ' || vw_personas.nro_documento as documento_principal,
+	sga_instituciones.nombre as nombre_institucion,
+	sga_certificados_otorg.nro_solicitud,
+	CASE 
+		WHEN vw_personas.sexo = 'F' THEN sga_certificados.nombre_femenino
+		WHEN vw_personas.sexo = 'X' THEN sga_certificados.nombre_no_binario
+		ELSE sga_certificados.nombre
+	END AS certificado_nombre,
+	COALESCE(sga_certificados_otorg.nro_expediente, ' - ') AS nro_expediente,
+	f_responsables_academicas_propuesta(sga_propuestas.propuesta) as nombre_ra
+FROM	
+		sga_certificados_otorg
+JOIN	sga_certificados ON sga_certificados_otorg.certificado = sga_certificados.certificado
+JOIN	sga_alumnos ON sga_alumnos.alumno = sga_certificados_otorg.alumno
+JOIN	vw_personas ON sga_alumnos.persona = vw_personas.persona
+JOIN	sga_planes_versiones ON  sga_certificados_otorg.plan_version = sga_planes_versiones.plan_version     
+JOIN	sga_planes ON sga_planes.plan = sga_planes_versiones.plan
+JOIN	sga_propuestas ON sga_propuestas.propuesta = sga_planes.propuesta
+JOIN	sga_responsables_academicas ON sga_responsables_academicas.responsable_academica = get_ra_inst_araucano_propuesta(sga_planes.propuesta, 'RA')
+JOIN    mdp_personas ON sga_alumnos.persona = mdp_personas.persona 
+JOIN	sga_instituciones ON sga_responsables_academicas.institucion = sga_instituciones.institucion
+WHERE	
+	sga_certificados_otorg.nro_solicitud = $P{nro_solicitud}
+]]>
+	</queryString>
+	<field name="legajo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="apellido_y_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="documento_principal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre_institucion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nro_solicitud" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="certificado_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nro_expediente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre_ra" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<title>
+		<band height="80" splitType="Stretch">
+			<textField>
+				<reportElement style="SubTitle" x="416" y="62" width="53" height="15" uuid="f89f3ee9-61cc-4be3-a21b-82d906beaf40"/>
+				<textElement textAlignment="Left">
+					<font fontName="Times New Roman" size="11" isBold="false" pdfFontName="Times-Roman"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nro_expediente}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="SubTitle" x="340" y="62" width="74" height="15" uuid="e05cb352-10bc-40c4-8c3d-c0d2370ee3e7"/>
+				<textElement textAlignment="Right">
+					<font fontName="Times New Roman" size="11" isBold="false" pdfFontName="Times-Roman"/>
+				</textElement>
+				<text><![CDATA[T.E.D. N°:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="26" width="469" height="16" uuid="400469ca-ea73-4065-8f51-3c657a4b32e1"/>
+				<textFieldExpression><![CDATA["Apellido y Nombres: " + $F{apellido_y_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="42" width="469" height="16" uuid="cf8eeec8-1caa-47d5-bf10-d28a21d8eb9a"/>
+				<textFieldExpression><![CDATA["Documento Nº: " + $F{documento_principal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="58" width="331" height="16" uuid="72f85683-694a-4a2a-83ff-4ca4e3331126"/>
+				<textFieldExpression><![CDATA["Matricula Nº: " + $F{legajo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Title" x="0" y="0" width="482" height="23" uuid="39d67447-ca79-4480-93d2-1141d02b8698"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[FORMULARIO T.E.D 1.a.-]]></text>
+			</staticText>
+		</band>
+	</title>
+	<detail>
+		<band height="622" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="12" width="277" height="154" uuid="a7f87086-81ad-468d-8147-f041b3d27e4a"/>
+			</rectangle>
+			<rectangle>
+				<reportElement x="277" y="12" width="205" height="462" uuid="03c529dc-ed03-483b-8ee7-0c33c4dc4213"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="ResaltRectangle" x="11" y="18" width="145" height="12" uuid="b2802664-7d09-43e8-8b36-a0d28a90ae24"/>
+				<textElement>
+					<font size="9" isBold="true" isItalic="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[AREA TITULOS-GRADUADOS:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Rectangle" x="157" y="18" width="78" height="12" uuid="b16f0579-ea6b-4048-8280-5bf885aeec51"/>
+				<text><![CDATA[Inicio del Trámite]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Rectangle" x="15" y="132" width="72" height="12" uuid="06e9a7a9-84e2-4a6e-a501-b70d25ec79fa"/>
+				<text><![CDATA[....../....../..........]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Rectangle" x="26" y="144" width="36" height="12" uuid="3f69218b-befb-4447-946f-50ca35e4b45c"/>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="120" y="140" width="149" height="1" uuid="3f2037e0-d1fc-4199-8865-9be52fae155e"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Rectangle3" x="121" y="142" width="148" height="12" uuid="210b66ac-da25-49f5-949b-9465d2ceeb35"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Firma responsable Area Títulos]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Rectangle" x="318" y="0" width="109" height="0" uuid="44ab86a3-69a3-4952-9fab-a2ba8523f529"/>
+				<textElement textAlignment="Center">
+					<font size="9" isBold="true" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[OBSERVACIONES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Rectangle" x="281" y="12" width="201" height="151" uuid="c4125c34-6d9c-4fcc-b546-0eb00e08348a"/>
+				<text><![CDATA[Vuelva a la sección   ....................................................................... habiéndose observado lo siguiente: ................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="320" width="277" height="154" uuid="dd20beb9-cb9e-426b-b128-e369b7bf8d1d"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="Rectangle3" x="6" y="196" width="258" height="71" uuid="40660597-11cd-4c84-8c4b-2b9c5e23ebb9"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[Cumplimentando con la emisión del formulario TED 1.e y habiéndose controlado en los registros existentes en el sector, se da conformidad al pedido de expedición de Diploma.
+			Pase a Area / Depto. Títulos a los efectos de la prosecución del trámite.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Rectangle" x="154" y="173" width="109" height="12" uuid="23402387-6d50-4799-a66c-3de3aeab8baf"/>
+				<text><![CDATA[Recibido: ....../....../..........]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement style="Comun" x="0" y="478" width="482" height="111" uuid="296b55d6-da96-434a-9e94-d0ed9627a8f9"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="Resalt" x="7" y="482" width="147" height="16" uuid="fc18f77c-3a56-41bb-8673-319eb8842a8c"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[SECRETARÍA ACADEMICA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Comun" x="296" y="482" width="143" height="16" uuid="96e3eb64-1a5b-4e39-b12d-5dd792eb3bea"/>
+				<text><![CDATA[Recibido: ....../....../..........]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Comun" x="49" y="556" width="79" height="14" uuid="229af9b2-40ab-4655-8a3f-53ebcc23b20a"/>
+				<text><![CDATA[....../....../..........]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="ResaltRectangle" x="9" y="173" width="87" height="12" uuid="22e01882-ad04-41a5-95ae-5d70c8c9d462"/>
+				<textElement textAlignment="Left">
+					<font size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[AREA ALUMNADO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Comun" x="57" y="571" width="39" height="14" uuid="c6f21b31-fb3f-4f13-8058-198356b7efa6"/>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Rectangle3" x="296" y="567" width="155" height="14" uuid="0e4153d9-e646-4dbb-817c-c42f92db18e9"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Firma responsable Secretaría Académica]]></text>
+			</staticText>
+			<line>
+				<reportElement x="296" y="565" width="155" height="1" uuid="16268fb0-6633-4a28-ac41-57048a1eee3c"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="ResaltRectangle" x="340" y="1" width="111" height="12" uuid="62d02426-a913-4137-a6cb-b2298f6785be"/>
+				<textElement>
+					<font size="9" isBold="true" isItalic="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[OBSERVACIONES]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement mode="Transparent" x="0" y="166" width="277" height="154" uuid="19915c07-5095-47da-926c-bf3d06f62400"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="Rectangle" x="15" y="289" width="72" height="12" uuid="712cc81a-c4de-41f5-b2e4-d98a00db1b5d"/>
+				<text><![CDATA[....../....../..........]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Rectangle" x="26" y="301" width="36" height="12" uuid="ad8e8a34-8920-4e2a-b9ed-26539ab81ccd"/>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Rectangle3" x="115" y="300" width="149" height="12" uuid="64953eae-bdf9-4b98-8ac5-5152b48d004d"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Firma responsable Area Alumnado]]></text>
+			</staticText>
+			<line>
+				<reportElement x="115" y="298" width="149" height="1" uuid="2f813d4c-0232-45ab-a795-9f2d6871bc19"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Rectangle" x="282" y="169" width="201" height="151" uuid="6bbaa12b-2d9c-43e1-8863-10833ff6460f"/>
+				<text><![CDATA[...............................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Rectangle" x="282" y="323" width="201" height="151" uuid="8d434936-ec01-4bb4-af5a-4313c61c17a9"/>
+				<text><![CDATA[...............................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................................]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Rectangle" x="11" y="503" width="458" height="34" uuid="cc944035-5cc4-4859-bac7-33df5c0e1a85"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["Certifico que " + $F{apellido_y_nombre} + " ha cumplimentado con todos los requisitos para obtener el Diploma de " + $F{certificado_nombre} + "."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="ResaltRectangle" x="11" y="329" width="85" height="12" uuid="1f91ac45-d393-485d-84ed-f829698b2f30"/>
+				<textElement textAlignment="Left">
+					<font size="9" isBold="true" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[AREA TITULOS:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Rectangle" x="154" y="329" width="109" height="12" uuid="569b44ba-1dda-4c0c-bc5e-41f2ca3b40e9"/>
+				<text><![CDATA[Recibido: ....../....../..........]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Rectangle3" x="5" y="350" width="258" height="74" uuid="3cdda21d-e079-401f-8dd0-3050c214a037"/>
+				<textElement textAlignment="Justified"/>
+				<text><![CDATA[Habiéndose efectuado los controles correspondientes y verificado que la informacion concuerda con las Actas de Exámenes respectivas, no observándose además ninguna novedad en los datos consignados, se da conformidad al pedido de Expedición de Diploma. 
+				Pase a Secretaría Académica a sus efectos.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Rectangle" x="11" y="445" width="72" height="12" uuid="1aabc107-de04-43b1-bd90-c8220e144bbd"/>
+				<text><![CDATA[....../....../..........]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Rectangle" x="21" y="457" width="36" height="12" uuid="1960ac4b-91ac-4c65-9bd9-63ce4f32311a"/>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<line>
+				<reportElement x="121" y="456" width="149" height="1" uuid="ec51bd93-abcf-4993-8bf6-66eca6c77483"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Rectangle3" x="120" y="458" width="149" height="12" uuid="cbe09968-a487-46c4-b5c3-ce392b394392"/>
+				<textElement textAlignment="Center"/>
+				<text><![CDATA[Firma responsable Area Títulos]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Rectangle2" x="11" y="40" width="250" height="69" uuid="b59c21d4-4de9-4c6a-85d6-bcf87a0cacdf"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["Habiendo " + $F{apellido_y_nombre} + " Matrícula Nº: " + $F{legajo} + ", inciado el trámite de expedición de diploma, pase a Area Alumnado a los efectos de emitir el formulario TED 1.e. Cumplido, vuelva."]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="32" splitType="Stretch">
+			<textField>
+				<reportElement x="11" y="19" width="458" height="13" uuid="9687428b-2fa5-466b-9458-8f007f9253de"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nombre_institucion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="11" y="0" width="458" height="19" uuid="10cf52d6-3fbe-46be-b7b7-c006823fc18e"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nombre_ra}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

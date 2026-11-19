@@ -1,0 +1,38 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+        <h3>{{ 'inicio_docente.mesas_examenes' | trans }}</h3>
+        {% if this.data.items %}
+            <table id="comisiones" class="table table-condensed" >
+            {% set cant = 0 %}
+            {% set cantidad_examenes = this.get_cantidad_examenes() %}
+
+            {% for item in this.data.items %}
+                <tr {% if cant >= cantidad_examenes %} class='js-comisiones-oculto hide' {% endif %}>
+
+
+                    <td>
+                        <span>{{ item.fecha_clase_desc }}</span>
+                        <span class="fecha">{{ item.fecha_formato_visual ?? ('inicio_docente.sin_definir' | trans) }} </span>
+                    </td>
+                    <td>
+                        <span class="actividad">{{ item.actividad_nombre ?? ('inicio_docente.sin_definir' | trans) }}  ({{ item.actividad_codigo ?? ('inicio_docente.sin_definir' | trans)}})</span>
+                        <span class="inscriptos">{{ item.cant_inscriptos ?? 0 }} {{ 'inicio_docente.inscriptos' | trans }}  </span>
+                        <span class="instancias">{{ item.instancias ?? ('inicio_docente.sin_definir' | trans) }} </span>
+                        <span class="ubicacion">{{ item.ubicacion_nombre ?? ('inicio_docente.sin_definir' | trans) }} </span>
+                    </td>
+                    <td class="columna-accion" width=100px>
+                       <a class="btn btn-mini" href="{{ item.LINK }}">{{'inicio_docente.seleccione' | trans }}</a>
+                    </td>
+
+
+                </tr> 
+                {% set cant = cant + 1 %}
+            {% endfor %}
+            {% if cant > cantidad_examenes %} 
+                <tr class='comisiones-ver'><td colspan="3"><a id="js-link-ver-todo">{{ 'inicio_docente.ver_mas' | trans }}</a></td></tr>
+            {% endif %}
+            </table>
+        {% else %}
+            <div class="alert">{{ 'inicio_docente.no_hay_datos_de_mesas' | trans }}</div>
+        {% endif %}
+{% endblock %}

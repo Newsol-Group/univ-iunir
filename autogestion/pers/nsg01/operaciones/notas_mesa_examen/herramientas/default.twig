@@ -1,0 +1,31 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+<div class="js-barra-herramientas" style="display: none;">
+	<form id='preset_form' class="form-inline">
+		<select id='preset_campo' class='combo_campos'>
+			{% for campo in this.data.campos_autocompletar %}
+				<option value='{{campo.valor}}'>{{campo.descr}}</option>
+			{% endfor %}
+		</select>
+
+		<input id='preset-otros' class='preset_valor otros input-small' type='text' value='' /> 
+		<input id='preset-fecha' class='preset_valor fecha input-small' {{ (this.es_mobile) ? 'readonly' : ''}}
+			   type='text' value='' style="display: none;" />  {# escondido por defecto #}
+
+                <select id="preset-resultado" class="preset_valor resultado input-small" readonly style="display: none;"> {# escondido por defecto #}
+                    <option value="{{ this.data.resultado_ausente }}">{{ "ausente"|trans|capitalize }}</option>
+					<option value="{{ this.data.resultado_aprobado }}">{{ "aprobado"|trans|capitalize }}</option>
+                </select>
+                        
+		<label for='preset_solo_vacio' class="checkbox">
+			<input id='preset_solo_vacio' type="checkbox" checked="checked"/>{{ "solo_valores_vacios"|trans|capitalize }}
+		</label>
+		
+		<button id='btnCompletar' type="submit" class="btn btn-small" disabled="disabled"><i class="icon-edit"></i> {{ "completar"|trans|capitalize }}</button>
+		<button id='preset_undo' type="reset" class="btn btn-small" disabled="disabled"><i class="icon-arrow-left"></i> {{ "deshacer"|trans|capitalize }}</button>
+	</form>
+	<p class="advertencia">
+		{{ 'advertencia_autocompletar' | trans}}
+	</p>
+</div>
+{% endblock %}

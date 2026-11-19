@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="37000160" descripcion="toba_ei_formulario">
+	<tabla nombre="apex_objeto_ei_formulario_ef">
+		<registro estado="2" clave="objeto_ei_formulario_proyecto:guarani;objeto_ei_formulario:37000160;objeto_ei_formulario_fila:37000261">
+			<columna nombre="edit_expreg" valor="/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/i" valor_original="###$$$NULL$$$###"/>
+		</registro>
+	</tabla>
+</componente>

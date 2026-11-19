@@ -1,0 +1,15 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}    
+
+    <div class="titulo_operacion">
+        <h2 class="clearfix">
+            <span class="pull-left">{{ "ayuda_menu.titulo_check" | trans }}</span>
+        </h2>
+    </div>
+    
+    <div class="alert alert-success">
+        {{ "ayuda_menu.msj_info_enviado" | trans }}
+    </div>
+    <a class='btn btn-info pull-right' href="{{ this.data.url_volver }}">{{'volver'|trans|capitalize}}</a>
+
+{% endblock %}

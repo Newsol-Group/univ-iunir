@@ -1,0 +1,28 @@
+{% macro render_mensajes(datos_confirmados, datos_error_control, datos_vigentes) %}
+	{% if datos_confirmados %}
+		<div class="alert alert-success text-center success-icon"  role="alert">
+			<div class="dc-mensaje dc-mensaje-ok">
+				{{ 'datos_censales.msj_datos_confirmados'|trans|raw }}
+			</div>
+		</div>
+	{% elseif datos_error_control %}
+		<div class="alert alert-error text-center error-icon"  role="alert">
+			<div class="dc-mensaje dc-mensaje-error">
+				{{ 'datos_censales.msj_campos_faltantes'|trans|raw }}
+			</div>
+		</div>
+	{% elseif datos_vigentes %}
+		<div class="alert alert-info text-center info-icon"  role="alert">
+			<div class="dc-mensaje">
+				{{ 'datos_censales.msj_datos_vigentes'|trans|raw }}
+			</div>
+		</div>
+	{% else %}
+		{#--- Datos no vigentes ---#}
+		<div class="alert alert-warning text-center warning-icon"  role="alert">
+			<div class="dc-mensaje">
+				{{ 'datos_censales.msj_datos_no_vigentes'|trans|raw }}
+			</div>
+		</div>
+	{% endif %}
+{% endmacro %}

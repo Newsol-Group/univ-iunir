@@ -1,0 +1,43 @@
+{% extends "kernel/pagelet.twig" %}
+{% import 'kernel/macro_helpers.twig' as helper %}
+
+{% block contenido %}
+
+	{% set acciones %}
+		
+		
+		<button class="btn btn-small" id="js-colapsar-autocompletar">
+                    <i class="icon-wrench"></i> <span>{{ 'notas_cursada_comision.autocompletar' | trans }}</span>
+                </button>
+                
+                {# Muestro el botón de "Calcular Notas" si hay instancias #}
+                {% if this.data.instancias_calcular_notas is not empty %}
+                <button class="btn btn-small" id="js-colapsar-barra-calcular-notas">
+                    <i class="icon-cog"></i> <span>{{ 'notas_cursada_comision.calcular_notas' | trans }}</span>
+                </button>
+                {% endif %}
+                    
+		{% if this.data.instancia_regularidad %}
+			<button id='ver_escala_regularidad' class="btn btn-small" href="#">
+                            <i class="icon-eye-open"></i> {{ 'ver_escala_notas_regularidad'|trans|capitalize }}
+                        </button>
+		{% endif %}
+
+		{% if this.data.instancia_promocion %}
+			<button id='ver_escala_promocion' class="btn btn-small" href="#">
+                            <i class="icon-eye-open"></i> {{ 'ver_escala_notas_promocion'|trans|capitalize }}
+                        </button>
+		{% endif %}
+	{% endset %}
+	
+	{{ helper.titulo_operacion("carga_notas_cursada_titulo"|trans|capitalize,'', acciones ) }}
+
+	<div class="pull-right">
+
+	</div>
+
+	<div class="js-detalle-materia" style="display: none;">
+
+	</div>
+
+{% endblock %}

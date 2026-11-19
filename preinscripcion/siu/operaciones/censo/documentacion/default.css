@@ -1,0 +1,38 @@
+#documentacion .botonera {
+	height: 100px;
+	margin-left: 10px;
+}
+
+#documentacion .botones {
+	margin-top: 35px;
+}
+
+#documentacion .imagen {
+	height: 100px;
+}
+
+#documentacion .descr_requisito {
+	font-style: italic;
+}
+
+input {
+    width: 400px;
+}
+
+#documentacion .mensaje_error {
+	text-align: center;
+	font-weight: bold;
+}
+.well.clearfix-faltante {
+   background-color:#f2dede;
+   text-shadow:none;
+}
+input[type="file"] {
+    display: none;
+}
+
+#documentacion .msj_no_hay_requisitos_ingreso {
+    text-align: center;
+    font-weight: bold;
+    margin-top: 20px;
+}

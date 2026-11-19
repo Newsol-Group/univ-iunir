@@ -1,0 +1,45 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+    <h3>{{'Ultimas clases'|trans|capitalize}}</h3>
+    <table id="comisiones" class="table  table-condensed" >
+        {% if this.data.items %}
+
+            {% set cant = 0 %}
+
+            {% for item in this.data.items %}
+                <tr {% if cant >= this.get_cant_comisiones_visibles %} class='js-comisiones-oculto hide' {% endif %}>
+
+
+                    <td>
+                        <span>{{ item. fecha_clase_desc }}</span>
+                        <span class="horario">{{ item.hs_comienzo_clase }} - {{ item.hs_finalizacion_clase }}</span>
+                    </td>
+                    <td>
+                        <span class="materia">{{ item.actividad_nombre }}  ({{ item.actividad }})</span>
+                        <span class="comision">{{ item.comision_nombre }}  </span>
+                        <span class="evaluacion">{{ item.tipo_clase_nombre }} </span>
+                    </td>
+                    <td class="columna-accion" width=100px>
+                        {%if (item.puede_cargar_asistencia == true and item.link!='')%}
+                            <a class="btn btn-mini" href="{{ item.link }}">{{"asistencia" | trans | capitalize }}</a>
+                        {%elseif item.puede_cargar_asistencia == false %}
+                            <span class="link-no-acceso disabled btn btn-mini" data-placement="top" data-toggle="tooltip" data-original-title="{{'no_tenes_derechos'| trans}}">
+                          {{"asistencia" | trans | capitalize }}</span>
+                        {% else%}
+                           <span class="link-no-acceso disabled btn btn-mini" data-placement="top" data-toggle="tooltip" data-original-title="{{ 'zona_clases.comision_no_asistencia' | trans }}">
+                          {{"asistencia" | trans | capitalize }}</span>
+                        {% endif %}  
+                    </td>
+
+
+                </tr> 
+                {% set cant = cant + 1 %}
+            {% endfor %}
+            {% if cant > this.get_cant_comisiones_visibles %} 
+                <tr class='comisiones-ver'><td colspan="4"><a id="js-link-ver-todo">{{ 'ver_mas'|trans|capitalize }}</a></td></tr>
+                    {% endif %}	
+                {% else %}
+            <div class="alert">{{ 'no_hay_datos_de_clases'|trans|capitalize }}</div>
+        {% endif %}
+    </table>
+{% endblock %}

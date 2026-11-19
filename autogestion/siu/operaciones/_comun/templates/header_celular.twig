@@ -1,0 +1,182 @@
+{% if menu %}
+
+    <div class="navbar navbar-fixed-top main-nav">
+
+        <div>
+            <div  class="pull-left">
+                <button class="btn btn-navbar btn-navbar-inverse" data-toggle="collapse" data-target=".nav-collapse" type="button">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+            </div>
+            <div  class="pull-right"><a class="brand logo-celular" href="{{url_inicio}}"><img src="{{ url_img_logo_celular }}" /></a>
+            </div>
+            <div class="btn-group pull-right">
+                    <a href="{{ url_mensajes }}" class="btn {{ cantidad_mensajes > 0 ? 'btn-warning' : '' }}"><i class="icon-envelope"></i> {{ cantidad_mensajes }}</a>
+            </div>
+
+            {% if persona.logueada %}
+
+                        <div class="btn-group pull-left">
+				<a href="#" class="btn dropdown-toggle" data-toggle="dropdown"><i class="icon-user"></i> <span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href='{{ persona.url_configuracion }}'><i class="icon-cog"></i> {{ persona.nombre }}</a></li>
+					<li class="divider"></li>
+					{% if persona.carreras.cantidad > 0 %}
+						<li class="nav-header">{{'carreras'|trans|capitalize}}</li>
+							{% for carrera in persona.carreras.lista %}
+                                                        
+                                                            {% set selected = (persona.carrera_activa.id == carrera.id) ? true : false %}
+                                                            {% set pasivo = (carrera.calidad == alumno_calidad_pasivo) ? true : false %}
+
+                                                            <li>
+                                                                <a href="#" class="js-select-carreras {% if selected %}selected{% endif %} {% if pasivo %}pasivo{% endif %}" data-carrera-id="{{ carrera.id }}" data-carrera-selected="{{ selected }}" title="{% if pasivo %}{{ "combo_carreras.no_estas_activo"|trans }}{% endif %}{{ carrera.nombre|trans|capitalize }}">
+                                                                    {% if selected %}<i class="icon-ok"></i> {% endif %}{{ carrera.nombre|trans|capitalize }}
+                                                                </a>
+                                                            </li>
+
+							{% endfor %}
+						<li class="divider"></li>
+					{% endif %}
+					{% if perfiles %}
+						<li class="nav-header">{{ 'perfil'|trans|capitalize }}</li>
+						{% for perfil in perfiles %}
+							{% if perfil_activo == perfil %}
+								<li data-perfil="{{ perfil }}" data-perfilnombre="{{ perfil|trans|capitalize }}" class='js-seleccion-perfil js-perfil-item'>
+									<a href="#"><i class="icon-ok"></i> {{ perfil|trans|capitalize }}</a>
+								</li>
+							{% else %}
+								<li data-perfil="{{ perfil }}" class="js-perfil-item"><a href="#">{{ perfil|trans|capitalize }}</a></li>
+							{% endif %}
+						{% endfor %}
+						<li class="divider"></li>
+					{% endif %}
+					<li><a href='{{ persona.url_logout }}' class="no-ajax"><i class="icon-off"></i> {{ 'header.cerrar_sesion'|trans }}</a></li>
+				</ul>
+			</div> <!-- boton usuario -->
+
+    {% endif %}
+
+			<div class="nav-collapse collapse">
+				<ul class='nav'>
+                                {% import _self as current_file_macros %}
+                                    
+				{% for id, item in menu %}
+                                        {% if item.submenu is defined %}
+
+                                            <li id="{{ id }}" class='dropdown-toggle'>
+                                                {{ current_file_macros.recursiveSubmenu(item, true, _context) }}
+                                            </li>
+
+					{% else %}
+
+                                            {% set item_class = '' %}
+                                            {# Si se trata de "Mis datos personales" se navega sin AJAX #}
+                                            {% if item.id == 'datos_censales' %}
+                                                {% set item_class = 'no-ajax' %}
+                                            {% endif %}
+					    <li id='{{ item.id }}'><a class="{{ item_class }}" href='{{ item.url }}'>{{ item.nombre|trans|capitalize }}</a></li>
+
+					{% endif %}
+				{% endfor %}
+
+                    {% if (utiliza_cursos is defined) and tiene_perfil_cursos %}
+                        {% if utiliza_cursos == comunes_si %}
+                            {% if perfil_activo is defined %}
+                                {% if perfil_activo == perfil_cursos %}
+                                    {% if existe_perfil_activo_previo %}
+                                    <li id="salir_de_cursos" class="menu-item-curso">
+                                        <a href="{{ url_salir_cursos }}" class="no-ajax toogle-curso">{{ 'salir_de_cursos' | trans }}</a>
+                                    </li>
+                                    {% endif %}
+                                {% else %}
+                                    <li id="cursos" class="menu-item-curso">
+                                        <a href="{{ url_oferta_cursos }}" class="no-ajax toogle-curso" title="" data-toggle="popover" data-placement="bottom" data-content="{{ 'oferta_de_cursos_tooltip' | trans }}" data-original-title="" data-trigger="hover">{{ 'oferta_de_cursos' | trans }}</a>
+                                    </li>
+                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+
+				</ul>
+			</div><!--/.nav-collapse -->
+			
+		</div><!-- navbar-inner -->
+		
+    </div><!-- navbar -->
+	
+{% else %}
+	
+	<div class="navbar main-nav">
+		
+		<div class="navbar-inner">
+
+			<a class="brand logo-celular" href="{{url_inicio}}"><img src="{{ url_img_logo_celular }}" /></a>
+			
+		</div>
+		
+    </div>
+
+{% endif %}
+
+<!-- https://api.jqueryui.com/autocomplete/#option-minLength -->
+<input type="hidden" id="js-ui-autocomplete-min-length" name="ui-autocomplete-min-length" value="{{ ui_autocomplete_min_length }}" />
+
+<!-- https://gist.github.com/tentacode/3892186 -->
+{% macro recursiveSubmenu(item, primer_nivel, contexto) %}
+
+        {% import _self as current_file_macros %}
+        
+        {% if primer_nivel %}
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ item.nombre|trans }} <b class="caret"></b></a>
+            <ul class='dropdown-menu'>
+        {% else %}
+            <li class="nav-header mobile">{{ item.nombre|trans }}</li>
+            <div class="submenu-mobile">
+        {% endif %}
+        
+        {# https://www.edureka.co/community/89926/how-can-use-break-or-continue-within-for-loop-in-twig-template #}
+        {% set mostrar_en_menu = true %}
+        {% for subitem in item.submenu %}
+            
+            {# Si se trata de "Portal de pagos" #}
+            {% if subitem.id == 'portal_pagos' %}
+
+                {# Si el parámetro "sq_usa_sanaviron" igual a "Si" entonces la muetro en el menú #}
+                {% if contexto.usa_sanaviron == contexto.comunes_si %}
+                    <li class="{{contexto.usa_sanaviron}}" id='{{ subitem.id }}'><a target="_blank" class="no-ajax" href='{{ subitem.url }}'>{{ subitem.nombre|trans }}</a></li>
+                {% endif %}
+
+                {# Esto es para que no la muestre dos veces en el menú #}
+                {% set mostrar_en_menu = false %}
+                
+            {# Si se trata de "Boleto Estudiantil" y el parámetro "usa_boleto_estudiantil" igual a "No" entonces no la muetro en el menú #}
+            {% elseif subitem.id == 'boleto_estudiantil' and not contexto.usa_boleto_estudiantil %}
+                
+                {% set mostrar_en_menu = false %}
+                
+            {% endif %}
+            
+            {# Si se debe mostrar la operación en el menú #}
+            {% if mostrar_en_menu %}
+                <li id='{{ subitem.id }}'><a href='{{ subitem.url }}'>{{ subitem.nombre|trans }}</a></li>
+            {% endif %}
+            
+            {% set mostrar_en_menu = true %}
+            
+        {% endfor %}
+
+            {% for submenu in item.submenues %}
+
+                {{ current_file_macros.recursiveSubmenu(item[submenu], false, contexto) }}
+
+            {% endfor %}
+
+        {% if primer_nivel %}
+            </ul>
+        {% else %}
+            </div>
+        {% endif %}
+
+{% endmacro %}

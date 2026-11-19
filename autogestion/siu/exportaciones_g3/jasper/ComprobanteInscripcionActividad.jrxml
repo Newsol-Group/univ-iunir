@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guarani" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<style name="Title" isDefault="false" fontName="Arial" fontSize="14" isBold="true" isUnderline="false" pdfFontName="Times-Bold"/>
+	<style name="Resalt" isDefault="false" fontSize="9" isBold="true" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+	<style name="Comun" isDefault="false" fontSize="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica"/>
+	<style name="ComunChico" isDefault="false" fontSize="7" pdfFontName="Helvetica"/>
+	<style name="Column header" isDefault="false" forecolor="#000000" fontName="Arial" fontSize="8" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="Row" isDefault="false" fontName="Arial" fontSize="10" pdfFontName="Helvetica"/>
+	<parameter name="institucion" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ra" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="nro_transaccion" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="pie" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="titulo" class="java.lang.String"/>
+	<parameter name="alumno" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="identificacion" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="legajo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="propuesta" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="actividad" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="fecha" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="plan" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString language="xPath">
+		<![CDATA[/tabla/datos/fila]]>
+	</queryString>
+	<field name="prioridad" class="java.lang.String">
+		<fieldDescription><![CDATA[dato[@clave="prioridad"]/@valor]]></fieldDescription>
+	</field>
+	<field name="comision_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[dato[@clave="comision_nombre"]/@valor]]></fieldDescription>
+	</field>
+	<field name="periodo_lectivo_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[dato[@clave="periodo_lectivo_nombre"]/@valor]]></fieldDescription>
+	</field>
+	<field name="catedra_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[dato[@clave="catedra_nombre"]/@valor]]></fieldDescription>
+	</field>
+	<field name="turno_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[dato[@clave="turno_nombre"]/@valor]]></fieldDescription>
+	</field>
+	<field name="ubicacion_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[dato[@clave="ubicacion_nombre"]/@valor]]></fieldDescription>
+	</field>
+	<field name="subcomisiones" class="java.lang.String">
+		<fieldDescription><![CDATA[dato[@clave="subcomisiones"]/@valor]]></fieldDescription>
+	</field>
+	<field name="instancias" class="java.lang.String">
+		<fieldDescription><![CDATA[dato[@clave="instancias"]/@valor]]></fieldDescription>
+	</field>
+	<title>
+		<band height="75" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="27" y="48" width="436" height="19" forecolor="#000000"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="12" isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[Comprobante de PRE-Inscripciones a Actividad]]></text>
+			</staticText>
+			<image>
+				<reportElement x="27" y="5" width="88" height="40"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<textField isBlankWhenNull="true">
+				<reportElement style="Resalt" isPrintRepeatedValues="false" x="137" y="24" width="326" height="18"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{ra}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="Resalt" x="137" y="5" width="326" height="18"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{institucion}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="21" y="0" width="452" height="1"/>
+			</line>
+			<line>
+				<reportElement x="20" y="0" width="1" height="75"/>
+			</line>
+			<line>
+				<reportElement x="473" y="0" width="1" height="75"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="108" splitType="Stretch">
+			<line>
+				<reportElement stretchType="RelativeToTallestObject" x="473" y="0" width="1" height="108" isPrintWhenDetailOverflows="true"/>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToTallestObject" x="20" y="0" width="1" height="108" isPrintWhenDetailOverflows="true"/>
+			</line>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Resalt" positionType="Float" stretchType="RelativeToTallestObject" x="127" y="0" width="307" height="15" isPrintWhenDetailOverflows="true"/>
+				<textElement verticalAlignment="Bottom">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{alumno}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="35" y="0" width="90" height="15" forecolor="#000000"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Alumno :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="35" y="16" width="90" height="15" forecolor="#000000"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Identificación :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="35" y="31" width="90" height="15" forecolor="#000000"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Legajo :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="35" y="46" width="90" height="15" forecolor="#000000"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Propuesta :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="35" y="76" width="90" height="15" forecolor="#000000"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Actividad :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="35" y="91" width="90" height="15" forecolor="#000000"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Fecha de Inscripción :]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Resalt" positionType="Float" stretchType="RelativeToTallestObject" x="127" y="16" width="307" height="15" isPrintWhenDetailOverflows="true"/>
+				<textElement verticalAlignment="Bottom">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{identificacion}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Resalt" positionType="Float" stretchType="RelativeToTallestObject" x="127" y="31" width="307" height="15" isPrintWhenDetailOverflows="true"/>
+				<textElement verticalAlignment="Bottom">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{legajo}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Resalt" positionType="Float" stretchType="RelativeToTallestObject" x="127" y="46" width="307" height="15" isPrintWhenDetailOverflows="true"/>
+				<textElement verticalAlignment="Bottom">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{propuesta}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Resalt" positionType="Float" stretchType="RelativeToTallestObject" x="127" y="76" width="307" height="15" isPrintWhenDetailOverflows="true"/>
+				<textElement verticalAlignment="Bottom">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{actividad}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement style="Resalt" positionType="Float" stretchType="RelativeToTallestObject" x="127" y="91" width="307" height="15" isPrintWhenDetailOverflows="true"/>
+				<textElement verticalAlignment="Bottom">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{fecha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Column header" x="35" y="61" width="90" height="15" forecolor="#000000"/>
+				<textElement verticalAlignment="Bottom"/>
+				<text><![CDATA[Plan:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Resalt" x="127" y="61" width="307" height="15"/>
+				<textElement verticalAlignment="Bottom">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{plan}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="15" splitType="Stretch">
+			<line>
+				<reportElement stretchType="RelativeToTallestObject" x="473" y="0" width="1" height="15" isPrintWhenDetailOverflows="true"/>
+			</line>
+			<line>
+				<reportElement stretchType="RelativeToTallestObject" x="20" y="0" width="1" height="15" isPrintWhenDetailOverflows="true"/>
+			</line>
+			<frame>
+				<reportElement mode="Opaque" x="27" y="0" width="440" height="15" backcolor="#D5D3D3"/>
+				<line>
+					<reportElement stretchType="RelativeToTallestObject" x="23" y="0" width="1" height="15" isPrintWhenDetailOverflows="true"/>
+				</line>
+				<staticText>
+					<reportElement style="Column header" x="0" y="0" width="23" height="15" forecolor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Prior.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="76" y="0" width="109" height="15" forecolor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Periodo Lectivo]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="185" y="0" width="45" height="15" forecolor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Cátedra]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="230" y="0" width="37" height="15" forecolor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Turno]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="267" y="0" width="72" height="15" forecolor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Ubicacion]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="386" y="0" width="53" height="15" forecolor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Subco.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="339" y="0" width="45" height="15" forecolor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Inscripto a]]></text>
+				</staticText>
+				<staticText>
+					<reportElement style="Column header" x="24" y="0" width="51" height="15" forecolor="#000000"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<text><![CDATA[Comisión]]></text>
+				</staticText>
+				<rectangle>
+					<reportElement positionType="Float" mode="Transparent" x="0" y="0" width="440" height="15"/>
+				</rectangle>
+				<line>
+					<reportElement stretchType="RelativeToTallestObject" x="75" y="0" width="1" height="15" isPrintWhenDetailOverflows="true"/>
+				</line>
+				<line>
+					<reportElement stretchType="RelativeToTallestObject" x="185" y="0" width="1" height="15" isPrintWhenDetailOverflows="true"/>
+				</line>
+				<line>
+					<reportElement stretchType="RelativeToTallestObject" x="229" y="0" width="1" height="15" isPrintWhenDetailOverflows="true"/>
+				</line>
+				<line>
+					<reportElement stretchType="RelativeToTallestObject" x="266" y="0" width="1" height="15" isPrintWhenDetailOverflows="true"/>
+				</line>
+				<line>
+					<reportElement stretchType="RelativeToTallestObject" x="338" y="0" width="1" height="15" isPrintWhenDetailOverflows="true"/>
+				</line>
+				<line>
+					<reportElement stretchType="RelativeToTallestObject" x="385" y="0" width="1" height="15" isPrintWhenDetailOverflows="true"/>
+				</line>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="14" y="0" width="461" height="18"/>
+				<line>
+					<reportElement stretchType="RelativeToTallestObject" x="36" y="0" width="1" height="18" isPrintWhenDetailOverflows="true"/>
+				</line>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="ComunChico" positionType="Float" stretchType="RelativeToTallestObject" x="37" y="0" width="51" height="17" isPrintWhenDetailOverflows="true"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{comision_nombre}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="ComunChico" positionType="Float" stretchType="RelativeToTallestObject" x="13" y="0" width="23" height="17" isPrintWhenDetailOverflows="true"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{prioridad}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement stretchType="RelativeToTallestObject" x="6" y="0" width="1" height="18" isPrintWhenDetailOverflows="true"/>
+				</line>
+				<line>
+					<reportElement stretchType="RelativeToTallestObject" x="459" y="0" width="1" height="18" isPrintWhenDetailOverflows="true"/>
+				</line>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="ComunChico" positionType="Float" stretchType="RelativeToTallestObject" x="89" y="0" width="109" height="17" isPrintWhenDetailOverflows="true"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{periodo_lectivo_nombre}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="ComunChico" positionType="Float" stretchType="RelativeToTallestObject" x="199" y="0" width="45" height="17" isPrintWhenDetailOverflows="true"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{catedra_nombre}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="ComunChico" positionType="Float" stretchType="RelativeToTallestObject" x="243" y="0" width="37" height="17" isPrintWhenDetailOverflows="true"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{turno_nombre}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="ComunChico" positionType="Float" stretchType="RelativeToTallestObject" x="280" y="0" width="72" height="17" isPrintWhenDetailOverflows="true"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{ubicacion_nombre}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="ComunChico" positionType="Float" stretchType="RelativeToTallestObject" x="399" y="0" width="53" height="17" isPrintWhenDetailOverflows="true"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{subcomisiones}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="ComunChico" positionType="Float" stretchType="RelativeToTallestObject" x="352" y="0" width="46" height="17" isPrintWhenDetailOverflows="true"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{instancias}]]></textFieldExpression>
+				</textField>
+				<rectangle>
+					<reportElement positionType="Float" stretchType="RelativeToTallestObject" mode="Transparent" x="13" y="0" width="440" height="18"/>
+				</rectangle>
+				<line>
+					<reportElement stretchType="RelativeToTallestObject" x="88" y="0" width="1" height="18" isPrintWhenDetailOverflows="true"/>
+				</line>
+				<line>
+					<reportElement stretchType="RelativeToTallestObject" x="198" y="0" width="1" height="18" isPrintWhenDetailOverflows="true"/>
+				</line>
+				<line>
+					<reportElement stretchType="RelativeToTallestObject" x="242" y="0" width="1" height="18" isPrintWhenDetailOverflows="true"/>
+				</line>
+				<line>
+					<reportElement stretchType="RelativeToTallestObject" x="279" y="0" width="1" height="18" isPrintWhenDetailOverflows="true"/>
+				</line>
+				<line>
+					<reportElement stretchType="RelativeToTallestObject" x="351" y="0" width="1" height="18" isPrintWhenDetailOverflows="true"/>
+				</line>
+				<line>
+					<reportElement stretchType="RelativeToTallestObject" x="398" y="0" width="1" height="18" isPrintWhenDetailOverflows="true"/>
+				</line>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="57" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="27" y="32" width="442" height="24"/>
+				<textElement>
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Recordá que el Nro. de Transacción te será útil ante cualquier consulta en la Oficina de Alumnos"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="Title" x="88" y="10" width="333" height="20" isRemoveLineWhenBlank="true"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Nro. Transacción: " + $P{nro_transaccion}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="20" y="56" width="454" height="1"/>
+			</line>
+			<line>
+				<reportElement x="20" y="0" width="1" height="56"/>
+			</line>
+			<line>
+				<reportElement x="473" y="0" width="1" height="56"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>

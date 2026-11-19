@@ -1,0 +1,36 @@
+<div id="selectorLocalidad">
+	{% autoescape false %}
+	{{ form_loc.encabezado }}
+
+		<div class='well clearfix'>
+			<h3>{{'datos_censales.selector.seleccion_localidad'|trans}}</h3>
+			<div class='clearfix' style="margin-bottom: 5px;">
+				{{ form_loc.control_group('pais') }}
+			</div>
+			<div class='clearfix' style="margin-bottom: 5px;">
+				{{ form_loc.control_group('provincia') }}
+			</div>
+			<div class='clearfix' style="margin-bottom: 5px;">
+				{{ form_loc.control_group('departamento') }}
+			</div>
+			<div class='clearfix' style="margin-bottom: 5px;">
+				{{ form_loc.control_group('localidad') }}
+			</div>
+			<div class='clearfix' style="margin-bottom: 5px;">
+				{{ form_loc.control_group('codigo_postal') }}
+			</div>
+		</div>
+		
+		<div class='alert nota-selector'>
+			{{'datos_censales.selector.nota_indeterminado'|trans}}
+		</div>
+		
+		<div class='pull-right'>
+			<input id="btnAceptar" type="button" value="{{'aceptar' | trans | capitalize }}" class="btn btn-info" />
+			<input id="btnCerrar" type="button" value="{{'cerrar' | trans | capitalize }}" class="btn btn-info" onclick="cerrar_popup()" />
+		</div>
+
+	</form>
+	{% endautoescape %}
+
+</div>

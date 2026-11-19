@@ -1,0 +1,46 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+{% autoescape false %}
+
+	<ol id="lista2">
+	{% for ra in this.data.resultado%}
+        <li>
+			{{ ra.nombre }}
+			{% if ra.propuestas %}
+				<ul>
+				{% for propuesta in ra.propuestas %}
+					<li>
+						{{ propuesta.nombre }}
+						{% if propuesta.ubicaciones %}
+							<ul>
+							{% for ubicacion in propuesta.ubicaciones %}
+								<li>
+									{{ ubicacion }}
+								</li>
+							{% endfor %}
+							</ul>
+						{% else %}
+							<ul>
+								<li>
+									<p class="red">{{ 'perfil_datos.sin_ubicaciones' | trans }}</p>
+								</li>
+							</ul>
+						{% endif %}
+					</li>
+				{% endfor %}
+				</ul>
+			{% else %}
+				<ul>
+					<li>
+						<p class="red">{{ 'perfil_datos.sin_propuestas' | trans }}</p>
+						
+					</li>
+				</ul>
+			{% endif %}
+			
+		</li>
+    {% endfor %}
+	</ol>
+
+{% endautoescape %}
+{% endblock %}

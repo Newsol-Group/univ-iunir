@@ -1,0 +1,13 @@
+tr.cursada
+{
+	cursor: pointer;
+}
+tr.cursada:hover
+{
+	background-color: #eee;
+}
+.tachado
+{
+	text-decoration: line-through;
+	color: red;
+}

@@ -1,0 +1,246 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+<div class="titulo_operacion row-fluid">
+	<div class="span12">
+		<h2 class="resaltar divisor clearfix">
+			<span class="pull-left">{{"header.menu.oferta_comisiones"|trans|capitalize}}</span>
+			{% if this.data.oferta %}
+			<div class="" style="margin-bottom: 10px;">
+				<button class="btn btn-small pull-right" id="js-colapsar-filtro"><i class="icon-filter"></i> <span>{{"filtros"|trans|capitalize}}</span></button>
+			</div>
+			{% endif %}
+		</h2>
+	</div>
+</div>
+
+{% if this.data.oferta %}
+<div class="filtros">
+	<table class="table table-bordered table-condensed">
+		<tr>
+			<th colspan="1">
+				{% if this.data.filtros.dias %}
+				<div class="btn-group">
+				{% for clave, valor in this.data.filtros.dias %}
+					<button class="js-filtro_dias btn btn-mini active" dia="{{clave}}">{{valor |trans|capitalize}}</button>
+				{% endfor %}
+				</div>
+				{% endif %}
+			</th>
+		</tr>
+		<tr>
+			<th>
+				<span class="titulo" for="js-filtro_periodo">{{"oferta_comisiones.periodo"|trans|capitalize}}:
+					<select name="filtro_periodo" id="js-filtro_periodo">
+						<option value="">{{"todos"|trans|capitalize}}</option>
+						{% for clave, valor in this.data.filtros.anio_perlec %}
+						<option value="{{clave}}">{{valor}}</option>
+						{% endfor %}
+					</select>
+				</span>
+
+				<span class="titulo" for="js-filtro_actividades">{{"oferta_comisiones.actividad"|trans|capitalize}}:
+					<input id="js-filtro_actividades" name="filtro_actividades">&nbsp;
+					<button id="js-limpiar_actividades" class="btn btn-small btn-primary" type="button"><i class="icon-remove icon-white"></i></button>
+				</span>
+			</th>
+		</tr>
+		<tr>
+			<th>
+				<span class="titulo">{{"oferta_comisiones.docente"|trans|capitalize}}:
+					<input id="js-filtro_docente" name="filtro_docente">&nbsp;
+					<button id="js-limpiar_docente" class="btn btn-small btn-primary" type="button"><i class="icon-remove icon-white"></i></button>
+				</span>
+
+				<span class="titulo" for="js-filtro_ubicacion">{{"oferta_comisiones.ubicacion"|trans|capitalize}}:
+					<select name="filtro_ubicacion" id="js-filtro_ubicacion">
+						<option value="">{{"todas"|trans|capitalize}}</option>
+						{% for clave, valor in this.data.filtros.sedes %}
+						<option value="{{clave}}">{{valor}}</option>
+						{% endfor %}
+					</select>
+				</span>
+			</th>
+		</tr>
+	</table>
+</div>
+{% endif %}
+
+<div class="reporte">
+{% if this.data.oferta %}
+{% for key_perlec, perlec in this.data.oferta %}
+	<div class="js-recuadro_periodo recuadro" periodo="{{key_perlec}}">
+		<h3>{{"oferta_comisiones.periodo"|trans|capitalize}}: {{ perlec.anio_academico }} - {{ perlec.periodo_lectivo_nombre }}</h3>
+		{% if perlec.actividades %}
+		{% for key_act, actividad in perlec.actividades %}
+		<div class="js-recuadro_actividad" actividad="{{actividad.nombre}}">
+			<h4 style="background-color:#0088cc; color:white;">{{"oferta_comisiones.actividad"|trans|capitalize}}: {{ actividad.nombre }}</h4>
+			{% if actividad.comisiones %}
+				{% for key_comision, comision in actividad.comisiones %}
+					<table class="table table-bordered table-condensed comision" comision="{{key_comision}}" sede="{{comision.ubicacion}}" docentes="{% if comision.docentes %}{{comision.docentes}}{% else %}{{"Sin docentes"}}{% endif %}">
+						<tr class="comision">
+							<th colspan="1">
+								<h5>{{"oferta_comisiones.comision"|trans|capitalize}}: {{ comision.comision_nombre }}</h5>
+							</th>
+							<td colspan="2" class="detalle_comision">
+								<span>
+									<strong>{{"oferta_comisiones.turno_nombre"|trans|capitalize}}:</strong>
+									{% if comision.turno_nombre %}
+										{{ comision.turno_nombre }}
+									{% else %}
+										{{ "sin_definir" |trans|capitalize}}
+									{% endif %}
+								</span>
+								{% if not comision.subcomisiones %}
+								<span>
+									<strong>{{"oferta_comisiones.cupo"|trans|capitalize}}:</strong>
+									{% if comision.cupo == 0 %}
+										{{"cupo_sin_definir"|trans|capitalize}} / {{ comision.cant_inscriptos }}
+									{% else %}
+										{{ comision.cupo }} / {{ comision.cant_inscriptos }}
+									{% endif %}
+								</span>
+								{% endif %}
+							</td>
+							<td colspan="1" class="detalle_comision">
+								<span>
+									<strong>{{"oferta_comisiones.instancias"|trans|capitalize}}:</strong>
+									{{ comision.instancias }}
+								</span>
+								<span>
+									<strong>{{"oferta_comisiones.ubicacion_nombre"|trans|capitalize}}:</strong>
+									{{ comision.ubicacion_nombre }}
+								</span>
+								{% if not comision.subcomisiones %}
+								<span>
+									<strong>{{"oferta_comisiones.docentes"|trans|capitalize}}:</strong>
+									{% if comision.docentes_resp %}
+										{{ comision.docentes_resp }}
+									{% else %}
+										{{"oferta_comisiones.sin_docentes"|trans|capitalize}}
+									{% endif %}
+								</span>
+								{% endif %}
+							</td>
+						</tr>
+						{% if comision.observaciones %}
+						<tr class="comision">
+							<td colspan="4" class="detalle_comision observaciones">
+								<strong>{{"observaciones"|trans|capitalize}}: </strong>
+								{{ comision.observaciones }}
+							</td>
+						</tr>
+						{% endif %}
+						{% if comision.horarios and not comision.subcomisiones %}
+							<tr class="horarios encabezados">
+								<th class="tipo_curso">{{"oferta_comisiones.tipo_curso"|trans|capitalize}}</th>
+								<th class="dia">{{"oferta_comisiones.dia"|trans|capitalize}}</th>
+								<th class="horario">{{"oferta_comisiones.horario"|trans|capitalize}}</th>
+								<th class="aula">{{"oferta_comisiones.aula"|trans|capitalize}}</th>
+							</tr>
+							{% for key_h, horario in comision.horarios %}
+							{% set variable = key_h % 2 %}
+								<tr class="js-dia horarios{% if variable == 0 %} oscuro{% endif %} visible" dia_sem="{{ horario.dia_semana }}" comision="{{key_comision}}">
+									<td>
+									{% if horario.tipo_clase_nombre %}
+										{{ horario.tipo_clase_nombre }}
+									{% else %}
+										{{ "sin_definir" |trans|capitalize}}
+									{% endif %}
+									</td>
+									<td>{{ this.data.filtros.dias[horario.dia_semana] }}</td>
+									<td>
+									{% if horario.horario %}
+										{{ horario.horario }}
+									{% else %}
+										{{ "sin_definir" |trans|capitalize}}
+									{% endif %}
+									</td>
+									<td>
+									{% if horario.aula %}
+										{{ horario.aula }}
+									{% else %}
+										{{ "no asignada" |trans|capitalize}}
+									{% endif %}
+									</td>
+								</tr>
+							{% endfor %}
+						{% endif %}
+
+						{% if comision.subcomisiones %}
+							{% for key_subcom, subcomision in comision.subcomisiones %}
+								<tr class="subcomision" subcomision="{{key_comision}}_{{key_subcom}}" docentes="{{subcomision.docentes}}">
+									<th colspan="1" class="detalle_comision">
+										<h5>{{"oferta_comisiones.subcomision"|trans|capitalize}}:</strong> {{ subcomision.subcomision_nombre }}</h5>
+									</th>
+									<td colspan="2" class="detalle_comision">
+										<span>
+											<strong>{{"oferta_comisiones.cupo"|trans|capitalize}}:</strong>
+											{% if subcomision.cupo == 0 %}
+												{{"cupo_sin_definir"|trans|capitalize}} / {{ subcomision.cant_inscriptos }}
+											{% else %}
+												{{ subcomision.cupo }} / {{ subcomision.cant_inscriptos }}
+											{% endif %}
+										</span>
+									</td>
+									<td colspan="1" class="detalle_comision">
+										<span>
+											<strong>{{"oferta_comisiones.docentes"|trans|capitalize}}:</strong>
+											{% if subcomision.docentes_resp %}
+												{{ subcomision.docentes_resp }}
+											{% else %}
+												{{"oferta_comisiones.sin_docentes"|trans|capitalize}}
+											{% endif %}
+										</span>
+									</td>
+								</tr>
+								{% if subcomision.horarios %}
+									<tr class="horarios encabezados" cod_subcomision="{{key_comision}}_{{key_subcom}}">
+										<th class="tipo_curso">{{"oferta_comisiones.tipo_curso"|trans|capitalize}}</th>
+										<th class="dia">{{"oferta_comisiones.dia"|trans|capitalize}}</th>
+										<th class="horario">{{"oferta_comisiones.horario"|trans|capitalize}}</th>
+										<th class="aula">{{"oferta_comisiones.aula"|trans|capitalize}}</th>
+									</tr>
+									{% for key_s, horario in subcomision.horarios %}
+										{% set variable_sub = key_s % 2 %}
+										<tr class="js-dia horarios{% if variable_sub == 0 %} oscuro{% endif %} visible" dia_sem="{{ horario.dia_semana }}" subcomision="{{key_comision}}_{{key_subcom}}">
+											<td>
+											{% if horario.tipo_clase_nombre %}
+												{{ horario.tipo_clase_nombre }}
+											{% else %}
+												{{ "sin_definir" |trans|capitalize}}
+											{% endif %}
+											</td>
+											<td>{{ this.data.filtros.dias[horario.dia_semana] }}</td>
+											<td>
+												{% if horario.horario %}
+													{{ horario.horario }}
+												{% else %}
+													{{ "sin_definir" |trans|capitalize}}
+												{% endif %}
+											</td>
+											<td>
+												{% if horario.aula %}
+													{{ horario.aula }}
+												{% else %}
+													{{ "no asignada" |trans|capitalize}}
+												{% endif %}
+											</td>
+										</tr>
+									{% endfor %}
+								{% endif %}
+							{% endfor %}
+						{% endif %}
+				</table>
+				{% endfor %}
+			{% endif %}
+		</div>
+		{% endfor %}
+		{% endif %}
+	</div>
+	<div id="js-reporte-vacio" class="hide alert alert-warning">{{"oferta_comisiones.vacio" |trans }}</div>
+{% endfor %}
+{% else %}
+	<div class="alert alert-warning">{{"oferta_comisiones.vacio" |trans }}</div>
+{% endif %}
+</div>
+{% endblock %}

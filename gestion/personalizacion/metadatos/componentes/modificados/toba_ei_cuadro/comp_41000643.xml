@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="41000643" descripcion="toba_ei_cuadro">
+	<tabla nombre="apex_objeto_cuadro">
+		<registro estado="2" clave="objeto_cuadro_proyecto:guarani;objeto_cuadro:41000643">
+			<columna nombre="cc_modo" valor="t" valor_original="###$$$NULL$$$###"/>
+			<columna nombre="cc_modo_anidado_colap" valor="0" valor_original="###$$$NULL$$$###"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ei_cuadro_columna">
+		<registro estado="2" clave="objeto_cuadro_proyecto:guarani;objeto_cuadro:41000643;objeto_cuadro_col:41000727">
+			<columna nombre="no_ordenar" valor="0" valor_original="###$$$NULL$$$###"/>
+			<columna nombre="total" valor="0" valor_original="###$$$NULL$$$###"/>
+			<columna nombre="usar_vinculo" valor="0" valor_original="###$$$NULL$$$###"/>
+		</registro>
+		<registro estado="2" clave="objeto_cuadro_proyecto:guarani;objeto_cuadro:41000643;objeto_cuadro_col:41000728">
+			<columna nombre="no_ordenar" valor="0" valor_original="###$$$NULL$$$###"/>
+			<columna nombre="total" valor="0" valor_original="###$$$NULL$$$###"/>
+			<columna nombre="usar_vinculo" valor="0" valor_original="###$$$NULL$$$###"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="41000643"/>
+			<columna nombre="objeto_cuadro_col" valor="770000657"/>
+			<columna nombre="clave" valor="fecha_entrega"/>
+			<columna nombre="orden" valor="12"/>
+			<columna nombre="titulo" valor="Fecha de Entrega"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-cen-s1"/>
+			<columna nombre="formateo" valor="8"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="41000643"/>
+			<columna nombre="objeto_cuadro_col" valor="770000658"/>
+			<columna nombre="clave" valor="fecha_proceso"/>
+			<columna nombre="orden" valor="11"/>
+			<columna nombre="titulo" valor="Fecha de Proceso"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-cen-s1"/>
+			<columna nombre="formateo" valor="8"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="41000643"/>
+			<columna nombre="objeto_cuadro_col" valor="770000659"/>
+			<columna nombre="clave" valor="fecha_solicitud"/>
+			<columna nombre="orden" valor="10"/>
+			<columna nombre="titulo" valor="Fecha de Solicitud"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-cen-s1"/>
+			<columna nombre="formateo" valor="8"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="41000643"/>
+			<columna nombre="objeto_cuadro_col" valor="770000660"/>
+			<columna nombre="clave" valor="solic_cobrable"/>
+			<columna nombre="orden" valor="9"/>
+			<columna nombre="titulo" valor="Corresponde Cobrar?"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-cen-s1"/>
+			<columna nombre="formateo" valor="13"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="41000643"/>
+			<columna nombre="objeto_cuadro_col" valor="770000661"/>
+			<columna nombre="clave" valor="const_cobrable"/>
+			<columna nombre="orden" valor="8"/>
+			<columna nombre="titulo" valor="Constancia Cobrable?"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-cen-s1"/>
+			<columna nombre="formateo" valor="13"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="41000643"/>
+			<columna nombre="objeto_cuadro_col" valor="770000926"/>
+			<columna nombre="clave" valor="motivo_baja_desc"/>
+			<columna nombre="orden" valor="13"/>
+			<columna nombre="titulo" valor="Motivo Baja"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="41000643"/>
+			<columna nombre="objeto_cuadro_col" valor="770000927"/>
+			<columna nombre="clave" valor="tipo_beneficio_desc"/>
+			<columna nombre="orden" valor="14"/>
+			<columna nombre="titulo" valor="Beca Solicitada"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="41000643"/>
+			<columna nombre="objeto_cuadro_col" valor="770001015"/>
+			<columna nombre="clave" valor="pago"/>
+			<columna nombre="orden" valor="15"/>
+			<columna nombre="titulo" valor="Está pago?"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="7"/>
+			<columna nombre="formateo" valor="13"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+	</tabla>
+</componente>

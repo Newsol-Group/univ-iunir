@@ -1,0 +1,7 @@
+- copiar base a luna
+- pasar contraseñas a 123
+  update mdp_personas set clave = '$2a$10$wtulR78y/u1Gnwu2RXWL4ukjLnx.45KvptHOXDFVTC5tM7U2A8NRa'
+
+CREATE LANGUAGE plpgsql;
+
+- instalar guaraní

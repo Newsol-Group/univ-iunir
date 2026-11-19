@@ -1,0 +1,17 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}    
+	<div class="well">
+		<ul>
+		{% for entidad in this.data.resultados %}
+			{% if entidad.resultado %}
+				{% set clase = 'success' %}
+			{% else %}
+				{% set clase = 'error' %}
+			{% endif %}
+			<li>
+				<strong>{{ entidad.entidad }}</strong>: <span class="{{ clase }}">{{ entidad.resultado_msj }}</span>
+			</li>
+		{% endfor %}
+		</ul>
+	</div>
+{% endblock %}

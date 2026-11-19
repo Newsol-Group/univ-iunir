@@ -1,0 +1,43 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+    
+    {% if this.data.materias %}
+        
+        <div id='filtro_materias' class="input-append">
+            <input type="text" name="filtro" value="" />
+        </div>
+
+        <div class="js-filtro">
+            <div class="filtro-materia">
+                <span>{{ 'ver'|trans|capitalize }}</span>
+                <div class="btn-group" data-toggle="buttons-radio">
+                    <button type="button" class="btn btn-mini active js-mostrar-todas-materias">{{ 'todas'|trans|capitalize }}</button>
+                    <button type="button" class="btn btn-mini js-mostrar-materias-solo-inscriptas">{{ 'solo_inscriptas'|trans|capitalize }}</button>
+                </div>
+            </div>
+        </div>
+
+        {% spaceless %}
+            <div id='js-listado-materias'>
+
+                <ul class="nav nav-list">
+                    {% for materia in this.data.materias %}
+                        {% set inscripto = (materia.E_INSCRIPCION) ? 'insc' : '' %}
+                        {% set seleccionada = (materia.SELECCIONADA) ? 'active' : '' %}
+                        
+                            <li class='{{ inscripto }} {{ seleccionada }}'>
+                                <a title='{{ materia.nombre }} - ({{materia.codigo}})' alt="{{ this.data.prueba_stress_habilitada? materia.id : '' }}" href='{{ materia.URL_MATERIA }}'><span class='js-filter-content'>{{ materia.nombre|raw }}</span></a>
+                            </li>
+                        
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endspaceless %}
+        
+    {% else %}
+        
+        <div class="alert alert-warning text-center text-warning">{{"inscripcion.no_hay_actividades"|trans}}</div>
+        
+    {% endif %}
+    
+{% endblock %}

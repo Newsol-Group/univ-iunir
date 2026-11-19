@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000239" descripcion="toba_ei_cuadro">
+	<tabla nombre="apex_objeto">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000239"/>
+			<columna nombre="clase_proyecto" valor="toba"/>
+			<columna nombre="clase" valor="toba_ei_cuadro"/>
+			<columna nombre="punto_montaje" valor="1"/>
+			<columna nombre="subclase" valor="cuadro_salida_fop"/>
+			<columna nombre="subclase_archivo" valor="operaciones/_lib/cuadro_salida_fop.php"/>
+			<columna nombre="nombre" valor="Ficha del Alumno - ci_reportes_ficha_alumno - rep_datos_becas - cuadro"/>
+			<columna nombre="colapsable" valor="0"/>
+			<columna nombre="creacion" valor="2011-07-14 16:33:47"/>
+			<columna nombre="posicion_botonera" valor="abajo"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_eventos">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="evento_id" valor="770000226"/>
+			<columna nombre="objeto" valor="770000239"/>
+			<columna nombre="identificador" valor="seleccion"/>
+			<columna nombre="etiqueta" valor=""/>
+			<columna nombre="maneja_datos" valor="1"/>
+			<columna nombre="sobre_fila" valor="0"/>
+			<columna nombre="imagen_recurso_origen" valor="apex"/>
+			<columna nombre="imagen" valor="doc.gif"/>
+			<columna nombre="en_botonera" valor="0"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="accion" valor="V"/>
+			<columna nombre="accion_vinculo_carpeta" valor="38000098"/>
+			<columna nombre="accion_vinculo_item" valor="14000022"/>
+			<columna nombre="accion_vinculo_popup" valor="1"/>
+			<columna nombre="accion_vinculo_celda" valor="popup"/>
+			<columna nombre="es_seleccion_multiple" valor="0"/>
+			<columna nombre="es_autovinculo" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_cuadro">
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000239"/>
+			<columna nombre="columnas_clave" valor="propuesta"/>
+			<columna nombre="clave_dbr" valor="0"/>
+			<columna nombre="ancho" valor="100%"/>
+			<columna nombre="ordenar" valor="0"/>
+			<columna nombre="paginar" valor="0"/>
+			<columna nombre="tipo_paginado" valor="P"/>
+			<columna nombre="mostrar_total_registros" valor="0"/>
+			<columna nombre="eof_invisible" valor="0"/>
+			<columna nombre="siempre_con_titulo" valor="0"/>
+			<columna nombre="exportar_paginado" valor="0"/>
+			<columna nombre="exportar" valor="0"/>
+			<columna nombre="exportar_rtf" valor="0"/>
+			<columna nombre="scroll" valor="1"/>
+			<columna nombre="scroll_alto" valor="350px"/>
+			<columna nombre="cc_modo" valor="t"/>
+			<columna nombre="cc_modo_anidado_colap" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_cuadro_cc">
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000239"/>
+			<columna nombre="objeto_cuadro_cc" valor="770000024"/>
+			<columna nombre="identificador" valor="propuesta"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="columnas_id" valor="propuesta"/>
+			<columna nombre="columnas_descripcion" valor="propuesta_nombre"/>
+			<columna nombre="pie_contar_filas" valor="0"/>
+			<columna nombre="pie_mostrar_titular" valor="0"/>
+			<columna nombre="pie_mostrar_titulos" valor="0"/>
+			<columna nombre="modo_inicio_colapsado" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ei_cuadro_columna">
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000239"/>
+			<columna nombre="objeto_cuadro_col" valor="770000648"/>
+			<columna nombre="clave" valor="beca_fecha_vigencia_hasta"/>
+			<columna nombre="orden" valor="3"/>
+			<columna nombre="titulo" valor="Beca fecha vigencia hasta"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="8"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000239"/>
+			<columna nombre="objeto_cuadro_col" valor="770000650"/>
+			<columna nombre="clave" valor="bonificacion"/>
+			<columna nombre="orden" valor="5"/>
+			<columna nombre="titulo" valor="Bonificación"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="0"/>
+			<columna nombre="formateo" valor="11"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000239"/>
+			<columna nombre="objeto_cuadro_col" valor="770000651"/>
+			<columna nombre="clave" valor="tipo_beneficio_nombre"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="titulo" valor="Beca/Bonificación"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="0"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000239"/>
+			<columna nombre="objeto_cuadro_col" valor="770000652"/>
+			<columna nombre="clave" valor="nombre_institucion"/>
+			<columna nombre="orden" valor="6"/>
+			<columna nombre="titulo" valor="Institución"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="0"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000239"/>
+			<columna nombre="objeto_cuadro_col" valor="770000653"/>
+			<columna nombre="clave" valor="beca_fecha_vigencia_desde"/>
+			<columna nombre="orden" valor="2"/>
+			<columna nombre="titulo" valor="Beca fecha vigencia desde"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="8"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="770000239"/>
+			<columna nombre="objeto_cuadro_col" valor="770000654"/>
+			<columna nombre="clave" valor="beca"/>
+			<columna nombre="orden" valor="4"/>
+			<columna nombre="titulo" valor="Beca"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="0"/>
+			<columna nombre="formateo" valor="11"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+	</tabla>
+</componente>

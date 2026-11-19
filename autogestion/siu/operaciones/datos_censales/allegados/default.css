@@ -1,0 +1,80 @@
+.well { 
+	padding-top: 0px; 
+	padding-bottom: 0px; 
+	padding-left: 10px; 
+	padding-right: 10px; 
+}
+
+h2 { 
+	border-bottom: 0px;
+	margin: 0px;
+}
+
+#allegados select {
+	width: 310px;
+}
+
+#allegados .js-input {
+	width: 550px;
+}
+
+#allegados .eventos {
+	padding-right: 0px;
+	margin-right: 0px;
+	width: 15%;
+}
+
+h3 { 
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.control-group {
+    margin-bottom: 0px;
+}
+
+.cg-margen {
+	margin-bottom: 5px;
+}
+
+#allegados .mensaje {
+	margin-top: 10px;
+}
+
+#allegados .inline-help {
+	font-size: 75%;
+	line-height: 10px;
+}
+
+#allegados .input-localidad {
+	width: 435px;
+}
+
+#allegados .pais-localidad {
+	margin-right: 10px;
+	width: 200px;
+}
+
+#allegados .btn-cp {
+	margin-left: 10px;
+	margin-top: 26px;
+}
+
+#allegados .select-largo {
+	width: 655px;
+}
+
+#allegados .input-medio {
+	width: 300px;
+}
+
+#allegados .input-largo {
+	width: 643px;
+}
+
+#allegados .input-calle {
+	width: 265px;
+}
+
+.nota-selector {
+	width: 300px;
+}

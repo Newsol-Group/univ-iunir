@@ -1,0 +1,112 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	{% set form = this.get_form() %}
+	{% autoescape false %}
+	{{ form.encabezado }}
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-inferior'>
+				<div class='pull-left'>
+					<h2>{{this.get_nombre()|trans}}</h2>
+				</div>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'guardar_datos_personales')}}
+				</div>
+				<div class='clearfix'></div>
+			</div>
+		</div>
+
+		{% if form.hay_visibles_agrupado('orientacion_vocacional') %}	
+			<div class='well clearfix'>
+				<h3 class='toggle-header' onclick="toggle('orientacion_vocacional')">{{'orientacion_vocacional'|trans}}</h3>
+				<div id='orientacion_vocacional' class='toggle-div'>
+					<div class='clearfix cg-margen'>
+						{{ form.control_group('orientacion_recibida') }}
+					</div>
+				</div>
+			</div>
+		{% endif %}
+
+		{%if form.hay_visibles_agrupado('datos_estudios_sec') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('datos_estudios_sec')">{{'datos_estudios_sec'|trans}}</h3>
+			<div class='toggle-div'> 
+                            {% if form.def_visible('es_mayor_25_sin_secundario') %}
+                                <div class='clearfix cg-margen'>
+                                {{ form.checkbox('es_mayor_25_sin_secundario') }}
+                                </div>
+                            {% endif %}  
+                        </div>
+                                <div id='datos_estudios_sec' class='toggle-div'>
+       
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('anio_egreso_sec', 'span6') }}
+				</div>
+				<div class='clearfix cg-margen'>
+					{{ form.checkbox('adeuda_materias') }}	
+				</div>
+				{% if form.def_visible('colegio_secundario') %}
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('colegio_secundario') }}
+					{{ form.control_group('colegio_secundario_descr') }}
+					<div class="pull-left fix-boton">
+						<input id="btnSelectorColegio" value="{{'seleccionar_colegio'|trans}}" type="button" class="btn btn-inverse" />
+						<input id="btnLimpiarColegio" value="{{'limpiar'|trans}}" type="button" class="btn btn-inverse" />
+					</div>
+				</div>
+				{% endif %}
+				{% if form.def_visible('titulo_secundario') %}
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('titulo_secundario') }}
+					{{ form.control_group('titulo_secundario_descr') }}
+					<div class="pull-left fix-boton">
+						<input id="btnSelectorTitulo" value="{{'seleccionar_titulo'|trans}}" type="button" class="btn btn-inverse" />
+						<input id="btnLimpiarTitulo" value="{{'limpiar'|trans}}" type="button" class="btn btn-inverse" />
+					</div>
+				</div>
+				{% endif %}
+			</div>
+		</div>
+		{% endif %}
+
+		{%if form.hay_visibles_agrupado('datos_estudios_sup') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('datos_estudios_sup')">{{'datos_estudios_sup'|trans}}</h3>
+			<div id='datos_estudios_sup' class='toggle-div'>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('alu_otestsup_uni', 'span6') }}
+					{{ form.control_group('alu_otestsup_tipo', 'span6') }}
+				</div>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('alu_otestsup_carr') }}
+				</div>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('alu_otestsup_niv', 'span6') }}
+					{{ form.control_group('alu_otestsup_area', 'span6') }}
+				</div>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('alu_otestsup_esta', 'span6') }}
+					<div id='div-alu_otestsup_egre' class='span6'>
+					{{ form.control_group('alu_otestsup_egre') }}
+					</div>
+				</div>
+				<div id='motivos-abandono' class='clearfix cg-margen'>
+					{{ form.control_group('alu_otestsup_razon_abandono', 'span6') }}
+					<div id='motivo-abandono-otro' class='span6'>
+					{{ form.control_group('alu_otestsup_razon_abandono_otros') }}
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-superior'>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'guardar_datos_personales')}}
+				</div>
+			</div>
+		</div>
+
+	</form>
+	{% endautoescape %}
+{% endblock %}

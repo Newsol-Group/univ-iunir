@@ -1,0 +1,42 @@
+{% macro mostrar(viene_de_convocatorias_becas, hay_datos_faltantes_convocatoria, url_siguiente_paso) %}
+
+    {# Si viene de la operación "Convocatorias a Becas" y no hay datos faltantes para dicha convocatoria #}
+    {% if viene_de_convocatorias_becas and not hay_datos_faltantes_convocatoria %}
+
+        <form action="{{ url_siguiente_paso }}" method="get">
+
+            <div class="alert alert-info alert-block" style="margin-top: 20px; text-align: left !important;">
+
+                <label class="checkbox pull-left" style="font-size: 20px; line-height: 25px; margin-top: 10px;">
+                    <input id="js-declaracion-becas" type="checkbox" value="">
+                    &nbsp;{{ 'convocatorias_becas.declaracion_datos_correctos' | trans }}
+                </label>
+
+                <button type="submit" id="js-btn-continuar" class="btn btn-large btn-primary pull-right" disabled>{{ 'convocatorias_becas.continuar' | trans }}</button>
+
+                <div class="clearfix"></div>
+            </div>
+
+        </form>
+
+        <script type="application/javascript">
+
+            $( document ).ready(function() {
+
+                $( "body" ).on( "click", "#js-declaracion-becas", function() {
+
+                    if ( $(this).is(':checked') ) {
+                        $("#js-btn-continuar").removeAttr( "disabled" );
+                    } else {
+                        $("#js-btn-continuar").attr( "disabled", true );
+                    }
+
+                });
+
+            });
+
+        </script> 
+
+    {% endif %}
+
+{% endmacro %}

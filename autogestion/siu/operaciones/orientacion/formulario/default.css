@@ -1,0 +1,34 @@
+#formulario #o_disponibles {
+	display:none;
+}
+
+#formulario tr.data {
+	cursor: pointer;
+}
+
+#formulario .orientacion {
+	width: 10%;
+}
+
+#formulario .nombre {
+	width: 30%;
+}
+
+#formulario .titulo {
+	width: 50%;
+}
+
+#formulario .orientacion-acciones {
+	margin-bottom: 20px;
+}
+
+#formulario table {
+	background-color: white;
+}
+td.seleccion {
+	width: 10%;
+}
+td a.btn-selec {
+	margin: auto;
+	display: block;
+}

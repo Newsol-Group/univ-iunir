@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guarani" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="440" leftMargin="85" rightMargin="70" topMargin="79" bottomMargin="56" uuid="795544f7-0e26-4b47-a261-359c3a75a14a">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Arial" fontSize="14" isBold="true" isUnderline="true" pdfFontName="Helvetica-Bold"/>
+	<style name="Comun" fontName="Arial" fontSize="12" isItalic="false" pdfFontName="Helvetica"/>
+	<style name="Resalt" fontName="Arial" fontSize="12" isBold="true" pdfFontName="Helvetica-Bold"/>
+	<style name="Pie" fontName="Times New Roman" fontSize="8" pdfFontName="Times-Roman"/>
+	<parameter name="nro_solicitud" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="apellido_y_nombre" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+	$P!{apellido_y_nombre} AS apellido_y_nombre,
+	vw_personas.desc_tipo_documento || ' ' || vw_personas.nro_documento as documento_principal,
+	COALESCE(sga_alumnos.legajo, ' ') as legajo,
+	CASE vw_personas.sexo
+		WHEN 'F' THEN 'la alumna'
+		ELSE 'el alumno' 
+	END AS alu_desc_segun_sexo,
+	CASE vw_personas.sexo
+		WHEN 'F' THEN sga_certificados.nombre_femenino
+		WHEN 'X' THEN sga_certificados.nombre_no_binario
+		ELSE sga_certificados.nombre 
+	END AS certificado_nombre,
+	COALESCE(sga_certificados_otorg.nro_expediente, ' - ') AS nro_expediente,
+	COALESCE(sga_certificados_otorg.nro_disposicion_decano, ' -- ') as nro_disposicion_decano,
+	COALESCE(sga_certificados_otorg.resolucion_rectorado, ' -- ') as nro_resolucion,
+	to_char(CURRENT_DATE, 'DD/MM/YYYY') AS fecha_actual,
+	sga_instituciones.nombre AS nombre_institucion,
+	f_responsables_academicas_propuesta(sga_propuestas.propuesta) AS ra_nombre,
+	mug_localidades.nombre as ciudad,
+	sga_planes.nombre as plan_nombre,
+        sga_planes.codigo as plan_codigo,
+    	sga_propuestas.nombre as propuesta_nombre,
+    	'(' || sga_propuestas.codigo || ') ' || sga_propuestas.nombre as propuesta_nombre_completo
+FROM
+	sga_certificados_otorg
+JOIN	sga_certificados ON sga_certificados_otorg.certificado = sga_certificados.certificado
+JOIN	sga_alumnos ON sga_alumnos.alumno = sga_certificados_otorg.alumno
+JOIN	sga_ubicaciones ON sga_alumnos.ubicacion = sga_ubicaciones.ubicacion
+JOIN	mug_localidades ON sga_ubicaciones.localidad = mug_localidades.localidad
+JOIN	vw_personas ON sga_alumnos.persona = vw_personas.persona
+JOIN	sga_planes_versiones ON sga_certificados_otorg.plan_version = sga_planes_versiones.plan_version
+JOIN	sga_planes ON sga_planes_versiones.plan = sga_planes.plan
+JOIN	sga_propuestas ON sga_planes.propuesta = sga_propuestas.propuesta
+JOIN	sga_responsables_academicas ON sga_responsables_academicas.responsable_academica = get_ra_inst_araucano_propuesta(sga_planes.propuesta, 'RA')
+JOIN	sga_instituciones ON sga_responsables_academicas.institucion = sga_instituciones.institucion
+JOIN    mdp_personas ON sga_alumnos.persona = mdp_personas.persona
+WHERE
+	sga_certificados_otorg.nro_solicitud = $P{nro_solicitud}]]>
+	</queryString>
+	<field name="apellido_y_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="documento_principal" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="legajo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alu_desc_segun_sexo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="certificado_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nro_expediente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nro_disposicion_decano" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nro_resolucion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_actual" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre_institucion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ra_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ciudad" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="plan_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="plan_codigo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="propuesta_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="propuesta_nombre_completo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="95" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="0" y="0" width="440" height="27" uuid="c72c7ff7-b55b-4ae4-a249-886c4478ce08"/>
+				<textElement textAlignment="Center">
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[FORMULARIO T.E.D. 1.f.-]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Comun" x="172" y="49" width="268" height="15" uuid="f7130b9d-f701-4429-9b8c-7cd18496888f"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["T.E.D. Nº: " + $F{nro_expediente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Comun" x="55" y="66" width="385" height="19" uuid="1dcdac1c-204b-4d9b-bad3-dab9e7858f58"/>
+				<textElement textAlignment="Right">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ciudad} + ", " + $F{fecha_actual}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="544" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="440" height="56" uuid="666fde87-f088-4f21-9c06-9ba686f7c6cd"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["						VISTO: El T.E.D. Nº: " + $F{nro_expediente} + " iniciado por " + $F{apellido_y_nombre}.toUpperCase() + ", " + $F{documento_principal} + ", quien ha finalizado los estudios de la carrera de " + $F{propuesta_nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Comun" x="0" y="433" width="440" height="43" uuid="d9aceb94-a9f2-486e-880f-c36d70f64c78"/>
+				<textElement textAlignment="Justified">
+					<font size="12" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[ARTICULO 3º: ELEVAR, las actuaciones correspondientes a Secretaría General Académica.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Comun" x="0" y="476" width="440" height="31" uuid="d5646e3a-6b69-4289-99a0-b46972dab366"/>
+				<textElement textAlignment="Justified">
+					<font size="12" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[ARTICULO 4º: REGISTRAR, COMUNICAR, NOTIFICAR.  Cumplido.
+ARCHIVAR.-]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Resalt" x="0" y="521" width="396" height="17" uuid="11b44d57-f66a-4f78-8e27-2f27aab6528b"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["DISPOSICION Nº: " + $F{nro_disposicion_decano}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="77" width="440" height="96" uuid="4f5df69a-64b5-4df7-bc4d-1057ff34e1ad"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["						CONSIDERANDO:\n" +
+"						QUE: la persona ha cumplido con todos los requisitos exigidos por el Plan de Estudios " + $F{plan_nombre} + " de la Carrera de " + $F{propuesta_nombre} + " de la facultad de " + $F{ra_nombre} + " de esta Universidad, de acuerdo a lo establecido por Res. Nº " + $F{nro_resolucion} + ", de el/la " + $F{nombre_institucion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="270" width="440" height="69" uuid="78620e0a-de21-43d7-ac96-a3d3d4f2ded2"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ARTICULO 1º: CERTIFICAR, que " + $F{apellido_y_nombre}.toUpperCase() + " - " + $F{documento_principal} + ".- ha finalizado sus estudios en la Carrera de " + $F{propuesta_nombre} + ", haciendose acreedor al título de " + $F{certificado_nombre} + ".-"]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="349" width="440" height="69" uuid="eb56b70e-f0cd-4e7b-b40a-35ca46eace1c"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["ARTICULO 2º: SOLICITAR, a Rectorado, se expida el diploma de " + $F{certificado_nombre} + " en la Carrera de " + $F{propuesta_nombre} + ", Plan de Estudios " + $F{plan_nombre} + ", de acuerdo a la Res. Nº " + $F{nro_resolucion} + " de el/la " + $F{nombre_institucion} + "."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Comun" x="0" y="184" width="440" height="19" uuid="5406eebf-9cc8-4820-adcc-31758184ab39"/>
+				<textElement textAlignment="Center">
+					<font size="12" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[POR ELLO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Comun" x="0" y="245" width="440" height="19" uuid="e726fd41-385f-4a03-bdbb-6fe6add25561"/>
+				<textElement textAlignment="Center">
+					<font size="12" isItalic="false"/>
+				</textElement>
+				<text><![CDATA[DISPONE:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="0" y="203" width="440" height="32" uuid="8308339e-1d88-45fb-aaa6-1498759672e9"/>
+				<textElement textAlignment="Justified">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA["EL/LA: " + $F{ra_nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="68" splitType="Stretch">
+			<textField>
+				<reportElement style="Pie" x="0" y="24" width="440" height="44" uuid="c2bb6663-86cd-4b51-84f1-83e1eb753644"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ra_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Pie" x="0" y="3" width="440" height="21" uuid="4fd4a198-6847-4319-b44a-bd0078af377c"/>
+				<textElement textAlignment="Center">
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_institucion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</summary>
+</jasperReport>

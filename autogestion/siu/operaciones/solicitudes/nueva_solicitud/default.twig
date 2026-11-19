@@ -1,0 +1,72 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+
+    {% import "kernel/macro_notificaciones.twig" as notificaciones %}
+
+<div class="titulo_operacion row-fluid">
+	<div class="span12">
+		<h2 class="resaltar divisor clearfix">
+			<span style="margin-left: 20px;">{{'solicitar_constancias'|trans|capitalize}}</span>
+		</h2>
+	</div>
+</div>
+
+    {% if this.data.resultado.ok %}
+        <br><div class="alert alert-success notificaciones-centrar">{{ 'nueva_solicitud_ok' | trans }}</div><br>
+    {% endif %}
+
+    {% if this.data.resultado.mensajes %}
+        {{ notificaciones.render_notif(this.data.resultado.mensajes, true) }}
+        <div style="margin-bottom: 15px;"></div>
+    {% endif %}
+
+<form id="form" method="post" action="{{this.data.url_nueva_solicitud}}" class="form-horizontal">
+	<div>
+		<div class="control-group span8">
+			<label class="control-label label-obligatorio" for="constancia">{{ 'constancias_certificados.label_constancia' | trans }}</label>
+			<div class="controls">
+				<select id="constancia" name="constancia" style="width: 100%;">
+					<option value="0">-- Seleccione --</option>
+					{% for constancia in this.data.constancias %}
+					<option data-formulario="{{constancia.formulario}}" value="{{constancia.id}}">{{constancia.nombre}}</option>
+					{% endfor %}
+				</select>
+			</div>
+		</div>
+		<div class="control-group span3">
+			<label class="control-label label-obligatorio" for="copias">{{ 'constancias_certificados.label_copias' | trans }}</label>
+			<div class="controls">
+				<select id="copias" name="copias" style="width: auto;">
+				</select>
+			</div>
+		</div>
+	</div>
+<div class="span11" id="filtro" ></div>
+<div class="span11"  id="filtro_resultado" >
+<select id="resultado_filtro" name="resultado_filtro" style="width: 100%;"></select>
+</div>
+	<div>
+		<div class="control-group span11">
+			<label class="control-label label-obligatorio" for="presentar">{{ 'constancias_certificados.label_presentar_a' | trans }}</label>
+			<div class="controls">
+				<input id="presentar" name="presentar" type="text" style="width: 100%;" maxlength="200">
+			</div>
+		</div>
+	</div>
+	<div>
+		<div class="control-group span11">
+			<label class="control-label" for="observaciones">{{ 'constancias_certificados.label_observaciones' | trans }}</label>
+			<div class="controls">
+				<textarea id="observaciones" name="observaciones" class="no-ajax" style="width: 100%; height: 100px;" maxlength="200">
+				</textarea>
+			</div>
+		</div>
+	</div>
+	<div>
+		<div class="control-group span11">
+			<a href="{{this.data.url_volver}}" class="btn btn-info pull-right">{{ 'constancias_certificados.volver' | trans }}</a>
+			<button id="guardar" type="submit" class="btn btn-info pull-right">{{ 'constancias_certificados.guardar' | trans }}</button>
+		</div>
+	</div>
+</form>
+{% endblock %}

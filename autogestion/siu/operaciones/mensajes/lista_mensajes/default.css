@@ -1,0 +1,130 @@
+#lista_mensajes .table {
+    float: left;
+    margin-bottom: 18px;
+    margin-top: 20px;
+    width: 100%;
+}
+
+#lista_mensajes tr:hover h4 {
+    color: #000;
+    cursor: pointer;
+}
+
+#lista_mensajes tr {
+    background-color: #F9F9F9;
+}
+
+#lista_mensajes td {
+    padding: 6px;
+    font-size: 12px;
+    color: #666;
+}
+
+#lista_mensajes h4 {
+    color: #666;
+    margin: 0;
+    font-weight: normal;
+    font-size: 13px;
+}
+
+#lista_mensajes tr.abierto td {
+    background-color: white;
+}
+
+#lista_mensajes h2 {
+    overflow: hidden;
+}
+
+.mensaje {
+    border-top: 1px solid #F89406;
+    display: block;
+    padding: 10px 0 5px 25px;
+    display: none;
+    margin-top: 7px;
+}
+
+.fecha {
+    font-size: 11px;
+    color: #666;
+    margin: 0 17px 0 0;
+}
+
+.fecha span{
+    float: left;
+    padding: 1px 7px 0 0;
+}
+
+.mensajes {
+    margin: 0 0 2px 5px;
+}
+
+#lista_mensajes .icon-colapse {
+    /*background-position: -288px -119px;*/
+    float: left;
+    margin: 0 5px 0 5px
+}
+
+#lista_mensajes tr.abierto .icon-colapse {
+    /*background-position: -313px -119px;*/
+    display: block;
+}
+
+#lista_mensajes a.btn {
+    padding: 5px;
+    margin-bottom: 3px;
+    font-weight: normal;
+}
+
+#lista_mensajes a.btn i {
+    display: block;
+    float: left;
+    margin: 2px 5px 0 0;
+}
+
+#lista_mensajes .icon-nuevo-mensaje {
+    background-position: -23px -24px;
+}
+
+#lista_mensajes span.remitente {
+    display: block;
+	width: 175px;
+	float: left;
+}
+
+#lista_mensajes tr.leido:not(.abierto) h4 {
+    color: #000000 !important;
+	font-weight: bold;
+	
+}
+.encabezado-form{
+    padding: 5px 10px 5px 10px;
+    color: #FFF;
+    background-color:#1b88cc;
+    font-weight: bold;
+    border-top-right-radius: 3px;
+    border-top-left-radius:3px;	
+}
+
+form .accordion-group {
+	background-color: #08c;
+	margin-bottom: 8px;
+    border: 1px solid #d4d4d4;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+
+	-moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.065);
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.065);
+}
+
+
+.form-filter-date{
+    padding: 20px 0px 20px 20px;
+}
+.button-footer{
+    position:relative;
+    margin-top:5px;
+    left:28px;
+}
+.label-group-input{
+    margin-top:4px;
+}

@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guarani" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="69127b65-a385-4833-859c-6af89ec2f73b">
+	<property name="ireport.zoom" value="1.771561000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="928"/>
+	<style name="Title" fontName="Times New Roman" fontSize="14" isBold="true" isUnderline="true" pdfFontName="Times-Bold"/>
+	<style name="Resalt" fontSize="10" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+	<style name="Comun" fontSize="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Row" mode="Transparent"/>
+	<subDataset name="actividades_alumno" whenResourceMissingType="Error" uuid="33ad9ccd-b465-4b50-a7e7-e0914f992790">
+		<parameter name="alumno" class="java.lang.Integer" isForPrompting="false">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT  COALESCE(p.actividad_codigo || ' - ', '') || COALESCE(ep.nombre, p.actividad_nombre) as actividad_descr,
+						p.fecha,
+						p.nota || ' (' || p.nota_descripcion || ')' AS nota_completa,
+						p.nro_acta,
+						p.resultado_descripcion,
+						p.folio_fisico
+					FROM f_certificado_actividades($P{alumno},'T','E','T', false, true, false) as p
+					JOIN sga_alumnos ON sga_alumnos.alumno = $P{alumno}
+					JOIN sga_elementos_revision as er ON er.elemento = p.elemento
+					LEFT JOIN sga_elementos_plan as ep ON (ep.elemento_revision = er.elemento_revision AND ep.plan_version = sga_alumnos.plan_version);]]>
+		</queryString>
+		<field name="actividad_descr" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="fecha" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="nota_completa" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="nro_acta" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="resultado_descripcion" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="folio_fisico" class="java.lang.Integer">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+	</subDataset>
+	<subDataset name="suma_examenes" whenResourceMissingType="Error" uuid="04932c8e-1964-4963-a7bb-7b4103737395">
+		<parameter name="alumno" class="java.lang.Integer"/>
+		<queryString>
+			<![CDATA[SELECT COALESCE(sum(case when p.resultado = 'A' THEN 1 ELSE 0 END), 0) as examenes_aprobados,
+     						COALESCE(sum(case when p.resultado = 'R' THEN 1 ELSE 0 END), 0) as examenes_desaprobados
+					 FROM f_certificado_actividades($P{alumno}, 'T', 'E', 'T', false, true, false) as p;]]>
+		</queryString>
+		<field name="examenes_aprobados" class="java.lang.String">
+			<fieldDescription><![CDATA[]]></fieldDescription>
+		</field>
+		<field name="examenes_desaprobados" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="solicitud" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="autoridad_cargo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="autoridad_nombre" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Firma"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ocultar_firma" class="java.lang.Boolean">
+		<defaultValueExpression><![CDATA[false]]></defaultValueExpression>
+	</parameter>
+	<parameter name="verificacion_codigo" class="java.lang.String"/>
+	<parameter name="verificacion_url" class="java.lang.String"/>
+	<parameter name="verificacion_qr" class="java.lang.String"/>
+        <parameter name="apellido_y_nombre" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT					
+					sga_alumnos.alumno,
+					COALESCE(sga_alumnos.legajo, ' -- ') AS legajo,
+					$P!{apellido_y_nombre} as apellido_y_nombre,
+                                        vw_personas.desc_tipo_documento || ' ' || vw_personas.nro_documento as documento_principal,
+					vw_planes.propuesta_nombre as propuesta_nombre,
+					'(' || vw_planes.propuesta_codigo || ') ' || vw_planes.propuesta_nombre as propuesta_nombre_completo,
+					vw_planes.propuesta_nombre_abreviado as propuesta_nombre_abreviado,
+					sga_ubicaciones.nombre as ubicacion_nombre,
+					vw_planes.plan_nombre as plan_nombre,
+					vw_planes.version_nombre as plan_version_nombre,
+					sga_constancias_solicitud.presentar_a,
+					COALESCE(sga_constancias_solicitud.observaciones, ' ') AS observaciones,
+					vw_localidades.localidad_nombre as ciudad,
+					vw_localidades.provincia_nombre as provincia,
+					sga_instituciones.nombre as nombre_institucion,
+					f_responsables_academicas_propuesta(sga_alumnos.propuesta) AS ra_nombre
+				FROM sga_constancias_solicitud
+				JOIN sga_alumnos ON sga_alumnos.alumno = sga_constancias_solicitud.alumno
+				JOIN vw_personas ON sga_alumnos.persona = vw_personas.persona
+				JOIN mdp_personas ON vw_personas.persona = mdp_personas.persona
+                                JOIN vw_planes ON vw_planes.plan_version = sga_alumnos.plan_version
+				JOIN sga_ubicaciones ON sga_alumnos.ubicacion = sga_ubicaciones.ubicacion
+				JOIN sga_instituciones ON sga_instituciones.institucion = get_ra_inst_araucano_propuesta(sga_alumnos.propuesta, 'IG')
+				JOIN vw_localidades ON sga_ubicaciones.localidad = vw_localidades.localidad
+				WHERE sga_constancias_solicitud.solicitud = $P{solicitud}
+				LIMIT 1]]>
+	</queryString>
+	<field name="alumno" class="java.lang.Integer"/>
+	<field name="legajo" class="java.lang.String"/>
+	<field name="apellido_y_nombre" class="java.lang.String"/>
+	<field name="documento_principal" class="java.lang.String"/>
+	<field name="propuesta_nombre" class="java.lang.String"/>
+	<field name="propuesta_nombre_completo" class="java.lang.String"/>
+	<field name="propuesta_nombre_abreviado" class="java.lang.String"/>
+	<field name="ubicacion_nombre" class="java.lang.String"/>
+	<field name="plan_nombre" class="java.lang.String"/>
+	<field name="plan_version_nombre" class="java.lang.String"/>
+	<field name="presentar_a" class="java.lang.String"/>
+	<field name="observaciones" class="java.lang.String"/>
+	<field name="ciudad" class="java.lang.String"/>
+	<field name="provincia" class="java.lang.String"/>
+	<field name="nombre_institucion" class="java.lang.String"/>
+	<field name="ra_nombre" class="java.lang.String"/>
+	<variable name="fecha_narrada" class="java.lang.String">
+		<variableExpression><![CDATA[new java.text.SimpleDateFormat("dd 'días del mes de' MMMM 'de' yyyy", new java.util.Locale("es")).format(new java.util.Date())]]></variableExpression>
+	</variable>
+	<background>
+		<band height="802" splitType="Stretch">
+			<rectangle>
+				<reportElement positionType="Float" x="0" y="0" width="555" height="772" uuid="95eeda24-5424-45d1-a58d-6613412d1435"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</rectangle>
+		</band>
+	</background>
+	<title>
+		<band height="150" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="28" y="56" width="497" height="20" uuid="6a90df78-f68b-419f-9e56-3991bf2469a9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_institucion}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="28" y="87" width="497" height="57" uuid="7bc46344-62c8-4ce4-a3f3-8d3ad4b8f9a3"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ra_nombre}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="28" y="7" width="92" height="40" uuid="912ce5d3-cc6d-484f-b9a9-84409f49c44a"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="133" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="28" y="17" width="497" height="23" uuid="b2dbb296-c8f6-4d07-9064-227720e4bf3a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font pdfFontName="Times-Bold"/>
+				</textElement>
+				<text><![CDATA[Constancia de Actividades Rendidas por Examen]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Comun" x="54" y="50" width="447" height="67" uuid="2c0991b3-4e7c-4a99-ab9a-174db49aca9a"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Se deja constancia que en los libros de actas del Departamento respectivo consta que " + $F{apellido_y_nombre} + " con " + $F{documento_principal}.toUpperCase() + ", matrícula " + $F{legajo} + " de la propuesta " + $F{propuesta_nombre}.toUpperCase() + " " + $F{plan_version_nombre} + " ha rendido los exámenes que se detallan a continuación:"]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="26" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="11" y="25" width="524" height="1" uuid="0da59b6a-9562-4681-93e1-7c55f25aaf28"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="11" y="11" width="168" height="15" forecolor="#736343" uuid="1a53ecd3-f137-411a-8be3-60a6319c71d9"/>
+				<textElement textAlignment="Left">
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Actividad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="179" y="11" width="69" height="15" forecolor="#736343" uuid="d697c029-2096-4b90-b869-fc23c6577820"/>
+				<textElement textAlignment="Center">
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="248" y="11" width="69" height="15" forecolor="#736343" uuid="9701e176-30d5-4bbb-a6fa-460d4208b442"/>
+				<textElement textAlignment="Center" markup="none">
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Nota]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="317" y="11" width="97" height="15" forecolor="#736343" uuid="c4ecfa35-c1a9-45b0-a5a9-c50708816e68"/>
+				<textElement textAlignment="Center">
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Resultado]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="414" y="11" width="69" height="15" forecolor="#736343" uuid="c97cb3da-ec4f-43e1-99d2-f950d6deb550"/>
+				<textElement textAlignment="Center">
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Acta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="483" y="11" width="52" height="14" forecolor="#736343" uuid="125143b6-1fa4-4e74-8f95-ca2090905122"/>
+				<textElement textAlignment="Center">
+					<font pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Folio]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<componentElement>
+				<reportElement style="Row" positionType="Float" stretchType="RelativeToBandHeight" x="11" y="0" width="524" height="19" uuid="53b550fc-a26a-4389-9d3e-589ab869d3a2"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="actividades_alumno" uuid="af09cdf3-9149-4f67-b084-5d0ae65fb92f">
+						<datasetParameter name="alumno">
+							<datasetParameterExpression><![CDATA[$F{alumno}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="19">
+						<textField isStretchWithOverflow="true">
+							<reportElement style="Comun" positionType="Float" stretchType="RelativeToTallestObject" x="1" y="0" width="167" height="18" uuid="173d215b-51a1-4c52-a422-428d5ad7bb1f"/>
+							<textFieldExpression><![CDATA[$F{actividad_descr}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true">
+							<reportElement style="Comun" x="168" y="1" width="69" height="17" uuid="8b555e05-834f-4b1b-a370-d3572d252232"/>
+							<textElement textAlignment="Center"/>
+							<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement style="Comun" positionType="Float" stretchType="RelativeToTallestObject" x="237" y="1" width="69" height="17" uuid="4778bf64-de2e-471b-8993-ad1f2d9c1755"/>
+							<textElement textAlignment="Center"/>
+							<textFieldExpression><![CDATA[$F{nota_completa}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true">
+							<reportElement style="Comun" positionType="Float" stretchType="RelativeToTallestObject" x="307" y="0" width="97" height="18" uuid="d68e9f92-7af7-426b-8562-9d58c088b879"/>
+							<textElement textAlignment="Center"/>
+							<textFieldExpression><![CDATA[$F{resultado_descripcion}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement style="Comun" x="403" y="1" width="69" height="17" uuid="4cec349c-85ac-4ad3-ab98-daca153e69f8"/>
+							<textElement textAlignment="Center"/>
+							<textFieldExpression><![CDATA[$F{nro_acta}]]></textFieldExpression>
+						</textField>
+						<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+							<reportElement style="Comun" x="472" y="1" width="52" height="17" uuid="59cd828e-7bc4-4921-98ee-a8181ef3d2cb"/>
+							<textElement textAlignment="Center"/>
+							<textFieldExpression><![CDATA[$F{folio_fisico}]]></textFieldExpression>
+						</textField>
+						<line>
+							<reportElement positionType="Float" stretchType="RelativeToBandHeight" x="1" y="18" width="523" height="1" isPrintWhenDetailOverflows="true" uuid="b5d99460-e387-4853-becc-cd43ebf6d7d2"/>
+						</line>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="24" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="-18" y="0" width="591" height="20" forecolor="#D0B48E" uuid="c7e46d33-e813-4439-8760-920fcd32fb98"/>
+				<textField evaluationTime="Report">
+					<reportElement style="Column header" x="532" y="0" width="40" height="20" forecolor="#736343" uuid="65d37b63-a318-45db-86a2-5ba76e66ec40"/>
+					<textElement verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Column header" x="452" y="0" width="80" height="20" forecolor="#736343" uuid="0c7a8b5f-da2e-47af-8789-f6e7477a456d"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font size="10" isBold="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="314" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement style="Comun" x="282" y="254" width="228" height="20" uuid="303f3987-f0f3-44d2-b358-d83b36bf3e7d">
+					<printWhenExpression><![CDATA[($P{ocultar_firma}.booleanValue() == false)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{autoridad_nombre}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="Comun" x="282" y="274" width="228" height="20" uuid="ece7e5c9-d5a3-4073-b3c3-587438551edb">
+					<printWhenExpression><![CDATA[($P{ocultar_firma}.booleanValue() == false)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{autoridad_cargo}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="330" y="253" width="130" height="1" forecolor="#000000" uuid="b6a17712-8d9b-49ff-9793-f2aebc662466">
+					<printWhenExpression><![CDATA[($P{ocultar_firma}.booleanValue() == false)]]></printWhenExpression>
+				</reportElement>
+			</line>
+			<line>
+				<reportElement x="78" y="252" width="130" height="1" uuid="409e51e3-00ea-41ce-a0e4-61483fc82db1">
+					<printWhenExpression><![CDATA[($P{ocultar_firma}.booleanValue() == false)]]></printWhenExpression>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement style="Resalt" x="121" y="253" width="29" height="20" uuid="88814d27-a1e5-4cd6-8b24-2c92f7903092">
+					<printWhenExpression><![CDATA[($P{ocultar_firma}.booleanValue() == false)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center">
+					<font isBold="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Sello]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Comun" x="48" y="111" width="447" height="41" uuid="d46b024e-74e9-4bc8-b69f-3d12deea2eaa"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Se extiende la presente constancia para ser presentada ante "  + $F{presentar_a}.toUpperCase() + " en " + $F{ciudad} + ", " + $F{provincia} + " a los " + $V{fecha_narrada} + "."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Comun" x="48" y="50" width="447" height="46" uuid="43824c6c-4b14-48d2-b800-6bdea3adf515"/>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[((($F{observaciones}.trim()).isEmpty()) ? "" : ("OBSERVACIONES: " + $F{observaciones}))]]></textFieldExpression>
+			</textField>
+			<componentElement>
+				<reportElement stretchType="RelativeToTallestObject" x="48" y="15" width="466" height="20" uuid="265c0bc9-758b-43a8-8a4f-558cfdc51995"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="suma_examenes" uuid="9c28f65a-dc54-415f-89d2-65b082d7e951">
+						<datasetParameter name="alumno">
+							<datasetParameterExpression><![CDATA[$F{alumno}]]></datasetParameterExpression>
+						</datasetParameter>
+						<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+					</datasetRun>
+					<jr:listContents height="18">
+						<textField>
+							<reportElement x="0" y="0" width="172" height="18" uuid="124aa297-c701-47ff-8eaa-97081a039ed5"/>
+							<textFieldExpression><![CDATA["Total de exámenes aprobados: " + $F{examenes_aprobados}]]></textFieldExpression>
+						</textField>
+						<textField>
+							<reportElement x="256" y="0" width="191" height="18" uuid="51433ea3-00dc-4e18-b2fd-68b33c4bc67a"/>
+							<textFieldExpression><![CDATA["Total de exámenes desaprobados: " + $F{examenes_desaprobados}]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+			<textField>
+				<reportElement x="139" y="258" width="300" height="20" uuid="0d413a21-5c57-4cba-975b-e3e210fd2d90">
+					<printWhenExpression><![CDATA[!($P{verificacion_qr}.trim()).isEmpty()]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA["CÓDIGO DE VALIDACIÓN: " + $P{verificacion_codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Comun" x="54" y="273" width="447" height="41" uuid="be5f5b3d-1e7a-43a2-b9f2-d1204979ac9a">
+					<printWhenExpression><![CDATA[!($P{verificacion_qr}.trim()).isEmpty()]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Esta constancia podrá ser validada ingresando a " + $P{verificacion_url} + " completando el código de validación y el Nº de DNI (o pasaporte), o bien escaneando el código QR."]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="227" y="159" width="92" height="92" uuid="3ae80b1d-74ba-410c-8185-3a56ee016ed6">
+					<printWhenExpression><![CDATA[!($P{verificacion_qr}.trim()).isEmpty()]]></printWhenExpression>
+				</reportElement>
+				<imageExpression><![CDATA[$P{verificacion_qr}]]></imageExpression>
+			</image>
+		</band>
+	</summary>
+</jasperReport>

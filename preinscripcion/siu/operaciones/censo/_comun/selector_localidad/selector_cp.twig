@@ -1,0 +1,18 @@
+<div id="selectorCP">
+	{% autoescape false %}
+	{{ form_cp.encabezado }}
+		<div id='contenido_cp' class='hide'>
+			<div class='well clearfix'>
+				<h3>{{'seleccion_cp'|trans}}</h3>
+				<div class='clearfix' style="margin-bottom: 5px;">
+					{{ form_cp.control_group('codigo_postal') }}
+				</div>
+			</div>
+			<div class='pull-right'>
+				<input id="btnAceptar" type="button" value="{{'aceptar' | trans | capitalize }}" class="btn btn-info" />
+				<input id="btnCerrar" type="button" value="{{'cerrar' | trans | capitalize }}" class="btn btn-info" onclick="cerrar_popup()" />
+			</div>
+		</div>
+	</form>
+	{% endautoescape %}
+</div>

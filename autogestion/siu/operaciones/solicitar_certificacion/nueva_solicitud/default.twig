@@ -1,0 +1,142 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+
+    <div class="titulo_operacion">
+        <h2 class="clearfix"><span class="pull-left">{{ "solicitar_certificacion.solicitud_titulo" | trans }}</span>
+            <div class="pull-right" >
+                <button id="js-btn-confirmar" class="btn btn-info" type="button"><i class="icon-ok icon-white"></i> {{ "solicitar_certificacion.confirmar" | trans }}</button>
+            </div>
+        </h2>
+    </div>
+
+	<div id="form-nueva-solicitud-container">
+		
+		<form id="js-form-nueva-solicitud" class="form-horizontal" method="post" action="{{ this.data.url_form }}">
+
+			<h2>{{ "solicitar_certificacion.datos_personales" | trans }}</h2>
+			<div class="row-fluid seccion">
+				
+				<div class="span12">
+					
+					<div class="dato-personal">
+						<span class="etiqueta">{{ "solicitar_certificacion.apellido_nombres" | trans }}:</span> {{ this.data.persona.apellido }} {{ this.data.persona.nombres }}
+					</div>
+					
+					<div class="dato-personal">
+						<span class="etiqueta">{{ "solicitar_certificacion.fecha_nacimiento" | trans }}:</span> {{ this.data.persona.fecha_nacimiento }}
+					</div>
+					
+					<div class="row-fluid">
+						
+						<div class="span6">
+							<div class="dato-personal">
+								<span class="etiqueta">{{ "solicitar_certificacion.tipo_nro_documento" | trans }}:</span> {{ this.data.persona.tipo_documento_desc_abreviada }} {{ this.data.persona.nro_documento }}
+							</div>
+						</div>
+							
+						<div class="span6">
+							
+							<div class="control-group {% if this.data.cuil_invalido %}error{% endif %}">
+								<label class="control-label etiqueta" for="js-cuil">{{ "solicitar_certificacion.cuil" | trans }}:</label>
+								<div class="controls">
+									<input type="text" maxlength="13" id="js-cuil" name="cuil" placeholder="{{ "solicitar_certificacion.ingrese_cuil" | trans }}" value="{{ this.data.cuil? this.data.cuil : (this.data.persona.cuil ? this.data.persona.cuil : '') }}">
+									<span class="help-inline">{% if this.data.cuil_invalido %}{{ "solicitar_certificacion.invalido" | trans }}{% endif %}</span>
+								</div>
+							</div>
+							
+						</div>
+							
+					</div>
+					
+				</div>
+							
+			</div>
+			
+			<h2>{{ "solicitar_certificacion.datos_certificacion" | trans }}</h2>
+			<div class="row-fluid seccion">
+				
+				<div class="span12">
+					
+					<div class="control-group {% if this.data.certificacion_vacia %}error{% endif %}">
+						<label class="control-label etiqueta" for="certificacion" style="width: 200px;">{{ "solicitar_certificacion.certificacion" | trans }} (*):</label>
+						<div class="controls">
+							<select id="certificacion" name="certificacion" class="input-xxlarge">
+								{{ this.armar_combo(this.data.certificaciones_no_tramitadas, 'certificado', 'nombre', this.data.certificacion) | raw }}
+							</select>
+							<span class="help-inline">{% if this.data.certificacion_vacia %}{{ "solicitar_certificacion.obligatorio" | trans }}{% endif %}</span>
+						</div>
+					</div>
+					
+					{% if this.data.colaciones %}
+					<div class="control-group">
+						<label class="control-label etiqueta" for="colacion" style="width: 200px;">{{ "solicitar_certificacion.colacion" | trans }}:</label>
+						<div class="controls">
+							
+							<select id="colacion" name="colacion" class="input-xxlarge">
+								{{ this.armar_combo(this.data.colaciones, 'colacion', 'nombre', this.data.colacion, true) | raw }}
+							  </select>
+							<span class="help-inline"></span>
+							
+						</div>
+					</div>
+					{% endif %}
+						
+					{% if this.data.juramentos %}
+					<div class="control-group">
+						<label class="control-label etiqueta" for="juramento" style="width: 200px;">{{ "solicitar_certificacion.juramento" | trans }}:</label>
+						<div class="controls">
+							
+							<select id="juramento" name="juramento" class="input-xxlarge">
+								{{ this.armar_combo(this.data.juramentos, 'valor', 'descr', this.data.juramento, true) | raw }}
+							</select>
+							<span class="help-inline"></span>
+								
+						</div>
+					</div>
+					{% endif %}
+						
+				</div>
+							
+			</div>
+
+			<h2>{{ "solicitar_certificacion.datos_contacto" | trans }}</h2>
+			<div class="row-fluid">
+				
+				<div class="span12">
+						
+				{% if this.data.datos_contactos %}
+
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>{{ "solicitar_certificacion.tipo" | trans }}</th>
+								<th>{{ "solicitar_certificacion.contacto" | trans }}</th>
+							</tr>
+						</thead>
+
+						<tbody>
+
+							{% for dato_contacto in this.data.datos_contactos %}
+							<tr>
+								<td>{{ dato_contacto.contacto_tipo_descr }}</td>
+								<td>{{ dato_contacto.contacto_descripcion }}</td>
+							</tr>
+							{% endfor %}
+
+						</tbody>
+
+					</table>
+							
+				{% endif %}
+						
+					<p class="lead">{{ "solicitar_certificacion.actualizar_datos_contacto" | trans({'%link%': this.data.url_datos_contacto}) | raw }}</p>
+					
+				</div>
+							
+			</div>
+								
+		</form>
+		
+	</div>
+				
+{% endblock %}

@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guarani" language="groovy" pageWidth="595" pageHeight="842" columnWidth="483" leftMargin="56" rightMargin="56" topMargin="85" bottomMargin="56" uuid="29375c92-969f-44e2-98d6-bdd09ae2715f">
+	<property name="ireport.zoom" value="1.5"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="Title" fontName="Times New Roman" fontSize="14" isBold="true" isUnderline="true" pdfFontName="Times-Bold"/>
+	<style name="Comun" fontName="Arial" fontSize="12" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica"/>
+	<style name="Resalt" fontName="Arial" fontSize="13" isBold="false" isItalic="false" isUnderline="false" pdfFontName="Helvetica"/>
+	<style name="Subrayado" fontName="Arial" fontSize="12" isUnderline="true"/>
+	<parameter name="nro_solicitud" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[0]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="apellido_y_nombre" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+	$P!{apellido_y_nombre} AS apellido_y_nombre,
+	COALESCE(sga_alumnos.legajo, ' ') as legajo,
+	CASE vw_personas.sexo
+		WHEN 'F' THEN 'la alumna'
+		ELSE 'el alumno' 
+	END AS alu_desc_segun_sexo,
+	CASE vw_personas.sexo
+		WHEN 'F' THEN sga_certificados.nombre_femenino
+		WHEN 'X' THEN sga_certificados.nombre_no_binario
+		ELSE sga_certificados.nombre
+	END AS certificado_nombre,
+	COALESCE(sga_certificados_otorg.nro_expediente, ' - ') AS nro_expediente,
+	COALESCE(sga_certificados_otorg.nro_disposicion_decano, ' -- ') as nro_disposicion_decano,
+	to_char(CURRENT_DATE, 'DD/MM/YYYY') AS fecha_actual,
+	sga_instituciones.nombre AS nombre_institucion,
+	f_responsables_academicas_propuesta(sga_propuestas.propuesta) AS ra_nombre,
+	mug_localidades.nombre as ciudad
+FROM
+	sga_certificados_otorg
+JOIN	sga_certificados ON sga_certificados_otorg.certificado = sga_certificados.certificado
+JOIN	sga_alumnos ON sga_alumnos.alumno = sga_certificados_otorg.alumno
+JOIN	sga_ubicaciones ON sga_alumnos.ubicacion = sga_ubicaciones.ubicacion
+JOIN	mug_localidades ON sga_ubicaciones.localidad = mug_localidades.localidad
+JOIN	vw_personas ON sga_alumnos.persona = vw_personas.persona
+JOIN	sga_planes_versiones ON sga_certificados_otorg.plan_version = sga_planes_versiones.plan_version
+JOIN	sga_planes ON sga_planes_versiones.plan = sga_planes.plan
+JOIN	sga_propuestas ON sga_planes.propuesta = sga_propuestas.propuesta
+JOIN	sga_responsables_academicas ON sga_responsables_academicas.responsable_academica = get_ra_inst_araucano_propuesta(sga_planes.propuesta, 'RA')
+JOIN	sga_instituciones ON sga_responsables_academicas.institucion = sga_instituciones.institucion
+JOIN    mdp_personas ON sga_alumnos.persona =  mdp_personas.persona
+WHERE
+	sga_certificados_otorg.nro_solicitud = $P{nro_solicitud}
+	]]>
+	</queryString>
+	<field name="apellido_y_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="legajo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alu_desc_segun_sexo" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="certificado_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nro_expediente" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nro_disposicion_decano" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="fecha_actual" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="nombre_institucion" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ra_nombre" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="ciudad" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="63" splitType="Stretch">
+			<textField>
+				<reportElement style="Resalt" x="12" y="0" width="460" height="19" uuid="99dbc4a1-3c3c-441d-9a35-edc7992bfe48"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{nombre_institucion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Resalt" x="12" y="19" width="460" height="44" uuid="0eeecd1d-a479-47ec-8e27-03d22a4fa6c5"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression><![CDATA[$F{ra_nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="544" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="483" height="470" uuid="f5487404-b836-498c-81d6-563d9d2f71a2"/>
+			</rectangle>
+			<staticText>
+				<reportElement style="Title" x="12" y="13" width="460" height="20" uuid="f2953e03-54c6-4bb9-95ae-557537da5c6b"/>
+				<textElement textAlignment="Center">
+					<font isUnderline="true"/>
+				</textElement>
+				<text><![CDATA[FORMULARIO T.E.D. 1.g.-]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Comun" x="12" y="220" width="460" height="64" uuid="ded8a31a-9763-4932-ae61-8b85a7e5c9c7"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["       Remito a Ud. las actuaciones iniciadas por " + $F{apellido_y_nombre} + " y aprobado por Disposición Nº: " + $F{nro_disposicion_decano} + " que se acompaña. Se solicita expedición de diploma correspondiente a la Carrera de " + $F{certificado_nombre} + "."]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Comun" x="341" y="53" width="127" height="17" uuid="7a654f92-b9bc-4cd9-9545-25a46a48d5a2"/>
+				<textFieldExpression><![CDATA["T.E.D N°: " + $F{nro_expediente}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Comun" x="348" y="439" width="36" height="20" uuid="eada53df-db26-4840-be62-0f6246e26d07"/>
+				<text><![CDATA[Firma]]></text>
+			</staticText>
+			<line>
+				<reportElement x="275" y="432" width="184" height="1" uuid="04a2ab4e-8076-4d03-8d48-22624c506450"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Comun" x="39" y="287" width="335" height="21" uuid="b5679590-bcae-455b-bc48-cca2b854a4f8"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["Sin otro particular, saludo a Ud. atentamente."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Subrayado" x="12" y="181" width="200" height="22" uuid="ee3ed940-16d8-4f96-9940-8b916f7e6f60"/>
+				<text><![CDATA[S                          /                       D:
+]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Comun" x="12" y="130" width="374" height="43" uuid="b8ed9aa4-cafa-4640-a6a9-3fdcb7dad68b"/>
+				<textFieldExpression><![CDATA["A la autoridad responsable de la Secretaría General Académica\n" +
+$F{nombre_institucion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Comun" x="90" y="78" width="378" height="19" uuid="94b41a10-d2b5-424b-8644-8243070b69d1"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA[$F{ciudad} + ", " + $F{fecha_actual}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="12" y="177" width="220" height="1" uuid="0fc3bf06-4e09-4dd8-aad8-c68d11d38d3d"/>
+				<graphicElement>
+					<pen lineStyle="Dotted"/>
+				</graphicElement>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

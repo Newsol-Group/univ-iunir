@@ -1,0 +1,31 @@
+.well { 
+	padding-top: 0px; 
+	padding-bottom: 0px; 
+	padding-left: 10px; 
+	padding-right: 10px; 
+}
+
+h2 { 
+	border-bottom: 0px;
+	margin: 0px;
+}
+
+#idiomas select {
+	width: 310px;
+}
+
+#form_idiomas-idioma_otro {
+	width: 295px;
+}
+
+h3 { 
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.control-group {
+    margin-bottom: 0px;
+}
+
+.cg-margen {
+	margin-bottom: 5px;
+}

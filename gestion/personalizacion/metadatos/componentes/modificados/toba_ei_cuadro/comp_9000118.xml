@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="9000118" descripcion="toba_ei_cuadro">
+	<tabla nombre="apex_objeto_ei_cuadro_columna">
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="9000118"/>
+			<columna nombre="objeto_cuadro_col" valor="770000697"/>
+			<columna nombre="clave" valor="email"/>
+			<columna nombre="orden" valor="9"/>
+			<columna nombre="titulo" valor="Email"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-tex-p1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+	</tabla>
+</componente>

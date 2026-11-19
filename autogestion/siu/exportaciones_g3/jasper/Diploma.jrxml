@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guarani" language="groovy" printOrder="Horizontal" pageWidth="1190" pageHeight="842" orientation="Landscape" columnWidth="1190" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="2e606a43-a7c0-4bd0-983b-fe4bfbf075f4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="37"/>
+	<style name="Title" fontName="Times New Roman" fontSize="14" isBold="true" isUnderline="true" pdfFontName="Times-Bold"/>
+	<style name="Comun" fontName="Arial" fontSize="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Arial" isPdfEmbedded="true"/>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="logo_republica" class="java.lang.String"/>
+	<parameter name="localidad_institucion" class="java.lang.String"/>
+	<parameter name="fecha_actual" class="java.lang.String"/>
+	<parameter name="nombre_responsable_academica" class="java.lang.String"/>
+	<parameter name="nombre_institucion" class="java.lang.String"/>
+	<parameter name="tipo_nro_documento" class="java.lang.String"/>
+	<parameter name="nombre_titulo" class="java.lang.String"/>
+	<parameter name="pais_origen" class="java.lang.String"/>
+	<parameter name="fecha_fin" class="java.lang.String"/>
+	<parameter name="nombre_carrera" class="java.lang.String"/>
+	<parameter name="alumno_nombre_apellido" class="java.lang.String"/>
+	<parameter name="borde" class="java.lang.String"/>
+	<parameter name="frase_rector_decano" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT CURRENT_DATE as fecha]]>
+	</queryString>
+	<field name="fecha" class="java.sql.Date"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="842">
+			<image scaleImage="FillFrame" hAlign="Center">
+				<reportElement positionType="FixRelativeToBottom" x="0" y="0" width="1187" height="842" uuid="7aee7327-3a8f-4f73-8104-147b97968de7"/>
+				<graphicElement>
+					<pen lineWidth="7.25" lineStyle="Double"/>
+				</graphicElement>
+				<imageExpression><![CDATA[$P{borde}]]></imageExpression>
+			</image>
+			<elementGroup>
+				<textField>
+					<reportElement style="Comun" isPrintRepeatedValues="false" x="111" y="696" width="965" height="40" uuid="2a2d206e-1eed-4aaa-bfe6-20c09841c964"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="Arial" size="18" isBold="false" isItalic="true" pdfFontName="Times-Roman" isPdfEmbedded="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{localidad_institucion} +", "+ $P{fecha_actual}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Comun" stretchType="RelativeToBandHeight" x="111" y="343" width="965" height="39" uuid="d013d6b8-3e05-4b13-baa3-3de01bb80903"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="32" isItalic="true" pdfFontName="Times-Roman" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{nombre_responsable_academica}]]></textFieldExpression>
+				</textField>
+				<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+					<reportElement x="141" y="123" width="100" height="100" uuid="18a5968b-6ff9-41d7-8511-a4e1c43683a3"/>
+					<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+				</image>
+				<image scaleImage="FillFrame" hAlign="Center" vAlign="Middle">
+					<reportElement x="312" y="123" width="533" height="160" uuid="854049fa-76e6-402b-8461-970e6d5dd26a"/>
+					<imageExpression><![CDATA[$P{logo_republica}]]></imageExpression>
+				</image>
+				<textField>
+					<reportElement style="Comun" stretchType="RelativeToBandHeight" x="111" y="389" width="965" height="307" uuid="f29deb7c-5499-4fbd-a062-a944589b01fe"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle" markup="styled">
+						<font fontName="Arial" size="22" isItalic="true" pdfFontName="Times-Roman" isPdfEmbedded="false"/>
+						<paragraph lineSpacing="1_1_2"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{frase_rector_decano} + $P{nombre_responsable_academica} + " \n Por cuanto <style isBold='true'>" + $P{alumno_nombre_apellido} +"</style> natural de " + $P{pais_origen} + ",\n " + $P{tipo_nro_documento} + " \n Ha finalizado el " + $P{fecha_fin} + " \n los estudios correspondientes a  <style isBold='true'>" + $P{nombre_carrera} + "</style> \n Por tanto, de acuerdo a las normas vigentes en esta universidad, se confiere el presente diploma de <style isBold='true'>" + $P{nombre_titulo} + "</style>."]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement style="Comun" stretchType="RelativeToBandHeight" x="111" y="282" width="965" height="53" uuid="e5bab01d-1727-40da-8cbe-9a53df22ddca"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="Arial" size="40" isItalic="true" pdfFontName="Times-Roman" pdfEncoding="Cp1252" isPdfEmbedded="false"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{nombre_institucion}]]></textFieldExpression>
+				</textField>
+			</elementGroup>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

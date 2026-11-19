@@ -1,0 +1,61 @@
+<?php
+
+namespace nsg01\operaciones\datos_ctacte;
+/*
+require('vendor/autoload.php');
+use PlusPagos\SHA256Encript;
+use PlusPagos\AESEncrypter;*/
+use siu\extension_kernel\controlador_g3w2;
+
+class controlador extends controlador_g3w2
+{
+
+	/**
+	 * @return null
+	 */
+	function modelo()
+	{
+		return null;
+	}
+
+	function accion__index()
+	{
+	
+		$monto = 100; //monto total del pago
+		$transaccion_item = 'TEST';
+		$transaccion_priceitem ='100'; //precio del item
+		$transaccion_numero = 1225; //Valor variable por transacción
+
+		/*$aes = new AESEncrypter(); 
+		$callbackSuccess= 'http://urlsuccess';
+		$callbackCancel= 'http://urlCancel'
+		$callbackEncriptada = $aes -> EncryptString($callbackSuccess, $secretKey);
+		$cancelEncriptada = $aes -> EncryptString($callbackCancel, $secretKey);
+		$montoEncriptado = $aes -> EncryptString($amount, $secretKey);
+		$sucursalEncriptada = $aes -> EncryptString($sucursal, $secretKey);
+		$url = 'https://sandboxpp.asjservicios.com.ar/';*/
+		//$data = array(“p1”, “p2”, “p3”);
+	}
+
+	function arreIp()
+	{
+		if (!empty($_SERVER[‘HTTP_CLIENT_IP’]))
+			return $_SERVER[‘HTTP_CLIENT_IP’];
+		if (!empty($_SERVER[‘HTTP_X_FORWARDED_FOR’]))
+			return $_SERVER[‘HTTP_X_FORWARDED_FOR’];
+		return $_SERVER[‘REMOTE_ADDR’];
+	}
+
+	function accion__guardar() {
+		
+		// Si entra por POST guardo
+		if(kernel::request()->isPost()){
+			kernel::sesion()->set('hubo_error', $hubo_error);	
+		}
+		
+		// Redirijo al index (pantalla principal)
+		$operacion = kernel::ruteador()->get_id_operacion();
+		$this->nuevo_request($operacion, 'index');
+    	}
+
+}

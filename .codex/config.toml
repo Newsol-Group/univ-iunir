@@ -1,0 +1,13 @@
+# Núcleo G3Forge: Codex local/IDE en repositorio confiable.
+model = "gpt-6-astra"
+model_reasoning_effort = "xhigh"
+
+[agents]
+enabled = true
+max_concurrent_threads_per_session = 3
+default_subagent_model = "gpt-6-luna"
+default_subagent_reasoning_effort = "medium"
+
+# Los roles especializados se descubren desde .codex/agents/*.toml.
+# El límite de concurrencia no otorga permisos independientes.
+# No se definen conectores a bases de datos en este proyecto.

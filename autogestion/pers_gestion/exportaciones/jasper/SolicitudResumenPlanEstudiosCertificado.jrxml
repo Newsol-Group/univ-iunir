@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guarani" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d696ee30-13f4-423f-a605-7bdeca202b72">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="29"/>
+	<style name="Title" fontName="Times New Roman" fontSize="14" isBold="true" isUnderline="true" pdfFontName="Times-Bold"/>
+	<style name="Resalt" fontSize="10" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+	<style name="Comun" fontSize="10" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica"/>
+	<parameter name="solicitud" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[1]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="autoridad_cargo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="autoridad_nombre" class="java.lang.String">
+		<defaultValueExpression><![CDATA["Firma"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ocultar_firma" class="java.lang.Boolean">
+		<defaultValueExpression><![CDATA[false]]></defaultValueExpression>
+	</parameter>
+	<parameter name="verificacion_codigo" class="java.lang.String"/>
+	<parameter name="verificacion_url" class="java.lang.String"/>
+	<parameter name="verificacion_qr" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT
+	vw_personas.apellido || ' ' || vw_personas.nombres as apellido_y_nombre,
+	vw_personas.desc_tipo_documento || ' ' || vw_personas.nro_documento as documento_principal,
+	sga_propuestas.nombre as propuesta_nombre,
+	'(' || sga_propuestas.codigo || ') ' || sga_propuestas.nombre as propuesta_nombre_completo,
+	sga_propuestas.nombre_abreviado as propuesta_nombre_abreviado,
+	sga_ubicaciones.nombre as ubicacion_nombre,
+	sga_constancias_solicitud.presentar_a,
+	COALESCE(sga_constancias_solicitud.observaciones, ' ') AS observaciones,
+	(select observaciones from negocio_auditoria.logs_sga_constancias_solicitud where solicitud = sga_constancias_solicitud.solicitud and estado = 'Pendiente') AS observaciones_alu,
+	vw_localidades.localidad_nombre as ciudad,
+	vw_localidades.provincia_nombre as provincia,
+	sga_instituciones.nombre as nombre_institucion,
+	COALESCE(f_promedio_gral_con_aplazos(sga_alumnos.alumno, CURRENT_DATE)::VARCHAR,' -- ') AS promedio,
+	f_responsables_academicas_propuesta(sga_propuestas.propuesta) AS ra_nombre
+FROM
+	sga_constancias_solicitud,
+	sga_alumnos,
+	vw_personas,
+	sga_propuestas,
+	sga_ubicaciones,
+	sga_instituciones,
+	par_configuraciones,
+	vw_localidades
+WHERE
+	sga_constancias_solicitud.solicitud = $P{solicitud}
+	AND sga_constancias_solicitud.alumno = sga_alumnos.alumno
+	AND sga_alumnos.persona = vw_personas.persona
+	AND sga_propuestas.propuesta = sga_alumnos.propuesta
+	AND sga_alumnos.ubicacion = sga_ubicaciones.ubicacion
+	AND par_configuraciones.nombre = 'institucion_instalacion'
+	AND (par_configuraciones.valor::INTEGER) = sga_instituciones.institucion
+	AND sga_ubicaciones.localidad = vw_localidades.localidad
+LIMIT 1]]>
+	</queryString>
+	<field name="apellido_y_nombre" class="java.lang.String"/>
+	<field name="documento_principal" class="java.lang.String"/>
+	<field name="propuesta_nombre" class="java.lang.String"/>
+	<field name="propuesta_nombre_completo" class="java.lang.String"/>
+	<field name="propuesta_nombre_abreviado" class="java.lang.String"/>
+	<field name="ubicacion_nombre" class="java.lang.String"/>
+	<field name="presentar_a" class="java.lang.String"/>
+	<field name="observaciones" class="java.lang.String"/>
+	<field name="observaciones_alu" class="java.lang.String"/>
+	<field name="ciudad" class="java.lang.String"/>
+	<field name="provincia" class="java.lang.String"/>
+	<field name="nombre_institucion" class="java.lang.String"/>
+	<field name="promedio" class="java.lang.String"/>
+	<field name="ra_nombre" class="java.lang.String"/>
+	<variable name="fecha_narrada" class="java.lang.String">
+		<variableExpression><![CDATA[new java.text.SimpleDateFormat("dd 'días del mes de' MMMM 'de' yyyy", new java.util.Locale("es")).format(new java.util.Date())]]></variableExpression>
+	</variable>
+	<background>
+		<band height="802" splitType="Stretch">
+			<rectangle>
+				<reportElement positionType="Float" x="0" y="0" width="555" height="772" uuid="a93423ce-1a05-439e-acc0-a613b7c54862"/>
+				<graphicElement>
+					<pen lineWidth="1.5"/>
+				</graphicElement>
+			</rectangle>
+		</band>
+	</background>
+	<title>
+		<band height="150" splitType="Stretch">
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="28" y="62" width="497" height="20" uuid="f28282cc-fcce-43fb-a9d2-ddd3ade464b6"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombre_institucion}.toUpperCase()]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="28" y="3" width="92" height="40" uuid="7b6f38b8-37e0-4b21-a129-c4a713d4545a"/>
+				<imageExpression><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement x="28" y="87" width="497" height="57" uuid="c1e0c3b7-afb3-46fa-a3fe-c42206911d00"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ra_nombre}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="48" splitType="Stretch">
+			<staticText>
+				<reportElement style="Title" x="28" y="12" width="497" height="23" uuid="e8ba9675-2d51-44f9-9881-1d7d9c7d381c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[SOLICITUD DE RESUMEN DE PLAN DE ESTUDIOS CERTIFICADO]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="450" splitType="Stretch">
+			<line>
+				<reportElement x="288" y="322" width="130" height="1" uuid="619c622d-0a43-4c04-9e96-3bed476fc531">
+					<printWhenExpression><![CDATA[($P{ocultar_firma}.booleanValue() == false)]]></printWhenExpression>
+				</reportElement>
+			</line>
+			<textField>
+				<reportElement x="13" y="191" width="457" height="28" uuid="75e62fd0-403c-48b7-94df-094ed49736c3"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["Se extiende la presente constancia a pedido del interesado, en " + $F{ciudad} + ", " + $F{provincia} + " a los " + $V{fecha_narrada} +"."]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement style="Resalt" x="3" y="15" width="114" height="18" uuid="ea99c1ce-ff05-4200-ac55-8b4dc6cd4bca"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Apellido y Nombre:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Resalt" x="13" y="73" width="104" height="18" uuid="46bdeab0-2b6e-418a-9e1b-533bc6e610be"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ubicación:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Resalt" x="13" y="43" width="104" height="18" uuid="ab0c8eed-b5d0-4a72-a73e-a4c856573c8f"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Identificación:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Resalt" x="13" y="103" width="104" height="18" uuid="546e5bd9-0f05-4012-a981-42990ec249b5"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Propuesta:]]></text>
+			</staticText>
+			<textField>
+				<reportElement style="Comun" x="122" y="15" width="348" height="18" uuid="ccc07682-6a56-4fce-8b3e-95bcb655795c"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{apellido_y_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Comun" x="122" y="43" width="327" height="18" uuid="0fafef07-7283-4f7e-b3a5-3ae946d805d5"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{documento_principal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Comun" x="122" y="73" width="348" height="18" uuid="cd5813bd-0cdd-4a72-9d83-4ea110f9fc10"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ubicacion_nombre}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Comun" x="122" y="103" width="348" height="18" uuid="0fcf74d9-c1af-4509-aa45-c2222aed7119"/>
+				<textElement>
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{propuesta_nombre_completo}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="223" y="323" width="247" height="20" uuid="a1100636-9368-45b4-816c-61e2a3def2b9">
+					<printWhenExpression><![CDATA[($P{ocultar_firma}.booleanValue() == false)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$P{autoridad_nombre}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement x="223" y="343" width="247" height="20" uuid="36910743-8103-4056-9e9e-9b1ec610e5dc">
+					<printWhenExpression><![CDATA[($P{ocultar_firma}.booleanValue() == false)]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$P{autoridad_cargo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="13" y="129" width="457" height="62" uuid="0f878600-a052-482b-a1ea-2c8442ae761c"/>
+				<textElement textAlignment="Justified"/>
+				<textFieldExpression><![CDATA["Por la presente se certifica que el alumno cuyos datos se citan anteriormente ha solicitado el resumen del plan de estudios certificado, según se detalla a continuación: " + $F{observaciones_alu}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="78" y="323" width="29" height="20" uuid="e018fefd-278f-4d1e-ba62-131bba6e4f80">
+					<printWhenExpression><![CDATA[($P{ocultar_firma}.booleanValue() == false)]]></printWhenExpression>
+				</reportElement>
+				<text><![CDATA[Sello]]></text>
+			</staticText>
+			<line>
+				<reportElement x="30" y="322" width="130" height="1" uuid="24e66326-e563-452a-9286-f4f3d7779a77">
+					<printWhenExpression><![CDATA[($P{ocultar_firma}.booleanValue() == false)]]></printWhenExpression>
+				</reportElement>
+			</line>
+			<textField>
+				<reportElement x="98" y="389" width="300" height="20" uuid="3b14dcab-2cbb-43d7-b6a2-984f67350735">
+					<printWhenExpression><![CDATA[!($P{verificacion_qr}.trim()).isEmpty()]]></printWhenExpression>
+				</reportElement>
+				<textFieldExpression><![CDATA["CÓDIGO DE VALIDACIÓN: " + $P{verificacion_codigo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Comun" x="13" y="404" width="447" height="41" uuid="03b1f2fa-3d2f-4539-bd37-4e08311dc4c5">
+					<printWhenExpression><![CDATA[!($P{verificacion_qr}.trim()).isEmpty()]]></printWhenExpression>
+				</reportElement>
+				<textElement textAlignment="Justified">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Este certificado podrá ser validado ingresando a " + $P{verificacion_url} + " completando el código de validación y el Nº de DNI (o pasaporte) del alumno o bien escaneando el código QR."]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="186" y="290" width="92" height="92" uuid="fd0c35e0-2d16-4d0a-84b6-fd92023f7f75">
+					<printWhenExpression><![CDATA[!($P{verificacion_qr}.trim()).isEmpty()]]></printWhenExpression>
+				</reportElement>
+				<imageExpression><![CDATA[$P{verificacion_qr}]]></imageExpression>
+			</image>
+			<textField>
+				<reportElement style="Resalt" x="10" y="220" width="94" height="18" uuid="7cf6797a-58a6-4c4f-ad18-2db580666852"/>
+				<textElement textAlignment="Right">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[((($F{observaciones}.trim()).isEmpty()) ? "" : ("Observaciones:"))]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="112" y="220" width="337" height="62" uuid="37556b1d-e46e-4d40-95ab-be052ecd906b"/>
+				<textFieldExpression><![CDATA[((($F{observaciones}.trim()).isEmpty()) ? "" : $F{observaciones})]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

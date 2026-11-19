@@ -1,0 +1,89 @@
+/* COLUMNAS */
+#edicion_asistencias .form-actions {
+	clear: both;
+}
+
+#edicion_asistencias .foto, #edicion_asistencias .foto img {
+	width: 110px;
+        height: 110px;
+}
+
+#edicion_asistencias .info {
+	width: 180px;
+}
+
+#edicion_asistencias .box-asistencia {
+	float: left;
+	width: 300px;
+	height: 110px;
+	padding: 5px;
+	margin: 5px;
+	cursor: pointer;
+	margin-left: 25px;
+	border: 1px solid #E3E3E3;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+	-moz-box-shadow: 3px 3px 2px 2px #eee;
+	-webkit-box-shadow: 3px 3px 2px 2px #eee;
+	box-shadow: 3px 3px 2px 2px #eee;
+	position: relative;
+}
+
+#edicion_asistencias .check-asistencia {
+    position: absolute;
+    top: 95px;
+    left: 240px;
+}
+#edicion_asistencias .ausente {
+	background-color: #da4f49;
+	color: white;
+}
+
+#edicion_asistencias .cuadro_boton{
+    width: 100%;
+    overflow: hidden;
+}
+
+#edicion_asistencias #js-guardar-asistencia {
+    margin: 20px 0 0 25px;
+}
+
+#edicion_asistencias .combo-fracciones-label, #edicion_asistencias .combo-horas-label {
+    float: right;
+    margin: 0;
+}
+
+#edicion_asistencias .combo-fracciones, #edicion_asistencias .combo-horas {
+    width: 185px;
+    margin-bottom: 0;
+}
+
+#edicion_asistencias .cuadro-totales {
+    overflow: hidden;
+    margin-bottom: 10px;
+    padding-right: 15px;
+}
+
+#edicion_asistencias .totales {
+    float: right;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+#edicion_asistencias .totales.ausentes {
+    color: #da4f49;
+}
+
+#edicion_asistencias .libre {
+    color: #da4f49;
+    font-weight: bold;
+}
+
+#edicion_asistencias .ausente .libre {
+    color: #fff;
+}
+
+#edicion_asistencias #alert-justificacion-inasistencia {
+    margin-top: 20px;
+}

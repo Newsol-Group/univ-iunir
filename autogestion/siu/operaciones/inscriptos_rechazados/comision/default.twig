@@ -1,0 +1,88 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	<div class="titulo_operacion">
+		<h2 class="clearfix">
+			<button class='btn btn-primary btn-small js-btn-back pull-left' data-url-back="{{this.data.url_back}}"><i class="icon-chevron-left icon-white"></i></button>
+			<span class="pull-left">{{"tit_inscriptos_rechazados"|trans|capitalize}}</span>
+		</h2>
+	</div>
+	{% if this.data.comision %}
+		{% set titulos = this.data.comision %}
+		<table class="table table-striped table-bordered table-condensed">
+		<tr>
+			<td>
+				{{ 'nombre_actividad' |trans|capitalize}}: {{titulos.actividad_orden}}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				{{ 'comision' |trans|capitalize}}: {{titulos.comision_nombre}}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				{{ 'ubicacion' |trans|capitalize}}: {{titulos.ubicacion_nombre}}
+			</td>
+		</tr>
+		<tr>
+			<td>
+				{% if titulos.es_subcomision %}
+					{{ 'nombre_horario' |trans|capitalize}}: {{titulos.horario_subcomision}}
+				{% else %}
+					{{ 'nombre_horario' |trans|capitalize}}: {{titulos.horario_comision}}
+				{% endif %}
+			</td>
+		</tr>
+		</table>
+	{% endif %}
+	{% if this.data.alumnos_comision %}
+		<table class="table table-striped table-bordered table-condensed">
+		<thead>
+		<tr>
+			<td class="cc-titulo-nivel-0">
+				{{ 'legajo' |trans|capitalize}}
+			</td>
+			<td class="cc-titulo-nivel-0">
+				{{ 'nombre_alumno' |trans|capitalize}}
+			</td>
+                        {# Si el docente puede visualizar los datos de contacto de los alumnos (email y teléfono) #}
+                        {% if this.data.visualiza_datos_contacto %}
+			<td class="cc-titulo-nivel-0">
+				{{ 'inscripcion_a_cursadas_rechazadas.email' | trans }}
+			</td>
+                        {% endif %}
+		</tr>
+		</thead>
+		{% for alumno in this.data.alumnos_comision %}
+		<tr>
+			<td>
+				{% if alumno.legajo %}
+					{{alumno.legajo}}
+				{% else %}
+					{{ 'sin_definir' |trans|capitalize}}
+				{% endif%}
+			</td>
+			<td>
+				{% if alumno.apellido_nombres %}
+					{{alumno.apellido_nombres}}
+				{% else %}
+					{{ 'sin_definir' |trans|capitalize}}
+				{% endif%}
+			</td>
+                        {# Si el docente puede visualizar los datos de contacto de los alumnos (email y teléfono) #}
+                        {% if this.data.visualiza_datos_contacto %}
+			<td>
+				{% if alumno.email %}
+					{{alumno.email}}
+				{% else %}
+					{{ 'sin_definir' |trans|capitalize}}
+				{% endif%}
+			</td>
+                        {% endif %}
+		</tr>
+		{% endfor %}
+		</table>
+	{% else %}
+		<div class="alert">{{ "inscripcion_a_cursadas_rechazadas.comision.vacia" | trans | capitalize }}.</div>
+	{% endif %}
+{% endblock %}

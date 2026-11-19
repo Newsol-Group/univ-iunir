@@ -1,0 +1,43 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+<div class="filtros">
+	<table>
+	<tr>
+		<th>
+			<span class="titulo" for="js-filtro_periodo_lectivo">{{'periodo_lectivo'|trans|capitalize}}:
+				<select id="js-filtro_periodo_lectivo" name="periodo_lectivo">
+					<option value="">Todos</option>
+					{% for key, value in this.data.periodos_lectivos %}
+					<option value="{{value.url_perlec}}"{% if value.url_perlec == this.data.per_lec %} selected{% endif %}>
+						{{value.anio_academico}} - {{value.periodo_lectivo_nombre}}
+					</option>
+					{% endfor %}
+				</select>
+			</span>
+		</th>
+		<th>
+			<span class="titulo" for="js-filtro_actividades">{{'actividad'|trans|capitalize}}:
+				<input id="js-filtro_actividades" name="actividad" type="text" style="margin-bottom: 0px;">
+				<button id="js-limpiar_actividades" type="button" class="btn btn-small btn-primary"><i class="icon-remove icon-white"></i></button>
+			</span>
+		</th>
+		<th>
+			<span class="titulo" for="js-filtro_acta">{{'acta'|trans|capitalize}}:
+				<input id="js-filtro_acta" name="acta" type="text" style="margin-bottom: 0px; width: 130px;">
+				<button id="js-limpiar_actas" type="button" class="btn btn-small btn-primary"><i class="icon-remove icon-white"></i></button>
+			</span>
+		</th>
+	<tr>
+	</table>
+</div>
+<h4 class="clearfix">
+	<span class="pull-left">{{'reporte_actas.cursadas'|trans|capitalize}}</span>
+	<div class="pull-right">
+		<a class="btn btn-mini no-ajax" target="_blank" id="cursadas-generar_pdf_listado"><i class="g3w-icono-pdf"></i></a>
+		<a class="btn btn-mini no-ajax" target="_blank" id="cursadas-generar_xls_listado"><i class="g3w-icono-xls"></i></a>
+	</div>
+</h4>
+<div id="listado">
+{% include 'cursadas/listado.twig' %}
+</div>
+{% endblock %}

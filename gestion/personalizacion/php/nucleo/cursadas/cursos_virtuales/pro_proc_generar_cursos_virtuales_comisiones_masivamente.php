@@ -1,0 +1,4 @@
+<?php
+class pro_proc_generar_cursos_virtuales_comisiones_masivamente extends pro_proc_generar_cursos_virtuales_comisiones_masivamente_nucleo
+{	
+}

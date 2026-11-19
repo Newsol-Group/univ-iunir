@@ -1,0 +1,31 @@
+{
+  "name": "newsol/macroclick",
+  "description": "Proyecto independiente para integrar Click de Pago de Macro con PHP",
+  "require": {
+    "php": ">=7.4",
+    "pluspagos/sha256encript": "dev-feature/NuevoMetodoAESEncrypt as dev-master",
+    "pluspagos/aesencrypter": "dev-master",
+    "siu/extension_kernel": "dev-master"
+  },
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/pluspagos/sha256encript.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/pluspagos/aesencrypter.git"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/siu/extension_kernel.git"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "nsg01\\operaciones\\datos_ctacte\\": "."
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}

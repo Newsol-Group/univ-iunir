@@ -1,0 +1,49 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+
+    <div class="titulo_operacion row-fluid">
+        <div class="span12">
+            <h2 class="resaltar divisor clearfix">
+                <span class="pull-left">{{ 'constancias_cursos.listado_constancias' | trans }}</span>
+            </h2>
+        </div>
+    </div>
+
+
+    {% if this.data.constancias is empty %}
+
+        <div class="alert">{{ 'constancias_cursos.no_hay_solicitudes_constancias' | trans }}</div>
+
+    {% else %}
+
+        <table class="table table-condensed table-bordered">
+            <thead>
+            <tr>
+                <th>{{'constancias_cursos.constancia' | trans }}</th>
+                <th>{{'constancias_cursos.curso' | trans }}</th>
+                <th>{{'constancias_cursos.fecha' | trans }}</th>
+                <th>{{'constancias_cursos.estado' | trans }}</th>
+                <th>{{'constancias_cursos.fecha_vencimiento' | trans }}</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for constancia in this.data.constancias %}
+                <tr>
+                    <td>{{constancia.constancia_nombre}}</td>
+                    <td>{{constancia.curso_nombre}}</td>
+                    <td>{{constancia.fecha_solicitud}}</td>
+                    <td>{{constancia.estado}}</td>
+                    <td>{{ constancia.fecha_fin_vigencia }}</td>
+                    <td>
+                        {% if constancia.permite_descargar %}
+                            <a class="btn no-ajax descargar_cert" href="{{ constancia.url_descarga }}" title="{{ 'constancias_cursos.descargar_certificado' | trans }}"><span class="g3w-icono-pdf"></span></a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+    {% endif %}
+{% endblock %}

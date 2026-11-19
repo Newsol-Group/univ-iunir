@@ -1,0 +1,87 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+    <div class="titulo_operacion">
+        <h2 class="clearfix"><span class="pull-left">{{ "header.menu.requisitos_ingreso" | trans }}</span></h2>
+    </div>
+
+   {% if this.data.datos.preinscripciones %}
+	{% for preinscripcion in this.data.datos.preinscripciones %}
+		 {% if loop.first == true  %}
+			{% if preinscripcion.propuesta_tipo == 200 or preinscripcion.propuesta_tipo == 204 %}
+			<div class style="background-color:#ffcdd2;">
+				<span class style="font-weight:bold;">ACLARACIÓN IMPORTANTE:</span><span> En esta primera etapa solo se te solicitará cargar la foto del </span><span class style="font-weight:bold;">Documento de identidad</span>
+				<span> y realizar el</span><span class style="font-weight:bold;"> Pago del arancel de inscripción.</span>
+				<span> El resto de la documentación, como título del colegio secundario, constancia de título en trámite, partida de nacimiento, certificados médicos, etc., la deberás cargar más adelante, una vez que pases a la categoría de </span><span class style="font-weight:bold;">Ingresante.</span>
+				<span> Muchas gracias.</span>
+			</div>
+			{% endif %}
+		{% endif %}
+	{% endfor %}
+   {% endif %}
+
+    {# Si hay mensaje lo muestro #}
+    {% if this.data.mensaje is not empty %}
+    <div class="alert {{ this.data.tipo_mensaje }}">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        {{ this.data.mensaje | raw }}
+    </div>
+    {% endif %}
+        
+    {% if this.data.datos.requisitos  %}
+        {% if this.data.usa_repositorio_digital  %}	
+            {%	set ancho = '25%' %}
+        {% else %}
+            {%	set ancho = '50%' %}
+        {% endif %}
+        <table class='table table-condensed table-hover table-striped'>
+            <thead>
+                <tr>
+                    <th width="{{ ancho }}">{{'requisitos.requisito' | trans | capitalize}}</th>
+                        {% if this.data.usa_repositorio_digital  %}
+                        <th width="{{ ancho }}">{{'requisitos.estado_rd' | trans | capitalize}}</th>
+                        <th width="{{ ancho }}">{{'requisitos.requisito_propuesta' | trans | capitalize}}</th>
+                        <th width="{{ ancho }}">{{'requisitos.observaciones' | trans | capitalize}}</th>
+                        <th width="{{ ancho }}">&nbsp;</th>
+                        {% endif %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for requisito in  this.data.datos.requisitos %}
+                    <tr>
+                        <td>{{ requisito.requisito_nombre }} {% if requisito.doc_digital_obligatorio_preinscripcion == "S" %} (*){% endif %}</td>
+                        {% if this.data.usa_repositorio_digital  %}
+                            
+                            {% set leyendaTitle = 'requisitos.doc_digital' | trans %}
+                            {% if requisito.estado_req_digital == this.data.estado_no_presentado %}
+                                {% set label_estado_req_digital = '' %}
+                                {% set leyendaTitle = 'requisitos.doc_digital.subir' | trans %}
+                            {% elseif requisito.estado_req_digital == this.data.estado_pendiente_validacion %}
+                                {% set label_estado_req_digital = 'label-warning' %}
+                                {% set leyendaTitle = 'requisitos.doc_digital.abm' | trans %}
+                            {% elseif requisito.estado_req_digital == this.data.estado_presentado %}
+                                {% set label_estado_req_digital = 'label-success' %}
+                            {% elseif requisito.estado_req_digital == this.data.estado_vencido %}
+                                {% set label_estado_req_digital = 'label-important' %}
+                            {% endif %}
+                                                
+                            <td><span class="label {{ label_estado_req_digital }}">{{ ('requisitos.' ~  requisito.estado_req_digital) | trans }}</span></td>
+                            <td>{{ requisito.propuesta_nombre }}</td>
+                            <td>{{ requisito.observaciones }}</td>
+                            <td>
+                                <div class="pull-right">
+                                    <a href="{{ requisito.url_doc_digital }}" class="btn btn-primary no-ajax" title="{{ leyendaTitle }}" >
+                                        <i class="icon-edit icon-white"></i> {{ 'requisitos.doc_digital' | trans }}
+                                    </a>
+                                </div>
+                            </td>
+                        {% endif %}
+                    </tr>			
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="alert">
+            {{"reporte.no_hay_datos.requisitos_pendientes"|trans|capitalize}}
+        </div>
+    {% endif %}
+{% endblock %}

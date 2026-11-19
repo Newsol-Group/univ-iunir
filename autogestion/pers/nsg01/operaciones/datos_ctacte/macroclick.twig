@@ -1,0 +1,23 @@
+{% extends "kernel/una_columna_sin_titulo.twig" %}
+{% block columna_1 %}
+<html>
+<head>
+	<meta name=”referrer” content=”no-referrer”>
+</head>
+<body>
+<form method="post" target="_blank" id="form1" @onsubmit="AbrePago" action="https://botonpp.macroclickpago.com.ar/">
+            <input type="hidden" name="CallbackSuccess" value="@callbackSuccess" />
+            <input type="hidden" name="CallbackCancel" value="@callbackCancel" />
+            <input type="hidden" name="Comercio" value="@Comercio" />
+            <input type="hidden" name="SucursalComercio" value="@sucursalComercio" />
+            <input type="hidden" name="TransaccionComercioId" value="@transaccion" />
+            <input type="hidden" name="Monto" value="@monto" />
+            <input type="hidden" name="Informacion" value="@informacion" />
+
+            <input type="hidden" name="Producto[0]" id="producto1" value="PAGO (@apellido, @nombre)" />
+            <button type="submit" class="btn btn-success" id="directa" data-dismiss="modal">Pagar</button>
+        </form>
+</body>
+</html>
+{% endblock %}
+

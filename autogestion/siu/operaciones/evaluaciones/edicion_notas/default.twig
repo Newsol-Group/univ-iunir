@@ -1,0 +1,159 @@
+{% extends "detalle_contenido.twig" %}
+
+{% block titulo 'carga_notas_evaluaciones_parciales'|trans|capitalize %}
+
+{% block acciones_titulo %}
+	<button id="js-guardar_alumnos" type="button"
+			class="btn btn-info btn-small">{{ 'guardar'|trans|capitalize }}</button>
+{% endblock %}
+
+
+{% block herramientas_cabecera_titulo %}
+	Herramientas
+{% endblock %}
+
+{% block herramientas_cabecera_acciones %}
+	<a class="btn btn-small" id="js-colapsar-alumnos"><i class="icon-pencil"></i> <span>Agregar alumnos</span></a>
+	<a class="btn btn-small" id="js-colapsar-autocompletar"><i class="icon-wrench"></i> <span>Autocompletar</span></a>
+	<a class="btn btn-small" id="js-colapsar-detalles"><i class="icon-th-list"></i><span> Detalles Evaluación</span></a>
+
+{% endblock %}
+
+{% block contenido_principal %}
+	<div id="lista_alumnos">
+		{% include 'lista_alumnos.twig' with {
+		'alumnos': this.data.alumnos,
+		'escala_notas': this.data.escala_notas,
+		'editar': true,
+                'escala_continua' : this.data.escala_continua,
+                'escala_discreta' : this.data.escala_discreta,
+                'escala_notas_comision' : this.data.cabecera.escala_nota_tipo,
+                'resultados' : this.data.resultados
+		} %}
+	</div>
+{% endblock %}
+
+
+{% block herramientas_contenido %}
+	<div id='js-detalles'>
+		{% include 'detalle_evaluacion.twig' %}
+	</div>
+	<div id="js-alumnos" class='detalle-detalle' style="display: none;">
+		<table>
+			<tr>
+				<td style="width: 150px;">
+					<select id="js-agregar_alumnos" style="width: 225px;">
+						<option value="js-agregar_alumno">Un alumno</option>
+                                                {# Si se trata de una subcomisión #}
+						{% if this.data.es_subcomision %}
+							<option value="js-agregar_subcomision">Alumnos de una subcomisión</option>
+                                                {# Si se trata de una comisión #}
+                                                {% else %}
+                                                    <option value="js-agregar_comision">Alumnos de la comisión</option>
+						{% endif %}
+						{% if this.data.evaluaciones %}
+							<option value="js-agregar_resultado">Alumnos con resultado</option>
+						{% endif %}
+					</select>
+				</td>
+				<td>
+					<div id="js-agregar_alumno">
+						<input id="js-alumno" name="alumno" type="text" style="width: 350px;">
+						<button class="btn btn-small btn-info" id="js-boton_agregar_alumno"
+								style="margin-bottom: 10px;">AGREGAR
+						</button>
+					</div>
+					<div id="js-agregar_comision" style="display: none;">
+						<button class="btn btn-small btn-info" id="js-boton_agregar_comision"
+								style="margin-bottom: 10px;">AGREGAR
+						</button>
+					</div>
+					{% if this.data.subcomisiones %}
+						<div id="js-agregar_subcomision" style="display: none;">
+							<select id="js-subcomision">
+								{% for subco in this.data.subcomisiones %}
+									<option value="{{ subco.subcomision }}">{{ subco.nombre }}</option>
+								{% endfor %}
+							</select>
+							<a class="btn btn-small btn-info" id="js-boton_info_subcomision"
+							   style="margin-bottom: 10px;" href="#"><i class="icon-info-sign icon-white"></i></a>
+							<button class="btn btn-small btn-info" id="js-boton_agregar_subcomision"
+									style="margin-bottom: 10px;">AGREGAR
+							</button>
+						</div>
+					{% endif %}
+					{% if this.data.evaluaciones %}
+						<div id="js-agregar_resultado" style="display: none; vertical-align: middle;">
+							<select id="js-resultado">
+								<option value="T">Todos</option>
+								<option value="A">Aprobado</option>
+								<option value="R">Desaprobado</option>
+								<option value="U">Ausente</option>
+								<option value="X">Desaprobado o Ausente</option>
+							</select>
+							en la evaluación
+							<select id="js-evaluacion">
+								{% for eval in this.data.evaluaciones %}
+									<option value="{{ eval.__ID__ }}">{{ eval.evaluacion_nombre }}</option>
+								{% endfor %}
+							</select>
+							<button class="btn btn-small btn-info" id="js-boton_agregar_resultado"
+									style="margin-bottom: 10px;">AGREGAR
+							</button>
+						</div>
+					{% endif %}
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div id="js-autocompletar" class='detalle-detalle' style="display: none;">
+		<div class="form-inline">
+			<select id="autocompletar_campo" class="pull-left">
+				<option value={{ this.data.cabecera.escala_nota_tipo ==  this.data.escala_discreta ? 'nota' : 'nota_input' }}>{{ 'nota'|trans|capitalize }}</option>
+				<option value="corregido_por">{{ 'corregido_por'|trans|capitalize }}</option>
+				<option value="resultado">{{ "resultado"|trans|capitalize }}</option>
+			</select>
+
+            {% if this.data.cabecera.escala_nota_tipo ==  this.data.escala_discreta %}
+			    <div id="js-autocompletar_nota" style="display: inline;" class="pull-left">
+                    <select id="autocompletar_nota">
+                        {% for escala_nota in this.data.escala_notas %}
+                            <option value="{{ escala_nota.nota }}"> {{ escala_nota.nota }} ({{ escala_nota.descripcion }}) </option>
+                        {% endfor %}
+                    </select>
+			    </div>
+            {% else %}
+			    <div id="js-autocompletar_nota_input" style="display: inline;" class="pull-left">
+                    <input type="text" maxlength="10" size="10" value="{{ escala_nota.nota }}" data-tipo="nota"
+                           class="autocompletar_nota" name="autocompletar_nota" id="autocompletar_nota_input" data-escala="">
+			    </div>
+            {% endif %}
+
+			<div id="js-autocompletar_corregido_por" style="display: none;" class="pull-left">
+				<input class="preset_valor otros input-small" type="text" id="autocompletar_corregido_por"/>
+			</div>
+            
+                        <div id="js-autocompletar_resultado" style="display: none;" class="pull-left">
+                            <select id="autocompletar_resultado" class="preset_valor resultado input-small" readonly>
+                                <option value="{{ this.data.resultado_ausente }}">{{ "ausente"|trans|capitalize }}</option>
+                            </select>
+			</div>
+            
+			<label for="autocompletar_solo_vacio" class="checkbox pull-left">
+				<input id="autocompletar_solo_vacio" type="checkbox"
+					   checked="checked"/>{{ 'solo_valores_vacios'|trans|capitalize }}
+			</label>
+			<button id="autocompletar" type="submit" class="btn btn-small pull-left">
+                <i class="icon-edit"></i> {{ 'completar'|trans|capitalize }}
+            </button>
+			<input id="autocompletar_undo" type="reset" class="btn btn-small pull-left" value="{{ 'deshacer'|trans|capitalize }}"
+				   disabled="disabled"/>
+		</div>
+		<div class="alert alert-error hide pull-left" id="js-autocompletar_error" ></div>
+        <div style="clear: both"></div>
+	</div>
+
+{% endblock %}
+
+

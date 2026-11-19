@@ -1,0 +1,45 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+
+	{% if this.data.mesas.get_datos() %}
+		<div class="alert alert-info">
+			<button type="button" class="close" data-dismiss="alert">&times;</button>
+			{{ 'carga_notas_mesa_examen.descr_mesas_listadas'|trans }}
+		</div>
+		<div class='clearfix'>
+			<div class='pull-left'>
+				<h3>{{ 'carga_notas_mesa_examen.lista_mesas_disponibles'|trans|capitalize }}</h3>
+			</div>
+			<div class='pull-right'>
+				<a href="{{ this.data.link_admin_actas_examen_fc }}"
+				   class="btn">{{ 'carga_notas_mesa_examen.btn_admin_actas_examen_fc'|trans|capitalize }}</a>
+			</div>
+		</div>
+
+		<table class="table table-striped table-bordered table-condensed">
+			<thead>
+			<th>{{ 'carga_notas_mesa_examen.actividad' | trans | capitalize }}</th>
+			<th>{{ 'carga_notas_mesa_examen.fecha' | trans | capitalize }}</th>
+			<th>{{ 'carga_notas_mesa_examen.mesa' | trans | capitalize }}</th>
+			<th>{{ 'carga_notas_mesa_examen.llamado' | trans | capitalize }}</th>
+			<th>{{ 'carga_notas_mesa_examen.ubicacion' | trans | capitalize }}</th>
+			</thead>
+			<tbody>
+			{% for mesa in this.data.mesas %}
+				<tr {{ this.data_link(mesa.LINK) | raw }}>
+					<td>{{ this.a(mesa.LINK, mesa.actividad_descr ) | raw }}</td>
+					<td>{{ mesa.fecha_formato_visual }}</td>
+					<td>{{ mesa.nombre_mesa }}</td>
+					<td>{{ mesa.nombre_llamado }}</td>
+					<td>{{ mesa.nombre_ubicacion }}</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+
+	{% else %}
+		<div class="alert">
+			{{ 'carga_notas_mesa_examen.no_hay_mesas'|trans|capitalize }}
+		</div>
+	{% endif %}
+{% endblock %}

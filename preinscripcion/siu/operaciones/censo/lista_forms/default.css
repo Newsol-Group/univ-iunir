@@ -1,0 +1,13 @@
+#lista_forms .well { padding: 8px 0; }
+
+#lista_forms li a.visitado {
+    background: url("../../../www/img/item_dcensal_ok.png") no-repeat scroll 95% transparent;
+    color: #0088CC;
+    text-shadow: none;
+}
+
+#lista_forms li a.active {
+    background-color: #0088CC !important;
+    text-shadow: none;
+    color:#fff;
+}

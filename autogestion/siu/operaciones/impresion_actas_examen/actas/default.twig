@@ -1,0 +1,64 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+    
+        {% if this.data.error_imprimir_acta %}
+            <div class="alert alert-error">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ this.data.error_imprimir_acta | raw }}
+            </div>
+        {% endif %}
+            
+	<h3>{{ 'lista_actas' | trans | capitalize }}</h3>
+	{% if this.data.actas %}
+		<table class="table table-striped table-bordered table-condensed">
+			<thead>
+				<tr>
+					<th>{{ 'acta' | trans | capitalize }}</th>
+					<th>{{ 'fecha' | trans | capitalize }}</th>
+					<th>{{ 'carga_notas_mesa_examen.instancias' | trans | capitalize }}</th>
+					<th>{{ 'codigo_verificacion' | trans | capitalize }}</th>
+					<th>{{ 'actex.cant_alumnos' | trans | capitalize }}</th>
+					<th>{{ 'estado' | trans | capitalize }}</th>
+					<th>{{ 'porcentaje_carga'|trans|capitalize }}</th>
+					<th></th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for acta in this.data.actas %}
+					<tr>
+						<td>{{ acta.nro_acta }}</td>
+						<td>{{ acta.fecha }}</td>
+						<td>{{ acta.instancias }}</td>
+						<td>{{ acta.version }}</td>
+						<td>{{ acta.cant_alumnos }}</td>
+						<td>{{ acta.estado_descr }}</td>
+						<td class="barra">
+							<div class="progress">
+								<div class="bar bar-success"
+									 style="width: {{ acta.porcentaje_carga }}%;{% if acta.porcentaje_carga == 0 %} color: #000000; margin-left: 50%;{% endif %}">
+									{{ acta.porcentaje_carga }}%
+								</div>
+							</div>
+						</td>
+						<td class='accion'>            
+							{% set btn_editar_text = '<i class="icon-edit"></i> ' ~ ('carga_notas_mesa_examen.btn_editar_acta_examen' | trans | capitalize) %}
+							{{ this.a(acta.link_edicion, btn_editar_text, 'btn btn-small', acta.data_btn_editar) | raw }}
+							
+							{% set btn_imprimir_text = '<i class="icon-print"></i> ' ~ ('imprimir' | trans | capitalize) %}
+							{{ this.a(acta.url_imprimir, btn_imprimir_text, 'btn btn-small no-ajax', acta.data_btn_imprimir) | raw }}
+                                                                
+							{% set btn_cerrar_text = '<i class="icon-ok"></i> ' ~ ('cerrar' | trans | capitalize) %}
+							{% set clases_css = 'btn btn-small no-ajax' %}
+							{% if acta.url_cerrar != this.data.link_vacio %}
+								{% set clases_css = clases_css ~ ' js-btn-cerrar' %}
+							{% endif %}
+							{{ this.a(acta.url_cerrar, btn_cerrar_text, clases_css, acta.data_btn_cerrar) | raw }}             
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	{% else %}
+		<div class="alert">{{ 'no_hay_actas' | trans | capitalize }}</div>
+	{% endif %}
+{% endblock %}

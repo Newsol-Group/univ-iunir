@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<perfil id="anonimo_alumno">
+
+<parametros>
+	<parametro id="index" valor="acceso" />
+	<parametro id="login" valor="acceso" />
+</parametros>
+
+<operaciones>
+	<operacion id="acceso" url="acceso" activa="1" />
+	<operacion id="alta_usuario" url="alta_usuario" activa="1" />
+	<operacion id="ayuda_menu" url="ayuda_menu" activa="1" />
+	<operacion id="asociar_usuario_se" url="asociar_usuario_se" activa="1" />
+	<operacion id="pagina_error" url="pagina_error" activa="1" />	
+</operaciones>
+</perfil>

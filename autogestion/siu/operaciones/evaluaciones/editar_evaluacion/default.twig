@@ -1,0 +1,20 @@
+{% extends "kernel/pagelet.twig" %}
+{% import 'kernel/macro_helpers.twig' as helper %}
+{% block contenido %}
+
+	{% set form = this.get_vista_form() %}
+	{% set acciones %}
+	<button id="submit" type="button" class="btn btn-small">Actualizar</button>
+	<a href="{{ this.data.url_cancelar }}" class="btn btn-small btn-warning">Cancelar </a>
+	{% endset %}
+	{{ form.render_encabezado() | raw }}
+
+	{{ helper.titulo_operacion('editar_parcial'|trans|capitalize,'', acciones    ) }}
+	<div class='row'>
+		<div class='span6 offset3'>
+			{{ form.render_cuerpo() | raw }}
+		</div>
+	</div>
+	{{ form.render_cierre() | raw }}
+
+{% endblock %}

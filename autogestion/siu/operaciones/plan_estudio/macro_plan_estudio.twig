@@ -1,0 +1,190 @@
+{% macro modulo_generica_collapse(modulo_generica, data) %}
+
+    {% import _self as current_file_macros %}
+    
+    {# Clase para que se muestre expandido #}
+    {% set accordion_body_class = 'in' %}
+    
+    {# Si es una genérica, o es un módulo que no esta vacio (tiene submodulos o materias) #}
+    {% if (modulo_generica.entidad_subtipo == data.subtipo_materia_generica) or (modulo_generica.modulos_genericas or modulo_generica.materias) %}
+
+        {# Si es una materia generica #}
+        {% if modulo_generica.entidad_subtipo == data.subtipo_materia_generica %}
+            {# Clase para que se muestre colapsado #}
+            {% set accordion_body_class = '' %}
+            {% set entidad_subtipo = 'materia_generica' %}
+            {% set accordion_toggle_label %}
+                {{ 'plan_estudio.materia_generica' | trans({'%codigo%': modulo_generica.codigo, '%nombre%': modulo_generica.nombre  })  | raw }}
+            {% endset %}
+            {% set accordion_toggle_cumplimiento %}                
+                <div style="padding: 10px;">
+                    <div class="left"><h3>{{ 'plan_estudio.forma_cumplimiento_generica' | trans({'%forma_cumplimiento%': modulo_generica.forma_cumplimiento  })  | raw }}</h3></div>
+                    <div class="right"><button type="button" class="btn btn_verificar_cumplimiento_js" data-regla="{{ modulo_generica.regla }}" data-materia="{{  modulo_generica.elemento }}" data-parametros="{{  modulo_generica.parametros }}" data-elemento-comp="{{  modulo_generica.elemento_comp }}" data-completo="false" >{{'plan_estudio.verificar'|trans}}</button></div>
+                    <div class="both"></div>
+                </div>
+                <div id="alert_cumplimiento_regla_{{ modulo_generica.regla }}_materia_{{ modulo_generica.elemento_comp }}_js" class="alert alert-block alert_verificar_cumplimiento">
+                    <h4 class="alert-heading"></h4>
+                    <p>
+                        <a class="btn ocultar" href="#">{{'plan_estudio.ocultar'|trans}}</a>
+                    </p>
+                </div>
+                <div class="js-optativas">
+                    <!-- aca escribe el ajax -->
+                </div>
+            {% endset %}
+            {# Si es un modulo #}
+        {% elseif modulo_generica.entidad_subtipo == data.subtipo_agrupador_modulos  %}
+            {% set entidad_subtipo = 'modulos' %}
+            {% set accordion_toggle_label %}
+                <b>{{ 'plan_estudio.modulo' | trans }}:</b> {{ modulo_generica.nombre }}{% if modulo_generica.codigo %} ({{ modulo_generica.codigo }}){% endif %}
+            {% endset %}
+            {# Si es un agrupador de orientaciones #}
+        {% elseif modulo_generica.entidad_subtipo == data.subtipo_agrupador_orientaciones  %}
+            {% set entidad_subtipo = 'agrupador_orientaciones' %}
+            {% set accordion_toggle_label %}
+                <b>{{ modulo_generica.nombre }}</b>
+            {% endset %}
+            {# Si es una orientacion #}
+        {% elseif modulo_generica.entidad_subtipo == data.subtipo_orientacion  %}
+            {% set entidad_subtipo = 'orientacion' %}
+            {% set accordion_toggle_label %}
+                <b>{{ 'plan_estudio.orientacion' | trans }}:</b> {{ modulo_generica.nombre }}
+            {% endset %}
+        {% endif %}
+
+        <div class="{{ entidad_subtipo }} accordion" id="accordion{{ modulo_generica.elemento_comp }}" data-elemento="{{ modulo_generica.elemento }}" data-cargado="false">
+            <div class="accordion-group">
+                <div class="accordion-heading">
+                    <a class="{{ entidad_subtipo }} accordion-toggle" {% if entidad_subtipo != 'materia_generica' %}data-toggle="collapse"{% endif %} data-target="#collapse{{ modulo_generica.elemento_comp }}">
+                        {{ accordion_toggle_label }} 
+                    </a>
+                </div>
+                <div id="collapse{{ modulo_generica.elemento_comp }}" class="{{ entidad_subtipo ~ ' ' ~ accordion_body_class }} accordion-body collapse js-accordion">
+                    
+                    <div class="accordion-inner">
+
+                        {{ accordion_toggle_cumplimiento }}
+                        
+                        {% if modulo_generica.modulos_genericas %}
+
+                            {% for modulo_generica_bis in modulo_generica.modulos_genericas %}
+
+                                {{ current_file_macros.modulo_generica_collapse(modulo_generica_bis, data) }}
+
+                            {% endfor %}
+
+                        {% endif %}
+
+                        {% if modulo_generica.materias %}
+                            
+                            {{ current_file_macros.tabla_materias(modulo_generica.materias, modulo_generica.elemento, modulo_generica.entidad_subtipo, data) }}
+
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    {% endif %}
+{% endmacro %}
+
+{% macro tabla_materias(materias, padre_id, padre_tipo, data) %}
+
+    <table class="table table-bordered table-condensed" summary="Materias">
+        <thead>
+            <tr>
+                <th title="{{ "plan_estudio.actividad" | trans }}">{{ "plan_estudio.actividad" | trans }}</th>
+                <th title="{{ "plan_estudio.tipo_materia" | trans }}">{{ "plan_estudio.tipo_materia" | trans }}</th>
+                <th title="{{ "plan_estudio.ano_cursada" | trans }}">{{ "plan_estudio.ano_cursada" | trans }}</th>
+                <th title="{{ "plan_estudio.periodo_dictado" | trans }}">{{ "plan_estudio.periodo_dictado" | trans }}</th>
+                <th title="{{ "plan_estudio.nota" | trans }}">{{ "plan_estudio.nota" | trans }}</th>
+                <th title="{{ "plan_estudio.origen" | trans }}">{{ "plan_estudio.origen" | trans }}</th>
+                <th title="{{ "plan_estudio.credito" | trans }}">{{ "plan_estudio.credito" | trans }}</th>
+                <th title="{{ "plan_estudio.puntaje" | trans }}">{{ "plan_estudio.puntaje" | trans }}</th>
+                <th title="{{ "plan_estudio.correlatividades" | trans }}">{{ "plan_estudio.correlatividades" | trans }}</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            {% for materia in materias %}
+
+                {% set asignacion_optativa = '' %}
+
+                {# Si es una materia suelta o no es contenida por una genérica #}
+                {% if (padre_id is empty) or (padre_tipo != data.subtipo_materia_generica) %}
+
+                    {% set asignacion_optativa = '' %}
+
+                    {# Es una optativa compartida entre genericas y el alumno la selecciono para esta genérica #}
+                {% elseif materia.optativa_compartida == data.es_optativa_compartida_asignada_a_esa_generica %}
+
+                    {% set asignacion_optativa %}
+                    <i class="fa fa-check-circle fa-2x asignacion_optativa"
+                       aria-label="{{ 'plan_estudio.aria_optativa_compartida_y_asignada_esta_generica' | trans }}"
+                       data-toggle="tooltip" 
+                       data-placement="top" 
+                       data-html="true"
+                       data-container="body"
+                       title="" 
+                       data-original-title="{{ 'plan_estudio.optativa_compartida_y_asignada_esta_generica' | trans }}">
+                    </i>
+                {% endset %}
+
+                {# Es una optativa compartida entre genéricas y el alumno la eligió para otra genérica #}
+            {% elseif materia.optativa_compartida == data.es_optativa_compartida_asignada_a_otra_generica  %}
+
+                {% set asignacion_optativa %}
+                    <i class="fa fa-minus-circle fa-2x asignacion_optativa"
+                       aria-label="{{ 'plan_estudio.aria_optativa_compartida_y_asignada_otra_generica' | trans }}"
+                       data-toggle="tooltip" 
+                       data-placement="top" 
+                       data-html="true"
+                       data-container="body"
+                       title="" 
+                       data-original-title="{{ 'plan_estudio.optativa_compartida_y_asignada_otra_generica' | trans }}">
+                    </i>
+                {% endset %}
+
+                {# Es una optativa compartida entre genéricas y el alumno aun lo eligió para que generica se cumple #}
+            {% elseif materia.optativa_compartida == data.es_optativa_compartida_sin_generica_asignada  %}
+
+                {% set asignacion_optativa %}
+                    <i class="fa fa-exclamation-circle fa-2x asignacion_optativa"
+                       aria-label="{{ 'plan_estudio.aria_optativa_compartida_y_sin_asignar_generica' | trans }}"
+                       data-toggle="tooltip" 
+                       data-placement="top" 
+                       data-html="true"
+                       data-container="body"
+                       title="" 
+                       data-original-title="{{ 'plan_estudio.optativa_compartida_y_sin_asignar_generica' | trans({'%url%': data.url_reasignar_optativa }) }}">
+                    </i>
+                {% endset %}
+
+            {% endif %}
+
+            <tr class="materia">
+                <td>{{ asignacion_optativa }} {{ materia.actividad }}</td>
+                <td>{{ materia.tipo }}</td>
+                <td>{{ materia.anio }}</td>
+                <td>{{ materia.periodo }}</td>
+                <td>{{ materia.nota }}</td>
+                <td>{{ materia.origen }}</td>
+                <td>{{ materia.credito }}</td>
+                <td>{{ materia.puntaje }}</td>
+                <td class="centrado">
+                    {% if materia.tiene_correlativas %}
+                        <a class="btn btn-info btn-mini ver_correlatividades" data-completo="false" data-elemento="{{ materia.elemento }}" data-elemento-padre="{{ padre_id }}">{{'plan_estudio.correlativas_ver'|trans|capitalize}}</a>
+                    {% endif %}
+                </td>
+            </tr>
+
+            <tr class="correlatividades">
+                <!-- aca escribe el ajax -->
+            </tr>
+
+        {% endfor %}
+
+    </tbody>
+</table>
+{% endmacro %}

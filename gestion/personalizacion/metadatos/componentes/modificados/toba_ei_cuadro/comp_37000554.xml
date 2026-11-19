@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="37000554" descripcion="toba_ei_cuadro">
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:37000554">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ei_cuadro_columna">
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="37000554"/>
+			<columna nombre="objeto_cuadro_col" valor="770000924"/>
+			<columna nombre="clave" valor="motivo_baja_desc"/>
+			<columna nombre="orden" valor="9"/>
+			<columna nombre="titulo" valor="Motivo Baja"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="37000554"/>
+			<columna nombre="objeto_cuadro_col" valor="770000925"/>
+			<columna nombre="clave" valor="tipo_beneficio_desc"/>
+			<columna nombre="orden" valor="10"/>
+			<columna nombre="titulo" valor="Beca/Bonificación"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="37000554"/>
+			<columna nombre="objeto_cuadro_col" valor="770000999"/>
+			<columna nombre="clave" valor="nombre_elemento_baja"/>
+			<columna nombre="orden" valor="11"/>
+			<columna nombre="titulo" valor="Materia de Baja"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="37000554"/>
+			<columna nombre="objeto_cuadro_col" valor="770001016"/>
+			<columna nombre="clave" valor="pago"/>
+			<columna nombre="orden" valor="12"/>
+			<columna nombre="titulo" valor="Está pago?"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="7"/>
+			<columna nombre="formateo" valor="13"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+	</tabla>
+</componente>

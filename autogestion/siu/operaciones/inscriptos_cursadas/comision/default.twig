@@ -1,0 +1,126 @@
+{% extends "kernel/pagelet.twig" %}
+{% import 'kernel/macro_helpers.twig' as helper %}
+{% block contenido %}
+
+	{% set acciones %}
+
+		<a class="btn no-ajax" target="_blank" href="{{ this.data.url.generar_pdf }}"><i class="g3w-icono-pdf"></i></a>
+		<a class="btn no-ajax" target="_blank" href="{{ this.data.url.generar_excel }}"><i class="g3w-icono-xls"></i></a>
+
+	{% endset %}
+
+	{% if this.data.zona_activa %}
+		{{ helper.titulo_operacion("inscripcion_a_cursadas"|trans|capitalize, '', acciones) }}
+	{% else %}
+		{{ helper.titulo_operacion_con_history_back("inscripcion_a_cursadas"|trans|capitalize,acciones) }}
+	{% endif %}
+
+	{% if this.data.comision %}
+		{% set titulos = this.data.comision %}
+		<table class="table table-striped table-bordered table-condensed">
+			<tr>
+				<td>
+					{{ 'nombre_actividad' |trans|capitalize }}: {{ titulos.actividad_orden }}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					{{ 'comision' |trans|capitalize }}: {{ titulos.comision_nombre }}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					{% if titulos.es_subcomision %}
+						{{ 'subcomision' |trans|capitalize }}: {{ titulos.subcomision_nombre }}
+					{% else %}
+						{{ 'subcomision' |trans|capitalize }}: {{ 'no_tiene'|trans|capitalize }}
+					{% endif %}
+				</td>
+			</tr>
+			<tr>
+				<td>
+					{{ 'ubicacion' |trans|capitalize }}: {{ titulos.ubicacion_nombre }}
+				</td>
+			</tr>
+			{% if titulos.es_subcomision %}
+				<tr>
+					<td>
+						{{ 'nombre_tipo_clase' |trans|capitalize }}: {{ titulos.tipo_clase }}
+					</td>
+				</tr>
+			{% endif %}
+			<tr>
+				<td>
+					{% if titulos.es_subcomision %}
+						{{ 'nombre_horario' |trans|capitalize }}: {{ titulos.horario_subcomision }}
+					{% else %}
+						{{ 'nombre_horario' |trans|capitalize }}: {{ titulos.horario_comision }}
+					{% endif %}
+				</td>
+			</tr>
+		</table>
+	{% endif %}
+	{% if this.data.alumnos_comision %}
+		<table class="table table-striped table-bordered table-condensed">
+			<thead>
+				<tr>
+					<td class="cc-titulo-nivel-0">
+						{{ 'inscriptos_cursadas.legajo' | trans }}
+					</td>
+					<td class="cc-titulo-nivel-0">
+						{{ 'inscriptos_cursadas.alumno' | trans }}
+					</td>
+					<td class="cc-titulo-nivel-0">
+						{{ 'inscriptos_cursadas.estado' | trans }}
+					</td>
+                                        <td class="cc-titulo-nivel-0">
+						{{ 'inscriptos_cursadas.instancias' | trans  }}
+					</td>
+                                        
+                                        {# Si el docente puede visualizar los datos de contacto de los alumnos (email y teléfono) #}
+                                        {% if this.data.visualiza_datos_contacto %}
+					<td class="cc-titulo-nivel-0">
+						{{ 'inscriptos_cursadas.email' | trans }}
+					</td>
+					<td class="cc-titulo-nivel-0">
+						{{ 'inscriptos_cursadas.telefono' | trans }}
+					</td>
+                                        {% endif %}
+                                        
+				</tr>
+			</thead>
+			{% for alumno in this.data.alumnos_comision %}
+				<tr>
+					<td>
+                                            {{ alumno.legajo }}
+					</td>
+					<td>
+                                            {{ alumno.apellido_nombres }}
+					</td>
+					<td>
+                                            {{ alumno.estado_inscripcion }}
+					</td>
+                                        <td>
+                                            {{ alumno.instancias }}
+					</td>
+                                        
+                                        {# Si el docente puede visualizar los datos de contacto de los alumnos (email y teléfono) #}
+                                        {% if this.data.visualiza_datos_contacto %}
+					<td>
+                                            {{ alumno.email }}
+					</td>
+					<td>
+                                            {{ alumno.telefono }}
+					</td>
+                                        {% endif %}
+				</tr>
+			{% endfor %}
+		</table>
+	{% else %}
+		{% if titulos.es_subcomision %}
+			<div class="alert">{{ "inscripcion_a_cursadas.subcomision.vacia" | trans | capitalize }}.</div>
+		{% else %}
+			<div class="alert">{{ "inscripcion_a_cursadas.comision.vacia" | trans | capitalize }}.</div>
+		{% endif %}
+	{% endif %}
+{% endblock %}

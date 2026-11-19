@@ -1,0 +1,129 @@
+	<div id="cuadroBuscarLocalidad">
+			<h2>Localidades</h2>		
+			<form id="localidades" action="{{form.getAction}}" method="post">        
+			<table style="clear: both; margin: 10px;width: 375px;">
+				<tr>
+					<td style="width: 88px;">
+						{{form.pais.renderLabel|raw}}
+					</td>
+					<td>
+						{{form.pais.renderViewHelper|raw}}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						&nbsp;
+					</td>
+					<td>
+						&nbsp;
+					</td>
+				</tr>
+				<tr>
+					<td>
+						{{form.provincia.renderLabel|raw}}
+					</td>
+					<td>
+						{{form.provincia.renderViewHelper|raw}}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						&nbsp;
+					</td>
+					<td style="line-height: 14px;">
+						<p id="error_busqueda_provincia">No ha seleccionado pais o provincia</p>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						&nbsp;
+					</td>
+					<td>
+						&nbsp;
+					</td>
+				</tr>
+				<tr>
+					<td>
+						{{form.localidad.renderLabel|raw}}
+					</td>
+					<td>
+						{{form.localidad.renderViewHelper|raw}}
+					</td>
+				</tr>
+				<tr>
+					<td>
+						&nbsp;
+					</td>
+					<td style="line-height: 14px;">
+						<p id="error_busqueda_localidad">Ingrese el nombre o parte del nombre de la localidad que busca</p>
+					</td>
+				</tr>
+				<tr>				
+					<td colspan="2">					
+						&nbsp;
+					</td>
+				</tr>
+				<tr>				
+					<td>
+						&nbsp;
+					</td>
+					<td align="right">
+						<div style="float: right; width: 68px;">
+							<input id="buscar" type="button" value="Buscar" class="btn"/>
+						</div>
+						<div id="ajax-loader">
+							<img src="img/ajax-loader.gif" />
+						</div>
+					</td>
+				</tr>
+			</table>
+			<table style="clear: both; margin: 10px;width: 375px; display: none;" id="tablaResultados">
+				<tr>				
+					<td colspan="2">					
+						&nbsp;
+					</td>
+				</tr>
+				<tr>
+					<td style="width: 88px;">
+						<label from="cps">Codigo postal</label>
+					</td>
+					<td>
+						<select id="cps"></select>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						&nbsp;
+					</td>
+					<td style="line-height: 14px;">
+						<p id="error_busqueda_cp">No ha selleccionado un código postal</p>
+					</td>
+				</tr>
+				<tr>				
+					<td colspan="2">					
+						&nbsp;
+					</td>
+				</tr>
+			</table>
+
+			<table style="clear: both; margin: 10px;width: 375px; display: none;" id="tablaNoResultados">
+				<tr>				
+					<td colspan="2">
+						La busqueda no produjo resultados.
+					</td>
+				</tr>			
+			</table>
+
+
+			<table style="clear: both; margin: 10px;width: 375px;">
+				<tr style="width: 88px;">				
+					<td>
+						<input id="cancelar" type="button" value="Cancelar" class="btn"/>
+					</td>
+					<td align="right">
+						<input id="agregar" type="button" value="Agregar" class="btn btn-info" />
+					</td>
+				</tr>
+			</table>
+			</form>
+		</div>

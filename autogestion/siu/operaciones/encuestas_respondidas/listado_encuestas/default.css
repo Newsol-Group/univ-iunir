@@ -1,0 +1,15 @@
+#listado_encuestas .centrado{
+    text-align: center;
+}
+#listado_encuestas #encuesta_respondida_kolla{
+    width: 670px;
+}
+
+/* https://stackoverflow.com/questions/18355060/how-to-add-scrollbars-in-iframe */
+#listado_encuestas #ifkolla{
+    position: relative !important; 
+    border: 0;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+}

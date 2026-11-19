@@ -1,0 +1,43 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	<form id="idioma" action="{{this.data.form.getAction}}" method="post">
+		{% import "kernel/macro_csrf.twig" as input_csrf %}
+		{{ input_csrf.mostrar(this.generar_csrf) }}
+		<h2 id="form-title" class="resaltar divisor clearfix"><span class="pull-left">Idiomas</span>
+			<button id="guardar" type="button" name="guardar" class="btn btn-info pull-right" disabled="disabled">Guardado</button>
+		</h2>
+
+		{{this.data.form.form_id.renderViewHelper|raw}}
+
+		<div class="clearfix bloque">
+			<div class="pull-left">{{this.data.form.AUX2_ALU_IDIOMA_INGL.renderLabel|raw}}</div>
+			<div class="pull-left">{{this.data.form.AUX2_ALU_IDIOMA_INGL.renderViewHelper|raw}}</div>
+		</div>
+
+		<div class="clearfix bloque">
+			<div class="pull-left">{{this.data.form.AUX2_ALU_IDIOMA_ALEM.renderLabel|raw}}</div>
+			<div class="pull-left">{{this.data.form.AUX2_ALU_IDIOMA_ALEM.renderViewHelper|raw}}</div>
+		</div>
+
+		<div class="clearfix bloque">
+			<div class="pull-left">{{this.data.form.AUX2_ALU_IDIOMA_FRAN.renderLabel|raw}}</div>
+			<div class="pull-left">{{this.data.form.AUX2_ALU_IDIOMA_FRAN.renderViewHelper|raw}}</div>
+		</div>
+
+		<div class="clearfix bloque">
+			<div class="pull-left">{{this.data.form.AUX2_ALU_IDIOMA_ITAL.renderLabel|raw}}</div>
+			<div class="pull-left">{{this.data.form.AUX2_ALU_IDIOMA_ITAL.renderViewHelper|raw}}</div>
+		</div>
+
+		<div class="clearfix bloque">
+			<div class="pull-left">{{this.data.form.AUX2_ALU_IDIOMA_PORT.renderLabel|raw}}</div>
+			<div class="pull-left">{{this.data.form.AUX2_ALU_IDIOMA_PORT.renderViewHelper|raw}}</div>
+		</div>
+
+		<div class="clearfix bloque">
+			<div class="pull-left">{{this.data.form.AUX2_ALU_IDIOMA_OTRO.renderLabel|raw}}</div>
+			<div class="pull-left">{{this.data.form.AUX2_ALU_IDIOMA_OTRO.renderViewHelper|raw}}</div>
+		</div>
+
+	</form>
+{% endblock %}

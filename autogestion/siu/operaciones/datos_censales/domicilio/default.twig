@@ -1,0 +1,127 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	
+        {# Si no viene de Convocatorias a Becas #}
+        {% if not this.viene_de_convocatorias_becas() %}
+            {% import "macro_mensajes.twig" as mensajes %}
+            <div id="mensajes">
+                    {{ mensajes.render_mensajes(this.datos_confirmados(), this.datos_error_control(), this.datos_vigentes()) }}
+            </div>
+	{% endif %}
+	
+	{% set form = this.get_form() %}
+	{% autoescape false %}
+	{{ form.encabezado }}
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-inferior clearfix'>
+				<div class='pull-left'>
+					<h2>{{this.get_nombre_seccion()|trans}}</h2>
+				</div>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'datos_censales.guardar')  }}
+				</div>
+			</div>
+		</div>
+
+		{%if form.hay_visibles_agrupado('periodo_lectivo') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('periodo_lectivo')">{{'datos_censales.domicilio_periodo_lectivo'|trans}}</h3>
+			<div id='periodo_lectivo' class='toggle-div'>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('periodo_lectivo_calle') }}
+				</div>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('periodo_lectivo_numero', 'span3') }}
+					{{ form.control_group('periodo_lectivo_piso', 'span3') }}
+					{{ form.control_group('periodo_lectivo_departamento', 'span3') }}
+					{{ form.control_group('periodo_lectivo_unidad', 'span3') }}
+				</div>
+					
+				{% if form.def_visible('periodo_lectivo_localidad') %}
+					<div class='clearfix cg-margen'>
+						{{ form.control_group_localidad('periodo_lectivo_localidad', 'periodo_lectivo_localidad_descr', 'periodo_lectivo_pais') }}
+						<div id='periodo_lectivo_localidad_help' class='clearfix inline-help italic cg-margen'>
+							{{'datos_censales.ayuda_lista_localidades'|trans}}
+						</div>
+						<input id="btnLimpiarLocPerLect" value="{{'datos_censales.limpiar'|trans}}" type="button" class="btn btn-inverse" />
+						<input id="btnSelectorLocPerLect" name="btnSelectorLocalidad" value="{{'datos_censales.busqueda_avanzada'|trans}}" type="button" class="btn btn-inverse" />
+					</div>
+				{% endif %}
+					
+				<div class='clearfix cg-margen'>
+					{% if form.def_visible('periodo_lectivo_localidad') %}
+						<div class='span6'>
+							{{ form.control_group('periodo_lectivo_codigo_postal', 'span5') }}
+							<input id="btnSelectorCP_PerLect" name="btnSelectorCP_PerLect" value="{{'datos_censales.busqueda_cp'|trans}}" type="button" class="btn btn-inverse btn-cp" />
+						</div>
+						{{ form.control_group('periodo_lectivo_barrio', 'span6') }}
+					{% endif %}
+				</div>
+				
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('tipo_vivienda', 'span6') }}
+					{{ form.control_group('vive_con', 'span6') }}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		{%if form.hay_visibles_agrupado('procedencia') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('procedencia')">{{'datos_censales.domicilio_procedencia'|trans}}</h3>
+			<div id='procedencia' class='toggle-div'>
+				<div class='clearfix' style="margin-bottom: 15px;">
+					<div id="btn_copiar_domicilio" class="btn btn-info btn-copia">
+						<i class="icon-white icon-chevron-down"></i> {{'datos_censales.copiar_domicilio'|trans}}
+					</div>
+				</div>
+				
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('procedencia_calle') }}
+				</div>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('procedencia_numero', 'span3') }}
+					{{ form.control_group('procedencia_piso', 'span3') }}
+					{{ form.control_group('procedencia_departamento', 'span3') }}
+					{{ form.control_group('procedencia_unidad', 'span3') }}
+				</div>
+					
+				{% if form.def_visible('procedencia_localidad') %}
+					<div class='clearfix cg-margen'>
+						{{ form.control_group_localidad('procedencia_localidad', 'procedencia_localidad_descr', 'procedencia_pais') }}
+						<div id='procedencia_localidad_help' class='clearfix inline-help italic cg-margen'>
+							{{'datos_censales.ayuda_lista_localidades'|trans}}
+						</div>
+						<input id="btnLimpiarLocProc" value="{{'datos_censales.limpiar'|trans}}" type="button" class="btn btn-inverse" />
+						<input id="btnSelectorLocProc" name="btnSelectorLocalidad" value="{{'datos_censales.busqueda_avanzada'|trans}}" type="button" class="btn btn-inverse" />
+					</div>
+				{% endif %}
+					
+				<div class='clearfix cg-margen'>
+					{% if form.def_visible('procedencia_localidad') %}
+						<div class='span6'>
+							{{ form.control_group('procedencia_codigo_postal', 'span5') }}
+							<input id="btnSelectorCP_Proc" name="btnSelectorCP_Proc" value="{{'datos_censales.busqueda_cp'|trans}}" type="button" class="btn btn-inverse btn-cp" />
+						</div>
+						{{ form.control_group('procedencia_barrio', 'span6') }}
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-superior'>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'datos_censales.guardar')  }}
+				</div>
+			</div>
+		</div>
+
+	</form>
+	{% endautoescape %}
+        
+        {% import "macro_confirmacion.twig" as confirmacion %}
+        {{ confirmacion.mostrar(this.viene_de_convocatorias_becas(), this.hay_datos_faltantes_convocatoria(), this.get_url_siguiente_paso()) }}
+        
+{% endblock %}

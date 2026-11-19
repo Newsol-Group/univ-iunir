@@ -1,0 +1,14 @@
+{% extends "kernel/pagelet.twig" %}
+{% import 'kernel/macro_helpers.twig' as helper %}
+
+{% block contenido %}
+
+	{% set form = this.data.filtro %}
+	{{ form.render_encabezado() | raw }}
+	{{ helper.titulo_operacion("derechos_comision_titulo"|trans|capitalize,'', form.render_acciones() ) }}
+
+
+	{{ form.render_cuerpo() | raw}}
+	{{ form.render_cierre() | raw }}
+
+{% endblock %}

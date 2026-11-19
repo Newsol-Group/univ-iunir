@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="38000714" descripcion="toba_ei_cuadro">
+	<tabla nombre="apex_objeto_ei_cuadro_columna">
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="38000714"/>
+			<columna nombre="objeto_cuadro_col" valor="770001011"/>
+			<columna nombre="clave" valor="total_clases_hasta_hoy"/>
+			<columna nombre="orden" valor="7"/>
+			<columna nombre="titulo" valor="Total Clases hasta hoy"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="38000714"/>
+			<columna nombre="objeto_cuadro_col" valor="770001012"/>
+			<columna nombre="clave" valor="total_clases_previstas_anio"/>
+			<columna nombre="orden" valor="8"/>
+			<columna nombre="titulo" valor="Total Clases en el año"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="4"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="38000714"/>
+			<columna nombre="objeto_cuadro_col" valor="770001013"/>
+			<columna nombre="clave" valor="porc_asistencia_hasta_hoy"/>
+			<columna nombre="orden" valor="9"/>
+			<columna nombre="titulo" valor="% Asistencia hasta hoy"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="0"/>
+			<columna nombre="formateo" valor="11"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="38000714"/>
+			<columna nombre="objeto_cuadro_col" valor="770001014"/>
+			<columna nombre="clave" valor="porc_asistencia_previstas_anio"/>
+			<columna nombre="orden" valor="10"/>
+			<columna nombre="titulo" valor="% Asistencia en el año"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="0"/>
+			<columna nombre="formateo" valor="11"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+	</tabla>
+</componente>

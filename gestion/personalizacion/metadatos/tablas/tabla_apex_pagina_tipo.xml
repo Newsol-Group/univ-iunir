@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<tabla id="apex_pagina_tipo">
+	<registro estado="2" clave="pagina_tipo:guarani_tp_basico">
+		<columna nombre="clase_nombre" valor="tp_basico_pers" valor_original="guarani_tp_basico"/>
+		<columna nombre="clase_archivo" valor="extension_toba/tipos_pagina/tp_basico_pers.php" valor_original="extension_toba/tipos_pagina/guarani_tp_basico.php"/>
+		<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+	</registro>
+</tabla>

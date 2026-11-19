@@ -1,0 +1,49 @@
+{% import 'kernel/macro_helpers.twig' as helper %}
+{% extends "kernel/pagelet.twig" %}
+
+
+{% block contenido %}
+
+	{% block titulo_operacion %}
+		<div class="titulo_operacion row-fluid">
+			<div class="span12">
+				<h2 class="clearfix">
+					{% block url_back %}
+						{% if this.data.url_back %}
+                                                    <button class='btn btn-primary btn-small js-btn-back pull-left' data-url-back="{{ this.data.url_back|raw }}">
+                                                        <i class="icon-chevron-left icon-white"></i>
+                                                    </button>
+						{% endif %}
+					{% endblock %}
+					<span class="pull-left">{% block titulo '' %}</span>
+
+					<div class="pull-right">{% block acciones_titulo '' %}</div>
+				</h2>
+			</div>
+		</div>
+	{% endblock %}
+
+	{% block herramientas %}
+		<div class='detalle-contenedor  well well-small'>
+			<div class="clearfix detalle-cabecera">
+				{% block herramientas_cabecera %}
+					<div class='pull-left herramientas-titulo'>
+						{% block herramientas_cabecera_titulo 'Herramientas' %}
+					</div>
+					<div class='pull-right herramientas-acciones'>
+						<div class='pull-right'>
+							<div class="btn-group">
+								{% block herramientas_cabecera_acciones '' %}
+							</div>
+						</div>
+					</div>
+				{% endblock %}
+			</div>
+
+			{% block herramientas_contenido '' %}
+		</div>
+	{% endblock %}
+
+	{% block contenido_principal '' %}
+
+{% endblock %}

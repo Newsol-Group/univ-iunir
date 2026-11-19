@@ -1,0 +1,17 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+    {% spaceless %}
+        <div id='listado_materias'>
+            <ul class="nav nav-list">
+                {% for materia in this.data.materias %}
+                    {% set inscripto = (materia.E_INSCRIPCION) ? 'insc' : '' %}
+                    <li class='{{inscripto}}'>
+                        <a href='{{ materia.URL_MATERIA }}' title='{{ materia.nombre }}'>
+                            {{ materia.nombre|raw }}
+                        </a>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endspaceless %}
+{% endblock %}

@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="41000618" descripcion="toba_ei_cuadro">
+	<tabla nombre="apex_objeto_ei_cuadro_columna">
+		<registro estado="3" clave="objeto_cuadro_proyecto:guarani;objeto_cuadro:41000618;objeto_cuadro_col:5000267"/>
+		<registro estado="3" clave="objeto_cuadro_proyecto:guarani;objeto_cuadro:41000618;objeto_cuadro_col:14000110"/>
+		<registro estado="3" clave="objeto_cuadro_proyecto:guarani;objeto_cuadro:41000618;objeto_cuadro_col:41000640"/>
+		<registro estado="3" clave="objeto_cuadro_proyecto:guarani;objeto_cuadro:41000618;objeto_cuadro_col:41000641"/>
+		<registro estado="3" clave="objeto_cuadro_proyecto:guarani;objeto_cuadro:41000618;objeto_cuadro_col:41000642"/>
+		<registro estado="3" clave="objeto_cuadro_proyecto:guarani;objeto_cuadro:41000618;objeto_cuadro_col:41000643"/>
+		<registro estado="3" clave="objeto_cuadro_proyecto:guarani;objeto_cuadro:41000618;objeto_cuadro_col:41000644"/>
+		<registro estado="3" clave="objeto_cuadro_proyecto:guarani;objeto_cuadro:41000618;objeto_cuadro_col:41000645"/>
+		<registro estado="3" clave="objeto_cuadro_proyecto:guarani;objeto_cuadro:41000618;objeto_cuadro_col:41000646"/>
+		<registro estado="3" clave="objeto_cuadro_proyecto:guarani;objeto_cuadro:41000618;objeto_cuadro_col:41000647"/>
+		<registro estado="3" clave="objeto_cuadro_proyecto:guarani;objeto_cuadro:41000618;objeto_cuadro_col:41000648"/>
+		<registro estado="3" clave="objeto_cuadro_proyecto:guarani;objeto_cuadro:41000618;objeto_cuadro_col:41000649"/>
+		<registro estado="3" clave="objeto_cuadro_proyecto:guarani;objeto_cuadro:41000618;objeto_cuadro_col:41000650"/>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="41000618"/>
+			<columna nombre="objeto_cuadro_col" valor="770000662"/>
+			<columna nombre="clave" valor="anio_academico"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="titulo" valor="Año Acad."/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-cen-s1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="41000618"/>
+			<columna nombre="objeto_cuadro_col" valor="770000663"/>
+			<columna nombre="clave" valor="fecha_inscripcion"/>
+			<columna nombre="orden" valor="2"/>
+			<columna nombre="titulo" valor="Fecha Inscripción"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-cen-s1"/>
+			<columna nombre="formateo" valor="18"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="41000618"/>
+			<columna nombre="objeto_cuadro_col" valor="770000664"/>
+			<columna nombre="clave" valor="estado_inscr_descr"/>
+			<columna nombre="orden" valor="3"/>
+			<columna nombre="titulo" valor="Estado Inscripción"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-cen-s1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="41000618"/>
+			<columna nombre="objeto_cuadro_col" valor="770000665"/>
+			<columna nombre="clave" valor="tipo_ingreso_nombre"/>
+			<columna nombre="orden" valor="4"/>
+			<columna nombre="titulo" valor="Tipo Ingreso"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-tex-p1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="41000618"/>
+			<columna nombre="objeto_cuadro_col" valor="770000666"/>
+			<columna nombre="clave" valor="ubicacion_nombre"/>
+			<columna nombre="orden" valor="5"/>
+			<columna nombre="titulo" valor="Ubicación"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-tex-p1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="41000618"/>
+			<columna nombre="objeto_cuadro_col" valor="770000667"/>
+			<columna nombre="clave" valor="modalidad_nombre"/>
+			<columna nombre="orden" valor="6"/>
+			<columna nombre="titulo" valor="Modalidad"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-cen-s1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="41000618"/>
+			<columna nombre="objeto_cuadro_col" valor="770000668"/>
+			<columna nombre="clave" valor="plan_nombre"/>
+			<columna nombre="orden" valor="7"/>
+			<columna nombre="titulo" valor="Plan"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-cen-s1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="41000618"/>
+			<columna nombre="objeto_cuadro_col" valor="770000669"/>
+			<columna nombre="clave" valor="orientacion"/>
+			<columna nombre="orden" valor="8"/>
+			<columna nombre="titulo" valor="Orientación"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-cen-s1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="41000618"/>
+			<columna nombre="objeto_cuadro_col" valor="770000670"/>
+			<columna nombre="clave" valor="legajo"/>
+			<columna nombre="orden" valor="9"/>
+			<columna nombre="titulo" valor="Legajo"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-cen-s1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="41000618"/>
+			<columna nombre="objeto_cuadro_col" valor="770000671"/>
+			<columna nombre="clave" valor="calidad"/>
+			<columna nombre="orden" valor="10"/>
+			<columna nombre="titulo" valor="Calidad"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-cen-s1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="41000618"/>
+			<columna nombre="objeto_cuadro_col" valor="770000672"/>
+			<columna nombre="clave" valor="desc_motivo_cambio_calidad"/>
+			<columna nombre="orden" valor="11"/>
+			<columna nombre="titulo" valor="Motivo"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-tex-p1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="41000618"/>
+			<columna nombre="objeto_cuadro_col" valor="770000673"/>
+			<columna nombre="clave" valor="regular"/>
+			<columna nombre="orden" valor="12"/>
+			<columna nombre="titulo" valor="Regular"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-cen-s1"/>
+			<columna nombre="formateo" valor="13"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="41000618"/>
+			<columna nombre="objeto_cuadro_col" valor="770000674"/>
+			<columna nombre="clave" valor="observaciones"/>
+			<columna nombre="orden" valor="13"/>
+			<columna nombre="titulo" valor="Observaciones"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-tex-p1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+	</tabla>
+</componente>

@@ -1,0 +1,142 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+
+
+<div class>
+	<span class style="font-weight:bold;">¡Importante!</span><span> ANTES de solicitar documentación visualizá los plazos, requisitos y costos en: </span>
+	<td class> <a href="https://www.iunir.edu.ar/alumnos/tramites" target="_blank">https://www.iunir.edu.ar/alumnos/tramites</a></td><span> (ingresando en el ítem </span> <span class style="font-weight:bold;">"Requisitos para la solicitud de documentación"</span>
+	<span>).Recordá que para comenzar con un trámite debés tener libre deuda. Podés consultar tu situación en SIU Guaraní, en </span><span class style="font-weight:bold;">Reportes > Mi cuenta corriente</span>
+</div>	
+
+        <div class="titulo_operacion">
+            <h2 class="clearfix"><span class="pull-left">{{ "solicitar_certificacion.listado_solicitudes_certificaciones" | trans }}</span>
+                <div class="pull-right" >
+                    <a href="{{ this.data.url_nueva_solicitud }}" 
+                       class="btn btn-info"
+                       {% if not this.data.habilitar_nueva_solicitud %}
+                               disabled="disabled"
+                               title=""
+                               data-placement="top"
+                               data-toggle="tooltip"
+                               data-original-title="{{ "solicitar_certificacion.no_existen_certificaciones_a_solicitar" | trans }}"
+                       {% endif %}
+                    >
+                            {{ "solicitar_certificacion.nueva_solicitud" | trans }}
+                    </a>
+                </div>
+            </h2>
+        </div>
+	
+        {# Si hay mensaje lo muestro #}
+        {% if this.data.mensaje is not empty %}
+        <div class="alert {{ this.data.tipo_mensaje }}">
+            <button type="button" class="close" data-dismiss="alert">&times;</button>
+            {{ this.data.mensaje | raw }}
+        </div>
+        {% endif %}
+    
+	{% if this.data.certificados %}
+	
+		<table class="table table-striped table-bordered">
+			
+                    {# Si usa RDI #}
+                    {% if this.data.usa_rdi %}
+                        {% set msj_requisitos = 'solicitar_certificacion.requisitos_documentales' %}
+                    {# Si no usa RDI #}
+                    {% else %}
+                        {% set msj_requisitos = 'solicitar_certificacion.documentacion' %}
+                    {% endif %}
+                                
+			<thead>
+				<tr>
+					<th>{{ "solicitar_certificacion.titulo" | trans }}</th>
+                                        <th>{{ "solicitar_certificacion.estado" | trans }}</th>
+					<th>{{ "solicitar_certificacion.fecha_inicio_tramite" | trans }}</th>
+					<th>{{ msj_requisitos | trans }}</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+				
+			{% for certificado in this.data.certificados %}
+                            
+                            {% set mostrar_btn_documentacion = false %}
+                            {% set mostrar_btn_reabrir = false %}
+                            {% set estado_descr = certificado.estado_requisitos_descr %}
+                            
+                            {# Si el estado de los requisitos es 'Abierto' #}
+                            {% if certificado.estado_requisitos == this.data.estado_requisitos_abierto %}
+                                
+                                {% set mostrar_btn_documentacion = true %}
+                                {% set label_estado_requisitos = 'label-info' %}
+                                
+                                {# Si usa RDI el botón  dice "Cargar Documentación". #}
+                                {% if this.data.usa_rdi %}
+                                    {% set btn_documentacion_text = 'solicitar_certificacion.btn_cargar_documentacion' %}
+                                    {% set btn_documentacion_icon = 'icon-upload' %}
+                                {# Si no usa RDI el botón  dice "Ver Requisitos". #}
+                                {% else %}
+                                    {% set btn_documentacion_text = 'solicitar_certificacion.btn_ver_requisitos' %}
+                                    {% set btn_documentacion_icon = 'icon-eye-open' %}
+                                {% endif %}
+                                
+                            {# Si el estado de los requisitos es 'Pendiente' #}
+                            {% elseif certificado.estado_requisitos == this.data.estado_requisitos_pendiente %}
+                                                             
+                                {% set label_estado_requisitos = 'label-warning' %}
+                                
+                                {# Si usa RDI el botón  dice "Reabrir Solicitud". #}
+                                {% if this.data.usa_rdi %}
+                                    {% set mostrar_btn_reabrir = true %}
+                                    {% set btn_reabrir_text = 'solicitar_certificacion.btn_reabrir_solicitud' %}
+                                    {% set btn_reabrir_icon = 'icon-edit' %}
+                                {# Si no usa RDI el botón  dice "Ver". #}
+                                {% else %}
+                                    {% set mostrar_btn_documentacion = true %}
+                                    {% set btn_documentacion_text = 'solicitar_certificacion.btn_ver' %}
+                                    {% set btn_documentacion_icon = 'icon-eye-open' %}
+                                {% endif %}
+                                
+                            {# Si el estado de los requisitos es 'Aceptado' #}
+                            {% elseif certificado.estado_requisitos == this.data.estado_requisitos_aceptado %}
+                                
+                                {% set label_estado_requisitos = 'label-success' %}
+                                {# Si el estado de los requiistos es 'Aceptado' muestro el estado de la solicitud #}
+                                {% set estado_descr = (certificado.estado_actual_nombre) ? certificado.estado_actual_nombre : ('solicitar_certificacion.sin_estado'|trans) %}
+                                
+                            {% endif %}
+                                
+				<tr>
+					<td>{{ certificado.certificado_nombre }}</td>
+					<td><span class="label {{ label_estado_requisitos }}">{{ estado_descr }}</span></td>
+                                        <td>{{ certificado.fecha_inicio_tramite }}</td>
+                                        <td>
+                                            {# Si hay que mostrar el botón para ir a la documentación #}
+                                            {% if mostrar_btn_documentacion %}
+                                                <a href="{{ this.data.url_documentacion }}/{{ certificado.nro_solicitud }}" class="btn btn-primary" title="{{ btn_documentacion_text | trans }}">
+                                                    <i class="{{ btn_documentacion_icon }} icon-white"></i> {{ btn_documentacion_text | trans }}
+                                                </a>
+                                            {% endif %}
+                                            
+                                            {# Si hay que mostrar el botón para "Reabrir Solicitud" #}
+                                            {% if mostrar_btn_reabrir %}
+                                                <form action="{{ this.data.url_reabrir_solicitud }}" method="post">
+                                                    <input type="hidden" name="nro_solicitud" value="{{ certificado.nro_solicitud }}">
+                                                    <button type="button" class="btn btn-primary js-btn-reabrir" title="{{ btn_reabrir_text | trans }}">
+                                                        <i class="{{ btn_reabrir_icon }} icon-white"></i> {{ btn_reabrir_text | trans }}
+                                                    </button>
+                                                </form>
+                                            {% endif %}
+                                        </td>
+				</tr>
+			{% endfor %}
+			
+			</tbody>
+		</table>
+	{% else %}
+	
+		<div class="alert">{{ "solicitar_certificacion.no_hay_solicitudes" | trans }}</div>
+		
+	{% endif %}
+		
+{% endblock %}

@@ -1,0 +1,21 @@
+#error {
+    margin-top: 20px;
+}
+
+.convocatorias {
+    margin-top: 45px;
+}
+
+#becas .js-estado {
+    display: none;
+}
+
+#becas a.disabled, #becas button:disabled {
+  cursor: not-allowed;
+}
+
+#becas span.reapertura-fecha-limite {
+    margin-top: 6px;
+    padding: 6px;
+    font-size: 16px;
+}

@@ -1,0 +1,42 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}    
+	
+    <div class="titulo_operacion">
+        <h2 class="clearfix">
+            <span class="pull-left">{{ "solicitudes_sidcer.titulo" | trans }}</span>
+        </h2>
+    </div>
+        
+    {% if this.data.solicitudes is empty %}
+        
+        <div class="alert alert-block">
+            <h4>{{ "solicitudes_sidcer.listado.vacio" | trans }}</h4>
+        </div>
+        
+    {% else %}
+        
+        <table class="table table-striped">
+            
+            <thead>
+                <tr>
+                    <th>{{ "solicitudes_sidcer.listado.titulo" | trans }}</th>
+                    <th>{{ "solicitudes_sidcer.listado.estado" | trans }}</th>
+                </tr>
+            </thead>
+            
+            <tbody>
+                
+            {% for solicitud in this.data.solicitudes %}
+                <tr>
+                    <td>{{ solicitud.titulo }}</td>
+                    <td>{{ solicitud.estado_solicitud }}</td>
+                </tr>
+            {% endfor %}
+            
+            </tbody>
+            
+        </table>
+        
+    {% endif %}
+
+{% endblock %}

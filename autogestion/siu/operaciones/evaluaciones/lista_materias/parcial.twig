@@ -1,0 +1,26 @@
+{# Entrada:  tipo, nombre, porcentaje, cant_inscriptos, evaluacion_id, fecha #}
+<div class="evaluacion">
+	<fieldset class="span4">
+		<span>{{ eval.evaluacion_nombre }} {{ eval.evaluacion_fecha }} {{ eval.evaluacion_tipo_nombre }}</span>
+	</fieldset>
+	<div class="row-fluid">
+		<div class="span4">
+			{% if eval.porcentaje_carga %}
+				<div class="progress progress-success wrapper-carga">
+					<div class="bar" style="width: {{ eval.porcentaje_carga ~ '%' }}"></div>
+				</div>
+				{{ eval.porcentaje_carga ~ '%' }}
+			{% endif %}
+		</div>
+		<div class="span4" style="text-align: right">
+			{{ this.a(eval.url_editar_evaluacion, "<i class='icon-edit'></i> " ~ 'editar'|trans|capitalize, 'btn btn-mini') | raw }}
+			{% if cant_inscriptos > 0 %}
+				{{ this.a(eval.url_listar_notas, "<i class='icon-list'></i> " ~ 'listar'|trans|capitalize, 'btn btn-mini') | raw }}
+				{{ this.a(eval.url_editar_notas, "<i class='icon-pencil'></i> " ~ 'cargar'|trans|capitalize, 'btn btn-mini') | raw }}
+			{% endif %}
+			{{ this.a(eval.url_borrar_evaluacion, "<i class='icon-remove icon-white'></i> " ~ 'borrar'|trans|capitalize, 'btn btn-mini btn-warning js-borrar') | raw }}
+		</div>
+	</div>
+
+
+</div>

@@ -1,0 +1,103 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+    {% import "kernel/macro_notificaciones.twig" as notificaciones %}
+   
+{# <div class>
+	<span class style="font-weight:bold;">�Importante!</span><span> ANTES de solicitar documentaci�n visualiz� los plazos, requisitos y costos en: </span>
+	<td class> <a href="https://www.iunir.edu.ar/alumnos/tramites" target="_blank">https://www.iunir.edu.ar/alumnos/tramites</a></td><span> (ingresando en el �tem </span> <span class style="font-weight:bold;">"Requisitos para la solicitud de documentaci�n"</span>
+	<span>).Record� que para comenzar con un tr�mite deb�s tener libre deuda. Pod�s consultar tu situaci�n en SIU Guaran�, en </span><span class style="font-weight:bold;">Reportes > Mi cuenta corriente</span>
+</div>	 #}
+
+<div class="alert alert-info">
+	<span style="font-weight:bold;">
+		{{ 'solicitar_constancias.aviso_00' | trans}}
+	</span>
+	<span>
+		{{ 'solicitar_constancias.aviso_01' | trans}}
+	</span>
+	<a class="ahref" href="https://www.iunir.edu.ar/alumnos/tramites" target="_blank">https://www.iunir.edu.ar/alumnos/tramites</a>
+	<span>
+		{{ 'solicitar_constancias.aviso_02' | trans}}
+	</span>
+	<span style="font-weight:bold;">
+		{{ 'solicitar_constancias.aviso_03' | trans}}
+	</span>
+	<span>
+		{{ 'solicitar_constancias.aviso_04' | trans}}
+	</span>
+	<span style="font-weight:bold;">
+		{{ 'solicitar_constancias.aviso_05' | trans}}
+	</span>
+</div>
+
+<div class="titulo_operacion row-fluid">
+	<div class="span12">
+		<h2 class="resaltar divisor clearfix">
+			<span class="pull-left">{{'listado_solicitudes'|trans|capitalize}}</span>
+			<div class="" style="margin-bottom: 10px;">
+				<a id="btn-nueva-solicitud" href="{{ this.data.url_nueva_solicitud}}" class='btn btn-info pull-right no-ajax' target="{{this.data.target_nva_solicitud}}">{{'nueva_solicitud'|trans}}</a>
+			</div>
+		</h2>
+	</div>
+</div>
+                
+{% if this.data.resultado.mensajes %}
+        {{ notificaciones.render_notif(this.data.resultado.mensajes, true) }}
+{% endif %}
+
+{% if this.data.msg_saved %}
+	
+	<div class='alert alert-success alert-dismissible' role='alert'>
+		<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button>
+		<strong> 		
+			{{ this.data.msg_saved | trans }}
+		</strong>
+	</div>
+{% endif %}
+
+<div id="listado">
+{% if this.data.solicitudes %}
+	
+	<table class="table table-condensed table-bordered">
+	
+		<thead>
+			<tr>
+				<th>{{'constancias_certificados.constancia' | trans }}</th>
+				<th>{{'constancias_certificados.fecha_solicitud' | trans }}</th>
+				<th>{{'constancias_certificados.presentar_a' | trans }}</th>
+                <th>{{'constancias_certificados.solicitado_en' | trans }}</th>
+				<th>{{'constancias_certificados.copias' | trans }}</th>
+				<th>{{'constancias_certificados.estado' | trans }}</th>
+				<th>{{'constancias_certificados.observaciones' | trans }}</th>
+
+                <th></th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for const in this.data.solicitudes %}
+		{% set const_estado = (const.estado == 'Impreso') ? 'Aceptado' : const.estado %}
+			<tr>
+				<td>{{const.nombre_constancia}}</td>
+				<td>{{const.fecha_solicitud}}</td>
+				<td>{{const.presentar_a}}</td>
+                <td>{% if const.interfaz == 1 %}{{'constancias_certificados.gestion' | trans }}{% elseif const.interfaz == 2 %}{{'constancias_certificados.autogestion' | trans }}{% endif %}</td>
+				<td>{{const.cant_copias_solicitadas}}</td>
+				<td>{{const_estado}}</td>
+				<td>{{const.observaciones}}</td>
+
+                <td>
+                    {% if const.permite_descargar %}
+                        <a class="btn no-ajax descargar_cert" href="{{ const.url_descarga }}" title="{{ 'constancias_certificados.descargar_certificado' | trans }}"><span class="g3w-icono-pdf"></span></a>
+                    {% endif %}
+                </td>
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+{% else %}
+	<div class="alert alert-warning">
+        {{'constancias_certificados.no_hay_solicitudes' | trans }}
+	</div>
+{% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	{% set form = this.get_form() %}
+	{% autoescape false %}
+
+		<h2>{{ 'alta_uc.req.encabezado' | trans | capitalize }}</h2>
+		
+		{% if this.data.mensaje_error %}
+		<div class='strong'>
+			{% import "kernel/macro_notificaciones.twig" as notificaciones %}
+			{{ notificaciones.render_notif(this.data.mensaje_error) }}
+		</div>
+		{% else %}
+		<div class="alert alert-info strong">
+			{{ 'alta_uc.req.mensaje' | trans | raw }}
+		</div>
+
+		{% if this.data.advertencia_tam_max_archivo %}
+			<div class="alert strong">{{ this.data.advertencia_tam_max_archivo | raw }}</div>
+		{% endif %}
+
+
+		{% endif %}
+			
+		{% for REQUISITO in this.data.requisitos %}
+		<div class='well clearfix'>
+			<h3>{{ REQUISITO.header|trans|capitalize }}</h3>
+			{% if REQUISITO.imagen %}
+				<div class="clearfix">
+					<div class="pull-left">
+						<img src="{{ REQUISITO.imagen }}" alt="{{ 'alta_uc.req.alt_imagen' | trans | raw }}" class="imagen" />
+					</div>
+					<div class="pull-right botonera">
+						<div class="botones">
+							<a href="{{ REQUISITO.url_eliminar }}" class="btn btn-inverse js-btnEliminar" title="{{'alta_uc.req.eliminar'|trans|capitalize}}"><i class="icon-white icon-remove"></i>&nbsp;{{'alta_uc.req.eliminar'|trans|capitalize}}</a> &nbsp;
+						</div>
+					</div>
+				</div>
+			{% else %}
+				<form id="{{ REQUISITO.id_form }}" enctype="multipart/form-data" method="post" action="{{REQUISITO.url_subir}}">
+					<div class="clearfix">
+                        {% if this.data.error_archivo_subido %}
+                        <div class="alert alert-error">{{ this.data.error_archivo_subido }}</div>
+                        {% endif %}
+						<div class="pull-left">
+							{#<input type="hidden" name="MAX_FILE_SIZE" value="{{ this.data.tamanio_maximo_archivo_subido_bytes }}" />#}
+							<input id="archivo" type="file" name="archivo" />
+						</div>
+						<div class="pull-right">
+							<button id="button_submit" type="submit" class="btn btn-inverse">{{ 'alta_uc.req.upload' | trans }}</button>
+						</div>
+					</div>
+				</form>
+			{% endif %}
+		</div>
+		{% endfor %}
+		
+		<div class='botonera-inferior'>
+			<div class='pull-right'>
+				<input type="button" name="volver" value="{{'volver'|trans|capitalize}}" class="btn btn-info" onclick="window.location.href='{{this.data.url_volver}}'" />
+				<input type="button" name="finalizar" value="{{'alta_uc.generar_usuario'|trans|capitalize}}" class="btn btn-info" onclick="window.location.href='{{this.data.url_crear_usuario}}'" />
+			</div>
+		</div>
+		
+	{% endautoescape %}
+{% endblock %}

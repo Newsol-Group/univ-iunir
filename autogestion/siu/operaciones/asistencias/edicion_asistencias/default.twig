@@ -1,0 +1,108 @@
+{% extends "kernel/pagelet.twig" %}
+{% import _self as current_file_macros %}
+
+{% block contenido %}
+	{% if this.data.clase_detalle %}
+		<div class="cuadro-totales">
+			<span class="totales total"> Total: <span id="js-asistencia-total"></span></span>
+			<span class="totales presentes"> Presentes: <span id="js-asistencia-presentes"></span></span>
+			<span class="totales ausentes"> Ausentes: <span id="js-asistencia-ausentes"></span></span>
+		</div>
+
+                {% set existen_inasistencias_justificadas = false %}
+                
+		<form class='form-renglones' action='{{ this.data.url_guardar }}' method='post'>
+			<input type="hidden" name="clase[ID]" value="{{ this.data.clase_id }}">
+			{% for alumno in this.data.clase_detalle %}
+				{% set ausente = (alumno.cant_inasistencias > 0) %}
+                                {% set justificada = false %}
+                                
+                                {# Si el alumno posee justificación de inasistencia #}
+                                {% if alumno.cant_justificadas > 0 %}
+                                    
+                                    {% set existen_inasistencias_justificadas = true %}
+                                    {% set justificada = true %}
+                                    {% set motivo_ausencia_nombre = (alumno.motivo_ausencia_nombre is not empty) ? alumno.motivo_ausencia_nombre : '---' %}
+                                    {% set motivo_ausencia_descripcion = (alumno.motivo_ausencia_descripcion is not empty) ? alumno.motivo_ausencia_descripcion : '---' %}
+                                    {% set observaciones = (alumno.observaciones is not empty) ? alumno.observaciones : '---' %}
+                                    
+                                {% endif %}
+                                
+				
+                                
+				<div class='box-asistencia tipo-carga{{this.get_tipo_carga()}} {{(ausente) ? 'ausente' : '' }} {{(justificada) ? 'justificada' : '' }} {% if alumno.libre %} js-libre hide{% endif %}'>
+					{% if (this.get_tipo_carga() == 1) %}
+						{{current_file_macros.carga_presente(alumno, ausente, justificada)}}
+					{% endif %}
+					{% if (this.get_tipo_carga() == 2) %}
+						{{current_file_macros.carga_hora(alumno, this.get_cant_horas_dictadas(), justificada)}}
+					{% endif %}
+					{% if (this.get_tipo_carga() == 3) %}
+						{{current_file_macros.carga_fraccion(alumno, justificada)}}
+					{% endif %}
+
+					<div class='foto pull-left'><img src='{{ alumno.url_imagen_mediana }}' alt="Imagen ficha"/></div>
+					<div class='info pull-right'>
+						<div class="truncate" title="{{ alumno.apellido_y_nombres_elegido }}">{{ alumno.apellido_y_nombres_elegido }}</div>
+						{% if alumno.legajo %}<div>{{ alumno.legajo }}</div>{% endif %}
+						{% if alumno.libre %}<div class="libre">{{ 'asistencias.libre' | trans }}</div>{% endif %}
+						{% if justificada %}<div><span class="label label-important">{{ 'asistencia.inasistencia_justificada' | trans }} <i class="icon-info-sign icon-white" style="cursor: help;" data-toggle="tooltip" data-html="true" data-container="body" title="{{ 'asistencia.inasistencia_justificada_motivo' | trans({'%motivo%': motivo_ausencia_nombre, '%descripcion%': motivo_ausencia_descripcion, '%observaciones%': observaciones}) }}"></i></span></div>{% endif %}
+					</div>
+				</div>
+			{% endfor %}
+                        
+			<div class="cuadro_boton">
+				<input id='js-guardar-asistencia' type='submit' value='{{"guardar"|trans|capitalize}}' class="btn btn-info btn-small" />
+			</div>
+                        
+                        {% if existen_inasistencias_justificadas %}
+                        <div id="alert-justificacion-inasistencia" class="alert">
+                            <button type="button" class="close" data-dismiss="alert">&times;</button>
+                            {{ 'asistencia.leyenda_justificacion_inasistencia' |trans }}
+                        </div>
+                        {% endif %}
+		</form>
+	{% else %}
+		<div class="alert">{{"no_hay_renglones"|trans|capitalize}}</div>
+	{% endif %}
+        
+{% endblock %}
+
+
+
+{# MACROS PARA LOS DIFERENTES TIPOS DE CARGAS DE ASISTENCIAS #}
+{% macro carga_presente(alumno, ausente, justificada) %}
+        {# hack para que se submitee el valor vacio #}
+        <input type="hidden" name="alumnos[{{ alumno.__ID__ }}][PRESENTE]" value="off">
+	<label class="checkbox check-asistencia" for="alumnos[{{ alumno.__ID__ }}][PRESENTE]" >
+		<input type='checkbox' id='alumnos[{{ alumno.__ID__ }}][PRESENTE]'
+                name='alumnos[{{ alumno.__ID__ }}][PRESENTE]' 
+                   {{ (ausente) ? '' : 'checked' }}
+                   {% if justificada %}disabled="disabled"{% endif %}
+                />
+                {{ 'asistencia.asistio' | trans | capitalize }}
+        </label>
+{% endmacro %}
+
+{% macro carga_hora(alumno, cantidad_horas_dictadas, justificada) %}
+    <label class="combo-horas-label" for="alumnos[{{ alumno.__ID__ }}][PRESENTE]" >
+		<select class="combo-horas" name="alumnos[{{ alumno.__ID__ }}][PRESENTE]" {% if justificada %}disabled="disabled"{% endif %}>
+			<option value="0"{% if(alumno.cant_inasistencias == 0) %} selected="selected"{% endif %}>{{ 'asistencia.presente' | trans | capitalize }}</option>
+			{% for i in 1..cantidad_horas_dictadas %}
+				<option value="{{ i }}"{% if(alumno.cant_inasistencias == i) %} selected="selected"{% endif %}>
+					{{ i }} {% if(i>1) %}{{'asistencia.faltas' | trans | capitalize }}{% else %}{{'asistencia.falta' | trans | capitalize }}{% endif %}
+				</option>
+			{% endfor %}
+		</select>
+    </label>
+{% endmacro %}
+
+{% macro carga_fraccion(alumno, justificada) %}
+    <label class="combo-fracciones-label" for="alumnos[{{ alumno.__ID__ }}][PRESENTE]" >
+		<select class="combo-fracciones" name="alumnos[{{ alumno.__ID__ }}][PRESENTE]" {% if justificada %}disabled="disabled"{% endif %}>
+			<option value="1"{% if(alumno.cant_inasistencias == 1) %} selected="selected"{% endif %}>{{ 'asistencia.ausente' | trans | capitalize }}</option>
+			<option value="0.50"{% if(alumno.cant_inasistencias == 0.50) %} selected="selected"{% endif %}>{{ 'asistencia.media_falta' | trans | capitalize }}</option>
+			<option value="0"{% if(alumno.cant_inasistencias == 0) %} selected="selected"{% endif %}>{{ 'asistencia.asistio' | trans | capitalize }}</option>
+		</select>
+    </label>
+{% endmacro %}

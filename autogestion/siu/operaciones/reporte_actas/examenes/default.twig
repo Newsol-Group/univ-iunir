@@ -1,0 +1,43 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+<div class="filtros">
+	<table>
+	<tr>
+		<th>
+			<span class="titulo" for="js-filtro_turno_examen">{{'turno_examen'|trans|capitalize}}:
+				<select id="js-filtro_turno_examen" name="turno_examen">
+					<option value="">Todos</option>
+					{% for key, value in this.data.turnos %}
+					<option value="{{value.url_turno}}"{% if value.url_turno == this.data.turno %} selected{% endif %}>
+						{{value.anio_academico}} - {{value.turno_examen_nombre}}
+					</option>
+					{% endfor %}
+				</select>
+			</span>
+		</th>
+		<th>
+			<span class="titulo" for="js-filtro_actividades">{{'actividad'|trans|capitalize}}:
+				<input id="js-filtro_actividades" name="actividad" type="text" style="margin-bottom: 0px;">
+				<button id="js-limpiar_actividades" type="button" class="btn btn-small btn-primary"><i class="icon-remove icon-white"></i></button>
+			</span>
+		</th>
+		<th>
+			<span class="titulo" for="js-filtro_acta">{{'acta'|trans|capitalize}}:
+				<input id="js-filtro_acta" name="acta" type="text" style="margin-bottom: 0px; width: 100px;">
+				<button id="js-limpiar_actas" type="button" class="btn btn-small btn-primary"><i class="icon-remove icon-white"></i></button>
+			</span>
+		</th>
+	<tr>
+	</table>
+</div>
+<h4 class="clearfix">
+	<span class="pull-left">{{'reporte_actas.examenes'|trans|capitalize}}</span>
+	<div class="pull-right">
+		<a class="btn btn-mini no-ajax" target="_blank" id="examenes-generar_pdf_listado"><i class="g3w-icono-pdf"></i></a>
+		<a class="btn btn-mini no-ajax" target="_blank" id="examenes-generar_xls_listado"><i class="g3w-icono-xls"></i></a>
+	</div>
+</h4>
+<div id="listado">
+{% include 'examenes/listado.twig' %}
+</div>
+{% endblock %}

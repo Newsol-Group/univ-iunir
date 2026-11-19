@@ -1,0 +1,55 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}    
+
+    <div class="titulo_operacion">
+        <h2 class="clearfix">
+            <span class="pull-left">{{ "moodle.seleccion_plataforma.titulo" | trans }}</span>
+        </h2>
+    </div>
+        
+    {# Si se trata de una subcomisión #}
+    {% if this.data.es_subcomision  %}
+    <div class="alert alert-block" style="text-align: left !important;">
+        <p>{{ "moodle.leyenda_subcomisiones" | trans | raw }}</p>
+    </div>
+    {% endif %}
+    
+    <form class="form-horizontal" method="post" action="{{ this.data.url_seleccionar_plataforma }}">
+
+        {% import "mensajes.twig" as mensajes %}
+        {{ mensajes.mostrar_mensajes(this.data.mensajes) }}
+        
+        <div class="alert alert-block alert-info" style="text-align: left !important;">
+            <p>{{ "moodle.seleccion_plataforma.mensaje" | trans }}</p>
+        </div>
+
+        {% set plataforma_val = (this.data.valores.plataforma is defined) ? this.data.valores.plataforma : -1 %}
+        {% set plataforma_error = (this.data.errores.plataforma is defined) ? 'error' : '' %}
+        {% set plataforma_msg = (this.data.errores.plataforma is defined) ? this.data.errores.plataforma : '' %}
+        <div id="js-cg-plataforma" class="control-group {{ plataforma_error }}">
+            <label class="control-label" for="js-plataforma">{{ "moodle.seleccion_plataforma.plataforma" | trans }} (*)</label>
+            <div class="controls">
+                <select id="js-plataforma" name="plataforma">
+                    {% for plataforma in this.data.plataformas %}
+                        
+                        {% set selected = '' %}
+                        {% if plataforma.plataforma == plataforma_val %}
+                            {% set selected = 'selected' %}
+                        {% endif %}
+                        
+                        <option value="{{ plataforma.plataforma }}" {{ selected }}>{{ plataforma.nombre }}</option>
+                        
+                    {% endfor %}
+                </select>
+                <span id="js-help-plataforma" class="help-block">{{ plataforma_msg }}</span>
+            </div>
+        </div>
+                
+        <div class="text-right">
+            <button class="btn btn-primary" type="submit">{{ "moodle.seleccion_plataforma.seleccionar" | trans }}</button>
+        </div>
+                
+    </form>
+
+{% endblock %}
+

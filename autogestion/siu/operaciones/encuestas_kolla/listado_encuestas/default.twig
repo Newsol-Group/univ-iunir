@@ -1,0 +1,12 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	<div class="well">
+		<ul class="nav nav-list">
+		{% for link in this.data.links_encuesta %}
+			<li>
+				<a id="{{link.id}}" href="{{ link.href }}">{{ link.nombre }}</a>
+			</li>
+		{% endfor %}
+		</ul>
+	</div>
+{% endblock %}

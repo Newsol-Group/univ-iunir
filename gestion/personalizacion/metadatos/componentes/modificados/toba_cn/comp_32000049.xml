@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="32000049" descripcion="toba_cn">
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:32000049">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+			<columna nombre="subclase" valor="cn_man_solicitar_certificaciones_nsg" valor_original="cn_man_solicitar_certificaciones"/>
+			<columna nombre="subclase_archivo" valor="nucleo/egresados/actualizaciones/solicitar_certificaciones/cn_man_solicitar_certificaciones_nsg.php" valor_original="nucleo/egresados/actualizaciones/solicitar_certificaciones/cn_man_solicitar_certificaciones.php"/>
+		</registro>
+	</tabla>
+</componente>

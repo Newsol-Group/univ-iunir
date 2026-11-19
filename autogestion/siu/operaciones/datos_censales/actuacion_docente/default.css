@@ -1,0 +1,40 @@
+.well { 
+	padding-top: 0px; 
+	padding-bottom: 0px; 
+	padding-left: 10px; 
+	padding-right: 10px; 
+}
+
+h2 { 
+	border-bottom: 0px;
+	margin: 0px;
+}
+
+#actuacion_docente select {
+	width: 310px;
+}
+
+#actuacion_docente .js-input {
+	width: 297px;
+}
+
+#actuacion_docente .eventos {
+	padding-right: 0px;
+	margin-right: 0px;
+}
+
+h3 { 
+	border-bottom: 1px solid #CCCCCC;
+}
+
+.control-group {
+    margin-bottom: 0px;
+}
+
+.cg-margen {
+	margin-bottom: 5px;
+}
+
+#actuacion_docente .mensaje {
+	margin-top: 10px;
+}

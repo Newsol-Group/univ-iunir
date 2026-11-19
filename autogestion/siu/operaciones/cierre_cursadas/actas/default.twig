@@ -1,0 +1,73 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+    
+        {% if this.data.error_imprimir_acta %}
+            <div class="alert alert-error">
+                <button type="button" class="close" data-dismiss="alert">&times;</button>
+                {{ this.data.error_imprimir_acta | raw }}
+            </div>
+        {% endif %}
+        
+	<h3>{{ 'lista_actas_abiertas'|trans|capitalize }}</h3>
+	{% if this.data.actas %}
+		<table class="table table-striped table-bordered table-condensed">
+			<thead>
+			<tr>
+				<th>{{ 'acta'|trans|capitalize }}</th>
+				<th>{{ 'codigo_verificacion'|trans|capitalize }}</th>
+				<th>{{ 'porcentaje_carga'|trans|capitalize }}</th>
+				<th></th>
+			</tr>
+			</thead>
+			<tbody>
+			{% for acta in this.data.actas %}
+				<tr>
+					<td>
+                    {% if acta.origen == this.data.origen_regulares %}
+                        {{ 'Cursada'|trans|capitalize }}
+                    {% elseif acta.origen == this.data.origen_promocionales %}
+                        {{ 'Promocion'|trans|capitalize }}
+                    {% endif %}
+                    ( {{ acta.nro_acta }} )
+                    </td>
+					
+					<td>{{ acta.version }}</td>
+					<td class="barra">
+						<div class="progress">
+							<div class="bar bar-success"
+								 style="width: {{ acta.porcentaje_carga }}%;{% if acta.porcentaje_carga == 0 %} color: #000000; margin-left: 50%;{% endif %}">
+								{{ acta.porcentaje_carga }}%
+							</div>
+						</div>
+					</td>
+					<td class="accion">
+                                                
+                                                {% set btn_cargar_notas = '<i class="icon-edit"></i> ' ~ ('carga_notas_cursada'|trans|capitalize) %}
+                                                {{ this.a(acta.url_cargar_acta,  btn_cargar_notas, 'btn btn-small no-ajax') | raw }}
+						
+                                                {% if acta.origen == this.data.origen_regulares %}
+                                                    
+                                                    {% set btn_cerrar_text = '<i class="icon-ok"></i> ' ~ ('cerrar'|trans) %}
+                                                    {{ this.a(acta.url_cerrar_acta, btn_cerrar_text, 'btn btn-small js-btn-cerrar-acta js-btn-cerrar-acta-regular', acta.data_btn_cerrar) | raw }}
+                                                    
+                                                {% elseif acta.origen == this.data.origen_promocionales %}
+                                                        
+                                                    {% set btn_cerrar_text = '<i class="icon-ok"></i> ' ~ ('cerrar'|trans) %}
+                                                    {{ this.a(acta.url_cerrar_acta, btn_cerrar_text, 'btn btn-small js-btn-cerrar-acta js-btn-cerrar-acta-promocion', acta.data_btn_cerrar) | raw }}
+                                                    
+						{% endif %}
+                                                
+						
+						{% set btn_imprimir_text = '<i class="icon-print"></i> ' ~ ('imprimir'|trans|capitalize) %}
+						{{ this.a(acta.url_imprimir, btn_imprimir_text, 'btn btn-small no-ajax', acta.data_btn_imprimir) | raw }}
+                                                
+						
+					</td>
+				</tr>
+			{% endfor %}
+			</tbody>
+		</table>
+	{% else %}
+		<div class="alert">{{ 'cierre_cursadas.no_hay_actas'|trans|capitalize }}</div>
+	{% endif %}
+{% endblock %}

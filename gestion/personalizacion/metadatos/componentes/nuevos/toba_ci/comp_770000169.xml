@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000169" descripcion="toba_ci">
+	<tabla nombre="apex_objeto">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000169"/>
+			<columna nombre="clase_proyecto" valor="toba"/>
+			<columna nombre="clase" valor="toba_ci"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+			<columna nombre="subclase" valor="ci_rep_egresados_nsg"/>
+			<columna nombre="subclase_archivo" valor="operaciones/egresados/ci_rep_egresados_nsg.php"/>
+			<columna nombre="nombre" valor="Reporte de Egresados"/>
+			<columna nombre="titulo" valor="Reporte de Alumnos por Colación"/>
+			<columna nombre="colapsable" valor="0"/>
+			<columna nombre="creacion" valor="2011-07-06 11:13:23"/>
+			<columna nombre="posicion_botonera" valor="abajo"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_mt_me">
+		<registro>
+			<columna nombre="objeto_mt_me_proyecto" valor="guarani"/>
+			<columna nombre="objeto_mt_me" valor="770000169"/>
+			<columna nombre="ancho" valor="950px"/>
+			<columna nombre="botonera_barra_item" valor="0"/>
+			<columna nombre="con_toc" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_dependencias">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="dep_id" valor="770000130"/>
+			<columna nombre="objeto_consumidor" valor="770000169"/>
+			<columna nombre="objeto_proveedor" valor="770000167"/>
+			<columna nombre="identificador" valor="cuadro"/>
+		</registro>
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="dep_id" valor="770000131"/>
+			<columna nombre="objeto_consumidor" valor="770000169"/>
+			<columna nombre="objeto_proveedor" valor="770000168"/>
+			<columna nombre="identificador" valor="filtro"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ci_pantalla">
+		<registro>
+			<columna nombre="objeto_ci_proyecto" valor="guarani"/>
+			<columna nombre="objeto_ci" valor="770000169"/>
+			<columna nombre="pantalla" valor="770000060"/>
+			<columna nombre="identificador" valor="pant_inicial"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="etiqueta" valor="Pantalla Inicial"/>
+			<columna nombre="imagen_recurso_origen" valor="apex"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objetos_pantalla">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="pantalla" valor="770000060"/>
+			<columna nombre="objeto_ci" valor="770000169"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="dep_id" valor="770000130"/>
+		</registro>
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="pantalla" valor="770000060"/>
+			<columna nombre="objeto_ci" valor="770000169"/>
+			<columna nombre="orden" valor="0"/>
+			<columna nombre="dep_id" valor="770000131"/>
+		</registro>
+	</tabla>
+</componente>

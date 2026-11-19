@@ -1,0 +1,29 @@
+#frameRC {
+	border: 0;
+}
+
+.login-icon {
+	width: 30px;
+	height: 30px;
+}
+
+.login-link {
+	margin: 3px;
+	display: inline-block;
+}
+
+.services {
+	margin-top: 10px;
+}
+
+.mensaje-login-externo {
+	margin-bottom: 10px;
+}
+
+#form .accordion-toggle {
+    font-weight: bold;
+    font-size: 16px;
+    background-color: #58b1d1;
+    color: #fff;
+    text-align: center;
+}

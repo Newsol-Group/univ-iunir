@@ -1,0 +1,155 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+    <div class="titulo_operacion">
+        <h2 class="clearfix">
+            {#{% if this.data.tabla and (this.data.parciales or this.data.tiene_actas or this.data.tiene_actas_prom) %}#}
+            {% if this.data.tabla %}
+            <div class="pull-right" >
+                <a tabindex="0" id="pdf_btn" href="{{ this.data.url_pdf }}" target="_blank" class="btn no-ajax" title="{{ 'descargar_pdf'|trans|capitalize }}"><span class="acchide"></span><span class="g3w-icono-pdf"></span></a>
+                <a tabindex="0" id="xls_btn" href="{{ this.data.url_xls }}" target="_blank" class="btn no-ajax" title="{{ 'descargar_xls'|trans|capitalize }}"><span class="acchide"></span><span class="g3w-icono-xls"></span></a>
+            </div> 
+            {% endif %}
+            <button class='btn btn-primary btn-small pull-left js-history-back' alt="Volver"><span class="icon-chevron-left icon-white"></span></button>
+            <span class="pull-left">{{"tit_resumen_cursada"|trans|capitalize}}</span>
+        </h2>
+    </div>
+
+    {% if (this.data.encabezado) %}
+		<div class = "ver pull-right">
+			Mostrar:
+			<div class="btn-group" data-toggle="buttons-radio">
+			  <button type="button" id='btn-todo' name='btn-todo'  class="btn btn-info js-btn-mostrar">Todo</button>
+			  <button type="button" id='btn-evaluaciones' name='btn-evaluaciones' class="btn btn-info js-btn-mostrar">Evaluaciones</button>
+			  <button type="button" id='btn-actas' name='btn-actas' class="btn btn-info js-btn-mostrar">Actas</button>
+			</div>
+		</div>		
+
+    <table class="table table-condensed" summary="Informacion de acta">
+		<tr>
+			<td colspan="12"><strong>{{"resumen_cursada.comision.encabezado.materia"|trans|capitalize}}: </strong>{{this.data.encabezado.actividad_nombre}} ({{this.data.encabezado.actividad_codigo}})</td>
+		</tr>
+		<tr>
+			<td><strong>{{"resumen_cursada.comision.encabezado.comision"|trans|capitalize}}:</strong> {{this.data.encabezado.comision_nombre}}</td>
+			<td><strong>{{"resumen_cursada.comision.encabezado.anio_acad"|trans|capitalize}}:</strong> {{this.data.encabezado.anio_academico}}</td>
+			<td><strong>{{"resumen_cursada.comision.encabezado.periodo"|trans|capitalize}}: </strong> {{this.data.encabezado.periodo_lectivo_nombre}}</td>
+		</tr>
+	</table>
+
+    {% endif %}
+    {#{% if (this.data.tabla) and (this.data.parciales or this.data.tiene_actas or this.data.tiene_actas_prom)%}#}
+    {% if (this.data.tabla)%}
+    <table class="table table-striped table-bordered table-condensed" summary="Tabla de comisiones, haga clic en la celda para ver">
+        <thead id="encabezado">
+            {% if this.data.parciales or this.data.tiene_actas or this.data.tiene_actas_prom %}
+            <tr id="primer-encabezado">
+                <th colspan="1" class="col-nombre"></th>                         
+                {% if (this.data.parciales) %}
+                    {% for parcial in this.data.parciales %}
+                    <th colspan="1" class="col-parciales" style="text-align: center;">{{ parcial.evaluacion_nombre }} <br> {{parcial.sfecha_evaluacion }}</th>
+                    {% endfor %}
+                {% endif  %}
+                
+                {% if (this.data.tiene_actas) %}
+                    <th colspan="4"  class="col-actas" style="text-align: center;">{{"resumen_cursada.comision.encabezado.acta_cursadas"|trans|capitalize}}</th>
+                {% endif %}
+                
+                {% if (this.data.tiene_actas_prom) %}
+                    <th colspan="3" class="col-actas" style="text-align: center;">{{"resumen_cursada.comision.encabezado.acta_promocion"|trans|capitalize}}</th>
+                {% endif %}
+            </tr>       
+            {% endif %}
+            <tr>
+                <th class="info-alumno" id="col-nombre">{{"resumen_cursada.comision.encabezado.alumno"|trans|capitalize}}</th>
+                
+                {% if (this.data.parciales) %}
+                    {% for parcial in this.data.parciales %}
+                        <th  class="col-parciales" style="text-align: center;">{{"resumen_cursada.comision.encabezado.nota"|trans|capitalize}}</th>
+                    {% endfor %}
+				{% endif  %}
+                {% if (this.data.tiene_actas) %}
+                    <th  class="col-actas" style="text-align: center;">{{"resumen_cursada.comision.encabezado.nro_acta"|trans}}</th>
+                    <th  class="col-actas" style="text-align: center;">{{"resumen_cursada.comision.encabezado.cond_reg"|trans|capitalize}}</th>
+                    <th  class="col-actas" style="text-align: center;">{{"resumen_cursada.comision.encabezado.nota"|trans|capitalize}}</th>
+                    <th  class="col-actas" style="text-align: center;">{{"resumen_cursada.comision.encabezado.resultado"|trans|capitalize}}</th>
+                {% endif %}
+
+                {% if (this.data.tiene_actas_prom) %}
+                    <th  class="col-actas" style="text-align: center;">{{"resumen_cursada.comision.encabezado.nro_acta"|trans}}</th>						
+                    {#<th  class="col-actas" style="text-align: center;">{{"resumen_cursada.comision.encabezado.cond_reg"|trans|capitalize}}</th>#}
+                    <th  class="col-actas" style="text-align: center;">{{"resumen_cursada.comision.encabezado.nota"|trans|capitalize}}</th>
+                    <th  class="col-actas" style="text-align: center;">{{"resumen_cursada.comision.encabezado.resultado"|trans|capitalize}}</th>
+                {% endif %}
+            </tr>
+        </thead>
+        
+        <tbody>
+        {% for linea in this.data.tabla %}
+        <tr>
+			<td class='info-alumno'>
+				<div class="ficha-alumno clearfix pull-left">
+				<img src='{{linea.url_imagen}}' width='35' height="35" title='{{linea.alumno}}' class="pull-left" />
+				<div class="pull-left">
+					<span class="nombre">{{linea.alumno}}</span> <br>
+					<span class="identificacion">{{ linea.documento_principal }}</span> <br>
+					<span class="propuesta">{{linea.nombre_abreviado}}</span>
+				</div>
+			</div>
+			</td>
+			
+            {% if (linea.parciales) %}
+            {% for parcial in linea.parciales %}
+            <td style="text-align: center;"  class="col-parciales">{{parcial.nota}}</td>
+            {% endfor %}
+            {% endif  %}
+           
+            {% if (linea.acta) %}
+            <td  class="col-actas" style="text-align: center;">{{linea.acta.acta}}</td>
+            <td  class="col-actas" style="text-align: center;">{{linea.acta.cond_reg}}</td>
+            <td  class="col-actas" style="text-align: center;">{{linea.acta.nota}}</td>
+            <td  class="col-actas" style="text-align: center;">{{linea.acta.resultado}} 
+				{% if linea.acta.resultado and linea.acta.estado == "A" %}
+					<strong> *</strong>			
+				{% endif %}</td>
+            {% endif  %}
+           
+            {% if (linea.acta_prom) %}
+            {#<td class="col-actas" style="text-align: center;">{{linea.acta_prom.cond_reg}}</td>#}
+            <td class="col-actas" style="text-align: center;">{{linea.acta_prom.acta}}</td>
+            <td class="col-actas" style="text-align: center;">{{linea.acta_prom.nota}}</td>
+            <td class="col-actas" style="text-align: center;">{{linea.acta_prom.resultado}} 
+				{% if linea.acta_prom.resultado and linea.acta_prom.estado == "A" %} 
+					<strong> *</strong>
+				{% endif %}</td>           
+			{% endif  %}			
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+				
+	<div role="alert" class="alert sin-actas" style="display:none;">
+		{{"resumen_cursada.comision.sin_actas"|trans|capitalize}}
+	</div> 				
+	<div role="alert" class="alert sin-evaluaciones" style="display:none;">
+		{{"resumen_cursada.comision.sin_evaluaciones"|trans|capitalize}}
+	</div> 
+
+	{% if (this.data.tiene_actas_prom) or (this.data.tiene_actas) %}
+		<p class="col-actas">
+			<strong> *</strong> : {{ 'resumen_cursada.comision.nota.acta_abierta'|trans }}
+		</p>
+	{% endif %}
+
+    {% else %}
+		<div role="alert" class="alert sin-actas" style="display:none;">
+			{{"resumen_cursada.comision.sin_actas"|trans|capitalize}}
+		</div> 				
+		<div role="alert" class="alert sin-evaluaciones" style="display:none;">
+			{{"resumen_cursada.comision.sin_evaluaciones"|trans|capitalize}}
+		</div> 		
+		
+        <div role="alert" class="alert sin-datos">
+            {{"resumen_cursada.comision.sin_resultados"|trans|capitalize}}
+        </div>
+    {% endif %}
+{% endblock %}

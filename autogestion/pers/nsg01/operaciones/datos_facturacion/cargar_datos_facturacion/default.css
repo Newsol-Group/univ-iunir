@@ -1,0 +1,26 @@
+#pagelet #form-cargar-datos-facturacion-container{
+	margin: 20px 40px;
+}
+
+#pagelet h2{
+	border-bottom: 1px solid #ccc;
+	padding: 5px 0;
+}
+
+#pagelet .seccion{
+	margin-left: 25px;
+}
+
+#pagelet .etiqueta{
+	font-weight: bold;
+	text-align: left !important;
+}
+
+#js-porcentaje_facturacion_alumno {
+    width: 50px;
+}
+
+#js-porcentaje_facturacion_empresa {
+    width: 50px;
+}
+

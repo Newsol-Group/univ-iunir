@@ -1,0 +1,55 @@
+{% macro examen(datos) %}
+    {% for turno in datos %}
+
+        {% set materia_index = 'materia'~loop.index %}
+
+        <div class="corte">
+            <div class="encabezado_cuadro">
+                <div class="row-fluid">
+                    <div class="span12">
+                        {{turno.MATERIA_NOMBRE}} ({{turno.MATERIA}})
+                    </div>
+                </div>
+            </div>
+
+            <table class='table table-condensed table-hover table-striped'>
+                <thead>
+                    <tr>
+                        <th class="span3 hidden-phone">{{'fecha_examen.cuadro.mesa'|trans|capitalize}}</th>
+                        <th class="span2">{{'fecha_examen.cuadro.fecha'|trans|capitalize}}</th>
+                        <th class="span2 hidden-phone">{{'fecha_examen.cuadro.tipo'|trans|capitalize}}</th>
+                        <th class="span2">
+                            <span class="hidden-phone">{{'fecha_examen.cuadro.inscrip_inicio'|trans|capitalize}}</span>
+                            <span class="visible-phone">{{'fecha_examen.cuadro.inscrip_inicio_reducido'|trans|capitalize}}</span>
+                        </th>
+                        <th class="span2">
+                            <span class="hidden-phone">{{'fecha_examen.cuadro.inscrip_fin'|trans|capitalize}}</span>
+                            <span class="visible-phone">{{'fecha_examen.cuadro.inscrip_fin_reducido'|trans|capitalize}}</span>
+                        </th>
+                        <th class="span1 hidden-phone"> </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for examen in turno.examenes %}
+
+                        {% set examen_index = 'mesa'~loop.index %}
+
+                        <tr{% if examen.SUSPENDIDA %} class="hidden-phone"{% endif %}>
+                            <td class="hidden-phone">{{examen.MESA}}{% if examen.SUSPENDIDA %} <span class="suspendida">({{'fecha_examen.suspendida'|trans|capitalize}})</span>{% endif %}</td>
+                            <td>{{examen.FECHA}}</td>
+                            <td class="hidden-phone">{{examen.TIPO_MESA}}</td>
+                            <td>{{examen.INSCR_INICIO}}</td>
+                            <td>{{examen.INSCR_FIN}}</td>
+                            <td class="hidden-phone">
+                                <a href="#" class="btn btn-info btn-mini ver_mas_info" data-id="{{materia_index~examen_index}}" data-estado="v">{{'ver'|trans|capitalize}}</a>
+                            </td>
+                        </tr>
+                        <tr class="mas_info" id="{{materia_index~examen_index}}">
+                            {% include 'filtro/info_extra.twig' with examen.INFO_EXTRA %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% endfor %}
+{% endmacro %}

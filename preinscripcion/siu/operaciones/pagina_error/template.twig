@@ -1,0 +1,7 @@
+{% extends "kernel/una_columna.twig" %}
+{% block titulo_operacion %}
+<h2>{{"error"|trans}}</h2>
+{% endblock %}
+{% block columna_1 %}
+	{{ contenido.render }}
+{% endblock %}

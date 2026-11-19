@@ -1,0 +1,2 @@
+var _condiciones = {"1":{"cond":"1","desc":"Libre","resultado":"R","preset":"S"},"5":{"cond":"5","desc":"Promocion\u00f3","resultado":"A","preset":"N"},"4":{"cond":"4","desc":"Regular","resultado":"A","preset":"S"}};
+var _resultados  = {"A":{"valor":"A","descr":"Aprobado"},"U":{"valor":"U","descr":"Ausente"},"R":{"valor":"R","descr":"Reprobado"}};

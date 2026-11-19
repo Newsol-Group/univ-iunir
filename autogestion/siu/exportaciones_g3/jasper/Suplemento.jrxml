@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Suplemento" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="d360bae6-4ccf-48d2-a98a-155bd2bdc50f">
+	<property name="ireport.zoom" value="3.215383215000002"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="suplemento" uuid="20be713e-4cfa-48a4-b3bf-7e9d8df989a0">
+		<parameter name="nro_solicitud" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<parameter name="tipo_suplemento" class="java.lang.Integer">
+			<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+		</parameter>
+		<queryString>
+			<![CDATA[SELECT 	
+	sga_suplemento_tipos.descripcion,
+	sga_certificados_otorg_anexo.texto,
+	sga_certificados_otorg_anexo.nro_disposicion
+FROM 
+	sga_certificados_otorg_anexo
+INNER JOIN
+	sga_suplemento_tipos
+ON
+	sga_certificados_otorg_anexo.tipo_suplemento = sga_suplemento_tipos.tipo_suplemento
+WHERE
+	sga_certificados_otorg_anexo.nro_solicitud = $P{nro_solicitud}
+	AND sga_suplemento_tipos.tipo_suplemento = $P{tipo_suplemento}
+ORDER BY
+	sga_certificados_otorg_anexo.orden]]>
+		</queryString>
+		<field name="descripcion" class="java.lang.String"/>
+		<field name="texto" class="java.lang.String"/>
+		<field name="nro_disposicion" class="java.lang.String"/>
+	</subDataset>
+	<parameter name="nro_solicitud" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT 	
+	sga_suplemento_tipos.descripcion,
+	sga_suplemento_tipos.tipo_suplemento
+FROM 
+	sga_certificados_otorg_anexo
+INNER JOIN
+	sga_suplemento_tipos
+ON
+	sga_certificados_otorg_anexo.tipo_suplemento = sga_suplemento_tipos.tipo_suplemento
+WHERE
+	sga_certificados_otorg_anexo.nro_solicitud = $P{nro_solicitud}
+GROUP BY sga_suplemento_tipos.descripcion, sga_suplemento_tipos.orden, sga_suplemento_tipos.tipo_suplemento
+ORDER BY sga_suplemento_tipos.orden]]>
+	</queryString>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="tipo_suplemento" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="34" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="544" height="26" uuid="17bb8105-7bef-407d-8086-141141aaa459"/>
+			</rectangle>
+			<textField>
+				<reportElement x="0" y="4" width="544" height="20" uuid="bc9cedb4-9c54-4df3-b04d-fedd7f69d9f9"/>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+		</band>
+		<band height="33">
+			<componentElement>
+				<reportElement x="0" y="3" width="544" height="25" uuid="75ee7aed-1dba-4d72-b9e5-60a5232ef1d7"/>
+				<jr:list xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd" printOrder="Vertical">
+					<datasetRun subDataset="suplemento" uuid="4ec86916-1264-4c87-a567-5ee4e2cae835">
+						<datasetParameter name="nro_solicitud">
+							<datasetParameterExpression><![CDATA[$P{nro_solicitud}]]></datasetParameterExpression>
+						</datasetParameter>
+						<datasetParameter name="tipo_suplemento">
+							<datasetParameterExpression><![CDATA[$F{tipo_suplemento}]]></datasetParameterExpression>
+						</datasetParameter>
+					</datasetRun>
+					<jr:listContents height="25" width="544">
+						<textField isStretchWithOverflow="true">
+							<reportElement x="0" y="4" width="544" height="20" uuid="f4165a38-fb7f-485e-aef0-07b88a80f455"/>
+							<textFieldExpression><![CDATA[($F{nro_disposicion} ? $F{texto} + " " + $F{nro_disposicion} : $F{texto} )]]></textFieldExpression>
+						</textField>
+					</jr:listContents>
+				</jr:list>
+			</componentElement>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,24 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}    
+
+    <div class="titulo_operacion">
+        <h2 class="clearfix">
+            <span class="pull-left">{{ "moodle.faltan_funciones.titulo" | trans }}</span>
+        </h2>
+    </div>
+
+    {# Si se trata de una subcomisión #}
+    {% if this.data.es_subcomision  %}
+    <div class="alert alert-block" style="text-align: left !important;">
+        <p>{{ "moodle.leyenda_subcomisiones" | trans | raw }}</p>
+    </div>
+    {% endif %}
+    
+    {% import "mensajes.twig" as mensajes %}
+    {{ mensajes.mostrar_mensajes(this.data.mensajes) }}
+    
+    <div class="alert alert-block alert-error" style="text-align: left !important;">
+        <h4>{{ "moodle.faltan_funciones.mensaje" | trans({'%funciones%': (this.data.funciones_faltantes | join(', '))}) | raw }}</h4>
+    </div>
+
+{% endblock %}

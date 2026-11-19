@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="guarani" language="groovy" pageWidth="595" pageHeight="842" whenNoDataType="NoDataSection" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<style name="Title" isDefault="false" fontName="Arial" fontSize="14" isBold="true" isUnderline="false" pdfFontName="Times-Bold"/>
+	<style name="Resalt" isDefault="false" fontSize="9" isBold="true" isItalic="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+	<style name="Comun" isDefault="false" fontSize="9" isBold="false" isItalic="false" isUnderline="false" isStrikeThrough="false" pdfFontName="Helvetica"/>
+	<parameter name="institucion" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="ra" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="logo" class="java.lang.String"/>
+	<parameter name="nro_transaccion" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="pie" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="titulo" class="java.lang.String"/>
+	<queryString language="xPath">
+		<![CDATA[/tabla/datos/fila]]>
+	</queryString>
+	<field name="etiq" class="java.lang.String">
+		<fieldDescription><![CDATA[dato[@clave="etiq"]/@valor]]></fieldDescription>
+	</field>
+	<field name="valor" class="java.lang.String">
+		<fieldDescription><![CDATA[dato[@clave="valor"]/@valor]]></fieldDescription>
+	</field>
+	<title>
+		<band height="70" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement style="Resalt" x="138" y="48" width="279" height="18"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="9" isBold="true" isUnderline="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{titulo}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="138" y="6" width="88" height="40"/>
+				<imageExpression class="java.lang.String"><![CDATA[$P{logo}]]></imageExpression>
+			</image>
+			<textField isBlankWhenNull="true">
+				<reportElement style="Resalt" isPrintRepeatedValues="false" x="231" y="24" width="186" height="18"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{ra}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="Resalt" x="231" y="6" width="186" height="18"/>
+				<textElement>
+					<font size="9" isBold="true"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$P{institucion}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="136" y="0" width="281" height="1"/>
+			</line>
+			<line>
+				<reportElement x="136" y="0" width="1" height="70"/>
+			</line>
+			<line>
+				<reportElement x="417" y="0" width="1" height="70"/>
+			</line>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="18" splitType="Stretch">
+			<frame>
+				<reportElement positionType="Float" stretchType="RelativeToTallestObject" x="125" y="0" width="304" height="18"/>
+				<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+					<reportElement style="Resalt" positionType="Float" stretchType="RelativeToTallestObject" x="98" y="0" width="191" height="18" isPrintWhenDetailOverflows="true"/>
+					<textElement>
+						<font isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{valor}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="true">
+					<reportElement style="Comun" positionType="Float" stretchType="RelativeToTallestObject" x="13" y="0" width="82" height="18" isPrintWhenDetailOverflows="true"/>
+					<textElement textAlignment="Right">
+						<font isBold="false"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA[($F{etiq}.trim() != "" ? ($F{etiq}+":") : "")]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement stretchType="RelativeToTallestObject" x="11" y="0" width="1" height="18" isPrintWhenDetailOverflows="true"/>
+				</line>
+				<line>
+					<reportElement stretchType="RelativeToTallestObject" x="292" y="0" width="1" height="18" isPrintWhenDetailOverflows="true"/>
+				</line>
+			</frame>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="88" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement x="141" y="41" width="273" height="39"/>
+				<textElement textAlignment="Center"/>
+				<textFieldExpression class="java.lang.String"><![CDATA["Recordá que el Nro. de Transacción te será útil ante cualquier consulta en la Oficina de Alumnos"]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="true">
+				<reportElement style="Title" x="158" y="10" width="235" height="20" isRemoveLineWhenBlank="true"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[(($P{nro_transaccion}.trim()).isEmpty() ? "" : ("Nro. Transacción: " + $P{nro_transaccion}))]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="141" y="3" width="270" height="1"/>
+			</line>
+			<line>
+				<reportElement x="136" y="87" width="281" height="1"/>
+			</line>
+			<line>
+				<reportElement x="136" y="0" width="1" height="87"/>
+			</line>
+			<line>
+				<reportElement x="417" y="0" width="1" height="88"/>
+			</line>
+		</band>
+	</summary>
+</jasperReport>

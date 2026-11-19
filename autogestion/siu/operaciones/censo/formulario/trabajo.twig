@@ -1,0 +1,56 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+
+	<h2 class="resaltar divisor clearfix"><span class="pull-left">Situación laboral</span>
+        <button id="guardar" type="button" name="guardar" class="btn btn-info pull-right" disabled="disabled">Guardado</button>
+    </h2>
+
+	<form id="trabajo" action="{{this.data.form.getAction}}" method="post">
+		{% import "kernel/macro_csrf.twig" as input_csrf %}
+		{{ input_csrf.mostrar(this.generar_csrf) }}
+
+		{{this.data.form.form_id.renderViewHelper|raw}}
+
+		{{this.data.form.AUX1_EXISTE_TRAB_ALUM.renderLabel|raw}}
+		{{this.data.form.AUX1_EXISTE_TRAB_ALUM.renderViewHelper|raw}}
+		
+		<div class="js-datos-trabajo">
+			{{this.data.form.AUX2_ALU_TRAB_HACE.renderLabel|raw}}
+			{{this.data.form.AUX2_ALU_TRAB_HACE.renderViewHelper|raw}}
+		
+				
+			<div class="clearfix">
+
+				<div class="pull-left">
+					{{this.data.form.AUX2_ALU_TRAB_OCUP.renderLabel|raw}}
+					{{this.data.form.AUX2_ALU_TRAB_OCUP.renderViewHelper|raw}}
+				</div>
+				<div class="pull-left">
+					{{this.data.form.AUX1_HORARIO_TRABAJO.renderLabel|raw}}
+					{{this.data.form.AUX1_HORARIO_TRABAJO.renderViewHelper|raw}}
+				</div>
+				<div class="pull-left">
+					{{this.data.form.CENS_REL_TRAB_CARRERA.renderLabel|raw}}
+					{{this.data.form.CENS_REL_TRAB_CARRERA.renderViewHelper|raw}}
+				</div>
+			</div>
+
+			{{this.data.form.AUX2_ALU_TRAB_TAREA.renderLabel|raw}}
+			{{this.data.form.AUX2_ALU_TRAB_TAREA.renderViewHelper|raw}}
+				
+		</div>
+
+		<h2 class="resaltar divisor">Datos adicionales</h2>
+
+		<div id="datos_trabajo_adicionales" class="clearfix">
+			{{this.data.form.AUX2_ALU_TRAB_DESJUB.renderViewHelper|raw}}
+			{{this.data.form.AUX2_ALU_TRAB_DESJUB.renderLabel|raw}}
+
+			{{this.data.form.AUX2_ALU_TRAB_FAMI.renderViewHelper|raw}}
+			{{this.data.form.AUX2_ALU_TRAB_FAMI.renderLabel|raw}}
+
+			{{this.data.form.AUX1_REMUNERACION.renderViewHelper|raw}}
+			{{this.data.form.AUX1_REMUNERACION.renderLabel|raw}}
+		</div>
+	</form>
+{% endblock %}

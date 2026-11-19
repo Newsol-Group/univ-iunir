@@ -1,0 +1,125 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+
+	{#-- Encabezado comisión -------------------------------------------------#}
+	{% if this.data.encabezado_comision %}
+		{% set titulos = this.data.encabezado_comision %}
+		<table class="table table-striped table-bordered table-condensed">
+			<tr>
+				<td>{{ 'nombre_actividad' |trans|capitalize }}: {{ titulos.actividad_orden }}</td>
+			</tr>
+			<tr>
+				<td>{{ 'comision' |trans|capitalize }}: {{ titulos.comision_nombre }}</td>
+			</tr>
+			<tr>
+				<td>
+					{% if titulos.es_subcomision %}
+						{{ 'subcomision' |trans|capitalize }}: {{ titulos.subcomision_nombre }}
+					{% else %}
+						{{ 'subcomision' |trans|capitalize }}: {{ 'no_tiene'|trans|capitalize }}
+					{% endif %}
+				</td>
+			</tr>
+			<tr>
+				<td>{{ 'ubicacion' |trans|capitalize }}: {{ titulos.ubicacion_nombre }}</td>
+			</tr>
+		</table>
+	{% endif %}
+
+	{#-- Encabezado mesa -----------------------------------------------------#}
+	{% if this.data.encabezado_mesa %}
+		{% set titulos = this.data.encabezado_mesa %}
+		<table class="table table-striped table-bordered table-condensed">
+			<tr>
+				<td>{{ 'nombre_actividad' |trans|capitalize }}: {{ titulos.actividad_nombre }}</td>
+			</tr>
+			<tr>
+				<td>{{ 'carga_notas_mesa_examen.enc_mesa' |trans|capitalize }}: {{ titulos.mesa_examen_nombre }}</td>
+			</tr>
+			<tr>
+				<td>{{ 'carga_notas_mesa_examen.enc_llamado' |trans|capitalize }}: {{ titulos.llamado_nombre }}</td>
+			</tr>
+			<tr>
+				<td>{{ 'carga_notas_mesa_examen.enc_fecha' |trans|capitalize }}: {{ titulos.fecha_formato_visual_sin_segundos }}</td>
+			</tr>
+			<tr>
+				<td>{{ 'carga_notas_mesa_examen.enc_ubicacion' |trans|capitalize }}: {{ titulos.ubicacion_nombre }}</td>
+			</tr>
+		</table>
+	{% endif %}
+
+	{#-- Encabezado acta -----------------------------------------------------#}
+	{% if this.data.encabezado_acta %}
+		{% set titulos = this.data.encabezado_acta %}
+		<table class="table table-striped table-bordered table-condensed">
+			<tr>
+				<td>{{ 'ficha_alumno.afc.actividad' |trans|capitalize }}: {{ titulos.actividad_descr }}</td>
+			</tr>
+			<tr>
+				<td>{{ 'ficha_alumno.afc.nro_acta' |trans|capitalize }}: {{ titulos.nro_acta }}</td>
+			</tr>
+			<tr>
+				<td>{{ 'ficha_alumno.afc.fecha' |trans|capitalize }}: {{ titulos.fecha }}</td>
+			</tr>
+			<tr>
+				<td>{{ 'ficha_alumno.afc.ubicacion' |trans|capitalize }}: {{ titulos.ubicacion_descr }}</td>
+			</tr>
+		</table>
+	{% endif %}
+
+	{#-- Listado de alumnos --------------------------------------------------#}
+	{% if this.data.alumnos %}
+		<table class="table table-striped table-bordered table-condensed">
+			<thead>
+			<tr>
+				<td class="cc-titulo-nivel-0">
+					{{ 'nombre_alumno' |trans|capitalize }}
+				</td>
+				<td class="cc-titulo-nivel-0">
+					{{ 'legajo' |trans|capitalize }}
+				</td>
+				<td class="cc-titulo-nivel-0">
+					{{ 'identificacion'|trans|capitalize }}
+				</td>
+				<td class="cc-titulo-nivel-0">
+					{{ 'carrera'|trans|capitalize }}
+				</td>
+			</tr>
+			</thead>
+			{% for alumno in this.data.alumnos %}
+				<tr {{ this.data_link(alumno.link) | raw }}>
+					<td>
+						{% if alumno.apellido_nombres %}
+							{{ this.a(alumno.link, alumno.apellido_nombres) | raw }}
+						{% else %}
+							{{ 'sin_definir' |trans|capitalize }}
+						{% endif %}
+					</td>
+					<td>
+						{% if alumno.legajo %}
+							{{ alumno.legajo }}
+						{% else %}
+							{{ 'sin_definir' |trans|capitalize }}
+						{% endif %}
+					</td>
+					<td>
+						{% if alumno.tipo_nro_documento %}
+							{{ alumno.tipo_nro_documento }}
+						{% else %}
+							{{ 'sin_definir' |trans|capitalize }}
+						{% endif %}
+					</td>
+					<td>
+						{% if alumno.propuesta_nombre_abreviado %}
+							{{ alumno.propuesta_nombre_abreviado }}
+						{% else %}
+							{{ 'sin_definir' |trans|capitalize }}
+						{% endif %}
+					</td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% else %}
+			<div class="alert mensaje">{{ "ficha_alumno.sin_alumnos" | trans | capitalize }}.</div>
+	{% endif %}
+{% endblock %}

@@ -1,0 +1,34 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+<div class="js-detalle-actas" style="display: none;">
+	<table class="table table-condensed">
+		<thead>
+			<th>{{ 'carga_notas_mesa_examen.nro_acta'|trans|capitalize }}</th>
+			<th>{{ 'carga_notas_mesa_examen.instancias'|trans|capitalize }}</th>
+			<th>{{ 'carga_notas_mesa_examen.observaciones'|trans|capitalize }}</th>
+			<th></th>
+		</thead>
+		{% for acta in this.data.actas %}
+		<tr>
+			<td>{{ acta.nro_acta }}</td>
+			<td>
+				{% set INSTANCIAS = '' %}
+				{% for instancia in acta.instancias %}
+					{% set INSTANCIAS =  INSTANCIAS ~ instancia.instancia_nombre ~ ' - '%}
+				{% endfor %}
+				{{INSTANCIAS|truncate(INSTANCIAS|length-2,false,'')}}
+			</td>
+			<td>{{ acta.observaciones }}</td>
+			<td>
+				<div class='pull-right'>
+                    {% set btn %}
+                       <i class="icon-eye-open"></i> {{'carga_notas_mesa_examen.btn_editar_acta_examen'|trans|capitalize}}
+                    {% endset %}
+                    {{ this.a(acta.link_edicion, btn, 'btn btn-small') |raw }}
+				</div>
+			</td>
+		</tr>
+		{% endfor %}
+	</table>
+</div>
+{% endblock %}

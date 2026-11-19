@@ -1,0 +1,67 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	<div class="titulo_operacion">
+		<h2 class="clearfix"><span class="pull-left">{{"header.menu.actas_cursadas"|trans|capitalize}}</span>
+			<div class="pull-right">
+				<a class="btn no-ajax" target="_blank" id="js-generar_pdf"><i class="g3w-icono-pdf"></i></a>
+				<a class="btn no-ajax" target="_blank" id="js-generar_xls"><i class="g3w-icono-xls"></i></a>
+			</div>
+		</h2>
+	</div>
+
+	<div class="filtros">
+		<div class="filtro">
+			<label class="titulo" for="js-filtro_periodo_lectivo">{{'periodo_lectivo'|trans|capitalize}}:
+				<select id="js-filtro_periodo_lectivo" name="periodo_lectivo">
+					{% for key, value in this.get_periodos_lectivos %}
+					<option value="{{value.url_perlec}}" 
+					{% if this.get_per_lec() %}									
+						{% if value.url_perlec == this.get_per_lec() %} selected{% endif %}
+					{% else %}
+						{% if value.vigente %} selected{% endif %}
+					{% endif %}
+					>{{value.anio_academico}} - {{value.periodo_lectivo_nombre}}</option>
+					{% endfor %}
+				</select>
+			</label>
+		</div>
+		<div class="filtro">
+			<label class="titulo" for="js-filtro_actividades">{{'actividad'|trans|capitalize}}:
+				<input id="js-filtro_actividades" name="actividad" type="text" value="{{this.get_actividad_nombre()}}">
+				<button id="js-limpiar_actividades" type="button" class="btn btn-small btn-primary"><i class="icon-remove icon-white"></i></button>
+			</label>
+		</div>
+	</div>
+	{% if this.data.datos %}
+		{% import "kernel/macro_pager.twig" as pager %}
+		<div class="pagination pagination-centered">
+			{{ pager.render_paginator(this.get_paginas, this.get_pagina) }}
+		</div>
+	{% endif %}
+
+	{% if this.data.datos %}
+		{% import "kernel/macro_columnas_tabla.twig" as macro_titulos %}
+		<table class="table table-striped table-bordered table-condensed">
+			<thead>
+			<!-- Títulos -->
+				{{ macro_titulos.render_titulador(this.data.titulos, this.data.atributos_titulos, this.data.corte.campo) }}
+			</thead>
+			<!-- Datos -->
+			{% for clave, valor in this.data.datos %}
+				<tr{% if (valor.url_acta) %} class="link-js" data-link="{{valor.url_acta}}"{% endif %}>
+					<td>{{valor.anio_academico}}</td>
+					<td>{{valor.periodo_lectivo_nombre}}</td>
+					<td>{{valor.ubicacion_nombre}}</td>
+					<td>{{valor.nro_acta}}</td>
+					<td>{{valor.actividad_nombre}} ({{valor.actividad_codigo}})</td>
+					<td>{{valor.estado_acta}}</td>
+					<td>{{valor.fecha_cierre}}</td>
+				</tr>
+			{% endfor %}
+		</table>
+	{% else %}
+	<div class="alert">
+		{{"reporte.no_hay_datos.actas_cursadas"|trans|capitalize}}
+	</div>
+	{% endif %}
+{% endblock %}

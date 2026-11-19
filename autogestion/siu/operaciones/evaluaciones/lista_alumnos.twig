@@ -1,0 +1,93 @@
+{# Parametros: alumnos, escala_notas, editar #}
+{% if alumnos %}
+	{# % if editar %}
+		<div class="form-actions clearfix">
+			<button id="js-guardar_alumnos" type="button"
+					class="btn btn-info btn-small pull-right">{{ 'guardar'|trans|capitalize }}</button>
+		</div>
+	{% endif %#}
+	<table class="table table-bordered table-condensed table-striped">
+		<thead>
+		<th>{{ 'nombre_alumno'|trans|capitalize }}</th>
+		<th>{{ 'nota'|trans|capitalize }}</th>
+		<th>{{ 'resultado'|trans|capitalize }}</th>
+		<th>{{ 'corregido_por'|trans|capitalize }}</th>
+		<th>{{ 'observaciones'|trans|capitalize }}</th>
+		{% if editar %}
+			<th></th>{% endif %}
+		</thead>
+		<tbody>
+		{% for alumno in alumnos %}
+			<tr {% if alumno.mensaje %}title="{{ alumno.mensaje }}"{% endif %} data-alumno="{{ alumno.alumno }}"
+				data-ultimo-cambio="{{ alumno.ultimo_cambio }}"{% if alumno.class %} class="{{ alumno.class }}"{% endif %}>
+				<td>
+					<div class="ficha-alumno clearfix">
+						<img src="{{ alumno.url_imagen }}" width="35" height="35" alt="{{ alumno.alumno_nombre }}"
+							 class="pull-left"/>
+
+						<div class="pull-left">
+							<span class="nombre">{{ alumno.apellido_nombres_elegido }}</span>
+							<span class="legajo">{{ 'legajo'|trans|capitalize }}: {{ alumno.legajo }}</span>
+						</div>
+					</div>
+				</td>
+				{% if editar %}
+					<td class="centrar alinear col-nota">
+						{% if escala_notas_comision ==  escala_discreta %}
+						<select class="nota" name="nota">
+							<option value=""> - </option>
+							{% for nota in escala_notas %}
+								<option value="{{ nota.nota }}"{% if alumno.nota == nota.nota %} selected{% endif %}>{{ nota.nota }}
+									({{ nota.descripcion }})
+								</option>
+							{% endfor %}
+						</select>
+						{% elseif escala_notas_comision ==  escala_continua %}
+							<input type="text" maxlength="10" size="10" name="nota" value="{{ alumno.nota }}"
+                                   data-tipo="nota_input" class="nota_input" id="nota_{{ alumno.persona }}">
+						{% endif %}
+					</td>
+				{% else %}
+					<td class="centrar alinear">{% if alumno.nota %}{{ alumno.nota }} ({{ alumno.nota_nombre }}){% endif %}</td>
+				{% endif %}
+				<td class="centrar alinear resultado">
+                                    
+                                    {% if editar %}
+                                        
+                                        <select class="js-resultado-select" name="resultado">
+                                            <option value=""> - </option>
+                                            {% for resultado in resultados %}
+                                                <option value="{{ resultado.valor }}"{% if alumno.resultado == resultado.valor %} selected{% endif %}>{{ resultado.descr }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    
+                                    {% else %}
+                                        
+                                        <span class="js-resultado-text">{{ alumno.resultado_nombre }}</span>
+                                        
+                                    {% endif %}
+                         
+                                </td>
+				<td class="centrar alinear observaciones_wrapper">
+					{% if editar %}<input type="text" maxlength="50" name="corregido_por" class="corregido_por"
+										  value="{{ alumno.corregido_por }}">{% else %}{{ alumno.corregido_por }}{% endif %}
+				</td>
+				<td class="centrar alinear observaciones_wrapper">
+					{% if editar %}<input type="text" maxlength="100" name="observaciones" class="observaciones"
+										  value="{{ alumno.observaciones }}">{% else %}{{ alumno.observaciones }}{% endif %}
+				</td>
+				{% if editar %}
+					<td class="centrar alinear">
+						<button class="btn btn-mini btn-warning js-eliminar_alumno">
+							<i class="icon-remove"></i>{{ 'quitar'|trans|capitalize }}
+						</button>
+					</td>
+				{% endif %}
+			</tr>
+		{% endfor %}
+		</tbody>
+	</table>
+
+{% else %}
+	<div id="mensaje_vacio" class="alert">{{ 'no_hay_alumnos'|trans|capitalize }}</div>
+{% endif %}

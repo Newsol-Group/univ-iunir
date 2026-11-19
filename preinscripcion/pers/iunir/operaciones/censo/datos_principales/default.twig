@@ -1,0 +1,172 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	{% set form = this.get_form() %}
+	{% autoescape false %}
+	{{ form.encabezado }}
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-inferior'>
+				<div class='pull-left'>
+					<h2>{{this.get_nombre()|trans}}</h2>
+				</div>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'guardar_datos_personales')}}
+				</div>
+				<div class='clearfix'></div>
+			</div>
+		</div>
+
+		{%if form.hay_visibles_agrupado('datos_principales_pers') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('datos_principales_pers')">{{'datos_principales_pers'|trans}}</h3>
+			<div id='datos_principales_pers' class='toggle-div'>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('apellido', 'span6') }}
+					{{ form.control_group('nombres', 'span6') }}
+				</div>
+  
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('sexo', 'span6') }}
+				</div>
+                                
+                                <div class='clearfix cg-margen' >
+                                        {{ form.control_group('identidad_genero', 'span6') }}
+					{{ form.control_group('identidad_genero_otro', 'span6') }}
+				</div>
+                                <p id="ayuda_genero" class='control-group span6'><i class='icon-question-sign' data-toggle="tooltip" data-placement="top" data-original-title="{{'mensaje_identidad_genero'|trans}}"></i>{{'ayuda_identidad_genero'|trans({'%link%': this.data.url_identidad_genero})|raw}}</p>			
+                                
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('pais_documento', 'span6') }}
+					{{ form.control_group('tipo_documento', 'span6') }}
+				</div>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('nro_documento', 'span6') }}
+					{{ form.control_group('nacionalidad_desc', 'span6') }}
+					{{ form.control_group('nacionalidad', 'span6') }}
+				</div>
+                                <div id="js_nro_documento" class="alert alert-info"><!-- Se completa con JS --></div>
+                                
+                                <div id="js_nro_tramite_dni" class="alert alert-info"><!-- Se completa con JS --></div> 
+                                
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('numero_cuil', 'span6') }}
+					{{ form.control_group('e_mail', 'span6') }}
+				</div>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('celular_caracteristica', 'span6') }}
+					{{ form.control_group('celular_valor', 'span6') }}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		{%if form.hay_visibles_agrupado('datos_principales_nacim') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('datos_principales_nacim')">{{'datos_principales_nacim'|trans}}</h3>
+			<div id='datos_principales_nacim' class='toggle-div'>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('fecha_nacimiento') }}
+					{{ form.control_group('es_mayor_25_sin_secundario') }}
+					{% if form.def_visible('loc_nacimiento') %}
+					<div class='clearfix cg-margen'>
+						{{ form.control_group_localidad('loc_nacimiento', 'loc_nac_descr', 'pais_nacimiento') }}
+						<div id='loc_nac_descr_help' class='clearfix inline-help italic cg-margen'>
+							{{'ayuda_lista_localidades'|trans}}
+						</div>
+						<input id="btnLimpiarLocNacimiento" value="{{'limpiar'|trans}}" type="button" class="btn btn-inverse" />
+						<input id="btnSelectorLocNacimiento" name="btnSelectorLocalidad" value="{{'busqueda_avanzada'|trans}}" type="button" class="btn btn-inverse" />
+					</div>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		{% if this.permite_cedula() and form.hay_visibles_agrupado('datos_principales_ci') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('datos_principales_ci')">{{'datos_principales_ci'|trans}}</h3>
+			<div id='datos_principales_ci' class='toggle-div'>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('ent_emisora_ci', 'span6') }}
+					{{ form.control_group('nro_ci', 'span6') }}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		{%if form.hay_visibles_agrupado('datos_principales_pasap') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('datos_principales_pasap')">{{'datos_principales_pasap'|trans}}</h3>
+			<div id='datos_principales_pasap' class='toggle-div'>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('pais_emisor_pasap', 'span6') }}
+					{{ form.control_group('nro_pasap', 'span6') }}
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		{% if this.necesita_visa() and form.hay_visibles_agrupado('datos_principales_visa') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('datos_principales_visa')">{{'datos_principales_visa'|trans}}</h3>
+			<div id='datos_principales_visa' class='toggle-div'>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('tipo_visa', 'span6') }}
+				</div>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('otorgamiento_visa', 'span6') }}
+					<div id='div_vencimiento_visa' class='span6'>
+						{{ form.control_group('vencimiento_visa') }}
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		{% if not this.es_argentino() and form.hay_visibles_agrupado('datos_principales_res') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('datos_principales_res')">{{'datos_principales_res'|trans}}</h3>
+			<div id='datos_principales_res' class='toggle-div'>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('residencia') }}
+				</div>
+				<div class='clearfix cg-margen'>
+					<div id='div_fecha_respre_otorg' class='span6'>
+						{{ form.control_group('fecha_respre_otorg') }}
+					</div>
+					<div id='div_fecha_respre_venc' class='span6'>
+						{{ form.control_group('fecha_respre_venc') }}
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+		
+		{%if form.hay_visibles_agrupado('pueblos_originarios') %}
+		<div class='well clearfix'>
+			<h3 class='toggle-header' onclick="toggle('pueblos_originarios')">{{'pueblos_originarios'|trans}}</h3>
+			<div id='pueblos_originarios' class='toggle-div'>
+				<div class='clearfix cg-margen'>
+					{{ form.control_group('pertenece_pueblo_originario') }}
+					<div id="div_pueblo_originario">
+					{{ form.control_group('pueblo_originario', 'span6') }}
+					<div id="div_otro_pueblo_originario" class="span6">
+					{{ form.control_group('pueblo_originario_otro') }}
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		{% endif %}
+
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-superior'>
+				<div class='pull-right'>
+					{{ form.submit_button('guardar', 'guardar_datos_personales')}}
+				</div>
+			</div>
+		</div>
+	</form>
+	
+	{% endautoescape %}
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+<div>
+	<p>Acta: {{ this.data.acta.nro_acta }}</p>
+	<p>Comisión: {{ this.data.acta.comision }}</p>
+	<p>Libro: {{ this.data.acta.libro_nombre }}</p>
+	<p>Materia: {{ this.data.acta.actividad_nombre }} ({{ this.data.acta.actividad_codigo }})</p>
+</div>
+<div class='clearfix'>
+	<div class='pull-left'>
+		<a class='btn btn-small' href='{{ this.data.url_imprimir }}'>Imprimir</a>
+		<a href='{{ this.data.url_index }}'>Volver</a>
+	</div>
+</div>
+{% endblock %}

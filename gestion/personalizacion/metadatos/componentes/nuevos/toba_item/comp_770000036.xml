@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000036" descripcion="toba_item">
+	<tabla nombre="apex_item">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="item" valor="770000036"/>
+			<columna nombre="padre_proyecto" valor="guarani"/>
+			<columna nombre="padre" valor="41000007"/>
+			<columna nombre="carpeta" valor="0"/>
+			<columna nombre="nivel_acceso" valor="0"/>
+			<columna nombre="solicitud_tipo" valor="web"/>
+			<columna nombre="pagina_tipo_proyecto" valor="guarani"/>
+			<columna nombre="pagina_tipo" valor="guarani_tp_basico"/>
+			<columna nombre="nombre" valor="IUNIR - Reporte de Alumnos con Regularidad Vencida"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+			<columna nombre="menu" valor="1"/>
+			<columna nombre="orden" valor="30"/>
+			<columna nombre="solicitud_registrar" valor="0"/>
+			<columna nombre="zona_listar" valor="0"/>
+			<columna nombre="imagen_recurso_origen" valor="proyecto"/>
+			<columna nombre="imagen" valor="reporte.png"/>
+			<columna nombre="parametro_a" valor="800SIUCUR504"/>
+			<columna nombre="publico" valor="0"/>
+			<columna nombre="exportable" valor="0"/>
+			<columna nombre="creacion" valor="2010-07-21 16:00:25"/>
+			<columna nombre="retrasar_headers" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_item_objeto">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="item" valor="770000036"/>
+			<columna nombre="objeto" valor="770000157"/>
+			<columna nombre="orden" valor="0"/>
+		</registro>
+	</tabla>
+</componente>

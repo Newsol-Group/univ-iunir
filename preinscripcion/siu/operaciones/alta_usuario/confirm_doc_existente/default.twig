@@ -1,0 +1,36 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}    
+	<div class="well">
+		<div class="mensaje">
+			{{ this.data.confirm_doc_existente_1 | raw }}
+                        {% if this.data.recuperar_clave %}
+                        
+                                {{ this.data.confirm_doc_existente_2 | raw }}
+				<a href='{{ this.data.url_accion }}' style="float: right;" class='no-ajax btn btn-info'>{{'recuperar_clave'|trans|capitalize}}</a>
+                       
+                        {% else %}
+				{{ this.data.confirm_doc_existente_2 | raw }}
+				<a href='{{ this.data.url_accion }}' style="float: right;" class='no-ajax btn btn-info'>{{'reenviar_mail_alta'|trans|capitalize}}</a>
+			{% endif %}
+                        {% if this.data.url_continuar_2_2 %}
+                            <br/><br/>
+                            {{ this.data.confirm_doc_existente_2_2 | raw }}
+                            <a href='{{ this.data.url_continuar_2_2 }}' style="float: right;" class='no-ajax btn btn-info'>{{'cambiar_correo_asociado'|trans|capitalize}}</a>
+                        {% endif %}
+                        {% if this.data.url_continuar %}
+                           <br><br> <div class="otra_persona">
+				{{ this.data.confirm_doc_existente_3 | raw }}
+				<a href='{{ this.data.url_continuar }}' style="float: right;" class='no-ajax btn btn-info'>{{'continuar_otra_persona_alta'|trans|capitalize}}</a>
+                            </div>
+                        {% endif %}
+<br><br>
+                        <div class="ayuda">
+                           <p     style="
+    border: double;
+    background: #0088CC;
+    text-align: center;
+    "><b>Comunicate con la institución <br> Telefono:{{ this.data.datos_ayuda.datos_ayuda_telefono | raw }}<br> Email: {{ this.data.datos_ayuda.datos_ayuda_email| raw }}</b></p>
+                        </div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,13 @@
+tr.promocion
+{
+	cursor: pointer;
+}
+tr.promocion:hover
+{
+	background-color: #eee;
+}
+.tachado
+{
+	text-decoration: line-through;
+	color: red;
+}

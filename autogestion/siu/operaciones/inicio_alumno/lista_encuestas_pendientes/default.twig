@@ -1,0 +1,17 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+
+	<ul class='unstyled'>
+		<h3>{{ 'encuestas_pendientes'|trans|capitalize }}</h3>
+		{% if this.data.links_encuesta|length > 0 %}
+			{% for link in this.data.links_encuesta %}
+				<ul>
+					<li><a id="{{link.id}}" href="{{ link.href }}">{{ link.nombre }}</a></li>
+				</ul>
+			{% endfor %}
+		{% else %}
+			<div class="alert alert-warning text-center text-warning">{{ 'no_hay_encuestas_pendientes'|trans|capitalize }}</div>
+		{% endif %}
+	</ul>
+
+{% endblock %}

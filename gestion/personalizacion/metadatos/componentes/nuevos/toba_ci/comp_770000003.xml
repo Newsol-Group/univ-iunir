@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000003" descripcion="toba_ci">
+	<tabla nombre="apex_objeto">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000003"/>
+			<columna nombre="clase_proyecto" valor="toba"/>
+			<columna nombre="clase" valor="toba_ci"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+			<columna nombre="subclase" valor="ci_rep_periodos_inscripcion_por_propuesta"/>
+			<columna nombre="subclase_archivo" valor="operaciones/calendario/ci_rep_periodos_inscripcion_por_propuesta.php"/>
+			<columna nombre="nombre" valor="bbReporte de Períodos de Inscripción por Propuesta"/>
+			<columna nombre="titulo" valor="Reporte de Períodos de Inscripción por Propuesta"/>
+			<columna nombre="colapsable" valor="0"/>
+			<columna nombre="fuente_datos_proyecto" valor="guarani"/>
+			<columna nombre="fuente_datos" valor="guarani"/>
+			<columna nombre="creacion" valor="2012-07-02 15:10:24"/>
+			<columna nombre="posicion_botonera" valor="arriba"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_eventos">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="evento_id" valor="770000003"/>
+			<columna nombre="objeto" valor="770000003"/>
+			<columna nombre="identificador" valor="aplanar"/>
+			<columna nombre="etiqueta" valor="Aplanar Períodos de Inscripción"/>
+			<columna nombre="maneja_datos" valor="0"/>
+			<columna nombre="imagen_recurso_origen" valor="apex"/>
+			<columna nombre="imagen" valor="generar.png"/>
+			<columna nombre="en_botonera" valor="1"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="implicito" valor="0"/>
+			<columna nombre="defecto" valor="0"/>
+			<columna nombre="accion_imphtml_debug" valor="0"/>
+			<columna nombre="accion_vinculo_popup" valor="0"/>
+			<columna nombre="es_seleccion_multiple" valor="0"/>
+			<columna nombre="es_autovinculo" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_mt_me">
+		<registro>
+			<columna nombre="objeto_mt_me_proyecto" valor="guarani"/>
+			<columna nombre="objeto_mt_me" valor="770000003"/>
+			<columna nombre="ancho" valor="950px"/>
+			<columna nombre="botonera_barra_item" valor="0"/>
+			<columna nombre="con_toc" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_dependencias">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="dep_id" valor="770000001"/>
+			<columna nombre="objeto_consumidor" valor="770000003"/>
+			<columna nombre="objeto_proveedor" valor="770000001"/>
+			<columna nombre="identificador" valor="cuadro"/>
+		</registro>
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="dep_id" valor="770000002"/>
+			<columna nombre="objeto_consumidor" valor="770000003"/>
+			<columna nombre="objeto_proveedor" valor="770000002"/>
+			<columna nombre="identificador" valor="filtro"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_ci_pantalla">
+		<registro>
+			<columna nombre="objeto_ci_proyecto" valor="guarani"/>
+			<columna nombre="objeto_ci" valor="770000003"/>
+			<columna nombre="pantalla" valor="770000001"/>
+			<columna nombre="identificador" valor="pant_inicial"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="etiqueta" valor="Pantalla Inicial"/>
+			<columna nombre="imagen_recurso_origen" valor="apex"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objetos_pantalla">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="pantalla" valor="770000001"/>
+			<columna nombre="objeto_ci" valor="770000003"/>
+			<columna nombre="orden" valor="1"/>
+			<columna nombre="dep_id" valor="770000001"/>
+		</registro>
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="pantalla" valor="770000001"/>
+			<columna nombre="objeto_ci" valor="770000003"/>
+			<columna nombre="orden" valor="0"/>
+			<columna nombre="dep_id" valor="770000002"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_eventos_pantalla">
+		<registro>
+			<columna nombre="pantalla" valor="770000001"/>
+			<columna nombre="objeto_ci" valor="770000003"/>
+			<columna nombre="evento_id" valor="770000003"/>
+			<columna nombre="proyecto" valor="guarani"/>
+		</registro>
+	</tabla>
+</componente>

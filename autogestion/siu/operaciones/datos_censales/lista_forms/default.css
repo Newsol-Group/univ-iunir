@@ -1,0 +1,53 @@
+#lista_forms .well { 
+	padding: 8px; 
+}
+
+#lista_forms .mensaje {
+	padding-top: 8px;
+}
+
+#lista_forms li a.visitado {
+    background: url("../../../www/img/item_dcensal_ok.png") no-repeat scroll 95% transparent;
+    color: #0088CC;
+    text-shadow: none;
+}
+
+#lista_forms li a.active {
+    background-color: #0088CC !important;
+    text-shadow: none;
+    color:#fff;
+}
+
+#lista_forms hr { 
+	margin: 0; 
+}
+
+.control-group.obligatorio_becas input, /* input */
+.control-group.obligatorio_becas textarea, /* textarea */
+.control-group.obligatorio_becas select, /* select */
+label.obligatorio_becas span, /* checkbox */
+label.obligatorio_becas label, /* radio */
+.control-group.obligatorio_becas dt label /* Financiamiento */
+{
+    border-color: #B666D2 !important;
+    color: #B666D2 !important;
+}
+
+.control-group.obligatorio_becas .help-inline {
+    color: #B666D2 !important;
+}
+
+.control-group.obligatorio_reapertura input, /* input */
+.control-group.obligatorio_reapertura textarea, /* textarea */
+.control-group.obligatorio_reapertura select, /* select */
+label.obligatorio_reapertura span, /* checkbox */
+label.obligatorio_reapertura label, /* radio */
+.control-group.obligatorio_reapertura dt label /* Financiamiento */
+{
+    border-color: #f89406 !important;
+    color: #f89406 !important;
+}
+
+.control-group.obligatorio_reapertura .help-inline {
+    color: #f89406 !important;
+}

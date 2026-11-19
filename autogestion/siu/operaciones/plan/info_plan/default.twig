@@ -1,0 +1,106 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+    <div class="titulo_operacion">
+        <h2 class="clearfix"><span class="pull-left">{{"plan_de_estudio"|trans|capitalize}}</span>
+            <form id="pdf_form" name="pdf_form" action="{{this.data.url_pdf}}" method="post" class="pull-right">
+				<a id="pdf_btn" class="btn" target="_blank" title="{{ 'descargar_pdf'|trans|capitalize }}"><i class="g3w-icono-pdf"></i></a>
+            </form>
+        </h2>
+    </div>
+
+	<h3>{{ "plan.plan" | trans | capitalize }} - {{this.data.plan.datos_carrera.PLAN}}</h3>
+
+	<table class="table table-bordered table-condensed">		
+		<thead>
+			<tr>
+				<th title="{{ "plan.materia" | trans | capitalize }}">{{ "plan.materia" | trans | capitalize }}</th>
+				<th title="{{ "plan.nombre_materia" | trans | capitalize }}">{{ "plan.nombre_materia" | trans | capitalize }}</th>
+				<th title="{{ "plan.estado" | trans | capitalize }}">{{ "plan.estado" | trans | capitalize }}</th>
+				<th title="{{ "plan.tipo_materia" | trans | capitalize }}">{{ "plan.tipo_materia" | trans | capitalize }}</th>
+				<th title="{{ "plan.ano_cursada" | trans | capitalize }}">{{ "plan.ano_cursada" | trans | capitalize }}</th>
+				<th title="{{ "plan.periodo_dictado" | trans | capitalize }}">{{ "plan.periodo_dictado" | trans | capitalize }}</th>
+				<th title="{{ "plan.credito" | trans | capitalize }}">{{ "plan.credito" | trans | capitalize }}</th>
+				<th title="{{ "plan.correlatividades" | trans | capitalize }}">{{ "plan.correlatividades" | trans | capitalize }}</th>
+			</tr>
+		</thead>
+	<tbody>
+	{% for key, materia in this.data.plan.detalle %}
+		<tr>
+		<td>{{materia.MATERIA}}</td>
+		<td>{{materia.NOMBRE_MATERIA}}</td>
+		<td class="nota">
+			{% if materia.INFO_ACT_ACAD_MATERIA.NOTA %}
+				{{ materia.INFO_ACT_ACAD_MATERIA.NOTA }} 
+			{% endif %}
+			{% if materia.INFO_ACT_ACAD_MATERIA.RESULTADO_DESCRIPCION %}
+				({{ materia.INFO_ACT_ACAD_MATERIA.RESULTADO_DESCRIPCION }})
+			{% endif %}
+		</td>
+		<td>
+			{% if materia.TIPO == "G" %}
+				<a class="ver_materias" linea="optativa_{{materia.MATERIA}}">{{materia.TIPO_DETALLE}}</a>
+			{% else %}
+				<span>{{materia.TIPO_DETALLE}}</span>
+			{% endif %}			
+		</td>
+		<td style="text-align: right;">{{materia.ANIO}}</td>
+		<td class="periodo">{{materia.PERIODO}}</td>
+		<td style="text-align: right;">{{materia.CREDITO}}</td>
+		<td style="text-align: center; vertical-align: middle;">
+			{% if materia.INFO_ACT_ACAD_MATERIA %}
+			<a class="btn btn-info btn-mini ver_correlatividades" linea="{{materia.MATERIA}}">Ver</a>
+			{% endif %}
+		</td>
+		</tr>
+		{% if materia.TIPO == "G" %}
+			<tr class="optativa_{{materia.MATERIA}} genericas">
+				<td colspan="8" class="td-table-optativas">
+				{% if materia.OPTATIVAS %}
+					<table class="table table-condensed table-bordered table-optativas">
+					{% for key, mat in materia.OPTATIVAS %}
+						<tr>
+							<td>
+								{{mat.MATERIA_OPTATIVA}}
+							</td>
+							<td>
+								{{mat.NOMBRE}}
+							</td>
+							<td>
+								{{ "plan.optativa" | trans | capitalize }}
+							</td>
+							<td class="nota">
+								{% if mat.INFO_ACT_ACAD_MATERIA.NOTA %}
+									{{ mat.INFO_ACT_ACAD_MATERIA.NOTA }} 
+								{% endif %}
+								{% if mat.INFO_ACT_ACAD_MATERIA.RESULTADO_DESCRIPCION %}
+									({{ mat.INFO_ACT_ACAD_MATERIA.RESULTADO_DESCRIPCION }})
+								{% endif %}
+							</td>
+							<td>
+								{% if mat.INFO_ACT_ACAD_MATERIA %}
+									<a class="btn btn-small ver_correlatividades" linea="{{mat.MATERIA_OPTATIVA}}">Ver</a>
+								{% endif %}
+							</td>
+						</tr>
+						{% if mat.INFO_ACT_ACAD_MATERIA %}
+							<tr class="correlatividades" id="{{mat.MATERIA_OPTATIVA}}">
+								<!-- aca escribe el ajax -->
+							</tr>
+						{% endif %}
+					{% endfor %}
+					</table>
+				{% else %}
+				{% endif %}
+			</td>
+		</tr>
+		{% endif %}
+			
+		{% if materia.INFO_ACT_ACAD_MATERIA %}
+		<tr class="correlatividades"  id="{{materia.MATERIA}}" linea="{{materia.MATERIA}}">
+			<!-- aca escribe el ajax -->			
+		</tr>
+		{% endif %}
+	{% endfor %}
+	</tbody>
+	</table>
+{% endblock %}

@@ -1,0 +1,28 @@
+#alumnos .well { 
+	padding-top: 0px; 
+	padding-bottom: 0px; 
+	padding-left: 10px; 
+	padding-right: 10px; 
+}
+
+#alumnos h3 { 
+	border-bottom: 1px solid #CCCCCC;
+}
+
+#form_alumnos-buscar_alumnos {
+	width: 95%;
+}
+
+#alumnos .control-group {
+    margin-bottom: 0px;
+}
+
+#alumnos .cg-margen {
+	margin-bottom: 5px;
+}
+
+#alumnos #js-btn-agregar-alumno {
+	margin-top: 24px;
+	margin-left: 30px;
+}
+

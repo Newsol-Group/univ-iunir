@@ -1,0 +1,10 @@
+{% extends "kernel/una_columna.twig" %}
+{% block titulo_operacion %}
+	<h2>{{ "alta_uc.tit_crear_usuario_cursos" | trans }}</h2>
+{% endblock %}
+{% block columna_1 %}
+	<div class="alert alert-info centrado">
+		{{ mensaje | raw }}
+	</div>
+	<a class='btn btn-info pull-right' href="{{ url_retorno }}">{{'volver'|trans|capitalize}}</a>
+{% endblock %}

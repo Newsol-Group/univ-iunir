@@ -1,0 +1,43 @@
+#cursadas .motivo {
+	display: none;
+	background-color: #D1D2D6;
+}
+#cursadas .motivos {
+	margin-left: 10px;
+}
+
+#cursadas a {
+	cursor: pointer;
+}
+
+#cursadas #cursadas_historicas {
+	margin: 0;
+}
+
+#cursadas label {
+	vertical-align: bottom;
+}
+
+#cursadas .nota_titulo {
+	color: #08C; 
+	font-size: 14px;
+}
+
+#cursadas .table {
+	margin-bottom: 0;
+	background-color: #eee;
+}
+
+#cursadas table.subcomisiones td {
+	background-color: #fff;
+}
+
+#cursadas table.subcomisiones th.titulo {
+	background-color: #999;
+	color: #fff;
+}
+
+#cursadas table.comisiones tr.titulo {
+	background-color: #707070;
+	color: #fff;
+}

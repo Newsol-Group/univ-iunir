@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000230" descripcion="toba_datos_tabla">
+	<tabla nombre="apex_objeto">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000230"/>
+			<columna nombre="clase_proyecto" valor="toba"/>
+			<columna nombre="clase" valor="toba_datos_tabla"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+			<columna nombre="nombre" valor="DT - nsg_datos_facturacion"/>
+			<columna nombre="fuente_datos_proyecto" valor="guarani"/>
+			<columna nombre="fuente_datos" valor="guarani"/>
+			<columna nombre="creacion" valor="2022-03-09 21:14:40"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_db_registros">
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000230"/>
+			<columna nombre="punto_montaje" valor="1"/>
+			<columna nombre="ap" valor="1"/>
+			<columna nombre="tabla" valor="nsg_datos_facturacion"/>
+			<columna nombre="modificar_claves" valor="0"/>
+			<columna nombre="fuente_datos_proyecto" valor="guarani"/>
+			<columna nombre="fuente_datos" valor="guarani"/>
+			<columna nombre="permite_actualizacion_automatica" valor="1"/>
+			<columna nombre="esquema" valor="negocio_nsg"/>
+			<columna nombre="esquema_ext" valor="negocio"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_db_registros_col">
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000230"/>
+			<columna nombre="col_id" valor="770000213"/>
+			<columna nombre="columna" valor="dato_facturacion"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor="nsg_datos_facturacion_seq"/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="tabla" valor="nsg_datos_facturacion"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000230"/>
+			<columna nombre="col_id" valor="770000214"/>
+			<columna nombre="columna" valor="alumno"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="1"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="tabla" valor="nsg_datos_facturacion"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000230"/>
+			<columna nombre="col_id" valor="770000215"/>
+			<columna nombre="columna" valor="porcentaje_facturacion_alumno"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_facturacion"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000230"/>
+			<columna nombre="col_id" valor="770000216"/>
+			<columna nombre="columna" valor="medio_pago_alumno_mat"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_facturacion"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000230"/>
+			<columna nombre="col_id" valor="770000217"/>
+			<columna nombre="columna" valor="nro_tarjeta_alumno_mat"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="16"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_facturacion"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000230"/>
+			<columna nombre="col_id" valor="770000218"/>
+			<columna nombre="columna" valor="cbu_alumno_mat"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="22"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_facturacion"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000230"/>
+			<columna nombre="col_id" valor="770000219"/>
+			<columna nombre="columna" valor="medio_pago_alumno_cuota"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_facturacion"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000230"/>
+			<columna nombre="col_id" valor="770000220"/>
+			<columna nombre="columna" valor="nro_tarjeta_alumno_cuota"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="16"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_facturacion"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000230"/>
+			<columna nombre="col_id" valor="770000221"/>
+			<columna nombre="columna" valor="cbu_alumno_cuota"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="22"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_facturacion"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000230"/>
+			<columna nombre="col_id" valor="770000222"/>
+			<columna nombre="columna" valor="porcentaje_facturacion_empresa"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_facturacion"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000230"/>
+			<columna nombre="col_id" valor="770000223"/>
+			<columna nombre="columna" valor="medio_pago_empresa_mat"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_facturacion"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000230"/>
+			<columna nombre="col_id" valor="770000224"/>
+			<columna nombre="columna" valor="nro_tarjeta_empresa_mat"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="16"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_facturacion"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000230"/>
+			<columna nombre="col_id" valor="770000225"/>
+			<columna nombre="columna" valor="cbu_empresa_mat"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="22"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_facturacion"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000230"/>
+			<columna nombre="col_id" valor="770000226"/>
+			<columna nombre="columna" valor="medio_pago_empresa_cuota"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_facturacion"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000230"/>
+			<columna nombre="col_id" valor="770000227"/>
+			<columna nombre="columna" valor="nro_tarjeta_empresa_cuota"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="16"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_facturacion"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000230"/>
+			<columna nombre="col_id" valor="770000228"/>
+			<columna nombre="columna" valor="cbu_empresa_cuota"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="22"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_facturacion"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000230"/>
+			<columna nombre="col_id" valor="770000229"/>
+			<columna nombre="columna" valor="empresa"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_facturacion"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000230"/>
+			<columna nombre="col_id" valor="770000230"/>
+			<columna nombre="columna" valor="email_empresa"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="100"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_facturacion"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000230"/>
+			<columna nombre="col_id" valor="770000231"/>
+			<columna nombre="columna" valor="observaciones"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="255"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_facturacion"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000230"/>
+			<columna nombre="col_id" valor="770000232"/>
+			<columna nombre="columna" valor="forma_pago"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_facturacion"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000230"/>
+			<columna nombre="col_id" valor="770000233"/>
+			<columna nombre="columna" valor="pago_a_cargo_empresa"/>
+			<columna nombre="tipo" valor="C"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="largo" valor="1"/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_facturacion"/>
+		</registro>
+	</tabla>
+</componente>

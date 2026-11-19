@@ -1,0 +1,9 @@
+{% extends "kernel/pagelet_polite.twig" %}
+{% block contenido %}
+<div class='alert alert-warning clearfix'>
+	{{ 'mensaje_reinscripcion'|trans|capitalize }}
+	<form method='post' action='{{this.data.url_boton}}'>
+		<input type='submit' value='{{ 'boton'|trans|capitalize }}'>
+	</form>
+</div>
+{% endblock %}

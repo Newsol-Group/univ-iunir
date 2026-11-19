@@ -1,0 +1,34 @@
+{% extends "kernel/pagelet.twig" %}
+{% block contenido %}
+	<div id="reporte_contenido">
+		<div class='controls controls-row form-head clearfix'>
+			<div class='borde-inferior'>
+				<div class='pull-left'>
+					<h2>{{'ficha_alumno.menu.datos_personales'|trans}}</h2>
+				</div>
+				<div class='clearfix'></div>
+			</div>
+		</div>
+		<h3>{{ 'ficha_alumno.rep_datos_personales' | trans }}</h3>
+		{% if (this.data.datos) %}
+		<ul class="ficha_alumno_ul">
+			<li><strong>{{ 'ficha_alumno.nombre_completo' | trans | capitalize }}:</strong> {{ this.data.datos.nombre_completo}}</li>
+			<li><strong>{{ 'ficha_alumno.documento' | trans | capitalize }}:</strong> {{ this.data.datos.documento}}</li>
+			<li><strong>{{ 'ficha_alumno.sexo_valor' | trans | capitalize }}:</strong> {{ this.data.datos.sexo_valor}}</li>
+			<li><strong>{{ 'ficha_alumno.fecha_nacimiento_formato_visual' | trans | capitalize }}:</strong> {{ this.data.datos.fecha_nacimiento_formato_visual}}</li>
+			<li><strong>{{ 'ficha_alumno.nacionalidad_valor' | trans | capitalize }}:</strong> {{ this.data.datos.nacionalidad_valor}}</li>
+		</ul>
+		{% endif %}
+		
+		<h3>{{ 'ficha_alumno.rep_propuestas' | trans }}</h3>
+		{% if (this.data.propuestas) %}
+		<ul>
+			{% for propuesta in this.data.propuestas %}
+				<li>
+					{{ propuesta.propuesta_nombre }}
+				</li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+	</div>
+{% endblock %}

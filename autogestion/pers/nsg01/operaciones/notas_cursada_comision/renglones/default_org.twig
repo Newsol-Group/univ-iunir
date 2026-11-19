@@ -1,0 +1,452 @@
+{% extends "kernel/pagelet.twig" %}
+{% import _self as current_file_macros %}
+
+{% block contenido %}
+
+	{% if not this.hay_renglones %}
+		<div class="alert">{{"no_hay_alumnos_en_comision"|trans|capitalize}}</div>
+	{% else %} 
+		<span id="comision" style="display:none;">{{this.data.comision}}</span>
+		<form class='form-renglones' action='{{ this.data.url_guardar }}' method='post'>
+			{{ current_file_macros.barra_acciones(this) }}
+			<table class="tabla-renglones table table-bordered table-condensed">
+				<thead>
+				<th>{{ 'nombre_alumno'|trans|capitalize }}</th>
+                                {% if this.data.precondiciones.tiene_dos_instancias() and this.data.precondiciones.tiene_instancias_con_misma_escala() %}
+                                    {{ current_file_macros.th_colapsar_instancia }}
+                                {% endif %}
+                                {# Si el parámetro 'asistencia_registrar_asistencia' es distinto a 'No se registra asistencia en las clases de las cursadas' #}
+                                {% if this.data.registrar_asistencia != this.data.asist_no_registra %}
+                                    <th>{{ 'notas_cursada_comision.asistencia'|trans }}</th>
+                                {% endif %}
+				<th>{{ 'acta'|trans|capitalize }}</th>
+				<th>{{ 'fecha'|trans|capitalize }}</th>
+				<th>{{ 'nota'|trans|capitalize }}</th>
+				<th>{{ 'resultado'|trans|capitalize }}</th>
+				{% if not this.data.precondiciones.tiene_solo_instancia_promocion() %}
+                                    <th>{{ 'condicion'|trans|capitalize }}</th>
+				{% endif %}
+                                <th>{{ 'notas_cursada_comision.observaciones'|trans|capitalize }}</th>
+				</thead>
+				<tbody>
+					{% for alumno in this.data.renglones %}
+						{{ current_file_macros.fila_alumno(_context.this, alumno) }}
+					{% endfor %}
+				</tbody>
+			</table>
+		</form>
+	{% endif %}
+
+{% endblock %}
+
+{% macro fila_alumno(context, alumno) %}
+    
+        {% import _self as current_file_macros %}
+        
+	{% set precondiciones = context.data.precondiciones %}
+
+	{% if not precondiciones.tiene_dos_instancias() or not precondiciones.puede_promocionar(alumno.renglon) or not precondiciones.puede_regularizar(alumno.renglon) %}
+		{{ current_file_macros.fila_alumno_simple(context, alumno) }}
+	{% else %}
+		{{ current_file_macros.fila_alumno_doble(context, alumno) }}
+	{% endif %}
+
+{% endmacro %}
+
+	{% macro tr_fila_alumno(alumno, es_regular) %}
+	{% set clase_tipo = (es_regular) ? 'js-renglon-regular' : 'js-renglon-promocion' %}
+	<tr id='renglon_{{ alumno.renglon }}' 
+		title='{{(alumno.error) ? alumno.error : ''}}'
+		class='{{clase_tipo}} {{current_file_macros.clase_error_fila(alumno)}} js-{{alumno.id_acta_promocion}}-P js-{{alumno.id_acta_cursada}}-R' data-renglon="{{ alumno.renglon }}">
+	{% endmacro %}
+
+	{% macro clase_error_fila(alumno) %}
+		{% if alumno.error_concurrencia %}
+			error-renglon error-renglon-concurrencia
+		{% elseif alumno.error %}
+			error-renglon
+		{% endif %}
+	{% endmacro %}
+
+{% macro fila_alumno_simple(context, alumno) %}
+            
+                {% import _self as current_file_macros %}
+            
+		{% set precondiciones = context.data.precondiciones %}
+		{% set es_fila_regular = precondiciones.solo_puede_regularizar(alumno.renglon) %}
+		{{ current_file_macros.tr_fila_alumno(alumno, es_fila_regular) }}
+		{% set escala_tipo = (es_fila_regular) ? context.data.encabezado.escala_nota_tipo_regularidad: context.data.encabezado.escala_nota_tipo_promocion %}
+		{% set escala = (es_fila_regular) ? context.data.escala_nota_regularidad : context.data.escala_nota_promocion %}
+		{% set resultados = (es_fila_regular) ? context.data.resultados_regularidad : context.data.resultados_promocion %}
+		{% set param_asentar = (es_fila_regular) ? context.data.cur_asentar_notas_actas_regulares : context.data.cur_asentar_notas_actas_promocion %}
+
+		<td class='info-alumno' title="{{"ficha_alumno.evaluaciones"|trans|capitalize}}">{{ current_file_macros.info_alumno(alumno) }}</td>
+                
+		{% if precondiciones.tiene_dos_instancias() and precondiciones.tiene_instancias_con_misma_escala() %}
+			<td class='centrar alinear wrapper-colapsar-promocion'>
+			</td>
+		{% endif %}
+                
+                {# Si el parámetro 'asistencia_registrar_asistencia' es distinto a 'No se registra asistencia en las clases de las cursadas' #}
+                {% if context.data.registrar_asistencia != context.data.asist_no_registra %}
+                <td class="centrar alinear col-asistencia">
+                    {{ alumno.porc_asistencia ? alumno.porc_asistencia : ('notas_cursada_comision.sin_definir'|trans) }}
+                </td>
+                {% endif %}
+                
+                {% if es_fila_regular %}
+		<td class="centrar alinear col-nro-acta " >
+			
+                {{ 'notas_cursada_comision.acta_cursada' | trans }} ( {{ alumno.nro_acta_regularidad ? alumno.nro_acta_regularidad : ('sin_acta'|trans|capitalize) }} )
+			{% else %}
+                <td  class="centrar alinear col-nro-acta">
+		{{ 'notas_cursada_comision.acta_promocion' | trans }} ( {{ alumno.nro_acta_promocion ? alumno.nro_acta_promocion : ('sin_acta'|trans|capitalize) }} )
+			{% endif %}
+		</td>
+                
+                <td class="centrar alinear col-fecha">
+			{{ current_file_macros.input_fecha(alumno, es_fila_regular, context.es_mobile, false) }}
+		</td>
+		<td class="centrar alinear col-nota_cursada">
+			{{ current_file_macros.input_nota(alumno, es_fila_regular, escala_tipo, escala, param_asentar) }}
+		</td>
+		<td class="centrar alinear col-resultado">
+			{{ current_file_macros.input_resultado(alumno, es_fila_regular, resultados) }}
+		</td>
+		{% if not precondiciones.tiene_solo_instancia_promocion() %}
+			<td class="centrar alinear col-condicion">
+				{% if es_fila_regular %}
+					{{ current_file_macros.input_condicion(alumno, context.data.condiciones) }}
+				{% endif %}
+			</td>
+		{% endif %}
+                <td class="centrar alinear col-observacion">
+			{{ current_file_macros.input_observacion(alumno, es_fila_regular) }}
+		</td>
+	</tr>
+{% endmacro %}		
+
+{% macro fila_alumno_doble(context, alumno) %}
+    
+        {% import _self as current_file_macros %}
+    
+	{% set precondiciones = context.data.precondiciones %}
+
+	{% set escala_regularidad_tipo = context.data.encabezado.escala_nota_tipo_regularidad %}
+	{% set escala_regularidad = context.data.escala_nota_regularidad %}
+	{% set resultados_regularidad = context.data.resultados_regularidad %}	
+
+	{% set mismo_param_asentar = context.data.cur_asentar_notas_actas_regulares == context.data.cur_asentar_notas_actas_promocion %}
+	{% set misma_escala = precondiciones.tiene_instancias_con_misma_escala() %}
+	{% set mismos_valores = precondiciones.tiene_mismos_valores_en_instancias(alumno.renglon) %}
+	{% set actas_abiertas = alumno.acta_cursada_cerrada == 0 and alumno.acta_promocion_cerrada == 0 %}
+	{% set mostrar_vinculada = mismo_param_asentar and misma_escala and mismos_valores and actas_abiertas %}
+
+	{% set rowspan1 = 'rowspan=1' %}
+	{% set rowspan2 = 'rowspan=2' %}
+	{% set rowspan = (mostrar_vinculada) ? rowspan2 : rowspan1 %}
+
+	{{ current_file_macros.tr_fila_alumno(alumno, true) }}
+	<td {{ rowspan2 }} class='info-alumno'>
+		{{ current_file_macros.info_alumno(alumno) }}
+	</td>
+        
+	{% if misma_escala %}
+		<td {{ rowspan2 }} class='centrar alinear wrapper-colapsar-promocion'>
+			{{ current_file_macros.boton_colapsar_promocion(mostrar_vinculada) }}
+		</td>
+	{% endif %}
+        
+        {# Si el parámetro 'asistencia_registrar_asistencia' es distinto a 'No se registra asistencia en las clases de las cursadas' #}
+        {% if context.data.registrar_asistencia != context.data.asist_no_registra %}
+        <td rowspan="2" class="centrar alinear col-asistencia">
+            {{ alumno.porc_asistencia ? alumno.porc_asistencia : ('notas_cursada_comision.sin_definir'|trans) }}
+        </td>
+        {% endif %}
+        
+	<td {{ rowspan }} class="centrar alinear col-nro-acta">
+		{{ 'notas_cursada_comision.acta_cursada' | trans }}
+		(
+		{% if alumno.nro_acta_regularidad %}
+			{{ alumno.nro_acta_regularidad }}
+		{% else %}
+			{{ 'sin_acta'|trans|capitalize }}
+		{% endif %}
+		)
+	</td>
+                
+	<td {{ rowspan }} class="centrar alinear col-fecha">
+		{{ current_file_macros.input_fecha(alumno, true, context.es_mobile, false) }}
+	</td>
+	<td {{ rowspan }} class="centrar alinear col-nota_cursada">
+		{{ current_file_macros.input_nota(alumno, true, escala_regularidad_tipo, escala_regularidad, context.data.cur_asentar_notas_actas_regulares) }}
+	</td>
+	<td {{ rowspan }} class="centrar alinear col-resultado">
+		{{ current_file_macros.input_resultado(alumno, true, resultados_regularidad) }}
+	</td>
+	<td {{ rowspan }} class="centrar alinear col-condicion">
+		{{ current_file_macros.input_condicion(alumno, context.data.condiciones) }}
+	</td>
+        <td {{ rowspan }} class="centrar alinear col-observacion">
+		{{ current_file_macros.input_observacion(alumno, true) }}
+	</td>
+</tr>
+
+{% set escala_promocion_tipo = context.data.encabezado.escala_nota_tipo_promocion %}
+{% set escala_promocion = context.data.escala_nota_promocion %}
+{% set resultados_promocion = context.data.resultados_promocion %}	
+{% set hide_promocion = (mostrar_vinculada) ? 'hide' : '' %}
+
+<tr class='js-renglon-promocion {{current_file_macros.clase_error_fila(alumno)}} js-{{alumno.id_acta_promocion}}-P js-{{alumno.id_acta_cursada}}-R'
+	title='{{(alumno.error) ? alumno.error : ''}}' data-renglon="{{ alumno.renglon }}">
+        
+	<td class="{{hide_promocion}} centrar alinear col-nro-acta">
+		{{ 'notas_cursada_comision.acta_promocion' | trans }}
+		(
+		{% if alumno.nro_acta_promocion %}
+			{{ alumno.nro_acta_promocion }}
+		{% else %}
+			{{ 'sin_acta'|trans|capitalize }}
+		{% endif %}
+		)
+	</td>
+        
+	<td class="{{hide_promocion}} centrar alinear col-fecha">
+		{{ current_file_macros.input_fecha(alumno, false, context.es_mobile, error_fecha) }}
+	</td>
+	<td class="{{hide_promocion}} centrar alinear col-nota_promocion">
+		{{ current_file_macros.input_nota(alumno, false, escala_promocion_tipo, escala_promocion, context.data.cur_asentar_notas_actas_promocion) }}
+	</td>
+	<td class="{{hide_promocion}} centrar alinear col-resultado">
+		{{ current_file_macros.input_resultado(alumno, false, resultados_promocion) }}
+	</td>
+	<td class="{{hide_promocion}} centrar alinear col-condicion">
+	</td>
+        
+        <td class="{{hide_promocion}} centrar alinear col-observacion">
+		{{ current_file_macros.input_observacion(alumno, false) }}
+	</td>
+</tr>
+{% endmacro %}
+
+{% macro th_colapsar_instancia() %}
+	<th class='wrapper-colapsar-promocion'>
+		<a class="btn btn-mini pull-right btn-colapsar-promocion" id="js-toggle-acta-promocion" title='{{'mostrar_actas_promocion'|trans}}' href="#">
+			<i class="icon-circle-arrow-down"></i> 
+		</a>
+	</th>
+{% endmacro %}
+
+{% macro barra_acciones(pagelet) %}
+        {% import "kernel/macro_pager.twig" as pager %}
+	<div class="form-actions clearfix">
+            
+            <div class="row-fluid">
+                <div class="span10">
+                    <div class="pagination pagination-small pull-left">
+                            {{ pager.render_paginator(pagelet.get_paginas, pagelet.get_pagina_actual) }}
+                    </div>
+                </div>
+                    
+                <div class="span2">
+                    <input id="js-btn-guardar" disabled type='submit' value='{{"guardar"|trans|capitalize}}' class="btn btn-info btn-small pull-right" title="{{"guardar"|trans|capitalize}}"/>
+
+                    <a id="btn_imprimir_notas_cursada" class="btn btn-small no-ajax pull-right" target="_blank" href="{{ pagelet.data.url_imprimir_notas }}" title="{{ "notas_cursadas_comision_renglones.imprimir_notas_cursada" | trans }}">
+                        <i class="g3w-icono-pdf"></i>
+                    </a>
+                </div>
+            </div>
+		
+            <div class="row-fluid">
+                <div class="span4">
+                     
+                    <div class="form-inline pull-left form-busqueda">
+                        <label class="control-label" for='notas_cursada_filtrar_acta'>{{"label_filtrar_acta"|trans|capitalize}}</label>
+                        <select id="notas_cursada_filtrar_acta">
+                            <option value="todas-todas">{{ "todas" | trans }}</option>
+                            {% set actas = pagelet.get_actas() %}
+                            {% if(actas is not empty) %}  
+                                {% for acta in actas %}
+                                    {% if( acta.id_acta is not empty) %}
+                                        <option value="{{acta.id_acta}}-{{acta.origen}}">{{ acta.origen_descr }} ( {{ acta.nro_acta }} )</option>
+                                    {% endif %}
+                                {% endfor %} 
+                            {% endif %} 
+
+                        </select>
+                    </div>
+                                                
+                </div>
+                 
+                <div class="span5">
+                     
+                    <div class="form-inline pull-left form-busqueda">
+				<label class="control-label notas_cursada_query" for='notas_cursada_query'>{{"label_busqueda_alumnos"|trans|capitalize}}</label>
+				<input type='text' id='notas_cursada_query' name='query' value='' class="input-small" />
+                    </div>     
+                                
+                </div>
+                                
+                {% set precondiciones = pagelet.data.precondiciones %}
+
+                {% if precondiciones.tiene_dos_instancias() and not precondiciones.tiene_instancias_con_misma_escala() %}
+                <div class="span3">
+                    <div class="form-inline pull-right">
+                        <label>{{ "notas_cursadas_comision_renglones.autocompletar_promocion" | trans }}</label>
+                        <div class="btn-group" data-toggle="buttons-radio" style="margin-left: 10px;">
+                            <button type="button" class="btn btn-small js-autocompletar-promocion on" data-value="On">{{ "notas_cursadas_comision_renglones.si" | trans }}</button>
+                            <button type="button" class="btn btn-small js-autocompletar-promocion off" data-value="Off">{{ "notas_cursadas_comision_renglones.no" | trans }}</button>
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            </div>        
+                    
+        </div>
+{% endmacro %}
+
+{% macro boton_colapsar_promocion(habilitado) %}
+	{% set icon = (habilitado) ? 'icon-circle-arrow-down' : 'icon-circle-arrow-up' %}
+	<a class="pull-right btn btn-mini js-toggle-acta-promocion btn-colapsar-promocion {{(not habilitado) ? 'disabled' : ''}}" href="#">
+		<i class="{{icon}}"></i>
+	</a>
+{% endmacro %}
+
+{% macro info_alumno(alumno) %}
+    {% set nombre = alumno.apellido ~ ', ' ~ alumno.nombres ~ alumno.nombre_apellido_elegido %}
+	<div class="ficha-alumno clearfix pull-left" title="{{"ficha_alumno.evaluaciones"|trans|capitalize}}"
+		 data-url-ficha="{{ alumno.URL_FICHA }}">
+		<img src='{{alumno.url_imagen}}' width='35' height="35" class="pull-left" />
+		<div class="pull-left">
+			<span class="nombre">{{nombre}}</span>
+			<span class="identificacion">{{ alumno.documento_principal }}</span>
+		</div>
+	</div>
+{% endmacro %}
+
+
+{% macro input_fecha(alumno, instancia_regularidad, es_mobile, error_fecha) %}
+	{% if instancia_regularidad %}
+		{% set acta_cerrada = alumno.acta_cursada_cerrada == 1 %}
+	{% else %}
+		{% set acta_cerrada = alumno.acta_promocion_cerrada == 1 %}
+	{% endif %}
+
+	{% set value_fecha = (instancia_regularidad) ? alumno.fecha_regular : alumno.fecha_promocion %} 	
+	{% if acta_cerrada %}
+		{{ value_fecha }}
+	{% else %}
+		{% set name_fecha = (instancia_regularidad) ? 'fecha_regular' : 'fecha_promocion' %}
+		<input type='text' data-tipo='fecha' {{ (es_mobile) ? 'readonly' : ''}}
+			   name='renglones[{{ alumno.renglon }}][{{ name_fecha }}]' 
+                           data-valor-original="{{ value_fecha }}"
+			   value='{{ value_fecha }}'
+			   class='fecha nav {{(error_fecha) ? 'js-error-campo' : ''}}' />
+	{% endif %}
+{% endmacro %}
+
+{% macro input_nota(alumno, instancia_regularidad, tipo_escala_notas, escala_notas, param_asentar_notas) %}
+	{% if instancia_regularidad %}
+		{% set permite_edicion = (alumno.acta_cursada_cerrada == 0) and not param_asentar_notas %}
+	{% else %}
+		{% set permite_edicion = (alumno.acta_promocion_cerrada == 0) and not param_asentar_notas %}
+	{% endif %}
+
+	{% set value_nota = (instancia_regularidad) ? alumno.nota_cursada : alumno.nota_promocion %}
+	{% if not permite_edicion %}
+		{{ value_nota }}
+	{% else %}
+		{% set name_nota = (instancia_regularidad) ? 'nota_cursada' : 'nota_promocion' %}
+		{% if tipo_escala_notas == 'DISCRETA' %}
+			<select class='{{ name_nota }}' data-tipo='nota' name='renglones[{{ alumno.renglon }}][{{ name_nota }}]' data-valor-original="{{ value_nota }}">
+				<option value='' data-resultado='vacio'>{{ '-' }}</option>
+				{% for nota in escala_notas %}
+					{% set selected = (value_nota == nota.nota) ? 'SELECTED' : '' %}
+					<option {{ selected }} value='{{nota.nota}}'>{{nota.nota}}</option>
+				{% endfor %}
+			</select>
+		{% else %}
+			<input type='text' data-tipo='nota'
+				   data-valor-anterior='renglones[{{ alumno.renglon }}][{{ name_nota }}]'
+				   name='renglones[{{ alumno.renglon }}][{{ name_nota }}]'
+                                   data-valor-original="{{ value_nota }}"
+				   value='{{ value_nota }}'
+				   class='{{ name_nota }}'
+				   />
+		{% endif %}
+	{% endif %}
+{% endmacro %}
+
+{% macro input_resultado(alumno, instancia_regularidad, resultados) %}
+	{% if instancia_regularidad %}
+		{% set acta_cerrada = alumno.acta_cursada_cerrada == 1 %}
+	{% else %}
+		{% set acta_cerrada = alumno.acta_promocion_cerrada == 1 %}
+	{% endif %}
+
+	{% set value_resultado = (instancia_regularidad) ? alumno.resultado_cursada : alumno.resultado_promocion %}
+	{% if acta_cerrada %}
+		{% for resultado in resultados %}
+			{% if (value_resultado == resultado.valor)%}
+				{{ resultado.descr }}
+			{% endif %}
+		{% endfor %}
+
+	{% else %}
+		{% set name_resultado = (instancia_regularidad) ? 'resultado_cursada' : 'resultado_promocion' %}
+
+		<select class='resultado' data-tipo='resultado' name='renglones[{{ alumno.renglon }}][{{ name_resultado }}]' data-valor-original="{{ value_resultado }}">
+			<option value='' data-resultado='vacio'>{{ '-' }}</option>
+			{% for resultado in resultados %}
+				{% set selected = (value_resultado == resultado.valor) ? 'SELECTED' : '' %}
+				<option {{ selected }} value='{{resultado.valor}}'>{{resultado.descr}}</option>
+			{% endfor %}
+		</select>
+	{% endif %}
+{% endmacro %}
+
+{% macro input_condicion(alumno, condiciones) %}
+	{% set acta_cerrada = alumno.acta_cursada_cerrada == 1 %}
+	{% if acta_cerrada %}
+		{% for condicion in condiciones %}
+			{% if alumno.cond_regularidad == condicion.cond_regularidad %}
+				{{ condicion.nombre }}
+			{% endif %}
+		{% endfor %}
+	{% else %}
+		<select class='condicion' data-tipo='cond_regularidad' name='renglones[{{ alumno.renglon }}][cond_regularidad]' data-valor-original="{{ alumno.cond_regularidad }}">
+			<option value='' data-resultado='vacio'>{{ '-' }}</option>
+			{% for condicion in condiciones %}
+				{% set selected = (alumno.cond_regularidad == condicion.cond_regularidad) ? 'SELECTED' : '' %}
+
+				{% if condicion.resultado != 'P' or alumno.PROMOCIONAL == 'S' %}
+					<option data-resultado='{{ condicion.resultado }}' 
+							value='{{ condicion.cond_regularidad }}' {{ selected }}>
+						{{ condicion.nombre }}
+					</option>
+				{% endif %}
+			{% endfor %}
+		</select>
+	{% endif %}
+{% endmacro %}
+
+{% macro input_observacion(alumno, instancia_regularidad) %}
+	{% if instancia_regularidad %}
+		{% set acta_cerrada = alumno.acta_cursada_cerrada == 1 %}
+	{% else %}
+		{% set acta_cerrada = alumno.acta_promocion_cerrada == 1 %}
+	{% endif %}
+
+	{% set value_observacion = (instancia_regularidad) ? alumno.observacion_cursada : alumno.observacion_promocion %} 	
+	{% if acta_cerrada %}
+		{{ value_observacion }}
+	{% else %}
+		{% set name_observacion = (instancia_regularidad) ? 'observacion_cursada' : 'observacion_promocion' %}
+                <input type="text" data-tipo="observacion" maxlength="100"
+				   name="renglones[{{ alumno.renglon }}][{{ name_observacion }}]"
+                                   data-valor-original="{{ value_observacion }}"
+				   value="{{ value_observacion }}"
+				   class="observacion"
+				   />
+	{% endif %}
+{% endmacro %}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="41001126" descripcion="toba_ei_formulario">
+	<tabla nombre="apex_objeto_ei_formulario_ef">
+		<registro estado="2" clave="objeto_ei_formulario_proyecto:guarani;objeto_ei_formulario:41001126;objeto_ei_formulario_fila:41000742">
+			<columna nombre="etiqueta" valor="Situación ante IVA" valor_original="Esa ocupación es"/>
+			<columna nombre="carga_metodo" valor="get_cond_iva" valor_original="get_trabajos_ocupaciones"/>
+		</registro>
+		<registro estado="2" clave="objeto_ei_formulario_proyecto:guarani;objeto_ei_formulario:41001126;objeto_ei_formulario_fila:41000745">
+			<columna nombre="elemento_formulario" valor="ef_cbu" valor_original="ef_editable_textarea"/>
+			<columna nombre="etiqueta" valor="CBU" valor_original="Describa la tarea que realiza"/>
+			<columna nombre="edit_maximo" valor="22" valor_original="255"/>
+			<columna nombre="edit_filas" valor="1" valor_original="3"/>
+			<columna nombre="edit_columnas" valor="###$$$NULL$$$###" valor_original="130"/>
+		</registro>
+	</tabla>
+</componente>

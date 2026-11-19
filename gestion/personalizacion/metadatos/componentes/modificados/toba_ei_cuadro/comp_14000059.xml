@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="14000059" descripcion="toba_ei_cuadro">
+	<tabla nombre="apex_objeto_ei_cuadro_columna">
+		<registro estado="3" clave="objeto_cuadro_proyecto:guarani;objeto_cuadro:14000059;objeto_cuadro_col:14000048"/>
+		<registro estado="3" clave="objeto_cuadro_proyecto:guarani;objeto_cuadro:14000059;objeto_cuadro_col:14000050"/>
+		<registro estado="3" clave="objeto_cuadro_proyecto:guarani;objeto_cuadro:14000059;objeto_cuadro_col:14000170"/>
+		<registro estado="3" clave="objeto_cuadro_proyecto:guarani;objeto_cuadro:14000059;objeto_cuadro_col:14000171"/>
+		<registro estado="2" clave="objeto_cuadro_proyecto:guarani;objeto_cuadro:14000059;objeto_cuadro_col:14000049">
+			<columna nombre="clave" valor="certificado_nombre" valor_original="promedio_con_aplazos"/>
+			<columna nombre="orden" valor="1" valor_original="2"/>
+			<columna nombre="titulo" valor="Certificación" valor_original="Con Aplazos"/>
+			<columna nombre="no_ordenar" valor="0" valor_original="###$$$NULL$$$###"/>
+			<columna nombre="total" valor="0" valor_original="###$$$NULL$$$###"/>
+			<columna nombre="usar_vinculo" valor="0" valor_original="###$$$NULL$$$###"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="14000059"/>
+			<columna nombre="objeto_cuadro_col" valor="770000693"/>
+			<columna nombre="clave" valor="promedio_con_aplazos"/>
+			<columna nombre="orden" valor="2"/>
+			<columna nombre="titulo" valor="Promedio con Aplazos"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-cen-s1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="14000059"/>
+			<columna nombre="objeto_cuadro_col" valor="770000694"/>
+			<columna nombre="clave" valor="promedio_sin_aplazos"/>
+			<columna nombre="orden" valor="3"/>
+			<columna nombre="titulo" valor="Promedio sin Aplazos"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-cen-s1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="14000059"/>
+			<columna nombre="objeto_cuadro_col" valor="770000695"/>
+			<columna nombre="clave" valor="aprobadas"/>
+			<columna nombre="orden" valor="4"/>
+			<columna nombre="titulo" valor="Actividades Aprobadas"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-cen-s1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+		<registro estado="1">
+			<columna nombre="objeto_cuadro_proyecto" valor="guarani"/>
+			<columna nombre="objeto_cuadro" valor="14000059"/>
+			<columna nombre="objeto_cuadro_col" valor="770000696"/>
+			<columna nombre="clave" valor="desaprobadas"/>
+			<columna nombre="orden" valor="5"/>
+			<columna nombre="titulo" valor="Actividades Desaprobadas"/>
+			<columna nombre="estilo_titulo" valor="ei-cuadro-col-tit"/>
+			<columna nombre="estilo" valor="col-cen-s1"/>
+			<columna nombre="formateo" valor="1"/>
+			<columna nombre="no_ordenar" valor="0"/>
+			<columna nombre="total" valor="0"/>
+			<columna nombre="usar_vinculo" valor="0"/>
+			<columna nombre="permitir_html" valor="0"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto">
+		<registro estado="2" clave="proyecto:guarani;objeto:14000059">
+			<columna nombre="punto_montaje" valor="34000001" valor_original="1"/>
+			<columna nombre="nombre" valor="Ficha del Alumno - ci_reportes_ficha_alumno - rep_promedio - cuadro" valor_original="Ficha del Alumno - ci_reportes_ficha_alumno - rep_promedios - cuadro"/>
+		</registro>
+	</tabla>
+</componente>

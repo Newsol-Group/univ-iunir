@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="770000229" descripcion="toba_datos_tabla">
+	<tabla nombre="apex_objeto">
+		<registro>
+			<columna nombre="proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000229"/>
+			<columna nombre="clase_proyecto" valor="toba"/>
+			<columna nombre="clase" valor="toba_datos_tabla"/>
+			<columna nombre="punto_montaje" valor="34000001"/>
+			<columna nombre="subclase" valor="guarani_pers_datos_tabla"/>
+			<columna nombre="subclase_archivo" valor="extension_toba/componentes/guarani_pers_datos_tabla.php"/>
+			<columna nombre="nombre" valor="DT - nsg_datos_beneficios"/>
+			<columna nombre="fuente_datos_proyecto" valor="guarani"/>
+			<columna nombre="fuente_datos" valor="guarani"/>
+			<columna nombre="creacion" valor="2022-03-09 21:14:25"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_db_registros">
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000229"/>
+			<columna nombre="punto_montaje" valor="1"/>
+			<columna nombre="ap" valor="1"/>
+			<columna nombre="tabla" valor="nsg_datos_beneficios"/>
+			<columna nombre="modificar_claves" valor="0"/>
+			<columna nombre="fuente_datos_proyecto" valor="guarani"/>
+			<columna nombre="fuente_datos" valor="guarani"/>
+			<columna nombre="permite_actualizacion_automatica" valor="1"/>
+			<columna nombre="esquema" valor="negocio_nsg"/>
+			<columna nombre="esquema_ext" valor="negocio"/>
+		</registro>
+	</tabla>
+	<tabla nombre="apex_objeto_db_registros_col">
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000229"/>
+			<columna nombre="col_id" valor="770000203"/>
+			<columna nombre="columna" valor="dato_beneficio"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="1"/>
+			<columna nombre="secuencia" valor="nsg_datos_beneficios_seq"/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_beneficios"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000229"/>
+			<columna nombre="col_id" valor="770000204"/>
+			<columna nombre="columna" valor="alumno"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_beneficios"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000229"/>
+			<columna nombre="col_id" valor="770000205"/>
+			<columna nombre="columna" valor="tipo_beneficio"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="1"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_beneficios"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000229"/>
+			<columna nombre="col_id" valor="770000206"/>
+			<columna nombre="columna" valor="beca_fecha_vigencia_desde"/>
+			<columna nombre="tipo" valor="F"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_beneficios"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000229"/>
+			<columna nombre="col_id" valor="770000207"/>
+			<columna nombre="columna" valor="beca_fecha_vigencia_hasta"/>
+			<columna nombre="tipo" valor="F"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_beneficios"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000229"/>
+			<columna nombre="col_id" valor="770000208"/>
+			<columna nombre="columna" valor="beca_matricula"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_beneficios"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000229"/>
+			<columna nombre="col_id" valor="770000209"/>
+			<columna nombre="columna" valor="beca_cuota"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_beneficios"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000229"/>
+			<columna nombre="col_id" valor="770000210"/>
+			<columna nombre="columna" valor="bonificacion_matricula"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_beneficios"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000229"/>
+			<columna nombre="col_id" valor="770000211"/>
+			<columna nombre="columna" valor="bonificacion_cuota"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_beneficios"/>
+		</registro>
+		<registro>
+			<columna nombre="objeto_proyecto" valor="guarani"/>
+			<columna nombre="objeto" valor="770000229"/>
+			<columna nombre="col_id" valor="770000212"/>
+			<columna nombre="columna" valor="institucion"/>
+			<columna nombre="tipo" valor="E"/>
+			<columna nombre="pk" valor="0"/>
+			<columna nombre="secuencia" valor=""/>
+			<columna nombre="no_nulo_db" valor="0"/>
+			<columna nombre="externa" valor="0"/>
+			<columna nombre="tabla" valor="nsg_datos_beneficios"/>
+		</registro>
+	</tabla>
+</componente>

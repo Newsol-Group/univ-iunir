@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<componente id="38000817" descripcion="toba_ei_filtro">
+	<tabla nombre="apex_objeto_ei_filtro_col">
+		<registro estado="1">
+			<columna nombre="objeto_ei_filtro_col" valor="770000209"/>
+			<columna nombre="objeto_ei_filtro" valor="38000817"/>
+			<columna nombre="objeto_ei_filtro_proyecto" valor="guarani"/>
+			<columna nombre="tipo" valor="opciones"/>
+			<columna nombre="nombre" valor="tipo_ingreso"/>
+			<columna nombre="expresion" valor="sga_propuestas_aspira.tipo_ingreso"/>
+			<columna nombre="etiqueta" valor="Tipo Ingreso"/>
+			<columna nombre="obligatorio" valor="0"/>
+			<columna nombre="inicial" valor="0"/>
+			<columna nombre="orden" valor="8"/>
+			<columna nombre="opciones_es_multiple" valor="0"/>
+			<columna nombre="opciones_ef" valor="ef_combo"/>
+			<columna nombre="carga_metodo" valor="get_listado"/>
+			<columna nombre="carga_consulta_php" valor="9000007"/>
+			<columna nombre="carga_fuente" valor="guarani"/>
+			<columna nombre="carga_col_clave" valor="tipo_ingreso"/>
+			<columna nombre="carga_col_desc" valor="nombre"/>
+			<columna nombre="carga_permite_no_seteado" valor="0"/>
+			<columna nombre="carga_no_seteado_ocultar" valor="0"/>
+			<columna nombre="punto_montaje" valor="1"/>
+		</registro>
+	</tabla>
+</componente>

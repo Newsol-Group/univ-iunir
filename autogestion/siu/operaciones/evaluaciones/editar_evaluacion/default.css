@@ -1,0 +1,20 @@
+#cabecera .js-detalle-materia { padding-bottom: 10px; }
+#cabecera h3 span { color: #333; }
+#cabecera .titulo-navbar {
+	background-color: #EAEAEA;
+	padding: 3px 10px 4px 10px;
+	color: #555;
+	margin-top: 0;
+	margin-bottom: 10px;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+#hora_inicio, #hora_fin, #minutos_inicio, #minutos_fin { width: 20px; }
+#form-crear .error { border: 1px solid red !important; }
+#form-crear .control-label { width: 90px; }
+#form-crear .controls { margin-left: 110px; }
+#form-crear div.hora { margin-left: 0; }
+#form-crear label.minutos { width: 58px; }
+#form-crear div.minutos { margin-left: 10px; }
