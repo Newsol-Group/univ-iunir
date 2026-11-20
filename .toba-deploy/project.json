@@ -1,0 +1,63 @@
+{
+  "clientId": "univ-iunir",
+  "name": "IUNIR",
+  "project": "guarani",
+  "tobaVersion": "sin-configurar",
+  "connections": {},
+  "applications": {
+    "gestion": {
+      "root": "gestion",
+      "customizationRoots": [
+        "gestion/personalizacion"
+      ],
+      "codeDeployment": {
+        "schema": 1,
+        "developmentBranch": "desarrollo",
+        "productionBranch": "produccion",
+        "allowed": [
+          {
+            "path": "personalizacion",
+            "directory": true
+          }
+        ],
+        "protected": []
+      }
+    },
+    "autogestion": {
+      "root": "autogestion",
+      "customizationRoots": [
+        "autogestion/pers/nsg01"
+      ],
+      "codeDeployment": {
+        "schema": 1,
+        "developmentBranch": "desarrollo",
+        "productionBranch": "produccion",
+        "allowed": [
+          {
+            "path": "pers/nsg01",
+            "directory": true
+          }
+        ],
+        "protected": []
+      }
+    },
+    "preinscripcion": {
+      "root": "preinscripcion",
+      "customizationRoots": [
+        "preinscripcion/pers/iunir"
+      ],
+      "codeDeployment": {
+        "schema": 1,
+        "developmentBranch": "desarrollo",
+        "productionBranch": "produccion",
+        "allowed": [
+          {
+            "path": "pers/iunir",
+            "directory": true
+          }
+        ],
+        "protected": []
+      }
+    }
+  }
+}
